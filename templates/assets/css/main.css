@@ -19,6 +19,7 @@ body{
 .m-20 {margin:20px !important;}
 
 /****  Margin Top  ****/
+.m-t-_20 {margin-top:-20px !important;}
 .m-t-0 {margin-top:0px !important;}
 .m-t-5{margin-top:5px !important; }
 .m-t-10{margin-top:10px !important;}
@@ -64,6 +65,7 @@ body{
 .p-0 {padding:0 !important;}
 .p-5 {padding:5px !important;}
 .p-10 {padding:10px !important;}
+.p-16 {padding:16px !important;}
 .p-15 {padding:15px !important;}
 .p-20 {padding:20px !important;}
 .p-30 {padding:30px !important;}
@@ -261,19 +263,25 @@ a, a:focus, a:hover, a:active {  outline: 0;}
 .dis-none{display: none !important}
 .dis-flex{display: flex !important; align-content: center; align-items: center; justify-content: center;}
 .dis-grid{display: grid !important; align-content: center; align-items: center; justify-content: center;}
+
+/**** Z-index ****/
+.z-10 { z-index:10; }
+.z-100 { z-index:100; }
+.z-1000 { z-index:1000; }
+.z-10000 { z-index:10000; }
 /* =====GENERAL CSS STYLING ENDS === */
 
-header{
+/*header{
     padding: 8px 30px 8px 11px;
-}
+}*/
 
 /*.notifications ul li, 
 .markets ul li {
     display: inline-block;
 }*/
 
-.card-panel{
+/*.card-panel{
     box-shadow: none;
     margin-bottom: 0px;
     border-bottom: 1px solid #EEE;
-}
+}*/
