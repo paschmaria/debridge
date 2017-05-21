@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,12 +22,11 @@
     <!-- Bootstrap core CSS -->
     <link href="assets/plugins/mdb/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Material Design Lite -->
-   <link rel="stylesheet" href="assets/plugins/material-design-lite/material.min.css">
-   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Material Design Bootstrap -->
+   <link rel="stylesheet" href="assets/plugins/mdb/css/mdb.min.css">
 
     <!-- Your custom styles (optional) -->
-    <link href="assets/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
 
 </head>
 
@@ -36,62 +34,45 @@
     <!-- header begins here-->
     <header>
         <div class="container-fluid">
-            
-            <div class="row">
+            <div class="row p-t-35">
                 <div class="col-xs-3 col-sm-3 col-md-3 text-center">
-                    <a href="#">
-                        <img src="assets/img/logo/debridge-logo.png" class="img-fluid">
-                    </a>
-                    <p class="motto f-12">De bridge.. The Nigerian market</p>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <figure class="m-0">
+                                <a href="#">
+                                    <img src="assets/img/logo/debridge-logo.png" class="img-fluid dis-inline">
+                                </a>
+                            </figure>
+                            <p class="motto f-12">HOME | THE MARKET</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                     <div class="page_heading text-center">
-                        <h4 class="h4-responsive m-0">The Nigerian Market</h4>
-                        <p class="text-fluid">….The Larges Black Market in the globe</p>
-                        <div class="md-form input-group">
-                            <input type="search" class="form-control input-alternate p-t-5 p-b-5 h-18" placeholder="Search for...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary btn-lg waves-effect waves-light h-30 m-0 p-t-0 p-b-0" type="button">Go!</button>
-                            </span>
-                        </div>
+                        <form class="h-70">
+                            <div class="md-form input-group h-inherit">
+                                <input type="search" class="form-control input-alternate bd-dark-light h-68 f-17" placeholder="Search for...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary btn-lg waves-effect waves-light h-70 m-0" type="submit"><i class="fa fa-search f-17"></i></button>
+                                </span>
+                            </div>
+                        </form>
+                        
                     </div>
                 </div>
                 <div class="col-xs-3 col-sm-3 col-md-3">
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <!-- user avater here-->
-                                <div class="col-md-6">
-                                    <div class="avater">
-                                        <img class="img-fluid rounded-circle" src="assets/img/logo/debridge-logo.png" width="70" height="70"/>
-                                    </div>
-                                </div>
-                                <!-- cart right here-->
-                                <div class="col-md-6">
-                                    <div class="cart">
-                                        <img src="assets/img/icons/cart.png"/>
-                                        <span>MY CART</span>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-md-6 col-sm-6 offset-md-6 offset-sm-6 col-12 text-center">
+                            <ul class="list-style-none dis-inline-b">
+                                <li><a href="#" class="p-l-10 p-r-10">Login</a></li>
+                                <li><a href="#" class="p-l-10 p-r-10">Sign up</a></li>
+                            </ul>
                         </div>
-                        <div class="col-md-12">
-                            <div class="notifications">
-                                <ul class="list-style-none dis-inline-b">
-                                    <li>
-                                        <img class="img-fluid" src="assets/img/icons/n.png"/>
-                                    </li>
-                                    <li>
-                                        <img class="img-fluid" src="assets/img/icons/p.png"/>
-                                    </li>
-                                    <li>
-                                        <img class="img-fluid" src="assets/img/icons/email.png"/>
-                                    </li>
-                                    <li>
-                                        <img class="img-fluid" src="assets/img/icons/bell.png"/>
-                                    </li>
-                                </ul>
-                            </div>
+                        <div class="col-md-6 col-sm-6 offset-md-6 offset-sm-6 col-12 text-center">
+                            <ul class="list-style-none dis-inline-b">
+                                <li><a href="#" class="p-l-20 p-r-20"><img src="assets/img/icons/email-inverse.png" alt=""></a></li>
+                                <li><a href="#" class="p-l-20 p-r-20"><img src="assets/img/icons/notifications.png" alt=""></a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -99,37 +80,32 @@
            
         </div>
         <!-- navigations/links right here -->
-        <nav class="navbar navbar-default" role="navigation">
+        <nav class="navbar navbar-toggleable-sm navbar-light transparent" role="navigation">
 			<div class="container">
 				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				</div>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 		
 				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse navbar-ex1-collapse">
-					<ul class="nav navbar-nav navbar-center">
-						<li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
+				<div id="navbarNav1" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</div>
@@ -178,7 +154,7 @@
     <script type="text/javascript" src="assets/plugins/mdb/js/bootstrap.min.js"></script>
 
     <!-- MDL core JavaScript -->
-    <script src="assets/plugins/material-design-lite/material.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/mdb/js/mdb.min.js"></script>
 
     <!-- slick carousel -->
     <script type="text/javascript" src="assets/plugins/slick/slick.min.js"></script>
