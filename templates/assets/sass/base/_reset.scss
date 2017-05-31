@@ -146,12 +146,12 @@ body{
 .r-15 {right:15px; }
 
 /****  Border Radius  ****/
-.bd-0{ @include border-radius(0) !important;}
-.bd-3{ @include border-radius(3px) !important;}
-.bd-6{ @include border-radius(6px) !important;}
-.bd-9{ @include border-radius(9px) !important;}
-.bd-10em{ @include border-radius(10em) !important;}
-.bd-50p{ @include border-radius(50%) !important;}
+.bd-0 { 0 !important; }
+.bd-3 { 3px !important; }
+.bd-6 { 6px !important; }
+.bd-9 { 9px !important; }
+.bd-10em { 10em !important; }
+.bd-50p { 50% !important; }
 
 /****  Border Radius  ****/
 .no-bd {border:none !important;box-shadow: none}
@@ -298,8 +298,7 @@ a, a:focus, a:hover, a:active {  outline: 0;}
 .z-1000 { z-index:1000; }
 .z-10000 { z-index:10000; }
 
-/****  box-sizing  ****/
-.border-box { box-sizing: border-box !important; }
+.border-box { box-sizing: border-box; }
 
 .help-block {color: #AFAAAA;font-weight: 500;font-size: 12px;}
 .line-through{text-decoration: line-through;}
