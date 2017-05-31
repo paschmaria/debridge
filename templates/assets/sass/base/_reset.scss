@@ -298,6 +298,9 @@ a, a:focus, a:hover, a:active {  outline: 0;}
 .z-1000 { z-index:1000; }
 .z-10000 { z-index:10000; }
 
+/****  box-sizing  ****/
+.border-box { box-sizing: border-box !important; }
+
 .help-block {color: #AFAAAA;font-weight: 500;font-size: 12px;}
 .line-through{text-decoration: line-through;}
 .t-ellipsis {text-overflow: ellipsis;display: block;white-space: nowrap;overflow: hidden;}
