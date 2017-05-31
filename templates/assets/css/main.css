@@ -1,3 +1,1317 @@
 /*Import all partials here*/
+/* line 1, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+* {
+  box-sizing: border-box;
+}
+
+/* line 5, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+html, body {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
+
+/* line 10, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+html {
+  min-height: 100%;
+  font-size: 14px;
+}
+
+/* line 14, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+body {
+  height: 100%;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* =====GENERAL CSS STYLING ==== */
+/****  Margin  ****/
+/* line 21, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-auto {
+  margin: auto;
+}
+
+/* line 22, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-0 {
+  margin: 0 !important;
+}
+
+/* line 23, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-5 {
+  margin: 5px !important;
+}
+
+/* line 24, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-10 {
+  margin: 10px !important;
+}
+
+/* line 25, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-20 {
+  margin: 20px !important;
+}
+
+/****  Margin Top  ****/
+/* line 28, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-t-0 {
+  margin-top: 0px !important;
+}
+
+/* line 29, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-t-3 {
+  margin-top: 3px !important;
+}
+
+/* line 30, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-t-5 {
+  margin-top: 5px !important;
+}
+
+/* line 31, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-t-10 {
+  margin-top: 10px !important;
+}
+
+/* line 32, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-t-20 {
+  margin-top: 20px !important;
+}
+
+/* line 33, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-t-30 {
+  margin-top: 30px !important;
+}
+
+/* line 34, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-t-40 {
+  margin-top: 40px !important;
+}
+
+/* line 35, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-t-60 {
+  margin-top: 60px !important;
+}
+
+/* line 36, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-t-m20 {
+  margin-top: -20px !important;
+}
+
+/* line 37, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-t-m48 {
+  margin-top: -48px !important;
+}
+
+/****  Margin Bottom  ****/
+/* line 40, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-b-0 {
+  margin-bottom: 0px !important;
+}
+
+/* line 41, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-b-5 {
+  margin-bottom: 5px !important;
+}
+
+/* line 42, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-b-6 {
+  margin-bottom: 6px !important;
+}
+
+/* line 43, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-b-10 {
+  margin-bottom: 10px !important;
+}
+
+/* line 44, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-b-15 {
+  margin-bottom: 15px !important;
+}
+
+/* line 45, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-b-12 {
+  margin-bottom: 12px !important;
+}
+
+/* line 46, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-b-15 {
+  margin-bottom: 15px !important;
+}
+
+/* line 47, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-b-16 {
+  margin-bottom: 16px !important;
+}
+
+/* line 48, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-b-20 {
+  margin-bottom: 20px !important;
+}
+
+/* line 49, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-b-25 {
+  margin-bottom: 25px !important;
+}
+
+/* line 50, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-b-30 {
+  margin-bottom: 30px !important;
+}
+
+/* line 51, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-b-40 {
+  margin-bottom: 40px !important;
+}
+
+/* line 52, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-b-50 {
+  margin-bottom: 50px !important;
+}
+
+/* line 53, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-b-60 {
+  margin-bottom: 60px !important;
+}
+
+/* line 54, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-b-80 {
+  margin-bottom: 80px !important;
+}
+
+/* line 55, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-b-140 {
+  margin-bottom: 140px !important;
+}
+
+/* line 56, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-b-80 {
+  margin-bottom: 80px !important;
+}
+
+/* line 57, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-b-245 {
+  margin-bottom: 245px !important;
+}
+
+/* line 58, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-b-245 {
+  margin-bottom: 245px !important;
+}
+
+/* line 59, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-b-m30 {
+  margin-bottom: -30px !important;
+}
+
+/* line 60, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-b-m50 {
+  margin-bottom: -50px !important;
+}
+
+/****  Margin Left  ****/
+/* line 63, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-l-3 {
+  margin-left: 3px !important;
+}
+
+/* line 64, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-l-5 {
+  margin-left: 5px !important;
+}
+
+/* line 65, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-l-10 {
+  margin-left: 10px !important;
+}
+
+/* line 66, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-l-15 {
+  margin-left: 15px !important;
+}
+
+/* line 67, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-l-20 {
+  margin-left: 20px !important;
+}
+
+/* line 68, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-l-30 {
+  margin-left: 30px !important;
+}
+
+/* line 69, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-l-60 {
+  margin-left: 60px !important;
+}
+
+/* line 70, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-l-78 {
+  margin-left: 80px !important;
+}
+
+/****  Margin Right  ****/
+/* line 73, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-r-3 {
+  margin-right: 3px !important;
+}
+
+/* line 74, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-r-5 {
+  margin-right: 5px !important;
+}
+
+/* line 75, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-r-10 {
+  margin-right: 10px !important;
+}
+
+/* line 76, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-r-20 {
+  margin-right: 20px !important;
+}
+
+/* line 77, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-r-30 {
+  margin-right: 30px !important;
+}
+
+/* line 78, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-r-60 {
+  margin-right: 60px !important;
+}
+
+/****  Padding  ****/
+/* line 81, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-0 {
+  padding: 0 !important;
+}
+
+/* line 82, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-5 {
+  padding: 5px !important;
+}
+
+/* line 83, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-10 {
+  padding: 10px !important;
+}
+
+/* line 84, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-15 {
+  padding: 15px !important;
+}
+
+/* line 85, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-16 {
+  padding: 16px !important;
+}
+
+/* line 86, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-18 {
+  padding: 18px !important;
+}
+
+/* line 87, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-20 {
+  padding: 20px !important;
+}
+
+/* line 88, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-30 {
+  padding: 30px !important;
+}
+
+/* line 89, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-40 {
+  padding: 40px !important;
+}
+
+/****  Padding Top  ****/
+/* line 92, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-t-0 {
+  padding-top: 0 !important;
+}
+
+/* line 93, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-t-4 {
+  padding-top: 4px !important;
+}
+
+/* line 94, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-t-5 {
+  padding-top: 5px !important;
+}
+
+/* line 95, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-t-10 {
+  padding-top: 10px !important;
+}
+
+/* line 96, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-t-20 {
+  padding-top: 20px !important;
+}
+
+/* line 97, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-t-35 {
+  padding-top: 35px !important;
+}
+
+/****  Padding Bottom  ****/
+/* line 100, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-b-0 {
+  padding-bottom: 0 !important;
+}
+
+/* line 101, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-b-4 {
+  padding-bottom: 4px !important;
+}
+
+/* line 102, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-b-5 {
+  padding-bottom: 5px !important;
+}
+
+/* line 103, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-b-10 {
+  padding-bottom: 10px !important;
+}
+
+/* line 104, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-b-16 {
+  padding-bottom: 16px !important;
+}
+
+/* line 105, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-b-20 {
+  padding-bottom: 10px !important;
+}
+
+/* line 106, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-b-30 {
+  padding-bottom: 30px !important;
+}
+
+/****  Padding Left  ****/
+/* line 109, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-l-0 {
+  padding-left: 0px !important;
+}
+
+/* line 110, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-l-5 {
+  padding-left: 5px !important;
+}
+
+/* line 111, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-l-8 {
+  padding-left: 8px !important;
+}
+
+/* line 112, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-l-10 {
+  padding-left: 10px !important;
+}
+
+/* line 113, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-l-20 {
+  padding-left: 20px !important;
+}
+
+/* line 114, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-l-26 {
+  padding-left: 26px !important;
+}
+
+/* line 115, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-l-30 {
+  padding-left: 30px !important;
+}
+
+/* line 116, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-l-40 {
+  padding-left: 40px !important;
+}
+
+/**** Padding Right  ****/
+/* line 119, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-r-0 {
+  padding-right: 0px !important;
+}
+
+/* line 120, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-r-5 {
+  padding-right: 5px !important;
+}
+
+/* line 121, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-r-8 {
+  padding-right: 8px !important;
+}
+
+/* line 122, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-r-10 {
+  padding-right: 10px !important;
+}
+
+/* line 123, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-r-20 {
+  padding-right: 20px !important;
+}
+
+/* line 124, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-r-26 {
+  padding-right: 26px !important;
+}
+
+/* line 125, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.p-r-30 {
+  padding-right: 30px !important;
+}
+
+/****  Top  ****/
+/* line 128, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.t-0 {
+  top: 0;
+}
+
+/* line 129, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.t-5 {
+  top: 5px;
+}
+
+/* line 130, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.t-10 {
+  top: 10px;
+}
+
+/* line 131, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.t-15 {
+  top: 15px;
+}
+
+/* line 132, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.t-65p {
+  top: 65%;
+}
+
+/****  Bottom  ****/
+/* line 135, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.b-0 {
+  bottom: 0;
+}
+
+/* line 136, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.b-5 {
+  bottom: 5px;
+}
+
+/* line 137, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.b-10 {
+  bottom: 10px;
+}
+
+/* line 138, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.b-15 {
+  bottom: 15px;
+}
+
+/****  Left  ****/
+/* line 141, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.l-0 {
+  left: 0;
+}
+
+/* line 142, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.l-5 {
+  left: 5px;
+}
+
+/* line 143, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.l-10 {
+  left: 10px;
+}
+
+/* line 144, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.l-15 {
+  left: 15px;
+}
+
+/* line 145, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.l-13p {
+  left: 13%;
+}
+
+/****  Right  ****/
+/* line 148, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.r-0 {
+  right: 0;
+}
+
+/* line 149, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.r-5 {
+  right: 5px;
+}
+
+/* line 150, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.r-10 {
+  right: 10px;
+}
+
+/* line 151, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.r-15 {
+  right: 15px;
+}
+
+/****  Border Radius  ****/
+/* line 154, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-0 {
+  -moz-border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* line 155, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-3 {
+  -moz-border-radius: 3px !important;
+  -webkit-border-radius: 3px !important;
+  border-radius: 3px !important;
+}
+
+/* line 156, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-6 {
+  -moz-border-radius: 6px !important;
+  -webkit-border-radius: 6px !important;
+  border-radius: 6px !important;
+}
+
+/* line 157, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-9 {
+  -moz-border-radius: 9px !important;
+  -webkit-border-radius: 9px !important;
+  border-radius: 9px !important;
+}
+
+/* line 158, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-10em {
+  -moz-border-radius: 10em !important;
+  -webkit-border-radius: 10em !important;
+  border-radius: 10em !important;
+}
+
+/* line 159, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-50p {
+  -moz-border-radius: 50% !important;
+  -webkit-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
+
+/****  Border Radius  ****/
+/* line 162, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.no-bd {
+  border: none !important;
+  box-shadow: none;
+}
+
+/* line 163, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.border-bottom {
+  border-bottom: 1px solid #EFEFEF !important;
+}
+
+/* line 164, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.border-top {
+  border-top: 1px solid #EFEFEF !important;
+}
+
+/* line 165, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-white {
+  border-color: #FFFFFF !important;
+}
+
+/* line 166, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-dark-light {
+  border: 1px solid rgba(0, 0, 0, 0.125) !important;
+}
+
+/* line 167, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-green {
+  border-left: 3px solid #5CB85C;
+  padding-left: 20px;
+}
+
+/* line 168, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-red {
+  border-left: 3px solid #C9625F;
+  padding-left: 20px;
+}
+
+/* line 169, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-blue {
+  border-left: 3px solid #3598DB;
+  padding-left: 20px;
+}
+
+/* line 170, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-t-red {
+  border-top: 4px solid #C9625F;
+}
+
+/* line 171, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-t-green {
+  border-top: 4px solid #5CB85C;
+}
+
+/* line 172, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-t-blue {
+  border-top: 4px solid #0090D9;
+}
+
+/* line 173, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-t-dark {
+  border-top: 4px solid #2B2E33;
+}
+
+/* line 174, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-t-purple {
+  border-top: 4px solid #B57EE0;
+}
+
+/* line 175, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-l-red {
+  border-left: 4px solid #C9625F;
+}
+
+/* line 176, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-l-green {
+  border-left: 4px solid #5CB85C;
+}
+
+/* line 177, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-l-blue {
+  border-left: 4px solid #0090D9;
+}
+
+/* line 178, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-l-dark {
+  border-left: 4px solid #2B2E33;
+}
+
+/* line 179, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-l-purple {
+  border-left: 4px solid #B57EE0;
+}
+
+/* line 180, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-b-red {
+  border-bottom: 4px solid #C9625F;
+}
+
+/* line 181, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-b-green {
+  border-bottom: 4px solid #5CB85C;
+}
+
+/* line 182, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-b-blue {
+  border-bottom: 4px solid #0090D9;
+}
+
+/* line 183, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-b-dark {
+  border-bottom: 4px solid #2B2E33;
+}
+
+/* line 184, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bd-b-purple {
+  border-bottom: 4px solid #B57EE0;
+}
+
+/****  Background Colors  ****/
+/* line 187, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bg-brand {
+  background-color: #16A085 !important;
+  color: #FFFFFF !important;
+}
+
+/* line 188, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bg-white {
+  background-color: #FFFFFF !important;
+  color: #526173 !important;
+}
+
+/* line 189, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bg-gray {
+  background-color: #b6b6b6 !important;
+  color: #000 !important;
+}
+
+/* line 190, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bg-gray-light {
+  background-color: #ECECEC !important;
+  color: #000 !important;
+}
+
+/* line 191, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bg-red {
+  background-color: #C75757 !important;
+  color: #FFFFFF !important;
+}
+
+/* line 192, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bg-green {
+  background-color: #18a689 !important;
+  color: #FFFFFF !important;
+}
+
+/* line 193, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bg-blue {
+  background-color: #0090D9 !important;
+  color: #FFFFFF !important;
+}
+
+/* line 194, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bg-orange {
+  background-color: #f27835 !important;
+  color: #FFFFFF !important;
+}
+
+/* line 195, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bg-purple {
+  background-color: #B57EE0 !important;
+  color: #FFFFFF !important;
+}
+
+/* line 196, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bg-dark {
+  background-color: #2B2E33 !important;
+  color: #FFFFFF !important;
+}
+
+/* line 197, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bg-purple-gradient {
+  background: #bf9bdd;
+  background: -moz-radial-gradient(center, ellipse cover, #bf9bdd 27%, #9e52dd 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(27%, #bf9bdd), color-stop(100%, #9e52dd));
+  background: -webkit-radial-gradient(center, ellipse cover, #bf9bdd 27%, #9e52dd 100%);
+  background: -o-radial-gradient(center, ellipse cover, #bf9bdd 27%, #9e52dd 100%);
+  background: -ms-radial-gradient(center, ellipse cover, #bf9bdd 27%, #9e52dd 100%);
+  background: radial-gradient(ellipse at center, #bf9bdd 27%, #9e52dd 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf9bdd', endColorstr='#9e52dd',GradientType=1 );
+}
+
+/* line 198, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bg-opacity-40 {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* line 199, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bg-facebook {
+  background-color: #3B5998;
+}
+
+/* line 200, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bg-google {
+  background-color: #DD4B39;
+}
+
+/* line 201, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bg-twitter {
+  background-color: #55ACEE;
+}
+
+/* line 202, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.bg-linkedin {
+  background-color: #0082CA;
+}
+
+/****  Opacity  ****/
+/* line 205, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.opacity-0 {
+  opacity: 0;
+}
+
+/* line 206, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.opacity-20 {
+  opacity: .2;
+}
+
+/* line 207, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.opacity-50 {
+  opacity: .5;
+}
+
+/* line 208, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.opacity-70 {
+  opacity: .7;
+}
+
+/* line 209, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.opacity-90 {
+  opacity: .9;
+}
+
+/****  Width  ****/
+/* line 213, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.min-width-40 {
+  min-width: 40px;
+}
+
+/* line 214, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.width-0 {
+  width: 0 !important;
+}
+
+/* line 215, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.width-300 {
+  width: 300px !important;
+}
+
+/* line 216, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.width-25p {
+  width: 25% !important;
+}
+
+/* line 217, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.width-100p {
+  width: 100% !important;
+}
+
+/****  Height  ****/
+/* line 220, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.h-0 {
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* line 221, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.h-18 {
+  height: 18px !important;
+  overflow: hidden !important;
+}
+
+/* line 222, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.h-20 {
+  height: 20px !important;
+  overflow: hidden !important;
+}
+
+/* line 223, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.h-30 {
+  height: 30px !important;
+  overflow: hidden !important;
+}
+
+/* line 224, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.h-40 {
+  height: 40px !important;
+  overflow: hidden !important;
+}
+
+/* line 225, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.h-68 {
+  height: 68px !important;
+  overflow: hidden !important;
+}
+
+/* line 226, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.h-70 {
+  height: 70px !important;
+  overflow: hidden !important;
+}
+
+/* line 227, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.h-100 {
+  height: 100px !important;
+  overflow: hidden !important;
+}
+
+/* line 228, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.h-150 {
+  height: 150px !important;
+  overflow: hidden !important;
+}
+
+/* line 229, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.h-200 {
+  height: 200px !important;
+  overflow: hidden !important;
+}
+
+/* line 230, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.h-220 {
+  height: 220px !important;
+  overflow: hidden !important;
+}
+
+/* line 231, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.h-250 {
+  height: 250px !important;
+  overflow: hidden !important;
+}
+
+/* line 232, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.h-280 {
+  height: 280px !important;
+  overflow: hidden !important;
+}
+
+/* line 233, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.h-300 {
+  height: 300px !important;
+  overflow: hidden !important;
+}
+
+/* line 234, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.h-inherit {
+  height: inherit !important;
+  overflow: hidden !important;
+}
+
+/* line 235, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.h-initial {
+  height: 30initial !important;
+  overflow: hidden !important;
+}
+
+/**** Position ****/
+/* line 238, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.pos-rel {
+  position: relative;
+}
+
+/* line 239, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.pos-abs {
+  position: absolute;
+}
+
+/* line 241, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.f-left {
+  float: left;
+}
+
+/* line 242, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.f-right {
+  float: right;
+}
+
+/* line 244, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* line 245, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+code {
+  padding: 2px 8px 2px 4px;
+  font-size: 90%;
+  color: #2A465C;
+  background-color: #D5E9FF;
+  white-space: nowrap;
+  border-radius: 4px;
+}
+
+/* line 246, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.line-separator {
+  border-right: 1px solid #DBE2E7;
+}
+
+/* line 247, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+img.img-left {
+  border: 1px solid #ccc;
+  float: left;
+  margin-right: 15px;
+  padding: 5px;
+}
+
+/* line 248, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+img.img-right {
+  border: 1px solid #ccc;
+  float: right;
+  margin-left: 15px;
+  padding: 5px;
+}
+
+/* line 249, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.hide {
+  opacity: 0;
+}
+
+/* line 251, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+a, a:focus, a:hover, a:active {
+  outline: 0;
+}
+
+/****  Font Size  ****/
+/* line 254, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.f-12 {
+  font-size: 12px !important;
+}
+
+/* line 255, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.f-14 {
+  font-size: 14px !important;
+}
+
+/* line 256, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.f-15 {
+  font-size: 15px !important;
+}
+
+/* line 257, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.f-16 {
+  font-size: 16px !important;
+}
+
+/* line 258, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.f-17 {
+  font-size: 17px !important;
+}
+
+/* line 259, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.f-18 {
+  font-size: 18px !important;
+}
+
+/* line 260, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.f-20 {
+  font-size: 20px !important;
+}
+
+/* line 261, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.f-24 {
+  font-size: 24px !important;
+}
+
+/* line 262, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.f-32 {
+  font-size: 32px !important;
+}
+
+/* line 263, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.f-40 {
+  font-size: 40px !important;
+}
+
+/* line 264, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.f-42 {
+  font-size: 42px !important;
+}
+
+/* line 265, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.f-48 {
+  font-size: 48px !important;
+}
+
+/* line 266, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.f-60 {
+  font-size: 60px !important;
+}
+
+/* line 267, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.f-65 {
+  font-size: 65px !important;
+}
+
+/* line 268, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.f-80 {
+  font-size: 80px !important;
+}
+
+/* line 269, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.f-150 {
+  font-size: 150px !important;
+}
+
+/****  Font Weight  ****/
+/* line 272, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.w-300 {
+  font-weight: 300 !important;
+}
+
+/* line 273, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.w-500 {
+  font-weight: 500 !important;
+}
+
+/* line 274, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.w-600 {
+  font-weight: 600 !important;
+}
+
+/* line 275, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.w-700 {
+  font-weight: 700 !important;
+}
+
+/* line 276, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.w-900 {
+  font-weight: 900 !important;
+}
+
+/****  Font Color  ****/
+/* line 279, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.c-brand {
+  color: #16A085 !important;
+}
+
+/* line 280, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.c-red {
+  color: #cd6a6a !important;
+}
+
+/* line 281, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.c-blue {
+  color: #00A2D9 !important;
+}
+
+/* line 282, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.c-purple {
+  color: #B57EE0 !important;
+}
+
+/* line 283, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.c-brown {
+  color: #9E7B2E !important;
+}
+
+/* line 284, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.c-orange {
+  color: #ec8521 !important;
+}
+
+/* line 285, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.c-green {
+  color: #18A689 !important;
+}
+
+/* line 286, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.c-gray-light {
+  color: #dadada !important;
+}
+
+/* line 287, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.c-gray {
+  color: #8F8F8F !important;
+}
+
+/* line 288, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.c-dark {
+  color: #343434 !important;
+}
+
+/* line 289, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.c-white {
+  color: #FFFFFF !important;
+}
+
+/* line 290, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.transparent-color {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 291, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.asterisk {
+  color: #D9534F;
+}
+
+/**** List styling ***/
+/* line 294, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.list-style-none {
+  list-style-type: none;
+}
+
+/**** Display styling ***/
+/* line 299, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.dis-inline {
+  display: inline !important;
+}
+
+/* line 300, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.dis-inline-b {
+  display: inline-block !important;
+}
+
+/* line 301, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.dis-block {
+  display: block !important;
+}
+
+/* line 302, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.dis-none {
+  display: none !important;
+}
+
+/* line 303, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.dis-flex {
+  display: flex !important;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+/* line 304, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.dis-grid {
+  display: grid !important;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+/**** z-index ****/
+/* line 307, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.z-10 {
+  z-index: 10;
+}
+
+/* line 308, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.z-100 {
+  z-index: 100;
+}
+
+/* line 309, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.z-1000 {
+  z-index: 1000;
+}
+
+/* line 310, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.z-10000 {
+  z-index: 10000;
+}
+
+/**** Box-sizing ****/
+/* line 313, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.border-box {
+  box-sizing: border-box !important;
+}
+
+/* line 314, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.content-box {
+  box-sizing: content-box !important;
+}
+
+/* line 316, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.help-block {
+  color: #AFAAAA;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+/* line 317, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.line-through {
+  text-decoration: line-through;
+}
+
+/* line 318, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
+.t-ellipsis {
+  text-overflow: ellipsis;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* line 1, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_typography.scss */
+.divider hr {
+  width: 47%;
+  border-color: #979797;
+}
 
 /*# sourceMappingURL=../css/main.map */
