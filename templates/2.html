@@ -29,130 +29,126 @@
 </head>
 
 <body data-page="login">
-
      <!-- main section begins here-->
-      <div class="container">
+    <div class="container">
 
+        <div class="card box">
+            <div class="card-block">
 
-       <div class="card">
-           <div class="card-block">
-               
-                <div class="box">
+                <h3 class="title text-center">SIGN IN</h3>
 
-                     <h3 class="title text-center">SIGN IN</h3>
+                <form action="" method="POST">
+                    <div class="input">
+                        <label for="usrname">Userame</label>
+                        <input type="text" name="usrname" id="usrname" class="form-control bd-3 h-40 input-alternate border-box">
+                    </div>
 
-                     <form action="" method="POST">
-                         <div class="input">
-                             <label for="usrname">Userame</label>
-                             <input type="text" name="usrname" id="usrname" class="form-control bd-3 h-40 input-alternate border-box">
-                         </div>
+                    <div class="input">
+                        <label for="usrpassword">Password</label>
+                        <input type="password" name="usrpassword" id="usrpassword" class="form-control bd-3 h-40 input-alternate border-box">
+                    </div>
 
-                         <div class="input">
-                             <label for="usrpassword">Password</label>
-                             <input type="password" name="usrpassword" id="usrpassword" class="form-control bd-3 h-40 input-alternate border-box">
-                         </div>
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3 col-sm-6 offset-sm-3 col">
+                            <button type="submit" class="btn btn-block btn-outline-default waves-effect m-0">Sign In</button>
+                        </div>
+                    </div>
 
-                         <div class="row">
-                            <div class="col-md-6 offset-md-3 col-sm-6 offset-sm-3 col">
-                                <button type="submit" class="btn btn-block btn-outline-default waves-effect m-0">Sign In</button>
-                            </div>
-                         </div>
+                    <p class="text-center"><a href="" class="pass-forgot">Forgot your password?</a></p>
+                </form>
 
-                         <p class="text-center"><a href="" class="pass-forgot">Forgot your password?</a></p>
-                     </form>
+            </div>
+        </div>
+        <div class="card overbox">
 
-                </div>
+            <div class="card-block">
+                <div class="material-button alt-2"><span class="shape"></span></div>
 
-                <div class="overbox">
-                   <div class="material-button alt-2"><span class="shape"></span></div>
-
-                   <h3 class="title text-center">REGISTER</div>
-                   <p class="text-center">Create a FREE account and enjoy the best socio-commerce experience ever.</p>
+               <h3 class="title text-center">REGISTER</h3>
+               <p class="text-center">Create a FREE account and enjoy the best socio-commerce experience ever.</p>
                  
-                   <form action="" method="POST">
-                       <div class="row">
-                           <div class="col-md-6 col-sm-6 col form-group">
-                                 <label for="usr-fname">First Name</label>
-                                 <input type="text" name="usr-fname" id="usr-fname" class="form-control bd-3 h-40 input-alternate border-box">
-                           </div>
-                           <div class="col-md-6 col-sm-6 col form-group">
-                                 <label for="usr-lname">Last Name</label>
-                                 <input type="text" name="usr-lname" id="usr-lname" class="form-control bd-3 h-40 input-alternate border-box">
-                           </div>
-                       </div>
+                <form action="" method="POST">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col form-group">
+                            <label for="usr-fname">First Name</label>
+                             <input type="text" name="usr-fname" id="usr-fname" class="form-control bd-3 h-40 input-alternate border-box">
+                        </div>
+                        <div class="col-md-6 col-sm-6 col form-group">
+                            <label for="usr-lname">Last Name</label>
+                            <input type="text" name="usr-lname" id="usr-lname" class="form-control bd-3 h-40 input-alternate border-box">
+                        </div>
+                    </div>
                        
-                       <div class="row">
-                           <div class="col-md-12 col-sm-12 col form-group">
-                                 <label for="usr-email">Email</label>
-                                 <input type="email" name="usr-email" id="usr-email" class="form-control bd-3 h-40 input-alternate border-box">
-                           </div>
-                       </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col form-group">
+                            <label for="usr-email">Email</label>
+                            <input type="email" name="usr-email" id="usr-email" class="form-control bd-3 h-40 input-alternate border-box">
+                        </div>
+                    </div>
 
-                       <div class="row">
-                           <div class="col-md-6 col-sm-6 col form-group">
-                                 <label for="usr-password" data-error="wrong" data-success="right">Password</label>
-                                 <input type="password" name="usr-password" id="usr-password" class="form-control bd-3 h-40 validate input-alternate border-box">
-                           </div>
-                           <div class="col-md-6 col-sm-6 col form-group">
-                                 <label for="usr-password-conf" data-error="wrong" data-success="right">Confirm Password</label>
-                                 <input type="password" name="usr-password-conf" id="usr-password-conf" class="form-control bd-3 h-40 validate input-alternate border-box">
-                           </div>
-                       </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col form-group">
+                            <label for="usr-password" data-error="wrong" data-success="right">Password</label>
+                            <input type="password" name="usr-password" id="usr-password" class="form-control bd-3 h-40 validate input-alternate border-box">
+                        </div>
+                        <div class="col-md-6 col-sm-6 col form-group">
+                            <label for="usr-password-conf" data-error="wrong" data-success="right">Confirm Password</label>
+                            <input type="password" name="usr-password-conf" id="usr-password-conf" class="form-control bd-3 h-40 validate input-alternate border-box">
+                        </div>
+                    </div>
 
-                       <div class="row">
-                           <div class="col-md-6 col-sm-6 col form-group">
-                                 <label for="usr-gender">Gender</label>
-                                 <select name="usr-gender" id="usr-gender" class="form-control bd-3 h-40 validate input-alternate border-box">
-                                     <option value="" disabled selected>Choose gender...</option>
-                                     <option value="1">Male</option>
-                                     <option value="2">Female</option>
-                                 </select>
-                           </div>
-                           <div class="col-md-6 col-sm-6 col form-group">
-                                 <label for="usr-dob" data-error="wrong" data-success="right">Confirm Password</label>
-                                 <input type="date" name="usr-dob" id="usr-dob" class="form-control bd-3 h-40 validate input-alternate border-box">
-                           </div>
-                       </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col form-group">
+                            <label for="usr-gender">Gender</label>
+                            <select name="usr-gender" id="usr-gender" class="form-control bd-3 h-40 validate input-alternate border-box">
+                                <option value="" disabled selected>Choose gender...</option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col form-group">
+                            <label for="usr-dob" data-error="wrong" data-success="right">Confirm Password</label>
+                            <input type="date" name="usr-dob" id="usr-dob" class="form-control bd-3 h-40 validate input-alternate border-box">
+                        </div>
+                    </div>
 
-                       <div class="row">
-                           <div class="col-md-12 col-sm-12 col form-group">
-                                 <label for="usr-persona">I am a...</label>
-                                 <select name="usr-persona" id="usr-persona" class="form-control bd-3 h-40 validate input-alternate border-box">
-                                     <option value="" disabled selected>Choose Persona...</option>
-                                     <option value="1">Wholesaler</option>
-                                     <option value="2">Retailer</option>
-                                     <option value="3">Manufacturer</option>
-                                     <option value="4">Local Farmer</option>
-                                     <option value="5">Service Provider</option>
-                                     <option value="6">Individual User</option>
-                                 </select>
-                           </div>
-                       </div>
-                       <div class="row">
-                          <div class="col-md-6 offset-md-3 col-sm-6 offset-sm-3 col">
-                              <button type="submit" class="btn btn-block btn-outline-default waves-effect m-0">Get Started</button>
-                          </div>
-                       </div>
-                   </form>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col form-group">
+                            <label for="usr-persona">I am a...</label>
+                            <select name="usr-persona" id="usr-persona" class="form-control bd-3 h-40 validate input-alternate border-box">
+                                <option value="" disabled selected>Choose Persona...</option>
+                                <option value="1">Wholesaler</option>
+                                <option value="2">Retailer</option>
+                                <option value="3">Manufacturer</option>
+                                <option value="4">Local Farmer</option>
+                                <option value="5">Service Provider</option>
+                                <option value="6">Individual User</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3 col-sm-6 offset-sm-3 col">
+                            <button type="submit" class="btn btn-block btn-outline-default waves-effect m-0">Get Started</button>
+                        </div>
+                    </div>
+                </form>
 
-                     <div class="divider clearfix">
-                         <hr class="f-left"><span class="dis-inline-b m-t-3 m-l-15">or</span><hr class="f-right">
-                     </div>
-
-                     <div class="row">
-                         <div class="col-md-6 col-sm-6 col">
-                             <button type="button" class="btn btn-block bg-facebook waves-effect waves-light m-0"><i class="fa fa-facebook left"></i><span class="m-t-5">Sign up with Facebook</span></button>
-                         </div>
-                         <div class="col-md-6 col-sm-6 col">
-                             <button type="button" class="btn btn-block bg-linkedin waves-effect waves-light m-0"><i class="fa fa-linkedin left"></i><span class="m-t-5">Sign up with LinkedIn</span></button>
-                         </div>
-                     </div>
-
+                <div class="divider clearfix">
+                    <hr class="f-left"><span class="dis-inline-b m-t-3 m-l-15">or</span><hr class="f-right">
                 </div>
 
-           </div>
-       </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col">
+                        <button type="button" class="btn btn-block bg-facebook waves-effect waves-light m-0"><i class="fa fa-facebook left"></i><span class="m-t-5">Sign up with Facebook</span></button>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col">
+                        <button type="button" class="btn btn-block bg-linkedin waves-effect waves-light m-0"><i class="fa fa-linkedin left"></i><span class="m-t-5">Sign up with LinkedIn</span></button>
+                    </div>
+                </div>
 
+            </div>
+
+        </div>
     </div>
     <!-- main section ends here-->
     
@@ -160,9 +156,6 @@
     <!--
         <footer></footer>
     -->
-
-    
-    
 
     <!-- SCRIPTS -->
 

@@ -1,0 +1,22 @@
+@mixin screenSize($size) {
+  @if $size == large-desktop {
+    @media (min-width: 1200px) {
+    	@content;
+    }
+  }
+  @else if $size == small-desktop {
+    @media (min-width: 992px) and (max-width: 1199px) {
+    	@content;
+    }
+  }
+  @else if $size == tablet {
+    @media (min-width: 768px) and (max-width: 991px)  {
+    	@content;
+    }
+  }
+  @else if $size == ls-phone {
+    @media (min-width: 576px) and (max-width: 767px)  {
+    	@content;
+    }
+  }
+}

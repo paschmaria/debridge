@@ -2,3 +2,21 @@
   width:47%;
   border-color:#979797;
 }
+
+[data-page="login"] .container {
+	@include screenSize(large-desktop) {
+		width: 550px;
+	}
+
+	@include screenSize(small-desktop) {
+		width: 500px;
+	}
+
+	@include screenSize(tablet) {
+		width: 450px;
+	}
+
+	@include screenSize(ls-phone) {
+		width: 400px;
+	}
+}

@@ -1314,4 +1314,32 @@ a, a:focus, a:hover, a:active {
   border-color: #979797;
 }
 
+@media (min-width: 1200px) {
+  /* line 6, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_typography.scss */
+  [data-page="login"] .container {
+    width: 550px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* line 6, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_typography.scss */
+  [data-page="login"] .container {
+    width: 500px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  /* line 6, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_typography.scss */
+  [data-page="login"] .container {
+    width: 450px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  /* line 6, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_typography.scss */
+  [data-page="login"] .container {
+    width: 400px;
+  }
+}
+
 /*# sourceMappingURL=../css/main.map */
