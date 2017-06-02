@@ -1,5 +1,14 @@
 /*Import all partials here*/
 
-@import "base/reset.scss"
-@import "helpers/mixins.scss"
-@import "helpers/variables.scss"
+@import "helpers/variables.scss";
+@import "helpers/mixins.scss";
+
+@import "base/reset.scss";
+
+@import "layout/header.scss";
+@import "layout/nav.scss";
+@import "layout/footer.scss";
+
+@import "modules/buttons.scss";
+@import "modules/typography.scss";
+
