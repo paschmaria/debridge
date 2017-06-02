@@ -367,6 +367,7 @@ body {
    background-position: center;
    background-size: cover;
    background-repeat: no-repeat;
+   background:blue;
    min-height: 100vh;
    font-family: 'Roboto', sans-serif;
 }
