@@ -1,0 +1,12 @@
+.material-button .shape {
+	@include prefix(transition, 400ms cubic-bezier(.4, 0, .2, 1), webkit ms);
+
+	&:before, &:after {
+		@include prefix(transition, 300ms cubic-bezier(.4, 0, .2, 1), webkit ms);
+	}
+	
+}
+
+.material-button, .alt-2, .alt-2 .shape, .box {
+   @include prefix(transition, 400ms cubic-bezier(.4, 0, .2, 1), webkit ms);
+}

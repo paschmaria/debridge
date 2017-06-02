@@ -1,1 +1,39 @@
-ECHO is on.
+@mixin screenSize($size) {
+  @if $size == large-desktop {
+    @media (min-width: 1200px) {
+    	@content;
+    }
+  }
+  @else if $size == small-desktop {
+    @media (min-width: 992px) and (max-width: 1199px) {
+    	@content;
+    }
+  }
+  @else if $size == tablet {
+    @media (min-width: 768px) and (max-width: 991px)  {
+    	@content;
+    }
+  }
+  @else if $size == ls-phone {
+    @media (min-width: 576px) and (max-width: 767px)  {
+    	@content;
+    }
+  }
+}
+
+@mixin prefix($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{'-' + $prefix + '-' + $property}: $value;
+  }
+ 
+  #{$property}: $value;
+}
+
+@mixin pos($pos, $t, $r, $b, $l, $z) {
+	@if $pos { position: $pos; }
+	@if $t { top: $t; }
+	@if $r { right: $r; }
+	@if $b { bottom: $b; }
+	@if $l { left: $l; }
+	@if $z { z-index: $z; }
+}
