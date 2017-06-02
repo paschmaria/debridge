@@ -1,6 +1,6 @@
 .divider hr {
-  width:47%;
-  border-color:#979797;
+	width:47%;
+	border-color:#979797;
 }
 
 [data-page="login"] .container {
@@ -38,12 +38,12 @@
 }
 
 .box.back {
-   top: -20px;
-   opacity: .8;
-   z-index: -1;
-   @include prefix(transform, scale(.95), webkit ms);
+   	top: -20px;
+   	opacity: .8;
+   	z-index: -1;
+   	@include prefix(transform, scale(.95), webkit ms);
 }
 
 .overbox .title:before {
-   background: #fff;
+   	background: $white-color;
 }
