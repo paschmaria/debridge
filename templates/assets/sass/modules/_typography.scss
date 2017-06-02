@@ -20,3 +20,30 @@
 		width: 400px;
 	}
 }
+
+.card.box {
+   	position: relative;
+   	opacity: 1;
+   	padding: 60px 50px;
+   	width: 100%;
+   	z-index: 5;
+   	@include prefix(transform, scale(1), webkit ms);
+   	&:after {
+   		content: "";
+   		height: 30px;
+   		background: rgba(255, 255, 255, .6);
+   		@include prefix(transform, scale(.95), webkit ms);
+   		@include pos(absolute, -10px, auto, auto, 0, -1);
+   	}
+}
+
+.box.back {
+   top: -20px;
+   opacity: .8;
+   z-index: -1;
+   @include prefix(transform, scale(.95), webkit ms);
+}
+
+.overbox .title:before {
+   background: #fff;
+}

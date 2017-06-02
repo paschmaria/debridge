@@ -1342,4 +1342,52 @@ a, a:focus, a:hover, a:active {
   }
 }
 
+/* line 24, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_typography.scss */
+.card.box {
+  position: relative;
+  opacity: 1;
+  padding: 60px 50px;
+  width: 100%;
+  z-index: 5;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+/* line 31, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_typography.scss */
+.card.box:after {
+  content: "";
+  height: 30px;
+  background: rgba(255, 255, 255, 0.6);
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+  position: absolute;
+  top: -10px;
+  right: auto;
+  bottom: auto;
+  left: 0;
+  z-index: -1;
+}
+
+/* line 40, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_typography.scss */
+.box.back {
+  top: -20px;
+  opacity: .8;
+  z-index: -1;
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+/* line 47, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_typography.scss */
+.overbox .title {
+  color: #fff;
+}
+
+/* line 51, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_typography.scss */
+.overbox .title:before {
+  background: #fff;
+}
+
 /*# sourceMappingURL=../css/main.map */
