@@ -1308,10 +1308,102 @@ a, a:focus, a:hover, a:active {
   overflow: hidden;
 }
 
+/* line 1, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_buttons.scss */
+.material-button .shape {
+  -webkit-transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  -ms-transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* line 4, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_buttons.scss */
+.material-button .shape:before, .material-button .shape:after {
+  -webkit-transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  -ms-transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* line 10, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_buttons.scss */
+.material-button, .alt-2, .alt-2 .shape, .box {
+  -webkit-transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  -ms-transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* line 1, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_typography.scss */
 .divider hr {
   width: 47%;
   border-color: #979797;
+}
+
+@media (min-width: 1200px) {
+  /* line 6, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_typography.scss */
+  [data-page="login"] .container {
+    width: 550px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* line 6, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_typography.scss */
+  [data-page="login"] .container {
+    width: 500px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  /* line 6, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_typography.scss */
+  [data-page="login"] .container {
+    width: 450px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  /* line 6, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_typography.scss */
+  [data-page="login"] .container {
+    width: 400px;
+  }
+}
+
+/* line 24, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_typography.scss */
+.card.box {
+  position: relative;
+  opacity: 1;
+  padding: 60px 50px;
+  width: 100%;
+  z-index: 5;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+/* line 31, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_typography.scss */
+.card.box:after {
+  content: "";
+  height: 30px;
+  background: rgba(255, 255, 255, 0.6);
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+  position: absolute;
+  top: -10px;
+  right: auto;
+  bottom: auto;
+  left: 0;
+  z-index: -1;
+}
+
+/* line 40, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_typography.scss */
+.box.back {
+  top: -20px;
+  opacity: .8;
+  z-index: -1;
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+/* line 47, C:/Switch Projects/de_bridge/templates/assets/sass/modules/_typography.scss */
+.overbox .title:before {
+  background: #FFFFFF;
 }
 
 /*# sourceMappingURL=../css/main.map */
