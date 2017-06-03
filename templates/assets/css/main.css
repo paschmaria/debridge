@@ -1,4 +1,4 @@
-/*Import all partials here*/
+Import all partials here*/
 /* line 1, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
 * {
   box-sizing: border-box;
@@ -564,6 +564,26 @@ body {
 /* line 151, C:/Switch Projects/de_bridge/templates/assets/sass/base/_reset.scss */
 .r-15 {
   right: 15px;
+}
+
+/*added cby victor*/
+.r-50 {
+  right: 50%;
+}
+.m-16{
+  margin: 16px !important;
+}
+.m-8{
+  margin: 8px !important;
+}
+.width-310{
+  width: 310px !important;
+}
+.center{
+  text-align: center;
+}
+.left{
+  text-align: left;
 }
 
 /****  Border Radius  ****/
@@ -1410,4 +1430,4 @@ a, a:focus, a:hover, a:active {
   background: #FFFFFF;
 }
 
-/*# sourceMappingURL=../css/main.map */
+/*# sourceMappingURL=../css/main.map 
