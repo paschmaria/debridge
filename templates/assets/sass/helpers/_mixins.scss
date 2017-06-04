@@ -37,3 +37,7 @@
 	@if $l { left: $l; }
 	@if $z { z-index: $z; }
 }
+
+@mixin shadow($shadow-value) {
+	@include prefix(box-shadow, $shadow-value, webkit ms)
+}

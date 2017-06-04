@@ -1,12 +1,45 @@
-.material-button .shape {
+.material-button span {
 	@include prefix(transition, 400ms cubic-bezier(.4, 0, .2, 1), webkit ms);
-
-	&:before, &:after {
-		@include prefix(transition, 300ms cubic-bezier(.4, 0, .2, 1), webkit ms);
-	}
-	
 }
 
-.material-button, .alt-2, .alt-2 .shape, .box {
-   @include prefix(transition, 400ms cubic-bezier(.4, 0, .2, 1), webkit ms);
+.material-button, .alt-2, .alt-2 span, .box {
+   	@include prefix(transition, 400ms cubic-bezier(.4, 0, .2, 1), webkit ms);
+}
+
+.material-button, .alt-2 {
+   	width: 100px;
+   	height: 100px;
+   	border-radius: 50%;
+   	cursor: pointer;
+   	display: block;
+   	background: $brand-color;
+
+   	@include pos(absolute, 40px, -50px, auto, auto, 100);
+   	@include prefix(transform, translate(0%, 0%), webkit ms);
+
+   	& span {
+	   	margin-left: -10px;
+	   	font-size: 25px;
+	   	color: $white-color;
+
+		@include pos(absolute, 42%, auto, auto, 50%, inherit);
+	}
+	&.active {
+	   	top: 50%;
+	   	right: 50%;
+
+	   	@include prefix(transform, translate(50%, -50%) rotate(0deg), webkit ms);
+	}
+}
+
+.btn-shadow {
+	@include shadow((0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12)));
+}
+
+.btn-brand {
+	background: $brand-color;
+
+	&:hover, &:active, &:focus {
+		background: $brand-color-op8;
+	}
 }

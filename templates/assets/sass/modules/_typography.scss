@@ -4,6 +4,7 @@
 }
 
 [data-page="login"] .container {
+
 	@include screenSize(large-desktop) {
 		width: 550px;
 	}
@@ -32,6 +33,7 @@
    		content: "";
    		height: 30px;
    		background: rgba(255, 255, 255, .6);
+
    		@include prefix(transform, scale(.95), webkit ms);
    		@include pos(absolute, -10px, auto, auto, 0, -1);
    	}
@@ -41,9 +43,71 @@
    	top: -20px;
    	opacity: .8;
    	z-index: -1;
+
    	@include prefix(transform, scale(.95), webkit ms);
 }
 
-.overbox .title:before {
-   	background: $white-color;
+.overbox {
+   	width: 100%;
+   	height: 800px;
+   	padding: 50px 20px;
+   	// overflow: inherit;
+
+   	@include pos(absolute, 0, auto, auto, 0, 111);
+
+   	& .card-block, & .title, & .sub-title, & .row, & .divider {
+    	position: relative;
+    	color: $white-color;
+    	display: none;
+    	z-index: 110;
+   	}
+
+   	& form .row{
+		display: flex !important;
+	}
+
+   	& input, & select, & input:focus, & select:focus {
+   		background: $white-color;
+   	}
+
+   	& .title:before {
+   		background: $white-color;
+   	}
+}
+
+.rotate {
+	@include prefix(transform, rotate(45deg), webkit ms);
+}
+
+.form-group {
+	float: left;
+}
+
+.scale-overbox {
+	transform: translateX(15px);
+	border: none;
+	box-shadow: none;
+	background: transparent;
+	height: 20px;
+	
+	@include screenSize(large-desktop) {
+		width: 520px;
+	}
+
+	@include screenSize(small-desktop) {
+		width: 470px;
+	}
+
+	@include screenSize(tablet) {
+		width: 420px;
+	}
+
+	@include screenSize(ls-phone) {
+		width: 370px;
+	}
+
+	& .material-button {
+		z-index: 100;
+	}
+
 }
