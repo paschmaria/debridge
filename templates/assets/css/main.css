@@ -582,6 +582,25 @@ body {
 .r-58 {
   right: 58%;
 }
+/*added cby victor*/
+.r-50 {
+  right: 50%;
+}
+.m-16{
+  margin: 16px !important;
+}
+.m-8{
+  margin: 8px !important;
+}
+.width-310{
+  width: 310px !important;
+}
+.center{
+  text-align: center;
+}
+.left{
+  text-align: left;
+}
 
 /****  Border Radius  ****/
 /* line 158, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
@@ -1446,4 +1465,4 @@ a, a:focus, a:hover, a:active {
   background: #FFFFFF;
 }
 
-/*# sourceMappingURL=../css/main.map */
+/*# sourceMappingURL=../css/main.map 
