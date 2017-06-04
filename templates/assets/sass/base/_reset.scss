@@ -13,11 +13,11 @@ html,body{
 }
 html{
     min-height: 100%;
-    font-size:14px;
 }
 body{
     height: 100%;
     font-family: 'Nunito', sans-serif;
+    font-size: 16px;
 }
 
 /* =====GENERAL CSS STYLING ==== */
@@ -301,9 +301,7 @@ a, a:focus, a:hover, a:active {  outline: 0;}
 .asterisk {color: #D9534F}
 
 /**** List styling ***/
-.list-style-none{
-    list-style-type: none;
-}
+.list-style-none{ list-style-type: none; }
 
 /**** Display styling ***/
 .dis-inline {display:inline !important;}
@@ -326,6 +324,8 @@ a, a:focus, a:hover, a:active {  outline: 0;}
 .help-block {color: #AFAAAA;font-weight: 500;font-size: 12px;}
 .line-through{text-decoration: line-through;}
 .t-ellipsis {text-overflow: ellipsis;display: block;white-space: nowrap;overflow: hidden;}
+
+.no-shadow { @include prefix(box-shadow, none !important, webkit ms); }
 
 /* =====GENERAL CSS STYLING END==== */
 
