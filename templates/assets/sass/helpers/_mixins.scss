@@ -29,15 +29,46 @@
   #{$property}: $value;
 }
 
-@mixin pos($pos, $t, $r, $b, $l, $z) {
-	@if $pos { position: $pos; }
-	@if $t { top: $t; }
-	@if $r { right: $r; }
-	@if $b { bottom: $b; }
-	@if $l { left: $l; }
-	@if $z { z-index: $z; }
+@mixin pos($pos, $t: null, $r: null, $b: null, $l: null, $z: null) {
+	position: $pos;
+	top: $t;
+	right: $r;
+	bottom: $b;
+	left: $l;
+	z-index: $z;
 }
 
 @mixin shadow($shadow-value) {
 	@include prefix(box-shadow, $shadow-value, webkit ms)
+}
+
+@mixin transition($transition-value) {
+	@include prefix(transition, $transition-value, webkit ms)
+}
+
+@mixin animate-underline($color: null, $hover-color: null, $background: null, $height: null) {
+	color: $color;
+	position: relative;
+	text-decoration: none;
+
+	&:hover {
+		color: $hover-color !important;
+	}
+
+	&:before {
+		height: $height;
+		background-color: $background;
+		content: "";
+		width: 100%;
+		visibility: hidden;
+
+		@include pos(absolute, $b: 0, $l: 0)
+		@include prefix(transform, scaleX(0), webkit ms)
+		@include transition((all 0.3s ease-in-out 0s))
+	}
+
+	&:hover:before {
+		visibility: visible;
+		@include prefix(transform, scaleX(1), webkit ms)
+	}
 }

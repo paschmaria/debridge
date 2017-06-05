@@ -1,0 +1,8 @@
+.cart-count {
+	background: $red-color;
+	color: $white-color;
+    padding: 1px 6px;
+	border-radius: 50%;
+	font-size: 13px;
+	@include pos(absolute, $t: -11px, $l: 70%)
+}

@@ -35,7 +35,7 @@
    		background: rgba(255, 255, 255, .6);
 
    		@include prefix(transform, scale(.95), webkit ms);
-   		@include pos(absolute, -10px, auto, auto, 0, -1);
+   		@include pos(absolute, $t: -10px, $l: 0, $z: -1);
    	}
 }
 
@@ -53,7 +53,7 @@
    	padding: 50px 20px;
    	// overflow: inherit;
 
-   	@include pos(absolute, 0, auto, auto, 0, 111);
+   	@include pos(absolute, $t: 0, $l: 0, $z: 111);
 
    	& .card-block, & .title, & .sub-title, & .row, & .divider {
     	position: relative;

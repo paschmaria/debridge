@@ -14,7 +14,7 @@
    	display: block;
    	background: $brand-color;
 
-   	@include pos(absolute, 40px, -50px, auto, auto, 100);
+   	@include pos(absolute, $t: 40px, $r: -50px, $z: 100);
    	@include prefix(transform, translate(0%, 0%), webkit ms);
 
    	& span {
@@ -22,7 +22,7 @@
 	   	font-size: 25px;
 	   	color: $white-color;
 
-		@include pos(absolute, 42%, auto, auto, 50%, inherit);
+		@include pos(absolute, $t: 42%, $l: 50%, $z: inherit);
 	}
 	&.active {
 	   	top: 50%;
@@ -36,10 +36,26 @@
 	@include shadow((0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12)));
 }
 
+.btn {
+	font-size: 1rem;
+}
+
 .btn-brand {
 	background: $brand-color;
 
 	&:hover, &:active, &:focus {
 		background: $brand-color-op8;
+	}
+}
+
+.btn-outline-brand {
+	border: 2px solid $brand-color;
+	color: $brand-color!important;
+	background-color: transparent;
+
+	&:hover, &:active, &:focus {
+		border: 2px solid $brand-color;
+		color: $brand-color!important;
+		background-color: transparent;
 	}
 }

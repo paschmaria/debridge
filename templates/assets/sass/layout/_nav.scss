@@ -1,0 +1,9 @@
+.hover-underline {
+	@include animate-underline($hover-color: $brand-color, $background: $brand-color, $height: 2px)
+}
+
+.list-group-item-action:active, .list-group-item-action:focus, .list-group-item-action:hover {
+    color: $white-color;
+    background-color: $brand-color;
+    @include transition((all 0.3s ease-in-out))
+}
