@@ -473,8 +473,8 @@ body {
   left: 15px;
 }
 
-.l-13p {
-  left: 13%;
+.l-17p {
+  left: 17%;
 }
 
 /****  Right  ****/
@@ -1392,11 +1392,13 @@ a, a:focus, a:hover, a:active {
 }
 
 .scale-overbox {
-  transform: translateX(15px);
   border: none;
   box-shadow: none;
   background: transparent;
   height: 20px;
+  -webkit-transform: translateX(15px);
+  -ms-transform: translateX(15px);
+  transform: translateX(15px);
 }
 
 @media (min-width: 1200px) {
@@ -1425,4 +1427,25 @@ a, a:focus, a:hover, a:active {
 
 .scale-overbox .material-button {
   z-index: 100;
+}
+
+svg .mapsvg-region {
+  fill: transparent;
+  fill-rule: evenodd;
+  stroke: #74808E;
+  -webkit-transition: all 0.55s ease;
+  -ms-transition: all 0.55s ease;
+  transition: all 0.55s ease;
+}
+
+svg .mapsvg-region:hover {
+  fill: #16A085;
+}
+
+del {
+  color: #C9625F;
+}
+
+del span {
+  color: #FFFFFF;
 }

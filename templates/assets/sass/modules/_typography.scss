@@ -84,12 +84,12 @@
 }
 
 .scale-overbox {
-	transform: translateX(15px);
 	border: none;
 	box-shadow: none;
 	background: transparent;
 	height: 20px;
 	
+	@include prefix(transform, translateX(15px), webkit ms);
 	@include screenSize(large-desktop) {
 		width: 520px;
 	}
@@ -110,4 +110,22 @@
 		z-index: 100;
 	}
 
+}
+
+svg .mapsvg-region{
+  	fill: transparent;
+  	fill-rule: evenodd;
+  	stroke: #74808E;
+  	@include transition((all 0.55s ease))
+
+  	&:hover {
+  		fill: $brand-color;
+  	}
+}
+
+del {
+    color: $red-color;
+}
+del span {
+    color: $white-color;
 }
