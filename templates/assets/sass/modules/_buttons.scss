@@ -16,6 +16,9 @@
 
    	@include pos(absolute, $t: 40px, $r: -50px, $z: 100);
    	@include prefix(transform, translate(0%, 0%), webkit ms);
+   	@include screenSize(ss-phone) {
+   		right: -20px;
+   	}
 
    	& span {
 	   	margin-left: -10px;
@@ -37,7 +40,11 @@
 }
 
 .btn {
-	font-size: 1rem;
+	font-size: inherit;
+
+	@include screenSize(small-desktop) { padding: .5rem 1rem; }
+	@include screenSize(tablet) { padding: .5rem 1rem; }
+	@include screenSize(ls-phone) { padding: .5rem 1rem; }
 }
 
 .btn-brand {

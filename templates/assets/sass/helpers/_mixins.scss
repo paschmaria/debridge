@@ -19,6 +19,16 @@
     	@content;
     }
   }
+  @else if $size == ss-phone {
+    @media (max-width: 575px)  {
+    	@content;
+    }
+  }
+  @else if $size == tab-phone {
+    @media (min-width: 576px) and (max-width: 1199px)  {
+    	@content;
+    }
+  }
 }
 
 @mixin prefix($property, $value, $prefixes: ()) {
@@ -73,17 +83,28 @@
 	}
 }
 
-@mixin placeholder-color($color) {
+@mixin placeholder-style($color: null, $font-size: null) {
 	::-webkit-input-placeholder {
 	    color: $color;
+	    font-size: $font-size;
 	}
 	:-moz-placeholder {
 	    color: $color;
+	    font-size: $font-size;
 	}
 	::-moz-placeholder {
 	    color: $color;
+	    font-size: $font-size;
 	}
 	:-ms-input-placeholder {
 	    color: $color;
+	    font-size: $font-size;
 	}
+}
+
+@mixin flex($display, $align-items, $align-content, $justify-content) {
+	display: $display;
+	align-items: $align-items;
+	align-content: $align-content;
+	justify-content: $justify-content;
 }

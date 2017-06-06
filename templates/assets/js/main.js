@@ -45,15 +45,24 @@ const app = {
 	               		"overflow": "hidden"
 	            	}).removeClass('scale-overbox');
 	            	$(".box").addClass("back");
-	         	}, 200)
+	         	}, 200);
+
 	         	$(this).addClass('active').animate({
-	            	"width": "1000px",
-	            	"height": "1000px"
+	            	"width": "1050px",
+	            	"height": "1050px"
 	         	});
+
             	$("span:first-child").css({
 	         		"top": "13%",
 	         		"left": "73%"
 	         	});
+
+	         	if ((window.innerWidth <= 768) || (window.innerWidth >= 991)) {
+	            	$("span:first-child").css({
+		         		"top": "10%",
+		         		"left": "69%"
+		         	});
+	         	}
 
 	         	setTimeout(function() {
 	            	$("span:first-child").addClass('rotate');
@@ -64,7 +73,7 @@ const app = {
 		         	$(".overbox .row").fadeIn(300);
 		         	$(".overbox .divider").fadeIn(300);
 
-	         	}, 700)
+	         	}, 700);
 
 	         	$(this).removeClass('material-button');
 

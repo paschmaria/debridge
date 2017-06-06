@@ -1,25 +1,13 @@
-.divider hr {
-	width:47%;
-	border-color:#979797;
-}
-
 [data-page="login"] .container {
 
-	@include screenSize(large-desktop) {
-		width: 550px;
-	}
+	@include screenSize(large-desktop) { width: 550px; }
+	@include screenSize(small-desktop) { width: 500px; }
+	@include screenSize(tablet) { width: 450px; }
+	@include screenSize(ls-phone) { width: 400px; }
+	@include screenSize(ss-phone) { width: 350px; }
+	@include placeholder-style($color: $brand-color-dark, $font-size: 1rem)
 
-	@include screenSize(small-desktop) {
-		width: 500px;
-	}
-
-	@include screenSize(tablet) {
-		width: 450px;
-	}
-
-	@include screenSize(ls-phone) {
-		width: 400px;
-	}
+	& input[type="date"]::-webkit-inner-spin-button { display: none; }
 }
 
 .card.box {
@@ -49,9 +37,9 @@
 
 .overbox {
    	width: 100%;
-   	height: 800px;
+   	height: 950px;
    	padding: 50px 20px;
-   	// overflow: inherit;
+   	margin-bottom: 50px;
 
    	@include pos(absolute, $t: 0, $l: 0, $z: 111);
 
@@ -90,21 +78,10 @@
 	height: 20px;
 	
 	@include prefix(transform, translateX(15px), webkit ms);
-	@include screenSize(large-desktop) {
-		width: 520px;
-	}
-
-	@include screenSize(small-desktop) {
-		width: 470px;
-	}
-
-	@include screenSize(tablet) {
-		width: 420px;
-	}
-
-	@include screenSize(ls-phone) {
-		width: 370px;
-	}
+	@include screenSize(large-desktop) { width: 520px; }
+	@include screenSize(small-desktop) { width: 470px; }
+	@include screenSize(tablet) { width: 420px; }
+	@include screenSize(ls-phone) { width: 370px; }
 
 	& .material-button {
 		z-index: 100;
@@ -116,6 +93,7 @@ svg .mapsvg-region{
   	fill: transparent;
   	fill-rule: evenodd;
   	stroke: #74808E;
+
   	@include transition((all 0.55s ease))
 
   	&:hover {
@@ -123,9 +101,32 @@ svg .mapsvg-region{
   	}
 }
 
+.divider hr {
+	width: 47%;
+	border-color: $brand-color-dark;
+}
+
 del {
     color: $red-color;
 }
 del span {
     color: $white-color;
+}
+
+.carousel-ad-overlay {
+	@include screenSize(small-desktop) {
+		padding: 10px;
+		
+		@include pos(absolute, $t: 55%, $l: 2%)
+	}
+
+	@include screenSize(tablet) {
+		padding: 10px;
+		
+		@include pos(absolute, $t: 55%, $l: 2%)
+	}
+
+	padding: 20px;
+
+	@include pos(absolute, $t: 65%, $l:17%)
 }

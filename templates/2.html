@@ -107,16 +107,41 @@
                             </select>
                         </div>
                         <div class="col-md-6 col-sm-6 col form-group">
-                            <label for="usr-dob" data-error="wrong" data-success="right">Confirm Password</label>
+                            <label for="usr-dob" data-error="wrong" data-success="right">Date of Birth</label>
                             <input type="date" name="usr-dob" id="usr-dob" class="form-control bd-3 h-40 validate input-alternate border-box">
                         </div>
                     </div>
 
                     <div class="row">
+                        <div class="col-md-6 col-sm-6 col form-group">
+                            <label for="usr-dob" data-error="wrong" data-success="right">State</label>
+                            <input type="text" name="usr-state" id="usr-state" class="form-control bd-3 h-40 validate input-alternate border-box" list="States" placeholder="Choose State">
+                            <datalist id="States">
+                                <option value="Abia"></option>
+                                <option value="Adamawa"></option>
+                                <option value="Akwa Ibom"></option>
+                                <option value="Anambra"></option>
+                                <option value="Benue"></option>
+                            </datalist>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col form-group">
+                            <label for="usr-gender">Trade Community</label>
+                            <select name="usr-gender" id="usr-gender" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow">
+                                <option value="" disabled selected>Choose Community...</option>
+                                <option value="1">Ikeja</option>
+                                <option value="2">Ipaja</option>
+                                <option value="3">Agege</option>
+                                <option value="4">Surulere</option>
+                                <option value="5">Onipanu</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-md-12 col-sm-12 col form-group">
-                            <label for="usr-persona">I am a...</label>
+                            <label for="usr-persona">Trade Interest</label>
                             <select name="usr-persona" id="usr-persona" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow">
-                                <option value="" disabled selected>Choose Persona...</option>
+                                <option value="" disabled selected>Choose...</option>
                                 <option value="1">Wholesaler</option>
                                 <option value="2">Retailer</option>
                                 <option value="3">Manufacturer</option>
@@ -134,15 +159,15 @@
                 </form>
 
                 <div class="divider clearfix">
-                    <hr class="f-left"><span class="dis-inline-b m-t-3 m-l-10">or</span><hr class="f-right">
+                    <hr class="f-left"><span class="dis-inline-b m-t-3 m-l-5">or</span><hr class="f-right">
                 </div>
 
                 <div class="row dis-flex">
                     <div class="col-md-6 col-sm-6 col m-t-20">
-                        <button type="button" class="btn btn-block bg-facebook waves-effect waves-light m-0"><i class="fa fa-facebook left"></i><span class="m-t-5">Sign up with Facebook</span></button>
+                        <button type="button" class="btn btn-block bg-facebook waves-effect waves-light m-0"><i class="fa fa-facebook left m-b-m5"></i><span class="m-t-5"> Sign up with Facebook</span></button>
                     </div>
                     <div class="col-md-6 col-sm-6 col m-t-20">
-                        <button type="button" class="btn btn-block bg-linkedin waves-effect waves-light m-0"><i class="fa fa-linkedin left"></i><span class="m-t-5">Sign up with LinkedIn</span></button>
+                        <button type="button" class="btn btn-block bg-linkedin waves-effect waves-light m-0"><i class="fa fa-linkedin left m-b-m5"></i><span class="m-t-5"> Sign up with LinkedIn</span></button>
                     </div>
                 </div>
 
