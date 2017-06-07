@@ -42,6 +42,18 @@
    	margin-bottom: 50px;
 
    	@include pos(absolute, $t: 0, $l: 0, $z: 111);
+   	@include screenSize(small-desktop) {
+   		height: 900px;
+   	}
+   	@include screenSize(tablet) {
+   		height: 900px;
+   	}
+   	@include screenSize(ls-phone) {
+   		height: 850px;
+   	}
+   	@include screenSize(ss-phone) {
+   		height: 1300px;
+   	}
 
    	& .card-block, & .title, & .sub-title, & .row, & .divider {
     	position: relative;
@@ -58,8 +70,9 @@
    		background: $white-color;
    	}
 
-   	& .title:before {
+   	& h3.title:after {
    		background: $white-color;
+   		width: 4px;
    	}
 }
 
@@ -69,6 +82,7 @@
 
 .form-group {
 	float: left;
+	margin-bottom: 0;
 }
 
 .scale-overbox {
@@ -104,6 +118,10 @@ svg .mapsvg-region{
 .divider hr {
 	width: 47%;
 	border-color: $brand-color-dark;
+
+	@include screenSize(ss-phone) {
+		width: 46%;
+	}
 }
 
 del {
@@ -128,5 +146,5 @@ del span {
 
 	padding: 20px;
 
-	@include pos(absolute, $t: 65%, $l:17%)
+	@include pos(absolute, $t: 65%, $l: 17%)
 }

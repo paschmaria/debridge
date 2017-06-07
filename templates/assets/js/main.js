@@ -48,19 +48,43 @@ const app = {
 	         	}, 200);
 
 	         	$(this).addClass('active').animate({
-	            	"width": "1050px",
-	            	"height": "1050px"
+	            	"width": "1100px",
+	            	"height": "1100px"
 	         	});
 
-            	$("span:first-child").css({
-	         		"top": "13%",
-	         		"left": "73%"
-	         	});
-
-	         	if ((window.innerWidth <= 768) || (window.innerWidth >= 991)) {
+	         	if (window.innerWidth <= 575) {
 	            	$("span:first-child").css({
+		         		"top": "5%",
+		         		"left": "60%"
+		         	});
+
+		         	$(this).animate({
+		         		"width": "1400",
+		         		"height": "1400"
+		         	})
+
+	         	} else if ((window.innerWidth > 575) && (window.innerWidth < 768)) {
+	            	$("span:first-child").css({
+		         		"top": "13%",
+		         		"left": "65%"
+		         	});
+
+	         	} else if ((window.innerWidth > 767) && (window.innerWidth < 992)) {
+	            	$("span:first-child").css({
+		         		"top": "12%",
+		         		"left": "66%"
+		         	});
+
+	         	} else if ((window.innerWidth > 991) && (window.innerWidth < 1200)) {
+	            	$("span:first-child").css({
+		         		"top": "12%",
+		         		"left": "68%"
+		         	});
+
+	         	} else if (window.innerWidth >= 1200) {
+	         		$("span:first-child").css({
 		         		"top": "10%",
-		         		"left": "69%"
+		         		"left": "71%"
 		         	});
 	         	}
 
@@ -85,6 +109,19 @@ const app = {
 	      	}
 
 	   	});
+
+   		if (window.innerWidth <= 575) {
+   			let card_block = $('div.card-block');
+
+   			card_block.css('padding', '0');
+   			card_block.parent().css({
+   				"padding-top": '50',
+   				"padding-bottom": '50',
+   				"padding-left": '40',
+   				"padding-right": '40'
+   			});
+   			// console.log($('div.card-block').parent());
+       	}
 
 	   	$(".button").click(function(e) {
 	      	var pX = e.pageX,

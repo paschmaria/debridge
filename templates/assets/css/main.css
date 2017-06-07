@@ -203,8 +203,8 @@ body {
   margin-bottom: 245px !important;
 }
 
-.m-b-m5 {
-  margin-bottom: -5px !important;
+.m-b-m10 {
+  margin-bottom: -10px !important;
 }
 
 .m-b-m30 {
@@ -1510,6 +1510,30 @@ a, a:focus, a:hover, a:active {
   z-index: 111;
 }
 
+@media (min-width: 992px) and (max-width: 1199px) {
+  .overbox {
+    height: 900px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .overbox {
+    height: 900px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .overbox {
+    height: 850px;
+  }
+}
+
+@media (max-width: 575px) {
+  .overbox {
+    height: 1300px;
+  }
+}
+
 .overbox .card-block, .overbox .title, .overbox .sub-title, .overbox .row, .overbox .divider {
   position: relative;
   color: #FFFFFF;
@@ -1525,8 +1549,9 @@ a, a:focus, a:hover, a:active {
   background: #FFFFFF;
 }
 
-.overbox .title:before {
+.overbox h3.title:after {
   background: #FFFFFF;
+  width: 4px;
 }
 
 .rotate {
@@ -1537,6 +1562,7 @@ a, a:focus, a:hover, a:active {
 
 .form-group {
   float: left;
+  margin-bottom: 0;
 }
 
 .scale-overbox {
@@ -1593,6 +1619,12 @@ svg .mapsvg-region:hover {
 .divider hr {
   width: 47%;
   border-color: #212121;
+}
+
+@media (max-width: 575px) {
+  .divider hr {
+    width: 46%;
+  }
 }
 
 del {
