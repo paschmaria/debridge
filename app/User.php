@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App/Models/Role');
     }
+
+    public function photo_albums()
+    {
+        return $this->hasMany('App/Models/PhotoAlbum');
+    }
 }
