@@ -36,12 +36,12 @@
     }
 }
 
-.cart-count {
+.cart-count, .messages, .notifications {
     padding: 1px 6px;
 	border-radius: 50%;
 	font-size: 13px;
 	background: $red-color;
 	color: $white-color;
 
-	@include pos(absolute, $t: -11px, $l: 70%)
+	@include pos(absolute, $t: -11px, $l: 65%)
 }

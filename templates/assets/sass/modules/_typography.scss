@@ -146,5 +146,13 @@ del span {
 
 	padding: 20px;
 
-	@include pos(absolute, $t: 65%, $l: 17%)
+	@include pos(absolute, $t: 65%, $l: 14%)
+}
+
+.media-body ul li a {
+	color: $brand-color;
+
+	&:hover, &:active, &:focus, {
+		color: $brand-color;
+	}
 }

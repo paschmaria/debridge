@@ -19,7 +19,7 @@ body{
     font-family: 'Nunito', sans-serif;
     color: $brand-color-dark;
     
-    @include screenSize(large-desktop) { font-size: 16px; }
+    @include screenSize(large-desktop) { font-size: 14px; }
     @include screenSize(small-desktop) { font-size: 14px; }
     @include screenSize(tablet) { font-size: 14px; }
     @include screenSize(ls-phone) { font-size: 12px; }
