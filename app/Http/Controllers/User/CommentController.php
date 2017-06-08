@@ -4,7 +4,8 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Models\Comment;
+use App\Models\Post;
 class CommentController extends Controller
 {
     /**
@@ -12,6 +13,11 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         //
@@ -33,9 +39,16 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
-        //
+        $this->validate($request, ['content' => 'required|string|max:255']);
+        Comment::create([
+            'content' => $request->content,
+            'user_id' => auth()->user()->id,
+            'post_id' => $post->id
+            ]);
+        $request->session()->flash('success', 'Comment succesful');
+        return back();
     }
 
     /**

@@ -37,27 +37,27 @@ class User extends Authenticatable
 
     public function comments()
     {
-        return $this->hasMany('App/Models/Comment');
+        return $this->hasMany('App\Models\Comment');
     }
 
     public function posts()
     {
-        return $this->hasMany('App/Models/Post');
+        return $this->hasMany('App\Models\Post');
     }
 
     public function profile_picture()
     {
-        return $this->belongsTo('App/Models/Image');
+        return $this->belongsTo('App\Models\Image');
     }
 
     public function role()
     {
-        return $this->belongsTo('App/Models/Role');
+        return $this->belongsTo('App\Models\Role');
     }
 
     public function photo_albums()
     {
-        return $this->hasMany('App/Models/PhotoAlbum');
+        return $this->hasMany('App\Models\PhotoAlbum');
     }
 
     public function hypes()

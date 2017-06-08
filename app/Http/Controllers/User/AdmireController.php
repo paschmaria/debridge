@@ -4,10 +4,10 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\PostHype;
+use App\Models\PostAdmire;
 use App\Models\Post;
 
-class HypeController extends Controller
+class AdmireController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -32,11 +32,11 @@ class HypeController extends Controller
     public function create(Post $post)
     {
         if(\Auth::user()->id != $post->id){
-            $hype = PostHype::where(['post_id' => $post->id, 'user_id' => \Auth::user()->id])->first();
-            if ($hype) {
-                $hype->delete();
+            $admire = PostAdmire::where(['post_id' => $post->id, 'user_id' => \Auth::user()->id])->first();
+            if ($admire) {
+                $admire->delete();
             } else {
-                PostHype::create(['post_id' => $post->id, 'user_id' => \Auth::user()->id]);
+                PostAdmire::create(['post_id' => $post->id, 'user_id' => \Auth::user()->id]);
             }       
         }
         return back();

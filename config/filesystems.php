@@ -48,6 +48,12 @@ return [
             'root' => storage_path('app'),
         ],
 
+        'custom' => [
+           'driver' => 'local',
+           'root' => env("UPLOAD_PATH"),
+               //https://laracasts.com/discuss/channels/general-discussion/l5-disable-csrf-middleware-on-certain-routes
+           ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

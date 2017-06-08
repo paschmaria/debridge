@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('gender')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->integer('role_id')->nullable();
-            $table->integer('community_id');
-            $table->integer('image_id');
+            $table->integer('community_id')->nullable();
+            $table->integer('image_id')->nullable();
             $table->string('email')->unique();
             $table->string('password');
             $table->string('user_token')->nullable();

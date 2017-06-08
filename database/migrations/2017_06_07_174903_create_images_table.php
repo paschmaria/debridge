@@ -17,7 +17,7 @@ class CreateImagesTable extends Migration
             $table->increments('id');
             $table->text('image_reference')->nullable();
             $table->integer('photo_album_id')->nullable();
-            $table->integer('post-id')->nullable();
+            $table->integer('post_id')->nullable();
             $table->timestamps();
         });
     }
