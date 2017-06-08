@@ -20,4 +20,14 @@ class Post extends Model
    	{
    		return $this->hasMany('App\Models\Image');
    	}
+
+   	public function hypes()
+   	{
+   		return $this->hasMany('App\Models\PostHype');
+   	}
+
+   	public function admires()
+   	{
+   		return $this->hasMany('App\Models\PostAdmire');
+   	}
 }
