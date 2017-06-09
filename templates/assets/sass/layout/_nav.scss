@@ -8,12 +8,13 @@
     @include transition((all 0.3s ease-in-out))
 }
 
-.nav-item .nav-link.active {
-	color: $brand-color;
-}
-
-.nav-item a {
+.nav-item a.nav-link {
 	color: $brand-color-dark;
+	font-size: 12px;
+
+	&.active {
+		color: $brand-color;
+	}
 }
 
 .user-type-navbar {

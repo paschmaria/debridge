@@ -21,24 +21,7 @@ body {
   height: 100%;
   font-family: 'Nunito', sans-serif;
   color: #212121;
-}
-
-@media (min-width: 1200px) {
-  body {
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1199px) {
-  body {
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  body {
-    font-size: 14px;
-  }
+  font-size: 14px;
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
@@ -578,7 +561,7 @@ body {
 }
 
 .bd-white {
-  border-color: #FFFFFF !important;
+  border: 1px solid #FFFFFF !important;
 }
 
 .bd-dark-light {
@@ -667,6 +650,11 @@ body {
 /****  Background Colors  ****/
 .bg-brand {
   background-color: #008751 !important;
+  color: #FFFFFF !important;
+}
+
+.bg-brand-lite {
+  background-color: #f0fff0 !important;
   color: #FFFFFF !important;
 }
 
@@ -1067,7 +1055,7 @@ a, a:focus, a:hover, a:active {
 }
 
 .c-dark {
-  color: #343434 !important;
+  color: #526173 !important;
 }
 
 .c-white {
@@ -1172,6 +1160,7 @@ a, a:focus, a:hover, a:active {
 .user-conversion .btn {
   margin-left: 10px !important;
   margin-right: 10px !important;
+  margin-top: 0;
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -1265,12 +1254,13 @@ a, a:focus, a:hover, a:active {
   transition: all 0.3s ease-in-out;
 }
 
-.nav-item .nav-link.active {
-  color: #008751;
+.nav-item a.nav-link {
+  color: #212121;
+  font-size: 12px;
 }
 
-.nav-item a {
-  color: #212121;
+.nav-item a.nav-link.active {
+  color: #008751;
 }
 
 .user-type-navbar {
@@ -1383,6 +1373,14 @@ a, a:focus, a:hover, a:active {
   background: rgba(0, 135, 81, 0.8);
 }
 
+.btn-brand-lite {
+  background: #f0fff0;
+}
+
+.btn-brand-lite:hover, .btn-brand-lite:active, .btn-brand-lite:focus {
+  background: rgba(240, 255, 240, 0.85);
+}
+
 .btn-outline-brand {
   border: 2px solid #008751;
   color: #008751 !important;
@@ -1393,6 +1391,11 @@ a, a:focus, a:hover, a:active {
   border: 2px solid #008751;
   color: #008751 !important;
   background-color: transparent;
+}
+
+[data-original-title] {
+  background: #f0fff0;
+  color: #526173;
 }
 
 .input-shadow {
@@ -1412,6 +1415,28 @@ a, a:focus, a:hover, a:active {
   border-color: rgba(0, 0, 0, 0.125);
 }
 
+header input[type=search].input-alternate {
+  box-shadow: none !important;
+  height: inherit;
+  font-size: 17px;
+  background: #FFFFFF;
+  margin-top: 0 !important;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+header input[type=search].input-alternate:hover, header input[type=search].input-alternate:active, header input[type=search].input-alternate:focus {
+  box-shadow: none !important;
+}
+
+/*body {
+	background: $brand-color-lite;
+
+	& header .container-fluid:first-child {
+		color: $white-color !important;
+		background: $brand-color !important;
+	}
+}*/
 @media (min-width: 1200px) {
   [data-page="login"] .container {
     width: 550px;

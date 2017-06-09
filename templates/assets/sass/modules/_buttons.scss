@@ -55,6 +55,14 @@
 	}
 }
 
+.btn-brand-lite {
+	background: $brand-color-lite;
+
+	&:hover, &:active, &:focus {
+		background: $brand-color-lite-op;
+	}
+}
+
 .btn-outline-brand {
 	border: 2px solid $brand-color;
 	color: $brand-color!important;
@@ -65,4 +73,9 @@
 		color: $brand-color!important;
 		background-color: transparent;
 	}
+}
+
+[data-original-title=*] {
+	background: $brand-color-lite;
+	color: $dark-color;
 }

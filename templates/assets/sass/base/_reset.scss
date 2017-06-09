@@ -18,10 +18,8 @@ body{
     height: 100%;
     font-family: 'Nunito', sans-serif;
     color: $brand-color-dark;
-    
-    @include screenSize(large-desktop) { font-size: 14px; }
-    @include screenSize(small-desktop) { font-size: 14px; }
-    @include screenSize(tablet) { font-size: 14px; }
+    font-size: 14px;
+
     @include screenSize(ls-phone) { font-size: 12px; }
 }
 
@@ -182,7 +180,7 @@ body{
 .bd-all{border:1px solid #ebebf2 !important;}
 .border-bottom {border-bottom: 1px solid $dark-color-lite !important;}
 .border-top {border-top: 1px solid $dark-color-lite !important;}
-.bd-white{border-color:$white-color !important;}
+.bd-white{border: 1px solid $white-color !important;}
 .bd-dark-light{border: 1px solid $dark-color-lite !important;}
 .bd-green{border-left: 3px solid #5CB85C;padding-left:20px;}
 .bd-red{border-left: 3px solid $red-color;padding-left:20px}
@@ -205,10 +203,11 @@ body{
 .bd-b-purple{border-bottom:4px solid #B57EE0;}
 
 /****  Background Colors  ****/
-.bg-brand  {background-color:$brand-color !important; color:$white-color !important; }
-.bg-white  {background-color:$white-color !important; color:#526173 !important; }
-.bg-gray  {background-color:#b6b6b6 !important; color:#000 !important; }
-.bg-gray-light  {background-color:#ECECEC !important; color:#000 !important; }
+.bg-brand {background-color:$brand-color !important; color:$white-color !important; }
+.bg-brand-lite {background-color:$brand-color-lite !important; color:$white-color !important; }
+.bg-white {background-color:$white-color !important; color:#526173 !important; }
+.bg-gray {background-color:#b6b6b6 !important; color:#000 !important; }
+.bg-gray-light {background-color:#ECECEC !important; color:#000 !important; }
 .bg-red {background-color:$red-color !important;color:$white-color !important;}
 .bg-green  {background-color:#18a689 !important; color:$white-color !important;}
 .bg-blue  {background-color:$blue-color !important ; color:$white-color !important;}
@@ -311,7 +310,7 @@ a, a:focus, a:hover, a:active {  outline: 0;}
 .c-green {color:#18A689 !important;}
 .c-gray-light {color:#dadada !important;}
 .c-gray {color:#8F8F8F !important;}
-.c-dark {color:#343434 !important;}
+.c-dark {color:$dark-color !important;}
 .c-white {color:$white-color !important;}
 .transparent-color {color: rgba(0, 0, 0, 0.2);}
 .asterisk {color: #D9534F}

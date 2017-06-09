@@ -1,3 +1,12 @@
+/*body {
+	background: $brand-color-lite;
+
+	& header .container-fluid:first-child {
+		color: $white-color !important;
+		background: $brand-color !important;
+	}
+}*/
+
 [data-page="login"] .container {
 
 	@include screenSize(large-desktop) { width: 550px; }
