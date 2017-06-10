@@ -18,6 +18,7 @@ body{
     height: 100%;
     font-family: 'Nunito', sans-serif;
     color: $brand-color-dark;
+    background: $brand-color-lite;
     font-size: 14px;
 
     @include screenSize(ls-phone) { font-size: 12px; }
@@ -237,6 +238,7 @@ body{
 .width-0 {width:0 !important;}
 .width-110 {width:110px !important;}
 .width-300 {width:300px !important;}
+.width-310 {width:310px !important;}
 .width-25p {width:25% !important;}
 .width-50p {width:50% !important;}
 .width-100p  {width:100% !important;}
