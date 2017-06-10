@@ -26,6 +26,7 @@ body {
   height: 100%;
   font-family: 'Nunito', sans-serif;
   color: #212121;
+  background: #f0fff0;
   font-size: 14px;
 }
 
@@ -54,11 +55,19 @@ body {
 }
 
 /* line 31, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-8 {
+  margin: 8px !important;
+}
+
 .m-10 {
   margin: 10px !important;
 }
 
 /* line 32, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-16 {
+  margin: 16px !important;
+}
+
 .m-20 {
   margin: 20px !important;
 }
@@ -621,7 +630,13 @@ body {
   right: 15px;
 }
 
+
 /* line 168, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+
+.r-50 {
+  right: 50%;
+}
+
 .r-58 {
   right: 58%;
 }
@@ -951,6 +966,10 @@ body {
 }
 
 /* line 237, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+.width-310 {
+  width: 310px !important;
+}
+
 .width-25p {
   width: 25% !important;
 }
@@ -1802,6 +1821,18 @@ body {
 }
 
 /* line 17, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+
+[data-page="araha-market"] .carousel-caption {
+  font-size: 48px;
+  position: absolute;
+  top: 25%;
+  right: 100%;
+}
+
+[data-page="araha-market"] .carousel-caption p {
+  margin-bottom: 0;
+}
+
 .card.box {
   position: relative;
   opacity: 1;
