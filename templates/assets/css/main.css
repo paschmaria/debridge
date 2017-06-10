@@ -26,6 +26,7 @@ body {
   height: 100%;
   font-family: 'Nunito', sans-serif;
   color: #212121;
+  background: #f0fff0;
   font-size: 14px;
 }
 
@@ -38,631 +39,646 @@ body {
 
 /* =====GENERAL CSS STYLING ==== */
 /****  Margin  ****/
-/* line 28, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 29, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-auto {
   margin: auto;
 }
 
-/* line 29, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 30, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-0 {
   margin: 0 !important;
 }
 
-/* line 30, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 31, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-5 {
   margin: 5px !important;
 }
 
-/* line 31, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 32, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-8 {
+  margin: 8px !important;
+}
+
+/* line 33, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-10 {
   margin: 10px !important;
 }
 
-/* line 32, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 34, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+.m-16 {
+  margin: 16px !important;
+}
+
+/* line 35, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-20 {
   margin: 20px !important;
 }
 
 /****  Margin Top  ****/
-/* line 35, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 38, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-t-0 {
   margin-top: 0px !important;
 }
 
-/* line 36, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 39, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-t-3 {
   margin-top: 3px !important;
 }
 
-/* line 37, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 40, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-t-5 {
   margin-top: 5px !important;
 }
 
-/* line 38, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 41, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-t-10 {
   margin-top: 10px !important;
 }
 
-/* line 39, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 42, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-t-20 {
   margin-top: 20px !important;
 }
 
-/* line 40, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 43, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-t-30 {
   margin-top: 30px !important;
 }
 
-/* line 41, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 44, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-t-32 {
   margin-top: 32px !important;
 }
 
-/* line 42, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 45, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-t-40 {
   margin-top: 40px !important;
 }
 
-/* line 43, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 46, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-t-50 {
   margin-top: 50px !important;
 }
 
-/* line 44, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 47, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-t-60 {
   margin-top: 60px !important;
 }
 
-/* line 45, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 48, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-t-80 {
   margin-top: 80px !important;
 }
 
-/* line 46, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 49, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-t-m20 {
   margin-top: -20px !important;
 }
 
-/* line 47, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 50, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-t-m48 {
   margin-top: -48px !important;
 }
 
 /****  Margin Bottom  ****/
-/* line 50, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 53, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-0 {
   margin-bottom: 0px !important;
 }
 
-/* line 51, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 54, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-5 {
   margin-bottom: 5px !important;
 }
 
-/* line 52, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 55, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-6 {
   margin-bottom: 6px !important;
 }
 
-/* line 53, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 56, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-10 {
   margin-bottom: 10px !important;
 }
 
-/* line 54, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 57, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-12 {
   margin-bottom: 12px !important;
 }
 
-/* line 55, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 58, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-14 {
   margin-bottom: 14px !important;
 }
 
-/* line 56, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 59, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-15 {
   margin-bottom: 15px !important;
 }
 
-/* line 57, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 60, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-16 {
   margin-bottom: 16px !important;
 }
 
-/* line 58, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 61, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-20 {
   margin-bottom: 20px !important;
 }
 
-/* line 59, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 62, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-25 {
   margin-bottom: 25px !important;
 }
 
-/* line 60, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 63, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-28 {
   margin-bottom: 28px !important;
 }
 
-/* line 61, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 64, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-30 {
   margin-bottom: 30px !important;
 }
 
-/* line 62, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 65, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-40 {
   margin-bottom: 40px !important;
 }
 
-/* line 63, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 66, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-50 {
   margin-bottom: 50px !important;
 }
 
-/* line 64, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 67, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-60 {
   margin-bottom: 60px !important;
 }
 
-/* line 65, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 68, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-80 {
   margin-bottom: 80px !important;
 }
 
-/* line 66, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 69, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-140 {
   margin-bottom: 140px !important;
 }
 
-/* line 67, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 70, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-80 {
   margin-bottom: 80px !important;
 }
 
-/* line 68, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 71, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-245 {
   margin-bottom: 245px !important;
 }
 
-/* line 69, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 72, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-245 {
   margin-bottom: 245px !important;
 }
 
-/* line 70, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 73, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-m10 {
   margin-bottom: -10px !important;
 }
 
-/* line 71, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 74, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-m30 {
   margin-bottom: -30px !important;
 }
 
-/* line 72, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 75, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-b-m50 {
   margin-bottom: -50px !important;
 }
 
 /****  Margin Left  ****/
-/* line 75, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 78, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-l-3 {
   margin-left: 3px !important;
 }
 
-/* line 76, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 79, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-l-5 {
   margin-left: 5px !important;
 }
 
-/* line 77, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 80, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-l-10 {
   margin-left: 10px !important;
 }
 
-/* line 78, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 81, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-l-15 {
   margin-left: 15px !important;
 }
 
-/* line 79, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 82, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-l-20 {
   margin-left: 20px !important;
 }
 
-/* line 80, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 83, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-l-30 {
   margin-left: 30px !important;
 }
 
-/* line 81, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 84, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-l-60 {
   margin-left: 60px !important;
 }
 
-/* line 82, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 85, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-l-78 {
   margin-left: 80px !important;
 }
 
 /****  Margin Right  ****/
-/* line 85, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 88, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-r-3 {
   margin-right: 3px !important;
 }
 
-/* line 86, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 89, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-r-5 {
   margin-right: 5px !important;
 }
 
-/* line 87, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 90, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-r-10 {
   margin-right: 10px !important;
 }
 
-/* line 88, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 91, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-r-20 {
   margin-right: 20px !important;
 }
 
-/* line 89, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 92, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-r-30 {
   margin-right: 30px !important;
 }
 
-/* line 90, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 93, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .m-r-60 {
   margin-right: 60px !important;
 }
 
 /****  Padding  ****/
-/* line 93, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 96, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-0 {
   padding: 0 !important;
 }
 
-/* line 94, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 97, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-5 {
   padding: 5px !important;
 }
 
-/* line 95, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 98, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-10 {
   padding: 10px !important;
 }
 
-/* line 96, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 99, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-15 {
   padding: 15px !important;
 }
 
-/* line 97, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 100, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-16 {
   padding: 16px !important;
 }
 
-/* line 98, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 101, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-18 {
   padding: 18px !important;
 }
 
-/* line 99, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 102, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-20 {
   padding: 20px !important;
 }
 
-/* line 100, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 103, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-30 {
   padding: 30px !important;
 }
 
-/* line 101, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 104, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-40 {
   padding: 40px !important;
 }
 
 /****  Padding Top  ****/
-/* line 104, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 107, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-t-0 {
   padding-top: 0 !important;
 }
 
-/* line 105, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 108, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-t-4 {
   padding-top: 4px !important;
 }
 
-/* line 106, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 109, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-t-5 {
   padding-top: 5px !important;
 }
 
-/* line 107, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 110, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-t-10 {
   padding-top: 10px !important;
 }
 
-/* line 108, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 111, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-t-15 {
   padding-top: 15px !important;
 }
 
-/* line 109, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 112, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-t-20 {
   padding-top: 20px !important;
 }
 
-/* line 110, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 113, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-t-35 {
   padding-top: 35px !important;
 }
 
-/* line 111, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 114, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-t-120 {
   padding-top: 120px !important;
 }
 
 /****  Padding Bottom  ****/
-/* line 114, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 117, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-b-0 {
   padding-bottom: 0 !important;
 }
 
-/* line 115, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 118, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-b-4 {
   padding-bottom: 4px !important;
 }
 
-/* line 116, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 119, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-b-5 {
   padding-bottom: 5px !important;
 }
 
-/* line 117, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 120, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-b-10 {
   padding-bottom: 10px !important;
 }
 
-/* line 118, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 121, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-b-15 {
   padding-bottom: 15px !important;
 }
 
-/* line 119, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 122, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-b-16 {
   padding-bottom: 16px !important;
 }
 
-/* line 120, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 123, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-b-20 {
   padding-bottom: 10px !important;
 }
 
-/* line 121, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 124, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-b-30 {
   padding-bottom: 30px !important;
 }
 
 /****  Padding Left  ****/
-/* line 124, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 127, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-l-0 {
   padding-left: 0px !important;
 }
 
-/* line 125, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 128, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-l-5 {
   padding-left: 5px !important;
 }
 
-/* line 126, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 129, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-l-8 {
   padding-left: 8px !important;
 }
 
-/* line 127, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 130, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-l-10 {
   padding-left: 10px !important;
 }
 
-/* line 128, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 131, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-l-20 {
   padding-left: 20px !important;
 }
 
-/* line 129, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 132, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-l-26 {
   padding-left: 26px !important;
 }
 
-/* line 130, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 133, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-l-30 {
   padding-left: 30px !important;
 }
 
-/* line 131, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 134, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-l-40 {
   padding-left: 40px !important;
 }
 
 /**** Padding Right  ****/
-/* line 134, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 137, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-r-0 {
   padding-right: 0px !important;
 }
 
-/* line 135, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 138, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-r-5 {
   padding-right: 5px !important;
 }
 
-/* line 136, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 139, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-r-8 {
   padding-right: 8px !important;
 }
 
-/* line 137, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 140, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-r-10 {
   padding-right: 10px !important;
 }
 
-/* line 138, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 141, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-r-20 {
   padding-right: 20px !important;
 }
 
-/* line 139, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 142, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-r-26 {
   padding-right: 26px !important;
 }
 
-/* line 140, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 143, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .p-r-30 {
   padding-right: 30px !important;
 }
 
 /****  Top  ****/
-/* line 143, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 146, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .t-0 {
   top: 0;
 }
 
-/* line 144, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 147, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .t-5 {
   top: 5px;
 }
 
-/* line 145, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 148, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .t-10 {
   top: 10px;
 }
 
-/* line 146, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 149, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .t-15 {
   top: 15px;
 }
 
-/* line 147, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 150, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .t-65p {
   top: 65%;
 }
 
 /****  Bottom  ****/
-/* line 150, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 153, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .b-0 {
   bottom: 0;
 }
 
-/* line 151, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 154, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .b-5 {
   bottom: 5px;
 }
 
-/* line 152, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 155, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .b-10 {
   bottom: 10px;
 }
 
-/* line 153, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 156, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .b-15 {
   bottom: 15px;
 }
 
-/* line 154, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 157, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .b-25 {
   bottom: 25%;
 }
 
-/* line 155, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 158, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .b-29 {
   bottom: 29%;
 }
 
 /****  Left  ****/
-/* line 158, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 161, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .l-0 {
   left: 0;
 }
 
-/* line 159, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 162, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .l-5 {
   left: 5px;
 }
 
-/* line 160, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 163, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .l-10 {
   left: 10px;
 }
 
-/* line 161, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 164, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .l-15 {
   left: 15px;
 }
 
 /****  Right  ****/
-/* line 164, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 167, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .r-0 {
   right: 0;
 }
 
-/* line 165, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 168, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .r-5 {
   right: 5px;
 }
 
-/* line 166, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 169, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .r-10 {
   right: 10px;
 }
 
-/* line 167, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 170, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .r-15 {
   right: 15px;
 }
 
-/* line 168, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 171, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+.r-50 {
+  right: 50%;
+}
+
+/* line 172, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .r-58 {
   right: 58%;
 }
 
 /****  Border Radius  ****/
-/* line 171, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 175, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-0 {
   -moz-border-radius: 0 !important;
   -webkit-border-radius: 0 !important;
   border-radius: 0 !important;
 }
 
-/* line 172, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 176, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-3 {
   -moz-border-radius: 3px !important;
   -webkit-border-radius: 3px !important;
   border-radius: 3px !important;
 }
 
-/* line 173, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 177, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-6 {
   -moz-border-radius: 6px !important;
   -webkit-border-radius: 6px !important;
   border-radius: 6px !important;
 }
 
-/* line 174, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 178, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-9 {
   -moz-border-radius: 9px !important;
   -webkit-border-radius: 9px !important;
   border-radius: 9px !important;
 }
 
-/* line 175, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 179, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-10em {
   -moz-border-radius: 10em !important;
   -webkit-border-radius: 10em !important;
   border-radius: 10em !important;
 }
 
-/* line 176, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 180, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-50p {
   -moz-border-radius: 50% !important;
   -webkit-border-radius: 50% !important;
@@ -670,203 +686,203 @@ body {
 }
 
 /****  Border Radius  ****/
-/* line 179, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 183, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .no-bd {
   border: none !important;
   box-shadow: none;
 }
 
-/* line 180, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 184, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-all {
   border: 1px solid #ebebf2 !important;
 }
 
-/* line 181, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 185, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .border-bottom {
   border-bottom: 1px solid rgba(0, 0, 0, 0.125) !important;
 }
 
-/* line 182, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 186, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .border-top {
   border-top: 1px solid rgba(0, 0, 0, 0.125) !important;
 }
 
-/* line 183, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 187, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-white {
   border: 1px solid #FFFFFF !important;
 }
 
-/* line 184, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 188, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-dark-light {
   border: 1px solid rgba(0, 0, 0, 0.125) !important;
 }
 
-/* line 185, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 189, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-green {
   border-left: 3px solid #5CB85C;
   padding-left: 20px;
 }
 
-/* line 186, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 190, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-red {
   border-left: 3px solid #C9625F;
   padding-left: 20px;
 }
 
-/* line 187, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 191, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-blue {
   border-left: 3px solid #014c8c;
   padding-left: 20px;
 }
 
-/* line 188, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 192, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-t-red {
   border-top: 4px solid #C9625F;
 }
 
-/* line 189, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 193, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-t-green {
   border-top: 4px solid #5CB85C;
 }
 
-/* line 190, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 194, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-t-blue {
   border-top: 4px solid #014c8c;
 }
 
-/* line 191, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 195, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-t-dark {
   border-top: 4px solid #2B2E33;
 }
 
-/* line 192, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 196, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-t-purple {
   border-top: 4px solid #B57EE0;
 }
 
-/* line 193, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 197, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-l-red {
   border-left: 4px solid #C9625F;
 }
 
-/* line 194, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 198, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-l-green {
   border-left: 4px solid #5CB85C;
 }
 
-/* line 195, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 199, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-l-blue {
   border-left: 4px solid #014c8c;
 }
 
-/* line 196, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 200, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-l-dark {
   border-left: 4px solid #2B2E33;
 }
 
-/* line 197, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 201, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-l-dark-gray {
   border-left: 1px solid #526173;
 }
 
-/* line 198, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 202, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-l-purple {
   border-left: 4px solid #B57EE0;
 }
 
-/* line 199, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 203, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-b-red {
   border-bottom: 4px solid #C9625F;
 }
 
-/* line 200, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 204, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-b-green {
   border-bottom: 4px solid #5CB85C;
 }
 
-/* line 201, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 205, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-b-blue {
   border-bottom: 4px solid #014c8c;
 }
 
-/* line 202, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 206, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-b-dark {
   border-bottom: 4px solid #2B2E33;
 }
 
-/* line 203, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 207, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bd-b-purple {
   border-bottom: 4px solid #B57EE0;
 }
 
 /****  Background Colors  ****/
-/* line 206, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 210, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bg-brand {
   background-color: #008751 !important;
   color: #FFFFFF !important;
 }
 
-/* line 207, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 211, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bg-brand-lite {
   background-color: #f0fff0 !important;
   color: #FFFFFF !important;
 }
 
-/* line 208, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 212, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bg-white {
   background-color: #FFFFFF !important;
   color: #526173 !important;
 }
 
-/* line 209, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 213, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bg-gray {
   background-color: #b6b6b6 !important;
   color: #000 !important;
 }
 
-/* line 210, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 214, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bg-gray-light {
   background-color: #ECECEC !important;
   color: #000 !important;
 }
 
-/* line 211, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 215, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bg-red {
   background-color: #C9625F !important;
   color: #FFFFFF !important;
 }
 
-/* line 212, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 216, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bg-green {
   background-color: #18a689 !important;
   color: #FFFFFF !important;
 }
 
-/* line 213, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 217, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bg-blue {
   background-color: #014c8c !important;
   color: #FFFFFF !important;
 }
 
-/* line 214, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 218, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bg-orange {
   background-color: #f27835 !important;
   color: #FFFFFF !important;
 }
 
-/* line 215, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 219, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bg-purple {
   background-color: #B57EE0 !important;
   color: #FFFFFF !important;
 }
 
-/* line 216, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 220, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bg-dark {
   background-color: #2B2E33 !important;
   color: #FFFFFF !important;
 }
 
-/* line 217, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 221, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bg-purple-gradient {
   background: #bf9bdd;
   background: -moz-radial-gradient(center, ellipse cover, #bf9bdd 27%, #9e52dd 100%);
@@ -878,229 +894,234 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf9bdd', endColorstr='#9e52dd',GradientType=1 );
 }
 
-/* line 218, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 222, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bg-opacity-40 {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* line 219, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 223, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bg-facebook {
   background-color: #3B5998;
 }
 
-/* line 220, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 224, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bg-google {
   background-color: #DD4B39;
 }
 
-/* line 221, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 225, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bg-twitter {
   background-color: #55ACEE;
 }
 
-/* line 222, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 226, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .bg-linkedin {
   background-color: #0082CA;
 }
 
 /****  Opacity  ****/
-/* line 225, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 229, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .opacity-0 {
   opacity: 0;
 }
 
-/* line 226, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 230, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .opacity-20 {
   opacity: .2;
 }
 
-/* line 227, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 231, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .opacity-50 {
   opacity: .5;
 }
 
-/* line 228, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 232, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .opacity-70 {
   opacity: .7;
 }
 
-/* line 229, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 233, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .opacity-90 {
   opacity: .9;
 }
 
 /****  Width  ****/
-/* line 233, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 237, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .min-width-40 {
   min-width: 40px;
 }
 
-/* line 234, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 238, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .width-0 {
   width: 0 !important;
 }
 
-/* line 235, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 239, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .width-110 {
   width: 110px !important;
 }
 
-/* line 236, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 240, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .width-300 {
   width: 300px !important;
 }
 
-/* line 237, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 241, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+.width-310 {
+  width: 310px !important;
+}
+
+/* line 242, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .width-25p {
   width: 25% !important;
 }
 
-/* line 238, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 243, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .width-50p {
   width: 50% !important;
 }
 
-/* line 239, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 244, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .width-100p {
   width: 100% !important;
 }
 
 /****  Height  ****/
-/* line 243, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 248, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .h-0 {
   height: 0 !important;
   overflow: hidden !important;
 }
 
-/* line 244, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 249, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .h-18 {
   height: 18px !important;
   overflow: hidden !important;
 }
 
-/* line 245, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 250, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .h-20 {
   height: 20px !important;
   overflow: hidden !important;
 }
 
-/* line 246, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 251, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .h-30 {
   height: 30px !important;
   overflow: hidden !important;
 }
 
-/* line 247, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 252, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .h-40 {
   height: 40px !important;
   overflow: hidden !important;
 }
 
-/* line 248, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 253, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .h-58 {
   height: 58px !important;
   overflow: hidden !important;
 }
 
-/* line 249, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 254, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .h-60 {
   height: 60px !important;
   overflow: hidden !important;
 }
 
-/* line 250, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 255, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .h-68 {
   height: 68px !important;
   overflow: hidden !important;
 }
 
-/* line 251, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 256, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .h-70 {
   height: 70px !important;
   overflow: hidden !important;
 }
 
-/* line 252, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 257, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .h-100 {
   height: 100px !important;
   overflow: hidden !important;
 }
 
-/* line 253, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 258, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .h-150 {
   height: 150px !important;
   overflow: hidden !important;
 }
 
-/* line 254, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 259, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .h-200 {
   height: 200px !important;
   overflow: hidden !important;
 }
 
-/* line 255, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 260, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .h-220 {
   height: 220px !important;
   overflow: hidden !important;
 }
 
-/* line 256, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 261, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .h-250 {
   height: 250px !important;
   overflow: hidden !important;
 }
 
-/* line 257, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 262, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .h-280 {
   height: 280px !important;
   overflow: hidden !important;
 }
 
-/* line 258, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 263, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .h-300 {
   height: 300px !important;
   overflow: hidden !important;
 }
 
-/* line 259, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 264, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .h-inherit {
   height: inherit !important;
   overflow: hidden !important;
 }
 
-/* line 260, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 265, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .h-initial {
   height: 30initial !important;
   overflow: hidden !important;
 }
 
 /**** Position ****/
-/* line 263, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 268, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .pos-rel {
   position: relative;
 }
 
-/* line 264, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 269, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .pos-abs {
   position: absolute;
 }
 
-/* line 266, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 271, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-left {
   float: left;
 }
 
-/* line 267, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 272, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-right {
   float: right;
 }
 
-/* line 269, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 274, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .cursor-pointer {
   cursor: pointer;
 }
 
-/* line 270, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 275, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 code {
   padding: 2px 8px 2px 4px;
   font-size: 90%;
@@ -1110,12 +1131,12 @@ code {
   border-radius: 4px;
 }
 
-/* line 271, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 276, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .line-separator {
   border-right: 1px solid #DBE2E7;
 }
 
-/* line 272, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 277, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 img.img-left {
   border: 1px solid #ccc;
   float: left;
@@ -1123,7 +1144,7 @@ img.img-left {
   padding: 5px;
 }
 
-/* line 273, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 278, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 img.img-right {
   border: 1px solid #ccc;
   float: right;
@@ -1131,217 +1152,217 @@ img.img-right {
   padding: 5px;
 }
 
-/* line 274, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 279, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .hide {
   opacity: 0;
 }
 
-/* line 276, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 281, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 a, a:focus, a:hover, a:active {
   outline: 0;
 }
 
 /****  Font Size  ****/
-/* line 279, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 284, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-12 {
   font-size: 12px !important;
 }
 
-/* line 280, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 285, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-14 {
   font-size: 14px !important;
 }
 
-/* line 281, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 286, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-15 {
   font-size: 15px !important;
 }
 
-/* line 282, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 287, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-16 {
   font-size: 16px !important;
 }
 
-/* line 283, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 288, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-17 {
   font-size: 17px !important;
 }
 
-/* line 284, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 289, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-18 {
   font-size: 18px !important;
 }
 
-/* line 285, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 290, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-20 {
   font-size: 20px !important;
 }
 
-/* line 286, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 291, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-24 {
   font-size: 24px !important;
 }
 
-/* line 287, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 292, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-32 {
   font-size: 32px !important;
 }
 
-/* line 288, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 293, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-40 {
   font-size: 40px !important;
 }
 
-/* line 289, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 294, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-42 {
   font-size: 42px !important;
 }
 
-/* line 290, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 295, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-48 {
   font-size: 48px !important;
 }
 
-/* line 291, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 296, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-60 {
   font-size: 60px !important;
 }
 
-/* line 292, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 297, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-65 {
   font-size: 65px !important;
 }
 
-/* line 293, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 298, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-80 {
   font-size: 80px !important;
 }
 
-/* line 294, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 299, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-150 {
   font-size: 150px !important;
 }
 
 /****  Font Weight  ****/
-/* line 297, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 302, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .w-300 {
   font-weight: 300 !important;
 }
 
-/* line 298, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 303, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .w-500 {
   font-weight: 500 !important;
 }
 
-/* line 299, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 304, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .w-600 {
   font-weight: 600 !important;
 }
 
-/* line 300, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 305, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .w-700 {
   font-weight: 700 !important;
 }
 
-/* line 301, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 306, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .w-900 {
   font-weight: 900 !important;
 }
 
 /****  Font Color  ****/
-/* line 304, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 309, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-brand {
   color: #008751 !important;
 }
 
-/* line 305, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 310, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-red {
   color: #C9625F !important;
 }
 
-/* line 306, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 311, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-blue {
   color: #014c8c !important;
 }
 
-/* line 307, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 312, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-purple {
   color: #B57EE0 !important;
 }
 
-/* line 308, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 313, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-brown {
   color: #9E7B2E !important;
 }
 
-/* line 309, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 314, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-orange {
   color: #ec8521 !important;
 }
 
-/* line 310, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 315, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-green {
   color: #18A689 !important;
 }
 
-/* line 311, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 316, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-gray-light {
   color: #dadada !important;
 }
 
-/* line 312, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 317, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-gray {
   color: #8F8F8F !important;
 }
 
-/* line 313, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 318, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-dark {
   color: #526173 !important;
 }
 
-/* line 314, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 319, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-white {
   color: #FFFFFF !important;
 }
 
-/* line 315, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 320, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .transparent-color {
   color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 316, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 321, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .asterisk {
   color: #D9534F;
 }
 
 /**** List styling ***/
-/* line 319, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 324, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .list-style-none {
   list-style-type: none;
 }
 
 /**** Display styling ***/
-/* line 322, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 327, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .dis-inline {
   display: inline !important;
 }
 
-/* line 323, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 328, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .dis-inline-b {
   display: inline-block !important;
 }
 
-/* line 324, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 329, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .dis-block {
   display: block !important;
 }
 
-/* line 325, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 330, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .dis-none {
   display: none !important;
 }
 
-/* line 326, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 331, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .dis-flex {
   display: flex !important;
   align-items: center;
@@ -1349,7 +1370,7 @@ a, a:focus, a:hover, a:active {
   justify-content: center;
 }
 
-/* line 327, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 332, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .dis-grid {
   display: grid !important;
   align-items: center;
@@ -1358,50 +1379,50 @@ a, a:focus, a:hover, a:active {
 }
 
 /**** z-index ****/
-/* line 330, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 335, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .z-10 {
   z-index: 10;
 }
 
-/* line 331, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 336, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .z-100 {
   z-index: 100;
 }
 
-/* line 332, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 337, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .z-1000 {
   z-index: 1000;
 }
 
-/* line 333, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 338, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .z-10000 {
   z-index: 10000;
 }
 
 /**** Box-sizing ****/
-/* line 336, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 341, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .border-box {
   box-sizing: border-box !important;
 }
 
-/* line 337, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 342, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .content-box {
   box-sizing: content-box !important;
 }
 
-/* line 339, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 344, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .help-block {
   color: #AFAAAA;
   font-weight: 500;
   font-size: 12px;
 }
 
-/* line 340, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 345, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .line-through {
   text-decoration: line-through;
 }
 
-/* line 341, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 346, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .t-ellipsis {
   text-overflow: ellipsis;
   display: block;
@@ -1409,7 +1430,7 @@ a, a:focus, a:hover, a:active {
   overflow: hidden;
 }
 
-/* line 343, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 348, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .no-shadow {
   -webkit-box-shadow: none !important;
   -ms-box-shadow: none !important;
@@ -1801,7 +1822,20 @@ body {
   display: none;
 }
 
-/* line 17, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+/* line 18, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+[data-page="araha-market"] .carousel-caption, [data-page="hiring"] .carousel-caption {
+  font-size: 48px;
+  position: absolute;
+  top: 25%;
+  right: 100%;
+}
+
+/* line 23, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+[data-page="araha-market"] .carousel-caption p, [data-page="hiring"] .carousel-caption p {
+  margin-bottom: 0;
+}
+
+/* line 29, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
 .card.box {
   position: relative;
   opacity: 1;
@@ -1813,7 +1847,7 @@ body {
   transform: scale(1);
 }
 
-/* line 24, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+/* line 38, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
 .card.box:after {
   content: "";
   height: 30px;
@@ -1827,7 +1861,7 @@ body {
   z-index: -1;
 }
 
-/* line 34, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+/* line 48, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
 .box.back {
   top: -20px;
   opacity: .8;
@@ -1837,7 +1871,7 @@ body {
   transform: scale(0.95);
 }
 
-/* line 42, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+/* line 56, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
 .overbox {
   width: 100%;
   height: 950px;
@@ -1850,34 +1884,34 @@ body {
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-  /* line 42, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+  /* line 56, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
   .overbox {
     height: 900px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  /* line 42, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+  /* line 56, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
   .overbox {
     height: 900px;
   }
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
-  /* line 42, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+  /* line 56, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
   .overbox {
     height: 850px;
   }
 }
 
 @media (max-width: 575px) {
-  /* line 42, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+  /* line 56, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
   .overbox {
     height: 1300px;
   }
 }
 
-/* line 62, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+/* line 76, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
 .overbox .card-block, .overbox .title, .overbox .sub-title, .overbox .row, .overbox .divider {
   position: relative;
   color: #FFFFFF;
@@ -1885,36 +1919,36 @@ body {
   z-index: 110;
 }
 
-/* line 69, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+/* line 82, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
 .overbox form .row {
   display: flex !important;
 }
 
-/* line 73, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+/* line 85, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
 .overbox input, .overbox select, .overbox input:focus, .overbox select:focus {
   background: #FFFFFF;
 }
 
-/* line 77, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+/* line 88, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
 .overbox h3.title:after {
   background: #FFFFFF;
   width: 4px;
 }
 
-/* line 83, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+/* line 94, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
 .rotate {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
-/* line 87, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+/* line 98, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
 .form-group {
   float: left;
   margin-bottom: 0;
 }
 
-/* line 92, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+/* line 103, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
 .scale-overbox {
   border: none;
   box-shadow: none;
@@ -1926,39 +1960,39 @@ body {
 }
 
 @media (min-width: 1200px) {
-  /* line 92, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+  /* line 103, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
   .scale-overbox {
     width: 520px;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-  /* line 92, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+  /* line 103, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
   .scale-overbox {
     width: 470px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  /* line 92, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+  /* line 103, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
   .scale-overbox {
     width: 420px;
   }
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
-  /* line 92, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+  /* line 103, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
   .scale-overbox {
     width: 370px;
   }
 }
 
-/* line 104, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+/* line 115, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
 .scale-overbox .material-button {
   z-index: 100;
 }
 
-/* line 110, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+/* line 121, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
 svg .mapsvg-region {
   fill: transparent;
   fill-rule: evenodd;
@@ -1968,35 +2002,35 @@ svg .mapsvg-region {
   transition: all 0.55s ease;
 }
 
-/* line 117, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+/* line 128, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
 svg .mapsvg-region:hover {
   fill: #008751;
 }
 
-/* line 122, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+/* line 133, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
 .divider hr {
   width: 47%;
   border-color: #212121;
 }
 
 @media (max-width: 575px) {
-  /* line 122, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+  /* line 133, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
   .divider hr {
     width: 46%;
   }
 }
 
-/* line 131, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+/* line 142, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
 del {
   color: #C9625F;
 }
 
-/* line 134, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+/* line 145, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
 del span {
   color: #FFFFFF;
 }
 
-/* line 138, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+/* line 149, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
 .carousel-ad-overlay {
   padding: 20px;
   position: absolute;
@@ -2005,7 +2039,7 @@ del span {
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-  /* line 138, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+  /* line 149, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
   .carousel-ad-overlay {
     padding: 10px;
     position: absolute;
@@ -2015,7 +2049,7 @@ del span {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  /* line 138, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+  /* line 149, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
   .carousel-ad-overlay {
     padding: 10px;
     position: absolute;
@@ -2024,12 +2058,12 @@ del span {
   }
 }
 
-/* line 156, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+/* line 167, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
 .media-body ul li a {
   color: #008751;
 }
 
-/* line 159, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
+/* line 170, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
 .media-body ul li a:hover, .media-body ul li a:active, .media-body ul li a:focus {
   color: #008751;
 }

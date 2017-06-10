@@ -18,6 +18,7 @@ body{
     height: 100%;
     font-family: 'Nunito', sans-serif;
     color: $brand-color-dark;
+    background: $brand-color-lite;
     font-size: 14px;
 
     @include screenSize(ls-phone) { font-size: 12px; }
@@ -28,7 +29,9 @@ body{
 .m-auto {margin:auto;}
 .m-0 {margin:0 !important;}
 .m-5 {margin:5px !important;}
+.m-8 {margin:8px !important;}
 .m-10 {margin:10px !important;}
+.m-16 {margin:16px !important;}
 .m-20 {margin:20px !important;}
 
 /****  Margin Top  ****/
@@ -165,6 +168,7 @@ body{
 .r-5 {right:5px; }
 .r-10 {right:10px; }
 .r-15 {right:15px; }
+.r-50 {right:50%; }
 .r-58 {right:58%; }
 
 /****  Border Radius  ****/
@@ -234,6 +238,7 @@ body{
 .width-0 {width:0 !important;}
 .width-110 {width:110px !important;}
 .width-300 {width:300px !important;}
+.width-310 {width:310px !important;}
 .width-25p {width:25% !important;}
 .width-50p {width:50% !important;}
 .width-100p  {width:100% !important;}
