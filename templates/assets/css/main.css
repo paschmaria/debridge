@@ -21,6 +21,7 @@ body {
   height: 100%;
   font-family: 'Nunito', sans-serif;
   color: #212121;
+  background: #f0fff0;
   font-size: 14px;
 }
 
@@ -44,8 +45,16 @@ body {
   margin: 5px !important;
 }
 
+.m-8 {
+  margin: 8px !important;
+}
+
 .m-10 {
   margin: 10px !important;
+}
+
+.m-16 {
+  margin: 16px !important;
 }
 
 .m-20 {
@@ -501,6 +510,10 @@ body {
   right: 15px;
 }
 
+.r-50 {
+  right: 50%;
+}
+
 .r-58 {
   right: 58%;
 }
@@ -770,6 +783,10 @@ body {
 
 .width-300 {
   width: 300px !important;
+}
+
+.width-310 {
+  width: 310px !important;
 }
 
 .width-25p {
@@ -1429,14 +1446,6 @@ header input[type=search].input-alternate:hover, header input[type=search].input
   box-shadow: none !important;
 }
 
-/*body {
-	background: $brand-color-lite;
-
-	& header .container-fluid:first-child {
-		color: $white-color !important;
-		background: $brand-color !important;
-	}
-}*/
 @media (min-width: 1200px) {
   [data-page="login"] .container {
     width: 550px;
@@ -1489,6 +1498,17 @@ header input[type=search].input-alternate:hover, header input[type=search].input
 
 [data-page="login"] .container input[type="date"]::-webkit-inner-spin-button {
   display: none;
+}
+
+[data-page="araha-market"] .carousel-caption {
+  font-size: 48px;
+  position: absolute;
+  top: 25%;
+  right: 100%;
+}
+
+[data-page="araha-market"] .carousel-caption p {
+  margin-bottom: 0;
 }
 
 .card.box {
