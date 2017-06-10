@@ -1,28 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\Post;
-use App\Models\Image;
 
-class PostController extends Controller
+class FollowController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
-        $posts = Post::all();
-        return view('post', compact('posts'));
+        //
     }
 
     /**
@@ -32,7 +23,7 @@ class PostController extends Controller
      */
     public function create()
     {
-       return view('post');
+        //
     }
 
     /**
@@ -41,28 +32,12 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $username)
     {
-        $this->validate($request, [
-            'title' => 'string|max:128',
-            'content' => 'string|max:3000',
-            // 'image' => 'image:jpg,jpeg,png'
-            ]);
-
-        $post = new Post([
-            'title' => $request->title,
-            'content' => $request->content,
-            ]);
-        auth()->user()->posts()->save($post);
-        if ($request->file('image')){
-            //dd('hello');
-            $filename = 'post-' . $post->id; //. $request->file('image')->getClientOriginalExtension();
-            $store  = \Storage::disk('custom')->put($filename, $request->file('image'));
-            $img = new Image(['image_reference' => $store]);
-            $post->images()->save($img);
-        }
-        $request->session()->flash('success', 'Post Saved successfully!');
-        return back();
+        // Find the User. Redirect if the User doesn't exist
+        $user = User::where('username', $username)->firstOrFail();
+        Auth::user()->following()->attach($user->id);
+        return redirect('/' . $username);
     }
 
     /**
@@ -71,9 +46,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        return view('post');
+        //
     }
 
     /**
@@ -107,6 +82,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Find the User. Redirect if the User doesn't exist
+        $user = User::where('username', $username)->firstOrFail();
+        Auth::user()->following()->detach($user->id);
+        return redirect('/' . $username);
     }
+
 }

@@ -69,4 +69,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\PostAdmire');
     }
+    public function following()
+    {
+        return $this->belongsToMany('App\User', 'followers', 'follower_user_id');
+    }
 }
