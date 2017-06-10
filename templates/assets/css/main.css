@@ -44,8 +44,16 @@ body {
   margin: 5px !important;
 }
 
+.m-8 {
+  margin: 8px !important;
+}
+
 .m-10 {
   margin: 10px !important;
+}
+
+.m-16 {
+  margin: 16px !important;
 }
 
 .m-20 {
@@ -499,6 +507,10 @@ body {
 
 .r-15 {
   right: 15px;
+}
+
+.r-50 {
+  right: 50%;
 }
 
 .r-58 {
