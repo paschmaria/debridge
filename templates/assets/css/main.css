@@ -1504,14 +1504,14 @@ body {
   display: none;
 }
 
-[data-page="araha-market"] .carousel-caption {
+[data-page="araha-market"] .carousel-caption, [data-page="hiring"] .carousel-caption {
   font-size: 48px;
   position: absolute;
   top: 25%;
   right: 100%;
 }
 
-[data-page="araha-market"] .carousel-caption p {
+[data-page="araha-market"] .carousel-caption p, [data-page="hiring"] .carousel-caption p {
   margin-bottom: 0;
 }
 
