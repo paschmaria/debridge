@@ -1,3 +1,7 @@
+body {
+	background: $brand-color-lite;
+}
+
 [data-page="login"] .container {
 
 	@include screenSize(large-desktop) { width: 550px; }

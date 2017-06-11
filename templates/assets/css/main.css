@@ -1446,6 +1446,10 @@ header input[type=search].input-alternate:hover, header input[type=search].input
   box-shadow: none !important;
 }
 
+body {
+  background: #f0fff0;
+}
+
 @media (min-width: 1200px) {
   [data-page="login"] .container {
     width: 550px;
