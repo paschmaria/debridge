@@ -1320,7 +1320,7 @@ a, a:focus, a:hover, a:active {
   border-radius: 50%;
   cursor: pointer;
   display: block;
-  background: #008751;
+  background: #008751 !important;
   position: absolute;
   top: 40px;
   right: -50px;
@@ -1413,6 +1413,16 @@ a, a:focus, a:hover, a:active {
 [data-original-title] {
   background: #f0fff0;
   color: #526173;
+}
+
+.card .btn-group .btn {
+  padding-left: 31px;
+  padding-right: 31px;
+}
+
+[data-page="tradeline"] .card .btn-group .btn {
+  padding-left: 26.5px;
+  padding-right: 26.5px;
 }
 
 .input-shadow {
@@ -1653,7 +1663,7 @@ body {
 }
 
 svg .mapsvg-region {
-  fill: transparent;
+  fill: #FFFFFF;
   fill-rule: evenodd;
   stroke: #74808E;
   -webkit-transition: all 0.55s ease;
