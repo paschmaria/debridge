@@ -58,14 +58,14 @@
                         </div>
                     </div>
 
-                    <p class="text-center"><a href="" class="pass-forgot">Forgot your password?</a></p>
+                    <p class="text-center"><a href="#" class="c-brand pass-forgot">Forgot your password?</a></p>
                 </form>
 
             </div>
         </div>
         <div class="card overbox scale-overbox">
 
-            <div class="material-button alt-2 btn-shadow hoverable  waves-effect waves-light"><span class="fa fa-plus"></span></div>
+            <div class="material-button alt-2 btn-shadow hoverable waves-effect waves-light" data-toggle="tooltip" title="Register"><span class="fa fa-plus"></span></div>
             <div class="card-block">
 
                <h3 class="title text-center c-white">REGISTER</h3>
@@ -205,6 +205,7 @@
         document.onreadystatechange = () => {
             if (document.readyState === "complete") {
                 app.loginToggler();
+                $('[data-toggle="tooltip"]').tooltip();
             }
         }
     </script>

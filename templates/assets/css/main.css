@@ -1395,34 +1395,39 @@ a, a:focus, a:hover, a:active {
 }
 
 /* line 338, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+.z-5000 {
+  z-index: 5000;
+}
+
+/* line 339, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .z-10000 {
   z-index: 10000;
 }
 
 /**** Box-sizing ****/
-/* line 341, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 342, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .border-box {
   box-sizing: border-box !important;
 }
 
-/* line 342, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 343, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .content-box {
   box-sizing: content-box !important;
 }
 
-/* line 344, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 345, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .help-block {
   color: #AFAAAA;
   font-weight: 500;
   font-size: 12px;
 }
 
-/* line 345, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 346, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .line-through {
   text-decoration: line-through;
 }
 
-/* line 346, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 347, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .t-ellipsis {
   text-overflow: ellipsis;
   display: block;
@@ -1430,7 +1435,7 @@ a, a:focus, a:hover, a:active {
   overflow: hidden;
 }
 
-/* line 348, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 349, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/base/_reset.scss */
 .no-shadow {
   -webkit-box-shadow: none !important;
   -ms-box-shadow: none !important;
@@ -2012,7 +2017,7 @@ body {
 
 /* line 121, C:/Users/VECTOR PC/de_bridge/templates/assets/sass/modules/_typography.scss */
 svg .mapsvg-region {
-  fill: transparent;
+  fill: #FFFFFF;
   fill-rule: evenodd;
   stroke: #74808E;
   -webkit-transition: all 0.55s ease;
