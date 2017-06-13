@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
-
-class FollowController extends Controller
+use App\Http\Controllers\Controller;
+use App\Models\Post;
+class TimelineController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,18 @@ class FollowController extends Controller
      */
     public function index()
     {
-        //
+        $following = auth()->user()->following()->with([ 'posts' => function ($query) {
+            $query->orderBy('created_at', 'desc')->with('user');
+
+        }])->get();
+        $timeline = $following->flatMap(function ($values) {
+            return $values->posts;
+        });
+        $sorted = $timeline->sortByDesc(function ($posts) {
+            return $posts->created_at;
+        });
+
+        dd($sorted->values()->all());
     }
 
     /**
@@ -32,12 +44,9 @@ class FollowController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $username)
+    public function store(Request $request)
     {
-        // Find the User. Redirect if the User doesn't exist
-        $user = User::where('username', $username)->firstOrFail();
-        Auth::user()->following()->attach($user->id);
-        return redirect('/' . $username);
+        //
     }
 
     /**
@@ -48,10 +57,7 @@ class FollowController extends Controller
      */
     public function show($id)
     {
-        $following =  Auth::user()->following;
-        $follower =  Auth::user()->follower;
-        $following_count =  Auth::user()->following()->count() - 1;
-        $follower_count =  Auth::user()->follower()->count() - 1;
+        //
     }
 
     /**
@@ -85,10 +91,6 @@ class FollowController extends Controller
      */
     public function destroy($id)
     {
-        // Find the User. Redirect if the User doesn't exist
-        $user = User::where('username', $username)->firstOrFail();
-        Auth::user()->following()->detach($user->id);
-        return redirect('/' . $username);
+        //
     }
-
 }

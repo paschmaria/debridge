@@ -23,3 +23,4 @@ Route::post('/post', 'User\PostController@store')->name('create_post');
 Route::post('/comment/{post}', 'User\CommentController@store')->name('create_comment');
 Route::get('/hype/{post}', 'User\HypeController@create')->name('hype');
 Route::get('/admire/{post}', 'User\AdmireController@create')->name('admire');
+Route::get('/a', 'User\TimelineController@index')->name('a');
