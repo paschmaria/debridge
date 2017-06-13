@@ -23,3 +23,6 @@ Route::post('/post', 'User\PostController@store')->name('create_post');
 Route::post('/comment/{post}', 'User\CommentController@store')->name('create_comment');
 Route::get('/hype/{post}', 'User\HypeController@create')->name('hype');
 Route::get('/admire/{post}', 'User\AdmireController@create')->name('admire');
+Route::get('/a', 'User\TimelineController@index')->name('a');
+Route::get('users', 'Auth\UserController@viewUsers')->name('view_users');
+Route::post('/send_request/{email}', 'User\FriendRequestController@create')->name('send_request');

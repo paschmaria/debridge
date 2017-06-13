@@ -69,8 +69,34 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\PostAdmire');
     }
+
     public function following()
     {
-        return $this->belongsToMany('App\User', 'followers', 'follower_user_id');
+        //pick from pivot table followers where current user is a follower get all user that user follows
+        return $this->belongsToMany('App\User', 'followers', 'follower_user_id', 'user_id');
+    }
+
+    public function followers()
+    {
+        //pick from pivot table followers where user is user_id get all follower using follower_user_id
+        return $this->belongsToMany('App\User', 'followers', 'user_id', 'follower_user_id');
+    }
+
+    public function friends()
+    {
+        //pick from pivot table friends where current user is user_id get all friends using frined_id
+        return $this->belongsToMany('App\User', 'friends', 'user_id', 'friend_id');
+    }
+
+    public function sent_requests()
+    {
+        //pick from pivot table friend_request where current user is the sender get all receipaiant using receiver_id 
+        return $this->belongsToMany('App\User', 'friend_requests', 'sender_id', 'receiver_id');
+    }
+
+    public function received_requests()
+    {
+        //pick from pivot table friend_request where current user is the receiver_id get all user received request using sender_id
+        return $this->belongsToMany('App\User', 'friend_requests', 'receiver_id', 'sender_id');
     }
 }

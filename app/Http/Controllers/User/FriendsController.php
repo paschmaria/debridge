@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\
 
-class FollowController extends Controller
+class FriendsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,8 @@ class FollowController extends Controller
      */
     public function index()
     {
-        //
+        $friends = auth()->user()->friends;
+        return view('friend_view', compact('friends'));
     }
 
     /**
@@ -21,9 +24,15 @@ class FollowController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($email)
     {
-        //
+        //accept friend request
+        $auth_user = auth()->user();
+        $user = User::where('email', $email)->first();
+        $auth_user->friends()->attach($user);
+        $user->friends()->attach($auth_user);
+        FriendRequest::where(['sender_id' => $user->id, 'receiver_id' => $auth_user])->delete();
+        return
     }
 
     /**
@@ -32,12 +41,9 @@ class FollowController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $username)
+    public function store(Request $request)
     {
-        // Find the User. Redirect if the User doesn't exist
-        $user = User::where('username', $username)->firstOrFail();
-        Auth::user()->following()->attach($user->id);
-        return redirect('/' . $username);
+        //
     }
 
     /**
@@ -48,10 +54,7 @@ class FollowController extends Controller
      */
     public function show($id)
     {
-        $following =  Auth::user()->following;
-        $follower =  Auth::user()->follower;
-        $following_count =  Auth::user()->following()->count() - 1;
-        $follower_count =  Auth::user()->follower()->count() - 1;
+        //
     }
 
     /**
@@ -85,10 +88,6 @@ class FollowController extends Controller
      */
     public function destroy($id)
     {
-        // Find the User. Redirect if the User doesn't exist
-        $user = User::where('username', $username)->firstOrFail();
-        Auth::user()->following()->detach($user->id);
-        return redirect('/' . $username);
+        //
     }
-
 }
