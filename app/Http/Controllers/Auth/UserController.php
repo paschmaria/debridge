@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     function __construct()
     {
-    	$this->middleware('guest')->except(['logout', 'verifyToken', 'resendActivationMail','market']);
+    	$this->middleware('guest')->except(['logout', 'verifyToken', 'resendActivationMail','market','viewUsers']);
     }
 
     public function register()
@@ -103,5 +103,12 @@ class UserController extends Controller
      public function market()
      {
          return view('market');
+     }
+
+     public function viewUsers()
+     {
+        $users = User::where('id','!=', auth()->user()->id)->get();
+
+        return view('users.users', compact('users'));
      }
 }
