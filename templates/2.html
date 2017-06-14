@@ -32,14 +32,14 @@
      <!-- main section begins here-->
     <div class="container">
 
-        <div class="card box m-t-20">
+        <div class="card box m-t-80 m-b-40">
             <div class="card-block">
 
-                <h3 class="title text-center">SIGN IN</h3>
+                <h3 class="title text-center">LOG IN</h3>
 
-                <form action="" method="POST">
+                <form action="registered-users.html" method="POST">
                     <div class="input">
-                        <label for="usrname">Userame</label>
+                        <label for="usrname">Username</label>
                         <input type="text" name="usrname" id="usrname" class="form-control bd-3 h-40 input-alternate border-box">
                     </div>
 
@@ -49,74 +49,100 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6 offset-md-3 col-sm-6 offset-sm-3 col">
-                            <button type="submit" class="btn btn-block btn-outline-default waves-effect m-0">Sign In</button>
+                        <div class="col-md-6 offset-md-3 col-sm-6 offset-sm-3 col-12 m-t-40 m-b-20">
+                           <button type="submit" class="btn btn-block btn-outline-default waves-effect m-0">Sign In</button>
+
                         </div>
                     </div>
 
-                    <p class="text-center"><a href="" class="pass-forgot">Forgot your password?</a></p>
+                    <p class="text-center"><a href="#" class="c-brand pass-forgot">Forgot your password?</a></p>
                 </form>
 
             </div>
         </div>
-        <div class="card overbox">
+        <div class="card overbox scale-overbox">
 
+            <div class="material-button alt-2 btn-shadow hoverable waves-effect waves-light" data-toggle="tooltip" title="Register"><span class="fa fa-plus"></span></div>
             <div class="card-block">
-                <div class="material-button alt-2"><span class="shape"></span></div>
 
                <h3 class="title text-center c-white">REGISTER</h3>
-               <p class="text-center">Create a FREE account and enjoy the best socio-commerce experience ever.</p>
+               <p class="sub-title text-center">Create a FREE account and enjoy the best socio-commerce experience ever.</p>
                  
-                <form action="" method="POST">
+                <form action="followFriends.html" method="POST">
                     <div class="row">
-                        <div class="col-md-6 col-sm-6 col form-group">
+                        <div class="col-md-6 col-sm-6 col-12 form-group">
                             <label for="usr-fname">First Name</label>
                              <input type="text" name="usr-fname" id="usr-fname" class="form-control bd-3 h-40 input-alternate border-box">
                         </div>
-                        <div class="col-md-6 col-sm-6 col form-group">
+                        <div class="col-md-6 col-sm-6 col-12 form-group">
                             <label for="usr-lname">Last Name</label>
                             <input type="text" name="usr-lname" id="usr-lname" class="form-control bd-3 h-40 input-alternate border-box">
                         </div>
                     </div>
                        
                     <div class="row">
-                        <div class="col-md-12 col-sm-12 col form-group">
+                        <div class="col-md-12 col-sm-12 col-12 form-group">
                             <label for="usr-email">Email</label>
                             <input type="email" name="usr-email" id="usr-email" class="form-control bd-3 h-40 input-alternate border-box">
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6 col-sm-6 col form-group">
+                        <div class="col-md-6 col-sm-6 col-12 form-group">
                             <label for="usr-password" data-error="wrong" data-success="right">Password</label>
                             <input type="password" name="usr-password" id="usr-password" class="form-control bd-3 h-40 validate input-alternate border-box">
                         </div>
-                        <div class="col-md-6 col-sm-6 col form-group">
+                        <div class="col-md-6 col-sm-6 col-12 form-group">
                             <label for="usr-password-conf" data-error="wrong" data-success="right">Confirm Password</label>
                             <input type="password" name="usr-password-conf" id="usr-password-conf" class="form-control bd-3 h-40 validate input-alternate border-box">
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6 col-sm-6 col form-group">
+                        <div class="col-md-6 col-sm-6 col-12 form-group">
                             <label for="usr-gender">Gender</label>
-                            <select name="usr-gender" id="usr-gender" class="form-control bd-3 h-40 validate input-alternate border-box">
+                            <select name="usr-gender" id="usr-gender" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow">
                                 <option value="" disabled selected>Choose gender...</option>
                                 <option value="1">Male</option>
                                 <option value="2">Female</option>
                             </select>
                         </div>
-                        <div class="col-md-6 col-sm-6 col form-group">
-                            <label for="usr-dob" data-error="wrong" data-success="right">Confirm Password</label>
+                        <div class="col-md-6 col-sm-6 col-12 form-group">
+                            <label for="usr-dob" data-error="wrong" data-success="right">Date of Birth</label>
                             <input type="date" name="usr-dob" id="usr-dob" class="form-control bd-3 h-40 validate input-alternate border-box">
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-12 col-sm-12 col form-group">
-                            <label for="usr-persona">I am a...</label>
-                            <select name="usr-persona" id="usr-persona" class="form-control bd-3 h-40 validate input-alternate border-box">
-                                <option value="" disabled selected>Choose Persona...</option>
+                        <div class="col-md-6 col-sm-6 col-12 form-group">
+                            <label for="usr-dob" data-error="wrong" data-success="right">State</label>
+                            <input type="text" name="usr-state" id="usr-state" class="form-control bd-3 h-40 validate input-alternate border-box" list="States" placeholder="Choose State">
+                            <datalist id="States">
+                                <option value="Abia"></option>
+                                <option value="Adamawa"></option>
+                                <option value="Akwa Ibom"></option>
+                                <option value="Anambra"></option>
+                                <option value="Benue"></option>
+                            </datalist>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-12 form-group">
+                            <label for="usr-gender">Trade Community</label>
+                            <select name="usr-gender" id="usr-gender" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow">
+                                <option value="" disabled selected>Choose Community...</option>
+                                <option value="1">Ikeja</option>
+                                <option value="2">Ipaja</option>
+                                <option value="3">Agege</option>
+                                <option value="4">Surulere</option>
+                                <option value="5">Onipanu</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12 form-group">
+                            <label for="usr-persona">Trade Interest</label>
+                            <select name="usr-persona" id="usr-persona" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow">
+                                <option value="" disabled selected>Choose...</option>
                                 <option value="1">Wholesaler</option>
                                 <option value="2">Retailer</option>
                                 <option value="3">Manufacturer</option>
@@ -127,22 +153,22 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 offset-md-3 col-sm-6 offset-sm-3 col">
-                            <button type="submit" class="btn btn-block btn-outline-default waves-effect m-0">Get Started</button>
+                        <div class="col-md-6 offset-md-3 col-sm-6 offset-sm-3 col-12 m-b-20">
+                            <button type="submit" class="btn btn-block btn-outline-white waves-effect m-0">Get Started</button>
                         </div>
                     </div>
                 </form>
 
                 <div class="divider clearfix">
-                    <hr class="f-left"><span class="dis-inline-b m-t-3 m-l-15">or</span><hr class="f-right">
+                    <hr class="f-left"><span class="dis-inline-b m-t-3 m-l-5">or</span><hr class="f-right">
                 </div>
 
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col">
-                        <button type="button" class="btn btn-block bg-facebook waves-effect waves-light m-0"><i class="fa fa-facebook left"></i><span class="m-t-5">Sign up with Facebook</span></button>
+                <div class="row dis-flex">
+                    <div class="col-md-6 col-sm-6 col-12 m-t-20">
+                        <button type="button" class="btn btn-block bg-facebook waves-effect waves-light m-0"><i class="fa fa-facebook left m-b-m10"></i><span class="m-t-5"> Sign up with Facebook</span></button>
                     </div>
-                    <div class="col-md-6 col-sm-6 col">
-                        <button type="button" class="btn btn-block bg-linkedin waves-effect waves-light m-0"><i class="fa fa-linkedin left"></i><span class="m-t-5">Sign up with LinkedIn</span></button>
+                    <div class="col-md-6 col-sm-6 col-12 m-t-20">
+                        <button type="button" class="btn btn-block bg-linkedin waves-effect waves-light m-0"><i class="fa fa-linkedin left m-b-m10"></i><span class="m-t-5"> Sign up with LinkedIn</span></button>
                     </div>
                 </div>
 
@@ -152,7 +178,6 @@
     </div>
     <!-- main section ends here-->
     
-
     <!--
         <footer></footer>
     -->
@@ -171,12 +196,15 @@
     <!-- MDL core JavaScript -->
     <script type="text/javascript" src="assets/plugins/mdb/js/mdb.min.js"></script>
 
-    <!-- slick carousel -->
-    <script type="text/javascript" src="assets/plugins/slick/slick.min.js"></script>
+    <!-- Main JS -->
+    <script type="text/javascript" src="assets/js/main.js"></script>
     <script>
-        $(document).ready(function(){
-
-        });
+        document.onreadystatechange = () => {
+            if (document.readyState === "complete") {
+                app.loginToggler();
+                $('[data-toggle="tooltip"]').tooltip();
+            }
+        }
     </script>
 
 
