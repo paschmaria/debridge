@@ -104,6 +104,10 @@
           toastr.success("{{session('success')}}");
         @endif
 
+        @if (session('info'))
+          toastr.info("{{session('success')}}");
+        @endif
+
         @if (session('success_image'))
           toastr.success("{{session('success_image')}}");
         @endif
