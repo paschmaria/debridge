@@ -32,4 +32,6 @@ Route::post('/follow/{email}', 'FollowController@store')->name('follow');
 Route::post('/unfollow/{email}', 'FollowController@destroy')->name('unfollow');
 Route::get('/delete_comment/{id}', 'User\CommentController@destroy')->name('delete_comment');
 Route::get('/delete_post/{post}', 'User\PostController@destroy')->name('delete_post');
+Route::get('/register', 'Auth\UserController@register')->name('register');
+Route::post('/register', 'Auth\UserController@create')->name('register');
 

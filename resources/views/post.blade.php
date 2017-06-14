@@ -78,9 +78,11 @@
                                 <a href="{{ route('hype', $post->id) }}"><button class="btn btn-primary">Hype</button></a>
                                 <a href="{{ route('admire', $post->id) }}"><button class="btn btn-success">Admire</button></a>
                                 <!-- <a href="{{ route('admire', $post->id) }}"><button class="btn btn-success">Edit</button></a> -->
+                                @if($post->user_id===auth()->user()->id)
                                 <a href="{{ route('delete_post', $post->id) }}"><button class="btn btn-danger">Delete</button></a>
+                                @endif
                             </p>
-                            <p>Posted by: <b>{{ $post->user->name }}</b></p>
+                            <p>Posted by: <b>{{ $post->user->first_name }}</b></p>
                             <p>Posted: <b>{{ $post->updated_at->diffForHumans() }}</b></p>
                             <p>Title: <b>{{ $post->title }}</b></p>
                             <p>content: <b>{{ $post->content }}</b></p>
@@ -111,8 +113,12 @@
                                 <div class="col-sm-12">
                                     @foreach($post->comments as $comment)
                                         <br>
-                                        <p><b>{{ $comment->user->name }} - [{{ $comment->created_at->diffForHumans() }}]</p>
+                                        <p>Commented by: <b>{{ $comment->user->first_name }} - [{{ $comment->created_at->diffForHumans() }}]</p>
+                                        @if($comment->user_id === auth()->user()->id)
                                         <p>{{ $comment->content }} <a style="color: red;" href="{{ route('delete_comment', $comment->id ) }}">[ delete comment ]</a></p>
+                                        @else
+                                        <p>{{ $comment->content }}</p>
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>
