@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Models\Follower;
+use App\Models\SocialNotification;
 
 class FollowController extends Controller
 {
@@ -15,7 +16,13 @@ class FollowController extends Controller
      */
     public function index()
     {
-        //
+        $following =  auth()->user()->following;
+        $followers =  auth()->user()->followers;
+        $following_count =  auth()->user()->following()->count();
+        $followers_count =  auth()->user()->followers()->count();
+        return view('users.follow', 
+            compact('followers', 'following', 'followers_count', 'following_count')
+            );
     }
 
     /**
@@ -39,6 +46,13 @@ class FollowController extends Controller
         // Find the User. Redirect if the User doesn't exist
         $user = User::where('email', $email)->first();
         auth()->user()->following()->attach($user->id);
+        // notify $user the he has been followed by auth user
+        SocialNotification::create([
+            'user_id' => $user->id,
+            'foreigner_id' => auth()->user()->id,
+            'message' => auth()->user()->first_name . ' is now following you!',
+            'description_id' => 1 
+            ]);
         return back()->with('success', 'Now follow ' . $user->email);
     }
 
@@ -50,10 +64,7 @@ class FollowController extends Controller
      */
     public function show($id)
     {
-        $following =  Auth::user()->following;
-        $follower =  Auth::user()->follower;
-        $following_count =  Auth::user()->following()->count() - 1;
-        $follower_count =  Auth::user()->follower()->count() - 1;
+        //
     }
 
     /**
@@ -90,6 +101,13 @@ class FollowController extends Controller
         // Find the User. Redirect if the User doesn't exist
         $user = User::where('email', $email)->first();
         auth()->user()->following()->detach($user->id);
+        //notify $user that he has been unfollowed by auth user
+        SocialNotification::create([
+            'user_id' => $user->id,
+            'foreigner_id' => auth()->user()->id,
+            'message' => auth()->user()->first_name . ' unfollowed you!',
+            'description_id' => 2 
+            ]);
         return back()->with('info', 'unfollowed ' . $email);
     }
 
