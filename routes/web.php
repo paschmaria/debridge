@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -29,3 +30,6 @@ Route::post('/send_request/{email}', 'User\FriendRequestController@create')->nam
 Route::post('/undo_request/{email}', 'User\FriendRequestController@destroy')->name('undo_request');
 Route::post('/follow/{email}', 'FollowController@store')->name('follow');
 Route::post('/unfollow/{email}', 'FollowController@destroy')->name('unfollow');
+Route::get('/delete_comment/{id}', 'User\CommentController@destroy')->name('delete_comment');
+Route::get('/delete_post/{post}', 'User\PostController@destroy')->name('delete_post');
+

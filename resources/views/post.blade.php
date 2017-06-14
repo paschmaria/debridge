@@ -2,18 +2,7 @@
 
 @section('content')
 <div class="container">
-    @if (session('success'))
-        <div class="alert alert-success">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            {{ session('success') }}
-        </div>
-    @endif
-    @if (session('danger'))
-        <div class="alert alert-danger">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            {{ session('danger') }}
-        </div>
-    @endif
+    
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -21,7 +10,7 @@
                 <div class="panel-heading">Post</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" enctype="multipart/form-data" method="POST" action="{{ route('create_post') }}">
+                    <form class="form-horizontal" id="postForm" role="form" enctype="multipart/form-data" method="POST" action="{{ route('create_post') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -29,7 +18,6 @@
 
                             <div class="col-md-6">
                                 <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}"  autofocus>
-
                                 @if ($errors->has('title'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('title') }}</strong>
@@ -77,15 +65,23 @@
 
                     @foreach($posts as $post)
                         <div class="col-sm-12 well">
+                        @if(isset($post->images))
                             @foreach($post->images as $image)
-                                <img src="{{$image}}">
+                                <div class="col-xs-3 col-sm-3 col-md-4 col-lg-4">
+                                    <a href="#" class="thumbnail">
+                                        <img src="{{asset('images')."/".$image->image_reference}}">
+                                    </a>
+                                </div>
                             @endforeach
+                        @endif
                             <p>
                                 <a href="{{ route('hype', $post->id) }}"><button class="btn btn-primary">Hype</button></a>
                                 <a href="{{ route('admire', $post->id) }}"><button class="btn btn-success">Admire</button></a>
+                                <!-- <a href="{{ route('admire', $post->id) }}"><button class="btn btn-success">Edit</button></a> -->
+                                <a href="{{ route('delete_post', $post->id) }}"><button class="btn btn-danger">Delete</button></a>
                             </p>
                             <p>Posted by: <b>{{ $post->user->name }}</b></p>
-                            <p>Posted on: <b>{{ $post->updated_at }}</b></p>
+                            <p>Posted: <b>{{ $post->updated_at->diffForHumans() }}</b></p>
                             <p>Title: <b>{{ $post->title }}</b></p>
                             <p>content: <b>{{ $post->content }}</b></p>
                             <div class="col-sm-8 well  pull-right">
@@ -115,8 +111,8 @@
                                 <div class="col-sm-12">
                                     @foreach($post->comments as $comment)
                                         <br>
-                                        <p><b>{{ $comment->user->name }} - [{{ $comment->created_at }}]</p>
-                                        <p>{{ $comment->content }}</p>
+                                        <p><b>{{ $comment->user->name }} - [{{ $comment->created_at->diffForHumans() }}]</p>
+                                        <p>{{ $comment->content }} <a style="color: red;" href="{{ route('delete_comment', $comment->id ) }}">[ delete comment ]</a></p>
                                     @endforeach
                                 </div>
                             </div>
