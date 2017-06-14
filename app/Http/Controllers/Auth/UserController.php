@@ -23,6 +23,7 @@ class UserController extends Controller
     
     public function create(Request $request)
     {
+         // dd($request);
         $this->validate($request, [
             'first_name' => 'required|alpha|max:180',
             'last_name' => 'required|alpha|max:180',
@@ -30,7 +31,7 @@ class UserController extends Controller
             'password' => 'required|confirmed|min:6',
             'date_of_birth' => 'date',
             'gender' => 'alpha',
-            'account_type_id' => 'required|integer',
+            // 'account_type_id' => 'required|integer',
             ]);
 
         $user_token =  str_random(64);
@@ -41,14 +42,15 @@ class UserController extends Controller
             'password' => \Hash::make($request->password),
             'date_of_birth' => $request->date_of_birth,
             'gender' => $request->gender,
-            'account_type_id' => $request->account_type_id,
+            // 'account_type_id' => $request->account_type_id,
             'user_token' => $user_token
             ]);
+        
 
-        \Mail::to($user)->send(new Welcome($user));
-        \Session::flash('success', 'Welcome to Debridge');
+        // \Mail::to($user)->send(new Welcome($user));
+        // \Session::flash('success', 'Welcome to Debridge');
         \Auth::login($user);
-        return redirect(route('market'));
+        return redirect(route('post'));
     }
 
     public function getLogin()
