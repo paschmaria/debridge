@@ -4,24 +4,19 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\PostHype;
-use App\Models\Post;
+use App\Models\SocialNotification;
 
-class HypeController extends Controller
+class SocialNotificationController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
     public function index()
     {
-        //
+        $notifications = auth()->user()->socialNotification;
+        return view('users.notifications', compact('notifications'));
     }
 
     /**
@@ -29,18 +24,9 @@ class HypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Post $post)
+    public function create()
     {
-        if(\Auth::user()->id != $post->id){
-            $hype = PostHype::where(['post_id' => $post->id, 'user_id' => \Auth::user()->id])->first();
-            if ($hype) {
-                return back()->with('info', 'Post already hyped by you!');
-                // $hype->delete();
-            } else {
-                PostHype::create(['post_id' => $post->id, 'user_id' => \Auth::user()->id]);
-            }       
-        }
-        return back()->with('success', 'Hyped!');
+        //
     }
 
     /**

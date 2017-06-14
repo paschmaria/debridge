@@ -31,15 +31,14 @@ class AdmireController extends Controller
      */
     public function create(Post $post)
     {
-        if(\Auth::user()->id != $post->id){
-            $admire = PostAdmire::where(['post_id' => $post->id, 'user_id' => \Auth::user()->id])->first();
-            if ($admire) {
-                $admire->delete();
-            } else {
-                PostAdmire::create(['post_id' => $post->id, 'user_id' => \Auth::user()->id]);
-            }       
-        }
-        return back();
+        $admire = PostAdmire::where(['post_id' => $post->id, 'user_id' => \Auth::user()->id])->first();
+        if ($admire) {
+            // $admire->delete();
+            return back()->with('info', 'Post already admired by you!')
+        } else {
+            PostAdmire::create(['post_id' => $post->id, 'user_id' => \Auth::user()->id]);
+        }       
+        return back()->with('success', 'Admired!');
     }
 
     /**
@@ -95,6 +94,10 @@ class AdmireController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $admire = PostAdmire::where(['post_id' => $post->id, 'user_id' => \Auth::user()->id])->first();
+        if ($admire) {
+            $admire->delete();
+        }      
+        return back()->with('info', 'Unadmired!');
     }
 }
