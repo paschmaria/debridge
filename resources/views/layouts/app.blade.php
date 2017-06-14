@@ -105,7 +105,7 @@
         @endif
 
         @if (session('info'))
-          toastr.info("{{session('success')}}");
+          toastr.info("{{session('info')}}");
         @endif
 
         @if (session('success_image'))
