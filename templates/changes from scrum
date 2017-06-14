@@ -1,9 +1,9 @@
-take out sign up with linked in
+take out sign up with linked in from register page
 increase the number of states 
 on select state should fetch all cities in trade community
 
 ###follow friends####
-follow at leaset 10 friends to continue 
+follow at least 10 friends to continue 
 add continue button and more friends button 
 remove the BUTTON button
 ux to should add friends counter to know how many friends 
