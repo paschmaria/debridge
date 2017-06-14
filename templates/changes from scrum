@@ -1,0 +1,31 @@
+take out sign up with linked in
+increase the number of states 
+on select state should fetch all cities in trade community
+
+###follow friends####
+follow at leaset 10 friends to continue 
+add continue button and more friends button 
+remove the BUTTON button
+ux to should add friends counter to know how many friends 
+lock continue until requirement of friends is fufilled 
+registered users map tooltip should be light green :brand-lite
+bridger - code should appear on bridger code
+remove add item from registered users
+
+
+as regitered user clicking manufacturers wholesalers retailers farmers professionals 
+should show you post of the whoever you follow on each category
+
+navbar should be fixed across all pagers
+
+9.html should be for logged in user
+remove invite button on 9.html
+add bridger request to add friends in bridger.html
+
+9.html : removes stores in my neighbourhood and add map
+remove window shopping  on 9.html
+
+remove add item from 9.html
+9.html in cindy's fashion house. wrap url in view product
+
+on tradeRequest add space to plus icon and add friends 
