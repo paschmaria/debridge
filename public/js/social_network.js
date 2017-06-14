@@ -30,3 +30,58 @@ $(document).ready(function(){
             });
         });
     });
+
+
+
+// var reciever_email = $(".send_").data("email");
+// console.log(reciever_email);
+$(document).ready(function(){
+        $(".send_request").click(function(e){
+            e.preventDefault();
+            var reciever_email = $(this).data("email");
+            // alert(reciever_email);
+            $.ajax({
+                url:'send_request/'+reciever_email,
+                type:'POST',
+                data: {email:reciever_email},
+                success:function(data){
+                    toastr.options.preventDuplicates = true;
+                    toastr.success("Request sent just now!");
+                    $("send_request").css('display', 'none');
+                },
+                error: function (data) {
+                    toastr.options.preventDuplicates = true;
+                    toastr.error("An error occured sending request...");
+                }
+            });
+        });
+    });
+
+$(document).ready(function(){
+        $(".undo_request").click(function(e){
+            e.preventDefault();
+            var reciever_email = $(this).data("email");
+            // alert(reciever_email);
+            $.ajax({
+                url:'undo_request/'+reciever_email,
+                type:'POST',
+                data: {email:reciever_email},
+                success:function(data){
+                    // alert(data);
+                    // console.log(data);
+                    toastr.options.preventDuplicates = true;
+                    toastr.info("Request cancelled!");
+                    $(this).hide();
+                    $("#send_request").show()
+                },
+                error: function (data) {
+                    toastr.options.preventDuplicates = true;
+                    toastr.error("An error occured cancelling request...");
+                    // var obj = jQuery.parseJSON( data.responseText );
+                }
+            });
+        });
+    });
+
+
+//
