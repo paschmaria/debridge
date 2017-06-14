@@ -69,6 +69,12 @@ return [
             'bucket' => env('AWS_BUCKET'),
         ],
 
+        'uploads' => [
+            'driver' => 'local',
+            'root' => public_path() . '/de_bridge_images',
+            //https://laracasts.com/discuss/channels/general-discussion/l5-disable-csrf-middleware-on-certain-routes
+        ],
+
     ],
 
 ];

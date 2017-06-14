@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Image;
+use Carbon\Carbon;
 
 class PostController extends Controller
 {
@@ -21,7 +22,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::latest()->get();
         return view('post', compact('posts'));
     }
 
@@ -55,14 +56,17 @@ class PostController extends Controller
             ]);
         auth()->user()->posts()->save($post);
         if ($request->file('image')){
-            //dd('hello');
             $filename = 'post-' . $post->id; //. $request->file('image')->getClientOriginalExtension();
-            $store  = \Storage::disk('custom')->put($filename, $request->file('image'));
+            $store  = \Storage::disk('uploads')->put($filename, $request->file('image'));
             $img = new Image(['image_reference' => $store]);
             $post->images()->save($img);
         }
-        $request->session()->flash('success', 'Post Saved successfully!');
-        return back();
+        // $request->session()->flash('success', 'Post Saved successfully!');
+        // return back();
+        return response()->json([
+          'title' => $post->title,
+          'content'    =>  $post->content
+        ]);
     }
 
     /**
@@ -105,8 +109,14 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         //
+        $post = Post::find($id);
+        $post->comments()->delete();
+        $post->images()->delete();
+        $post = Post::destroy($id);
+        $request->session()->flash('success', 'Post deleted successfully!');
+        return back();
     }
 }
