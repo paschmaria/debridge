@@ -99,4 +99,10 @@ class User extends Authenticatable
         //pick from pivot table friend_request where current user is the receiver_id get all user received request using sender_id
         return $this->belongsToMany('App\User', 'friend_requests', 'receiver_id', 'sender_id');
     }
+
+    public function socialNotification()
+    {
+        // get user social notifications
+        return $this->hasMany('App\Models\SocialNotification');
+    }
 }

@@ -7,15 +7,15 @@
 			<div class="col-md-3 thumbnail">
 				<p>name: {{ $user->email }}</p>
 				@if(!in_array($user->id, $sent_request))
-					<form method="post" action="{{ route('send_request', $user->email) }}">
-					{{ csrf_field() }}
-					<button class="btn btn-primary" type="submit">Send Friend Request</button>
-					</form>
+					{{-- <form id="form_send_request_{{$user->email}}" > --}}
+					{{-- {{ csrf_field() }} --}}
+					<button data-email="{{$user->email}}" class="btn btn-primary send_request" type="submit">Send Friend Request</button> <br>
+					{{-- </form> --}}
 				@else
-					<form method="post" action="{{ route('undo_request', $user->email) }}">
-					{{ csrf_field() }}
-					<button class="btn btn-primary" type="submit">Undo Request</button>
-					</form>
+					{{-- <form id="form_undo_request_{{$user->email}}" > --}}
+					{{-- {{ csrf_field() }} --}}
+					<button data-email="{{$user->email}}" class="btn btn-primary undo_request" type="submit">Undo Request</button> <br>
+					{{-- </form> --}}
 				@endif
 				<br>
 				@if(!in_array($user->id, $following_ids))

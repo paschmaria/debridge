@@ -34,12 +34,13 @@ class HypeController extends Controller
         if(\Auth::user()->id != $post->id){
             $hype = PostHype::where(['post_id' => $post->id, 'user_id' => \Auth::user()->id])->first();
             if ($hype) {
-                $hype->delete();
+                return back()->with('info', 'Post already hyped by you!');
+                // $hype->delete();
             } else {
                 PostHype::create(['post_id' => $post->id, 'user_id' => \Auth::user()->id]);
             }       
         }
-        return back();
+        return back()->with('success', 'Hyped!');
     }
 
     /**

@@ -4,10 +4,9 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
-use App\Models\FriendRequest;
+use App\Models\SocialNotification;
 
-class FriendRequestController extends Controller
+class SocialNotificationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,8 @@ class FriendRequestController extends Controller
      */
     public function index()
     {
-        return view('users.friend_request');
+        $notifications = auth()->user()->socialNotification;
+        return view('users.notifications', compact('notifications'));
     }
 
     /**
@@ -24,14 +24,9 @@ class FriendRequestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($email)
+    public function create()
     {
-        // create friend request
-        $user = User::where('email', $email)->first();
-        auth()->user()->sent_requests()->attach($user);
-        // \Session::flash('success', 'Request sent!');
-        return response()->json($email);
-        // return back();
+        //
     }
 
     /**
@@ -42,7 +37,7 @@ class FriendRequestController extends Controller
      */
     public function store(Request $request)
     {
-        // 
+        //
     }
 
     /**
@@ -85,13 +80,8 @@ class FriendRequestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($email)
+    public function destroy($id)
     {
-        $user = User::where('email', $email)->first();
-        $fr = FriendRequest::where(['sender_id' => auth()->user()->id, 'receiver_id' => $user->id]);
-        $fr->delete();
-        return response()->json($email);
-
-        // return back()->with('info', 'Request cancelled');
+        //
     }
 }
