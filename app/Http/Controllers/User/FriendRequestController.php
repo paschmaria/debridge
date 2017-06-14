@@ -29,8 +29,9 @@ class FriendRequestController extends Controller
         // create friend request
         $user = User::where('email', $email)->first();
         auth()->user()->sent_requests()->attach($user);
-        \Session::flash('success', 'Request sent!');
-        return back();
+        // \Session::flash('success', 'Request sent!');
+        return response()->json($email);
+        // return back();
     }
 
     /**
@@ -89,6 +90,8 @@ class FriendRequestController extends Controller
         $user = User::where('email', $email)->first();
         $fr = FriendRequest::where(['sender_id' => auth()->user()->id, 'receiver_id' => $user->id]);
         $fr->delete();
-        return back()->with('info', 'Request cancelled');
+        return response()->json($email);
+
+        // return back()->with('info', 'Request cancelled');
     }
 }
