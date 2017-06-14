@@ -16,7 +16,7 @@ class FriendRequestController extends Controller
      */
     public function index()
     {
-        //
+        return view('users.friend_request');
     }
 
     /**
