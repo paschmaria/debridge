@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Mail\Welcome;
+use App\Models\Follower;
+use App\Models\FriendRequest;
 
 class UserController extends Controller
 {
@@ -108,7 +110,10 @@ class UserController extends Controller
      public function viewUsers()
      {
         $users = User::where('id','!=', auth()->user()->id)->get();
-
-        return view('users.users', compact('users'));
+        // get the id of the users that the auth user follows
+        $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
+        // get the id of the users that the auth user sent a friend request
+        $sent_request = FriendRequest::where('sender_id', auth()->user()->id)->pluck('receiver_id')->toArray();
+        return view('users.users', compact('users', 'following_ids', 'sent_request'));
      }
 }

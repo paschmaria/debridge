@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Models\Follower;
 
 class FollowController extends Controller
 {
@@ -32,12 +34,12 @@ class FollowController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $username)
+    public function store($email)
     {
         // Find the User. Redirect if the User doesn't exist
-        $user = User::where('username', $username)->firstOrFail();
-        Auth::user()->following()->attach($user->id);
-        return redirect('/' . $username);
+        $user = User::where('email', $email)->first();
+        auth()->user()->following()->attach($user->id);
+        return back()->with('success', 'Now follow ' . $user->email);
     }
 
     /**
@@ -83,12 +85,12 @@ class FollowController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($email)
     {
         // Find the User. Redirect if the User doesn't exist
-        $user = User::where('username', $username)->firstOrFail();
-        Auth::user()->following()->detach($user->id);
-        return redirect('/' . $username);
+        $user = User::where('email', $email)->first();
+        auth()->user()->following()->detach($user->id);
+        return back()->with('info', 'unfollowed ' . $email);
     }
 
 }

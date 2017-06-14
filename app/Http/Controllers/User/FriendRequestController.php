@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Models\FriendRequest;
 
 class FriendRequestController extends Controller
 {
@@ -28,7 +29,7 @@ class FriendRequestController extends Controller
         // create friend request
         $user = User::where('email', $email)->first();
         auth()->user()->sent_requests()->attach($user);
-        \Session::flash('success', 'Friend request sent!');
+        \Session::flash('success', 'Request sent!');
         return back();
     }
 
@@ -83,8 +84,11 @@ class FriendRequestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($email)
     {
-        //
+        $user = User::where('email', $email)->first();
+        $fr = FriendRequest::where(['sender_id' => auth()->user()->id, 'receiver_id' => $user->id]);
+        $fr->delete();
+        return back()->with('info', 'Request cancelled');
     }
 }
