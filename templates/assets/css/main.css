@@ -78,6 +78,10 @@ body {
   margin-top: 10px !important;
 }
 
+.m-t-16 {
+  margin-top: 16px !important;
+}
+
 .m-t-20 {
   margin-top: 20px !important;
 }
@@ -104,6 +108,10 @@ body {
 
 .m-t-80 {
   margin-top: 80px !important;
+}
+
+.m-t-180 {
+  margin-top: 180px !important;
 }
 
 .m-t-m20 {
@@ -224,12 +232,20 @@ body {
   margin-left: 15px !important;
 }
 
+.m-l-25 {
+  margin-left: 25px !important;
+}
+
 .m-l-20 {
   margin-left: 20px !important;
 }
 
 .m-l-30 {
   margin-left: 30px !important;
+}
+
+.m-l-40 {
+  margin-left: 40px !important;
 }
 
 .m-l-60 {
@@ -257,8 +273,16 @@ body {
   margin-right: 20px !important;
 }
 
+.m-r-25 {
+  margin-right: 25px !important;
+}
+
 .m-r-30 {
   margin-right: 30px !important;
+}
+
+.m-r-40 {
+  margin-right: 40px !important;
 }
 
 .m-r-60 {
@@ -777,8 +801,24 @@ body {
   width: 0 !important;
 }
 
+.width-82 {
+  width: 82px !important;
+}
+
 .width-110 {
   width: 110px !important;
+}
+
+.width-130 {
+  width: 130px !important;
+}
+
+.width-150 {
+  width: 150px !important;
+}
+
+.width-200 {
+  width: 200px !important;
 }
 
 .width-300 {
@@ -787,6 +827,10 @@ body {
 
 .width-310 {
   width: 310px !important;
+}
+
+.width-563 {
+  width: 563px !important;
 }
 
 .width-25p {
@@ -852,6 +896,11 @@ body {
   overflow: hidden !important;
 }
 
+.h-114 {
+  height: 114px !important;
+  overflow: hidden !important;
+}
+
 .h-150 {
   height: 150px !important;
   overflow: hidden !important;
@@ -864,6 +913,11 @@ body {
 
 .h-220 {
   height: 220px !important;
+  overflow: hidden !important;
+}
+
+.h-241 {
+  height: 241px !important;
   overflow: hidden !important;
 }
 
@@ -1465,8 +1519,8 @@ a, a:focus, a:hover, a:active {
 }
 
 [data-page="products-page"] .card .btn-group .btn {
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 37.2px;
+  padding-right: 37.2px;
 }
 
 .input-shadow {
