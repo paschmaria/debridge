@@ -33,7 +33,7 @@
     <body data-page="lagos">
         <!-- header begins here-->
         <header>
-            <div class="container-fluid bg-brand z-5000">
+            <div class="container-fluid bg-brand">
                 <div class="row p-t-35 p-b-10">
                     <div class="col col-sm-3 col-md-3">
                         <div class="dis-flex">
@@ -41,7 +41,7 @@
                                 <a href="#">
                                     <img src="assets/img/logo/debridge-logo.png" class="img-fluid m-auto">
                                 </a>
-                                <figcaption class="motto f-12 m-0 m-t-5">HOME | THE MARKET</figcaption>
+                                <figcaption class="motto f-12 m-0 m-t-5"><a href="" class="c-white">MY PROFILE</a> |  <a href="registered-users.html" class="c-white">NIGERIAN MARKET</a></figcaption>
                             </figure>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                     <div class="col col-sm-3 col-md-3">
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-12">
-                                <ul class="navbar-nav dis-flex flex-row">
+                                <ul class="navbar-nav dis-flex flex-row z-10000">
                                     <li class="nav-item animated bounceIn list-inline-item dis-block">
                                         <img src="assets/img/oval-6.png" class="" width="50" height="50">
                                     </li>
@@ -73,7 +73,7 @@
                                             <div class="dropdown-menu animated bounceIn" aria-labelledby="dropdownMenu3">
                                                 <a class="dropdown-item waves-effect waves-light" href="#">Action</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="#">Another action</a>
-                                                <a class="dropdown-item waves-effect waves-light" href="#">Something else here</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="#">Something here</a>
                                             </div>
                                         </div>
                                     </li>
@@ -81,10 +81,26 @@
                             </div>
                             <div class="col-md-12 col-sm-12 col-12 m-t-10">
                                 <ul class="navbar-nav dis-flex flex-row">
-                                    <li class=""> 
-                                        <a href="#" class="p-l-10 p-r-10">
-                                            <span class="pos-rel">
+                                    <li class="animated bounceIn"> 
+                                        <a href="mycart.html" class="p-l-10 p-r-10">
+                                            <span class="pos-rel z-5000">
                                                 <i class="fa fa-shopping-cart fa-lg c-white" aria-hidden="true"></i>
+                                                <span class="cart-count">3</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="animated bounceIn"> 
+                                        <a href="#" class="p-l-10 p-r-10">
+                                            <span class="pos-rel z-5000">
+                                                <i class="fa fa-envelope fa-lg c-white" aria-hidden="true"></i>
+                                                <span class="cart-count">3</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="animated bounceIn"> 
+                                        <a href="#" class="p-l-10 p-r-10">
+                                            <span class="pos-rel z-5000">
+                                                <i class="fa fa-bell fa-lg c-white" aria-hidden="true"></i>
                                                 <span class="cart-count">3</span>
                                             </span>
                                         </a>
@@ -93,7 +109,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> 
             </div>
             <!-- navigations/links right here -->
             <nav class="navbar navbar-toggleable-sm navbar-light transparent p-t-15 p-b-15 no-shadow border-top border-bottom" role="navigation">
@@ -411,23 +427,27 @@
                                 </div>
                             </div>
                             <div class="media m-b-40">
-                                <a class="pull-left" href="#">
-                                    <img class="media-object p-r-10" src="assets/img/acc-img-2.png" alt="Image">
-                                </a>
-                                <div class="media-body">
-                                    <h6 class="media-heading w-700 m-b-5 f-12">Cindy Fashion House</h6>
-                                    <p class="m-b-5 f-12">New arrivals are everywhere. Get Quality 2017 dresses which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing</p>
-                                    <ul class="m-b-0 f-12">
-                                        <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart"></i></span> Like</a></li>
+                                <div class="media">
+                                    <div class="pull-left p-r-10">
+                                        <img class="media-object " src="assets/img/acc-img-2.png" alt="Image">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="media-heading w-700 m-b-5 f-12">Cindy Fashion House </h6>
+                                        <p m-b- f-12>New arrivals are everywhere. Get Quality 2017 dresses which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing</p>
+                                        <ul class="m-b-0 f-12">
+                                            <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart-o"></i></span> Like</a></li>
                                         <li class="c-brand dis-inline-b p-l-10 p-r-10"><a href="#">Reply</a></li>
                                         <li class="c-brand dis-inline-b p-l-10">31 May 2017</li>
-                                    </ul>
-                                    <p class=""><small>6 persons liked this</small></p>
-                                </div>
-                            </div> 
-                            <div class="media m-b-15">
-                                <div class="media-body">
-                                    <textarea name="" id="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Write a reply..."></textarea>
+                                        </ul>
+                                        <div class="media m-t-5">
+                                            <div class="pull-left p-r-10">
+                                                <img src="assets/img/acc-img-1.png" class="media-object">
+                                            </div>
+                                            <div class="media-body">
+                                                <textarea name="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Write a reply..."></textarea>
+                                            </div>
+                                        </div> 
+                                    </div>
                                 </div>
                             </div>
                             <!--/. comment section--> 
@@ -489,28 +509,30 @@
                                 </div>
                             </div>
                             <div class="media m-b-40">
-                                <a class="pull-left" href="#">
-                                    <img class="media-object p-r-10" src="assets/img/acc-img-2.png" alt="Image">
-                                </a>
-                                <div class="media-body">
-                                    <h6 class="media-heading w-700 m-b-5 f-12">Cindy Fashion House</h6>
-                                    <p class="m-b-5 f-12">New arrivals are everywhere. Get Quality 2017 dresses which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing</p>
-                                    <ul class="m-b-0 f-12">
-                                        <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart"></i></span> Like</a></li>
+                                <div class="media">
+                                    <div class="pull-left p-r-10">
+                                        <img class="media-object " src="assets/img/acc-img-2.png" alt="Image">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="media-heading w-700 m-b-5 f-12">Cindy Fashion House </h6>
+                                        <p m-b- f-12>New arrivals are everywhere. Get Quality 2017 dresses which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing</p>
+                                        <ul class="m-b-0 f-12">
+                                            <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart-o"></i></span> Like</a></li>
                                         <li class="c-brand dis-inline-b p-l-10 p-r-10"><a href="#">Reply</a></li>
                                         <li class="c-brand dis-inline-b p-l-10">31 May 2017</li>
-                                    </ul>
-                                    <p class=""><small>6 persons liked this</small></p>
+                                        </ul>
+                                        <div class="media m-t-5">
+                                            <div class="pull-left p-r-10">
+                                                <img src="assets/img/acc-img-1.png" class="media-object">
+                                            </div>
+                                            <div class="media-body">
+                                                <textarea name="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Write a reply..."></textarea>
+                                            </div>
+                                        </div> 
+                                    </div>
                                 </div>
                             </div> 
-                            <div class="media m-b-15">
-                                <div class="media-body">
-                                    <textarea name="" id="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Write a reply..."></textarea>
-                                </div>
-                            </div>
                             <!--/. comment section--> 
-                                
-                            </div>
                         </div>
                     </div> 
                 </div>

@@ -1,6 +1,12 @@
 const app = {
 	loginToggler() {
 
+		var cardBlock = $(".overbox .card-block"),
+			subtitle = $(".overbox .sub-title"),
+			divider = $(".overbox .divider"),
+			title = $(".overbox .title"),
+			row = $(".overbox .row");
+
 	   	$(".alt-2").click(function() {
 	      	if (!$(this).hasClass('material-button')) {
 
@@ -24,11 +30,11 @@ const app = {
 	            	$(this).removeClass('active');
 	         	});
 
-	         	$(".overbox .card-block").fadeOut(300);
-	         	$(".overbox .title").fadeOut(300);
-	         	$(".overbox .sub-title").fadeOut(300);
-	         	$(".overbox .row").fadeOut(300);
-	         	$(".overbox .divider").fadeOut(300);
+	         	cardBlock.fadeOut(300);
+	         	subtitle.fadeOut(300);
+	         	divider.fadeOut(300);
+	         	title.fadeOut(300);
+	         	row.fadeOut(300);
 
 	         	$(".overbox").addClass('scale-overbox');
 
@@ -110,35 +116,60 @@ const app = {
 
 	   	});
 
-   		if (window.innerWidth <= 575) {
-   			let card_block = $('div.card-block');
+   		// if (window.innerWidth <= 575) {
+   		// 	let card_block = $('div.card-block');
 
-   			card_block.css('padding', '0');
-   			card_block.parent().css({
-   				"padding-top": '50',
-   				"padding-bottom": '50',
-   				"padding-left": '40',
-   				"padding-right": '40'
-   			});
-   			// console.log($('div.card-block').parent());
-       	}
+   		// 	card_block.css('padding', '0');
+   		// 	card_block.parent().css({
+   		// 		"padding-top": '50',
+   		// 		"padding-bottom": '50',
+   		// 		"padding-left": '40',
+   		// 		"padding-right": '40'
+   		// 	});
+   		// 	// console.log($('div.card-block').parent());
+     //   	}
 
-	   	$(".button").click(function(e) {
-	      	var pX = e.pageX,
-	         	pY = e.pageY,
-	         	oX = parseInt($(this).offset().left),
-	         	oY = parseInt($(this).offset().top);
+	   	// $(".button").click(function(e) {
+	    //   	var pX = e.pageX,
+	    //      	pY = e.pageY,
+	    //      	oX = parseInt($(this).offset().left),
+	    //      	oY = parseInt($(this).offset().top);
 
-	      	$(this).append('<span class="click-efect x-' + oX + ' y-' + oY + '" style="margin-left:' + (pX - oX) + 'px;margin-top:' + (pY - oY) + 'px;"></span>')
-	      	$('.x-' + oX + '.y-' + oY + '').animate({
-	         	"width": "500px",
-	         	"height": "500px",
-	         	"top": "-250px",
-	         	"left": "-250px",
+	    //   	$(this).append('<span class="click-efect x-' + oX + ' y-' + oY + '" style="margin-left:' + (pX - oX) + 'px;margin-top:' + (pY - oY) + 'px;"></span>')
+	    //   	$('.x-' + oX + '.y-' + oY + '').animate({
+	    //      	"width": "500px",
+	    //      	"height": "500px",
+	    //      	"top": "-250px",
+	    //      	"left": "-250px",
 
-	      	}, 600);
-	      	$("button", this).addClass('active');
-	   	})
+	    //   	}, 600);
+	    //   	$("button", this).addClass('active');
+	   	// })
+	},
+	productImageUpload() {
+		window.URL = window.URL || window.webkitURL;
 
+		let productUploadElem = document.getElementsByClassName("product-img-input"),
+			productUploadBtn = document.getElementsByClassName("btn-product-img"),
+		    productImgWrapper = document.getElementById("product-img-wrapper");
+
+		Array.from(productUploadBtn).forEach( button => {
+	      	button.addEventListener('click', (e) => {
+	      		Array.from(productUploadElem).some( (input) => {
+		      		if (input) {
+	      				input.click();
+		      			return true;
+		      		}
+	      		});
+	      		e.preventDefault();
+	      	}, false);
+	    });
+
+		Array.from(productUploadElem).forEach( input => {
+	      	input.addEventListener('click', (e) => {
+	      		console.log(input);
+	      		// imageHandler(this.files);
+	      	}, false);
+	    });
 	}
 }
