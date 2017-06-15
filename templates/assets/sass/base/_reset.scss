@@ -278,8 +278,9 @@ body{
 .h-initial {height: 30initial !important;overflow: hidden !important}
 
 /**** Position ****/
-.pos-rel{position:relative;}
+.pos-rel {position:relative;}
 .pos-abs {position:absolute;}
+.pos-fixed {position:fixed}
 
 .f-left {float:left;}
 .f-right {float:right;}
