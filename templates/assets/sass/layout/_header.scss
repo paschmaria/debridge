@@ -44,5 +44,5 @@
 	background: $red-color;
 	color: $white-color;
 
-	@include pos(absolute, $t: -11px, $l: 65%)
+	@include pos(absolute, $t: -11px, $l: 65%, $z: 5000)
 }

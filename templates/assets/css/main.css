@@ -1079,8 +1079,8 @@ a, a:focus, a:hover, a:active {
   color: #FFFFFF !important;
 }
 
-.transparent-color {
-  color: rgba(0, 0, 0, 0.2);
+.c-transparent {
+  color: transparent !important;
 }
 
 .asterisk {
@@ -1125,23 +1125,23 @@ a, a:focus, a:hover, a:active {
 
 /**** z-index ****/
 .z-10 {
-  z-index: 10;
+  z-index: 10 !important;
 }
 
 .z-100 {
-  z-index: 100;
+  z-index: 100 !important;
 }
 
 .z-1000 {
-  z-index: 1000;
+  z-index: 1000 !important;
 }
 
 .z-5000 {
-  z-index: 5000;
+  z-index: 5000 !important;
 }
 
 .z-10000 {
-  z-index: 10000;
+  z-index: 10000 !important;
 }
 
 /**** Box-sizing ****/
@@ -1232,6 +1232,7 @@ a, a:focus, a:hover, a:active {
   position: absolute;
   top: -11px;
   left: 65%;
+  z-index: 5000;
 }
 
 .hover-underline {
@@ -1386,6 +1387,40 @@ a, a:focus, a:hover, a:active {
   }
 }
 
+.btn-flat {
+  position: relative;
+  padding: .85rem 2.13rem;
+  border: none;
+  margin: 6px;
+  text-decoration: none;
+  outline: 0 !important;
+  text-transform: uppercase;
+  color: #008751;
+  background: transparent;
+}
+
+.btn-flat:hover, .btn-flat:active, .btn-flat:focus {
+  background: transparent;
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .btn-flat {
+    padding: .5rem 1rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .btn-flat {
+    padding: .5rem 1rem;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .btn-flat {
+    padding: .5rem 1rem;
+  }
+}
+
 .btn-brand {
   background: #008751;
 }
@@ -1420,13 +1455,18 @@ a, a:focus, a:hover, a:active {
 }
 
 .card .btn-group .btn {
-  padding-left: 31px;
-  padding-right: 31px;
+  padding-left: 31.7px;
+  padding-right: 31.7px;
 }
 
 [data-page="tradeline"] .card .btn-group .btn {
-  padding-left: 26.5px;
-  padding-right: 26.5px;
+  padding-left: 26.7px;
+  padding-right: 26.7px;
+}
+
+[data-page="products-page"] .card .btn-group .btn {
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 .input-shadow {
@@ -1729,4 +1769,26 @@ del span {
 
 .media-body ul li a:hover, .media-body ul li a:active, .media-body ul li a:focus {
   color: #008751;
+}
+
+.product-upload-form div:last-child {
+  position: relative !important;
+  text-align: right !important;
+  margin-bottom: 20px !important;
+  height: 56.19px;
+}
+
+.product-upload-form div:last-child .btn-flat {
+  position: absolute;
+  right: 118.156px;
+  height: 44.19px;
+}
+
+.product-upload-form div:last-child input[type="file"] {
+  width: 100px;
+  display: none !important;
+}
+
+.product-upload-form div:last-child .btn-brand {
+  height: 44.19px;
 }

@@ -39,7 +39,7 @@
                                 <a href="#">
                                     <img src="assets/img/logo/debridge-logo.png" class="img-fluid m-auto">
                                 </a>
-                                <figcaption class="motto f-12 m-0 m-t-5">HOME | THE MARKET</figcaption>
+                                <figcaption class="motto f-12 m-0 m-t-5"><a href="" class="c-white">MY PROFILE</a> |  <a href="registered-users.html" class="c-white">NIGERIAN MARKET</a></figcaption>
                             </figure>
                         </div>
                     </div>
@@ -58,14 +58,50 @@
                     </div>
                     <div class="col col-sm-3 col-md-3">
                         <div class="row">
-                            <div class="col-md-12 col-sm-12 col-12 text-center">
-                                <ul class="list-style-none user-conversion">
-                                    <li class="dis-inline-b">
-                                        <a href="#" class="btn-outline-white btn waves-effect">Log In / Register</a>
+                            <div class="col-md-12 col-sm-12 col-12">
+                                <ul class="navbar-nav dis-flex flex-row z-10000">
+                                    <li class="nav-item animated bounceIn list-inline-item dis-block">
+                                        <img src="assets/img/oval-6.png" class="" width="50" height="50">
                                     </li>
-                                    <li class="dis-inline-b pos-rel">
-                                        <a href="#" class="p-l-10 p-r-10"><img src="assets/img/icons/cart.png" alt="Your Cart"></a>
-                                        <span class="cart-count">3</span>
+                                    <li class="nav-item animated bounceIn list-inline-item dis-block">
+                                        <div class="dropdown">
+                                            <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Oladele
+                                            </a>
+                                            <div class="dropdown-menu animated bounceIn" aria-labelledby="dropdownMenu3">
+                                                <a class="dropdown-item waves-effect waves-light" href="#">Action</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="#">Another action</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="#">Something here</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-12 m-t-10">
+                                <ul class="navbar-nav dis-flex flex-row">
+                                    <li class="animated bounceIn"> 
+                                        <a href="mycart.html" class="p-l-10 p-r-10">
+                                            <span class="pos-rel z-5000">
+                                                <i class="fa fa-shopping-cart fa-lg c-white" aria-hidden="true"></i>
+                                                <span class="cart-count">3</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="animated bounceIn"> 
+                                        <a href="#" class="p-l-10 p-r-10">
+                                            <span class="pos-rel z-5000">
+                                                <i class="fa fa-envelope fa-lg c-white" aria-hidden="true"></i>
+                                                <span class="cart-count">3</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="animated bounceIn"> 
+                                        <a href="#" class="p-l-10 p-r-10">
+                                            <span class="pos-rel z-5000">
+                                                <i class="fa fa-bell fa-lg c-white" aria-hidden="true"></i>
+                                                <span class="cart-count">3</span>
+                                            </span>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -112,32 +148,15 @@
                     <div class="col-sm-6 col-md-6 text-center m-t-20">
                         <h1 class="h1-responsive f-42 w-500">PLAYSTATION</h1>
                         <h3 class="h3-responsive w-500">LG17002</h3>
-                        <p class="m-b-50">Verification Status/Countdown</p>
                         <address>42, Montgomerry Road, Sabo</address>
                         <p>jude.ejike@switch.ng</p>
                         <p>08073404890</p>
                     </div>
                     <div class="col-sm-3 col-md-3 m-t-20 text-center">
-                        <div class="table-responsive">
-                            <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td class="no-bd"><i class="fa fa-user fa-2x"></i></td>
-                                    <td class="no-bd"><p class="m-b-15 text-left">PROFILE</p></td>
-                                </tr>
-                                <tr>
-                                    <td class="no-bd"><i class="fa fa-users fa-2x"></i></td>
-                                    <td class="no-bd"><p class="m-b-15 text-left">TRADE GROUPS</p></td>
-                                </tr>
-                                <tr>
-                                    <td class="no-bd"><i class="fa fa-globe fa-2x"></i></td>
-                                    <td class="no-bd"><p class="m-b-15 text-left">TRADE COMMUNITY</p></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        </div>
-                        <div>
-                            <a href="#" class="btn btn-outline-default btn-block waves-effect">view / add inventory</a>
+                        <div class="list-group m-b-20">
+                            <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-user fa-2x p-r-40"></i><span class="p-l-40">VIEW PROFILE</span></a>
+                            <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-users fa-2x p-r-40"></i><span class="p-l-40">TRADE GROUPS</span></a>
+                            <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-globe fa-2x p-r-40"></i><span class="p-l-40">TRADE COMMUNITY</span></a>
                         </div>
                     </div>
                 </div>
@@ -157,16 +176,16 @@
                                     <!--Card content-->
                                     <div class="card-block p-5">
                                         <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
-                                            <button type="button" class="btn bg-white m-r-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-r-3 f-14">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-heart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-envelope"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14">
                                                 <i class="fa fa-share-alt"></i>
                                             </button>
                                         </div>
@@ -187,16 +206,16 @@
                                     <!--Card content-->
                                     <div class="card-block p-5">
                                         <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
-                                            <button type="button" class="btn bg-white m-r-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-r-3 f-14">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-heart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-envelope"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14">
                                                 <i class="fa fa-share-alt"></i>
                                             </button>
                                         </div>
@@ -217,16 +236,16 @@
                                     <!--Card content-->
                                     <div class="card-block p-5">
                                         <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
-                                            <button type="button" class="btn bg-white m-r-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-r-3 f-14">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-heart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-envelope"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14">
                                                 <i class="fa fa-share-alt"></i>
                                             </button>
                                         </div>
@@ -247,140 +266,16 @@
                                     <!--Card content-->
                                     <div class="card-block p-5">
                                         <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
-                                            <button type="button" class="btn bg-white m-r-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-r-3 f-14">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-heart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-envelope"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 p-r-26 p-l-26">
-                                                <i class="fa fa-share-alt"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <!--/.Card content-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-sm-12 col">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-6 col">
-                                <div class="card m-t-20">
-                                    <!--Card image-->
-                                    <div class="view overlay hm-white-slight p-5">
-                                        <img src="assets/img/products/leftside-ad-3.png" class="img-fluid width-100p" alt="">
-                                        <a href="#">
-                                            <div class="mask waves-effect waves-light"></div>
-                                        </a>
-                                    </div>
-                                    <!--/.Card image-->
-                                    <!--Card content-->
-                                    <div class="card-block p-5">
-                                        <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
-                                            <button type="button" class="btn bg-white m-r-3 f-14 p-r-26 p-l-26">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
-                                                <i class="fa fa-heart"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
-                                                <i class="fa fa-envelope"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 p-r-26 p-l-26">
-                                                <i class="fa fa-share-alt"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <!--/.Card content-->
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col">
-                                <div class="card m-t-20">
-                                    <!--Card image-->
-                                    <div class="view overlay hm-white-slight p-5">
-                                        <img src="assets/img/products/leftside-ad-3.png" class="img-fluid width-100p" alt="">
-                                        <a href="#">
-                                            <div class="mask waves-effect waves-light"></div>
-                                        </a>
-                                    </div>
-                                    <!--/.Card image-->
-                                    <!--Card content-->
-                                    <div class="card-block p-5">
-                                        <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
-                                            <button type="button" class="btn bg-white m-r-3 f-14 p-r-26 p-l-26">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
-                                                <i class="fa fa-heart"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
-                                                <i class="fa fa-envelope"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 p-r-26 p-l-26">
-                                                <i class="fa fa-share-alt"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <!--/.Card content-->
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col">
-                                <div class="card m-t-20">
-                                    <!--Card image-->
-                                    <div class="view overlay hm-white-slight p-5">
-                                        <img src="assets/img/products/leftside-ad-3.png" class="img-fluid width-100p" alt="">
-                                        <a href="#">
-                                            <div class="mask waves-effect waves-light"></div>
-                                        </a>
-                                    </div>
-                                    <!--/.Card image-->
-                                    <!--Card content-->
-                                    <div class="card-block p-5">
-                                        <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
-                                            <button type="button" class="btn bg-white m-r-3 f-14 p-r-26 p-l-26">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
-                                                <i class="fa fa-heart"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
-                                                <i class="fa fa-envelope"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 p-r-26 p-l-26">
-                                                <i class="fa fa-share-alt"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <!--/.Card content-->
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col">
-                                <div class="card m-t-20">
-                                    <!--Card image-->
-                                    <div class="view overlay hm-white-slight p-5">
-                                        <img src="assets/img/products/leftside-ad-3.png" class="img-fluid width-100p" alt="">
-                                        <a href="#">
-                                            <div class="mask waves-effect waves-light"></div>
-                                        </a>
-                                    </div>
-                                    <!--/.Card image-->
-                                    <!--Card content-->
-                                    <div class="card-block p-5">
-                                        <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
-                                            <button type="button" class="btn bg-white m-r-3 f-14 p-r-26 p-l-26">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
-                                                <i class="fa fa-heart"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
-                                                <i class="fa fa-envelope"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14">
                                                 <i class="fa fa-share-alt"></i>
                                             </button>
                                         </div>
@@ -405,16 +300,16 @@
                                     <!--Card content-->
                                     <div class="card-block p-5">
                                         <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
-                                            <button type="button" class="btn bg-white m-r-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-r-3 f-14">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-heart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-envelope"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14">
                                                 <i class="fa fa-share-alt"></i>
                                             </button>
                                         </div>
@@ -435,16 +330,16 @@
                                     <!--Card content-->
                                     <div class="card-block p-5">
                                         <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
-                                            <button type="button" class="btn bg-white m-r-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-r-3 f-14">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-heart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-envelope"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14">
                                                 <i class="fa fa-share-alt"></i>
                                             </button>
                                         </div>
@@ -465,16 +360,16 @@
                                     <!--Card content-->
                                     <div class="card-block p-5">
                                         <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
-                                            <button type="button" class="btn bg-white m-r-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-r-3 f-14">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-heart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-envelope"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14">
                                                 <i class="fa fa-share-alt"></i>
                                             </button>
                                         </div>
@@ -495,140 +390,16 @@
                                     <!--Card content-->
                                     <div class="card-block p-5">
                                         <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
-                                            <button type="button" class="btn bg-white m-r-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-r-3 f-14">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-heart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-envelope"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 p-r-26 p-l-26">
-                                                <i class="fa fa-share-alt"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <!--/.Card content-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-sm-12 col">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-6 col">
-                                <div class="card m-t-20">
-                                    <!--Card image-->
-                                    <div class="view overlay hm-white-slight p-5">
-                                        <img src="assets/img/products/leftside-ad-3.png" class="img-fluid width-100p" alt="">
-                                        <a href="#">
-                                            <div class="mask waves-effect waves-light"></div>
-                                        </a>
-                                    </div>
-                                    <!--/.Card image-->
-                                    <!--Card content-->
-                                    <div class="card-block p-5">
-                                        <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
-                                            <button type="button" class="btn bg-white m-r-3 f-14 p-r-26 p-l-26">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
-                                                <i class="fa fa-heart"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
-                                                <i class="fa fa-envelope"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 p-r-26 p-l-26">
-                                                <i class="fa fa-share-alt"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <!--/.Card content-->
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col">
-                                <div class="card m-t-20">
-                                    <!--Card image-->
-                                    <div class="view overlay hm-white-slight p-5">
-                                        <img src="assets/img/products/leftside-ad-3.png" class="img-fluid width-100p" alt="">
-                                        <a href="#">
-                                            <div class="mask waves-effect waves-light"></div>
-                                        </a>
-                                    </div>
-                                    <!--/.Card image-->
-                                    <!--Card content-->
-                                    <div class="card-block p-5">
-                                        <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
-                                            <button type="button" class="btn bg-white m-r-3 f-14 p-r-26 p-l-26">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
-                                                <i class="fa fa-heart"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
-                                                <i class="fa fa-envelope"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 p-r-26 p-l-26">
-                                                <i class="fa fa-share-alt"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <!--/.Card content-->
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col">
-                                <div class="card m-t-20">
-                                    <!--Card image-->
-                                    <div class="view overlay hm-white-slight p-5">
-                                        <img src="assets/img/products/leftside-ad-3.png" class="img-fluid width-100p" alt="">
-                                        <a href="#">
-                                            <div class="mask waves-effect waves-light"></div>
-                                        </a>
-                                    </div>
-                                    <!--/.Card image-->
-                                    <!--Card content-->
-                                    <div class="card-block p-5">
-                                        <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
-                                            <button type="button" class="btn bg-white m-r-3 f-14 p-r-26 p-l-26">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
-                                                <i class="fa fa-heart"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
-                                                <i class="fa fa-envelope"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 p-r-26 p-l-26">
-                                                <i class="fa fa-share-alt"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <!--/.Card content-->
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col">
-                                <div class="card m-t-20">
-                                    <!--Card image-->
-                                    <div class="view overlay hm-white-slight p-5">
-                                        <img src="assets/img/products/leftside-ad-3.png" class="img-fluid width-100p" alt="">
-                                        <a href="#">
-                                            <div class="mask waves-effect waves-light"></div>
-                                        </a>
-                                    </div>
-                                    <!--/.Card image-->
-                                    <!--Card content-->
-                                    <div class="card-block p-5">
-                                        <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
-                                            <button type="button" class="btn bg-white m-r-3 f-14 p-r-26 p-l-26">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
-                                                <i class="fa fa-heart"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
-                                                <i class="fa fa-envelope"></i>
-                                            </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14">
                                                 <i class="fa fa-share-alt"></i>
                                             </button>
                                         </div>
@@ -653,16 +424,16 @@
                                     <!--Card content-->
                                     <div class="card-block p-5">
                                         <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
-                                            <button type="button" class="btn bg-white m-r-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-r-3 f-14">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-heart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-envelope"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14">
                                                 <i class="fa fa-share-alt"></i>
                                             </button>
                                         </div>
@@ -683,16 +454,16 @@
                                     <!--Card content-->
                                     <div class="card-block p-5">
                                         <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
-                                            <button type="button" class="btn bg-white m-r-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-r-3 f-14">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-heart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-envelope"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14">
                                                 <i class="fa fa-share-alt"></i>
                                             </button>
                                         </div>
@@ -713,16 +484,16 @@
                                     <!--Card content-->
                                     <div class="card-block p-5">
                                         <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
-                                            <button type="button" class="btn bg-white m-r-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-r-3 f-14">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-heart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-envelope"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14">
                                                 <i class="fa fa-share-alt"></i>
                                             </button>
                                         </div>
@@ -743,16 +514,264 @@
                                     <!--Card content-->
                                     <div class="card-block p-5">
                                         <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
-                                            <button type="button" class="btn bg-white m-r-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-r-3 f-14">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-heart"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
                                                 <i class="fa fa-envelope"></i>
                                             </button>
-                                            <button type="button" class="btn bg-white m-l-3 f-14 p-r-26 p-l-26">
+                                            <button type="button" class="btn bg-white m-l-3 f-14">
+                                                <i class="fa fa-share-alt"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--/.Card content-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-6 col">
+                                <div class="card m-t-20">
+                                    <!--Card image-->
+                                    <div class="view overlay hm-white-slight p-5">
+                                        <img src="assets/img/products/leftside-ad-3.png" class="img-fluid width-100p" alt="">
+                                        <a href="#">
+                                            <div class="mask waves-effect waves-light"></div>
+                                        </a>
+                                    </div>
+                                    <!--/.Card image-->
+                                    <!--Card content-->
+                                    <div class="card-block p-5">
+                                        <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
+                                            <button type="button" class="btn bg-white m-r-3 f-14">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
+                                                <i class="fa fa-envelope"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14">
+                                                <i class="fa fa-share-alt"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--/.Card content-->
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col">
+                                <div class="card m-t-20">
+                                    <!--Card image-->
+                                    <div class="view overlay hm-white-slight p-5">
+                                        <img src="assets/img/products/leftside-ad-3.png" class="img-fluid width-100p" alt="">
+                                        <a href="#">
+                                            <div class="mask waves-effect waves-light"></div>
+                                        </a>
+                                    </div>
+                                    <!--/.Card image-->
+                                    <!--Card content-->
+                                    <div class="card-block p-5">
+                                        <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
+                                            <button type="button" class="btn bg-white m-r-3 f-14">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
+                                                <i class="fa fa-envelope"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14">
+                                                <i class="fa fa-share-alt"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--/.Card content-->
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col">
+                                <div class="card m-t-20">
+                                    <!--Card image-->
+                                    <div class="view overlay hm-white-slight p-5">
+                                        <img src="assets/img/products/leftside-ad-3.png" class="img-fluid width-100p" alt="">
+                                        <a href="#">
+                                            <div class="mask waves-effect waves-light"></div>
+                                        </a>
+                                    </div>
+                                    <!--/.Card image-->
+                                    <!--Card content-->
+                                    <div class="card-block p-5">
+                                        <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
+                                            <button type="button" class="btn bg-white m-r-3 f-14">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
+                                                <i class="fa fa-envelope"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14">
+                                                <i class="fa fa-share-alt"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--/.Card content-->
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col">
+                                <div class="card m-t-20">
+                                    <!--Card image-->
+                                    <div class="view overlay hm-white-slight p-5">
+                                        <img src="assets/img/products/leftside-ad-3.png" class="img-fluid width-100p" alt="">
+                                        <a href="#">
+                                            <div class="mask waves-effect waves-light"></div>
+                                        </a>
+                                    </div>
+                                    <!--/.Card image-->
+                                    <!--Card content-->
+                                    <div class="card-block p-5">
+                                        <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
+                                            <button type="button" class="btn bg-white m-r-3 f-14">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
+                                                <i class="fa fa-envelope"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14">
+                                                <i class="fa fa-share-alt"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--/.Card content-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-6 col">
+                                <div class="card m-t-20">
+                                    <!--Card image-->
+                                    <div class="view overlay hm-white-slight p-5">
+                                        <img src="assets/img/products/leftside-ad-3.png" class="img-fluid width-100p" alt="">
+                                        <a href="#">
+                                            <div class="mask waves-effect waves-light"></div>
+                                        </a>
+                                    </div>
+                                    <!--/.Card image-->
+                                    <!--Card content-->
+                                    <div class="card-block p-5">
+                                        <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
+                                            <button type="button" class="btn bg-white m-r-3 f-14">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
+                                                <i class="fa fa-envelope"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14">
+                                                <i class="fa fa-share-alt"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--/.Card content-->
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col">
+                                <div class="card m-t-20">
+                                    <!--Card image-->
+                                    <div class="view overlay hm-white-slight p-5">
+                                        <img src="assets/img/products/leftside-ad-3.png" class="img-fluid width-100p" alt="">
+                                        <a href="#">
+                                            <div class="mask waves-effect waves-light"></div>
+                                        </a>
+                                    </div>
+                                    <!--/.Card image-->
+                                    <!--Card content-->
+                                    <div class="card-block p-5">
+                                        <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
+                                            <button type="button" class="btn bg-white m-r-3 f-14">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
+                                                <i class="fa fa-envelope"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14">
+                                                <i class="fa fa-share-alt"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--/.Card content-->
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col">
+                                <div class="card m-t-20">
+                                    <!--Card image-->
+                                    <div class="view overlay hm-white-slight p-5">
+                                        <img src="assets/img/products/leftside-ad-3.png" class="img-fluid width-100p" alt="">
+                                        <a href="#">
+                                            <div class="mask waves-effect waves-light"></div>
+                                        </a>
+                                    </div>
+                                    <!--/.Card image-->
+                                    <!--Card content-->
+                                    <div class="card-block p-5">
+                                        <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
+                                            <button type="button" class="btn bg-white m-r-3 f-14">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
+                                                <i class="fa fa-envelope"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14">
+                                                <i class="fa fa-share-alt"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--/.Card content-->
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col">
+                                <div class="card m-t-20">
+                                    <!--Card image-->
+                                    <div class="view overlay hm-white-slight p-5">
+                                        <img src="assets/img/products/leftside-ad-3.png" class="img-fluid width-100p" alt="">
+                                        <a href="#">
+                                            <div class="mask waves-effect waves-light"></div>
+                                        </a>
+                                    </div>
+                                    <!--/.Card image-->
+                                    <!--Card content-->
+                                    <div class="card-block p-5">
+                                        <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
+                                            <button type="button" class="btn bg-white m-r-3 f-14">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14 m-r-3">
+                                                <i class="fa fa-envelope"></i>
+                                            </button>
+                                            <button type="button" class="btn bg-white m-l-3 f-14">
                                                 <i class="fa fa-share-alt"></i>
                                             </button>
                                         </div>
