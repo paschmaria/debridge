@@ -1706,6 +1706,7 @@ body {
   background: #FFFFFF;
 }
 
+<<<<<<< templates/assets/css/main.css
 .overbox h3.title:after {
   background: #FFFFFF;
   width: 4px;
@@ -1866,3 +1867,4 @@ button.btn-upload {
 #product-upload-form div:last-child .btn-brand {
   height: 44.19px;
 }
+/*# sourceMappingURL=../css/main.map */
