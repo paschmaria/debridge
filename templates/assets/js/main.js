@@ -149,8 +149,27 @@ const app = {
 	productImageUpload() {
 		window.URL = window.URL || window.webkitURL;
 
-		let fileSelect = document.getElementById("fileSelect"),
-		    fileElem = document.getElementById("fileElem"),
-		    fileList = document.getElementById("fileList");
+		let productUploadElem = document.getElementsByClassName("product-img-input"),
+			productUploadBtn = document.getElementsByClassName("btn-product-img"),
+		    productImgWrapper = document.getElementById("product-img-wrapper");
+
+		Array.from(productUploadBtn).forEach( button => {
+	      	button.addEventListener('click', (e) => {
+	      		Array.from(productUploadElem).some( (input) => {
+		      		if (input) {
+	      				input.click();
+		      			return true;
+		      		}
+	      		});
+	      		e.preventDefault();
+	      	}, false);
+	    });
+
+		Array.from(productUploadElem).forEach( input => {
+	      	input.addEventListener('click', (e) => {
+	      		console.log(input);
+	      		// imageHandler(this.files);
+	      	}, false);
+	    });
 	}
 }

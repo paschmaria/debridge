@@ -172,15 +172,35 @@ del span {
 	}
 }
 
-.product-upload-form div:last-child {
+#product-img-wrapper{
+	padding: 10px;
+	height: 120px;
+	border-radius: 2px;
+	border: 1px solid $dark-color-lite;
+
+	& .product-img-input {
+		position: relative !important;
+		width: 100px;
+		display: none;
+	}
+}
+
+button.btn-upload {
+	width: 100px;
+	height: 100px;
+	@include pos(absolute, $l: 0)
+}
+
+#product-upload-form div:last-child {
 	position: relative !important;
 	text-align: right !important;
 	margin-bottom: 20px !important;
 	height: 56.19px;
 
 	& .btn-flat {
-		@include pos(absolute, $r: 118.156px)
 		height: 44.19px;
+
+		@include pos(absolute, $r: 118.156px)
 	}
 
 	& input[type="file"] {

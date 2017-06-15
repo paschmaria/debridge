@@ -1825,24 +1825,44 @@ del span {
   color: #008751;
 }
 
-.product-upload-form div:last-child {
+#product-img-wrapper {
+  padding: 10px;
+  height: 120px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+#product-img-wrapper .product-img-input {
+  position: relative !important;
+  width: 100px;
+  display: none;
+}
+
+button.btn-upload {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 0;
+}
+
+#product-upload-form div:last-child {
   position: relative !important;
   text-align: right !important;
   margin-bottom: 20px !important;
   height: 56.19px;
 }
 
-.product-upload-form div:last-child .btn-flat {
+#product-upload-form div:last-child .btn-flat {
+  height: 44.19px;
   position: absolute;
   right: 118.156px;
-  height: 44.19px;
 }
 
-.product-upload-form div:last-child input[type="file"] {
+#product-upload-form div:last-child input[type="file"] {
   width: 100px;
   display: none !important;
 }
 
-.product-upload-form div:last-child .btn-brand {
+#product-upload-form div:last-child .btn-brand {
   height: 44.19px;
 }

@@ -245,16 +245,20 @@
                          
                         <div class="card-block p-0">
                             
-                            <form action="" class="product-upload-form">
+                            <form action="" id="product-upload-form">
                                 <div class="md-form m-0">
                                     <textarea type="text" id="status_update" class="md-textarea input-alternate p-10 h-200 border-box" placeholder="What's on your mind?"></textarea>
                                 </div>
-                                <div class="product-img-wrapper">
-                                    <!-- <span class="product-img"></span> --><span class="add-img pos-rel dis-none"><input type="file" class="product-img-uploader" multiple><span><i class="fa fa-plus fa-3x"></i></span></span>
+                                <div id="product-img-wrapper">
+                                    <!-- <span class="product-img"></span> -->
+                                    <span class="add-img pos-rel">
+                                        <span class=""><input type="file" class="product-img-input" multiple></span>
+                                        <button type="button" class="btn-upload btn-product-img"><i class="fa fa-plus fa-3x"></i></button>
+                                    </span>
                                 </div>
-                                <div class="">
+                                <div id="">
                                     <button type="button" class="btn-flat btn-product-img"><i class="fa fa-image"></i> upload</button>
-                                    <input type="file" class="product-img-uploader" multiple>
+                                    <input type="file" class="product-img-input" multiple>
                                     <button type="submit" class="btn btn-brand waves-effect">post</button>
                                 </div>
                             </form>
