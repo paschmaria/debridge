@@ -23,7 +23,7 @@ class TimelineController extends Controller
         });
         $sorted = $timeline->sortByDesc(function ($posts) {
             return $posts->created_at;
-        });a
+        });
 
         dd($sorted->values()->all());
     }
