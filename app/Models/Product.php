@@ -51,4 +51,9 @@ class Product extends Model
     {
     	return $this->hasOne('App\Models\HottestProduct', 'product_6_id', 'id');
     }
+
+    public function pictures()
+    {
+        return $this->belongsTo('App\Models\PhotoAlbum');
+    }
 }

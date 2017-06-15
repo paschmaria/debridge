@@ -16,4 +16,9 @@ class PhotoAlbum extends Model
     {
     	return $this->hasMany('App\Models\Image');
     }
+
+    public function product()
+    {
+    	return $this->hasOne('App\Models\Product');
+    }
 }

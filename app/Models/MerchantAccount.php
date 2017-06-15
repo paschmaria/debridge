@@ -25,4 +25,9 @@ class MerchantAccount extends Model
     {
     	return $this->hasOne('App\Models\ProductOfTheWeek');
     }
+
+    public function hottest_product()
+    {
+        return $this->hasOne('App\Models\HottestProduct');
+    }
 }
