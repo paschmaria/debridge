@@ -11,6 +11,11 @@ class MerchantAccount extends Model
     	return $this->belongsTo('App\User');
     }
 
+    public function inventory()
+    {
+        return $this->hasOne('App\Models\Inventory');
+    }
+
     public function address()
     {
     	return $this->belongsTo('App\Models\Address');

@@ -16,7 +16,7 @@ class CreateProductOfTheWeeksTable extends Migration
         Schema::create('product_of_the_weeks', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_id')->nullable();
-            $table->integer('merchant_acount_id')->nullable();
+            $table->integer('merchant_account_id')->nullable();
             $table->timestamps();
         });
     }
