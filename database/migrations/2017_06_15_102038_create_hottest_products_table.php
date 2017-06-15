@@ -22,6 +22,7 @@ class CreateHottestProductsTable extends Migration
             $table->integer('product_4_id')->nullable();
             $table->integer('product_5_id')->nullable();
             $table->integer('product_6_id')->nullable();
+            $table->datetime('interval_time')->nullable();
             $table->timestamps();
         });
     }
