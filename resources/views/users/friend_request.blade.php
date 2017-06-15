@@ -9,16 +9,16 @@
 
                 <div class="panel-body">
                     @forelse (auth()->user()->received_requests as $user)
-                        <div class="col-sm-12 well">
+                        <div class="col-sm-12 well" id="user_div{{$user->id}}">
                             <p>{{ $user->email }}</p>
-                            <form method="post" action="{{ route('accept_friend', $user->email) }}">
-                                {{ csrf_field() }}
-                                <button type="submit" class="btn btn-success">Accept</button>
-                            </form>
-                            <form method="post" action="{{ route('decline_friend', $user->email) }}">
-                                {{ csrf_field() }}
-                                <button type="submit" class="btn btn-success">Decline</button>
-                            </form>
+                            {{-- <form method="post" action="{{ route('accept_friend', $user->email) }}"> --}}
+                                {{-- {{ csrf_field() }} --}}
+                                <button type="submit" data-email="{{$user->email}}" data-id="{{$user->id}}" class="btn btn-success accept_friend">Accept</button> <br> <br>
+                            {{-- </form> --}}
+                            {{-- <form method="post" action="{{ route('decline_friend', $user->email) }}"> --}}
+                                {{-- {{ csrf_field() }} --}}
+                                <button type="submit" id="a_del" data-email="{{$user->email}}" data-id="{{$user->id}}" class="btn btn-danger decline_friend">Decline</button>
+                            {{-- </form> --}}
                         </div>
                     @empty
                         <div class="col-sm-10 col-sm-offset-1 well">
