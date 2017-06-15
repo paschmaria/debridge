@@ -171,5 +171,6 @@ const app = {
 	      		// imageHandler(this.files);
 	      	}, false);
 	    });
-	}
+	},
+
 }
