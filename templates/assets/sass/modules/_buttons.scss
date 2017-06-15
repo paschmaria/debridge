@@ -47,6 +47,26 @@
 	@include screenSize(ls-phone) { padding: .5rem 1rem; }
 }
 
+.btn-flat {
+	position: relative;
+	padding: .85rem 2.13rem;
+	border: none;
+	margin: 6px;
+	text-decoration: none;
+	outline: 0 !important;
+	text-transform: uppercase;
+	color: $brand-color;
+	background: $transparent-color;
+
+	&:hover, &:active, &:focus {
+		background: $transparent-color;
+	}
+
+	@include screenSize(small-desktop) { padding: .5rem 1rem; }
+	@include screenSize(tablet) { padding: .5rem 1rem; }
+	@include screenSize(ls-phone) { padding: .5rem 1rem; }
+}
+
 .btn-brand {
 	background: $brand-color;
 
@@ -66,12 +86,12 @@
 .btn-outline-brand {
 	border: 2px solid $brand-color;
 	color: $brand-color!important;
-	background-color: transparent;
+	background-color: $transparent-color;
 
 	&:hover, &:active, &:focus {
 		border: 2px solid $brand-color;
 		color: $brand-color!important;
-		background-color: transparent;
+		background-color: $transparent-color;
 	}
 }
 
@@ -81,25 +101,16 @@
 }
 
 .card .btn-group .btn {
-<<<<<<< HEAD
-	padding-left: 33.5px;
-    padding-right: 33.5px;
-=======
-	padding-left: 31px;
-    padding-right: 31px;
->>>>>>> 93f453c553501fd1e819c4a8a28f67bdde6ec7a7
+	padding-left: 31.7px;
+    padding-right: 31.7px;
 }
 
 [data-page="tradeline"] .card .btn-group .btn {
-	padding-left: 26.5px;
-    padding-right: 26.5px;
-<<<<<<< HEAD
+	padding-left: 26.7px;
+    padding-right: 26.7px;
 }
 
 [data-page="products-page"] .card .btn-group .btn {
 	padding-left: 25px;
     padding-right: 25px;
 }
-=======
-}
->>>>>>> 93f453c553501fd1e819c4a8a28f67bdde6ec7a7

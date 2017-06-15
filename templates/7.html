@@ -31,7 +31,7 @@
     <body data-page="business-page">
         <!-- header begins here-->
         <header>
-            <div class="container-fluid bg-brand">
+            <div class="container-fluid bg-brand z-5000">
                 <div class="row p-t-35 p-b-10">
                     <div class="col col-sm-3 col-md-3">
                         <div class="dis-flex">
@@ -39,7 +39,7 @@
                                 <a href="#">
                                     <img src="assets/img/logo/debridge-logo.png" class="img-fluid m-auto">
                                 </a>
-                                <figcaption class="motto f-12 m-0 m-t-5">HOME | THE MARKET</figcaption>
+                                <figcaption class="motto f-12 m-0 m-t-5"><a href="" class="c-white">MY PROFILE</a> |  <a href="registered-users.html" class="c-white">NIGERIAN MARKET</a></figcaption>
                             </figure>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                     <div class="col col-sm-3 col-md-3">
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-12">
-                                <ul class="navbar-nav dis-flex flex-row">
+                                <ul class="navbar-nav dis-flex flex-row z-10000">
                                     <li class="nav-item animated bounceIn list-inline-item dis-block">
                                         <img src="assets/img/oval-6.png" class="" width="50" height="50">
                                     </li>
@@ -71,7 +71,7 @@
                                             <div class="dropdown-menu animated bounceIn" aria-labelledby="dropdownMenu3">
                                                 <a class="dropdown-item waves-effect waves-light" href="#">Action</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="#">Another action</a>
-                                                <a class="dropdown-item waves-effect waves-light" href="#">Something else here</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="#">Something here</a>
                                             </div>
                                         </div>
                                     </li>
@@ -79,10 +79,26 @@
                             </div>
                             <div class="col-md-12 col-sm-12 col-12 m-t-10">
                                 <ul class="navbar-nav dis-flex flex-row">
-                                    <li class=""> 
-                                        <a href="#" class="p-l-10 p-r-10">
-                                            <span class="pos-rel">
+                                    <li class="animated bounceIn"> 
+                                        <a href="mycart.html" class="p-l-10 p-r-10">
+                                            <span class="pos-rel z-5000">
                                                 <i class="fa fa-shopping-cart fa-lg c-white" aria-hidden="true"></i>
+                                                <span class="cart-count">3</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="animated bounceIn"> 
+                                        <a href="#" class="p-l-10 p-r-10">
+                                            <span class="pos-rel z-5000">
+                                                <i class="fa fa-envelope fa-lg c-white" aria-hidden="true"></i>
+                                                <span class="cart-count">3</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="animated bounceIn"> 
+                                        <a href="#" class="p-l-10 p-r-10">
+                                            <span class="pos-rel z-5000">
+                                                <i class="fa fa-bell fa-lg c-white" aria-hidden="true"></i>
                                                 <span class="cart-count">3</span>
                                             </span>
                                         </a>
@@ -132,14 +148,13 @@
                 <div class="col-sm-6 col-md-6 text-center m-t-20">
                     <h1 class="h1-responsive f-42 w-500">PLAYSTATION</h1>
                     <h3 class="h3-responsive w-500">LG17002</h3>
-                    <p class="m-b-50">Verification Status/Countdown</p>
                     <address>42, Montgomerry Road, Sabo</address>
                     <p>jude.ejike@switch.ng</p>
                     <p>08073404890</p>
                 </div>
                 <div class="col-sm-3 col-md-3 m-t-20 text-center">
                     <div class="list-group m-b-20">
-                        <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-user fa-2x p-r-40"></i><span class="p-l-40">PROFILE</span></a>
+                        <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-user fa-2x p-r-40"></i><span class="p-l-40">VIEW PROFILE</span></a>
                         <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-users fa-2x p-r-40"></i><span class="p-l-40">TRADE GROUPS</span></a>
                         <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-globe fa-2x p-r-40"></i><span class="p-l-40">TRADE COMMUNITY</span</a>
                         <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-archive fa-2x p-r-40"></i><span class="p-l-40">INVENTORY</span></a>
@@ -226,9 +241,8 @@
                                <textarea type="text" id="status_update" class="md-textarea input-alternate p-10 h-200 border-box" placeholder="What's on your mind?"></textarea>
                            </div>
                            <div class="text-right m-b-20">
-                               <button type="button" class="btn btn-outline-default waves-effect">upload</button>
-                               <button type="button" class="btn btn-outline-default waves-effect">invite</button>
-                               <button type="submit" class="btn btn-outline-default waves-effect">post</button>
+                               <button type="button" class="btn btn-brand waves-effect">upload</button>
+                               <button type="submit" class="btn btn-brand waves-effect">post</button>
                            </div>
 
                             <div class="media">
@@ -273,7 +287,7 @@
                                         <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
                                     </button>
                                     <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
-                                        <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-envelope"></i></span>
+                                        <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
                                     </button>
                                     <button type="button" class="btn bg-white m-l-3 f-14">
                                         <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
@@ -323,7 +337,7 @@
                                         <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
                                     </button>
                                     <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
-                                        <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-envelope"></i></span>
+                                        <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
                                     </button>
                                     <button type="button" class="btn bg-white m-l-3 f-14">
                                         <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
@@ -373,7 +387,7 @@
                                         <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
                                     </button>
                                     <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
-                                        <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-envelope"></i></span>
+                                        <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
                                     </button>
                                     <button type="button" class="btn bg-white m-l-3 f-14">
                                         <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>

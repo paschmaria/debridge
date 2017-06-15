@@ -306,18 +306,18 @@ a, a:focus, a:hover, a:active {  outline: 0;}
 .w-900 {font-weight:900 !important;}
 
 /****  Font Color  ****/
-.c-brand{color: $brand-color !important;}
-.c-red{color: $red-color !important;}
-.c-blue{color:$blue-color !important;}
-.c-purple {color:#B57EE0 !important;}
-.c-brown{color:#9E7B2E !important;}
-.c-orange{color:#ec8521 !important;}
-.c-green {color:#18A689 !important;}
-.c-gray-light {color:#dadada !important;}
-.c-gray {color:#8F8F8F !important;}
-.c-dark {color:$dark-color !important;}
-.c-white {color:$white-color !important;}
-.transparent-color {color: rgba(0, 0, 0, 0.2);}
+.c-brand {color: $brand-color !important;}
+.c-red {color: $red-color !important;}
+.c-blue {color: $blue-color !important;}
+.c-purple {color: #B57EE0 !important;}
+.c-brown {color: #9E7B2E !important;}
+.c-orange {color: #ec8521 !important;}
+.c-green {color: #18A689 !important;}
+.c-gray-light {color: #dadada !important;}
+.c-gray {color: #8F8F8F !important;}
+.c-dark {color: $dark-color !important;}
+.c-white {color: $white-color !important;}
+.c-transparent {color: $transparent-color !important;}
 .asterisk {color: #D9534F}
 
 /**** List styling ***/
@@ -332,11 +332,11 @@ a, a:focus, a:hover, a:active {  outline: 0;}
 .dis-grid{ @include flex(grid !important, center, center, center) }
 
 /**** z-index ****/
-.z-10 { z-index:10; }
-.z-100 { z-index:100; }
-.z-1000 { z-index:1000; }
-.z-5000 { z-index:5000; }
-.z-10000 { z-index:10000; }
+.z-10 { z-index:10 !important; }
+.z-100 { z-index:100 !important; }
+.z-1000 { z-index:1000 !important; }
+.z-5000 { z-index:5000 !important; }
+.z-10000 { z-index:10000 !important; }
 
 /**** Box-sizing ****/
 .border-box { box-sizing: border-box !important; }
