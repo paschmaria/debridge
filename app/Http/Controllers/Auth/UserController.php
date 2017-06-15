@@ -18,12 +18,12 @@ class UserController extends Controller
 
     public function register()
     {
-        return view('register');
+        return view('register1');
     }
     
     public function create(Request $request)
     {
-         // dd($request);
+        
         $this->validate($request, [
             'first_name' => 'required|alpha|max:180',
             'last_name' => 'required|alpha|max:180',
@@ -33,7 +33,7 @@ class UserController extends Controller
             'gender' => 'alpha',
             // 'account_type_id' => 'required|integer',
             ]);
-
+        
         $user_token =  str_random(64);
         $user = User::create([
             'first_name' => $request->first_name,
@@ -41,7 +41,7 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => \Hash::make($request->password),
             'date_of_birth' => $request->date_of_birth,
-            'gender' => $request->gender,
+            // 'gender' => $request->gender,
             // 'account_type_id' => $request->account_type_id,
             'user_token' => $user_token
             ]);
@@ -66,7 +66,7 @@ class UserController extends Controller
             ]);
         //
         if (auth()->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
-            return redirect(route('market'));
+            return redirect(route('post'));
         } else {
             \Session::flash('danger', 'Invalid login credentials!');
             return back();
