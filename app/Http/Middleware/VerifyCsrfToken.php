@@ -14,5 +14,9 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
         'send_request/*',
         'undo_request/*',
+        'follow/*',
+        'unfollow/*',
+        'accept_friend/*',
+        'decline_friend/*',
     ];
 }
