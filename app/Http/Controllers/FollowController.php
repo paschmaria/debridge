@@ -53,7 +53,8 @@ class FollowController extends Controller
             'message' => auth()->user()->first_name . ' is now following you!',
             'description_id' => 1 
             ]);
-        return back()->with('success', 'Now follow ' . $user->email);
+        return response()->json($email);
+        // return back()->with('success', 'Now following ' . $user->email);
     }
 
     /**
@@ -108,7 +109,9 @@ class FollowController extends Controller
             'message' => auth()->user()->first_name . ' unfollowed you!',
             'description_id' => 2 
             ]);
-        return back()->with('info', 'unfollowed ' . $email);
+        return response()->json($email);
+        
+        // return back()->with('info', 'unfollowed ' . $email);
     }
 
 }

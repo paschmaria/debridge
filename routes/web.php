@@ -41,7 +41,6 @@ Route::post('/decline_friend/{email}', 'User\FriendsController@update')->name('d
 Route::post('/unfriend/{email}', 'User\FriendsController@destroy')->name('unfriend');
 Route::get('/notifications', 'User\SocialNotificationController@index')->name('notifications');
 Route::get('/friend_requests', 'User\FriendRequestController@index')->name('friend_requests');
-
 Route::get('/register', 'Auth\UserController@register')->name('register');
 
 Route::post('/registered', 'Auth\UserController@create')->name('registered');
@@ -51,4 +50,11 @@ Route::post('/register', 'Auth\UserController@postLogin')->name('login');
 Route::group(['prefix' => 'merchant'], function (){
 	Route::get('/', 'Merchant\ProductController@index')->name('merchant');
 	Route::get('/addProduct', 'Merchant\ProductController@create')->name('addProduct');
+
+Route::group(['prefix' => 'admin'], function() {
+	Route::match(['get', 'post'], '/', 'Admin\AdminController@signin');
+	Route::group(['middleware' => 'admin'], function() {
+	    //
+	});
+});
 });

@@ -98,7 +98,10 @@ class FriendsController extends Controller
             'message' => auth()->user()->first_name . ' accepted your friendship!',
             'description_id' => 4 
             ]);
-        return back()->with('info', 'You declined ' . $user->first_name . ' friendship!');
+
+        return response()->json($email);
+        
+        // return back()->with('info', 'You declined ' . $user->first_name . ' friendship!');
     }
 
     /**
