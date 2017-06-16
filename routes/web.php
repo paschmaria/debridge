@@ -31,7 +31,7 @@ Route::get('/hype/{post}', 'User\HypeController@create')->name('hype');
 
 Route::get('/admire/{post}', 'User\AdmireController@create')->name('admire');
 
-Route::get('/a', 'User\TimelineController@index')->name('a');
+Route::get('/timeline', 'User\TimelineController@index')->name('timeline');
 
 Route::get('users', 'Auth\UserController@viewUsers')->name('view_users');
 

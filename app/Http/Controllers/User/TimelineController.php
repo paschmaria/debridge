@@ -25,7 +25,8 @@ class TimelineController extends Controller
             return $posts->created_at;
         });
 
-        dd($sorted->values()->all());
+        $posts = $sorted->values()->all();
+        return view('users.timeline', compact('posts'));
     }
 
     /**
