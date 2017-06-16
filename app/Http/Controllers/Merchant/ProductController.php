@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Merchant;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\User\PhotoAlbumController;
 use App\Models\ProductCategory;
 use App\Models\MerchantAccount;
 use App\Models\Inventory;
@@ -16,10 +17,14 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $photo_album;
 
-    // public function __construct(){
-    //     $this->middleware('merchant');
-    // }
+    public function __construct(PhotoAlbumController $photo_album)
+    {
+        $this->photo_album = $photo_album;
+        //$this->middleware('merchant');
+    }
+
     public function index()
     {
         //
@@ -61,13 +66,17 @@ class ProductController extends Controller
         $inventory->save();
         // dd($inventory);
         // $product_category_id = $request->input('category');
-
         $product = new Product();
         $product->name = $request->input('product_name');
         $product->description = $request->input('decription');
         $product->price = $request->input('product_price');
         $product->quantity = $request->input('quantity');
         $product->product_category_id = $request->input('category');
+        
+        if(!empty($request->file('file'))){
+            $album = $this->photo_album->store();
+        }
+        dd($album);
         // $product->
 
         $product->inventory()->associate($inventory);

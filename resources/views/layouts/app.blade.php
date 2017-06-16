@@ -55,6 +55,14 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                        <a href="{{ url('/') }}">Home</a>
+
+                                        <a class="dropdown-item waves-effect waves-light" href="{{ url('friends') }}">My friends</a>
+                                        <a href="{{ url('follow') }}">Followers</a>
+                                        <a href="{{ url('friend_requests') }}">Friend requestions</a>
+                                        <a href="{{ url('upload') }}">Albums</a>
+                                        <a href="{{ url('notifications') }}">Notifications</a>
+                                        <a href="{{ url('users') }}">De-bridge users</a>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
