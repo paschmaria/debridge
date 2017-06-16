@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('users/logout', 'User\FriendsController@user_logout');
+Route::get('users/logout', 'User\FriendsController@user_logout')->name('user_logout');
 
 Auth::routes();
 
