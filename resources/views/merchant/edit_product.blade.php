@@ -39,7 +39,7 @@
 <h3 class="title text-center">Edit PRODUCT</h3>
                <p class="sub-title text-center">Edit a product here</p>
                  
-                <form action="" method="POST">
+                <form action="{{ route('update_product', $product->id) }}" method="POST">
                     <div class="row">
                         <p>{{ csrf_field() }}</p>
                         <div class="col-md-6 col-sm-6 col-12 form-group{{ $errors->has('product_name') ? ' has-error' : '' }}">

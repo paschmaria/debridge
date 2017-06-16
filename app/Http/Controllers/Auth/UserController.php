@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     function __construct()
     {
-    	$this->middleware('guest')->except(['logout', 'verifyToken', 'resendActivationMail','market','viewUsers']);
+    	$this->middleware('guest')->except(['logout', 'verifyToken', 'resendActivationMail','market','viewUsers', 'brigeCode']);
     }
 
     public function register()
@@ -104,12 +104,12 @@ class UserController extends Controller
      	return back();
      }
 
-     public function market()
+    public function market()
      {
          return view('market');
      }
 
-     public function viewUsers()
+    public function viewUsers()
      {
         $users = User::where('id','!=', auth()->user()->id)->get();
         // get the id of the users that the auth user follows
@@ -118,4 +118,22 @@ class UserController extends Controller
         $sent_request = FriendRequest::where('sender_id', auth()->user()->id)->pluck('receiver_id')->toArray();
         return view('users.users', compact('users', 'following_ids', 'sent_request'));
      }
+
+     public function brigeCode(Request $request, $id)
+     {
+        $user = User::find($id);
+
+        $user_id = (string)$user->id;
+
+        $user_id = $user_id[0];
+
+        $random_string = str_random(2);
+
+        $brige_code = 'DB'.$user_id.$random_string;
+
+        dd($brige_code);
+
+     }
+
+
 }
