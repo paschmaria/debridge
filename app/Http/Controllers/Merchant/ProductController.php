@@ -73,7 +73,7 @@ class ProductController extends Controller
         $product->inventory()->associate($inventory);
         $product->save();
 
-        return redirect()->route('merchant')->with('success', 'Product Added Sucessfully');
+        return redirect()->route('merchant')->with('info', 'Product Added Sucessfully');
 
         
 
@@ -110,7 +110,7 @@ class ProductController extends Controller
             $product->quantity = $request->input('quantity');
             $product->product_category_id = $request->input('category');
             $product->save();
-            return redirect()->route('merchant')->with('success', 'Product Updated Sucessfully ');
+            return redirect()->route('merchant')->with('info', 'Product Updated Sucessfully ');
         }else{
             return view('merchant.edit_product', compact('product', 'product_categories'));
         }
@@ -139,7 +139,7 @@ class ProductController extends Controller
         //
         // dd('hi');
         $product = Product::destroy($id);
-        return redirect()->route('merchant');
+        return redirect()->route('merchant')->with('info', 'Product Deleted Sucessfully');
     }
 
     public function viewAllProduct(){
