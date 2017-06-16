@@ -36,16 +36,16 @@
     <div class="card box m-t-80 m-b-40">
         <div class="card-block">
 
-<h3 class="title text-center">ADD PRODUCT</h3>
-               <p class="sub-title text-center">Add a product here</p>
+<h3 class="title text-center">Edit PRODUCT</h3>
+               <p class="sub-title text-center">Edit a product here</p>
                  
-                <form action="{{ route('addProduct') }}" method="POST">
+                <form action="" method="POST">
                     <div class="row">
                         <p>{{ csrf_field() }}</p>
                         <div class="col-md-6 col-sm-6 col-12 form-group{{ $errors->has('product_name') ? ' has-error' : '' }}">
                             <label for="first_name">Product Name</label>
 
-                            <input type="text" name="product_name" id="usr-fname" class="form-control bd-3 h-40 input-alternate border-box" required value="{{ old('first_name') }}">
+                            <input type="text" name="product_name" id="usr-fname" class="form-control bd-3 h-40 input-alternate border-box" required value="{{ $product->name }}">
 
                             @if ($errors->has('product_name'))
                                     <span class="help-block">
@@ -57,7 +57,7 @@
 
                         <div class="col-md-6 col-sm-6 col-12 form-group{{ $errors->has('product_price') ? ' has-error' : '' }}">
                             <label for="last_name">Product Price</label>
-                            <input type="number" name="product_price" id="usr-lname" class="form-control bd-3 h-40 input-alternate border-box" required value="{{ old('product_price') }}">
+                            <input type="number" name="product_price" id="usr-lname" class="form-control bd-3 h-40 input-alternate border-box" required value="{{ $product->price }}">
 
                             @if ($errors->has('product_price'))
                                     <span class="help-block">
@@ -100,7 +100,7 @@
 
                         <div class="col-md-6 col-sm-6 col-12 form-group{{ $errors->has('quantity') ? ' has-error' : '' }}">
                             <label for="quantity" data-error="wrong" data-success="right">Quantity</label>
-                            <input type="number" name="quantity" id="usr-dob" class="form-control bd-3 h-40 validate input-alternate border-box" required value="{{ old('quantity') }}">
+                            <input type="number" name="quantity" id="usr-dob" class="form-control bd-3 h-40 validate input-alternate border-box" required value="{{ $product->quantity }}">
 
                              @if ($errors->has('quantity'))
                                     <span class="help-block">
@@ -112,7 +112,7 @@
 
                     <div class="row">
                         <div class="col-md-6 offset-md-3 col-sm-6 offset-md-4 col-12 m-b-20">
-                            <button type="submit" class="btn btn-success  waves-effect m-0">Add Product</button>
+                            <button type="submit" class="btn btn-success  waves-effect m-0">UPDATE Product</button>
                         </div>
                     </div>
                 </form>
