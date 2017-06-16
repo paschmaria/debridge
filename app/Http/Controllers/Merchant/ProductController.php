@@ -119,6 +119,7 @@ class ProductController extends Controller
             $product->quantity = $request->input('quantity');
             $product->product_category_id = $request->input('category');
             $product->save();
+            return redirect()->route('merchant')->with('success', 'Product Updated Sucessfully ');
         }else{
             return view('merchant.edit_product', compact('product', 'product_categories'));
         }

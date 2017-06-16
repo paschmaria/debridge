@@ -118,4 +118,9 @@ class FriendsController extends Controller
         $user->friends()->detach($auth_user);
         return back()->with('info', 'You unfriended ' . $user->first_name . '!');
     }
+
+    public function user_logout(){
+        \Auth::logout();
+        return redirect('/');
+     }
 }

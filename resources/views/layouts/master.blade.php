@@ -65,9 +65,11 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-12 text-center">
                                 <ul class="list-style-none user-conversion">
+                                
                                     <li class="dis-inline-b">
                                         <a href="{{ route('register') }}" class="btn-outline-white btn waves-effect">Log In / Register</a>
                                     </li>
+                              
                                     <li class="dis-inline-b pos-rel">
                                         <a href="#" class="p-l-10 p-r-10"><span><i class="fa fa-shopping-cart fa-lg c-white" aria-hidden="true"></i></span></a>
                                         <span class="cart-count">3</span>
@@ -76,6 +78,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     @else
                     <div class="col col-sm-3 col-md-3">
                         <div class="row">
@@ -228,6 +231,7 @@
         </script>
 
         <script src="{{asset('js/social_network.js')}}"></script>
+        <script src="{{asset('js/toastr.min.js')}}"></script>
 
      <script type="text/javascript">
         toastr.options.preventDuplicates = true;
