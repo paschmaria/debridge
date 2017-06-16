@@ -47,7 +47,7 @@ class CommentController extends Controller
             'user_id' => auth()->user()->id,
             'post_id' => $post->id
             ]);
-        $request->session()->flash('success', 'Comment succesful');
+        // $request->session()->flash('success', 'Comment succesful');
         return back();
     }
 

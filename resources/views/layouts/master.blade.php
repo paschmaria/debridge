@@ -64,15 +64,14 @@
                             <div class="col-md-12 col-sm-12 col-12 text-center">
 
                                 <ul class="list-style-none user-conversion">
-                                @if(!Auth::check())
+                                @if(Auth::check())
 
                                     <li class="dis-inline-b">
-                                        <a href="{{ route('register') }}" class="btn-outline-white btn waves-effect">Log In / Register</a>
+                                        <a href="{{ url('/users/logout') }}" class="btn-outline-white btn waves-effect">Logout</a>
                                     </li>
                                 @else
-
                                     <li class="dis-inline-b">
-                                        <a href="{{ route('logout') }}" class="btn-outline-white btn waves-effect">Logout</a>
+                                        <a href="{{ route('register') }}" class="btn-outline-white btn waves-effect">Log In / Register</a>
                                     </li>
                                 @endif
 
@@ -192,6 +191,7 @@
         </script>
 
         <script src="{{asset('js/social_network.js')}}"></script>
+        <script src="{{asset('js/toastr.min.js')}}"></script>
 
      <script type="text/javascript">
         toastr.options.preventDuplicates = true;

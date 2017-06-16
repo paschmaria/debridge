@@ -50,7 +50,7 @@ class UserController extends Controller
         // \Mail::to($user)->send(new Welcome($user));
         // \Session::flash('success', 'Welcome to Debridge');
         \Auth::login($user);
-        return redirect(route('post'));
+        return redirect(route('post'))->with('info', 'Welcome, '. $user->email);
     }
 
     public function getLogin()
@@ -66,10 +66,10 @@ class UserController extends Controller
             ]);
         //
         if (auth()->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
-            return redirect(route('post'));
+            return redirect(route('post'))->with('info', 'Welcome back, '. \Auth::user()->email);
         } else {
             \Session::flash('danger', 'Invalid login credentials!');
-            return back();
+            return back()->with('info', 'Wrong email or password');
         }
         
     }
@@ -135,5 +135,6 @@ class UserController extends Controller
 
      }
 
+    
 
 }

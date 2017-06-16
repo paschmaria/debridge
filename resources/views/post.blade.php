@@ -75,12 +75,12 @@
                             @endforeach
                         @endif
                             <p>
-                                <a href="{{ route('hype', $post->id) }}"><button class="btn btn-primary">Hype</button></a>
-                                @if(1)
+                                <!-- <a href="{{ route('hype', $post->id) }}"><button class="btn btn-primary">Hype</button></a> -->
+                                <!-- @if(1)
                                     <a href="{{ route('admire', $post->id) }}"><button class="btn btn-success">Admire</button></a>
                                 @else
                                     <a href="{{ route('admire', $post->id) }}"><button class="btn btn-success">Unadmire</button></a>
-                                @endif
+                                @endif -->
                                 <!-- <a href="{{ route('admire', $post->id) }}"><button class="btn btn-success">Edit</button></a> -->
                                 @if($post->user_id===auth()->user()->id)
                                 <a href="{{ route('delete_post', $post->id) }}"><button class="btn btn-danger">Delete</button></a>
@@ -102,9 +102,9 @@
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first('content') }}</strong>
                                                 </span>
-                                            @endif
+                                            @endif <br>
                                         </div>
-                                    </div>
+                                    </div> 
 
                                     <div class="form-group">
                                         <div class="col-md-8 col-md-offset-4">
