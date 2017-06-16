@@ -42,10 +42,10 @@ Route::post('/unfriend/{email}', 'User\FriendsController@destroy')->name('unfrie
 Route::get('/notifications', 'User\SocialNotificationController@index')->name('notifications');
 Route::get('/friend_requests', 'User\FriendRequestController@index')->name('friend_requests');
 
-Route::group(['prefix' => 'admin'], function() {
-	Route::match(['get', 'post'], '/', 'Admin\AdminController@signin');
-	Route::group(['middleware' => 'admin'], function() {
-	    //
+Route::match(['get', 'post'], '/admin', 'Admin\AdminController@signin');
+
+Route::group(['middleware' => 'admin'], function() {
+	Route::group(['prefix' => 'admin'], function() {
+	    Route::get('/home', 'Admin\AdminController@home');
 	});
-    
 });
