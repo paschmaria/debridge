@@ -155,7 +155,7 @@ const app = {
 			productImgWrapper = document.getElementById("product-img-wrapper"),
 		    productImgList = document.getElementById("product-imgs");
 
-		productImgWrapper.style.display = "none";
+		//productImgWrapper.style.display = "none";
 
 		Array.from(productUploadBtn).forEach( button => {
 	      	button.addEventListener('click', (e) => {
