@@ -18,6 +18,7 @@
         <!-- slick carousel -->
         <link rel="stylesheet" type="text/css" href="{{ asset('plugins/slick/slick.css') }}"/>
         <link rel="stylesheet" type="text/css" href="{{ asset('plugins/slick/slick-theme.css') }}"/>
+        <link rel="stylesheet" href="{{asset ('css/toastr.min.css') }}" rel="stylesheet" />
 
         <!-- Bootstrap core CSS -->
         <link href="{{ asset('plugins/mdb/css/bootstrap.css') }}" rel="stylesheet">
@@ -61,10 +62,20 @@
                     <div class="col col-sm-3 col-md-3">
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-12 text-center">
+
                                 <ul class="list-style-none user-conversion">
+                                @if(!Auth::check())
+
                                     <li class="dis-inline-b">
                                         <a href="{{ route('register') }}" class="btn-outline-white btn waves-effect">Log In / Register</a>
                                     </li>
+                                @else
+
+                                    <li class="dis-inline-b">
+                                        <a href="{{ route('logout') }}" class="btn-outline-white btn waves-effect">Logout</a>
+                                    </li>
+                                @endif
+
                                     <li class="dis-inline-b pos-rel">
                                         <a href="#" class="p-l-10 p-r-10"><span><i class="fa fa-shopping-cart fa-lg c-white" aria-hidden="true"></i></span></a>
                                         <span class="cart-count">3</span>
@@ -179,6 +190,49 @@
                 $('[data-toggle="tooltip"]').tooltip();
             });
         </script>
+
+        <script src="{{asset('js/social_network.js')}}"></script>
+
+     <script type="text/javascript">
+        toastr.options.preventDuplicates = true;
+        // toastr.success("ola");
+        @if (session('middleware'))
+          toastr.error("{{session('middleware')}}");
+        @endif
+
+        @if (session('welcome_back'))
+          toastr.success("{{session('welcome_back')}}");
+        @endif
+
+        @if (session('welcome'))
+          toastr.success("{{session('welcome')}}");
+        @endif
+
+        @if (session('delete_message'))
+          toastr.error("{{session('delete_message')}}");
+        @endif
+
+        @if (session('success'))
+          toastr.success("{{session('success')}}");
+        @endif
+
+        @if (session('info'))
+          toastr.info("{{session('info')}}");
+        @endif
+
+        @if (session('success_image'))
+          toastr.success("{{session('success_image')}}");
+        @endif
+
+        @if (session('delete'))
+          toastr.error("{{session('error_image')}}");
+        @endif
+
+        @if ($errors->has('image_reference')) 
+          toastr.error("{{$errors->first('image_reference')}}");
+        @endif
+      </script>
+
 
     </body>
 
