@@ -39,7 +39,7 @@
 <h3 class="title text-center">ADD PRODUCT</h3>
                <p class="sub-title text-center">Add a product here</p>
                  
-                <form action="{{ route('addProduct') }}" method="POST">
+                <form action="{{ route('addProduct') }}" enctype="multipart/form-data" method="POST">
                     <div class="row">
                         <p>{{ csrf_field() }}</p>
                         <div class="col-md-6 col-sm-6 col-12 form-group{{ $errors->has('product_name') ? ' has-error' : '' }}">
@@ -108,6 +108,17 @@
                                     </span>
                                 @endif
                         </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-12 form-group{{ $errors->has('quantity') ? ' has-error' : '' }}">
+                        <label for="file" data-error="wrong" data-success="right">File</label>
+                        <input multiple type="file" name="file[]" id="" class="form-control bd-3 h-40 validate input-alternate border-box" required value="{{ old('quantity') }}">
+
+                         @if ($errors->has('quantity'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('quantity') }}</strong>
+                                </span>
+                            @endif
                     </div>
 
                     <div class="row">
