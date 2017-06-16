@@ -185,7 +185,7 @@ const app = {
 		      		// console.log(products);
 		      		imageHandler(products);
 		      		slots--;
-		      		console.log(slots);
+		      		// console.log(slots);
 	      		}
 	      		
 	      	}, false);
