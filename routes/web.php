@@ -50,6 +50,7 @@ Route::post('/register', 'Auth\UserController@postLogin')->name('login');
 Route::group(['prefix' => 'merchant'], function (){
 	Route::get('/', 'Merchant\ProductController@index')->name('merchant');
 	Route::get('/addProduct', 'Merchant\ProductController@create')->name('addProduct');
+});
 
 Route::match(['get', 'post'], '/admin', 'Admin\AdminController@signin');
 
@@ -57,3 +58,4 @@ Route::group(['middleware' => 'admin'], function() {
 	Route::group(['prefix' => 'admin'], function() {
 	    Route::get('/home', 'Admin\AdminController@home');
 	});
+});
