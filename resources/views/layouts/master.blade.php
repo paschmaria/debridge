@@ -93,15 +93,19 @@
                                             <div class="dropdown-menu animated bounceIn" aria-labelledby="dropdownMenu3">
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ url('friends') }}">My friends</a>
                                                 <a class="dropdown-item waves-effect waves-light"  href="{{ url('follow') }}">Followers</a>
-                                                <a class="dropdown-item waves-effect waves-light"  href="{{ url('friend_requests') }}">Friend requestions</a>
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ url('friend_requests') }}">Friend requests</a>
                                                 <a class="dropdown-item waves-effect waves-light"  href="{{ url('upload') }}">Albums</a>
                                                 <a class="dropdown-item waves-effect waves-light"  href="{{ url('notifications') }}">Notifications</a>
                                                 <a class="dropdown-item waves-effect waves-light"  href="{{ url('users') }}">De-bridge users</a>
+
                                                 <a class="dropdown-item waves-effect waves-light"  href="{{ route('user_logout') }}"
                                                     onclick="event.preventDefault();
                                                              document.getElementById('logout-form').submit();">
                                                     Logout
                                                 </a>
+
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ route('logout') }}">Logout</a>
+
                                             </div>
                                         </div>
                                     </li>

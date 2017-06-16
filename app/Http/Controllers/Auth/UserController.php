@@ -45,6 +45,7 @@ class UserController extends Controller
             // 'account_type_id' => $request->account_type_id,
             'user_token' => $user_token
             ]);
+        $user->following($user);
         
 
         // \Mail::to($user)->send(new Welcome($user));
