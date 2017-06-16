@@ -16,7 +16,7 @@ class PhotoAlbumController extends Controller
      */
     public function index()
     {
-        $albums = PhotoAlbum::with('images')->get();
+        $albums = PhotoAlbum::where(['user_id' => auth()->user()->id ])->with('images')->get();
         //dd($albums);
         return view('upload_image', compact('albums'));
     }
@@ -31,7 +31,7 @@ class PhotoAlbumController extends Controller
         //dd('hello');
         $files = $request->file('file');
         if(!empty($files)){
-            $album = PhotoAlbum::create([]);
+            $album = PhotoAlbum::create(['user_id' => auth()->user()->id]);
             foreach ($files as $file) {
                 $filename = "album-$album->id" . '/' .$file->getClientOriginalName();
                 \Storage::disk('custom')->put($filename, file_get_contents($file));
@@ -50,7 +50,17 @@ class PhotoAlbumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $files = $request->file('file');
+        if(!empty($files)){
+            $album = PhotoAlbum::create([]);
+            foreach ($files as $file) {
+                $filename = "album-$album->id" . '/' .$file->getClientOriginalName();
+                \Storage::disk('custom')->put($filename, file_get_contents($file));
+                Image::create(['photo_album_id' => $album->id, 'image_reference' => $filename]);
+            }
+            return $ablum->id;
+        }
+        return;
     }
 
     /**

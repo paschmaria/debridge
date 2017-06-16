@@ -59,23 +59,15 @@
                             
                         </div>
                     </div>
+                    @if(!Auth::check())
+
                     <div class="col col-sm-3 col-md-3">
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-12 text-center">
-
                                 <ul class="list-style-none user-conversion">
-                                @if(!Auth::check())
-
                                     <li class="dis-inline-b">
                                         <a href="{{ route('register') }}" class="btn-outline-white btn waves-effect">Log In / Register</a>
                                     </li>
-                                @else
-
-                                    <li class="dis-inline-b">
-                                        <a href="{{ route('logout') }}" class="btn-outline-white btn waves-effect">Logout</a>
-                                    </li>
-                                @endif
-
                                     <li class="dis-inline-b pos-rel">
                                         <a href="#" class="p-l-10 p-r-10"><span><i class="fa fa-shopping-cart fa-lg c-white" aria-hidden="true"></i></span></a>
                                         <span class="cart-count">3</span>
@@ -84,6 +76,50 @@
                             </div>
                         </div>
                     </div>
+                    @else
+                    <div class="col col-sm-3 col-md-3">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-12">
+                                <ul class="navbar-nav dis-flex flex-row">
+                                    
+                                    <li class="nav-item animated bounceIn list-inline-item dis-block">
+                                        <div class="dropdown">
+                                            <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{ auth()->user()->first_name }}
+                                            </a>
+                                            <div class="dropdown-menu animated bounceIn" aria-labelledby="dropdownMenu3">
+                                                <a class="dropdown-item waves-effect waves-light" href="{{ url('friends') }}">My friends</a>
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ url('follow') }}">Followers</a>
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ url('friend_requests') }}">Friend requestions</a>
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ url('upload') }}">Albums</a>
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ url('notifications') }}">Notifications</a>
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ url('users') }}">De-bridge users</a>
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                                    Logout
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-12 m-t-10">
+                                <ul class="navbar-nav dis-flex flex-row">
+                                    <li class=""> 
+                                        <a href="#" class="p-l-10 p-r-10">
+                                            <span class="pos-rel">
+                                                <i class="fa fa-shopping-cart fa-lg c-white" aria-hidden="true"></i>
+                                                <span class="cart-count">3</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    @endif
                 </div>               
             </div>
             <!-- navigations/links right here -->
