@@ -174,7 +174,7 @@ const app = {
 
 		Array.from(productUploadElem).forEach( input => {
 	      	input.addEventListener('change', () => {
-	      		if (slots == 0) {
+	      		if (slots === 0) {
 	      			return;
 	      		}
 	      		else{
@@ -185,7 +185,7 @@ const app = {
 		      		// console.log(products);
 		      		imageHandler(products);
 		      		slots--;
-		      		// console.log(slots);
+		      		console.log(slots);
 	      		}
 	      		
 	      	}, false);
@@ -195,7 +195,7 @@ const app = {
     		Array.from(files).forEach( file => {
 	    		if ((file.type !== "image/jpeg") && (file.type !== "image/png")) {
 
-	    			return false;
+	    			return;
 
 	    		} else {
 
@@ -215,10 +215,10 @@ const app = {
 	    		}
     	    });
 
-	    	if (imageList.length > 4) {
-    			// alert("Complete");
-    			input.style.display ='none';
-    		} 
+	    	// if (imageList.length > 4) {
+    		// 	// alert("Complete");
+    		// 	input.style.display ='none';
+    		// } 
 	    }
 	},
 	commentHandler: function(){
