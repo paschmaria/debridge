@@ -243,14 +243,26 @@
                     <div class="card m-t-20 p-18">
                          
                         <div class="card-block p-0">
-                           <div class="md-form m-0">
-                               <textarea type="text" id="status_update" class="md-textarea input-alternate p-10 h-100 border-box" placeholder="What's on your mind?"></textarea>
-                           </div>
-                           <div class="text-right m-b-20">
-                               <button type="button" class="btn btn-outline-default waves-effect">upload</button>
-                               
-                               <button type="submit" class="btn btn-outline-default waves-effect">post</button>
-                           </div>
+
+                            
+                            <form action="" id="product-upload-form">
+                                <div class="md-form m-0">
+                                    <textarea type="text" id="status_update" class="md-textarea input-alternate p-10 h-200 border-box" placeholder="What's on your mind?"></textarea>
+                                </div>
+                                <div id="product-img-wrapper" class="dis-flex flex-row dis-none">
+                                    <ul id="product-imgs" class=""></ul>
+                                    <span class="add-img pos-rel dis-none">
+                                        <span class=""><input type="file" class="product-img-input" multiple></span>
+                                        <button type="button" class="btn-upload btn-product-img"><i class="fa fa-plus fa-3x"></i></button>
+                                    </span>
+                                </div>
+                                <div id="">
+                                    <button type="button" class="btn-flat btn-product-img"><i class="fa fa-image"></i> upload</button>
+                                    <input type="file" class="product-img-input" multiple>
+                                    <button type="submit" class="btn btn-brand waves-effect">post</button>
+                                </div>
+                            </form>
+
                             <div class="media">
                                 <a class="pull-left" href="#">
                                     <img class="media-object p-r-10" src="assets/img/acc-img-1.png" alt="Image">
@@ -474,58 +486,12 @@
         <script type="text/javascript" src="assets/plugins/slick/slick.min.js"></script>
 
         <script>
-            $(document).ready(function(){
-                $('.carousel_big').slick({
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    dots: true,
-                    arrows: false,
-                    fade: true,
-                    autoplay: true,
-                    asNavFor: '.carousel_small'
-                });
-                $('.carousel_small').slick({
-                    infinite: true,
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    arrows: false,
-                    asNavFor: '.carousel_big',
-                    focusOnSelect: true,
-                    autoplay: true,
-                    autoplaySpeed: 2000,
-                    vertical: true,
-                    centerPadding: '0px',
-                    responsive: [
-                        // {
-                        //   breakpoint: 1024,
-                        //   settings: {
-                        //     slidesToShow: 3,
-                        //     slidesToScroll: 3,
-                        //     infinite: true
-                        //   }
-                        // },
-                        {
-                          breakpoint: 600,
-                          settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2,
-                            infinite: true
-                          }
-                        },
-                        {
-                          breakpoint: 480,
-                          settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            infinite: true
-                          }
-                        }
-                    ]
-                });
 
-                new WOW().init();
-                $('[data-toggle="tooltip"]').tooltip();
-            });
+            document.onreadystatechange = () => {
+                if (document.readyState === "complete") {
+                    app.productImageUpload(4);
+                }
+            }
         </script>
     
     </body>
