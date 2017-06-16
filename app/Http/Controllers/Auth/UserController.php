@@ -69,7 +69,7 @@ class UserController extends Controller
             return redirect(route('post'))->with('info', 'Welcome back, '. \Auth::user()->email);
         } else {
             \Session::flash('danger', 'Invalid login credentials!');
-            return back()->with('info', 'Wrong email or password');
+            return back()->with('middleware', 'Wrong email or password');
         }
         
     }
