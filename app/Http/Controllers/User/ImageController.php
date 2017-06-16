@@ -3,22 +3,17 @@
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
-use App\Models\PostAdmire;
-use App\Models\Post;
+use App\Models\Image;
 
-class AdmireController extends Controller
+class ImageController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
     public function index()
     {
         //
@@ -29,16 +24,9 @@ class AdmireController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Post $post)
+    public function create()
     {
-        $admire = PostAdmire::where(['post_id' => $post->id, 'user_id' => \Auth::user()->id])->first();
-        if ($admire) {
-            // $admire->delete();
-            return back()->with('info', 'Post already admired by you!');
-        } else {
-            PostAdmire::create(['post_id' => $post->id, 'user_id' => \Auth::user()->id]);
-        }       
-        return back()->with('success', 'Admired!');
+        //
     }
 
     /**
@@ -58,9 +46,10 @@ class AdmireController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($folder, $reference)
     {
-        //
+        $file = \Storage::disk('custom')->get($folder . '/' . $reference);
+        return new Response($file, 200);
     }
 
     /**
@@ -94,10 +83,9 @@ class AdmireController extends Controller
      */
     public function destroy($id)
     {
-        $admire = PostAdmire::where(['post_id' => $post->id, 'user_id' => \Auth::user()->id])->first();
-        if ($admire) {
-            $admire->delete();
-        }      
-        return back()->with('info', 'Unadmired!');
+        $image = Image::where(['id' => $id])->first();
+        \Storage::disk('custom')->delete($image->image_reference);
+        $image->delete();
+        return back()->with('info', 'Image Deleted successfully!');
     }
 }
