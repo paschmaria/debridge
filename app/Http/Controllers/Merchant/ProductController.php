@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Merchant;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\ProductCategory;
+use App\Models\MerchantAccount;
+use App\Models\Inventory;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -12,9 +16,14 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    // public function __construct(){
+    //     $this->middleware('merchant');
+    // }
     public function index()
     {
         //
+        
         return view('merchant.merchant');
     }
 
@@ -26,7 +35,8 @@ class ProductController extends Controller
     public function create()
     {
         //
-        return view('merchant.add_product');
+        $product_categories = ProductCategory::all();
+        return view('merchant.add_product', compact('product_categories'));
     }
 
     /**
@@ -37,7 +47,37 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $this->validate($request,[
+            'product_name'=>'max:20',
+            'decription' => 'max:50'
+            ]);
+        $merchant = new MerchantAccount();
+        $merchant->user_id = auth()->user()->id;
+        $merchant->save();
+
+        $inventory = new Inventory();
+        $inventory->merchant_account_id = $merchant->id;
+        $inventory->save();
+        // dd($inventory);
+        // $product_category_id = $request->input('category');
+
+        $product = new Product();
+        $product->name = $request->input('product_name');
+        $product->description = $request->input('decription');
+        $product->price = $request->input('product_price');
+        $product->quantity = $request->input('quantity');
+        $product->product_category_id = $request->input('category');
+        // $product->
+
+        $product->inventory()->associate($inventory);
+        $product->save();
+
+        return redirect()->route('merchant')->with('success', 'Product Added Sucessfully');
+
+        
+
+        
     }
 
     /**
@@ -57,9 +97,22 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id=null)
     {
         //
+        $product_categories = ProductCategory::all();
+        $product = Product::find($id);
+        // dd($product);
+        if($request->isMethod('Post')){
+            $product->name = $request->input('product_name');
+            $product->description = $request->input('decription');
+            $product->price = $request->input('product_price');
+            $product->quantity = $request->input('quantity');
+            $product->product_category_id = $request->input('category');
+            $product->save();
+        }else{
+            return view('merchant.edit_product', compact('product', 'product_categories'));
+        }
     }
 
     /**
@@ -83,5 +136,14 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+        // dd('hi');
+        $product = Product::destroy($id);
+        return redirect()->route('merchant');
+    }
+
+    public function viewAllProduct(){
+        $products = Product::all();
+        // dd($product);
+        return view('merchant.products', compact('products'));
     }
 }

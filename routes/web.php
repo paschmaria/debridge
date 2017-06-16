@@ -47,7 +47,7 @@ Route::post('/registered', 'Auth\UserController@create')->name('registered');
 
 Route::post('/register', 'Auth\UserController@postLogin')->name('login');
 
-Route::group(['prefix' => 'merchant'], function (){
+Route::group(['prefix' => 'merchant', 'middleware'=> 'merchant'], function (){
 	Route::get('/', 'Merchant\ProductController@index')->name('merchant');
 	Route::get('/addProduct', 'Merchant\ProductController@create')->name('addProduct');
 });
@@ -59,3 +59,11 @@ Route::group(['middleware' => 'admin'], function() {
 	    Route::get('/home', 'Admin\AdminController@home');
 	});
 });
+
+	Route::post('/addProduct', 'Merchant\ProductController@store')->name('addProduct');
+	Route::get('/allProduct', 'Merchant\ProductController@viewAllProduct')->name('allProduct');
+	Route::get('/logout', 'Auth\UserController@logout')->name('logout');
+	Route::get('/delete/{id}', 'Merchant\ProductController@destroy')->name('delete');
+	Route::get('/edit_product/{id}', 'Merchant\ProductController@edit')->name('edit_product');
+	Route::post('/edit_product/?{id}', 'Merchant\ProductController@edit')->name('update_product');
+
