@@ -9,6 +9,7 @@ use App\Models\ProductCategory;
 use App\Models\MerchantAccount;
 use App\Models\Inventory;
 use App\Models\Product;
+use App\Models\ProductOfTheWeek;
 
 class ProductController extends Controller
 {
@@ -54,21 +55,18 @@ class ProductController extends Controller
     {
         
         $this->validate($request,[
-            'product_name'=>'max:20',
-            'decription' => 'max:50'
+            'product_name'=>'required|max:20',
+            'description' => 'required|max:50'
             ]);
-        $merchant = new MerchantAccount();
-        $merchant->user_id = auth()->user()->id;
-        $merchant->save();
 
-        $inventory = new Inventory();
-        $inventory->merchant_account_id = $merchant->id;
-        $inventory->save();
-        // dd($inventory);
+        //get or create merchant acount and inventory
+        $merchant = MerchantAccount::firstOrCreate(['user_id' => auth()->user()->id]);
+        $inventory = Inventory::firstOrCreate(['merchant_account_id' => $merchant->id]);
+        
         // $product_category_id = $request->input('category');
         $product = new Product();
         $product->name = $request->input('product_name');
-        $product->description = $request->input('decription');
+        $product->description = $request->input('description');
         $product->price = $request->input('product_price');
         $product->quantity = $request->input('quantity');
         $product->product_category_id = $request->input('category');
@@ -77,6 +75,7 @@ class ProductController extends Controller
             $album = $this->photo_album->store($request);
             $product->photo_album_id = $album;
         }
+
         // $product->
 
         $product->inventory()->associate($inventory);
@@ -148,12 +147,54 @@ class ProductController extends Controller
         //
         // dd('hi');
         $product = Product::destroy($id);
-        return redirect()->route('merchant')->with('info', 'Product Deleted Sucessfully');
+        return back()->with('info', 'Product Deleted Sucessfully');
     }
 
     public function viewAllProduct(){
-        $products = Product::all();
-        // dd($product);
-        return view('merchant.products', compact('products'));
+        //get or create merchant acount and inventory
+        $merchant = MerchantAccount::firstOrCreate(['user_id' => auth()->user()->id]);
+        $inventory = Inventory::firstOrCreate(['merchant_account_id' => $merchant->id]);
+        $products = Product::where('inventory_id', $inventory->id)->get();
+        $product_of_the_week = ProductOfTheWeek::where('merchant_account_id', $merchant->id)->first();
+        if($product_of_the_week!=null){
+            // dd('net');\
+        $current_time = date('Y-m-d');
+        $product_of_the_week_updated = date('Y-m-d', strtotime($product_of_the_week->updated_at));
+        $current_time = date('Y-m-d', strtotime($current_time.' - 7days'));
+        // dd($next_week_time);
+        // $current_time = date('Y-m-d');
+        $diff_in_days = $current_time == $product_of_the_week_updated;
+        // dd($diff_in_days);
+        // dd($current_time - $current_time);
+        return view('merchant.products', compact('products', 'product_of_the_week', 'diff_in_days'));
+        }else{
+            dd('hello');
+            return view('merchant.products', compact('products', 'product_of_the_week'));
+
+        }
+        dd('hi');
+        // dd($product_of_the_week);
+        // dd($product_of_the_week_updated, $next_week_time);
+
+        // return view('merchant.products', compact('products', 'product_of_the_week'));
+    }
+    public function product_of_the_week(Request $request, $id){
+        // a user cannot tamper with the product of the week in any way
+        if($request->isMethod('post')){
+
+            $product = Product::find($id);
+
+            $merchant_account = MerchantAccount::where('user_id', auth()->user()->id)->first();
+            $merchant_account_id = $merchant_account->id;
+            $product_of_the_week = ProductOfTheWeek::firstOrCreate(['product_id' => $product->id, 'merchant_account_id' => $merchant_account_id]);
+            return back()->with('info', 'Product Of The Week Made');
+        }else{
+            return back();
+        }
+    }
+
+    public function viewProductOfTheWeek($id){
+        $product_of_the_week = ProductOfTheWeek::find($id);
+        dd($product_of_the_week);
     }
 }

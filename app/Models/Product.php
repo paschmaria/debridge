@@ -16,7 +16,7 @@ class Product extends Model
     	return $this->belongsTo('App\Models\ProductCategory');
     }
 
-    public function potw() //product_of_the_week
+    public function product_of_the_week() //product_of_the_week
     {
     	return $this->hasOne('App\Models\ProductOfTheWeek');
     }
