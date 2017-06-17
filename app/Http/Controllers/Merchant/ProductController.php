@@ -74,9 +74,9 @@ class ProductController extends Controller
         $product->product_category_id = $request->input('category');
         
         if(!empty($request->file('file'))){
-            $album = $this->photo_album->store();
+            $album = $this->photo_album->store($request);
+            $product->photo_album_id = $album;
         }
-        dd($album);
         // $product->
 
         $product->inventory()->associate($inventory);
