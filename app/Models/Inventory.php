@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Inventory extends Model
 {
+	protected $fillable = ['merchant_account_id'];
     public function merchant()
     {
     	return $this->belongsTo('App\Models\MerchantAccount');

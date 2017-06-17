@@ -78,7 +78,18 @@ Route::post('/register', 'Auth\UserController@postLogin')->name('login');
 Route::group(['prefix' => 'merchant', 'middleware'=> 'merchant'], function (){
 	Route::get('/', 'Merchant\ProductController@index')->name('merchant');
 	Route::get('/addProduct', 'Merchant\ProductController@create')->name('addProduct');
+
+	Route::post('/addProduct', 'Merchant\ProductController@store')->name('addProduct');
+	Route::get('/allProduct', 'Merchant\ProductController@viewAllProduct')->name('allProduct');
+	Route::get('/logout', 'Auth\UserController@logout')->name('mechant_logout');
+	Route::get('/delete/{id}', 'Merchant\ProductController@destroy')->name('delete');
+	Route::get('/edit_product/{id}', 'Merchant\ProductController@edit')->name('edit_product');
+	Route::post('/update_product/{id}', 'Merchant\ProductController@edit')->name('update_product');
+	Route::post('/product_of_week/{id}', 'Merchant\ProductController@product_of_the_week')->name('product_of_the_week');
+	Route::get('/view_product_of_week', 'Merchant\ProductController@viewProductOfTheWeek')->name('view_product_of_week');
 });
+
+Route::get('/brigeCode/{id}', 'Auth\UserController@brigeCode')->name('brige_code');
 
 Route::match(['get', 'post'], '/admin', 'Admin\AdminController@signin');
 
@@ -88,15 +99,6 @@ Route::group(['middleware' => 'admin'], function() {
 	});
 });
 
-	Route::post('/addProduct', 'Merchant\ProductController@store')->name('addProduct');
-	Route::get('/allProduct', 'Merchant\ProductController@viewAllProduct')->name('allProduct');
-	Route::get('/logout', 'Auth\UserController@logout')->name('mechant_logout');
-	Route::get('/delete/{id}', 'Merchant\ProductController@destroy')->name('delete');
-	Route::get('/edit_product/{id}', 'Merchant\ProductController@edit')->name('edit_product');
-	Route::post('/update_product/{id}', 'Merchant\ProductController@edit')->name('update_product');
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 	Route::match(['get', 'post'], '/', 'Admin\AdminController@signin');
 });
-
-Route::get('/brigeCode/{id}', 'Auth\UserController@brigeCode')->name('brige_code');
-

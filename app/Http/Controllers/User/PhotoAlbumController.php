@@ -58,7 +58,7 @@ class PhotoAlbumController extends Controller
                 \Storage::disk('custom')->put($filename, file_get_contents($file));
                 Image::create(['photo_album_id' => $album->id, 'image_reference' => $filename]);
             }
-            return $ablum->id;
+            return $album->id;
         }
         return;
     }
