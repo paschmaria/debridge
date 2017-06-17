@@ -164,6 +164,8 @@ const app = {
 	      				input.click();
 		      			return true;
 		      		}
+      				// $('#product-img-wrapper').removeClass('dis-none')
+      				// 	.addClass('dis-flex');
 	      		});
 	      		e.preventDefault();
 	      	}, false);
@@ -185,7 +187,7 @@ const app = {
 		      		// console.log(products);
 		      		imageHandler(products);
 		      		slots--;
-		      		// console.log(slots);
+		      		console.log(slots);
 	      		}
 	      		
 	      	}, false);
