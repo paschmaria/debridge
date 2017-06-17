@@ -14,12 +14,17 @@ class FollowController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $following =  auth()->user()->following;
         $followers =  auth()->user()->followers;
-        $following_count =  auth()->user()->following()->count();
-        $followers_count =  auth()->user()->followers()->count();
+        $following_count =  auth()->user()->following()->count() - 1;
+        $followers_count =  auth()->user()->followers()->count() - 1;
         return view('users.follow', 
             compact('followers', 'following', 'followers_count', 'following_count')
             );
