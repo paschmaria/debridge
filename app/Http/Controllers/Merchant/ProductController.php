@@ -220,4 +220,11 @@ class ProductController extends Controller
         $product->save();
         return redirect()->route('allProduct')->with('info', 'Promo Sucessfully Remove');
     }
+
+    public function whats_new(){
+       $products = Product::orderBy('updated_at', 'desc')->paginate(5);
+
+       return view('merchant.whats_new', compact('products'));
+
+    }
 }

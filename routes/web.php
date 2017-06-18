@@ -93,8 +93,11 @@ Route::group(['prefix' => 'merchant', 'middleware'=> 'merchant'], function (){
 	Route::get('/view_product_of_week', 'Merchant\ProductController@viewProductOfTheWeek')->name('view_product_of_week');
 
 	Route::get('/edit_promo/{id}', 'Merchant\ProductController@promo')->name('promo');
+
 	Route::post('/update_promo/{id}', 'Merchant\ProductController@promo')->name('update_promo');
+
 	Route::get('/delete_promo/{id}', 'Merchant\ProductController@remove_promo')->name('remove_promo');
+	Route::get('/whats_new/', 'Merchant\ProductController@whats_new')->name('whats_new');
 
 });
 
