@@ -10,6 +10,7 @@ use App\Models\MerchantAccount;
 use App\Models\Inventory;
 use App\Models\Product;
 use App\Models\ProductOfTheWeek;
+use Carbon\Carbon;
 
 class ProductController extends Controller
 {
@@ -156,19 +157,19 @@ class ProductController extends Controller
         $inventory = Inventory::firstOrCreate(['merchant_account_id' => $merchant->id]);
         $products = Product::where('inventory_id', $inventory->id)->get();
         $product_of_the_week = ProductOfTheWeek::where('merchant_account_id', $merchant->id)->first();
+        // dd($product_of_the_week);
         if($product_of_the_week!=null){
-            // dd('net');\
+            // dd('net');
         $current_time = date('Y-m-d');
         $product_of_the_week_updated = date('Y-m-d', strtotime($product_of_the_week->updated_at));
         $current_time = date('Y-m-d', strtotime($current_time.' - 7days'));
-        // dd($next_week_time);
-        // $current_time = date('Y-m-d');
+        // dd($current_time);
         $diff_in_days = $current_time == $product_of_the_week_updated;
         // dd($diff_in_days);
         // dd($current_time - $current_time);
         return view('merchant.products', compact('products', 'product_of_the_week', 'diff_in_days'));
         }else{
-            dd('hello');
+            // dd('hello');
             return view('merchant.products', compact('products', 'product_of_the_week'));
 
         }
@@ -186,7 +187,8 @@ class ProductController extends Controller
 
             $merchant_account = MerchantAccount::where('user_id', auth()->user()->id)->first();
             $merchant_account_id = $merchant_account->id;
-            $product_of_the_week = ProductOfTheWeek::firstOrCreate(['product_id' => $product->id, 'merchant_account_id' => $merchant_account_id]);
+            $data = ['product_id' => $product->id, 'merchant_account_id' => $merchant_account_id, 'updated_at' => Carbon::now()];
+            $update = ProductOfTheWeek::updateOrCreate(['merchant_account_id'=> $merchant_account_id], $data);
             return back()->with('info', 'Product Of The Week Made');
         }else{
             return back();
@@ -196,5 +198,26 @@ class ProductController extends Controller
     public function viewProductOfTheWeek($id){
         $product_of_the_week = ProductOfTheWeek::find($id);
         dd($product_of_the_week);
+    }
+
+    public function promo(Request $request, $id){
+        $product = Product::find($id);
+        if($request->isMethod('post')){
+
+            $product->promo_price = $request->input('promo_price');
+            $product->save();
+            // dd($product->promo_price);
+            return redirect()->route('allProduct')->with('info', 'Promo Sucessfully Added');
+            
+        }else{
+            return view('merchant.make_promo', compact('product'));
+        }
+    }
+
+    public function remove_promo($id){
+        $product = Product::find($id);
+        $product->promo_price = null;
+        $product->save();
+        return redirect()->route('allProduct')->with('info', 'Promo Sucessfully Remove');
     }
 }

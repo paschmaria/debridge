@@ -84,9 +84,16 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-12">
                                 <ul class="navbar-nav dis-flex flex-row">
-                                    
+                                    @if(isset($user_picture))
+                                    <li class="nav-item animated bounceIn list-inline-item dis-block">
+                                        <a href="{{ route('image', [$user_picture, '']) }}"><img src="{{ route('image', [$user_picture, '']) }}" class="" width="50" height="50"></a>
+                                    </li>
+                                    @endif
+                                    <p></p>
+
                                     <li class="nav-item animated bounceIn list-inline-item dis-block">
                                         <div class="dropdown">
+
                                             <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ auth()->user()->first_name }}
                                             </a>

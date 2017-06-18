@@ -69,10 +69,10 @@
                        
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-12 form-group{{ $errors->has('decription') ? ' has-error' : '' }}">
-                            <label for="email">Decription</label>
+                            <label for="email">Description</label>
                             <!-- <input type="text" name="email" id="usr-email" class="form-control bd-3 h-40 input-alternate border-box" required value="{{ old('email') }}"> -->
 
-                            <textarea name="description" class="form-control" rows="30" required></textarea>
+                            <textarea name="description" class="form-control" rows="30" required>{{ $product->description }}</textarea>
 
                              @if ($errors->has('description'))
                                     <span class="help-block">
