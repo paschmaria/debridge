@@ -1277,7 +1277,7 @@ a, a:focus, a:hover, a:active {
   }
 }
 
-.cart-count, .messages, .notifications {
+.cart-count, .message-count, .notification-count {
   padding: 1px 6px;
   border-radius: 50%;
   font-size: 13px;
@@ -1359,6 +1359,23 @@ a, a:focus, a:hover, a:active {
   .nav-link {
     padding: 8px;
   }
+}
+
+.pagination {
+  background: #FFFFFF;
+}
+
+.page-item.active .page-link {
+  background-color: #008751;
+  border-color: #008751;
+}
+
+.page-link {
+  color: #008751;
+}
+
+.page-link:focus, .page-link:focus, .page-link:focus {
+  color: #008751;
 }
 
 .material-button span {

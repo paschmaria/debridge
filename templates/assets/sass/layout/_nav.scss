@@ -36,3 +36,19 @@
 	}
 }
 
+.pagination {
+	background: $white-color;
+}
+
+.page-item.active .page-link {
+    background-color: $brand-color;
+    border-color: $brand-color;
+}
+
+.page-link {
+	color: $brand-color;
+}
+
+.page-link:focus, .page-link:focus, .page-link:focus {
+	color: $brand-color;
+}
