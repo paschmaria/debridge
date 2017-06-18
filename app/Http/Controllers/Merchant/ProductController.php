@@ -76,7 +76,7 @@ class ProductController extends Controller
             $album = $this->photo_album->store($request);
             $product->photo_album_id = $album;
         }
-        // dd();
+
         // $product->
 
         $product->inventory()->associate($inventory);
