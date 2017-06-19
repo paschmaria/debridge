@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\SocialNotification;
+use App\Models\ProductNotification;
 
 class SocialNotificationController extends Controller
 {
@@ -16,8 +17,9 @@ class SocialNotificationController extends Controller
     public function index()
     {
         $notifications = auth()->user()->socialNotification()->with('foreigner')->get();
+        $product_notifications  = auth()->user()->productNotifications()->with('product')->get();
         // dd($notifications);
-        return view('users.notifications', compact('notifications'));
+        return view('users.notifications', compact('notifications', 'product_notifications'));
     }
 
     /**
