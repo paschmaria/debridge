@@ -194,32 +194,51 @@ const app = {
 	likeToggler() {
         let likeBtn = document.getElementsByClassName("like");
 
-        Array.from(likeBtn).forEach( btn => {
-        	btn.addEventListener('click', (e) => {
-        		e.preventDefault();
-        		$.ajax({
-        			url: '',
-        			type: 'POST',
-        			dataType: 'json',
-        			data: {
-        				format: 'json'
-        			}
-        		})
-        		.done( (e) => {
-        			// console.log(btn);
-        			btn.innerHTML = `<i class="fa fa-heart"></i>`;
-        		})
-        		.fail( (e) => {
-        			// console.log(btn);
-        			btn.innerHTML = `<i class="fa fa-heart-o"></i>`;	
-        		})
-        		.always( (e) => {
-        			// console.log(btn);
-        			btn.innerHTML = `<i class="fa fa-heart-o"></i>`;
-        		});
-        		
-        	})
-        })
+    	for (var i = 0;	i < likeBtn.length; i++ ) {
+    		// console.log(likeBtn[i].parentElement.lastElementChild);
+    		likeBtn[i].parentElement.addEventListener('click', function(e) {
+    			// alert("Clicked");
+    			if (e.srcElement) {
+    				// console.log(e.srcElement.children[1]);
+    				likeBtnClicker();
+    				e.srcElement.children[1].click();
+    			}
+	    		// likeBtn[i].parentElement.lastElementChild.click();
+    		})
+    	}
+
+    	function likeBtnClicker() {
+			Array.from(likeBtn).forEach( btn => {
+    			// console.log(btn);
+    			// btn.click();
+				btn.addEventListener('click', (e) => {
+					e.preventDefault();
+					// console.log(e);
+					let dislikeHTML = `<i class="fa fa-heart-o"></i>`,
+						likeHTML = `<i class="fa fa-heart"></i>`;
+					$.ajax({
+						// pass url here
+						url: '',
+						type: 'POST',
+						dataType: 'json',
+						data: {
+							likePost: 'json'
+						},
+						success() {
+							// console.log("Success!");
+							(btn.innerHTML = dislikeHTML) ? (btn.innerHTML = likeHTML) : (btn.innerHTML = dislikeHTML);
+						},
+						error() {
+							// console.log("error!");
+							(btn.innerHTML = dislikeHTML) ? (btn.innerHTML = likeHTML) : (btn.innerHTML = dislikeHTML);
+							// Replace code at the top with comented out code if url is passed
+							// (btn.innerHTML = dislikeHTML) ? (btn.innerHTML = dislikeHTML) : (btn.innerHTML = likeHTML);
+						}
+					})
+					
+				})
+		    })
+    	}
     },
     commentHandler() {
     	let $container = $('section.main'),
@@ -248,7 +267,7 @@ const app = {
     	                            </div>
     	                            <div class="media-body">
     	                                <h6 class="media-heading w-700 m-b-5 f-12">Cindy Fashion House</h6>
-    	                                <p class="f-12">`+comment.users[i].comment+`</p>
+    	                                <p class="f-12">${comment.users[i].comment}</p>
     	                                <ul class="m-b-0 f-12">
     	                                    <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart-o"></i></span> Like</a></li>
     	                                	<li class="c-brand dis-inline-b p-l-10 p-r-10 comment-reply"><a href="#">Reply</a></li>
