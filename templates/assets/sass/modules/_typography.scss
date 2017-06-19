@@ -176,18 +176,38 @@ del span {
 	padding: 10px;
 	height: 120px;
 	border-radius: 2px;
+	justify-content: flex-start !important;
 	border: 1px solid $dark-color-lite;
 
-	& .product-img-input {
-		position: relative !important;
+	& ul#product-imgs {
+		margin: 0;
+		display: inherit;
+
+		& img {
+			display: inline;
+			padding:5px;
+			width: 100px;
+			height: 100px;
+		}
+	}
+
+	& .add-img {
 		width: 100px;
-		display: none;
+		height: 100px;
+		padding: 5px;
+
+		& .product-img-input {
+			position: relative !important;
+			width: 100px;
+			display: none;
+		}
 	}
 }
 
 button.btn-upload {
-	width: 100px;
-	height: 100px;
+	width: 90px;
+	height: 90px;
+	margin-left: 5px;
 	@include pos(absolute, $l: 0)
 }
 

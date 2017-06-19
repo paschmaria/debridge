@@ -39,7 +39,7 @@
                                 <a href="#">
                                     <img src="assets/img/logo/debridge-logo.png" class="img-fluid m-auto">
                                 </a>
-                                <figcaption class="motto f-12 m-0 m-t-5"><a href="" class="c-white">MY PROFILE</a> |  <a href="registered-users.html" class="c-white">NIGERIAN MARKET</a></figcaption>
+                                <figcaption class="motto f-12 m-0 m-t-5"><a href="9.html" class="c-white">MY PROFILE</a> |  <a href="registered-users.html" class="c-white">NIGERIAN MARKET</a></figcaption>
                             </figure>
                         </div>
                     </div>
@@ -69,8 +69,8 @@
                                             Oladele
                                             </a>
                                             <div class="dropdown-menu animated bounceIn" aria-labelledby="dropdownMenu3">
-                                                <a class="dropdown-item waves-effect waves-light" href="#">Action</a>
-                                                <a class="dropdown-item waves-effect waves-light" href="#">Another action</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="editprofile.html">Edit Profile</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="#">Inventory</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="#">Something here</a>
                                             </div>
                                         </div>
@@ -107,7 +107,8 @@
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
+               
             </div>
             <!-- navigations/links right here -->
             <nav class="navbar navbar-toggleable-sm navbar-light transparent p-t-15 p-b-15 no-shadow border-top border-bottom" role="navigation">
@@ -120,8 +121,8 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div id="navbarNav1" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li class="nav-item"><a class="nav-link hover-underline" href="#">FRIENDS</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="#">TRADELINE</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline" href="bridger.html">FRIENDS</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline" href="tradeline.html">TRADELINE</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline" href="#">SHOPLINE</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline" href="#">BUSINESS INVITATION</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline" href="#">MODELS</a></li>
@@ -145,8 +146,8 @@
             <div class="row">
                 <div class="hidden-xs-down col-sm-3 col-md-3 m-t-20">
                     <div class="list-group m-b-20">
-                        <a href="#" class="list-group-item list-group-item-action">BRIDGER</a>
-                        <a href="#" class="list-group-item list-group-item-action">TRADE REQUEST</a>
+                        <a href="bridger.html" class="list-group-item list-group-item-action">BRIDGER</a>
+                        <a href="tradeRequest.html" class="list-group-item list-group-item-action">TRADE REQUEST</a>
                         <a href="#" class="list-group-item list-group-item-action">TRADE COMMUNITY</a>
                         <a href="#" class="list-group-item list-group-item-action">BRIDGE POINT</a>
                         <a href="#" class="list-group-item list-group-item-action">BRIDGE CODE</a>
@@ -154,7 +155,6 @@
                     
                     <div class="btn-group-vertical width-100p" role="group" aria-label="Profile Navigation Links">
                         <a href="#" class="btn btn-outline-default btn-block waves-effect">B - ANALYTOR</a>
-                      
                         <a href="#" class="btn btn-outline-default btn-block waves-effect">CATEGORIES</a>
                     </div>
 
@@ -243,21 +243,32 @@
                     <div class="card m-t-20 p-18">
                          
                         <div class="card-block p-0">
-                           <div class="md-form m-0">
-                               <textarea type="text" id="status_update" class="md-textarea input-alternate p-10 h-100 border-box" placeholder="What's on your mind?"></textarea>
-                           </div>
-                           <div class="text-right m-b-20">
-                               <button type="button" class="btn btn-outline-default waves-effect">upload</button>
-                               
-                               <button type="submit" class="btn btn-outline-default waves-effect">post</button>
-                           </div>
+                            
+                            <form action="" id="product-upload-form">
+                                <div class="md-form m-0">
+                                    <textarea type="text" id="status_update" class="md-textarea input-alternate p-10 h-200 border-box" placeholder="What's on your mind?"></textarea>
+                                </div>
+                                <div id="product-img-wrapper" class="dis-flex flex-row">
+                                    <ul id="product-imgs" class=""></ul>
+                                    <span class="add-img pos-rel">
+                                        <span class=""><input type="file" class="product-img-input" multiple></span>
+                                        <button type="button" class="btn-upload btn-product-img"><i class="fa fa-plus fa-3x"></i></button>
+                                    </span>
+                                </div>
+                                <div id="">
+                                    <button type="button" class="btn-flat btn-product-img"><i class="fa fa-image"></i> upload</button>
+                                    <input type="file" class="product-img-input" multiple>
+                                    <button type="submit" class="btn btn-brand waves-effect">post</button>
+                                </div>
+                            </form>
+
                             <div class="media">
                                 <a class="pull-left" href="#">
                                     <img class="media-object p-r-10" src="assets/img/acc-img-1.png" alt="Image">
                                 </a>
                                 <div class="media-body">
                                     <h6 class="media-heading c-brand w-500">Jhud Fashion House</h6>
-                                    <p>New arrivals are everywhere. Get Quality 2017 dresses which never goes out of style. Call us: 08073404890 or <a href="#" class="">View product</a> Visit jhuds.com/clothing</p>
+                                    <p>New arrivals are everywhere. Get Quality 2017 dresses which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing <a href="#" class="c-brand">View Product</a></p>
                                 </div>
                             </div>
 
@@ -285,10 +296,10 @@
                             </div>
 
                             <div class="m-t-10 m-b-50">
-                                <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10" role="group" aria-label="Ad Action Buttons">
-                                    <button type="button" class="btn bg-white m-r-3 f-14">
+                                <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10 m-l-60" role="group" aria-label="Ad Action Buttons">
+                                   <!--  <button type="button" class="btn bg-white m-r-3 f-14">
                                         <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
-                                    </button>
+                                    </button> -->
                                     <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
                                         <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
                                     </button>
@@ -357,10 +368,10 @@
                                 </div>
                             </div>
                             <div class="m-t-10 m-b-50">
-                                <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10" role="group" aria-label="Ad Action Buttons">
-                                    <button type="button" class="btn bg-white m-r-3 f-14">
+                                <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10 m-l-60" role="group" aria-label="Ad Action Buttons">
+                                    <!-- <button type="button" class="btn bg-white m-r-3 f-14">
                                         <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
-                                    </button>
+                                    </button> -->
                                     <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
                                         <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
                                     </button>
@@ -430,10 +441,10 @@
                             </div>
 
                             <div class="m-t-10 m-b-50">
-                                <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10" role="group" aria-label="Ad Action Buttons">
-                                    <button type="button" class="btn bg-white m-r-3 f-14">
+                                <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10 m-l-60" role="group" aria-label="Ad Action Buttons">
+                                    <!-- <button type="button" class="btn bg-white m-r-3 f-14">
                                         <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
-                                    </button>
+                                    </button> -->
                                     <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
                                         <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
                                     </button>
@@ -482,7 +493,7 @@
                         </div>
                     </div> 
                 </div>
-                <div class="col-sm-3 col-md-3 m-t-20 hidden-xs-down ">
+                <div class="col-sm-3 col-md-3 m-t-20">
                    <figure class="m-0 text-center m-b-10">
                         <svg xmlns:mapsvg="http://mapsvg.com" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" geoViewBox="2.667421 13.892750 14.680752 4.269658" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 744 599">
                           <a href="#" title="Go to Abia Market" data-toggle="tooltip"><path d="m 291.01165,491.65874 0.6,0.77 4.83,-0.89 2.71,0.27 2.05,1.34 0.33,1.46 0,0 0.07,4.36 -0.55,2.86 0.05,0.73 0.94,1.03 14.09,0.86 1.24,1.86 0.22,2.19 0.7,1.04 3.21,2.33 1.34,0.21 0,0 1.08,1.29 -0.59,3.72 0.15,3.78 1.37,4.63 0.73,1.68 1.71,2 0.76,2.55 -0.6,1.21 -3.42,-0.76 0,0 -2.69,-2.61 -2.54,-0.84 -2.76,-2.14 -0.58,-2.11 -1.19,-1.47 -3.4,-0.91 -2.42,0.14 -0.28,0.91 0.53,3.51 -1.84,5.1 0.32,0.45 2.23,-0.16 -0.7,2.44 -0.73,0.9 -6.08,-0.16 -1.1,0.98 -0.07,0.75 1.07,1.94 -1.21,5.81 -0.03,2.4 0.66,2.49 -1.17,2.89 -2.52,1.94 0.09,0.77 -0.47,0.64 0.22,1.47 0.59,0.67 0.02,1.17 -0.67,1.62 1.79,3.37 0.13,1.85 0,0 -2.36,-1.79 -2.94,-1.41 -1.8,0.43 -3.28,-1.22 -2.79,0.12 -1.11,0.64 -3.13,0.58 -1.8,-0.27 -1.45,-1.41 -0.59,-1.1 0.16,-1.1 1.37,-3.7 3.42,-4.33 2.39,-4.19 -0.05,-2.78 -0.66,-1.72 -0.54,-0.05 0,0 3.09,-10.25 2.1,-3.87 1.82,-1.68 1.18,-3.04 0.89,-0.9 0.43,-2.01 -0.36,-3.45 0.28,-2.05 -1.51,-2.44 1.23,-0.77 -0.38,-8.47 -0.47,-1.35 -1.04,-1.45 -5.34,-1.78 -2.01,-1.69 0,0 1.27,-2.22 1.36,-1.3 z" id="NG-AB" class="mapsvg-region" style="vector-effect: non-scaling-stroke;"></path></a>
@@ -524,7 +535,7 @@
                           <a href="#" title="Go to Zamfara Market" data-toggle="tooltip"><path d="m 258.59165,50.268745 5.45,6.52 5.08,-0.11 3.34,-0.61 0,0 -1.44,10.82 0.99,6.17 -0.07,6.05 1,5.17 0.39,4.75 1.31,3.21 -0.4,3.57 2.5,5.199995 0.69,3.05 -0.13,1.68 0.95,2.47 -1.09,5.16 -1.82,3.63 1.26,1.21 2.53,1.16 2.68,2.29 1.16,1.43 0.5,1.95 -1.89,1.62 -3.34,-0.81 -0.55,3.2 -4.88,3.97 -1.28,-0.87 -6.61,0.13 -1.5,0.84 -0.65,4 -1.56,4.14 -0.45,3.76 0.16,1.07 1.91,1.9 0.9,3.69 -1.25,6.1 -0.02,2.33 0,0 -1.01,-0.03 -2.34,2.38 -2.75,1.77 -0.85,1.14 -1.71,3.41 -0.64,3.55 -1.51,3.23 -3.04,3.1 -2.33,1.51 -4.71,0.62 -7.94,-0.57 -5.64,0.95 -5.27,4.71 -2.86,4.16 -1.28,0.76 -1.68,0.12 0,0 0.07,-0.84 -1.59,-4.09 -3.8,-6.64 -3.32,-4.4 0,0 -0.21,-5.48 -1.38,-7.58 -1.93,-3.01 -5.38,-2.71 0,-1.2 2.05,-6.49 0.01,-2.47 -1.41,-2.15 -4.35,-1.77 -4.85,-0.62 -1.22,0.81 -2.49,0.59 -3.79,-0.5 -5.47,0.76 -3.65,-2.41 -2.87,-0.11 -1.69,-3.3 -1.08,-0.57 -3.61,0.65 -2.09,-0.31 -0.91,-0.64 -0.79,0.15 -1.06,0.62 -0.82,2.32 -6.34,1.46 -4.11,-2.25 -1.82,0 -0.86,0.48 0,0 0.66,-13.78 -0.1,-18.21 0.93,-4.51 0.92,-0.6 9.33,1.67 4.47,-0.33 2.64,0.31 4.8,-0.64 1.28,0.29 6.11,-0.53 2.46,-1.7 0.74,-3.029995 -0.65,-4.25 -1.43,-4.64 -0.06,-2.88 3.07,-1.91 1.88,-1.87 5.83,-8.58 6.09,-0.95 10.02,-0.79 4.04,-1.64 1.35,-1 -0.07,-8.44 -0.78,-5.14 0.11,-0.7 2.11,-1.82 4.85,-1.56 2.79,0 2.7,1.44 0.5,-0.22 0.73,-1.89 0.59,-5.48 4.97,0.19 2.27,0.68 1.7,2.05 1.9,0.66 9.51,1.28 7.1,-4 3.03,-2.6 0,0 z" id="NG-ZA" class="mapsvg-region" style="vector-effect: non-scaling-stroke;"></path></a>
                         </svg>
                     </figure>
-                    <a href="#" class="btn btn-outline-brand btn-block waves-effect">visit state market</a>
+                    <a href="#" class="btn btn-outline-brand btn-block waves-effect hidden-lg-up hidden-md-up">visit state market</a>
                 </div>
             </div>
 
@@ -549,9 +560,12 @@
 
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="assets/plugins/mdb/js/mdb.min.js"></script>
+
         <!-- slick carousel -->
         <script type="text/javascript" src="assets/plugins/slick/slick.min.js"></script>
 
+        <!-- Main JS -->
+        <script type="text/javascript" src="assets/js/main.js"></script>
         <script>
             $(document).ready(function(){
                 $('.carousel_big').slick({
@@ -605,6 +619,13 @@
                 new WOW().init();
                 $('[data-toggle="tooltip"]').tooltip();
             });
+        </script>
+        <script>
+            document.onreadystatechange = () => {
+                if (document.readyState === "complete") {
+                    app.productImageUpload(4);
+                }
+            }
         </script>
     
     </body>
