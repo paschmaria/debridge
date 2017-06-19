@@ -9,6 +9,7 @@ use App\Mail\Welcome;
 use App\Models\Follower;
 use App\Models\FriendRequest;
 use App\Models\Image;
+use App\Models\Role;
 
 class UserController extends Controller
 {
@@ -19,14 +20,15 @@ class UserController extends Controller
 
     public function register()
     {
-        return view('register1');
+        $role = Role::where('name', 'Merchant')->first();
+        return view('register1', compact('role'));
     }
 
     public function index(){
         if(auth()->check()){
             // dd('hi');
             $user_picture_id = auth()->user()->image_id;
-            $user_picture = Image::find($user_picture_id);
+            // $user_picture = Image::find($user_picture_id);
             // dd($user_picture);
             if(isset($user_picture)){
                 // dd('he');
@@ -55,16 +57,26 @@ class UserController extends Controller
             ]);
         
         $user_token =  str_random(64);
+        $role = Role::where('name', $request->input('trade_interest'))->first();
+
         $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
             'password' => \Hash::make($request->password),
             'date_of_birth' => $request->date_of_birth,
-            // 'gender' => $request->gender,
-            // 'account_type_id' => $request->account_type_id,
             'user_token' => $user_token
             ]);
+        
+        if($role == Role::where('name', 'Merchant')->first()){
+            
+            $user->role()->associate($role);
+            $user->save();
+        }
+        
+
+        
+        
         $user->following()->attach($user);
         
 
@@ -168,8 +180,7 @@ class UserController extends Controller
             $user_picture->save();
             return back()->with('info', 'Profile Picture Updated');
         }
-        
-    }
+     }
 
     
 
