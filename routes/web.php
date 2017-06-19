@@ -100,6 +100,7 @@ Route::group(['prefix' => 'merchant', 'middleware'=> 'merchant'], function (){
 	Route::get('/whats_new/', 'Merchant\ProductController@whats_new')->name('whats_new');
 
 });
+Route::get('/merchant/product/{id}', 'Merchant\ProductController@show')->name('product');
 
 Route::get('/brigeCode/{id}', 'Auth\UserController@brigeCode')->name('brige_code');
 
@@ -115,4 +116,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 	Route::match(['get', 'post'], '/', 'Admin\AdminController@signin');
 });
 
-Route::get('/{email}', 'User\AccountController@index')->name('user_profile');
+Route::get('/user/{email}', 'User\AccountController@index')->name('user_profile');

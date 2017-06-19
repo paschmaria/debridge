@@ -116,4 +116,9 @@ class User extends Authenticatable
         // get user social notifications
         return $this->hasMany('App\Models\SocialNotification');
     }
+
+    public function productNotifications()
+    {
+        return $this->belongsToMany('App\Models\ProductNotification', 'product_notification_pivots', 'user_id', 'notification_id');
+    }
 }
