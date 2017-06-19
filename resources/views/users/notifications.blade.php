@@ -28,7 +28,7 @@
                     @forelse ($product_notifications as $prod_note)
                         <div class="col-sm-10 col-sm-offset-1 well">
 
-                            <p><a href="">{{ $prod_note->message }}</a></p>
+                            <p><a href="{{ route('product', $prod_note->product->id) }}">{{ $prod_note->message }}</a></p>
                         </div>
                     @empty
                         <div class="col-sm-10 col-sm-offset-1 well">

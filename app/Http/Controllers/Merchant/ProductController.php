@@ -78,16 +78,25 @@ class ProductController extends Controller
             $product->photo_album_id = $album;
         }
 
-        // $product->
+        // product notification for followers
+        if ($product->promo_price) {
+            $price = $product->promo_price;
+        } else {
+            $price = $product->price;
+        }
+
+        $product_notification = ProductNotification::create([
+                'message' => 'Notice: ' . $product->inventory->merchant->user->first_name . " now has " . $product->name . ' at ' . $price,
+                'product_id'=> $product->id, 
+                'description_id' => 1
+            ]);
+        $product_notification->users()->attach(auth()->user()->followers);
+        $product_notification->save();
 
         $product->inventory()->associate($inventory);
         $product->save();
 
-        return redirect()->route('merchant')->with('info', 'Product Added Sucessfully');
-
-        
-
-        
+        return redirect()->route('merchant')->with('info', 'Product Added Sucessfully');        
     }
 
     /**
@@ -98,7 +107,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::where('id', $id)->with('pictures')->first();
+        return view('merchant.product_details', compact('product'));
     }
 
     /**
@@ -190,6 +200,19 @@ class ProductController extends Controller
             $merchant_account_id = $merchant_account->id;
             $data = ['product_id' => $product->id, 'merchant_account_id' => $merchant_account_id, 'updated_at' => Carbon::now()];
             $update = ProductOfTheWeek::updateOrCreate(['merchant_account_id'=> $merchant_account_id], $data);
+            if ($product->promo_price) {
+                $price = $product->promo_price;
+            } else {
+                $price = $product->price;
+            }
+            
+            $product_notification = ProductNotification::create([
+                    'message' => 'Notice: ' . $product->inventory->merchant->user->first_name . "'s product of the week is " . $product->name . ' at ' . $price,
+                    'product_id'=> $product->id, 
+                    'description_id' => 2
+                ]);
+            $product_notification->users()->attach(auth()->user()->followers);
+            $product_notification->save();
             return back()->with('info', 'Product Of The Week Made');
         }else{
             return back();
@@ -212,7 +235,7 @@ class ProductController extends Controller
             $product_notification = ProductNotification::create([
                     'message' => 'Promo: ' . $product->inventory->merchant->user->first_name . ' now sells ' . $product->name . ' at ' . $product->promo_price,
                     'product_id'=> $product->id, 
-                    'description_id' => 1
+                    'description_id' => 3
                 ]);
             $product_notification->users()->attach(auth()->user()->followers);
             $product_notification->save();
@@ -228,6 +251,13 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->promo_price = null;
         $product->save();
+        $product_notification = ProductNotification::create([
+                    'message' => 'Notice: ' . $product->inventory->merchant->user->first_name . "'s promo for " . $product->name . ' has ended!',
+                    'product_id'=> $product->id, 
+                    'description_id' => 4
+                ]);
+        $product_notification->users()->attach(auth()->user()->followers);
+        $product_notification->save();
         return redirect()->route('allProduct')->with('info', 'Promo Sucessfully Remove');
     }
 

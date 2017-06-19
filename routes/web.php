@@ -100,6 +100,7 @@ Route::group(['prefix' => 'merchant', 'middleware'=> 'merchant'], function (){
 	Route::get('/whats_new/', 'Merchant\ProductController@whats_new')->name('whats_new');
 
 });
+Route::get('/merchant/product/{id}', 'Merchant\ProductController@show')->name('product');
 
 Route::get('/brigeCode/{id}', 'Auth\UserController@brigeCode')->name('brige_code');
 
