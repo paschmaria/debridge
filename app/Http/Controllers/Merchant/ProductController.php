@@ -160,20 +160,20 @@ class ProductController extends Controller
         // dd($product_of_the_week);
         if($product_of_the_week!=null){
             // dd('net');
-        $current_time = date('Y-m-d');
-        $product_of_the_week_updated = date('Y-m-d', strtotime($product_of_the_week->updated_at));
-        $current_time = date('Y-m-d', strtotime($current_time.' - 7days'));
-        // dd($current_time);
-        $diff_in_days = $current_time == $product_of_the_week_updated;
-        // dd($diff_in_days);
-        // dd($current_time - $current_time);
-        return view('merchant.products', compact('products', 'product_of_the_week', 'diff_in_days'));
+            $current_time = date('Y-m-d');
+            $product_of_the_week_updated = date('Y-m-d', strtotime($product_of_the_week->updated_at));
+            $current_time = date('Y-m-d', strtotime($current_time.' - 7days'));
+            // dd($current_time);
+            $diff_in_days = $current_time == $product_of_the_week_updated;
+            // dd($diff_in_days);
+            // dd($current_time - $current_time);
+            return view('merchant.products', compact('products', 'product_of_the_week', 'diff_in_days'));
         }else{
             // dd('hello');
             return view('merchant.products', compact('products', 'product_of_the_week'));
 
         }
-        dd('hi');
+        // dd('hi');
         // dd($product_of_the_week);
         // dd($product_of_the_week_updated, $next_week_time);
 
@@ -206,6 +206,13 @@ class ProductController extends Controller
 
             $product->promo_price = $request->input('promo_price');
             $product->save();
+            //notify all mmerchant followers
+            $product_notification = ProductNotification::create([
+                    'message' => $product->inventory->merchant-> 'Promo' . first_name . ' now sells ' . $product->name . at . $product->promo_price,
+                    'product_id' = $product->id 
+                ]);
+            $product_notification->users()->attach(auth()->user()->followers)
+            $product_notification->save();
             // dd($product->promo_price);
             return redirect()->route('allProduct')->with('info', 'Promo Sucessfully Added');
             
