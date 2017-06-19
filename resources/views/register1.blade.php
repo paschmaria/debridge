@@ -196,12 +196,10 @@
                             <label for="trade_interest">Trade Interest</label>
                             <select name="trade_interest" id="usr-persona" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow" required value = "{{ old('trade_interest') }}">
                                 <option disabled selected>Choose...</option>
-                                <option>Wholesaler</option>
-                                <option>Retailer</option>
-                                <option>Manufacturer</option>
-                                <option>Local Farmer</option>
-                                <option>Service Provider</option>
-                                <option>Individual User</option>
+                                <option> Individual User</option>
+                                <option>{{ $role->name }}</option>
+                                
+                                
                             </select>
                         </div>
                     </div>
