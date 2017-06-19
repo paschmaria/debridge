@@ -35,7 +35,7 @@ Route::get('users', 'Auth\UserController@viewUsers')->name('view_users');
 
 Route::get('users/profile_picture/{id}', 'Auth\UserController@profile_picture')->name('profile_picture');
 
-// Route::post('users/profile_picture/{id}', 'Auth\UserController@profile_picture')->name('profile_picture');
+Route::post('users/profile_picture/{id}', 'Auth\UserController@profile_picture')->name('profile_picture');
 
 Route::post('/send_request/{email}', 'User\FriendRequestController@create')->name('send_request');
 
@@ -90,7 +90,7 @@ Route::group(['prefix' => 'merchant', 'middleware'=> 'merchant'], function (){
 
 	Route::post('/product_of_week/{id}', 'Merchant\ProductController@product_of_the_week')->name('product_of_the_week');
 
-	Route::get('/view_product_of_week', 'Merchant\ProductController@viewProductOfTheWeek')->name('view_product_of_week');
+	Route::get('/view_product_of_week', 'Merchant\ProductController@viewProductOfTheWeek')->name('view_product_of_the_week');
 
 	Route::get('/edit_promo/{id}', 'Merchant\ProductController@promo')->name('promo');
 
