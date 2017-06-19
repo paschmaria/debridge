@@ -1,7 +1,7 @@
 const app = {
 	loginToggler() {
 
-		var cardBlock = $(".overbox .card-block"),
+		let cardBlock = $(".overbox .card-block"),
 			subtitle = $(".overbox .sub-title"),
 			divider = $(".overbox .divider"),
 			title = $(".overbox .title"),
@@ -41,7 +41,7 @@ const app = {
 	         	$(".alt-2").addClass('material-buton');
 	      	}
 
-	   	})
+	   	});
 
 	   	$(".material-button").click(function() {
 
@@ -115,39 +115,9 @@ const app = {
 	      	}
 
 	   	});
-
-   		// if (window.innerWidth <= 575) {
-   		// 	let card_block = $('div.card-block');
-
-   		// 	card_block.css('padding', '0');
-   		// 	card_block.parent().css({
-   		// 		"padding-top": '50',
-   		// 		"padding-bottom": '50',
-   		// 		"padding-left": '40',
-   		// 		"padding-right": '40'
-   		// 	});
-   		// 	// console.log($('div.card-block').parent());
-     //   	}
-
-	   	// $(".button").click(function(e) {
-	    //   	var pX = e.pageX,
-	    //      	pY = e.pageY,
-	    //      	oX = parseInt($(this).offset().left),
-	    //      	oY = parseInt($(this).offset().top);
-
-	    //   	$(this).append('<span class="click-efect x-' + oX + ' y-' + oY + '" style="margin-left:' + (pX - oX) + 'px;margin-top:' + (pY - oY) + 'px;"></span>')
-	    //   	$('.x-' + oX + '.y-' + oY + '').animate({
-	    //      	"width": "500px",
-	    //      	"height": "500px",
-	    //      	"top": "-250px",
-	    //      	"left": "-250px",
-
-	    //   	}, 600);
-	    //   	$("button", this).addClass('active');
-	   	// })
 	},
 	productImageUpload(arg) {
-		var slots = arg;
+		let slots = arg;
 		window.URL = window.URL || window.webkitURL;
 
 		let productUploadElem = document.getElementsByClassName("product-img-input"),
@@ -155,7 +125,7 @@ const app = {
 			productImgWrapper = document.getElementById("product-img-wrapper"),
 		    productImgList = document.getElementById("product-imgs");
 
-		//productImgWrapper.style.display = "none";
+		// productImgWrapper.style.display = "none";
 
 		Array.from(productUploadBtn).forEach( button => {
 	      	button.addEventListener('click', (e) => {
@@ -164,15 +134,13 @@ const app = {
 	      				input.click();
 		      			return true;
 		      		}
-      				// $('#product-img-wrapper').removeClass('dis-none')
-      				// 	.addClass('dis-flex');
 	      		});
 	      		e.preventDefault();
 	      	}, false);
 	    });
 
-		var imageList = [];
-		var products;
+		var imageList = [],
+			products;
 
 		Array.from(productUploadElem).forEach( input => {
 	      	input.addEventListener('change', () => {
@@ -223,75 +191,130 @@ const app = {
     		// } 
 	    }
 	},
-	commentHandler: function(){
-	        var $container = $('section.main');
-	        var $addComment = $container.find('#press');
-	        // creating messages
-	        var callbackdata = JSON.parse(localStorage.getItem('story'));
-	        var comment = callbackdata || {}; //
-	        comment.users = comment.users || []; //
-	        //console.log({stories});
-	        var commentParameters = {
-	            shoulEdit: false,
-	            userIndex: "",
-	            allUsers:comment.users.length,
-	            updatecomment: function (arg){
-	                //stories = callbackdata;
-	                //console.log(callbackdata.users);
-	                //console.log(stories.users.length);
-	                //console.log(arg.val());
-	                
-	                    var output = "";
-	                    for (var i = 0; i < comment.users.length; ++i){
-	                        output += ` <div class="media">
-	                                        <div class="pull-left p-r-10">
-	                                            <img class="media-object " src="assets/img/acc-img-2.png" alt="Image">
-	                                        </div>
-	                                        <div class="media-body">
-	                                            <h6 class="media-heading w-700 m-b-5 f-12">Cindy Fashion House </h6>
-	                                            <p m-b- f-12>`+comment.users[i].comment+`</p>
-	                                            <ul class="m-b-0 f-12">
-	                                                <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart-o"></i></span> Like</a></li>
-	                                            <li class="c-brand dis-inline-b p-l-10 p-r-10"><a href="#">Reply</a></li>
-	                                            <li class="c-brand dis-inline-b p-l-10">31 May 2017</li>
-	                                            </ul>
-	                                            <div class="media m-t-5">
-	                                                <div class="pull-left p-r-10">
-	                                                    <img src="assets/img/acc-img-1.png" class="media-object">
-	                                                </div>
-	                                                <div class="media-body">
-	                                                    <textarea name="" class="md-textarea input-alternate p-10 h-58 border-box" style="width:400px" placeholder="Write a reply..."></textarea>
-	                                                </div>
-	                                            </div>
-	                                        </div>
-	                                    </div>`
-	                    }
-	                                
-	                    $(".go").html(output);
-	                    //console.log(arg.val());
-	                    arg.val(" ");
-	                    //console.log(arg.val());
-	            
-	            },
-	            creatcomment: function(arg){
-	                var $textarea = arg.val();//gets the text put in the text area
-	                //console.log($textarea);
-	                
-	                comment.users.unshift({
-	                    comment: $textarea,
-	                });
-	                comment.allUsers ++;
-	                //console.log('stories');
-	            }
-	        };
-	        $.extend (comment, commentParameters);
-	        $addComment.keypress(function(e) {
-	            //console.log($(this).val().length);
-	            if(e.which === 13 && $(this).val() !== '' && $(this).val().trim() !== '') {
-	                comment.creatcomment($(this));
-	                comment.updatecomment($(this));
-	            }
-	             
-	    });
-	}
+	likeToggler() {
+        let likeBtn = document.getElementsByClassName("like");
+
+    	for (var i = 0;	i < likeBtn.length; i++ ) {
+    		// console.log(likeBtn[i].parentElement.lastElementChild);
+    		likeBtn[i].parentElement.addEventListener('click', function(e) {
+    			// alert("Clicked");
+    			if (e.srcElement) {
+    				// console.log(e.srcElement.children[1]);
+    				likeBtnClicker();
+    				e.srcElement.children[1].click();
+    			}
+	    		// likeBtn[i].parentElement.lastElementChild.click();
+    		})
+    	}
+
+    	function likeBtnClicker() {
+			Array.from(likeBtn).forEach( btn => {
+    			// console.log(btn);
+    			// btn.click();
+				btn.addEventListener('click', (e) => {
+					e.preventDefault();
+					// console.log(e);
+					let dislikeHTML = `<i class="fa fa-heart-o"></i>`,
+						likeHTML = `<i class="fa fa-heart"></i>`;
+					$.ajax({
+						// pass url here
+						url: '',
+						type: 'POST',
+						dataType: 'json',
+						data: {
+							likePost: 'json'
+						},
+						success() {
+							// console.log("Success!");
+							(btn.innerHTML = dislikeHTML) ? (btn.innerHTML = likeHTML) : (btn.innerHTML = dislikeHTML);
+						},
+						error() {
+							// console.log("error!");
+							(btn.innerHTML = dislikeHTML) ? (btn.innerHTML = likeHTML) : (btn.innerHTML = dislikeHTML);
+							// Replace code at the top with comented out code if url is passed
+							// (btn.innerHTML = dislikeHTML) ? (btn.innerHTML = dislikeHTML) : (btn.innerHTML = likeHTML);
+						}
+					})
+					
+				})
+		    })
+    	}
+
+    	likeBtnClicker();
+    },
+    commentHandler() {
+    	let $container = $('section.main'),
+    		$addComment = $container.find('.comment');
+
+    	// creating messages
+    	let callbackdata = JSON.parse(localStorage.getItem('story'));
+    	let comment = callbackdata || {}; //
+    	comment.users = comment.users || []; //
+    	//console.log({stories});
+    	const commentParameters = {
+    	    shouldEdit: false,
+    	    userIndex: "",
+    	    allUsers: comment.users.length,
+    	    updateComment(arg) {
+    	        //stories = callbackdata;
+    	        //console.log(callbackdata.users);
+    	        //console.log(stories.users.length);
+    	        //console.log(arg.val());
+    	        
+    	        let output = "";
+    	        for (var i = 0; i < comment.users.length; ++i) {
+    	            output += ` <div class="media m-b-20">
+    	                            <div class="pull-left p-r-10">
+    	                                <img class="media-object " src="assets/img/acc-img-2.png" alt="Image">
+    	                            </div>
+    	                            <div class="media-body">
+    	                                <h6 class="media-heading w-700 m-b-5 f-12">Cindy Fashion House</h6>
+    	                                <p class="f-12">${comment.users[i].comment}</p>
+    	                                <ul class="m-b-0 f-12">
+    	                                    <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart-o"></i></span> Like</a></li>
+    	                                	<li class="c-brand dis-inline-b p-l-10 p-r-10 comment-reply"><a href="#">Reply</a></li>
+    	                                	<li class="c-brand dis-inline-b p-l-10">31 May 2017</li>
+    	                                </ul>
+    	                                <div class="media m-t-5 dis-none">
+    	                                    <div class="pull-left p-r-10">
+    	                                        <img src="assets/img/acc-img-1.png" class="media-object">
+    	                                    </div>
+    	                                    <div class="media-body">
+    	                                        <textarea class="md-textarea input-alternate p-10 h-58 border-box" style="width:400px" placeholder="Write a reply..."></textarea>
+    	                                    </div>
+    	                                </div>
+    	                            </div>
+    	                        </div>`
+    	        }
+    	                    
+    	        $(".comment").html(output);
+    	        //console.log(arg.val());
+    	        arg.val(" ");
+    	        //console.log(arg.val());
+    	    
+    	    },
+    	    createComment: function(arg){
+    	        var $textarea = arg.val();//gets the text put in the text area
+    	        //console.log($textarea);
+    	        comment.users.unshift({
+    	            comment: $textarea,
+    	        });
+    	        comment.allUsers ++;
+    	        //console.log('stories');
+    	    }
+    	};
+    	$.extend(comment, commentParameters);
+    	$addComment.keypress(function(e) {
+    	    //console.log($(this).val().length);
+    	    if(e.which === 13 && $(this).val() !== '' && $(this).val().trim() !== '') {
+    	        e.preventDefault();
+    	        // console.log($(this));
+    	        // $addComment[0].offsetParent.children[4].removeClass('m-b-50')
+    	        //     .addClass('m-b-15');
+    	        comment.createComment($(this));
+    	        comment.updateComment($(this));
+    	    }
+    	     
+    	});
+    }
 }
