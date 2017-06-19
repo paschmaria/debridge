@@ -84,13 +84,15 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-12">
                                 <ul class="navbar-nav dis-flex flex-row">
-                                    @if(isset($user_picture))
-                                    <p>{{ $user_picture }}</p>
+                                @if(auth()->check())
+                                    @if(isset(auth()->user()->image_id))
+                                    
                                     <li class="nav-item animated bounceIn list-inline-item dis-block">
                                         <a href="{{ route('image', [$user_picture, '']) }}"><img src="{{ route('image', [$user_picture, '']) }}" class="" width="50" height="50"></a>
                                     </li>
                                     @endif
                                     <p></p>
+                                @endif
 
                                     <li class="nav-item animated bounceIn list-inline-item dis-block">
                                         <div class="dropdown">
@@ -106,7 +108,7 @@
                                                 <a class="dropdown-item waves-effect waves-light"  href="{{ url('notifications') }}">Notifications</a>
                                                 <a class="dropdown-item waves-effect waves-light"  href="{{ url('users') }}">De-bridge users</a>
 
-                                                <a class="dropdown-item waves-effect waves-light"  href="{{ route('user_logout') }}"
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
                                                              document.getElementById('logout-form').submit();">
                                                     Logout

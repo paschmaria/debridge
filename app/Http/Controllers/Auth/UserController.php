@@ -25,21 +25,7 @@ class UserController extends Controller
     }
 
     public function index(){
-        if(auth()->check()){
-            // dd('hi');
-            $user_picture_id = auth()->user()->image_id;
-            // $user_picture = Image::find($user_picture_id);
-            // dd($user_picture);
-            if(isset($user_picture)){
-                // dd('he');
-                $user_picture = auth()->user()->image_id;
-                $user_picture = Image::find($user_picture);
-                $user_picture = $user_picture->image_reference;
-                // dd($user_picture);
-                return view('index', compact('user_picture'));
-            }
-        }
-
+       
         return view('index');
     }
     

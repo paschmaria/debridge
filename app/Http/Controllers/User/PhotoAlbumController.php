@@ -118,6 +118,9 @@ class PhotoAlbumController extends Controller
         $album = PhotoAlbum::where(['id' => $id ])->first();
         \Storage::disk('custom')->deleteDirectory("album-$album->id");
         $album->delete();
+        $user = auth()->user();
+        $user->image_id = null;
+        $user->save();
         return back()->with('info', 'Album deleted!');
     }
 }

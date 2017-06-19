@@ -13,9 +13,8 @@
 
 Route::get('/', 'Auth\UserController@index')->name('index');
 
-Route::get('users/logout', 'User\FriendsController@user_logout')->name('user_logout');
+Route::get('/logout', 'User\FriendsController@user_logout')->name('logout');
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
