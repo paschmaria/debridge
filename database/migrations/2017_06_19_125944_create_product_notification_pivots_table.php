@@ -15,6 +15,8 @@ class CreateProductNotificationPivotsTable extends Migration
     {
         Schema::create('product_notification_pivots', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('notification_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
