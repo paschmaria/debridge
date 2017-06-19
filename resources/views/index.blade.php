@@ -34,6 +34,7 @@
                                     </div>
                                     <img src="{{ asset('img/background/carousels/carousel_img-1.png') }}" alt="" class="img-fluid">
                                 </figure>
+                              
                                 <figure class="pos-rel m-0">
                                     <div class="c-white text-center carousel-ad-overlay bg-opacity-40 animated fadeInDown hidden-sm-down hidden-xs-down">
                                         <p class="m-b-10">GET DISCOUNT ON FEMALE CLOTHING</p>

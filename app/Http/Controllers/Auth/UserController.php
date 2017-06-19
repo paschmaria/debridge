@@ -8,17 +8,37 @@ use App\User;
 use App\Mail\Welcome;
 use App\Models\Follower;
 use App\Models\FriendRequest;
+use App\Models\Image;
 
 class UserController extends Controller
 {
     function __construct()
     {
-    	$this->middleware('guest')->except(['logout', 'verifyToken', 'resendActivationMail','market','viewUsers', 'brigeCode']);
+    	$this->middleware('guest')->except(['logout', 'verifyToken', 'resendActivationMail','market','viewUsers', 'brigeCode', 'profile_picture', 'index']);
     }
 
     public function register()
     {
         return view('register1');
+    }
+
+    public function index(){
+        if(auth()->check()){
+            // dd('hi');
+            $user_picture_id = auth()->user()->image_id;
+            $user_picture = Image::find($user_picture_id);
+            // dd($user_picture);
+            if(isset($user_picture)){
+                // dd('he');
+                $user_picture = auth()->user()->image_id;
+                $user_picture = Image::find($user_picture);
+                $user_picture = $user_picture->image_reference;
+                // dd($user_picture);
+                return view('index', compact('user_picture'));
+            }
+        }
+
+        return view('index');
     }
     
     public function create(Request $request)
@@ -134,6 +154,26 @@ class UserController extends Controller
 
         dd($brige_code);
 
+     }
+
+     public function profile_picture(Request $request, $id){
+
+        $profile_picture = Image::find($id);
+        // dd($profile_picture);
+
+        if($request->isMethod('post')){
+            // dd('ji');
+            $user_picture = auth()->user();
+            $user_picture->image_id = $profile_picture->id;
+            $user_picture->save();
+            return back()->with('info', 'Profile Picture Updated');
+        }else{
+            if(isset($profile_picture)){
+                $user_picture = auth()->user()->profile_picture()->image_renference;
+
+                return view('layouts.master', compact('user_picture'));
+            }
+        }
      }
 
     

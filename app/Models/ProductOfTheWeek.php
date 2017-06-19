@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductOfTheWeek extends Model
 {
-	protected $fillable = ['merchant_account_id', 'product_id'];
+	protected $fillable = ['merchant_account_id', 'product_id', 'updated_at'];
 
     public function merchant()
     {

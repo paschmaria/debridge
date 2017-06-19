@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'Auth\UserController@index')->name('index');
 
 Route::get('users/logout', 'User\FriendsController@user_logout')->name('user_logout');
 
@@ -34,6 +32,10 @@ Route::get('/admire/{post}', 'User\AdmireController@create')->name('admire');
 Route::get('/timeline', 'User\TimelineController@index')->name('timeline');
 
 Route::get('users', 'Auth\UserController@viewUsers')->name('view_users');
+
+Route::get('users/profile_picture/{id}', 'Auth\UserController@profile_picture')->name('profile_picture');
+
+Route::post('users/profile_picture/{id}', 'Auth\UserController@profile_picture')->name('profile_picture');
 
 Route::post('/send_request/{email}', 'User\FriendRequestController@create')->name('send_request');
 
@@ -85,8 +87,18 @@ Route::group(['prefix' => 'merchant', 'middleware'=> 'merchant'], function (){
 	Route::get('/delete/{id}', 'Merchant\ProductController@destroy')->name('delete');
 	Route::get('/edit_product/{id}', 'Merchant\ProductController@edit')->name('edit_product');
 	Route::post('/update_product/{id}', 'Merchant\ProductController@edit')->name('update_product');
+
 	Route::post('/product_of_week/{id}', 'Merchant\ProductController@product_of_the_week')->name('product_of_the_week');
+
 	Route::get('/view_product_of_week', 'Merchant\ProductController@viewProductOfTheWeek')->name('view_product_of_week');
+
+	Route::get('/edit_promo/{id}', 'Merchant\ProductController@promo')->name('promo');
+
+	Route::post('/update_promo/{id}', 'Merchant\ProductController@promo')->name('update_promo');
+
+	Route::get('/delete_promo/{id}', 'Merchant\ProductController@remove_promo')->name('remove_promo');
+	Route::get('/whats_new/', 'Merchant\ProductController@whats_new')->name('whats_new');
+
 });
 
 Route::get('/brigeCode/{id}', 'Auth\UserController@brigeCode')->name('brige_code');
