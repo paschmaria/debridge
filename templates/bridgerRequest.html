@@ -31,7 +31,7 @@
 	
 	<!-- header begins here-->
         <header>
-            <div class="container-fluid bg-brand">
+            <div class="container-fluid bg-brand z-2500">
                 <div class="row p-t-35 p-b-10">
                     <div class="col col-sm-3 col-md-3">
                         <div class="dis-flex">
@@ -73,7 +73,7 @@
                                                 <a class="dropdown-item waves-effect waves-light" href="editprofile.html">Edit Profile</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="#">Inventory</a>
 
-                                                <a class="dropdown-item waves-effect waves-light" href="#">Something here</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="#">Log Out</a>
 
                                             </div>
                                         </div>
@@ -99,12 +99,22 @@
                                         </a>
                                     </li>
                                     <li class="animated bounceIn"> 
-                                        <a href="#" class="p-l-10 p-r-10">
+                                        <a class="p-l-10 p-r-10 dropdown white-text" id="dropdownNotify" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <span class="pos-rel z-5000">
                                                 <i class="fa fa-bell fa-lg c-white" aria-hidden="true"></i>
                                                 <span class="cart-count">3</span>
                                             </span>
                                         </a>
+                                        <div class="dropdown-menu notify-dropdown animated bounceIn f-12" aria-labelledby="dropdownNotify">
+                                                <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">
+                                                <img src="assets/img/p-photo-6.jpeg" class="h-40 width-40 m-r-5 bd-50p">
+                                                <span>Ejike Jhud started following you</span>
+                                                </a>
+                                                <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#"><img src="assets/img/pphoto-4.jpg" class="h-40 width-40 m-r-5 bd-50p">
+                                                <span>Ejike Jhud Admired an item in your store</span></a>
+                                                <a class="dropdown-item waves-effect waves-light p-l-10" href="#"><img src="assets/img/pphoto-301.jpeg" class="h-40 width-40 m-r-5 bd-50p"><span>Ejike Jhud shared a post</span>
+                                                </a>
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
