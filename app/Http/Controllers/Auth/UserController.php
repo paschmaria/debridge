@@ -167,14 +167,9 @@ class UserController extends Controller
             $user_picture->image_id = $profile_picture->id;
             $user_picture->save();
             return back()->with('info', 'Profile Picture Updated');
-        }else{
-            if(isset($profile_picture)){
-                $user_picture = auth()->user()->profile_picture()->image_renference;
-
-                return view('layouts.master', compact('user_picture'));
-            }
         }
-     }
+        
+    }
 
     
 
