@@ -10,6 +10,7 @@ use App\Models\MerchantAccount;
 use App\Models\Inventory;
 use App\Models\Product;
 use App\Models\ProductOfTheWeek;
+use App\Models\ProductNotification;
 use Carbon\Carbon;
 
 class ProductController extends Controller
@@ -207,11 +208,13 @@ class ProductController extends Controller
             $product->promo_price = $request->input('promo_price');
             $product->save();
             //notify all mmerchant followers
+            //dd($product->inventory->merchant);
             $product_notification = ProductNotification::create([
-                    'message' => $product->inventory->merchant-> 'Promo' . first_name . ' now sells ' . $product->name . at . $product->promo_price,
-                    'product_id' = $product->id 
+                    'message' => 'Promo: ' . $product->inventory->merchant->user->first_name . ' now sells ' . $product->name . ' at ' . $product->promo_price,
+                    'product_id'=> $product->id, 
+                    'description_id' => 1
                 ]);
-            $product_notification->users()->attach(auth()->user()->followers)
+            $product_notification->users()->attach(auth()->user()->followers);
             $product_notification->save();
             // dd($product->promo_price);
             return redirect()->route('allProduct')->with('info', 'Promo Sucessfully Added');

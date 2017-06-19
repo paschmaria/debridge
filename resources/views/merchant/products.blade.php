@@ -71,7 +71,7 @@
 
 							@endif
 						
-						<form method="post" action="{{ route('product_of_week1', $product->id) }}">
+						<form method="post" action="{{ route('product_of_the_week', $product->id) }}">
 							{{ csrf_field() }}
 							<button type="submit" class="btn btn-success btn-sm">Make Product Of The Week</button>
 						</form>

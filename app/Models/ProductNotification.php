@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductNotification extends Model
 {
+	protected $fillable = ['message' , 'product_id'];
     public function users()
     {
     	return $this->belongsToMany('App\User', 'product_notification_pivots', 'notification_id', 'user_id');
