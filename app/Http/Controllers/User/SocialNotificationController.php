@@ -15,7 +15,8 @@ class SocialNotificationController extends Controller
      */
     public function index()
     {
-        $notifications = auth()->user()->socialNotification;
+        $notifications = auth()->user()->socialNotification()->with('foreigner')->get();
+        // dd($notifications);
         return view('users.notifications', compact('notifications'));
     }
 

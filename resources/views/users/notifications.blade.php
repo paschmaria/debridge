@@ -10,7 +10,8 @@
                 <div class="panel-body">
                     @forelse ($notifications as $notification)
                         <div class="col-sm-10 col-sm-offset-1 well">
-                            <p>{{ $notification->message }}</p>
+
+                            <p><a href="{{ route('user_profile', $notification->foreigner->email) }}">{{ $notification->message }}</a></p>
                         </div>
                     @empty
                         <div class="col-sm-10 col-sm-offset-1 well">

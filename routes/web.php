@@ -35,7 +35,7 @@ Route::get('users', 'Auth\UserController@viewUsers')->name('view_users');
 
 Route::get('users/profile_picture/{id}', 'Auth\UserController@profile_picture')->name('profile_picture');
 
-Route::post('users/profile_picture/{id}', 'Auth\UserController@profile_picture')->name('profile_picture');
+// Route::post('users/profile_picture/{id}', 'Auth\UserController@profile_picture')->name('profile_picture');
 
 Route::post('/send_request/{email}', 'User\FriendRequestController@create')->name('send_request');
 
@@ -114,3 +114,5 @@ Route::group(['middleware' => 'admin'], function() {
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 	Route::match(['get', 'post'], '/', 'Admin\AdminController@signin');
 });
+
+Route::get('/{email}', 'User\AccountController@index')->name('user_profile');
