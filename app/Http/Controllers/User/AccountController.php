@@ -22,6 +22,7 @@ class AccountController extends Controller
     public function index($email)
     {
         //
+        // dd('hi');
         $user = User::where('email', $email)->with('profile_picture')->first();
 
       if(isset($user) && isset($user->image_id)){

@@ -115,4 +115,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 	Route::match(['get', 'post'], '/', 'Admin\AdminController@signin');
 });
 
-Route::get('/user/{email}', 'User\AccountController@index')->name('user_profile');
+Route::get('/{email}', 'User\AccountController@index')->name('user_profile');

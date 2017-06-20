@@ -108,11 +108,11 @@
                                                 <a class="dropdown-item waves-effect waves-light"  href="{{ url('notifications') }}">Notifications</a>
                                                 <a class="dropdown-item waves-effect waves-light"  href="{{ url('users') }}">De-bridge users</a>
 
-                                                <a class="dropdown-item waves-effect waves-light"  href="{{ route('logout') }}"
+                                             <!--    <a class="dropdown-item waves-effect waves-light"  href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
                                                              document.getElementById('logout-form').submit();">
                                                     Logout
-                                                </a>
+                                                </a> -->
 
                                                 <a class="dropdown-item waves-effect waves-light"  href="{{ route('logout') }}">Logout</a>
 
