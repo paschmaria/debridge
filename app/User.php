@@ -64,6 +64,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\PostHype');
     }
 
+    public function productHypes()
+    {
+        return $this->hasMany('App\Models\ProductHype');
+    }
+
     public function admires()
     {
         return $this->hasMany('App\Models\PostAdmire');

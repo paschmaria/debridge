@@ -21,4 +21,9 @@ class PhotoAlbum extends Model
     {
     	return $this->hasOne('App\Models\Product');
     }
+
+    public function posts()
+    {
+        return $this->hasMany('App\Models\Post');
+    }
 }
