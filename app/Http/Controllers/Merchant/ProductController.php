@@ -11,6 +11,8 @@ use App\Models\Inventory;
 use App\Models\Product;
 use App\Models\ProductOfTheWeek;
 use App\Models\ProductNotification;
+use App\Models\ProductHype;
+use App\Models\Post;
 use Carbon\Carbon;
 
 class ProductController extends Controller
@@ -266,5 +268,23 @@ class ProductController extends Controller
 
        return view('merchant.whats_new', compact('products'));
 
+    }
+
+    public function product_hype(Product $product){
+
+           $hype = ProductHype::where(['product_id' => $product->id, 'user_id' => auth()->user()->id])->first();
+            if ($hype) {
+                return back()->with('info', 'Product already hyped by you!');
+            } else {
+                $created_hype = ProductHype::create(['product_id' => $product->id, 'user_id' => auth()->user()->id]);
+                Post::create([
+                    'user_id' => auth()->user()->id,
+                    'title' => $product->name ,
+                    'content' => $product->description,
+                    'photo_album_id' => $product->photo_album_id
+                ]);
+            }       
+        
+        return back()->with('success', 'Product Hyped!');
     }
 }

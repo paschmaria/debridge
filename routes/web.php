@@ -26,6 +26,8 @@ Route::post('/comment/{post}', 'User\CommentController@store')->name('create_com
 
 Route::get('/hype/{post}', 'User\HypeController@create')->name('hype');
 
+Route::get('/product_hype/{product}', 'Merchant\ProductController@product_hype')->name('product_hype');
+
 Route::get('/admire/{post}', 'User\AdmireController@create')->name('admire');
 Route::get('/unadmire/{post}', 'User\AdmireController@destroy')->name('unadmire');
 
