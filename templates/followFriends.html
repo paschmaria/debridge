@@ -27,7 +27,26 @@
 
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="assets/css/main.css">
-
+    <style type="text/css">
+        .checkbox label:after{
+            opacity: 0.2;
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: transparent;
+            top: 12px;
+            left: 12px;
+            border: 3px solid black;
+            transform: rotate(-90deg);
+        }
+        .checkbox label:hover::after{
+            opacity: 0.5;
+        }
+        .checkbox input[type=checkbox]:checked +label:after{
+            opacity: 1;
+        }
+    </style>
 </head>
 
 <body>
@@ -47,7 +66,7 @@
                                 <div class="card h-280">
                                     <!-- card image -->
                                     <div class="view overlay hm-white-slight">
-                                        <img src="assets/img/photo.png">
+                                        <img src="assets/img/pphoto-25.jpeg">
                                         <a href="#">
                                             <div class="mask waves-effect waves-light"></div>
                                         </a>
@@ -75,7 +94,7 @@
                                 <div class="card h-280">
                                     <!-- card image -->
                                     <div class="view overlay hm-white-slight">
-                                        <img src="assets/img/photo.png">
+                                        <img src="assets/img/pphoto-27.jpeg">
                                         <a href="#">
                                             <div class="mask waves-effect waves-light"></div>
                                         </a>
@@ -102,7 +121,7 @@
                                 <div class="card h-280">
                                     <!-- card image -->
                                     <div class="view overlay hm-white-slight">
-                                        <img src="assets/img/photo.png">
+                                        <img src="assets/img/pphoto-25.jpeg">
                                         <a href="#">
                                             <div class="mask waves-effect waves-light"></div>
                                         </a>
@@ -128,7 +147,7 @@
                                 <div class="card h-280">
                                     <!-- card image -->
                                     <div class="view overlay hm-white-slight">
-                                        <img src="assets/img/photo.png">
+                                        <img src="assets/img/pphoto-25.jpeg">
                                         <a href="#">
                                             <div class="mask waves-effect waves-light"></div>
                                         </a>
@@ -160,7 +179,7 @@
                                 <div class="card h-280">
                                     <!-- card image -->
                                     <div class="view overlay hm-white-slight">
-                                        <img src="assets/img/photo.png">
+                                        <img src="assets/img/pphoto-27.jpeg">
                                         <a href="#">
                                             <div class="mask waves-effect waves-light"></div>
                                         </a>
@@ -188,7 +207,7 @@
                                 <div class="card h-280">
                                     <!-- card image -->
                                     <div class="view overlay hm-white-slight">
-                                        <img src="assets/img/photo.png">
+                                        <img src="assets/img/pphoto-25.jpeg">
                                         <a href="#">
                                             <div class="mask waves-effect waves-light"></div>
                                         </a>
@@ -215,7 +234,7 @@
                                 <div class="card h-280">
                                     <!-- card image -->
                                     <div class="view overlay hm-white-slight">
-                                        <img src="assets/img/photo.png">
+                                        <img src="assets/img/pphoto-27.jpeg">
                                         <a href="#">
                                             <div class="mask waves-effect waves-light"></div>
                                         </a>
@@ -241,17 +260,19 @@
                                 <div class="card h-280">
                                     <!-- card image -->
                                     <div class="view overlay hm-white-slight">
-                                        <img src="assets/img/photo.png">
+                                        <img src="assets/img/pphoto-27.jpeg">
                                         <a href="#">
                                             <div class="mask waves-effect waves-light"></div>
                                         </a>
                                     </div>
                                      <!--/ card image -->
-                                     <!-- black circle -->
-                                    <div class="image-circle">
-                                        <img src="assets/img/rectangle-5.png" class="m-l-5 pos-abs b-25">
-                                    </div>
-                                    <!--/ black circle -->
+                                        <div class="checkbox z-2500 width-40 h-40 pos-rel t-24 l-5 bd-50p">
+                                            <input type="checkbox" value="">
+                                            <label class="pos-abs width-40 h-40 bg-brand t-0 l-0" for="checkbox">
+                                            </label>
+                                        </div>
+                                        
+                                    <!--/ black circle
                                     <!-- card content -->
                                     <div class="card-block">
                                         <div class="card-content pos-abs m-t-10">
@@ -264,18 +285,20 @@
                                 </div>
                             </div>
                         </div>   
-                        <!--/ second card row -->
-                        <div class="button_wrapper m-t-40 m-b-40 text-center">
-                            <button class="btn f-20 c-white p-t-10 width-300 p-b-10 bg-brand-lite btn-outline-brand" style="width:256px; height:50px;">Add more friends</button>
-                            <button class="btn f-20 c-white bg-brand-lite btn-outline-brand"style="height:50px;"><a href="registered-users.html" class="c-brand">Continue</a>
-                            </button>
-                        </div>
+                            <!--/ second card row -->
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
+        </section>
+    <footer>
+           <div class="button_wrapper m-t-40 m-b-40 text-center">
+                            <button class="btn f-20 width-300 p-b-10 bg-brand-lite btn-outline-brand h-58">Add more friends</button>
+
+                            <button class="f-20 bg-brand-lite width-200 h-40 btn-flat btn-outline-brand p-b-43 p-t-10"><a href="registered-users.html" class="c-brand">Continue</a>
+                            </button>
+                        </div>
+                    </div>                 
+    </footer>
 
     <!-- SCRIPTS -->
 
@@ -293,56 +316,11 @@
 
     <!-- slick carousel -->
     <script type="text/javascript" src="assets/plugins/slick/slick.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('.carousel_big').slick({
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                dots: true,
-                arrows: false,
-                fade: true,
-                autoplay: true,
-                asNavFor: '.carousel_small'
-            });
-            $('.carousel_small').slick({
-                infinite: true,
-                slidesToShow: 2,
-                slidesToScroll: 1,
-                arrows: false,
-                asNavFor: '.carousel_big',
-                focusOnSelect: true,
-                autoplay: true,
-                autoplaySpeed: 2000,
-                vertical: true,
-                centerPadding: '0px',
-                responsive: [
-                    // {
-                    //   breakpoint: 1024,
-                    //   settings: {
-                    //     slidesToShow: 3,
-                    //     slidesToScroll: 3,
-                    //     infinite: true
-                    //   }
-                    // },
-                    {
-                      breakpoint: 600,
-                      settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2,
-                        infinite: true
-                      }
-                    },
-                    {
-                      breakpoint: 480,
-                      settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        infinite: true
-                      }
-                    }
-                ]
-            });
-        });
+   
+    <script type="text/javascript">
+        $("#check").click(function (){
+            $(":checkbox").show();
+        })
     </script>
 
 
