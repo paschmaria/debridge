@@ -4,8 +4,11 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\User\PhotoAlbumController;
 use App\Models\Post;
 use App\Models\Image;
+use App\Models\PostAdmire;
+use App\Models\PostHype;
 use Carbon\Carbon;
 
 class PostController extends Controller
@@ -15,15 +18,20 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    function __construct()
+    protected $photo_album;
+
+    function __construct(PhotoAlbumController $photo_album)
     {
         $this->middleware('auth');
+        $this->photo_album = $photo_album;
     }
-
+    
     public function index()
     {
         $posts = Post::latest()->get();
-        return view('post', compact('posts'));
+        $admired = PostAdmire::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
+        $hyped = PostHype::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
+        return view('post', compact('posts', 'admired', 'hyped'));
     }
 
     /**
@@ -54,13 +62,14 @@ class PostController extends Controller
             'title' => $request->title,
             'content' => $request->content,
             ]);
-        auth()->user()->posts()->save($post);
-        if ($request->file('image')){
-            $filename = 'post-' . $post->id; //. $request->file('image')->getClientOriginalExtension();
-            $store  = \Storage::disk('uploads')->put($filename, $request->file('image'));
-            $img = new Image(['image_reference' => $store]);
-            $post->images()->save($img);
+
+        //mulitple image upload system
+        if(!empty($request->file('file'))){
+            $album = $this->photo_album->store($request);
+            $post->photo_album_id = $album;
         }
+        auth()->user()->posts()->save($post);
+
         // $request->session()->flash('success', 'Post Saved successfully!');
         // return back();
         return response()->json([

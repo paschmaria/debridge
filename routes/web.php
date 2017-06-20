@@ -28,6 +28,7 @@ Route::post('/comment/{post}', 'User\CommentController@store')->name('create_com
 Route::get('/hype/{post}', 'User\HypeController@create')->name('hype');
 
 Route::get('/admire/{post}', 'User\AdmireController@create')->name('admire');
+Route::get('/unadmire/{post}', 'User\AdmireController@destroy')->name('unadmire');
 
 Route::get('/timeline', 'User\TimelineController@index')->name('timeline');
 
