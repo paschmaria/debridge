@@ -883,7 +883,7 @@ body {
 /****  Background Colors  ****/
 /* line 224, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .bg-brand {
-  background-color: #008751 !important;
+  background-color: #16a085 !important;
   color: #FFFFFF !important;
 }
 
@@ -1394,7 +1394,7 @@ a, a:focus, a:hover, a:active {
 /****  Font Color  ****/
 /* line 335, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-brand {
-  color: #008751 !important;
+  color: #16a085 !important;
 }
 
 /* line 336, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
@@ -1649,13 +1649,13 @@ a, a:focus, a:hover, a:active {
 
 /* line 64, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/helpers/_mixins.scss */
 .hover-underline:hover {
-  color: #008751 !important;
+  color: #16a085 !important;
 }
 
 /* line 68, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/helpers/_mixins.scss */
 .hover-underline:before {
   height: 2px;
-  background-color: #008751;
+  background-color: #16a085;
   content: "";
   width: 100%;
   visibility: hidden;
@@ -1681,7 +1681,7 @@ a, a:focus, a:hover, a:active {
 /* line 5, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/layout/_nav.scss */
 .list-group-item-action:active, .list-group-item-action:focus, .list-group-item-action:hover {
   color: #FFFFFF;
-  background-color: #008751;
+  background-color: #16a085;
   -webkit-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -1695,7 +1695,7 @@ a, a:focus, a:hover, a:active {
 
 /* line 15, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/layout/_nav.scss */
 .nav-item a.nav-link.active {
-  color: #008751;
+  color: #16a085;
 }
 
 /* line 20, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/layout/_nav.scss */
@@ -1745,7 +1745,7 @@ a, a:focus, a:hover, a:active {
   border-radius: 50%;
   cursor: pointer;
   display: block;
-  background: #008751 !important;
+  background: #16a085 !important;
   position: absolute;
   top: 40px;
   right: -50px;
@@ -1825,7 +1825,7 @@ a, a:focus, a:hover, a:active {
   outline: 0 !important;
   text-transform: uppercase;
   cursor: pointer;
-  color: #008751;
+  color: #16a085;
   background: transparent;
 }
 
@@ -1857,7 +1857,7 @@ a, a:focus, a:hover, a:active {
 
 /* line 71, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/modules/_buttons.scss */
 .btn-brand {
-  background: #008751;
+  background: #16a085;
 }
 
 /* line 74, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/modules/_buttons.scss */
@@ -1877,15 +1877,15 @@ a, a:focus, a:hover, a:active {
 
 /* line 87, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/modules/_buttons.scss */
 .btn-outline-brand {
-  border: 2px solid #008751;
-  color: #008751 !important;
+  border: 2px solid #16a085;
+  color: #16a085 !important;
   background-color: transparent;
 }
 
 /* line 92, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/modules/_buttons.scss */
 .btn-outline-brand:hover, .btn-outline-brand:active, .btn-outline-brand:focus {
-  border: 2px solid #008751;
-  color: #008751 !important;
+  border: 2px solid #16a085;
+  color: #16a085 !important;
   background-color: transparent;
 }
 
@@ -1915,7 +1915,7 @@ a, a:focus, a:hover, a:active {
 
 /* line 118, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/modules/_buttons.scss */
 .btn-group button {
-  color: #008751 !important;
+  color: #16a085 !important;
 }
 
 /* line 1, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/modules/_inputs.scss */
@@ -2205,7 +2205,7 @@ svg .mapsvg-region {
 
 /* line 128, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/modules/_typography.scss */
 svg .mapsvg-region:hover {
-  fill: #008751;
+  fill: #16a085;
 }
 
 /* line 133, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/modules/_typography.scss */
@@ -2261,12 +2261,12 @@ del span {
 
 /* line 167, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/modules/_typography.scss */
 .media-body ul li a {
-  color: #008751;
+  color: #16a085;
 }
 
 /* line 170, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/modules/_typography.scss */
 .media-body ul li a:hover, .media-body ul li a:active, .media-body ul li a:focus {
-  color: #008751;
+  color: #16a085;
 }
 
 /* line 175, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/modules/_typography.scss */
