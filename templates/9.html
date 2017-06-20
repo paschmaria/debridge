@@ -256,7 +256,7 @@
                             
                             <form action="" id="product-upload-form">
                                 <div class="md-form m-0">
-                                    <textarea type="text" id="status_update" class="md-textarea input-alternate p-10 h-200 border-box" placeholder="What's on your mind?"></textarea>
+                                    <textarea type="text" id="status_update" class="md-textarea input-alternate p-10 h-100 border-box" placeholder="What's on your mind?"></textarea>
                                 </div>
                                 <div id="product-img-wrapper" class="dis-flex flex-row">
                                     <ul id="product-imgs" class=""></ul>
@@ -327,11 +327,11 @@
                                 <img class="media-object p-r-10" src="assets/img/acc-img-1.png" alt="Image">
                                 </a>
                                 <div class="media-body">
-                                    <textarea name="" id="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Press enter to send..."></textarea>
+                                    <textarea name="" id="" class="md-textarea input-alternate p-10 h-58 border-box comment_box" placeholder="Press enter to send..."></textarea>
                                 </div>
                             </div>
-                            <div class="media m-b-40">
-                                <div class="media">
+                            <div class="media m-b-40 comment flex-column">
+                                <!-- <div class="media">
                                     <div class="pull-left p-r-10">
                                         <img class="media-object " src="assets/img/acc-img-2.png" alt="Image">
                                     </div>
@@ -352,7 +352,7 @@
                                             </div>
                                         </div> 
                                     </div>
-                                </div>
+                                </div> -->
                             </div> 
                             <!-- /.comment section -->
                             <div class="card-group">
@@ -635,6 +635,7 @@
             document.onreadystatechange = () => {
                 if (document.readyState === "complete") {
                     app.productImageUpload(4);
+                    app.commentHandler();
                 }
             }
         </script>

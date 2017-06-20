@@ -288,12 +288,29 @@
                         </nav>
                         <div class="card m-t-20 p-18">
                             <div class="card-block p-0">
-                                <div class="md-form m-0">
+                                <form action="" id="product-upload-form">
+                                    <div class="md-form m-0">
+                                        <textarea type="text" id="status_update" class="md-textarea input-alternate p-10 h-100 border-box" placeholder="What's on your mind?"></textarea>
+                                    </div>
+                                    <div id="product-img-wrapper" class="dis-flex flex-row">
+                                        <ul id="product-imgs" class=""></ul>
+                                        <span class="add-img pos-rel">
+                                            <span class=""><input type="file" class="product-img-input" multiple></span>
+                                            <button type="button" class="btn-upload btn-product-img"><i class="fa fa-plus fa-3x"></i></button>
+                                        </span>
+                                    </div>
+                                    <div id="">
+                                        <button type="button" class="btn-flat btn-product-img"><i class="fa fa-image"></i> upload</button>
+                                        <input type="file" class="product-img-input" multiple>
+                                        <button type="submit" class="btn btn-brand waves-effect">post</button>
+                                    </div>
+                                </form>
+                                <!-- <div class="md-form m-0">
                                     <textarea type="text" id="status_update" class="md-textarea input-alternate p-10 h-100 border-box" placeholder=""></textarea>
                                 </div>
                                 <div class="text-right m-b-20">
                                     <button type="submit" class="btn btn-brand waves-effect">POST</button>
-                                </div>
+                                </div> -->
                             </div>
                             <!-- first post wrapper -->
                             <div class="media">
@@ -491,6 +508,9 @@
 
         <!-- slick carousel -->
         <script type="text/javascript" src="assets/plugins/slick/slick.min.js"></script>
+
+        <!-- Main JS -->
+        <script type="text/javascript" src="assets/js/main.js"></script>
         <script>
             $(document).ready(function(){
                 $('.carousel_big').slick({
@@ -545,6 +565,13 @@
                 $('[data-toggle="tooltip"]').tooltip();
             });
         </script>
+        <script>
+            document.onreadystatechange = () => {
+                if (document.readyState === "complete") {
+                    app.productImageUpload(4);
+                }
+            }
+        </script> 
 
     </body>
 

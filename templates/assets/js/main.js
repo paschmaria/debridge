@@ -244,7 +244,7 @@ const app = {
     },
     commentHandler() {
     	let $container = $('section.main'),
-    		$addComment = $container.find('.comment');
+    		$addComment = $container.find('.comment_box');
 
     	// creating messages
     	let callbackdata = JSON.parse(localStorage.getItem('story'));
@@ -275,12 +275,12 @@ const app = {
     	                                	<li class="c-brand dis-inline-b p-l-10 p-r-10 comment-reply"><a href="#">Reply</a></li>
     	                                	<li class="c-brand dis-inline-b p-l-10">31 May 2017</li>
     	                                </ul>
-    	                                <div class="media m-t-5 dis-none">
+    	                                <div class="media m-t-5">
     	                                    <div class="pull-left p-r-10">
     	                                        <img src="assets/img/acc-img-1.png" class="media-object">
     	                                    </div>
     	                                    <div class="media-body">
-    	                                        <textarea class="md-textarea input-alternate p-10 h-58 border-box" style="width:400px" placeholder="Write a reply..."></textarea>
+    	                                        <textarea class="md-textarea input-alternate p-10 h-58 border-box" style="width:450px" placeholder="Write a reply..."></textarea>
     	                                    </div>
     	                                </div>
     	                            </div>
@@ -316,5 +316,6 @@ const app = {
     	    }
     	     
     	});
-    }
+    },
+    
 }
