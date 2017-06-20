@@ -131,4 +131,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Models\TradeCommunity', 'community_id');
     }
+
+    public function bridgeCode()
+    {
+        return $this->hasOne('App\Models\BridgeCode');
+    }
+
+    public function cart()
+    {
+        return $this->hasOne('App\Models\Cart');
+    }
 }
