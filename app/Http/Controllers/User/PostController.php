@@ -62,7 +62,6 @@ class PostController extends Controller
             'title' => $request->title,
             'content' => $request->content,
             ]);
-
         //mulitple image upload system
         if(!empty($request->file('file'))){
             $album = $this->photo_album->store($request);
@@ -70,8 +69,9 @@ class PostController extends Controller
         }
         auth()->user()->posts()->save($post);
 
-        // $request->session()->flash('success', 'Post Saved successfully!');
-        // return back();
+        return back()->with('success', 'Post Saved successfully!');
+        
+        //please nuru fix the json 
         return response()->json([
           'title' => $post->title,
           'content'    =>  $post->content

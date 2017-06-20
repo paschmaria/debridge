@@ -61,4 +61,9 @@ class Product extends Model
     {
         return $this->hasMany('App\Models\ProductNotification');
     }
+
+    public function hypes()
+    {
+        return $this->hasMany('App\Models\ProductHype');
+    }
 }
