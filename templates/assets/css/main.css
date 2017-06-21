@@ -339,6 +339,10 @@ body {
   padding-top: 5px !important;
 }
 
+.p-t-8 {
+  padding-top: 8px !important;
+}
+
 .p-t-10 {
   padding-top: 10px !important;
 }
@@ -390,6 +394,14 @@ body {
 
 .p-b-30 {
   padding-bottom: 30px !important;
+}
+
+.p-b-35 {
+  padding-bottom: 35px !important;
+}
+
+.p-b-43 {
+  padding-bottom: 43px !important;
 }
 
 /****  Padding Left  ****/
@@ -467,8 +479,16 @@ body {
   top: 10px;
 }
 
+.t-12 {
+  top: 12px;
+}
+
 .t-15 {
   top: 15px;
+}
+
+.t-24 {
+  top: -24px;
 }
 
 .t-65p {
@@ -509,8 +529,16 @@ body {
   left: 5px;
 }
 
+.l-6 {
+  left: 6px;
+}
+
 .l-10 {
   left: 10px;
+}
+
+.l-12 {
+  left: 12px;
 }
 
 .l-15 {
@@ -686,7 +714,7 @@ body {
 
 /****  Background Colors  ****/
 .bg-brand {
-  background-color: #008751 !important;
+  background-color: #16a085 !important;
   color: #FFFFFF !important;
 }
 
@@ -801,6 +829,10 @@ body {
   width: 0 !important;
 }
 
+.width-30 {
+  width: 30px !important;
+}
+
 .width-40 {
   width: 40px !important;
 }
@@ -819,6 +851,10 @@ body {
 
 .width-150 {
   width: 150px !important;
+}
+
+.width-185 {
+  width: 185px !important;
 }
 
 .width-200 {
@@ -1098,7 +1134,7 @@ a, a:focus, a:hover, a:active {
 
 /****  Font Color  ****/
 .c-brand {
-  color: #008751 !important;
+  color: #16a085 !important;
 }
 
 .c-red {
@@ -1311,12 +1347,12 @@ a, a:focus, a:hover, a:active {
 }
 
 .hover-underline:hover {
-  color: #008751 !important;
+  color: #16a085 !important;
 }
 
 .hover-underline:before {
   height: 2px;
-  background-color: #008751;
+  background-color: #16a085;
   content: "";
   width: 100%;
   visibility: hidden;
@@ -1340,7 +1376,7 @@ a, a:focus, a:hover, a:active {
 
 .list-group-item-action:active, .list-group-item-action:focus, .list-group-item-action:hover {
   color: #FFFFFF;
-  background-color: #008751;
+  background-color: #16a085;
   -webkit-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -1352,7 +1388,7 @@ a, a:focus, a:hover, a:active {
 }
 
 .nav-item a.nav-link.active {
-  color: #008751;
+  color: #16a085;
 }
 
 .user-type-navbar {
@@ -1377,16 +1413,6 @@ a, a:focus, a:hover, a:active {
   }
 }
 
-.tooltip > .tooltip-inner {
-  background-color: #f0fff0;
-  color: #212121;
-  border: 1px solid #008751;
-}
-
-.tooltip > .tooltip-arrow {
-  border-top: 5px solid #008751;
-}
-
 .material-button span {
   -webkit-transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
   -ms-transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -1405,7 +1431,7 @@ a, a:focus, a:hover, a:active {
   border-radius: 50%;
   cursor: pointer;
   display: block;
-  background: #008751 !important;
+  background: #16a085 !important;
   position: absolute;
   top: 40px;
   right: -50px;
@@ -1476,7 +1502,7 @@ a, a:focus, a:hover, a:active {
   outline: 0 !important;
   text-transform: uppercase;
   cursor: pointer;
-  color: #008751;
+  color: #16a085;
   background: transparent;
 }
 
@@ -1503,7 +1529,7 @@ a, a:focus, a:hover, a:active {
 }
 
 .btn-brand {
-  background: #008751;
+  background: #16a085;
 }
 
 .btn-brand:hover, .btn-brand:active, .btn-brand:focus {
@@ -1519,14 +1545,14 @@ a, a:focus, a:hover, a:active {
 }
 
 .btn-outline-brand {
-  border: 2px solid #008751;
-  color: #008751 !important;
+  border: 2px solid #16a085;
+  color: #16a085 !important;
   background-color: transparent;
 }
 
 .btn-outline-brand:hover, .btn-outline-brand:active, .btn-outline-brand:focus {
-  border: 2px solid #008751;
-  color: #008751 !important;
+  border: 2px solid #16a085;
+  color: #16a085 !important;
   background-color: transparent;
 }
 
@@ -1551,7 +1577,7 @@ a, a:focus, a:hover, a:active {
 }
 
 .btn-group button {
-  color: #008751 !important;
+  color: #16a085 !important;
 }
 
 .input-shadow {
@@ -1801,7 +1827,7 @@ svg .mapsvg-region {
 }
 
 svg .mapsvg-region:hover {
-  fill: #008751;
+  fill: #16a085;
 }
 
 .divider hr {
@@ -1849,11 +1875,11 @@ del span {
 }
 
 .media-body ul li a {
-  color: #008751;
+  color: #16a085;
 }
 
 .media-body ul li a:hover, .media-body ul li a:active, .media-body ul li a:focus {
-  color: #008751;
+  color: #16a085;
 }
 
 #product-img-wrapper {

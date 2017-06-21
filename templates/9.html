@@ -256,7 +256,7 @@
                             
                             <form action="" id="product-upload-form">
                                 <div class="md-form m-0">
-                                    <textarea type="text" id="status_update" class="md-textarea input-alternate p-10 h-200 border-box" placeholder="What's on your mind?"></textarea>
+                                    <textarea type="text" id="status_update" class="md-textarea input-alternate p-10 h-100 border-box" placeholder="What's on your mind?"></textarea>
                                 </div>
                                 <div id="product-img-wrapper" class="dis-flex flex-row">
                                     <ul id="product-imgs" class=""></ul>
@@ -306,10 +306,10 @@
                             </div>
 
                             <div class="m-t-10 m-b-50">
-                                <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10 m-l-60" role="group" aria-label="Ad Action Buttons">
-                                   <!--  <button type="button" class="btn bg-white m-r-3 f-14">
-                                        <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
-                                    </button> -->
+                                <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10" role="group" aria-label="Ad Action Buttons">
+                                     <button type="button" class="btn bg-white m-r-3 f-14">
+                                        <span class="f-left">View Item&nbsp;</span><span class="f-right"> <i class="fa fa-eye"></i> </span>
+                                    </button>
                                     <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
                                         <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
                                     </button>
@@ -327,11 +327,11 @@
                                 <img class="media-object p-r-10" src="assets/img/acc-img-1.png" alt="Image">
                                 </a>
                                 <div class="media-body">
-                                    <textarea name="" id="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Press enter to send..."></textarea>
+                                    <textarea name="" id="" class="md-textarea input-alternate p-10 h-58 border-box comment_box" placeholder="Press enter to send..."></textarea>
                                 </div>
                             </div>
-                            <div class="media m-b-40">
-                                <div class="media">
+                            <div class="media m-b-40 comment flex-column">
+                                <!-- <div class="media">
                                     <div class="pull-left p-r-10">
                                         <img class="media-object " src="assets/img/acc-img-2.png" alt="Image">
                                     </div>
@@ -352,7 +352,7 @@
                                             </div>
                                         </div> 
                                     </div>
-                                </div>
+                                </div> -->
                             </div> 
                             <!-- /.comment section -->
                             <div class="card-group">
@@ -378,10 +378,10 @@
                                 </div>
                             </div>
                             <div class="m-t-10 m-b-50">
-                                <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10 m-l-60" role="group" aria-label="Ad Action Buttons">
-                                    <!-- <button type="button" class="btn bg-white m-r-3 f-14">
-                                        <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
-                                    </button> -->
+                                <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10" role="group" aria-label="Ad Action Buttons">
+                                    <button type="button" class="btn bg-white m-r-3 f-14">
+                                        <span class="f-left">View Product&nbsp;</span><span class="f-right"><!-- <i class="fa fa-shopping-cart"></i> --></span>
+                                    </button>
                                     <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
                                         <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
                                     </button>
@@ -452,10 +452,10 @@
                             </div>
 
                             <div class="m-t-10 m-b-50">
-                                <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10 m-l-60" role="group" aria-label="Ad Action Buttons">
-                                    <!-- <button type="button" class="btn bg-white m-r-3 f-14">
-                                        <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
-                                    </button> -->
+                                <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10" role="group" aria-label="Ad Action Buttons">
+                                    <button type="button" class="btn bg-white m-r-3 f-14">
+                                        <span class="f-left">View Product&nbsp;</span><span class="f-right"><!-- <i class="fa fa-shopping-cart"></i> --></span>
+                                    </button>
                                     <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
                                         <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
                                     </button>
@@ -635,6 +635,7 @@
             document.onreadystatechange = () => {
                 if (document.readyState === "complete") {
                     app.productImageUpload(4);
+                    app.commentHandler();
                 }
             }
         </script>
