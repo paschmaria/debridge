@@ -13,9 +13,8 @@
 
 Route::get('/', 'Auth\UserController@index')->name('index');
 
-Route::get('users/logout', 'User\FriendsController@user_logout')->name('user_logout');
+Route::get('/logout', 'User\FriendsController@user_logout')->name('logout');
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -26,6 +25,8 @@ Route::post('/post', 'User\PostController@store')->name('create_post');
 Route::post('/comment/{post}', 'User\CommentController@store')->name('create_comment');
 
 Route::get('/hype/{post}', 'User\HypeController@create')->name('hype');
+
+Route::get('/product_hype/{product}', 'Merchant\ProductController@product_hype')->name('product_hype');
 
 Route::get('/admire/{post}', 'User\AdmireController@create')->name('admire');
 Route::get('/unadmire/{post}', 'User\AdmireController@destroy')->name('unadmire');
@@ -119,4 +120,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 	Route::match(['get', 'post'], '/', 'Admin\AdminController@signin');
 });
 
-Route::get('/user/{email}', 'User\AccountController@index')->name('user_profile');
+Route::get('/{email}', 'User\AccountController@index')->name('user_profile');

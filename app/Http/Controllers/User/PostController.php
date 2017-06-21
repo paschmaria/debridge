@@ -32,7 +32,9 @@ class PostController extends Controller
         $posts = Post::latest()->get();
         $admired = PostAdmire::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
         $hyped = PostHype::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
-        return view('post', compact('posts', 'admired', 'hyped'));
+        $admired_count = PostAdmire::all();
+        $hyped_count = PostHype::all();
+        return view('post', compact('posts', 'admired', 'hyped', 'admired_count', 'hyped_count'));
     }
 
     /**
