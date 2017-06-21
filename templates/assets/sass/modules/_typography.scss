@@ -204,13 +204,6 @@ del span {
 	}
 }
 
-button.btn-upload {
-	width: 90px;
-	height: 90px;
-	margin-left: 5px;
-	@include pos(absolute, $l: 0)
-}
-
 #product-upload-form div:last-child {
 	position: relative !important;
 	text-align: right !important;
@@ -230,5 +223,6 @@ button.btn-upload {
 
 	& .btn-brand {
 		height: 44.19px;
+		
 	}
 }
