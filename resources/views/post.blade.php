@@ -76,12 +76,13 @@
                         @endif
                             <p>
                                 @if (!in_array($post->id, $hyped))
-                                    <a href="{{ route('hype', $post->id) }}"><button class="btn btn-primary">Hype</button></a>
+                                    <a href="{{ route('hype', $post->id) }}"><button class="btn btn-primary">Hype&nbsp<span class="badge">{{ $hyped_count->where('post_id', $post->id)->count() }}</span></button></a></button></a>
                                 @endif
                                 @if(!in_array($post->id, $admired))
-                                    <a href="{{ route('admire', $post->id) }}"><button class="btn btn-success">Admire</button></a>
+                                    <a href="{{ route('admire', $post->id) }}"><button class="btn btn-success">Admire&nbsp<span class="badge">{{ $admired_count->where('post_id', $post->id)->count() }}</span></button></a>
                                 @else
-                                    <a href="{{ route('unadmire', $post->id) }}"><button class="btn btn-success">Unadmire</button></a>
+                                    <a href="{{ route('unadmire', $post->id) }}"><button class="btn btn-success">Unadmire<span class="badge">{{ $admired_count->where('post_id', $post->id)->count() }}</span></button></a>
+                                    </button></a>
                                 @endif
                                 @if($post->user_id===auth()->user()->id)
                                 <a href="{{ route('admire', $post->id) }}"><button class="btn btn-success">Edit</button></a>
