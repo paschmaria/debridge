@@ -37,7 +37,7 @@
     }
 }
 
-.cart-count, .message-count, .notification-count {
+.cart-count, .messages, .notifications {
     padding: 1px 6px;
 	border-radius: 50%;
 	font-size: 13px;
@@ -45,4 +45,7 @@
 	color: $white-color;
 
 	@include pos(absolute, $t: -11px, $l: 65%, $z: 5000)
+}
+.notify-dropdown{
+    left:-165px;
 }

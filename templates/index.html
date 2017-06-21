@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <title>De-Bridge</title>
         <meta charset="utf-8">
@@ -37,11 +36,11 @@
                 <div class="row p-t-35 p-b-10">
                     <div class="col col-sm-3 col-md-3">
                         <div class="dis-flex">
-                            <figure class="m-0">
+                            <figure class="m-0 m-b-10">
                                 <a href="#">
                                     <img src="assets/img/logo/debridge-logo.png" class="img-fluid m-auto">
                                 </a>
-                                <figcaption class="motto f-12 m-0 m-t-5">HOME | THE MARKET</figcaption>
+                                <!-- <figcaption class="motto f-12 m-0 m-t-5"><a href="" class="c-white">MY PROFILE</a> |  <a href="registered-users.html" class="c-white">NIGERIAN MARKET</a></figcaption> -->
                             </figure>
                         </div>
                     </div>
@@ -111,8 +110,9 @@
             <div class="row m-t-20">
                 <div class="hidden-xs-down col-sm-3 col-md-3">
                     <div class="list-group m-b-20">
-                        <a href="bridger.html" class="list-group-item list-group-item-action">BRIDGER</a>
-                        <a href="tradeRequest.html" class="list-group-item list-group-item-action">TRADE REQUEST</a>
+                        <!-- this should be available for registered users.
+                        <a href="#" class="list-group-item list-group-item-action">BRIDGER</a>
+                        <a href="#" class="list-group-item list-group-item-action">TRADE REQUEST</a> -->
                         <a href="#" class="list-group-item list-group-item-action">TRADE COMMUNITY</a>
                         <a href="#" class="list-group-item list-group-item-action">BRIDGE POINT</a>
                         <a href="#" class="list-group-item list-group-item-action">BRIDGE CODE</a>
@@ -307,52 +307,55 @@
                         </div>
 
                         <div class="m-t-10 m-b-50">
-                            <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10" role="group" aria-label="Ad Action Buttons">
-                                <button type="button" class="btn bg-white m-r-3 f-14" data-toggle="modal" data-target="#basicExample">
-                                    <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
-                                </button>
-                                <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14" data-toggle="modal" data-target="#basicExample">
-                                    <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
-                                </button>
-                                <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14" data-toggle="modal" data-target="#basicExample">
-                                    <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-envelope"></i></span>
-                                </button>
-                                <button type="button" class="btn bg-white m-l-3 f-14" data-toggle="modal" data-target="#basicExample">
-                                    <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
-                                </button>
-                                <!-- modal start -->
-                                <div class="modal fade width-100p" id="basicExample" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <!--Content-->
-                                        <div class="modal-content bg-brand-lite">
-                                            <!--Header-->
-                                            <div class="modal-header bg-brand">
-                                                <h4 class="modal-title w-100 m-auto c-white text-center" id="myModalLabel">Sign up for Debridge </h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true" class="c-white">&times;</span>
-                                                </button>
-                                            </div>
-                                            <!--Body-->
-                                            <div class="modal-body">
-                                                <div class="text-center f-32 c-gray-light"><span class="fa fa-shopping-cart"></span></div>
-                                                <p class="text-center f-20 m-t-20 m-b-10 c-dark">When you Join Debridge, You will be able to order any item</p>
-                                                <div class="modal-signup text-center m-b-10">
-                                                    <button class="btn btn-md bg-brand text-center f-16">Sign Up</button>
-                                                </div>
-                                            </div>
-                                            <!--Footer-->
-                                            <div class="modal-footer border-top">
-                                                <div class="m-auto">
-                                                    <p class="text-center c-dark f-16">Have an account? <a href="#" class="c-brand">Log in</a></p>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                        <!--/.Content-->
-                                    </div>
-                                </div>                                <!-- / modal ends here -->
+                                <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10" role="group" aria-label="Ad Action Buttons">
+                                    <button type="button" class="btn bg-white m-r-3 f-14">
+                                        <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
+                                    </button>
+                                    <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
+                                        <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
+                                    </button>
+                                    <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
+                                        <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
+                                    </button>
+                                    <button type="button" class="btn bg-white m-l-3 f-14">
+                                        <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+                        <!-- coomment section -->
+                            <div class="media m-b-15">
+                                <a class="pull-left" href="#">
+                                <img class="media-object p-r-10" src="assets/img/acc-img-1.png" alt="Image">
+                                </a>
+                                <div class="media-body">
+                                    <textarea name="" id="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Press enter to send..."></textarea>
+                                </div>
+                            </div>
+                            <div class="media m-b-40">
+                                <div class="media">
+                                    <div class="pull-left p-r-10">
+                                        <img class="media-object " src="assets/img/acc-img-2.png" alt="Image">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="media-heading w-700 m-b-5 f-12">Cindy Fashion House </h6>
+                                        <p m-b- f-12>New arrivals are everywhere. Get Quality 2017 dresses which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing</p>
+                                        <ul class="m-b-0 f-12">
+                                            <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart-o"></i></span> Like</a></li>
+                                        <li class="c-brand dis-inline-b p-l-10 p-r-10"><a href="#">Reply</a></li>
+                                        <li class="c-brand dis-inline-b p-l-10">31 May 2017</li>
+                                        </ul>
+                                        <div class="media m-t-5">
+                                            <div class="pull-left p-r-10">
+                                                <img src="assets/img/acc-img-1.png" class="media-object">
+                                            </div>
+                                            <div class="media-body">
+                                                <textarea name="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Write a reply..."></textarea>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div> 
+                            <!-- /.comment section -->
 
                         <div class="view overlay hm-white-slight p-5 bd-dark-light">
                             <img src="assets/img/products/productside-2.png" class="img-fluid width-100p" alt="">
@@ -361,7 +364,7 @@
                             </a>
                         </div>
 
-                        <div class="m-t-10 m-b-50">
+                            <div class="m-t-10 m-b-50">
                                 <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10" role="group" aria-label="Ad Action Buttons">
                                     <button type="button" class="btn bg-white m-r-3 f-14" data-toggle="modal" data-target="#basicExample">
                                         <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
@@ -370,7 +373,7 @@
                                         <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
                                     </button>
                                     <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14" data-toggle="modal" data-target="#basicExample">
-                                        <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-envelope"></i></span>
+                                        <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
                                     </button>
                                     <button type="button" class="btn bg-white m-l-3 f-14" data-toggle="modal" data-target="#basicExample">
                                         <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
@@ -380,8 +383,42 @@
                                 
                                 <!-- / modal -->
                             </div>
-                     </div> 
-                </div>
+                            <!-- coomment section -->
+                            <div class="media m-b-15">
+                                <a class="pull-left" href="#">
+                                <img class="media-object p-r-10" src="assets/img/acc-img-1.png" alt="Image">
+                                </a>
+                                <div class="media-body">
+                                    <textarea name="" id="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Press enter to send..."></textarea>
+                                </div>
+                            </div>
+                            <div class="media m-b-40">
+                                <div class="media">
+                                    <div class="pull-left p-r-10">
+                                        <img class="media-object " src="assets/img/acc-img-2.png" alt="Image">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="media-heading w-700 m-b-5 f-12">Cindy Fashion House </h6>
+                                        <p m-b- f-12>New arrivals are everywhere. Get Quality 2017 dresses which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing</p>
+                                        <ul class="m-b-0 f-12">
+                                            <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart-o"></i></span> Like</a></li>
+                                        <li class="c-brand dis-inline-b p-l-10 p-r-10"><a href="#">Reply</a></li>
+                                        <li class="c-brand dis-inline-b p-l-10">31 May 2017</li>
+                                        </ul>
+                                        <div class="media m-t-5">
+                                            <div class="pull-left p-r-10">
+                                                <img src="assets/img/acc-img-1.png" class="media-object">
+                                            </div>
+                                            <div class="media-body">
+                                                <textarea name="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Write a reply..."></textarea>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div> 
+                            <!-- /.comment section -->
+                        </div>
+                    </div>
                 <div class="hidden-xs-down col-sm-3 col-md-3">
                     <!--Card-->
                     <div class="card m-b-16 wow fadeInUp">

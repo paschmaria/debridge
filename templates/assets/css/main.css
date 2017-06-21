@@ -801,6 +801,10 @@ body {
   width: 0 !important;
 }
 
+.width-40 {
+  width: 40px !important;
+}
+
 .width-82 {
   width: 82px !important;
 }
@@ -953,6 +957,10 @@ body {
 
 .pos-abs {
   position: absolute;
+}
+
+.pos-fixed {
+  position: fixed;
 }
 
 .f-left {
@@ -1190,6 +1198,10 @@ a, a:focus, a:hover, a:active {
   z-index: 1000 !important;
 }
 
+.z-2500 {
+  z-index: 2500 !important;
+}
+
 .z-5000 {
   z-index: 5000 !important;
 }
@@ -1277,7 +1289,7 @@ a, a:focus, a:hover, a:active {
   }
 }
 
-.cart-count, .message-count, .notification-count {
+.cart-count, .messages, .notifications {
   padding: 1px 6px;
   border-radius: 50%;
   font-size: 13px;
@@ -1287,6 +1299,10 @@ a, a:focus, a:hover, a:active {
   top: -11px;
   left: 65%;
   z-index: 5000;
+}
+
+.notify-dropdown {
+  left: -165px;
 }
 
 .hover-underline {
@@ -1361,21 +1377,14 @@ a, a:focus, a:hover, a:active {
   }
 }
 
-.pagination {
-  background: #FFFFFF;
+.tooltip > .tooltip-inner {
+  background-color: #f0fff0;
+  color: #212121;
+  border: 1px solid #008751;
 }
 
-.page-item.active .page-link {
-  background-color: #008751;
-  border-color: #008751;
-}
-
-.page-link {
-  color: #008751;
-}
-
-.page-link:focus, .page-link:focus, .page-link:focus {
-  color: #008751;
+.tooltip > .tooltip-arrow {
+  border-top: 5px solid #008751;
 }
 
 .material-button span {
@@ -1539,6 +1548,10 @@ a, a:focus, a:hover, a:active {
 [data-page="products-page"] .card .btn-group .btn {
   padding-left: 37.2px;
   padding-right: 37.2px;
+}
+
+.btn-group button {
+  color: #008751 !important;
 }
 
 .input-shadow {

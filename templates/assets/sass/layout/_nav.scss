@@ -36,19 +36,12 @@
 	}
 }
 
-.pagination {
-	background: $white-color;
+.tooltip > .tooltip-inner {
+    background-color: $brand-color-lite; 
+    color: $brand-color-dark; 
+    border: 1px solid $brand-color;
 }
 
-.page-item.active .page-link {
-    background-color: $brand-color;
-    border-color: $brand-color;
-}
-
-.page-link {
-	color: $brand-color;
-}
-
-.page-link:focus, .page-link:focus, .page-link:focus {
-	color: $brand-color;
+.tooltip > .tooltip-arrow {
+  	border-top: 5px solid $brand-color;
 }

@@ -239,6 +239,8 @@ const app = {
 				})
 		    })
     	}
+
+    	likeBtnClicker();
     },
     commentHandler() {
     	let $container = $('section.main'),
@@ -285,7 +287,7 @@ const app = {
     	                        </div>`
     	        }
     	                    
-    	        $(".go").html(output);
+    	        $(".comment").html(output);
     	        //console.log(arg.val());
     	        arg.val(" ");
     	        //console.log(arg.val());

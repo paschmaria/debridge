@@ -36,7 +36,7 @@
     <body data-page="products-page">
         <!-- header begins here-->
         <header>
-            <div class="container-fluid bg-brand">
+            <div class="container-fluid bg-brand z-2500">
                 <div class="row p-t-35 p-b-10">
                     <div class="col col-sm-3 col-md-3">
                         <div class="dis-flex">
@@ -44,7 +44,7 @@
                                 <a href="#">
                                     <img src="assets/img/logo/debridge-logo.png" class="img-fluid m-auto">
                                 </a>
-                                <figcaption class="motto f-12 m-0 m-t-5"><a href="" class="c-white">MY PROFILE</a> |  <a href="registered-users.html" class="c-white">NIGERIAN MARKET</a></figcaption>
+                                <figcaption class="motto f-12 m-0 m-t-5"><a href="9.html" class="c-white">MY PROFILE</a> |  <a href="registered-users.html" class="c-white">NIGERIAN MARKET</a></figcaption>
                             </figure>
                         </div>
                     </div>
@@ -74,9 +74,9 @@
                                             Oladele
                                             </a>
                                             <div class="dropdown-menu animated bounceIn" aria-labelledby="dropdownMenu3">
-                                                <a class="dropdown-item waves-effect waves-light" href="#">Action</a>
-                                                <a class="dropdown-item waves-effect waves-light" href="#">Another action</a>
-                                                <a class="dropdown-item waves-effect waves-light" href="#">Something here</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="editprofile.html">Edit Profile</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="#">Inventory</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="#">Log Out</a>
                                             </div>
                                         </div>
                                     </li>
@@ -85,7 +85,7 @@
                             <div class="col-md-12 col-sm-12 col-12 m-t-10">
                                 <ul class="navbar-nav dis-flex flex-row">
                                     <li class="animated bounceIn"> 
-                                        <a href="mycart.html" class="p-l-10 p-r-10" title="Cart">
+                                        <a href="mycart.html" class="p-l-10 p-r-10">
                                             <span class="pos-rel z-5000">
                                                 <i class="fa fa-shopping-cart fa-lg c-white" aria-hidden="true"></i>
                                                 <span class="cart-count">3</span>
@@ -93,27 +93,36 @@
                                         </a>
                                     </li>
                                     <li class="animated bounceIn"> 
-                                        <a href="#" class="p-l-10 p-r-10" title="Messages">
+                                        <a href="#" class="p-l-10 p-r-10">
                                             <span class="pos-rel z-5000">
                                                 <i class="fa fa-envelope fa-lg c-white" aria-hidden="true"></i>
-                                                <span class="message-count">3</span>
+                                                <span class="cart-count">3</span>
                                             </span>
                                         </a>
                                     </li>
                                     <li class="animated bounceIn"> 
-                                        <a href="#" class="p-l-10 p-r-10" title="Notifications">
+                                        <a class="p-l-10 p-r-10 dropdown white-text"  id="dropdownNotify" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <span class="pos-rel z-5000">
                                                 <i class="fa fa-bell fa-lg c-white" aria-hidden="true"></i>
-                                                <span class="notification-count">3</span>
+                                                <span class="cart-count">3</span>
                                             </span>
                                         </a>
+                                        <div class="dropdown-menu notify-dropdown animated bounceIn f-12" aria-labelledby="dropdownNotify">
+                                                <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">
+                                                <img src="assets/img/p-photo-6.jpeg" class="h-40 width-40 m-r-5 bd-50p">
+                                                <span>Ejike Jhud started following you</span>
+                                                </a>
+                                                <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#"><img src="assets/img/pphoto-4.jpg" class="h-40 width-40 m-r-5 bd-50p">
+                                                <span>Ejike Jhud Admired an item in your store</span></a>
+                                                <a class="dropdown-item waves-effect waves-light p-l-10" href="#"><img src="assets/img/pphoto-301.jpeg" class="h-40 width-40 m-r-5 bd-50p"><span>Ejike Jhud shared a post</span>
+                                                </a>
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                </div>
-               
+                </div> 
             </div>
             <!-- navigations/links right here -->
             <nav class="navbar navbar-toggleable-sm navbar-light transparent p-t-15 p-b-15 no-shadow border-top border-bottom" role="navigation">
@@ -809,7 +818,7 @@
                 </div>
 
                 <nav class="dis-flex m-t-20 m-b-20">
-                  <ul class="pagination m-0">
+                  <ul class="pagination footer m-0">
                     <li class="page-item disabled">
                       <a class="page-link" href="#" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
