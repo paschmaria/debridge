@@ -231,7 +231,11 @@ body {
 .m-l-15 {
   margin-left: 15px !important;
 }
-
+/***victor***/
+.m-l-16 {
+  margin-left: 16px !important;
+}
+/****end**/
 .m-l-25 {
   margin-left: 25px !important;
 }
@@ -1047,7 +1051,7 @@ a, a:focus, a:hover, a:active {
 }
 
 /****  Font Size  ****/
-.f-12 {
+.m-l12 {
   font-size: 12px !important;
 }
 
