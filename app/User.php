@@ -21,7 +21,6 @@ class User extends Authenticatable
         'password',
         'date_of_birth',
         'gender',
-        'account_type_id',
         'confirm_code',
         'user_token'
     ];

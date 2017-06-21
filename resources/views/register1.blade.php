@@ -165,28 +165,26 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-md-6 col-sm-6 col-12 form-group">
                             <label for="state" data-error="wrong" data-success="right">State</label>
                             <input type="text" name="state" id="usr-state" class="form-control bd-3 h-40 validate input-alternate border-box" list="States" placeholder="Choose State" required value="{{ old('state') }}">
                             <datalist id="States">
-                                <option value="Abia"></option>
-                                <option value="Adamawa"></option>
-                                <option value="Akwa Ibom"></option>
-                                <option value="Anambra"></option>
-                                <option value="Benue"></option>
+                                @foreach($states as $state)
+                                    <option>{{ $state->name }}</option>
+                                @endforeach
+                                
                             </datalist>
-                        </div>
+                        </div> -->
 
-                        <div class="col-md-6 col-sm-6 col-12 form-group">
+                        <div class="col-md-12 col-sm-6 col-12 form-group">
                             <label for="trade_community">Trade Community</label>
-                            <select name="trade_community id="usr-trade_community" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow" required value = "{{ old('trade_community') }}">
+                            <select name="trade_community" id="usr-trade_community" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow" required value = "{{ old('trade_community') }}">
                                 <option disabled selected>Choose Community...</option>
-                                <option>Ikeja</option>
-                                <option>Ipaja</option>
-                                <option>Agege</option>
-                                <option>Surulere</option>
-                                <option>Onipanu</option>
+                                @foreach($trade_communities as $trade_community)
+                                <option>{{ $trade_community->name }}</option>
+                                @endforeach
+                              
                             </select>
                         </div>
                     </div>

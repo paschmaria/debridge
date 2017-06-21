@@ -22,18 +22,21 @@ class AccountController extends Controller
     public function index($email)
     {
         //
-                $user = User::where('email', $email)->with('profile_picture')->first();
+        // dd('hi');
+        $user = User::where('email', $email)->with('profile_picture')->first();
 
-      if($user->image_id!=null){
-            $user_picture = $user->image_id;
-            $user_picture = Image::find($user_picture);
+      if(isset($user) && isset($user->image_id)){
 
-            $user_picture = $user_picture->image_reference;
+            // this is to get the user account and display is picture
+            $user_picture1 = $user->image_id;
+            $user_picture1 = Image::find($user_picture1);
+
+            $user_picture1 = $user_picture1->image_reference;
             // dd($user_picture);
 
-            return view('users.user_profile', compact('user_picture', 'user'));
+            return view('users.user_profile', compact('user_picture1', 'user'));
         }else{
-        return view('users.user_profile', compact('user'));
+        return view('users.user_profile', compact('user', 'user_picture1'));
         }
     
     }

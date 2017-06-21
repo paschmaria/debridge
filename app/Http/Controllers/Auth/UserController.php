@@ -10,6 +10,8 @@ use App\Models\Follower;
 use App\Models\FriendRequest;
 use App\Models\Image;
 use App\Models\Role;
+use App\Models\State;
+use App\Models\TradeCommunity;
 
 class UserController extends Controller
 {
@@ -21,25 +23,13 @@ class UserController extends Controller
     public function register()
     {
         $role = Role::where('name', 'Merchant')->first();
-        return view('register1', compact('role'));
+        $states = State::all();
+        $trade_communities = TradeCommunity::all();
+        return view('register1', compact('role', 'states', 'trade_communities'));
     }
 
     public function index(){
-        if(auth()->check()){
-            // dd('hi');
-            $user_picture_id = auth()->user()->image_id;
-            // $user_picture = Image::find($user_picture_id);
-            // dd($user_picture);
-            if(isset($user_picture)){
-                // dd('he');
-                $user_picture = auth()->user()->image_id;
-                $user_picture = Image::find($user_picture);
-                $user_picture = $user_picture->image_reference;
-                // dd($user_picture);
-                return view('index', compact('user_picture'));
-            }
-        }
-
+       
         return view('index');
     }
     
@@ -53,11 +43,14 @@ class UserController extends Controller
             'password' => 'required|confirmed|min:6',
             'date_of_birth' => 'date',
             'gender' => 'alpha',
-            // 'account_type_id' => 'required|integer',
+            
             ]);
         
         $user_token =  str_random(64);
         $role = Role::where('name', $request->input('trade_interest'))->first();
+        $trade_community = TradeCommunity::where('name', $request->input('trade_community'))->first();
+
+        // $state = State::where('name', $request->input('state'))->first();
 
         $user = User::create([
             'first_name' => $request->first_name,
@@ -65,7 +58,8 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => \Hash::make($request->password),
             'date_of_birth' => $request->date_of_birth,
-            'user_token' => $user_token
+            'user_token' => $user_token,
+            'gender' => $request->gender,
             ]);
         
         if($role == Role::where('name', 'Merchant')->first()){
@@ -73,6 +67,9 @@ class UserController extends Controller
             $user->role()->associate($role);
             $user->save();
         }
+
+        $user->community()->associate($trade_community);
+        $user->save();
         
 
         
