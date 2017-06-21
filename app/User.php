@@ -74,6 +74,11 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\PostAdmire');
     }
+
+    public function product_admired()
+    {
+        return $this->hasMany('App\Models\ProductAdmire');
+    }
     // accounts relationship
     public function user_account()
     {
