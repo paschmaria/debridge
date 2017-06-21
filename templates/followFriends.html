@@ -28,35 +28,49 @@
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="assets/css/main.css">
     <style type="text/css">
-        input#checkbox{
-            background:red;
+       .checkbox{
+            width:40px;
+            height:40px;
+            background-color:#f0fff0;
+            position: relative;
+            border-radius: 50%;
+            top:-24px;
+            left:5px;
+        }   
+        .checkbox input[type="checkbox"]{
+            visibility: hidden;
         }
-        .bg-green{
+        .checkbox label{
+            width:38px;
+            height: 38px;
+            position: absolute;
+            top: 1px;
+            left: 1px;
             background: #f0fff0;
+            border-radius: 50%;
+
         }
-        .bg-dark-green{
-            background: #008751;
+        .checkbox label:before{
+            content:'';
+            width: 15px;
+            height: 10px;
+            border: 3px solid #fff;
+            position: absolute;
+            border-top:none;
+            border-right:none;
+            transform:rotate(-45deg);
+            top:12px;
+            left:12px;
+            opacity: 0;
         }
-        
-    </style>
-    <script type="text/javascript" src="assets/plugins/mdb/js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#checkbox").click(function () {
-                $("#checkbox").css("background", "#008751");
-                // $("#checkbox").toggleClass("bg-green");
-            }, function () {
-                // body...
-                $("#checkbox").toggleClass("bg-green");
-            }
-            )
-            return false;
-            //, function(){
-            //     $("#checkbox").css("background","#f0fff0");
-            // });
-            })
-            
-    </script>
+        .checkbox input[type="checkbox"]:checked + label:before {
+            opacity: 1;
+        }
+        .checkbox input[type="checkbox"]:checked + label {
+            background-color:#008751;
+        }
+
+    </style>  
 
 </head>
 
@@ -74,7 +88,7 @@
                             <!-- fisrt card row-->
                             <div class="col-md-3">
                                 <!--first card -->
-                                <div class="card h-280">
+                                <div class="card h-310">
                                     <!-- card image -->
                                     <div class="view overlay hm-white-slight">
                                         <img src="assets/img/pphoto-25.jpeg">
@@ -84,13 +98,14 @@
                                     </div>
                                     <!--/ card image -->
                                     <!-- black circle -->
-                                    <div class="image-circle">
-                                        <img src="assets/img/rectangle-5.png" class="m-l-5 pos-abs b-25">
+                                        <div class="checkbox z-100">
+                                            <input type="checkbox" id="checkbox7" >
+                                            <label for="checkbox7"></label>
                                     </div>
                                     <!--/ black circle -->
                                     <!-- card content block-->
                                     <div class="card-block">
-                                        <div class="card-content pos-abs m-t-10">
+                                        <div class="card-content pos-abs m-t-m20">
                                             <h4 class="f-14" style="color:#212121;">Friend's Name</h4>
                                             <p class="f-12" style="color:#526173;">Ikorodu, Lagos</p>
                                         </div>
@@ -102,7 +117,7 @@
                             </div>
                             <div class="col-md-3">
                                 <!-- second card -->
-                                <div class="card h-280">
+                                <div class="card h-310">
                                     <!-- card image -->
                                     <div class="view overlay hm-white-slight">
                                         <img src="assets/img/pphoto-27.jpeg">
@@ -112,13 +127,14 @@
                                     </div>
                                     <!--/ card image -->
                                     <!-- black circle -->
-                                    <div class="image-circle">
-                                        <img src="assets/img/rectangle-5.png" class="m-l-5 pos-abs b-25">
+                                        <div class="checkbox z-100">
+                                            <input type="checkbox" id="checkbox9" >
+                                            <label for="checkbox9"></label>
                                     </div>
                                     <!-- black circle -->
                                     <!-- card content -->
                                     <div class="card-block">
-                                        <div class="card-content pos-abs m-t-10">
+                                        <div class="card-content pos-abs m-t-m20">
                                             <h4 class="f-14" style="color:#212121;">Friend's Name</h4>
                                             <p class="f-12"  style="color:#526173;">Ikorodu, Lagos</p>
                                         </div>
@@ -129,7 +145,7 @@
                                 <!--/ second card -->
                             </div>
                             <div class="col-md-3">
-                                <div class="card h-280">
+                                <div class="card h-310">
                                     <!-- card image -->
                                     <div class="view overlay hm-white-slight">
                                         <img src="assets/img/pphoto-25.jpeg">
@@ -139,13 +155,15 @@
                                     </div>
                                      <!--/ card image -->
                                      <!-- black circle -->
-                                     <div class="image-circle">
-                                        <img src="assets/img/rectangle-5.png" class="m-l-5 pos-abs b-25">
-                                     </div>
+                                        <div class="checkbox z-100">
+                                            <input type="checkbox" id="checkbox6" >
+                                            <label for="checkbox6"></label>
+                                        </div>
+
                                      <!-- black circle -->
                                     <!-- card content -->
                                     <div class="card-block">
-                                        <div class="card-content pos-abs m-t-10">
+                                        <div class="card-content pos-abs m-t-m20">
                                             <h4 class="f-14" style="color:#212121;">Friend's Name</h4>
                                             <p class="f-12"  style="color:#526173;">Ikorodu, Lagos</p>
                                         </div>
@@ -155,7 +173,7 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="card h-280">
+                                <div class="card h-310">
                                     <!-- card image -->
                                     <div class="view overlay hm-white-slight">
                                         <img src="assets/img/pphoto-25.jpeg">
@@ -165,13 +183,15 @@
                                     </div>
                                      <!--/ card image -->
                                      <!-- black circle -->
-                                    <div class="image-circle">
-                                        <img src="assets/img/rectangle-5.png" class="m-l-5 pos-abs b-25">
+                                        <div class="checkbox z-100">
+                                        <input type="checkbox" id="checkbox5" >
+                                        <label for="checkbox5"></label>
                                     </div>
+
                                     <!--/ black circle -->
                                     <!-- card content -->
                                     <div class="card-block">
-                                        <div class="card-content pos-abs m-t-10">
+                                        <div class="card-content pos-abs m-t-m20">
                                             <h4 class="f-14" style="color:#212121;">Friend's Name</h4>
                                             <p class="f-12"  style="color:#526173;">Ikorodu, Lagos</p>
                                         </div>
@@ -187,7 +207,7 @@
                             <!-- fisrt card row-->
                             <div class="col-md-3">
                                 <!--first card -->
-                                <div class="card h-280">
+                                <div class="card h-310">
                                     <!-- card image -->
                                     <div class="view overlay hm-white-slight">
                                         <img src="assets/img/pphoto-27.jpeg">
@@ -197,13 +217,14 @@
                                     </div>
                                     <!--/ card image -->
                                     <!-- black circle -->
-                                    <div class="image-circle">
-                                        <img src="assets/img/rectangle-5.png" class="m-l-5 pos-abs b-25">
+                                        <div class="checkbox z-100">
+                                        <input type="checkbox" id="checkbox4" >
+                                        <label for="checkbox4"></label>
                                     </div>
                                     <!--/ black circle -->
                                     <!-- card content block-->
                                     <div class="card-block">
-                                        <div class="card-content pos-abs m-t-10">
+                                        <div class="card-content pos-abs m-t-m20">
                                             <h4 class="f-14" style="color:#212121;">Friend's Name</h4>
                                             <p class="f-12" style="color:#526173;">Ikorodu, Lagos</p>
                                         </div>
@@ -215,7 +236,7 @@
                             </div>
                             <div class="col-md-3">
                                 <!-- second card -->
-                                <div class="card h-280">
+                                <div class="card h-310">
                                     <!-- card image -->
                                     <div class="view overlay hm-white-slight">
                                         <img src="assets/img/pphoto-25.jpeg">
@@ -225,13 +246,15 @@
                                     </div>
                                     <!--/ card image -->
                                     <!-- black circle -->
-                                    <div class="image-circle">
-                                        <img src="assets/img/rectangle-5.png" class="m-l-5 pos-abs b-25">
+
+                                    <div class="checkbox z-100">
+                                        <input type="checkbox" id="checkbox3" >
+                                        <label for="checkbox3"></label>
                                     </div>
                                     <!-- black circle -->
                                     <!-- card content -->
                                     <div class="card-block">
-                                        <div class="card-content pos-abs m-t-10">
+                                        <div class="card-content pos-abs m-t-m20">
                                             <h4 class="f-14" style="color:#212121;">Friend's Name</h4>
                                             <p class="f-12"  style="color:#526173;">Ikorodu, Lagos</p>
                                         </div>
@@ -242,7 +265,7 @@
                                 <!--/ second card -->
                             </div>
                             <div class="col-md-3">
-                                <div class="card h-280">
+                                <div class="card h-310">
                                     <!-- card image -->
                                     <div class="view overlay hm-white-slight">
                                         <img src="assets/img/pphoto-27.jpeg">
@@ -252,13 +275,14 @@
                                     </div>
                                      <!--/ card image -->
                                      <!-- black circle -->
-                                     <div class="image-circle">
-                                        <img src="assets/img/rectangle-5.png" class="m-l-5 pos-abs b-25">
-                                     </div>
+                                     <div class="checkbox z-100">
+                                        <input type="checkbox" id="checkbox2" >
+                                        <label for="checkbox2"></label>
+                                    </div>
                                      <!-- black circle -->
                                     <!-- card content -->
                                     <div class="card-block">
-                                        <div class="card-content pos-abs m-t-10">
+                                        <div class="card-content pos-abs m-t-m20">
                                             <h4 class="f-14" style="color:#212121;">Friend's Name</h4>
                                             <p class="f-12"  style="color:#526173;">Ikorodu, Lagos</p>
                                         </div>
@@ -268,7 +292,7 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="card h-280">
+                                <div class="card h-310">
                                     <!-- card image -->
                                     <div class="view overlay hm-white-slight">
                                         <img src="assets/img/pphoto-27.jpeg">
@@ -277,15 +301,16 @@
                                         </a>
                                     </div>
                                      <!--/ card image -->
-                                        <div class="checkbox pos-rel l-5 t-24">
-                                            <input type="checkbox" id="checkbox" class="appear-none pos-abs width-40 h-40 bd-white bd-50p z-2500">
-
+                                        <div class="checkbox z-100">
+                                            <input type="checkbox" id="checkbox1" >
+                                            <label for="checkbox1"></label>
                                         </div>
+
                                         
                                     <!--/ black circle
                                     <!-- card content -->
                                     <div class="card-block">
-                                        <div class="card-content pos-abs m-t-10">
+                                        <div class="card-content pos-abs m-t-m20">
                                             <h4 class="f-14" style="color:#212121;">Friend's Name</h4>
                                             <p class="f-12"  style="color:#526173;">Ikorodu, Lagos</p>
                                         </div>
