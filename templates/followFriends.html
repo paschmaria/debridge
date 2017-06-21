@@ -28,25 +28,36 @@
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="assets/css/main.css">
     <style type="text/css">
-        .checkbox label:after{
-            opacity: 0.2;
-            content: '';
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: transparent;
-            top: 12px;
-            left: 12px;
-            border: 3px solid black;
-            transform: rotate(-90deg);
+        input#checkbox{
+            background:red;
         }
-        .checkbox label:hover::after{
-            opacity: 0.5;
+        .bg-green{
+            background: #f0fff0;
         }
-        .checkbox input[type=checkbox]:checked +label:after{
-            opacity: 1;
+        .bg-dark-green{
+            background: #008751;
         }
+        
     </style>
+    <script type="text/javascript" src="assets/plugins/mdb/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#checkbox").click(function () {
+                $("#checkbox").css("background", "#008751");
+                // $("#checkbox").toggleClass("bg-green");
+            }, function () {
+                // body...
+                $("#checkbox").toggleClass("bg-green");
+            }
+            )
+            return false;
+            //, function(){
+            //     $("#checkbox").css("background","#f0fff0");
+            // });
+            })
+            
+    </script>
+
 </head>
 
 <body>
@@ -266,10 +277,9 @@
                                         </a>
                                     </div>
                                      <!--/ card image -->
-                                        <div class="checkbox z-2500 width-40 h-40 pos-rel t-24 l-5 bd-50p">
-                                            <input type="checkbox" value="">
-                                            <label class="pos-abs width-40 h-40 bg-brand t-0 l-0" for="checkbox">
-                                            </label>
+                                        <div class="checkbox pos-rel l-5 t-24">
+                                            <input type="checkbox" id="checkbox" class="appear-none pos-abs width-40 h-40 bd-white bd-50p z-2500">
+
                                         </div>
                                         
                                     <!--/ black circle
