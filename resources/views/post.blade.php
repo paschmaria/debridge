@@ -2,8 +2,6 @@
 
 @section('content')
 <div class="container">
-    
-
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -39,15 +37,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('file.*') ? ' has-error' : '' }}">
                             <label for="file" class="col-md-4 control-label">file</label>
 
                             <div class="col-md-6">
                                 <input id="file" type="file" class="form-control" name="file[]" multiple>
 
-                                @if ($errors->has('file'))
+                                @if ($errors->has('file.*'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('file') }}</strong>
+                                        <strong>{{ $errors->first('file.*') }}</strong>
                                     </span>
                                 @endif
                             </div>

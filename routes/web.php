@@ -99,7 +99,9 @@ Route::group(['prefix' => 'merchant', 'middleware'=> 'merchant'], function (){
 	Route::post('/update_promo/{id}', 'Merchant\ProductController@promo')->name('update_promo');
 
 	Route::get('/delete_promo/{id}', 'Merchant\ProductController@remove_promo')->name('remove_promo');
-	Route::get('/whats_new/', 'Merchant\ProductController@whats_new')->name('whats_new');
+	Route::get('/whats_new', 'Merchant\ProductController@whats_new')->name('whats_new');
+	Route::get('/addhottest/{product}', 'Merchant\HottestProductController@create')->name('add_hottest');
+	Route::get('/delhottest/{product}', 'Merchant\HottestProductController@destroy')->name('del_hottest');
 
 });
 Route::get('/merchant/product/{id}', 'Merchant\ProductController@show')->name('product');

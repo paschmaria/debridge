@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\User\BridgeCodeController;
 use App\User;
 use App\Mail\Welcome;
 use App\Models\Follower;
@@ -15,8 +16,11 @@ use App\Models\TradeCommunity;
 
 class UserController extends Controller
 {
-    function __construct()
+    protected $bride_code;
+
+    function __construct(BridgeCodeController $bride_code)
     {
+        $this->bride_code = $bride_code;
     	$this->middleware('guest')->except(['logout', 'verifyToken', 'resendActivationMail','market','viewUsers', 'brigeCode', 'profile_picture', 'index']);
     }
 
@@ -67,19 +71,17 @@ class UserController extends Controller
             $user->role()->associate($role);
             $user->save();
         }
-
         $user->community()->associate($trade_community);
         $user->save();
-        
-
-        
-        
+        // user follows himself so he can see his won post on his timeline
         $user->following()->attach($user);
         
 
         // \Mail::to($user)->send(new Welcome($user));
         // \Session::flash('success', 'Welcome to Debridge');
         \Auth::login($user);
+        //generate  debride code for user
+        $this->bride_code->store();
         return redirect(route('post'))->with('info', 'Welcome, '. $user->email);
     }
 
@@ -147,22 +149,6 @@ class UserController extends Controller
         // get the id of the users that the auth user sent a friend request
         $sent_request = FriendRequest::where('sender_id', auth()->user()->id)->pluck('receiver_id')->toArray();
         return view('users.users', compact('users', 'following_ids', 'sent_request'));
-     }
-
-     public function brigeCode(Request $request, $id)
-     {
-        $user = User::find($id);
-
-        $user_id = (string)$user->id;
-
-        $user_id = $user_id[0];
-
-        $random_string = str_random(2);
-
-        $brige_code = 'DB'.$user_id.$random_string;
-
-        dd($brige_code);
-
      }
 
      public function profile_picture(Request $request, $id){

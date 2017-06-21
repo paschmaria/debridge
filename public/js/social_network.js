@@ -1,5 +1,5 @@
 $(document).ready(function(){
-        var postForm = $("#postForm");
+        var postForm = $("#postForm1"); // i change the class from postForm to PostForm1
         postForm.submit(function(e){
             e.preventDefault();
             var formData = postForm.serialize();

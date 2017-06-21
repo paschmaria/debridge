@@ -4,40 +4,18 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
-use App\Models\Image;
+use App\Models\BridgeCode;
 
-class AccountController extends Controller
+class BridgeCodeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    public function index($email)
+    public function index()
     {
         //
-        $user = User::where('email', $email)->with('profile_picture')->first();
-
-      if(isset($user) && isset($user->image_id)){
-
-            // this is to get the user account and display is picture
-            $user_picture1 = $user->image_id;
-            $user_picture1 = Image::find($user_picture1);
-
-            $user_picture1 = $user_picture1->image_reference;
-            // dd($user_picture);
-
-            return view('users.user_profile', compact('user_picture1', 'user'));
-        }else{
-        return view('users.user_profile', compact('user', 'user_picture1'));
-        }
-    
     }
 
     /**
@@ -47,7 +25,16 @@ class AccountController extends Controller
      */
     public function create()
     {
-        //
+        while(true){
+            $user_id = (string)auth()->user()->id;
+            $user_id = $user_id[0];
+            $random_string = str_random(2);
+            $brige_code = 'DB' . $user_id . $random_string;
+            $code = BridgeCode::where('code', $brige_code)->first();
+            if (empty($code)){
+                return $brige_code;
+            }
+        }
     }
 
     /**
@@ -56,9 +43,18 @@ class AccountController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    // public function store()
+    // {
+    //     $code = $this->create();
+    //     $brige_code = BridgeCode::create(['code' => $code, 'user_id' => auth()->user()->id ]);
+    //     return true;
+    // }
+
+    public function store()
     {
-        //
+        $code = $this->create();
+        $brige_code = BridgeCode::create(['code' => $code, 'user_id' => auth()->user()->id ]);
+        return true;
     }
 
     /**
@@ -105,7 +101,4 @@ class AccountController extends Controller
     {
         //
     }
-
-     
-
 }
