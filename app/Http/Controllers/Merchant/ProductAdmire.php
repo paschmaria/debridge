@@ -1,43 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Merchant;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
-use App\Models\Image;
 
-class AccountController extends Controller
+class ProductAdmire extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    public function index($email)
+    public function index()
     {
         //
-        $user = User::where('email', $email)->with('profile_picture')->first();
-
-      if(isset($user) && isset($user->image_id)){
-
-            // this is to get the user account and display is picture
-            $user_picture1 = $user->image_id;
-            $user_picture1 = Image::find($user_picture1);
-
-            $user_picture1 = $user_picture1->image_reference;
-            // dd($user_picture);
-
-            return view('users.user_profile', compact('user_picture1', 'user'));
-        }else{
-        return view('users.user_profile', compact('user', 'user_picture1'));
-        }
-    
     }
 
     /**
@@ -105,7 +82,4 @@ class AccountController extends Controller
     {
         //
     }
-
-     
-
 }

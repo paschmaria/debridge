@@ -22,6 +22,16 @@ class Product extends Model
     }
 
     //hottest product relationships
+    public function hottest()
+    {
+        return $this->belongsTo('App\Models\HottestProduct', 'hottest_product_id');
+    }
+
+    public function admires()
+    {
+        return $this->hasMany('App\Models\ProductAdmire');
+    }
+
     public function hottest_1()
     {
     	return $this->hasOne('App\Models\HottestProduct', 'product_1_id', 'id');

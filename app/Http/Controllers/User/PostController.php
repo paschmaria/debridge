@@ -10,6 +10,7 @@ use App\Models\Image;
 use App\Models\PostAdmire;
 use App\Models\PostHype;
 use Carbon\Carbon;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -57,8 +58,13 @@ class PostController extends Controller
         $this->validate($request, [
             'title' => 'string|max:128',
             'content' => 'string|max:3000',
-            // 'image' => 'image:jpg,jpeg,png'
-            ]);
+        ]);
+
+        if(!empty($request->file('file'))){
+            $this->validate($request, [
+                'file.*' => 'required|mimes:jpg,jpeg,png,gif'
+            ], ['All files must be images (jpg, jpeg, png, gif)']);
+        }
 
         $post = new Post([
             'title' => $request->title,

@@ -73,6 +73,11 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\PostAdmire');
     }
+
+    public function product_admired()
+    {
+        return $this->hasMany('App\Models\ProductAdmire');
+    }
     // accounts relationship
     public function user_account()
     {
@@ -129,5 +134,15 @@ class User extends Authenticatable
     public function community()
     {
         return $this->belongsTo('App\Models\TradeCommunity', 'community_id');
+    }
+
+    public function bridgeCode()
+    {
+        return $this->hasOne('App\Models\BridgeCode');
+    }
+
+    public function cart()
+    {
+        return $this->hasOne('App\Models\Cart');
     }
 }

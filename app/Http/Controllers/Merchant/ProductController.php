@@ -10,6 +10,7 @@ use App\Models\MerchantAccount;
 use App\Models\Inventory;
 use App\Models\Product;
 use App\Models\ProductOfTheWeek;
+use App\Models\HottestProduct;
 use App\Models\ProductNotification;
 use App\Models\ProductHype;
 use App\Models\Post;
@@ -63,6 +64,12 @@ class ProductController extends Controller
             'description' => 'required|max:50'
             ]);
 
+        if(!empty($request->file('file'))){
+            $this->validate($request, [
+                'file.*' => 'required|mimes:jpg,jpeg,png,gif'
+            ], ['All files must be images (jpg, jpeg, png, gif)']);
+        }
+
         //get or create merchant acount and inventory
         $merchant = MerchantAccount::firstOrCreate(['user_id' => auth()->user()->id]);
         $inventory = Inventory::firstOrCreate(['merchant_account_id' => $merchant->id]);
@@ -80,13 +87,16 @@ class ProductController extends Controller
             $product->photo_album_id = $album;
         }
 
-        // product notification for followers
         if ($product->promo_price) {
             $price = $product->promo_price;
         } else {
             $price = $product->price;
         }
 
+        $product->inventory()->associate($inventory);
+        $product->save();
+
+        // product notification for followers
         $product_notification = ProductNotification::create([
                 'message' => 'Notice: ' . $product->inventory->merchant->user->first_name . " now has " . $product->name . ' at ' . $price,
                 'product_id'=> $product->id, 
@@ -94,9 +104,6 @@ class ProductController extends Controller
             ]);
         $product_notification->users()->attach(auth()->user()->followers);
         $product_notification->save();
-
-        $product->inventory()->associate($inventory);
-        $product->save();
 
         return redirect()->route('merchant')->with('info', 'Product Added Sucessfully');        
     }
@@ -170,6 +177,33 @@ class ProductController extends Controller
         $inventory = Inventory::firstOrCreate(['merchant_account_id' => $merchant->id]);
         $products = Product::where('inventory_id', $inventory->id)->get();
         $product_of_the_week = ProductOfTheWeek::where('merchant_account_id', $merchant->id)->first();
+        
+        //hottest deal button status
+        $hot_prod  = HottestProduct::firstOrCreate(['merchant_account_id' => auth()->user()->merchant_account->id]);
+        if($hot_prod->interval_time == null){
+            $hot_prod->interval_time = Carbon::now()->subWeek(2);
+        }
+        $interval_time = Carbon::createFromFormat('Y-m-d H:i:s', $hot_prod->interval_time);
+        $diff_in_days = Carbon::now()->diffInDays($interval_time);
+        if(($diff_in_days >= 7)){
+            $hot_prod->slots = 0;
+            $hot_prod->save();
+            if($hot_prod->products()->count() < 6){
+                $hottest = true;
+            } else {
+                $hottest = false;
+            }
+        } else {
+            if((int)$hot_prod->slots < 6){
+                if($hot_prod->products()->count() < 6){
+                    $hottest = true;
+                } else {
+                    $hottest = false;
+                }
+            } else {
+                $hottest = false;
+            }
+        }
         // dd($product_of_the_week);
         if($product_of_the_week!=null){
             // dd('net');
@@ -180,10 +214,10 @@ class ProductController extends Controller
             $diff_in_days = $current_time >= $product_of_the_week_updated;
             // dd($diff_in_days);
             // dd($current_time - $current_time);
-            return view('merchant.products', compact('products', 'product_of_the_week', 'diff_in_days'));
-        }else{
+            return view('merchant.products', compact('products', 'product_of_the_week', 'diff_in_days', 'hottest'));
+        }else {
             // dd('hello');
-            return view('merchant.products', compact('products', 'product_of_the_week'));
+            return view('merchant.products', compact('products', 'product_of_the_week', 'hottest'));
 
         }
         // dd('hi');
