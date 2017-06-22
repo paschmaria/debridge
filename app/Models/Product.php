@@ -24,7 +24,7 @@ class Product extends Model
     //hottest product relationships
     public function hottest()
     {
-        return $this->belongsTo('App\Models\HottestProduct');
+        return $this->belongsTo('App\Models\HottestProduct', 'hottest_product_id');
     }
 
     public function admires()
