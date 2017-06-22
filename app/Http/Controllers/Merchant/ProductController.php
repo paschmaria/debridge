@@ -93,6 +93,9 @@ class ProductController extends Controller
             $price = $product->price;
         }
 
+        $product->inventory()->associate($inventory);
+        $product->save();
+
         // product notification for followers
         $product_notification = ProductNotification::create([
                 'message' => 'Notice: ' . $product->inventory->merchant->user->first_name . " now has " . $product->name . ' at ' . $price,
@@ -101,9 +104,6 @@ class ProductController extends Controller
             ]);
         $product_notification->users()->attach(auth()->user()->followers);
         $product_notification->save();
-
-        $product->inventory()->associate($inventory);
-        $product->save();
 
         return redirect()->route('merchant')->with('info', 'Product Added Sucessfully');        
     }
@@ -183,11 +183,26 @@ class ProductController extends Controller
         if($hot_prod->interval_time == null){
             $hot_prod->interval_time = Carbon::now()->subWeek(2);
         }
-        $diff_in_days = Carbon::now()->diffInDays($hot_prod->interval_time);
-        if(($hot_prod->slots <= 6) || ($diff_in_days >= 7)){
-            $hottest = true;
+        $interval_time = Carbon::createFromFormat('Y-m-d H:i:s', $hot_prod->interval_time);
+        $diff_in_days = Carbon::now()->diffInDays($interval_time);
+        if(($diff_in_days >= 7)){
+            $hot_prod->slots = 0;
+            $hot_prod->save();
+            if($hot_prod->products()->count() < 6){
+                $hottest = true;
+            } else {
+                $hottest = false;
+            }
         } else {
-            $hottest = false;
+            if((int)$hot_prod->slots < 6){
+                if($hot_prod->products()->count() < 6){
+                    $hottest = true;
+                } else {
+                    $hottest = false;
+                }
+            } else {
+                $hottest = false;
+            }
         }
         // dd($product_of_the_week);
         if($product_of_the_week!=null){
