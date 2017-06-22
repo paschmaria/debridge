@@ -55,6 +55,7 @@
 	text-decoration: none;
 	outline: 0 !important;
 	text-transform: uppercase;
+	cursor: pointer;
 	color: $brand-color;
 	background: $transparent-color;
 
@@ -113,4 +114,23 @@
 [data-page="products-page"] .card .btn-group .btn {
 	padding-left: 37.2px;
     padding-right: 37.2px;
+}
+
+.btn-group button{
+	color: $brand-color!important;
+}
+
+button.btn-upload {
+	width: 90px;
+	height: 90px;
+	margin-left: 5px;
+	text-decoration: none;
+	outline: 0 !important;
+	text-transform: uppercase;
+	cursor: pointer;
+	color: #16a085;
+	background: transparent;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	
+	@include pos(absolute, $l: 0)
 }

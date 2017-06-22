@@ -26,6 +26,7 @@
 
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="assets/css/main.css">
+
 </head>
 
 <body data-page="login">
@@ -50,7 +51,7 @@
 
                     <div class="row">
                         <div class="col-md-6 offset-md-3 col-sm-6 offset-sm-3 col-12 m-t-40 m-b-20">
-                            <button type="submit" class="btn btn-block btn-outline-default waves-effect m-0">Log In</button>
+                           <button type="submit" class="btn btn-block btn-outline-default waves-effect m-0">Sign In</button>
                         </div>
                     </div>
 
@@ -67,55 +68,62 @@
                <h3 class="title text-center c-white">REGISTER</h3>
                <p class="sub-title text-center">Create a FREE account and enjoy the best socio-commerce experience ever.</p>
                  
-                <form action="followFriends.html" method="POST">
+                <form action="followFriends.html" method="POST" id="form">
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-12 form-group">
                             <label for="usr-fname">First Name</label>
-                             <input type="text" name="usr-fname" id="usr-fname" class="form-control bd-3 h-40 input-alternate border-box">
+                             <input type="text" name="usrfname" id="firstname" class="form-control bd-3 h-40 input-alternate border-box">
+                             <div id="error_firstname"></div>
                         </div>
                         <div class="col-md-6 col-sm-6 col-12 form-group">
                             <label for="usr-lname">Last Name</label>
-                            <input type="text" name="usr-lname" id="usr-lname" class="form-control bd-3 h-40 input-alternate border-box">
+                            <input type="text" name="name" id="lastname" class="form-control bd-3 h-40 input-alternate border-box">
+                            <div id="error_lastname"></div>
                         </div>
                     </div>
                        
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-12 form-group">
                             <label for="usr-email">Email</label>
-                            <input type="email" name="usr-email" id="usr-email" class="form-control bd-3 h-40 input-alternate border-box">
+                            <input type="email" name="email_1" id="email" class="form-control bd-3 h-40 input-alternate border-box">
+                            <div id="email_error"></div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-12 form-group">
                             <label for="usr-password" data-error="wrong" data-success="right">Password</label>
-                            <input type="password" name="usr-password" id="usr-password" class="form-control bd-3 h-40 validate input-alternate border-box">
+                            <input type="password" name="password_0" id="password" class="form-control bd-3 h-40 validate input-alternate border-box">
+                            <div id="password_error"></div>
                         </div>
                         <div class="col-md-6 col-sm-6 col-12 form-group">
                             <label for="usr-password-conf" data-error="wrong" data-success="right">Confirm Password</label>
-                            <input type="password" name="usr-password-conf" id="usr-password-conf" class="form-control bd-3 h-40 validate input-alternate border-box">
+                            <input type="password" name="passwordConf" id="password-conf" class="form-control bd-3 h-40 validate input-alternate border-box">
+                            <div id="passwordConf_error"></div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-12 form-group">
                             <label for="usr-gender">Gender</label>
-                            <select name="usr-gender" id="usr-gender" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow">
+                            <select name="gender_0" id="gender" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow">
                                 <option value="" disabled selected>Choose gender...</option>
                                 <option value="1">Male</option>
                                 <option value="2">Female</option>
                             </select>
+                            <div id="gender_error"></div>
                         </div>
                         <div class="col-md-6 col-sm-6 col-12 form-group">
                             <label for="usr-dob" data-error="wrong" data-success="right">Date of Birth</label>
-                            <input type="date" name="usr-dob" id="usr-dob" class="form-control bd-3 h-40 validate input-alternate border-box">
+                            <input type="date" name="dob1" id="dob" class="form-control bd-3 h-40 validate input-alternate border-box">
+                            <div id="dob_error"></div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-12 form-group">
                             <label for="usr-dob" data-error="wrong" data-success="right">State</label>
-                            <input type="text" name="usr-state" id="usr-state" class="form-control bd-3 h-40 validate input-alternate border-box" list="States" placeholder="Choose State">
+                            <input type="text" name="state" id="state" class="form-control bd-3 h-40 validate input-alternate border-box" list="States" placeholder="Choose State">
                             <datalist id="States">
                                 <option value="Abia"></option>
                                 <option value="Adamawa"></option>
@@ -123,10 +131,11 @@
                                 <option value="Anambra"></option>
                                 <option value="Benue"></option>
                             </datalist>
+                            <div id="state_error"></div>
                         </div>
                         <div class="col-md-6 col-sm-6 col-12 form-group">
                             <label for="usr-gender">Trade Community</label>
-                            <select name="usr-gender" id="usr-gender" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow">
+                            <select name="location" id="Community" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow">
                                 <option value="" disabled selected>Choose Community...</option>
                                 <option value="1">Ikeja</option>
                                 <option value="2">Ipaja</option>
@@ -134,13 +143,14 @@
                                 <option value="4">Surulere</option>
                                 <option value="5">Onipanu</option>
                             </select>
+                            <div id="Community_error"></div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-12 form-group">
                             <label for="usr-persona">Trade Interest</label>
-                            <select name="usr-persona" id="usr-persona" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow">
+                            <select name="personal" id="tradeInterest" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow">
                                 <option value="" disabled selected>Choose...</option>
                                 <option value="1">Wholesaler</option>
                                 <option value="2">Retailer</option>
@@ -149,11 +159,12 @@
                                 <option value="5">Service Provider</option>
                                 <option value="6">Individual User</option>
                             </select>
+                            <div id="tradeInterest_error"></div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 offset-md-3 col-sm-6 offset-sm-3 col-12 m-b-20">
-                            <button type="submit" class="btn btn-block btn-outline-white waves-effect m-0">Get Started</button>
+                            <button type="submit" class="btn btn-block btn-outline-white waves-effect m-0" value="register" id="register">Get Started</button>
                         </div>
                     </div>
                 </form>
@@ -197,6 +208,8 @@
 
     <!-- Main JS -->
     <script type="text/javascript" src="assets/js/main.js"></script>
+
+    <script src="assets/js/subjs.js"></script>
     <script>
         document.onreadystatechange = () => {
             if (document.readyState === "complete") {
