@@ -256,6 +256,10 @@ body {
   margin-left: 80px !important;
 }
 
+.m-l-90 {
+  margin-left: 90px !important;
+}
+
 /****  Margin Right  ****/
 .m-r-3 {
   margin-right: 3px !important;
@@ -1413,6 +1417,16 @@ a, a:focus, a:hover, a:active {
   }
 }
 
+.tooltip > .tooltip-inner {
+  background-color: #f0fff0;
+  color: #212121;
+  border: 1px solid #16a085;
+}
+
+.tooltip > .tooltip-arrow {
+  border-top: 5px solid #16a085;
+}
+
 .material-button span {
   -webkit-transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
   -ms-transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -1578,6 +1592,21 @@ a, a:focus, a:hover, a:active {
 
 .btn-group button {
   color: #16a085 !important;
+}
+
+button.btn-upload {
+  width: 90px;
+  height: 90px;
+  margin-left: 5px;
+  text-decoration: none;
+  outline: 0 !important;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #16a085;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  position: absolute;
+  left: 0;
 }
 
 .input-shadow {
@@ -1912,14 +1941,6 @@ del span {
   position: relative !important;
   width: 100px;
   display: none;
-}
-
-button.btn-upload {
-  width: 90px;
-  height: 90px;
-  margin-left: 5px;
-  position: absolute;
-  left: 0;
 }
 
 #product-upload-form div:last-child {
