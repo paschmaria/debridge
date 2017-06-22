@@ -160,9 +160,9 @@
 
          <!-- main section begins here-->
         <section class="main">
-          <div class="container bd-dark-light m-t-60 width-800 h-800">
+          <div class="container bd-dark-light m-t-60 width-900 h-900">
                 <h6 class="m-t-80 text-center">INVENTORY</h6>
-            <form class="m-t-40">
+            <form class="m-t-10 m-l-60">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="">
@@ -187,11 +187,84 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 sm-6">
-                    <!--for picture uploads-->
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="c-gray m-t-10">
+                        <p class="m-b-0">photo</p>
+                        <h6>Ads with photo get 5x more clients. Accepted formats are .jpg, .gif and .png.</h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="card profile-img-holder h-200 width-150">
+                                    <img src="#" id="post">
+                                   <div class="text-center m-t-10">
+                                        <i class="fa fa-user-o fa-5x c-gray" aria-hidden="true"></i>
+                                   </div>
+                                    <div class="pos-rel">
+                                        <button type="button" class="btn btn-sm m-t-50">
+                                        <i class="fa fa-plus-circle c-gray f-12 m-r-10">&nbsp;&nbsp;</i>Add photo
+                                        </button>
+                                        <input type="file" id="upload" class="pos-abs hide width-130 l-6 b-5 z-100">
+                                    </div>
+                               </div>  
+                            </div>
+                            <div class="col-md-2">
+                                <div class="card bd-dark-light h-200 width-150 m-l-20">
+                               <div class="text-center m-t-60">
+                                    <i class="fa fa-user-o fa-5x c-gray" aria-hidden="true"></i>
+                               </div>
+                                <div class="pos-rel">
+                                        <button type="button" class="btn btn-sm m-t-30">
+                                        <i class="fa fa-plus-circle c-gray f-12 m-r-10">&nbsp;&nbsp;</i>Add photo
+                                        </button>
+                                        <input type="file" class="pos-abs hide width-130 l-6 b-5 z-100">    
+                                    </div>
+                               </div>  
+                            </div>
+                            <div class="col-md-2">
+                                <div class="card bd-dark-light h-200 width-150 m-l-40">
+                                    <div class="text-center m-t-60">
+                                    <i class="fa fa-user-o fa-5x c-gray" aria-hidden="true"></i>
+                                </div>
+                                <div class="pos-rel">
+                                   <button type="button" class="btn btn-sm m-t-30">
+                                        <i class="fa fa-plus-circle c-gray f-12 m-r-10">&nbsp;&nbsp;</i>Add photo
+                                        </button>
+                                        <input type="file" class="pos-abs hide width-130 l-6 b-5 z-100">     
+                                    </div>
+                               </div>  
+                            </div>
+                            <div class="col-md-2">
+                                <div class="card bd-dark-light h-200 width-150 m-l-60">
+                               <div class="text-center m-t-60">
+                                    <i class="fa fa-user-o fa-5x c-gray" aria-hidden="true"></i>
+                               </div>
+                                <div class="pos-rel">
+                                    <button type="button" class="btn btn-sm m-t-30">
+                                        <i class="fa fa-plus-circle c-gray f-12 m-r-10">&nbsp;&nbsp;</i>Add photo
+                                    </button>
+                                    <input type="file" class="pos-abs hide width-130 l-6 b-5 z-100">     
+                                </div>
+                               </div>  
+                            </div>
+                            <div class="col-md-2">
+                                <div class="card bd-dark-light h-200 width-150 m-l-78">
+                                <div class="img"></div>
+                               <div class="text-center m-t-60">
+                                    <i class="fa fa-user-o fa-5x c-gray" aria-hidden="true"></i>
+                               </div>
+                                <div class="pos-rel">
+                                    <button type="button" class="btn btn-sm m-t-30">
+                                        <i class="fa fa-plus-circle c-gray f-12 m-r-10">&nbsp;&nbsp;</i>Add photo
+                                    </button>
+                                    <input type="file" class="pos-abs hide width-130 l-6 b-5 z-100">     
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-6">
-                    <button type="button" class="btn btn-lg btn-outline-brand m-l-60">Post</button>
+                    <button type="button" class="btn btn-lg btn-outline-brand m-t-20">Post</button>
                 </div>
             </form>
           </div>
@@ -215,11 +288,30 @@
 
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="assets/plugins/mdb/js/mdb.min.js"></script>
-        <script>
-            $(document).ready(function(){
-                
-            });
-        </script>
+
+        <script type="text/javascript">
+       var app = {
+            imageHandler:function (){
+                $('#upload').on('change', function(){
+                    //alert("alert");
+                    readUrl();
+                });
+                function readUrl(argument) {
+                    var file = $("#upload")[0].files[0];
+                    //console.log(file);
+                    var reader = new FileReader();
+                    reader.onloadend = function () {
+                        //console.log(reader.result);
+                        $("#post").attr('src', reader.result);
+                    }
+                    if(file){
+                        reader.readAsDataURL(file);
+                    }
+                }
+            }
+        }
+        app.imageHandler();
+   </script
 
     </body>
 
