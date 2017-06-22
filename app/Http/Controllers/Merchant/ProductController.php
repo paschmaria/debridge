@@ -177,7 +177,7 @@ class ProductController extends Controller
             $product_of_the_week_updated = date('Y-m-d', strtotime($product_of_the_week->updated_at));
             $current_time = date('Y-m-d', strtotime($current_time.' - 7days'));
             // dd($current_time);
-            $diff_in_days = $current_time == $product_of_the_week_updated;
+            $diff_in_days = $current_time >= $product_of_the_week_updated;
             // dd($diff_in_days);
             // dd($current_time - $current_time);
             return view('merchant.products', compact('products', 'product_of_the_week', 'diff_in_days'));
