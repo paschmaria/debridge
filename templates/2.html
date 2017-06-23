@@ -41,17 +41,18 @@
                 <form action="registered-users.html" method="POST">
                     <div class="input">
                         <label for="usrname">Username</label>
-                        <input type="text" name="usrname" id="usrname" class="form-control bd-3 h-40 input-alternate border-box">
+                        <input type="text" name="usrname" id="username" class="form-control bd-3 h-40 input-alternate border-box">
+                        <p class="error_username"></p>
                     </div>
 
                     <div class="input">
                         <label for="usrpassword">Password</label>
-                        <input type="password" name="usrpassword" id="usrpassword" class="form-control bd-3 h-40 input-alternate border-box">
+                        <input type="password" name="userpassword" id="usrpassword" class="form-control bd-3 h-40 input-alternate border-box">
                     </div>
 
                     <div class="row">
                         <div class="col-md-6 offset-md-3 col-sm-6 offset-sm-3 col-12 m-t-40 m-b-20">
-                           <button type="submit" class="btn btn-block btn-outline-default waves-effect m-0">Sign In</button>
+                           <button type="submit" class="btn btn-block btn-outline-default waves-effect m-0" id="Send" value="Send">Sign In</button>
                         </div>
                     </div>
 
@@ -218,7 +219,10 @@
             }
         }
     </script>
-
+    <script>
+        app.validation();
+        app.LogIn();
+    </script>
 
 </body>
 
