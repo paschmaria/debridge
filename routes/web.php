@@ -106,7 +106,7 @@ Route::group(['prefix' => 'merchant', 'middleware'=> 'merchant'], function (){
 });
 Route::get('/merchant/product/{id}', 'Merchant\ProductController@show')->name('product');
 
-Route::get('/brigeCode/{id}', 'Auth\UserController@brigeCode')->name('brige_code');
+Route::get('/brigeCode/{id}', 'User\BridgeCodeController@create')->name('brige_code');
 
 Route::match(['get', 'post'], '/admin', 'Admin\AdminController@signin');
 
