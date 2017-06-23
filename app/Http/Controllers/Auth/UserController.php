@@ -21,7 +21,7 @@ class UserController extends Controller
     function __construct(BridgeCodeController $bride_code)
     {
         $this->bride_code = $bride_code;
-    	$this->middleware('guest')->except(['logout', 'verifyToken', 'resendActivationMail','market','viewUsers', 'brigeCode', 'profile_picture', 'index']);
+    	$this->middleware('guest')->except(['logout', 'verifyToken', 'resendActivationMail','market','viewUsers', 'brigeCode', 'profile_picture', 'index', 'arahaMarket', 'merchantTradeline', 'bridger', 'bridgerRequest', 'bridgeShops', 'exhibition', 'followBrands', 'followFriends', 'hiring', 'lagosMarket', 'merchantStore', 'myCart', 'port_harcourtMarket']);
     }
 
     public function register()
@@ -164,6 +164,62 @@ class UserController extends Controller
             return back()->with('info', 'Profile Picture Updated');
         }
      }
+
+    public function arahaMarket(){
+        return view('araha_market');
+    }
+
+    public function merchantTradeline(){
+        return view('merchant_tradeline');
+    }
+
+     public function merchantTimeline(){
+        return view('merchant_timeline');
+    }
+
+    public function bridger(){
+        return view('bridger');
+    }
+
+    public function bridgeRequest(){
+        return view('bridgerRequest');
+    }
+
+    public function bridgeShops(){
+        return view('bridgeShops');
+    }
+
+    public function exhibition(){
+        return view('exhibition_stand');
+    }
+
+    public function followBrands(){
+        return view('follow_brands');
+    }
+
+    public function followFriends(){
+        return view('follow_friends');
+    }
+
+    public function hiring(){
+        return view('hiring');
+    }
+
+    public function lagosMarket(){
+        return view('lagos_market');
+    }
+
+     public function port_harcourtMarket(){
+        return view('port-harcourt_market');
+    }
+
+    public function merchantStore(){
+        return view('m-store');
+    }
+
+    public function myCart(){
+        return view('mycart');
+    }
 
     
 

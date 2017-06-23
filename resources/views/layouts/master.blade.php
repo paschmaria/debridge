@@ -142,34 +142,7 @@
                     </div>
                 </div>               
             </div>
-            <!-- navigations/links right here -->
-            <nav class="navbar navbar-toggleable-sm navbar-light transparent p-t-15 p-b-15 no-shadow border-top border-bottom" role="navigation">
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-            
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div id="navbarNav1" class="collapse navbar-collapse">
-                        <ul class="nav navbar-nav">
-                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Black Market</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="hiring.html">Hiring Arena</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="arahamarket.html">Araha Market</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="BridgeShops.html">Bridge Shops</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Invest Hub</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Consultancy Unit</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="exhibitionStand.html">Exhibition Stand</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">B - Mentor</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Window Shopping</a></li>
-                            @if(auth()->check())
-                                <li class="nav-item"><a class="nav-link c-brand w-700 text-uppercase" href="#">Apply for Bridge Code</a></li>
-                            @endif
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div>
-            </nav>
-            <!-- navigations/links ends here -->
+            @yield('header')
         </header>
         <!-- header ends here -->
 
@@ -256,6 +229,32 @@
         <script>
             app.commentHandler();
         </script>
+
+           <script type="text/javascript">
+       var app = {
+    
+    imageHandler:function (){
+        $('#upload').on('change', function(){
+            //alert("alert");
+            readUrl();
+        });
+        function readUrl(argument) {
+            var file = $("#upload")[0].files[0];
+            //console.log(file);
+            var reader = new FileReader();
+            reader.onloadend = function () {
+                //console.log(reader.result);
+                $('#post').attr('src', reader.result);
+            }
+            if(file){
+                reader.readAsDataURL(file);
+            }
+        }
+    }
+
+}
+app.imageHandler();
+   </script>
 
 
      <script type="text/javascript">

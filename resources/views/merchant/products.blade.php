@@ -12,8 +12,20 @@
 						<del>{{ $product->price }}</del>
 						<p>{{ $product->promo_price }}</p>
 					@endif
-					@if(($product_of_the_week) && !($product_of_the_week->product_id != $product->id))
-						<div class="col-sm-12 bg-warning">This prouct can't be edited or deleted because it is the product of the week</div>
+					@if(($product_of_the_week) && ($product_of_the_week->product_id == $product->id))
+						<div class="col-sm-12 bg-warning">This product can't be edited or deleted because it is the product of the week</div>
+
+						 @if (!in_array($product->id, $hyped))
+                                    <a href="{{ route('product_hype', $product->id) }}"><button class="btn btn-primary">Hype&nbsp</button></a></button></a>
+                                @endif
+                                @if(!in_array($product->id, $admired))
+                                    <a href="{{ route('admire', $product->id) }}"><button class="btn btn-success">Admire&nbsp<span class="badge">{{ $admired_count->where('product_id', $product->id)->count() }}</span></button></a>
+                                @else
+                                    <a href="{{ route('unadmire', $product->id) }}"><button class="btn btn-success">Unadmire<span class="badge">{{ $admired_count->where('product_id', $product->id)->count() }}</span></button></a>
+                                    </button></a>
+                                @endif
+						<a href="{{ route('product_hype', $product->id) }}" class="btn btn-success">Hype</a>
+						<a href="{{ route('product_hype', $product->id) }}" class="btn btn-success">Admire</a>
 
 					@else
 						<a class="btn btn-danger" href="{{ route('delete', $product->id) }}">delete</a>
@@ -25,6 +37,8 @@
 								<a class="btn btn-success" href="{{ route('add_hottest', $product->id) }}">add as hottest</a>
 							@endif
 						@endif
+						<a href="{{ route('product_hype', $product->id) }}" class="btn btn-success">Hype</a>
+						<a href="{{ route('product_hype', $product->id) }}" class="btn btn-success">Admire</a>
 					@endif
 					@if($product->promo_price ==null)
 						<a class="btn btn-success" href="{{ route('promo', $product->id) }}">Make as promo</a>
