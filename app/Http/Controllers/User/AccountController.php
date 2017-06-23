@@ -106,6 +106,10 @@ class AccountController extends Controller
         //
     }
 
+    public function editProfile(){
+        return view('edit_profile');
+    }
+
      
 
 }

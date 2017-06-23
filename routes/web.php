@@ -120,4 +120,32 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 	Route::match(['get', 'post'], '/', 'Admin\AdminController@signin');
 });
 
-Route::get('/{email}', 'User\AccountController@index')->name('user_profile');
+Route::get('/user/{email}', 'User\AccountController@index')->name('user_profile');
+Route::get('/araha_market', 'Auth\UserController@arahaMarket')->name('araha_market');
+
+Route::get('/merchant_tradeline', 'Auth\UserController@merchantTradeline')->name('merchant_tradeline');
+
+Route::get('/bridger', 'Auth\UserController@bridger')->name('bridger');
+
+Route::get('/bridger_request', 'Auth\UserController@bridgerRequest')->name('bridger_request');
+
+Route::get('/bridge_shops', 'Auth\UserController@bridgeShops')->name('bridge_shops');
+
+Route::get('/edit_profile', 'User\AccountController@editProfile')->name('edit_profile');
+
+Route::get('/exhibition', 'Auth\UserController@exhibition')->name('exhibition');
+
+Route::get('/follow_brands', 'Auth\UserController@followBrands')->name('follow_brands');
+
+Route::get('/follow_friends', 'Auth\UserController@followFriends')->name('follow_friends');
+
+Route::get('/hiring', 'Auth\UserController@hiring')->name('hiring');
+
+Route::get('/lagos_market', 'Auth\UserController@lagosMarket')->name('lagos_market');
+
+Route::get('/port-harcourt_market', 'Auth\UserController@port_harcourtMarket')->name('port-harcourt_market');
+
+Route::get('/mycart', 'Auth\UserController@myCart')->name('mycart');
+
+// Route::get('/merchant_store', 'Auth\UserController@merchantStore')->name('merchant_store');
+
