@@ -175,13 +175,13 @@
 
 @yield('content')
         
-        <script src="{{asset('js/social_network.js')}}"></script>
-        <script src="{{asset('js/toastr.min.js')}}"></script>
-        <!-- SCRIPTS -->
+        
 
         <!-- JQuery -->
         <script type="text/javascript" src="{{ asset('plugins/mdb/js/jquery-3.1.1.min.js')}}"></script>
-
+        <script type="text/javascript" src="{{ asset('js/jquery-3.1.1.min.js')}}"></script>
+        <script src="{{asset('js/social_network.js')}}"></script>
+        <script src="{{asset('js/toastr.min.js')}}"></script>
         <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="{{ asset('plugins/mdb/js/tether.min.js')}}"></script>
 
@@ -196,6 +196,9 @@
 
         <!-- Main JS -->
         <script type="text/javascript" src="{{ asset('js/main.js')}}"></script>
+        {{-- <script src="{{asset('js/social_network.js')}}"></script>
+        <script src="{{asset('js/toastr.min.js')}}"></script> --}}
+        <!-- SCRIPTS -->
         <script>
             $(document).ready(function(){
                 $('.carousel_big').slick({
