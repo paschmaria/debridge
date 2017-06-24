@@ -1149,6 +1149,10 @@ a, a:focus, a:hover, a:active {
   font-size: 150px !important;
 }
 
+.f-3em {
+  font-size: 3em !important;
+}
+
 /****  Font Weight  ****/
 .w-300 {
   font-weight: 300 !important;
@@ -1372,7 +1376,6 @@ a, a:focus, a:hover, a:active {
   position: absolute;
   top: -11px;
   left: 65%;
-  z-index: 5000;
 }
 
 .notify-dropdown {
@@ -1641,6 +1644,24 @@ button.btn-upload {
   border: 1px solid rgba(0, 0, 0, 0.125);
   position: absolute;
   left: 0;
+}
+
+.remove {
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1;
+  color: #16a085;
+  text-shadow: 0 0.5px 0 #FFFFFF;
+  opacity: .5;
+  cursor: pointer;
+  padding: 5px 10px;
+  position: absolute;
+  right: 0;
+}
+
+.remove:hover, .remove:active, .remove:focus {
+  color: #16a085;
+  opacity: .75;
 }
 
 .input-shadow {
