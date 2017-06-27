@@ -881,6 +881,10 @@ body {
   width: 185px !important;
 }
 
+.width-196 {
+  width: 196px !important;
+}
+
 .width-200 {
   width: 200px !important;
 }
@@ -1007,6 +1011,11 @@ body {
 
 .h-310 {
   height: 310px !important;
+  overflow: hidden !important;
+}
+
+.h-350 {
+  height: 350px !important;
   overflow: hidden !important;
 }
 
