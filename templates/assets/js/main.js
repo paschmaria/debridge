@@ -1,4 +1,17 @@
 const app = {
+	stickyHeader() {
+		let body = document.getElementsByTagName('body');
+
+		window.onscroll = function() {
+		    // console.log(window.pageYOffset);
+		    if ((window.pageYOffset > 5) || (document.body.scrollTop > 5)) {
+		    	// console.log(body[0].firstElementChild);
+		    	body[0].firstElementChild.classList.add("sticky", "z-depth-1");
+		    } else  {
+		    	body[0].firstElementChild.classList.remove("sticky", "z-depth-1")
+		    }
+		};
+	},
 	loginToggler() {
 
 		let cardBlock = $(".overbox .card-block"),
