@@ -117,79 +117,190 @@ const app = {
 	   	});
 	},
 	productImageUpload(arg) {
-		let slots = arg;
 		window.URL = window.URL || window.webkitURL;
 
 		let productUploadElem = document.getElementsByClassName("product-img-input"),
 			productUploadBtn = document.getElementsByClassName("btn-product-img"),
+			timeline = document.getElementsByClassName("timeline"),
 			productImgWrapper = document.getElementById("product-img-wrapper"),
-		    productImgList = document.getElementById("product-imgs");
-
-		// productImgWrapper.style.display = "none";
-
-		Array.from(productUploadBtn).forEach( button => {
-	      	button.addEventListener('click', (e) => {
-	      		Array.from(productUploadElem).some( (input) => {
-		      		if (input) {
-	      				input.click();
-		      			return true;
-		      		}
-	      		});
-	      		e.preventDefault();
-	      	}, false);
-	    });
-
-		var imageList = [],
+			productUploadForm = document.getElementById("product-upload-form"),
+			statusTextarea = document.getElementById("status_update"),
+		    productImgList = document.getElementById("product-imgs"),
+		    slots = arg,
+		    imageList = [],
 			products;
 
-		Array.from(productUploadElem).forEach( input => {
-	      	input.addEventListener('change', () => {
-	      		if (slots === 0) {
-	      			return;
-	      		}
-	      		else{
-	      			productImgWrapper.style.display = "block";
+		const postController = {
+			toggleWrapper(class1, class2) {
+				if (productImgWrapper.classList.contains(class1)) {
+				        productImgWrapper.classList.add(class2)
+				        productImgWrapper.classList.remove(class1);
+				}
+			},
+			inputClicker() {
+				Array.from(productUploadBtn).forEach( button => {
+			      	button.addEventListener('click', (e) => {
+			      		Array.from(productUploadElem).some( (input) => {
+				      		if (input) {
+			      				input.click();
+				      			return true;
+				      		}
+			      		});
+			      		e.preventDefault();
+			      	}, false);
+			    });
+			},
+			imagePicker() {
+				Array.from(productUploadElem).forEach( input => {
+			      	input.addEventListener('change', (e) => {
+			      		// productImgWrapper.style.display = "block";
+			      		// console.log(input.files.length);
+			      		this.toggleWrapper("dis-none", "dis-flex");
 
-		      		products = input.files;
-		      		imageList.unshift(products)
-		      		// console.log(products);
-		      		imageHandler(products);
-		      		slots--;
-		      		console.log(slots);
-	      		}
-	      		
-	      	}, false);
-	    });
+			      		// console.log(input.files.length);
+			      		if (input.files.length > 4) {
+			      			this.toggleWrapper("dis-flex", "dis-none");
+			      			alert("Sorry, you can't upload more than four images at a time!");
+			      			return;
+			      		}
+			      		else if (slots === 0) {
+			      			alert("Sorry, you can't upload more than four images at a time!");
+			      			return;
+			      		}
+			      		// else if ((input.files.length > 4) &&  (slots < 4)) {
+			      		// 	alert("Yay");
+			      		// 	return;
+			      		// }
+			      		else{
+				      		products = input.files;
+				      		imageList.unshift(products)
+				      		// console.log(products);
+				      		this.imageUploader(products);
+				      		slots--;
+				      		// console.log(slots);
+			      		}
+			      		
+			      	}, false);
+			    });
+			},
+		    imageUploader(files) {
+	    		Array.from(files).forEach( file => {
+		    		if ((file.type !== "image/jpeg") && (file.type !== "image/png")) {
 
-	    function imageHandler(files) {
-    		Array.from(files).forEach( file => {
-	    		if ((file.type !== "image/jpeg") && (file.type !== "image/png")) {
+		    			return;
 
-	    			return;
+		    		} else {
 
-	    		} else {
+		    			let imageItem = document.createElement("li"),
+		    				image = document.createElement("img"),
+		    				removeBtn = document.createElement("span");
 
-	    			let imageItem = document.createElement("li"),
-	    				image = document.createElement("img"),
-	    				removeBtn = document.createElement("span");
+		    			image.src = window.URL.createObjectURL(file);
+				      	image.onload = function() {
+		    				// console.log(this);
+				        	window.URL.revokeObjectURL(this.src);
+				    	}
 
-	    			image.src = window.URL.createObjectURL(file);
-			      	image.onload = function() {
-	    				// console.log(this);
-			        	window.URL.revokeObjectURL(this.src);
-			    	}
+				    	imageItem.appendChild(removeBtn);
+				    	imageItem.appendChild(image);
+		    			productImgList.appendChild(imageItem);
+		    		}
+	    	    });
+		    },
+		    contentSubmit() {
+		    	productUploadForm.addEventListener('submit', (e) => {
+		    		e.preventDefault();
+		    		if (statusTextarea.value === '') {
+		    			alert("Please provide product details!");
+		    		}
+		    		else {
+		    			let output;
+		    			$.ajax({
+		    				// pass url here
+		    				url: '',
+		    				type: 'POST',
+		    				dataType: 'json',
+		    				data: productUploadForm,
+		    				success() {
+		    					// console.log("Success!");
+		    					productUploadForm.submit();
 
-			    	imageItem.appendChild(removeBtn);
-			    	imageItem.appendChild(image);
-	    			productImgList.appendChild(imageItem);
-	    		}
-    	    });
+		    					output += ` <div class="media">
+				                                <a class="pull-left" href="#">
+				                                    <img class="media-object p-r-10" src="assets/img/acc-img-1.png" alt="Image">
+				                                </a>
+				                                <div class="media-body">
+				                                    <h6 class="media-heading c-brand w-500">Jhud Fashion House</h6>
+				                                    <p>
+				                                    	New arrivals are everywhere. Get Quality 2017 dresses which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing.
+				                                    </p>
+				                                </div>
+				                            </div>
 
-	    	// if (imageList.length > 4) {
-    		// 	// alert("Complete");
-    		// 	input.style.display ='none';
-    		// } 
-	    }
+				                            <div class="card-group">
+				                                <div class="card m-5">
+				                                    <!--Card image-->
+				                                    <div class="view overlay hm-white-slight">
+				                                        <img src="assets/img/products/timeline-product-1.png" class="img-fluid width-100p" alt="">
+				                                        <a href="#">
+				                                            <div class="mask waves-effect waves-light"></div>
+				                                        </a>
+				                                    </div>
+				                                    <!--/.Card image-->
+				                                </div>
+				                                <div class="card m-5">
+				                                    <!--Card image-->
+				                                    <div class="view overlay hm-white-slight">
+				                                        <img src="assets/img/products/timeline-product-2.png" class="img-fluid width-100p" alt="">
+				                                        <a href="#">
+				                                            <div class="mask waves-effect waves-light"></div>
+				                                        </a>
+				                                    </div>
+				                                    <!--/.Card image-->
+				                                </div>
+				                            </div>
+
+				                            <div class="m-t-10 m-b-50">
+				                                <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10" role="group" aria-label="Ad Action Buttons">
+				                                     <button type="button" class="btn bg-white m-r-3 f-14">
+				                                        <span class="f-left">View Item&nbsp;</span><span class="f-right"> <i class="fa fa-eye"></i> </span>
+				                                    </button>
+				                                    <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
+				                                        <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
+				                                    </button>
+				                                    <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
+				                                        <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
+				                                    </button>
+				                                    <button type="button" class="btn bg-white m-l-3 f-14">
+				                                        <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
+				                                    </button>
+				                                </div>
+				                            </div>
+				                            <!-- coomment section -->
+				                            <div class="media m-b-15">
+				                                <a class="pull-left" href="#">
+				                                <img class="media-object p-r-10" src="assets/img/acc-img-1.png" alt="Image">
+				                                </a>
+				                                <div class="media-body">
+				                                    <textarea name="" id="" class="md-textarea input-alternate p-10 h-58 border-box comment_box" placeholder="Press enter to send..."></textarea>
+				                                </div>
+				                            </div>
+				                            <div class="media m-b-40 comment flex-column"></div>`
+		    				},
+		    				error() {
+		    					// console.log("error!");
+		    				}
+		    			})
+		    		}
+		    	})
+		    }
+		}
+
+		// postController.toggleWrapper("dis-flex", "dis-none");
+		postController.inputClicker();
+		postController.imagePicker();
+		postController.contentSubmit();
+
 	},
 	likeToggler() {
         let likeBtn = document.getElementsByClassName("like");
@@ -317,5 +428,75 @@ const app = {
     	     
     	});
     },
+    validation(){
+    	$('#register').click(function(){
+        
+         //prevent a form from submitting if no email
+          if((document.getElementById("firstname").value == "")){
+            document.getElementById("error_firstname").innerHTML = "Provide your firstname";
+            //to STOP the form from submiting
+            return false;
+          }
+          if((document.getElementById("lastname").value == "")){
+            document.getElementById("error_lastname").innerHTML = "Provide your lastname";
+            //to STOP the form from submiting
+            return false;
+          }
+          if((document.getElementById("email").value == "")){
+            document.getElementById("email_error").innerHTML = "provide us your email";
+            //to STOP the form from submiting
+            return false;
+          }
+          if((document.getElementById("password").value == "" )){
+            document.getElementById("password_error").innerHTML = "password field can't be empty";
+            //to STOP the form from submiting
+            return false;
+          }
+          // checks if password matches
+          if((document.getElementById("password-conf").value !== document.getElementById("password").value)){
+            document.getElementById("passwordConf_error").innerHTML = "password does not match";
+            //to STOP the form from submiting
+            return false;
+          }
+          if((document.getElementById("gender").value == "")){
+            document.getElementById("gender_error").innerHTML = "Select a gender";
+            //to STOP the form from submiting
+            return false;
+          }
+          if((document.getElementById("dob").value == "")){
+            document.getElementById("dob_error").innerHTML = "select a date";
+            //to STOP the form from submiting
+            return false;
+          }
+          if((document.getElementById("state").value == "")){
+            document.getElementById("state_error").innerHTML = "select a state";
+            //to STOP the form from submiting
+            return false;
+          }
+          if((document.getElementById("Community").value == "")){
+            document.getElementById("Community_error").innerHTML = "select community";
+            //to STOP the form from submiting
+            return false;
+          }
+          if((document.getElementById("tradeInterest").value == "")){
+            document.getElementById("tradeInterest_error").innerHTML = "select trade";
+            //to STOP the form from submiting
+            return false;
+          }
+          else{
+            //reset and allow the form to submit
+            document.getElementById("errorMessage").innerHTML = "";
+            return true;
+          }
+ 		});
+    },
+    LogIn() {
+    	$('#Send').click(function(){
+ 			if((document.getElementById("username").value == "")){
+ 				document.getElementById("error_username").innerHTML = "provide a password";
+ 				return false;
+ 			}
+ 		});
+    }
     
 }
