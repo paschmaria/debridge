@@ -32,6 +32,9 @@ Route::get('/admire/{post}', 'User\AdmireController@create')->name('admire');
 Route::get('/unadmire/{post}', 'User\AdmireController@destroy')->name('unadmire');
 
 Route::get('/timeline', 'User\TimelineController@index')->name('timeline');
+Route::get('/user/follow/friends', 'FollowController@getUser')->name('follow_friends');
+Route::get('/user/follow/merchants', 'FollowController@getMerchant')->name('follow_merchants');
+Route::post('/user/follow/friends', 'FollowController@update')->name('follow_friends');
 
 Route::get('users', 'Auth\UserController@viewUsers')->name('view_users');
 
@@ -85,7 +88,7 @@ Route::group(['prefix' => 'merchant', 'middleware'=> 'merchant'], function (){
 
 	Route::post('/addProduct', 'Merchant\ProductController@store')->name('addProduct');
 	Route::get('/allProduct', 'Merchant\ProductController@viewAllProduct')->name('allProduct');
-	Route::get('/logout', 'Auth\UserController@logout')->name('mechant_logout');
+	// Route::get('/logout', 'Auth\UserController@logout')->name('mechant_logout');
 	Route::get('/delete/{id}', 'Merchant\ProductController@destroy')->name('delete');
 	Route::get('/edit_product/{id}', 'Merchant\ProductController@edit')->name('edit_product');
 	Route::post('/update_product/{id}', 'Merchant\ProductController@edit')->name('update_product');
@@ -136,8 +139,6 @@ Route::get('/edit_profile', 'User\AccountController@editProfile')->name('edit_pr
 Route::get('/exhibition', 'Auth\UserController@exhibition')->name('exhibition');
 
 Route::get('/follow_brands', 'Auth\UserController@followBrands')->name('follow_brands');
-
-Route::get('/follow_friends', 'Auth\UserController@followFriends')->name('follow_friends');
 
 Route::get('/hiring', 'Auth\UserController@hiring')->name('hiring');
 
