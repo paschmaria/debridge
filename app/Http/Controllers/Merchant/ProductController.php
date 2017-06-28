@@ -13,6 +13,7 @@ use App\Models\ProductOfTheWeek;
 use App\Models\HottestProduct;
 use App\Models\ProductNotification;
 use App\Models\ProductHype;
+use App\Models\ProductAdmire;
 use App\Models\Post;
 use Carbon\Carbon;
 
@@ -212,12 +213,23 @@ class ProductController extends Controller
             $current_time = date('Y-m-d', strtotime($current_time.' - 7days'));
             // dd($current_time);
             $diff_in_days = $current_time >= $product_of_the_week_updated;
-            // dd($diff_in_days);
-            // dd($current_time - $current_time);
-            return view('merchant.products', compact('products', 'product_of_the_week', 'diff_in_days', 'hottest'));
+
+            $admired = ProductAdmire::where(['user_id' => auth()->user()->id])->pluck('product_id')->toArray();
+            $hyped = ProductHype::where(['user_id' => auth()->user()->id])->pluck('product_id')->toArray();
+
+            $admired_count = ProductAdmire::all();
+            $hyped_count = ProductHype::all();
+          
+            return view('merchant.products', compact('products', 'product_of_the_week', 'diff_in_days', 'hottest', 'admired', 'hyped', 'admired_count', 'hyped_count'));
         }else {
             // dd('hello');
-            return view('merchant.products', compact('products', 'product_of_the_week', 'hottest'));
+            $admired = ProductAdmire::where(['user_id' => auth()->user()->id])->pluck('product_id')->toArray();
+            $hyped = ProductHype::where(['user_id' => auth()->user()->id])->pluck('product_id')->toArray();
+
+            $admired_count = ProductAdmire::all();
+            $hyped_count = ProductHype::all();
+
+            return view('merchant.products', compact('products', 'product_of_the_week', 'hottest', 'admired', 'hyped', 'admired_count', 'hyped_count'));
 
         }
         // dd('hi');
@@ -267,7 +279,7 @@ class ProductController extends Controller
             $product->promo_price = $request->input('promo_price');
             $product->save();
             //notify all mmerchant followers
-            //dd($product->inventory->merchant);
+            
             $product_notification = ProductNotification::create([
                     'message' => 'Promo: ' . $product->inventory->merchant->user->first_name . ' now sells ' . $product->name . ' at ' . $product->promo_price,
                     'product_id'=> $product->id, 
@@ -275,7 +287,7 @@ class ProductController extends Controller
                 ]);
             $product_notification->users()->attach(auth()->user()->followers);
             $product_notification->save();
-            // dd($product->promo_price);
+            
             return redirect()->route('allProduct')->with('info', 'Promo Sucessfully Added');
             
         }else{
@@ -320,5 +332,13 @@ class ProductController extends Controller
             }       
         
         return back()->with('success', 'Product Hyped!');
+    }
+    
+    public function MerchantStore(){
+        return view('products')
+    }
+
+    public function userTradeline(){
+        return view('')
     }
 }

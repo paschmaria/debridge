@@ -80,12 +80,12 @@
                             <div class="col-md-12 col-sm-12 col-12">
                                 <ul class="navbar-nav dis-flex flex-row z-10000">
                                     <li class="nav-item animated bounceIn list-inline-item dis-block">
-                                        <img src="{{ asset('img/oval-6.png') }}" class="" width="50" height="50">
+                                        <img src="{{ route('image', [$user_picture, '']) }}" class="" width="50" height="50">
                                     </li>
                                     <li class="nav-item animated bounceIn list-inline-item dis-block">
                                         <div class="dropdown">
                                             <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Oladele
+                                            {{ auth()->user()->first_name }}
                                             </a>
                                             <div class="dropdown-menu animated bounceIn" aria-labelledby="dropdownMenu3">
                                                 <a class="dropdown-item waves-effect waves-light" href="#">Edit Profile</a>
@@ -99,10 +99,10 @@
                             <div class="col-md-12 col-sm-12 col-12 m-t-10">
                                 <ul class="navbar-nav dis-flex flex-row">
                                     <li class="animated bounceIn"> 
-                                        <a href="mycart.html" class="p-l-10 p-r-10">
+                                        <a href="{{ route('viewCart') }}" class="p-l-10 p-r-10">
                                             <span class="pos-rel z-5000">
                                                 <i class="fa fa-shopping-cart fa-lg c-white" aria-hidden="true"></i>
-                                                <span class="cart-count">3</span>
+                                                <span class="cart-count">{{ $item_count }}</span>
                                             </span>
                                         </a>
                                     </li>
@@ -255,6 +255,14 @@
 }
 app.imageHandler();
    </script>
+
+    <script>
+            document.onreadystatechange = () => {
+                if (document.readyState === "complete") {
+                    app.likeToggler();
+                }
+            }
+    </script>
 
 
      <script type="text/javascript">

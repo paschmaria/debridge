@@ -17,15 +17,15 @@
 
 						 @if (!in_array($product->id, $hyped))
                                     <a href="{{ route('product_hype', $product->id) }}"><button class="btn btn-primary">Hype&nbsp</button></a></button></a>
-                                @endif
-                                @if(!in_array($product->id, $admired))
-                                    <a href="{{ route('admire', $product->id) }}"><button class="btn btn-success">Admire&nbsp<span class="badge">{{ $admired_count->where('product_id', $product->id)->count() }}</span></button></a>
-                                @else
-                                    <a href="{{ route('unadmire', $product->id) }}"><button class="btn btn-success">Unadmire<span class="badge">{{ $admired_count->where('product_id', $product->id)->count() }}</span></button></a>
+                        @endif
+
+                        @if(!in_array($product->id, $admired))
+                                    <a href="{{ route('product_admire', $product->id) }}"><button class="btn btn-success">Admire&nbsp<span class="badge">{{ $admired_count->where('product_id', $product->id)->count() }}</span></button></a>
+                        @else
+                                    <a href="{{ route('product_unadmire', $product->id) }}"><button class="btn btn-success">Unadmire<span class="badge">{{ $admired_count->where('product_id', $product->id)->count() }}</span></button></a>
                                     </button></a>
-                                @endif
-						<a href="{{ route('product_hype', $product->id) }}" class="btn btn-success">Hype</a>
-						<a href="{{ route('product_hype', $product->id) }}" class="btn btn-success">Admire</a>
+                        @endif
+						<!--  -->
 
 					@else
 						<a class="btn btn-danger" href="{{ route('delete', $product->id) }}">delete</a>

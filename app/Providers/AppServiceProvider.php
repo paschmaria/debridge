@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Models\Image;
+use App\Models\Cart;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,9 +23,9 @@ class AppServiceProvider extends ServiceProvider
                 $user_picture = auth()->user()->image_id;
                 $user_picture = Image::find($user_picture);
                 $user_picture = $user_picture->image_reference;
-                // dd($user_picture);
+                $item_count = Cart::where('user_id', auth()->user()->id)->get()->count();
                 
-                $view->with('user_picture', $user_picture);
+                $view->with(['user_picture' => $user_picture, 'item_count' => $item_count]);
                 }
         });
     }

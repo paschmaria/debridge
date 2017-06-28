@@ -76,4 +76,8 @@ class Product extends Model
     {
         return $this->hasMany('App\Models\ProductHype');
     }
+
+    public function cart(){
+        $this->belongsTo('App\Models\Cart');
+    }
 }
