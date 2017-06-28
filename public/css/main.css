@@ -1248,49 +1248,55 @@ body {
 }
 
 /* line 297, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+.h-350 {
+  height: 350px !important;
+  overflow: hidden !important;
+}
+
+/* line 298, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .h-inherit {
   height: inherit !important;
   overflow: hidden !important;
 }
 
-/* line 298, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 299, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .h-initial {
   height: 30initial !important;
   overflow: hidden !important;
 }
 
 /**** Position ****/
-/* line 301, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 302, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .pos-rel {
   position: relative;
 }
 
-/* line 302, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 303, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .pos-abs {
   position: absolute;
 }
 
-/* line 303, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 304, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .pos-fixed {
   position: fixed;
 }
 
-/* line 305, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 306, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-left {
   float: left;
 }
 
-/* line 306, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 307, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-right {
   float: right;
 }
 
-/* line 308, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 309, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .cursor-pointer {
   cursor: pointer;
 }
 
-/* line 309, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 310, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 code {
   padding: 2px 8px 2px 4px;
   font-size: 90%;
@@ -1300,12 +1306,12 @@ code {
   border-radius: 4px;
 }
 
-/* line 310, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 311, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .line-separator {
   border-right: 1px solid #DBE2E7;
 }
 
-/* line 311, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 312, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 img.img-left {
   border: 1px solid #ccc;
   float: left;
@@ -1313,7 +1319,7 @@ img.img-left {
   padding: 5px;
 }
 
-/* line 312, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 313, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 img.img-right {
   border: 1px solid #ccc;
   float: right;
@@ -1321,222 +1327,222 @@ img.img-right {
   padding: 5px;
 }
 
-/* line 313, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 314, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .hide {
   opacity: 0;
 }
 
-/* line 315, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 316, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 a, a:focus, a:hover, a:active {
   outline: 0;
 }
 
-/* line 316, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 317, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .appear-none {
   -webkit-appearance: none;
 }
 
 /****  Font Size  ****/
-/* line 318, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 319, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-12 {
   font-size: 12px !important;
 }
 
-/* line 319, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 320, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-14 {
   font-size: 14px !important;
 }
 
-/* line 320, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 321, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-15 {
   font-size: 15px !important;
 }
 
-/* line 321, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 322, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-16 {
   font-size: 16px !important;
 }
 
-/* line 322, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 323, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-17 {
   font-size: 17px !important;
 }
 
-/* line 323, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 324, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-18 {
   font-size: 18px !important;
 }
 
-/* line 324, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 325, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-20 {
   font-size: 20px !important;
 }
 
-/* line 325, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 326, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-24 {
   font-size: 24px !important;
 }
 
-/* line 326, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 327, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-32 {
   font-size: 32px !important;
 }
 
-/* line 327, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 328, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-40 {
   font-size: 40px !important;
 }
 
-/* line 328, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 329, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-42 {
   font-size: 42px !important;
 }
 
-/* line 329, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 330, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-48 {
   font-size: 48px !important;
 }
 
-/* line 330, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 331, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-60 {
   font-size: 60px !important;
 }
 
-/* line 331, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 332, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-65 {
   font-size: 65px !important;
 }
 
-/* line 332, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 333, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-80 {
   font-size: 80px !important;
 }
 
-/* line 333, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 334, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .f-150 {
   font-size: 150px !important;
 }
 
 /****  Font Weight  ****/
-/* line 336, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 337, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .w-300 {
   font-weight: 300 !important;
 }
 
-/* line 337, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 338, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .w-500 {
   font-weight: 500 !important;
 }
 
-/* line 338, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 339, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .w-600 {
   font-weight: 600 !important;
 }
 
-/* line 339, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 340, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .w-700 {
   font-weight: 700 !important;
 }
 
-/* line 340, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 341, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .w-900 {
   font-weight: 900 !important;
 }
 
 /****  Font Color  ****/
-/* line 344, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 345, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-brand {
   color: #16a085 !important;
 }
 
-/* line 345, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 346, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-red {
   color: #C9625F !important;
 }
 
-/* line 346, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 347, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-blue {
   color: #014c8c !important;
 }
 
-/* line 347, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 348, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-purple {
   color: #B57EE0 !important;
 }
 
-/* line 348, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 349, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-brown {
   color: #9E7B2E !important;
 }
 
-/* line 349, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 350, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-orange {
   color: #ec8521 !important;
 }
 
-/* line 350, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 351, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-green {
   color: #18A689 !important;
 }
 
-/* line 351, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 352, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-gray-light {
   color: #dadada !important;
 }
 
-/* line 352, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 353, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-gray {
   color: #8F8F8F !important;
 }
 
-/* line 353, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 354, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-dark {
   color: #526173 !important;
 }
 
-/* line 354, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 355, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-white {
   color: #FFFFFF !important;
 }
 
-/* line 355, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 356, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .c-transparent {
   color: transparent !important;
 }
 
-/* line 356, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 357, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .asterisk {
   color: #D9534F;
 }
 
 /**** List styling ***/
-/* line 359, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 360, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .list-style-none {
   list-style-type: none;
 }
 
 /**** Display styling ***/
-/* line 362, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 363, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .dis-inline {
   display: inline !important;
 }
 
-/* line 363, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 364, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .dis-inline-b {
   display: inline-block !important;
 }
 
-/* line 364, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 365, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .dis-block {
   display: block !important;
 }
 
-/* line 365, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 366, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .dis-none {
   display: none !important;
 }
 
-/* line 366, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 367, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .dis-flex {
   display: flex !important;
   align-items: center;
@@ -1544,7 +1550,7 @@ a, a:focus, a:hover, a:active {
   justify-content: center;
 }
 
-/* line 367, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 368, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .dis-grid {
   display: grid !important;
   align-items: center;
@@ -1553,60 +1559,60 @@ a, a:focus, a:hover, a:active {
 }
 
 /**** z-index ****/
-/* line 370, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 371, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .z-10 {
   z-index: 10 !important;
 }
 
-/* line 371, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 372, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .z-100 {
   z-index: 100 !important;
 }
 
-/* line 372, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 373, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .z-1000 {
   z-index: 1000 !important;
 }
 
-/* line 373, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 374, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .z-2500 {
   z-index: 2500 !important;
 }
 
-/* line 374, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 375, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .z-5000 {
   z-index: 5000 !important;
 }
 
-/* line 375, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 376, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .z-10000 {
   z-index: 10000 !important;
 }
 
 /**** Box-sizing ****/
-/* line 378, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 379, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .border-box {
   box-sizing: border-box !important;
 }
 
-/* line 379, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 380, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .content-box {
   box-sizing: content-box !important;
 }
 
-/* line 381, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 382, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .help-block {
   color: #AFAAAA;
   font-weight: 500;
   font-size: 12px;
 }
 
-/* line 382, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 383, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .line-through {
   text-decoration: line-through;
 }
 
-/* line 383, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 384, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .t-ellipsis {
   text-overflow: ellipsis;
   display: block;
@@ -1614,7 +1620,7 @@ a, a:focus, a:hover, a:active {
   overflow: hidden;
 }
 
-/* line 385, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
+/* line 386, C:/Users/Baron2Oxide/de_bridge/templates/assets/sass/base/_reset.scss */
 .no-shadow {
   -webkit-box-shadow: none !important;
   -ms-box-shadow: none !important;

@@ -34,6 +34,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function full_name()
+    {
+        return ucwords($this->first_name . ' ' . $this->last_name);
+    }
     public function comments()
     {
         return $this->hasMany('App\Models\Comment');
@@ -46,7 +50,7 @@ class User extends Authenticatable
 
     public function profile_picture()
     {
-        return $this->belongsTo('App\Models\Image');
+        return $this->belongsTo('App\Models\Image', 'image_id');
     }
 
     public function role()

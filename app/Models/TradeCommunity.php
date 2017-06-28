@@ -15,4 +15,9 @@ class TradeCommunity extends Model
     {
     	return $this->hasMany('App\User', 'community_id');
     }
+
+    public function community_address()
+    {
+    	return ucwords($this->name . ', ' . $this->state->name);
+    }
 }
