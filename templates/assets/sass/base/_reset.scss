@@ -169,6 +169,7 @@ body{
 .b-5 {bottom:5px; }
 .b-10 {bottom:10px; }
 .b-15 {bottom:15px; }
+.b-15p {bottom:15%; }
 .b-25 {bottom:25%; }
 .b-29 {bottom:29% }
 
@@ -214,6 +215,7 @@ body{
 .bd-t-purple{border-top:4px solid #B57EE0;}
 .bd-l-red{border-left:4px solid $red-color;}
 .bd-l-green{border-left:4px solid #5CB85C;}
+.bd-l-brandgreen{border-left:1px solid $brand-color;}
 .bd-l-blue{border-left:4px solid $blue-color;}
 .bd-l-dark{border-left:4px solid #2B2E33;}
 .bd-l-dark-gray{border-left:1px solid #526173;}
@@ -268,6 +270,7 @@ body{
 .width-300 {width:300px !important;}
 .width-310 {width:310px !important;}
 .width-563 {width:563px !important;}
+.width-700 {width:700px !important;}
 .width-25p {width:25% !important;}
 .width-50p {width:50% !important;}
 .width-100p  {width:100% !important;}
@@ -366,7 +369,7 @@ a, a:focus, a:hover, a:active {  outline: 0;}
 .dis-none{display: none !important}
 .dis-flex{ @include flex(flex !important, center, center, center) }
 .dis-grid{ @include flex(grid !important, center, center, center) }
-
+.tab-prop{ @include tab-prop;}
 /**** z-index ****/
 .z-10 { z-index:10 !important; }
 .z-100 { z-index:100 !important; }
@@ -378,6 +381,7 @@ a, a:focus, a:hover, a:active {  outline: 0;}
 /**** Box-sizing ****/
 .border-box { box-sizing: border-box !important; }
 .content-box { box-sizing: content-box !important; }
+
 
 .help-block {color: #AFAAAA;font-weight: 500;font-size: 12px;}
 .line-through{text-decoration: line-through;}
