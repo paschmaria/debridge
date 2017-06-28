@@ -316,17 +316,18 @@ class ProductController extends Controller
 
     }
 
-    public function product_hype(Product $product){
-
+    public function product_hype(Product $product, Request $request){
+            dd($request->input('title'));
            $hype = ProductHype::where(['product_id' => $product->id, 'user_id' => auth()->user()->id])->first();
             if ($hype) {
                 return back()->with('info', 'Product already hyped by you!');
             } else {
                 $created_hype = ProductHype::create(['product_id' => $product->id, 'user_id' => auth()->user()->id]);
+
                 Post::create([
                     'user_id' => auth()->user()->id,
-                    'title' => $product->name ,
-                    'content' => $product->description,
+                    'title' => $request->input('title'),
+                    'content' => $request->input('body'),
                     'photo_album_id' => $product->photo_album_id
                 ]);
             }       
@@ -335,10 +336,12 @@ class ProductController extends Controller
     }
     
     public function MerchantStore(){
-        return view('products')
+        //get or create merchant acount and inventory
+        $merchant = MerchantAccount::firstOrCreate(['user_id' => auth()->user()->id]);
+        $inventory = Inventory::firstOrCreate(['merchant_account_id' => $merchant->id]);
+        $products = Product::where('inventory_id', $inventory->id)->get();
+        return view('products', compact('products'));
     }
 
-    public function userTradeline(){
-        return view('')
-    }
+    
 }

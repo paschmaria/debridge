@@ -80,13 +80,13 @@
                             <div class="col-md-12 col-sm-12 col-12">
                                 <ul class="navbar-nav dis-flex flex-row z-10000">
                                     <li class="nav-item animated bounceIn list-inline-item dis-block">
-                                        <img src="{{ route('image', [$user_picture, '']) }}" class="" width="50" height="50">
+                                        <!-- <img src="{{ route('image', [$user_picture, '']) }}" class="" width="50" height="50"> -->
                                     </li>
                                     <li class="nav-item animated bounceIn list-inline-item dis-block">
                                         <div class="dropdown">
-                                            <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <!-- <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ auth()->user()->first_name }}
-                                            </a>
+                                            </a> -->
                                             <div class="dropdown-menu animated bounceIn" aria-labelledby="dropdownMenu3">
                                                 <a class="dropdown-item waves-effect waves-light" href="#">Edit Profile</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="#">Inventory</a>
