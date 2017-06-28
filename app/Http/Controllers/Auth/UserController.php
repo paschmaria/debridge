@@ -63,6 +63,7 @@ class UserController extends Controller
             'date_of_birth' => $request->date_of_birth,
             'user_token' => $user_token,
             'gender' => $request->gender,
+            'registration_status' => 1,
             ]);
         
         if($role == Role::where('name', 'Merchant')->first()){
@@ -81,7 +82,7 @@ class UserController extends Controller
         \Auth::login($user);
         //generate  debride code for user
         $this->bride_code->store();
-        return redirect(route('post'))->with('info', 'Welcome, '. $user->email);
+        return redirect('/user/follow/friends')->with('info', 'Welcome, '. $user->full_name());
     }
 
     public function getLogin()

@@ -32,7 +32,8 @@ Route::get('/admire/{post}', 'User\AdmireController@create')->name('admire');
 Route::get('/unadmire/{post}', 'User\AdmireController@destroy')->name('unadmire');
 
 Route::get('/timeline', 'User\TimelineController@index')->name('timeline');
-Route::get('/user/follow/friends', 'FollowController@show')->name('follow_friends');
+Route::get('/user/follow/friends', 'FollowController@getUser')->name('follow_friends');
+Route::get('/user/follow/merchants', 'FollowController@getMerchant')->name('follow_merchants');
 Route::post('/user/follow/friends', 'FollowController@update')->name('follow_friends');
 
 Route::get('users', 'Auth\UserController@viewUsers')->name('view_users');
@@ -138,8 +139,6 @@ Route::get('/edit_profile', 'User\AccountController@editProfile')->name('edit_pr
 Route::get('/exhibition', 'Auth\UserController@exhibition')->name('exhibition');
 
 Route::get('/follow_brands', 'Auth\UserController@followBrands')->name('follow_brands');
-
-Route::get('/follow_friends', 'Auth\UserController@followFriends')->name('follow_friends');
 
 Route::get('/hiring', 'Auth\UserController@hiring')->name('hiring');
 

@@ -27,51 +27,7 @@
 
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-    <style type="text/css">
-       .checkbox{
-            width:40px;
-            height:40px;
-            background-color:#f0fff0;
-            position: relative;
-            border-radius: 50%;
-            top:-24px;
-            left:5px;
-        }   
-        .checkbox input[type="checkbox"]{
-            visibility: hidden;
-        }
-        .checkbox label{
-            width:38px;
-            height: 38px;
-            position: absolute;
-            top: 1px;
-            left: 1px;
-            background: #f0fff0;
-            border-radius: 50%;
-
-        }
-        .checkbox label:before{
-            content:'';
-            width: 15px;
-            height: 10px;
-            border: 3px solid #fff;
-            position: absolute;
-            border-top:none;
-            border-right:none;
-            transform:rotate(-45deg);
-            top:12px;
-            left:12px;
-            opacity: 0;
-        }
-        .checkbox input[type="checkbox"]:checked + label:before {
-            opacity: 1;
-        }
-        .checkbox input[type="checkbox"]:checked + label {
-            background-color:#008751;
-        }
-
-    </style>  
-
+    <link rel="stylesheet" href="{{ asset('css/follow_btn.css') }}">
 </head>
 
 <body>
@@ -84,15 +40,10 @@
                         <p class="f-12">Thank you. Just a click away follow a few friends</p>
                     </div>
                     <div class="profiles_wrapper">
-                    <form action="/user/follow/friends" method="post" class="follow_form">
                         <div class="row">
-                        <input type="hidden" name="{{ $counter = 0 }}">
                             <!-- fisrt card row-->
                             
                                 @foreach($users as $user)
-
-                                <input type="hidden" value="{{ $counter++ }}">
-                                
 
                                     <div class="col-md-3 p-b-30">
                                         <!--first card -->
@@ -111,9 +62,18 @@
                                             </div>
                                             <!--/ card image -->
                                             <!-- black circle -->
-                                                <div class="checkbox z-100">
-                                                    <input class="" name="checkbox{{ $counter }}" type="checkbox" id="checkbox{{ $counter }}" value="{{ $user->id }}">
-                                                    <label for="checkbox{{ $counter }}"></label>
+                                                <div class="follow_div z-100">
+                                                @if(!in_array($user->id, $following_ids))
+                                                    <form method="post" action="{{ route('follow', $user->email) }}">
+                                                        <button class="follow_btn" id="follow"></button>
+                                                    </form>
+                                                @else
+                                                    <form method="post" action="{{ route('unfollow', $user->email) }}">
+                                                        <button class="unfollow_btn" id="follow"><i class="fa fa-check unfollow_i"></i></button>
+                                                    </form>
+                                                @endif 
+                                                   {{--  <input class="" name="checkbox{{ $counter }}" type="checkbox" id="checkbox{{ $counter }}" value="{{ $user->id }}">
+                                                    <label for="checkbox{{ $counter }}"></label> --}}
                                             </div>
                                             <!--/ black circle -->
                                             <!-- card content block-->
@@ -130,17 +90,18 @@
                                     </div>
                                 @endforeach
                         </div>
-                        <button type="submit" class="btn btn-brand">submit</button>
-                    </form>
+                        
                         <!-- / first card row -->
-                        {{ $users->links() }}
+                        <div class="button_wrapper text-center">{{ $users->links() }}</div>
                         
                     <footer>
                         <div class="button_wrapper m-t-40 m-b-40 text-center">
-                            <button class="btn f-20 width-300 p-b-10 bg-brand-lite btn-outline-brand h-58">Add more friends</button>
-
-                            <button class="f-20 btn-flat width-200 h-40 p-b-43 p-t-10"><a href="registered-users.html" class="c-gray">Continue</a>
-                            </button>
+                            {{-- <button class="btn f-20 width-300 p-b-10 bg-brand-lite btn-outline-brand h-58">Add more friends</button> --}}
+                            @if (count(auth()->user()->following->where('role_id', 1)) >= 10)
+                                <a href="{{ route('follower_merchant') }}"><button class="f-20 btn btn-brand width-200 h-40 p-b-43 p-t-43">Continue</button></a>
+                            @else
+                                <button class="f-20 btn btn-brand width-200 h-40 p-b-43 p-t-43 disabled">Continue</button>
+                            @endif
                         </div>                 
                     </footer>
 
@@ -166,35 +127,6 @@
             $(":checkbox").show();
         })
     </script>
-    <script type="text/javascript">
-        $('.user_ids').click(function (e){
-            e.preventDefault();
-            var formData = $('#follow_form').serialize();
-            // alert(formData);
-            $.ajax({
-
-                url:'/user/follow/friends',
-                type:'POST',
-                data:formData,
-                success:function(data){
-                    // toastr.options.preventDuplicates = true;
-                    alert(alert);
-                    // toastr.success("Post achieved successfully!");
-                    
-                    // location.reload(true);
-                },
-                error: function (data) {
-                    // toastr.options.preventDuplicates = true;
-                    // toastr.error("An error occured... please refresh this page!");
-                    alert('failed');
-                    e.preventDefault();
-                    // console.log(data.responseText);
-                    // var obj = jQuery.parseJSON( data.responseText );
-                }
-            });
-        })
-    </script>
-
 
 </body>
 

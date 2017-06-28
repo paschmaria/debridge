@@ -69,10 +69,19 @@ class FollowController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function getUser(Request $request)
     {
-        $users = User::with(['profile_picture', 'community' ])->paginate(8);
-        return view('users.follow_friends', compact('users'));
+        // get the id of the users that the auth user follows
+        $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
+        $users = User::with(['profile_picture', 'community' ])->where('id', '!=', auth()->user()->id)->where('role_id', 1)->paginate(8);
+        return view('users.follow_friends', compact('users', 'following_ids'));
+    }
+
+    public function getMerchant($value='')
+    {
+        $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
+        $users = User::with(['profile_picture', 'community' ])->where('id', '!=', auth()->user()->id)->where('role_id', 2)->paginate(8);
+        return view('users.follow_brands', compact('users', 'following_ids'));
     }
 
     /**
