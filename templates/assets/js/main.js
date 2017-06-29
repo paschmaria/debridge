@@ -1,4 +1,17 @@
 const app = {
+	stickyHeader() {
+		let body = document.getElementsByTagName('body');
+
+		window.onscroll = function() {
+		    // console.log(window.pageYOffset);
+		    if ((window.pageYOffset > 5) || (document.body.scrollTop > 5)) {
+		    	// console.log(body[0].firstElementChild);
+		    	body[0].firstElementChild.classList.add("sticky", "z-depth-1");
+		    } else  {
+		    	body[0].firstElementChild.classList.remove("sticky", "z-depth-1")
+		    }
+		};
+	},
 	loginToggler() {
 
 		let cardBlock = $(".overbox .card-block"),
@@ -167,10 +180,6 @@ const app = {
 			      			alert("Sorry, you can't upload more than four images at a time!");
 			      			return;
 			      		}
-			      		// else if ((input.files.length > 4) &&  (slots < 4)) {
-			      		// 	alert("Yay");
-			      		// 	return;
-			      		// }
 			      		else{
 				      		products = input.files;
 				      		imageList.unshift(products)
@@ -201,96 +210,140 @@ const app = {
 				        	window.URL.revokeObjectURL(this.src);
 				    	}
 
+				    	// Add content to the remove button
+				    	removeBtn.innerHTML = "&times;";
+
+				    	// Add attributes to the remove button
+				    	removeBtn.title = "Remove Image";
+				    	removeBtn.className = "remove";
+				    	imageItem.className = "pos-rel fadeIn";
+
+				    	// Append Remove buttons, Images and List items to Product image wrapper
 				    	imageItem.appendChild(removeBtn);
 				    	imageItem.appendChild(image);
 		    			productImgList.appendChild(imageItem);
+
+		    			removeBtn.onclick = function() {
+		    				// console.log(imageItem);
+		    				imageItem.parentNode.removeChild(imageItem);
+		    			}
 		    		}
 	    	    });
 		    },
 		    contentSubmit() {
 		    	productUploadForm.addEventListener('submit', (e) => {
 		    		e.preventDefault();
+
+		    		let output = "",
+		    			counter = 0;
 		    		if (statusTextarea.value === '') {
 		    			alert("Please provide product details!");
 		    		}
 		    		else {
-		    			let output;
 		    			$.ajax({
 		    				// pass url here
 		    				url: '',
 		    				type: 'POST',
 		    				dataType: 'json',
-		    				data: productUploadForm,
+		    				data: {
+		    					data: 'json'
+		    				},
 		    				success() {
 		    					// console.log("Success!");
-		    					productUploadForm.submit();
-
-		    					output += ` <div class="media">
-				                                <a class="pull-left" href="#">
-				                                    <img class="media-object p-r-10" src="assets/img/acc-img-1.png" alt="Image">
-				                                </a>
-				                                <div class="media-body">
-				                                    <h6 class="media-heading c-brand w-500">Jhud Fashion House</h6>
-				                                    <p>
-				                                    	New arrivals are everywhere. Get Quality 2017 dresses which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing.
-				                                    </p>
-				                                </div>
-				                            </div>
-
-				                            <div class="card-group">
-				                                <div class="card m-5">
-				                                    <!--Card image-->
-				                                    <div class="view overlay hm-white-slight">
-				                                        <img src="assets/img/products/timeline-product-1.png" class="img-fluid width-100p" alt="">
-				                                        <a href="#">
-				                                            <div class="mask waves-effect waves-light"></div>
-				                                        </a>
-				                                    </div>
-				                                    <!--/.Card image-->
-				                                </div>
-				                                <div class="card m-5">
-				                                    <!--Card image-->
-				                                    <div class="view overlay hm-white-slight">
-				                                        <img src="assets/img/products/timeline-product-2.png" class="img-fluid width-100p" alt="">
-				                                        <a href="#">
-				                                            <div class="mask waves-effect waves-light"></div>
-				                                        </a>
-				                                    </div>
-				                                    <!--/.Card image-->
-				                                </div>
-				                            </div>
-
-				                            <div class="m-t-10 m-b-50">
-				                                <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10" role="group" aria-label="Ad Action Buttons">
-				                                     <button type="button" class="btn bg-white m-r-3 f-14">
-				                                        <span class="f-left">View Item&nbsp;</span><span class="f-right"> <i class="fa fa-eye"></i> </span>
-				                                    </button>
-				                                    <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
-				                                        <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
-				                                    </button>
-				                                    <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
-				                                        <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
-				                                    </button>
-				                                    <button type="button" class="btn bg-white m-l-3 f-14">
-				                                        <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
-				                                    </button>
-				                                </div>
-				                            </div>
-				                            <!-- coomment section -->
-				                            <div class="media m-b-15">
-				                                <a class="pull-left" href="#">
-				                                <img class="media-object p-r-10" src="assets/img/acc-img-1.png" alt="Image">
-				                                </a>
-				                                <div class="media-body">
-				                                    <textarea name="" id="" class="md-textarea input-alternate p-10 h-58 border-box comment_box" placeholder="Press enter to send..."></textarea>
-				                                </div>
-				                            </div>
-				                            <div class="media m-b-40 comment flex-column"></div>`
 		    				},
 		    				error() {
-		    					// console.log("error!");
+		    					displayContent();
+		    					// console.log(this);
 		    				}
 		    			})
+		    		}
+
+		    		function displayContent() {
+		    			output += ` <div class="">
+										<div class="media">
+			                                <a class="pull-left" href="#">
+			                                    <img class="media-object p-r-10" src="assets/img/acc-img-1.png" alt="Image">
+			                                </a>
+			                                <div class="media-body">
+			                                    <h6 class="media-heading c-brand w-500">Jhud Fashion House</h6>
+			                                    <p>
+			                                    	New arrivals are everywhere. Get Quality 2017 dresses which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing.
+			                                    </p>
+			                                </div>
+			                            </div>
+
+			                            <div class="card-group">
+			                                <div class="card m-5">
+			                                    <div class="view overlay hm-white-slight">
+			                                        <img src="assets/img/products/timeline-product-1.png" class="img-fluid width-100p" alt="">
+			                                        <a href="#">
+			                                            <div class="mask waves-effect waves-light"></div>
+			                                        </a>
+			                                    </div>
+			                                </div>
+			                                <div class="card m-5">
+			                                    <div class="view overlay hm-white-slight">
+			                                        <img src="assets/img/products/timeline-product-2.png" class="img-fluid width-100p" alt="">
+			                                        <a href="#" data-toggle="modal" data-target="#productModal${counter++}">
+			                                            <div class="mask waves-effect waves-light dis-flex">
+			                                            	<span class="f-4em c-brand"><i class="fa fa-plus"></i> 2</span>
+			                                            </div>
+			                                        </a>
+			                                    </div>
+			                                </div>
+			                            </div>
+
+			                            <div class="m-t-10 m-b-50">
+			                                <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10" role="group" aria-label="Ad Action Buttons">
+			                                    <button type="button" class="btn bg-white m-r-3 f-14">
+			                                        <span class="f-left">Add Item&nbsp;</span><span class="f-right"> <i class="fa fa-shopping-cart"></i> </span>
+			                                    </button>
+			                                    <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
+			                                        <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
+			                                    </button>
+			                                    <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
+			                                        <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
+			                                    </button>
+			                                    <button type="button" class="btn bg-white m-l-3 f-14">
+			                                        <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
+			                                    </button>
+			                                </div>
+			                            </div>
+
+			                            <div class="media m-b-15 dis-none">
+			                                <a class="pull-left" href="#">
+			                                <img class="media-object p-r-10" src="assets/img/acc-img-1.png" alt="Image">
+			                                </a>
+			                                <div class="media-body">
+			                                    <textarea name="" id="" class="md-textarea input-alternate p-10 h-58 border-box comment_box" placeholder="Press enter to send..."></textarea>
+			                                </div>
+			                            </div>
+			                            
+			                            <div class="media m-b-40 comment flex-column"></div>
+
+			                            <div class="modal fade" id="productModal${counter++}" tabindex="-1" role="dialog" aria-labelledby="productDetails" aria-hidden="true">
+			                              <div class="modal-dialog" role="document">
+			                                <div class="modal-content">
+			                                  <div class="modal-header">
+			                                    <h5 class="modal-title" id="productModalLabel">Product Details</h5>
+			                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			                                      <span aria-hidden="true">&times;</span>
+			                                    </button>
+			                                  </div>
+			                                  <div class="modal-body">
+
+			                                  </div>
+			                                  <div class="modal-footer">
+			                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			                                    <button type="button" class="btn btn-primary">Save changes</button>
+			                                  </div>
+			                                </div>
+			                              </div>
+			                            </div>
+		    						</div>`
+
+				        $('.timeline').html(output);
+				        console.log(image);
 		    		}
 		    	})
 		    }
@@ -405,7 +458,8 @@ const app = {
     	    
     	    },
     	    createComment: function(arg){
-    	        var $textarea = arg.val();//gets the text put in the text area
+    	    	//gets the text put in the text area
+    	        var $textarea = arg.val();
     	        //console.log($textarea);
     	        comment.users.unshift({
     	            comment: $textarea,
@@ -420,8 +474,6 @@ const app = {
     	    if(e.which === 13 && $(this).val() !== '' && $(this).val().trim() !== '') {
     	        e.preventDefault();
     	        // console.log($(this));
-    	        // $addComment[0].offsetParent.children[4].removeClass('m-b-50')
-    	        //     .addClass('m-b-15');
     	        comment.createComment($(this));
     	        comment.updateComment($(this));
     	    }

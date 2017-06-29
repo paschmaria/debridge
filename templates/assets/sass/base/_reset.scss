@@ -11,9 +11,11 @@ html,body{
     padding: 0px;
     width: 100%;
 }
+
 html{
     min-height: 100%;
 }
+
 body{
     height: 100%;
     font-family: 'Nunito', sans-serif;
@@ -341,6 +343,7 @@ a, a:focus, a:hover, a:active {  outline: 0;}
 .f-65{font-size:65px !important;}
 .f-80{font-size:80px !important;}
 .f-150{font-size:150px !important;}
+.f-3em{font-size:3em !important;}
 
 /****  Font Weight  ****/
 .w-300 {font-weight: 300 !important;}
