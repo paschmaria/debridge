@@ -80,10 +80,10 @@ class PostController extends Controller
         return back()->with('success', 'Post Saved successfully!');
         
         //please nuru fix the json 
-        return response()->json([
-          'title' => $post->title,
-          'content'    =>  $post->content
-        ]);
+        // return response()->json([
+        //   'title' => $post->title,
+        //   'content'    =>  $post->content
+        // ]);
     }
 
     /**

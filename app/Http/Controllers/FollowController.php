@@ -26,6 +26,7 @@ class FollowController extends Controller
         $following_count =  count($following);
         $followers_count =  count($followers);
         $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
+        // dd($following_ids);
         return view('users.bridger', 
             compact('followers', 'following', 'followers_count', 'following_count', 'following_ids')
             );
