@@ -16,6 +16,7 @@ use App\Models\ProductHype;
 use App\Models\ProductAdmire;
 use App\Models\Post;
 use Carbon\Carbon;
+use App\User;
 
 class ProductController extends Controller
 {
@@ -317,7 +318,7 @@ class ProductController extends Controller
     }
 
     public function product_hype(Product $product, Request $request){
-            dd($request->title);
+            // dd($request);
            $hype = ProductHype::where(['product_id' => $product->id, 'user_id' => auth()->user()->id])->first();
             if ($hype) {
                 return back()->with('info', 'Product already hyped by you!');
@@ -344,4 +345,15 @@ class ProductController extends Controller
     }
 
     
+        public function StoreForUser(User $user){
+        
+        //get or create merchant acount and inventory
+        // dd($user->id);
+        $merchant = MerchantAccount::where(['user_id' => $user->id])->first();
+        // dd($merchant);
+        $inventory = Inventory::where(['merchant_account_id' => $merchant->id])->first();
+        $products = Product::where('inventory_id', $inventory->id)->get();
+        return view('products', compact('products', 'user'));
+    }
+
 }

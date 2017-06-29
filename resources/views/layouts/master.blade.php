@@ -81,7 +81,7 @@
                                 <ul class="navbar-nav dis-flex flex-row">
                                     <li class="nav-item animated bounceIn list-inline-item dis-block">
 
-                                        <!-- <img src="{{ route('image', [$user_picture, '']) }}" class="" width="50" height="50"> -->
+                                        
 
                                         @if (auth()->user()->image_id != null)
                                             <img src="{{ route('image', [auth()->user()->profile_picture->image_reference,'']) }}" class="img img-circle" width="50" height="50">
@@ -93,9 +93,6 @@
                                     <li class="nav-item animated bounceIn list-inline-item dis-block z-1000">
                                         <div class="dropdown">
 
-                                            <!-- <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            {{ auth()->user()->first_name }}
-                                            </a> -->
                                             <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ auth()->user()->first_name }}
                                             </a>

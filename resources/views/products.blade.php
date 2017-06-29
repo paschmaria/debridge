@@ -50,9 +50,15 @@
                             <!--Card content-->
                             <div class="card-block p-5">
                                 <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
+                                    @if(auth()->user()->ownsShop($user->id))
                                     <button type="button" class="btn bg-white c-brand m-r-3 f-14" data-toggle="modal" data-target="#delete-modal{{ $product->id }}">
                                         <i class="fa fa-trash-o"></i>
                                     </button>
+                                    @else
+                                    <button type="button" class="btn bg-white c-brand m-r-3 f-14" data-toggle="modal">
+                                                <i class="fa fa-shopping-cart"></i>
+                                    </button>
+                                    @endif
                                     <a href="{{ route('product_admire', $product->id) }}" class="btn bg-white c-brand m-l-3 f-14 m-r-3 like">
                                         <i class="fa fa-heart-o"></i>
                                     </a>
@@ -92,7 +98,10 @@
                                     </a>
                                     <div class="media-body">
                                         <h6 class="media-heading w-700 m-b-5 f-12 c-brand">{{ auth()->user()->first_name }}</h6>
-                                        <hidden class="m-b-5 f-12 c-dark" name ='title'>New arrivals are everywhere. Get Quality 2017 {{ $product->name }} which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing</hidden>
+                                        <input type="hidden" class="m-b-5 f-12 c-dark" name ='title' value="New arrivals are everywhere. Get Quality 2017 {{ $product->name }} which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing">
+
+                                        <p class="m-b-5 f-12 c-dark" name ='title'>New arrivals are everywhere. Get Quality 2017 {{ $product->name }} which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing"</p>
+
                                     </div>
                                 </div> 
                                 <div class="row">
