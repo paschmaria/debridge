@@ -39,15 +39,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-                            <label for="image" class="col-md-4 control-label">image</label>
+                        <div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
+                            <label for="file" class="col-md-4 control-label">file</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="file" class="form-control" name="image" >
+                                <input id="file" type="file" class="form-control" name="file[]" multiple>
 
-                                @if ($errors->has('image'))
+                                @if ($errors->has('file'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('image') }}</strong>
+                                        <strong>{{ $errors->first('file') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -75,10 +75,16 @@
                             @endforeach
                         @endif
                             <p>
-                                <a href="{{ route('hype', $post->id) }}"><button class="btn btn-primary">Hype</button></a>
-                                <a href="{{ route('admire', $post->id) }}"><button class="btn btn-success">Admire</button></a>
-                                <!-- <a href="{{ route('admire', $post->id) }}"><button class="btn btn-success">Edit</button></a> -->
+                                @if (!in_array($post->id, $hyped))
+                                    <a href="{{ route('hype', $post->id) }}"><button class="btn btn-primary">Hype</button></a>
+                                @endif
+                                @if(!in_array($post->id, $admired))
+                                    <a href="{{ route('admire', $post->id) }}"><button class="btn btn-success">Admire</button></a>
+                                @else
+                                    <a href="{{ route('unadmire', $post->id) }}"><button class="btn btn-success">Unadmire</button></a>
+                                @endif
                                 @if($post->user_id===auth()->user()->id)
+                                <a href="{{ route('admire', $post->id) }}"><button class="btn btn-success">Edit</button></a>
                                 <a href="{{ route('delete_post', $post->id) }}"><button class="btn btn-danger">Delete</button></a>
                                 @endif
                             </p>
@@ -98,9 +104,9 @@
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first('content') }}</strong>
                                                 </span>
-                                            @endif
+                                            @endif <br>
                                         </div>
-                                    </div>
+                                    </div> 
 
                                     <div class="form-group">
                                         <div class="col-md-8 col-md-offset-4">

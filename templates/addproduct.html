@@ -185,7 +185,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- add images for products -->
                 <div class="row">
                     <div class="col-md-9">
                         <div class="c-gray m-t-10">
@@ -197,40 +196,45 @@
                               <div class="card h-200 width-150">
                                 <img src="assets/img/icons/ic-perm-identity.png" alt="" class="h-200 width-150">
                                 <input type="file" name="img"  value="" class="call">
-                                <button type="button"  id="" class="btn btn-sm call_1 h-20">
-                                <i class="fa fa-plus-circle">&nbsp;Add photo</i>
+                                <button type="button"  id="" class="btn-flat call_1 h-20 p-0">
+                                    <i class="fa fa-plus-circle"></i><span> Add photo</span>
+                                </button>
                               </div>
                            </div>
                            <div class="">
                             <div class="card h-200 width-150">
                                 <img src="assets/img/icons/ic-perm-identity.png" alt="" class="h-200 width-150">
                                 <input type="file" name="img"  value="" class="call">
-                                <button type="button"  id="" class="btn btn-sm call_1 h-20">
-                                <i class="fa fa-plus-circle">&nbsp;Add photo</i>
+                                <button type="button"  id="" class="btn-flat call_1 h-20 p-0">
+                                    <i class="fa fa-plus-circle"></i><span> Add photo</span>
+                                </button>
                               </div>
                            </div>
                            <div class="">
                             <div class="card h-200 width-150">
                                 <img src="assets/img/icons/ic-perm-identity.png" alt="" class="h-200 width-150">
                                 <input type="file" name="img"  value="" class="call">
-                                <button type="button"  id="" class="btn btn-sm call_1 h-20">
-                                <i class="fa fa-plus-circle">&nbsp;Add photo</i>
+                                <button type="button"  id="" class="btn-flat call_1 h-20 p-0">
+                                    <i class="fa fa-plus-circle"></i><span> Add photo</span>
+                                </button>
                               </div>
                            </div>
                            <div class="">
                             <div class="card h-200 width-150">
                                 <img src="assets/img/icons/ic-perm-identity.png" alt="" class="h-200 width-150">
                                 <input type="file" name="img"  value="" class="call">
-                                <button type="button"  id="" class="btn btn-sm call_1 h-20">
-                                <i class="fa fa-plus-circle">&nbsp;Add photo</i>
+                                <button type="button"  id="" class="btn-flat call_1 h-20 p-0">
+                                    <i class="fa fa-plus-circle"></i><span> Add photo</span>
+                                </button>
                               </div>
                            </div>
                            <div class="">
                               <div class="card h-200 width-150">
                                 <img src="assets/img/icons/ic-perm-identity.png" alt="" class="h-200 width-150">
                                 <input type="file" name="img"  value="" class="call">
-                                <button type="button"  id="" class="btn btn-sm call_1 h-20">
-                                <i class="fa fa-plus-circle">&nbsp;Add photo</i>
+                                <button type="button"  id="" class="btn-flat call_1 h-20 p-0">
+                                    <i class="fa fa-plus-circle"></i><span> Add photo</span>
+                                </button>
                               </div>
                            </div>
                         </div>
@@ -238,8 +242,7 @@
                          <button type="button" class="btn btn-lg btn-outline-brand m-t-20 h-40 width-100">Post</button>
                         </div>
                     </div>
-                </div> 
-                <!-- /. add images for products -->
+                </div>
             </form>
           </div>
         </section>
@@ -262,14 +265,15 @@
 
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="assets/plugins/mdb/js/mdb.min.js"></script>
-
         <!-- Main JS -->
         <script type="text/javascript" src="assets/js/main.js"></script>
-        <script>
-        app.addProductImageHandler();
-       
+        <script type="text/javascript">
+            document.onreadystatechange = () => {
+                if (document.readyState === "complete") {
+                    app.addProductImageHandler();
+                    app.stickyHeader();
+                }
+            }
         </script>
-
     </body>
-
 </html>

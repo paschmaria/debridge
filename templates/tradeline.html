@@ -450,14 +450,12 @@
         <!-- Main JS -->
         <script type="text/javascript" src="assets/js/main.js"></script>
         <script>
-            $(document).ready(function(){
-                
-            });
-        </script>
-        <script>
             document.onreadystatechange = () => {
                 if (document.readyState === "complete") {
                     app.productImageUpload(4);
+                    app.likeToggler();
+                    app.commentHandler();
+                    app.stickyHeader();
                 }
             }
         </script> 

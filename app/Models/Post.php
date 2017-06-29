@@ -31,4 +31,9 @@ class Post extends Model
    	{
    		return $this->hasMany('App\Models\PostAdmire');
    	}
+
+    public function pictures()
+    {
+      return $this->belongsTo('App\Models\PhotoAlbum');
+    }
 }

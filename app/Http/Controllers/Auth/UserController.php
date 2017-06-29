@@ -8,22 +8,44 @@ use App\User;
 use App\Mail\Welcome;
 use App\Models\Follower;
 use App\Models\FriendRequest;
+use App\Models\Image;
+use App\Models\Role;
 
 class UserController extends Controller
 {
     function __construct()
     {
-    	$this->middleware('guest')->except(['logout', 'verifyToken', 'resendActivationMail','market','viewUsers']);
+    	$this->middleware('guest')->except(['logout', 'verifyToken', 'resendActivationMail','market','viewUsers', 'brigeCode', 'profile_picture', 'index']);
     }
 
     public function register()
     {
-        return view('register');
+        $role = Role::where('name', 'Merchant')->first();
+        return view('register1', compact('role'));
+    }
+
+    public function index(){
+        if(auth()->check()){
+            // dd('hi');
+            $user_picture_id = auth()->user()->image_id;
+            // $user_picture = Image::find($user_picture_id);
+            // dd($user_picture);
+            if(isset($user_picture)){
+                // dd('he');
+                $user_picture = auth()->user()->image_id;
+                $user_picture = Image::find($user_picture);
+                $user_picture = $user_picture->image_reference;
+                // dd($user_picture);
+                return view('index', compact('user_picture'));
+            }
+        }
+
+        return view('index');
     }
     
     public function create(Request $request)
     {
-         // dd($request);
+        
         $this->validate($request, [
             'first_name' => 'required|alpha|max:180',
             'last_name' => 'required|alpha|max:180',
@@ -33,24 +55,35 @@ class UserController extends Controller
             'gender' => 'alpha',
             // 'account_type_id' => 'required|integer',
             ]);
-
+        
         $user_token =  str_random(64);
+        $role = Role::where('name', $request->input('trade_interest'))->first();
+
         $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
             'password' => \Hash::make($request->password),
             'date_of_birth' => $request->date_of_birth,
-            'gender' => $request->gender,
-            // 'account_type_id' => $request->account_type_id,
             'user_token' => $user_token
             ]);
+        
+        if($role == Role::where('name', 'Merchant')->first()){
+            
+            $user->role()->associate($role);
+            $user->save();
+        }
+        
+
+        
+        
+        $user->following()->attach($user);
         
 
         // \Mail::to($user)->send(new Welcome($user));
         // \Session::flash('success', 'Welcome to Debridge');
         \Auth::login($user);
-        return redirect(route('post'));
+        return redirect(route('post'))->with('info', 'Welcome, '. $user->email);
     }
 
     public function getLogin()
@@ -66,10 +99,10 @@ class UserController extends Controller
             ]);
         //
         if (auth()->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
-            return redirect(route('market'));
+            return redirect(route('post'))->with('info', 'Welcome back, '. \Auth::user()->email);
         } else {
             \Session::flash('danger', 'Invalid login credentials!');
-            return back();
+            return back()->with('middleware', 'Wrong email or password');
         }
         
     }
@@ -104,12 +137,12 @@ class UserController extends Controller
      	return back();
      }
 
-     public function market()
+    public function market()
      {
          return view('market');
      }
 
-     public function viewUsers()
+    public function viewUsers()
      {
         $users = User::where('id','!=', auth()->user()->id)->get();
         // get the id of the users that the auth user follows
@@ -118,4 +151,37 @@ class UserController extends Controller
         $sent_request = FriendRequest::where('sender_id', auth()->user()->id)->pluck('receiver_id')->toArray();
         return view('users.users', compact('users', 'following_ids', 'sent_request'));
      }
+
+     public function brigeCode(Request $request, $id)
+     {
+        $user = User::find($id);
+
+        $user_id = (string)$user->id;
+
+        $user_id = $user_id[0];
+
+        $random_string = str_random(2);
+
+        $brige_code = 'DB'.$user_id.$random_string;
+
+        dd($brige_code);
+
+     }
+
+     public function profile_picture(Request $request, $id){
+
+        $profile_picture = Image::find($id);
+        // dd($profile_picture);
+
+        if($request->isMethod('post')){
+            // dd('ji');
+            $user_picture = auth()->user();
+            $user_picture->image_id = $profile_picture->id;
+            $user_picture->save();
+            return back()->with('info', 'Profile Picture Updated');
+        }
+     }
+
+    
+
 }

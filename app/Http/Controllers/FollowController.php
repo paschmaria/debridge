@@ -14,12 +14,17 @@ class FollowController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $following =  auth()->user()->following;
         $followers =  auth()->user()->followers;
-        $following_count =  auth()->user()->following()->count();
-        $followers_count =  auth()->user()->followers()->count();
+        $following_count =  auth()->user()->following()->count() - 1;
+        $followers_count =  auth()->user()->followers()->count() - 1;
         return view('users.follow', 
             compact('followers', 'following', 'followers_count', 'following_count')
             );
@@ -53,7 +58,8 @@ class FollowController extends Controller
             'message' => auth()->user()->first_name . ' is now following you!',
             'description_id' => 1 
             ]);
-        return back()->with('success', 'Now follow ' . $user->email);
+        return response()->json($email);
+        // return back()->with('success', 'Now following ' . $user->email);
     }
 
     /**
@@ -108,7 +114,9 @@ class FollowController extends Controller
             'message' => auth()->user()->first_name . ' unfollowed you!',
             'description_id' => 2 
             ]);
-        return back()->with('info', 'unfollowed ' . $email);
+        return response()->json($email);
+        
+        // return back()->with('info', 'unfollowed ' . $email);
     }
 
 }

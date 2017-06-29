@@ -284,10 +284,15 @@
 
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="assets/plugins/mdb/js/mdb.min.js"></script>
+
+        <!-- Main JS -->
+        <script type="text/javascript" src="assets/js/main.js"></script>
         <script>
-            $(document).ready(function(){
-                
-            });
+            document.onreadystatechange = () => {
+                if (document.readyState === "complete") {
+                    app.stickyHeader();
+                }
+            }
         </script>
 
     </body>
