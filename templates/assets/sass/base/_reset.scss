@@ -228,6 +228,7 @@ body{
 .bd-b-red{border-bottom:4px solid $red-color;}
 .bd-b-green{border-bottom:4px solid #5CB85C;}
 .bd-b-brand {border-bottom:2px solid $brand-color;}
+.bd-b-dark-gray{border-bottom:1px solid #526173;}
 .bd-b-blue{border-bottom:4px solid $blue-color;}
 .bd-b-dark{border-bottom:4px solid #2B2E33;}
 .bd-b-purple{border-bottom:4px solid #B57EE0;}
@@ -264,6 +265,7 @@ body{
 .width-0 {width:0 !important;}
 .width-30 {width:30px !important;}
 .width-40 {width:40px !important;}
+.width-50 {width:50px !important;}
 .width-60 {width:60px !important;}
 .width-82 {width:82px !important;}
 .width-110 {width:110px !important;}
@@ -290,6 +292,7 @@ body{
 .h-20 {height: 20px !important;overflow: hidden !important}
 .h-30 {height: 30px !important;overflow: hidden !important}
 .h-40 {height: 40px !important;overflow: hidden !important}
+.h-50 {height: 50px !important;overflow: hidden !important}
 .h-58 {height: 58px !important;overflow: hidden !important}
 .h-60 {height: 60px !important;overflow: hidden !important}
 .h-68 {height: 68px !important;overflow: hidden !important}
@@ -308,6 +311,7 @@ body{
 .h-350 {height: 350px !important;overflow: hidden !important}
 .h-inherit {height: inherit !important;overflow: hidden !important}
 .h-initial {height: 30initial !important;overflow: hidden !important}
+.max-height {max-height:400px !important;}
 
 /**** Position ****/
 .pos-rel {position:relative;}

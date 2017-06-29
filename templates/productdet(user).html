@@ -67,8 +67,8 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-12">
                                 <ul class="navbar-nav dis-flex flex-row z-10000">
-                                    <li class="nav-item animated bounceIn list-inline-item dis-block">
-                                        <img src="assets/img/oval-6.png" class="" width="50" height="50">
+                                    <li class="nav-item animated bounceIn list-inline-item dis-block bd-50p">
+                                        <img src="assets/img/oval-6.png" class="bd-50p h-50 width-50">
                                     </li>
                                     <li class="nav-item animated bounceIn list-inline-item dis-block">
                                         <div class="dropdown">
@@ -109,15 +109,25 @@
                                                 <span class="cart-count">3</span>
                                             </span>
                                         </a>
-                                        <div class="dropdown-menu notify-dropdown animated bounceIn f-12" aria-labelledby="dropdownNotify">
-                                                <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">
-                                                <img src="assets/img/p-photo-6.jpeg" class="h-40 width-40 m-r-5 bd-50p">
-                                                <span>Ejike Jhud started following you</span>
-                                                </a>
-                                                <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#"><img src="assets/img/pphoto-4.jpg" class="h-40 width-40 m-r-5 bd-50p">
-                                                <span>Ejike Jhud Admired an item in your store</span></a>
-                                                <a class="dropdown-item waves-effect waves-light p-l-10" href="#"><img src="assets/img/pphoto-301.jpeg" class="h-40 width-40 m-r-5 bd-50p"><span>Ejike Jhud shared a post</span>
-                                                </a>
+                                        <div class="dropdown-menu notify-dropdown animated bounceIn f-12 max-height" aria-labelledby="dropdownNotify">
+                                        	<h6 class="h6-responsive p-l-10 p-b-10 border-bottom">Notifications</h6>
+                                            <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">
+                                            <img src="assets/img/p-photo-6.jpeg" class="h-40 width-40 m-r-5 bd-50p">
+                                            <span>Ejike Jhud started following you</span>
+                                            </a>
+                                            <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#"><img src="assets/img/pphoto-4.jpg" class="h-40 width-40 m-r-5 bd-50p">
+                                            <span>Ejike Jhud Admired an item in your store</span></a>
+                                            <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#"><img src="assets/img/pphoto-301.jpeg" class="h-40 width-40 m-r-5 bd-50p"><span>Ejike Jhud shared a post</span>
+                                            </a>
+                                            <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#"><img src="assets/img/pphoto-301.jpeg" class="h-40 width-40 m-r-5 bd-50p"><span>Ejike Jhud shared a post</span>
+                                            </a>    </a>
+                                            <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#"><img src="assets/img/pphoto-301.jpeg" class="h-40 width-40 m-r-5 bd-50p"><span>Ejike Jhud shared a post</span>
+                                            </a>    </a>
+                                            <a class="dropdown-item waves-effect waves-light p-l-10 " href="#"><img src="assets/img/pphoto-301.jpeg" class="h-40 width-40 m-r-5 bd-50p"><span>Ejike Jhud shared a post</span>
+                                            </a>
+                                            <!-- footer -->
+                                            <h6 class="text-center border-top p-t-10"><a href="#" class="c-dark">See all</a></h6>
+
                                         </div>
                                     </li>
                                 </ul>
@@ -419,6 +429,13 @@
         <script type="text/javascript" src="assets/plugins/slick/slick.min.js"></script>
 
         <!-- Main JS -->
-        <script type="text/javascript" src="assets/js/main.js"></script
+        <script type="text/javascript" src="assets/js/main.js"></script>
+        <script>
+            document.onreadystatechange = () => {
+                if (document.readyState === "complete") {
+                    app.stickyHeader();
+                }
+            }
+        </script>
 </body>
 </html>
