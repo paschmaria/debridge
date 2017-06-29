@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>De-Bridge- Product details</title>
+	<title>De-Bridge Product details user</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -14,26 +14,25 @@
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
 
-	    <!-- Bootstrap core CSS -->
-	    <link href="assets/plugins/mdb/css/bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="assets/plugins/mdb/css/bootstrap.css" rel="stylesheet">
 
-	    <!-- Material Design Bootstrap -->
-	   <link rel="stylesheet" href="assets/plugins/mdb/css/mdb.min.css">
+    <!-- Material Design Bootstrap -->
+   <link rel="stylesheet" href="assets/plugins/mdb/css/mdb.min.css">
 
-	    <!-- font styles -->
-	    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito">
+    <!-- font styles -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito">
 
-	    <!-- Your custom styles (optional) -->
-	    <link rel="stylesheet" href="assets/css/main.css">
-	    <style type="text/css">
-			.tab-prop:active .tab-prop:focus, .tab-prop:hover{
-				background: #008751;
-				color:#fff;
-			}
-	    </style>
-	    
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style type="text/css">
+    	.tab-prop:active{
+    		background:#008751;
+    		color:#fff;
+    	}
+    </style>
 </head>
-<body data-page="product-details-page ">
+<body data-page="product-details-page">
 	<!-- header begins here-->
         <header>
             <div class="container-fluid bg-brand z-2500">
@@ -148,8 +147,8 @@
             </nav>
             <!-- navigations/links ends here -->
         </header>
-        <!-- header ends here -->
-        <div class="container-fluid">
+    <!-- header ends here -->
+		 <div class="container-fluid">
         	<section class="main">
 				<div class="row m-t-180 m-b-140">
 					<div class="col-md-3 col-sm-3 col-xs-3 col-12 h-200"></div>
@@ -175,17 +174,47 @@
 									
 									<div class="">
 										<h3 class="c-brand dis-inline">&#8358;456</h3>
-										<button class="btn btn-sm dis-inline bg-brand c-white">Add Discount</button>
-										<button class="btn btn-sm dis-inline bg-brand c-white">Make product of the week</button>
-										<button class="btn btn-sm bg-brand c-white">Add to Hottest Deals</button>
+										<button type="button" class="btn btn-sm dis-inline bg-brand c-white">Add to Cart</button>
+										<button type="button" class="btn btn-sm dis-inline bg-brand c-white" data-toggle="modal" data-target="#contact">Contact Us</button>
 									</div>
 								</div>
 							</div>
 						</div>
-						
 					</div>
-					
 				</div>
+				<!-- modal starts here -->
+				<div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<!-- content -->
+						<div class="modal-content width-700 r-10p p-20">
+							<!-- modal Header -->
+								<h4 class="h4-responsive f-32 c-brand bd-b-brand width-185 m-b-25 text-center">Contact Us</h4>
+							<!--body -->
+							<div class="modal-body">
+								<h4 class="c-dark m-b-25 dis-block">Merchant's Name</h4>
+								<p class="f-17 dis-inline c-dark">No 42 Montgomery, Sabo</p>
+								<div class="dis-inline f-17 f-right m-r-120 c-dark">
+									<span class="fa fa-phone m-r-30"></span>
+									<p class="dis-inline">08073404890</p>
+								</div>
+								<div class="c-dark m-t-60">
+									<span class="fa fa-envelope m-r-30 fa-24"></span>
+									<p class="f-17 dis-inline">judeejike85@gmail.com</p>
+								</div>
+								<div class="m-t-80">
+									<h5 class="c-dark f-20">Note</h5>
+									<p class="f-14 c-dark">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and </p>
+								</div>
+							</div>
+							<!-- footer -->
+							<div>
+								<button type="button" class="close width-110 btn btn-md btn-outline-brand m-b-60 f-right m-r-60" data-dismiss="modal">cancel</button>
+							</div>
+								
+						</div>
+					</div>
+				</div>
+				<!-- modal ends here -->
 				<div class="row">
 					<div class="col-md-8 bd-all m-auto">
 						<div class="review_box m-b-30">
@@ -205,7 +234,7 @@
 							<!-- tab panels -->
 							<div class="tab-content card">
 								<!-- first panel -->
-								<div class="tab-pane fade in show active p-l-20" id="firstpanel" role="tabpanel">
+								<div class="tab-pane fade in show active p-20" id="firstpanel" role="tabpanel">
 									<br>
 									<p>Casio is all about providing value, making the lives of people better and providing innovations that lead to social progress. They support the intellectual activities of as many people as possible by taking up the role in the society to constantly develop products and services that ma
 									ke universal information easily accessible and useful to people from their private life through school and business. One of such is the 
@@ -326,8 +355,32 @@
 												<span class="fa fa-star-o c-gray p-r-5 f-16"></span>
 												<span class="fa fa-star-o c-gray f-16"></span>
 											</div>
-											<button class="btn btn-sm m-t-30 bg-brand c-white h-40">Write a review</button>
+											<button type="button" class="btn btn-sm m-t-30 bg-brand c-white h-40" data-toggle="modal" data-target="#writeReview">Write a review</button>
 										</div>
+										<!--review modal starts here-->
+										<div class="modal fade" id="writeReview" tabindex="-1" role="dialog" role="document">
+											<div class="modal-dialog">
+												<!-- content -->
+												<div class="modal-content width-700 r-10 c-dark">
+													<div class="modal-body">
+														<h4 class="c-brand f-32 bd-b-brand width-230 text-center m-b-50">Write a review</h4>
+														<p class="c-dark f-14 m-b-16">Your review</p>
+														<textarea type="text" class="form-control bd-3 input-alternate border-box bg-white h-150"></textarea>
+														<p class="f-14 m-t-80">Rate this product</p>
+														<div>
+															<span class="fa fa-star-o m-r-5 f-24 c-gray"></span>
+															<span class="fa fa-star-o m-r-5 f-24 c-gray"></span>
+															<span class="fa fa-star-o m-r-5 f-24 c-gray"></span>
+															<span class="fa fa-star-o m-r-5 f-24 c-gray"></span>
+															<span class="fa fa-star-o m-r-5 f-24 c-gray"></span>
+															<button class="btn btn-sm btn-outline-brand m-t-80 width-110 f-17 f-right m-b-60">Post</button>
+														</div>
+
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- /review modal ends here -->
 									</div>
 								</div>
 								<!--/ second panel -->
@@ -345,9 +398,7 @@
 				</div>
 			</section>
         </div>
-		
-
-	   <!-- SCRIPTS -->
+		 <!-- SCRIPTS -->
 
         <!-- JQuery -->
         <script type="text/javascript" src="assets/plugins/mdb/js/jquery-3.1.1.min.js"></script>
@@ -365,6 +416,6 @@
         <script type="text/javascript" src="assets/plugins/slick/slick.min.js"></script>
 
         <!-- Main JS -->
-        <script type="text/javascript" src="assets/js/main.js"></script>
+        <script type="text/javascript" src="assets/js/main.js"></script
 </body>
 </html>

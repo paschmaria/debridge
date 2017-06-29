@@ -110,12 +110,8 @@
 }
 
 @mixin tab-prop(){
-	background:$white-color;
-	color:$brand-color;
+	background:$grey-color;
+	color:#FFF;
 	text-align:center;
 	font-size:14px;
-	&:active, &:hover,&:focus{
-		background:$brand-color;
-		color:$white-color !important;
-	}
 }
