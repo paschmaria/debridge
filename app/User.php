@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\MerchantAccount;
 
 class User extends Authenticatable
 {
@@ -148,5 +149,18 @@ class User extends Authenticatable
     public function cart()
     {
         return $this->hasOne('App\Models\Cart');
+    }
+
+    public function ownsShop($id){
+        $merchant_ownership = MerchantAccount::where('user_id', $id)->first();
+        // dd($merchant_ownership);
+        
+        if($merchant_ownership->id === auth()->user()->id){
+            return true;
+        }else{
+            return false;
+
+        }
+
     }
 }

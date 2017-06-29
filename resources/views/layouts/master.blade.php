@@ -80,7 +80,8 @@
                             <div class="col-md-12 col-sm-12 col-12">
                                 <ul class="navbar-nav dis-flex flex-row">
                                     <li class="nav-item animated bounceIn list-inline-item dis-block">
-             @if (auth()->user()->image_id != null)
+
+                                        @if (auth()->user()->image_id != null)
                                             <img src="{{ route('image', [auth()->user()->profile_picture->image_reference,'']) }}" class="img img-circle" width="50" height="50">
                                         @else
                                             <img src="{{ asset('img/icons/profiled.png') }}" class="" width="50" height="50">
@@ -91,7 +92,6 @@
                                             <!-- <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ auth()->user()->first_name }}
                                             </a> -->
-
                                             <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ auth()->user()->first_name }}
                                             </a>
