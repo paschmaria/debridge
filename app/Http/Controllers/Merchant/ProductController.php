@@ -117,9 +117,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($reference)
     {
-        $product = Product::where('id', $id)->with('pictures')->first();
+        $product = Product::where('reference', $reference)->with('pictures')->first();
         return view('merchant.product_details', compact('product'));
     }
 
@@ -129,12 +129,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $id=null)
+    public function edit(Request $request, $reference=null)
     {
         //
         $product_categories = ProductCategory::all();
-        $product = Product::find($id);
-        // dd($product);
+        $product = Product::where('reference', $reference)->first();
         if($request->isMethod('Post')){
             $product->name = $request->input('product_name');
             $product->description = $request->input('decription');
@@ -166,11 +165,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($reference)
     {
-        //
-        // dd('hi');
-        $product = Product::destroy($id);
+        $product = Product::where('reference', $reference)->first();
         return back()->with('info', 'Product Deleted Sucessfully');
     }
 
@@ -297,8 +294,8 @@ class ProductController extends Controller
         }
     }
 
-    public function remove_promo($id){
-        $product = Product::find($id);
+    public function remove_promo($reference){
+        $product = Product::where('reference', $reference)->first();
         $product->promo_price = null;
         $product->save();
         $product_notification = ProductNotification::create([

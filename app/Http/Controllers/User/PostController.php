@@ -128,13 +128,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request, $reference)
     {
         //
-        $post = Post::find($id);
+        $post = Post::where('reference', $reference)->first();
         $post->comments()->delete();
-        $post->images()->delete();
-        $post = Post::destroy($id);
+        $post->delete();
         $request->session()->flash('success', 'Post deleted successfully!');
         return back();
     }

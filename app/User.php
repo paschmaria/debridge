@@ -39,7 +39,7 @@ class User extends Authenticatable
 
     public function full_name()
     {
-        return ucwords($this->first_name . ' ' . $this->last_name);
+        return strtoupper($this->first_name . ' ' . $this->last_name);
     }
     public function comments()
     {

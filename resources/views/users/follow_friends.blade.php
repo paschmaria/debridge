@@ -64,11 +64,11 @@
                                             <!-- black circle -->
                                                 <div class="follow_div z-100">
                                                 @if(!in_array($user->id, $following_ids))
-                                                    <form method="post" action="{{ route('follow', $user->email) }}">
+                                                    <form method="post" action="{{ route('follow', $user->reference) }}">
                                                         <button class="follow_btn" id="follow"></button>
                                                     </form>
                                                 @else
-                                                    <form method="post" action="{{ route('unfollow', $user->email) }}">
+                                                    <form method="post" action="{{ route('unfollow', $user->reference) }}">
                                                         <button class="unfollow_btn" id="follow"><i class="fa fa-check unfollow_i"></i></button>
                                                     </form>
                                                 @endif 
