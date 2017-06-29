@@ -151,7 +151,9 @@ Route::get('/port-harcourt_market', 'Auth\UserController@port_harcourtMarket')->
 
 // Route::get('/mycart', 'Auth\UserController@myCart')->name('mycart');
 
-Route::get('/merchant_store', 'Merchant\ProductController@merchantStore')->name('merchant_store');
+Route::get('/merchant_store/', 'Merchant\ProductController@merchantStore')->name('merchant_store')->middleware('merchant');
+
+Route::get('/merchant_store/{user}', 'Merchant\ProductController@StoreForUser')->name('user_store');
 
 Route::get('/cart/addItem/{product}', 'User\CartController@addToCart')->name('addToCart')->middleware('auth');
 ;
