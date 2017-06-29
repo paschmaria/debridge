@@ -9,6 +9,7 @@ use App\User;
 use App\Mail\Welcome;
 use App\Models\Follower;
 use App\Models\FriendRequest;
+use App\Models\SocialNotification;
 use App\Models\Image;
 use App\Models\Role;
 use App\Models\State;
@@ -19,8 +20,7 @@ use App\Models\Inventory;
 
 class UserController extends Controller
 {
-    protected $bride_code;
-
+    
     function __construct(BridgeCodeController $bride_code)
     {
         $this->bride_code = $bride_code;
@@ -36,7 +36,6 @@ class UserController extends Controller
     }
 
     public function index(){
-       
         return view('index');
     }
     
@@ -67,6 +66,7 @@ class UserController extends Controller
             'date_of_birth' => $request->date_of_birth,
             'user_token' => $user_token,
             'gender' => $request->gender,
+            'registration_status' => 1,
             ]);
         
         if($role == Role::where('name', 'Merchant')->first()){
@@ -85,7 +85,7 @@ class UserController extends Controller
         \Auth::login($user);
         //generate  debride code for user
         $this->bride_code->store();
-        return redirect(route('post'))->with('info', 'Welcome, '. $user->email);
+        return redirect('/user/follow/friends')->with('info', 'Welcome, '. $user->full_name());
     }
 
     public function getLogin()
@@ -138,12 +138,7 @@ class UserController extends Controller
      	Mail::to($user)->send(new Welcome($user));
      	return back();
      }
-
-    public function market()
-     {
-         return view('market');
-     }
-
+     
     public function viewUsers()
      {
         $users = User::where('id','!=', auth()->user()->id)->get();
@@ -212,7 +207,7 @@ class UserController extends Controller
         return view('lagos_market');
     }
 
-     public function port_harcourtMarket(){
+    public function port_harcourtMarket(){
         return view('port-harcourt_market');
     }
 

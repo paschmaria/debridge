@@ -26,7 +26,7 @@
                 </div>
                 <div class="row">
                
-                @forelse($products as $product)
+                @foreach($products as $product)
                     <div class="col-md-3 col-sm-6 col">
                         <div class="card m-t-20">
                             <!--Card image-->
@@ -50,13 +50,13 @@
                             <!--Card content-->
                             <div class="card-block p-5">
                                 <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
-                                    <button type="button" class="btn bg-white c-brand m-r-3 f-14" data-toggle="modal" data-target="#delete-modal">
+                                    <button type="button" class="btn bg-white c-brand m-r-3 f-14" data-toggle="modal" data-target="#delete-modal{{ $product->id }}">
                                         <i class="fa fa-trash-o"></i>
                                     </button>
                                     <a href="{{ route('product_admire', $product->id) }}" class="btn bg-white c-brand m-l-3 f-14 m-r-3 like">
                                         <i class="fa fa-heart-o"></i>
                                     </a>
-                                    <button type="button" class="btn bg-white c-brand m-l-3 f-14" data-toggle="modal" data-target="#share-modal">
+                                    <button type="button" class="btn bg-white c-brand m-l-3 f-14" data-toggle="modal" data-target="#share-modal{{ $product->id }}">
                                         <i class="fa fa-share-alt"></i>
                                     </button>
                                 </div>
@@ -66,7 +66,7 @@
                     </div>
 
                     <!-- Modal Share-->
-            <div class="modal fade" id="share-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="share-modal{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <!--Content-->
                     <div class="modal-content">
@@ -92,7 +92,7 @@
                                     </a>
                                     <div class="media-body">
                                         <h6 class="media-heading w-700 m-b-5 f-12 c-brand">{{ auth()->user()->first_name }}</h6>
-                                        <p class="m-b-5 f-12 c-dark" name ='title'>New arrivals are everywhere. Get Quality 2017 {{ $product->name }} which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing</p>
+                                        <hidden class="m-b-5 f-12 c-dark" name ='title'>New arrivals are everywhere. Get Quality 2017 {{ $product->name }} which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing</hidden>
                                     </div>
                                 </div> 
                                 <div class="row">
@@ -126,7 +126,7 @@
             </div>
             <!-- Modal -->
             <!-- Modal Share-->
-            <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="delete-modal{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <!--Content-->
                     <div class="modal-content">
@@ -136,7 +136,7 @@
                         </div>
                         <!--Body-->
                         <div class="modal-body bg-brand-lite c-dark dis-flex">
-                            <p class="text-responsive w-700 m-0">Are you sure you want to delete this product?</p>
+                            <p class="text-responsive w-700 m-0">Are you sure you want to delete this product? {{ $product->id }}</p>
                         </div>
                         <!--Footer-->
                         <div class="modal-footer bg-brand-lite justify-content-center">
@@ -196,6 +196,7 @@
                                 </div>
                             </form>
                         </div>
+
                         <!--Footer-->
                         <div class="modal-footer bg-brand-lite">
                             
@@ -205,9 +206,8 @@
                 </div>
             </div>
             <!-- Modal -->
-                @empty
-                    <p>No Products in the inventory</p>
-                @endforelse
+                
+                @endforeach
 
                        
                 </div>

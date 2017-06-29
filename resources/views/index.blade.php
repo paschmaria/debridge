@@ -43,10 +43,10 @@
                         <a href="tradeRequest.html" class="list-group-item list-group-item-action">TRADE REQUEST</a>
                         <a href="#" class="list-group-item list-group-item-action">TRADE COMMUNITY</a>
                         <a href="#" class="list-group-item list-group-item-action">BRIDGE POINT</a>
-                        @if(Auth::check())
-                        <a href="{{ route('brige_code', auth()->user()->id) }}" class="list-group-item list-group-item-action">BRIDGE CODE</a>
-                        @else
-                        <p>NO CODE</p>
+                        @if(Auth::check() && isset(auth()->user()->bridgeCode))
+                            <a href="" class="list-group-item list-group-item-action" disable>
+                                BRIDGE CODE: {{ auth()->user()->bridgeCode->code }}
+                            </a>
                         @endif
                     </div>
                     <a href="#" class="btn btn-outline-brand btn-block waves-effect">B - ANALYTOR</a>

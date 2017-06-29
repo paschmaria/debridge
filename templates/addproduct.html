@@ -27,16 +27,14 @@
         <!-- Your custom styles (optional) -->
         <link rel="stylesheet" href="assets/css/main.css">
         <style>
-            .width-800 {
-                    width: 850px !important;
+            .call{
+                opacity: 0;
+                position: absolute;
+                width: 100%;
+                bottom: 0px;
+                height: 30px;
+                z-index: 1000;
                 }
-                .h-800 {
-                  height: 800px !important;
-                  overflow: hidden !important;
-                }
-            .m-l-2{
-                margin-left: 2px ! important;
-            }
         </style>
     </head>
 
@@ -187,90 +185,61 @@
                         </div>
                     </div>
                 </div>
+                <!-- add images for products -->
                 <div class="row">
                     <div class="col-md-9">
                         <div class="c-gray m-t-10">
                         <p class="m-b-0">photo</p>
                         <h6>Ads with photo get 5x more clients. Accepted formats are .jpg, .gif and .png.</h6>
                         </div>
-                        <div class="row">
-                            <div class="col-md-2">
-                                <div class="card profile-img-holder h-200 width-150">
-                                <center style="position:absolute;width: 100%; height: 100%; ">
-                                    <img src="assets/img/icons/ic-perm-identity.png" id="post" style="position:absolute;width: 150px; height: 200px; ">
-                                </center>
-                                    
-                                   <!-- <div class="text-center m-t-10">
-                                     
-                                   </div> -->
-                                   <div class="card" style="top:80%; background-color: #a9a9a9;">
-                                     <div class="pos-rel" >
-                                            <button type="button" class="btn-flat" >
-                                            <i class="fa fa-plus-circle c-gray f-12 m-r-10">&nbsp;&nbsp;</i>Add photo
-                                            </button>
-                                            <input type="file" id="upload" class="pos-abs hide width-130 l-6 b-5 z-100">
-                                        </div>  
-                                   </div>     
-                               </div> 
-                            </div>
-                            <div class="col-md-2">
-                                <div class="card bd-dark-light h-200 width-150 m-l-20">
-                               <div class="text-center m-t-60">
-                                    <i class="fa fa-user-o fa-5x c-gray" aria-hidden="true"></i>
-                               </div>
-                                <div class="pos-rel">
-                                        <button type="button" class="btn btn-sm m-t-30">
-                                        <i class="fa fa-plus-circle c-gray f-12 m-r-10">&nbsp;&nbsp;</i>Add photo
-                                        </button>
-                                        <input type="file" class="pos-abs hide width-130 l-6 b-5 z-100">    
-                                    </div>
-                               </div>  
-                            </div>
-                            <div class="col-md-2">
-                                <div class="card bd-dark-light h-200 width-150 m-l-40">
-                                    <div class="text-center m-t-60">
-                                    <i class="fa fa-user-o fa-5x c-gray" aria-hidden="true"></i>
-                                </div>
-                                <div class="pos-rel">
-                                   <button type="button" class="btn btn-sm m-t-30">
-                                        <i class="fa fa-plus-circle c-gray f-12 m-r-10">&nbsp;&nbsp;</i>Add photo
-                                        </button>
-                                        <input type="file" class="pos-abs hide width-130 l-6 b-5 z-100">     
-                                    </div>
-                               </div>  
-                            </div>
-                            <div class="col-md-2">
-                                <div class="card bd-dark-light h-200 width-150 m-l-60">
-                               <div class="text-center m-t-60">
-                                    <i class="fa fa-user-o fa-5x c-gray" aria-hidden="true"></i>
-                               </div>
-                                <div class="pos-rel">
-                                    <button type="button" class="btn btn-sm m-t-30">
-                                        <i class="fa fa-plus-circle c-gray f-12 m-r-10">&nbsp;&nbsp;</i>Add photo
-                                    </button>
-                                    <input type="file" class="pos-abs hide width-130 l-6 b-5 z-100">     
-                                </div>
-                               </div>  
-                            </div>
-                            <div class="col-md-2">
-                                <div class="card bd-dark-light h-200 width-150 m-l-78">
-                                <div class="img"></div>
-                               <div class="text-center m-t-60">
-                                    <i class="fa fa-user-o fa-5x c-gray" aria-hidden="true"></i>
-                               </div>
-                                <div class="pos-rel">
-                                    <button type="button" class="btn btn-sm m-t-30">
-                                        <i class="fa fa-plus-circle c-gray f-12 m-r-10">&nbsp;&nbsp;</i>Add photo
-                                    </button>
-                                    <input type="file" class="pos-abs hide width-130 l-6 b-5 z-100">     
-                                </div> 
-                            </div>
+                        <div class="dis-flex flex-row justify-content-between">
+                           <div class="">
+                              <div class="card h-200 width-150">
+                                <img src="assets/img/icons/ic-perm-identity.png" alt="" class="h-200 width-150">
+                                <input type="file" name="img"  value="" class="call">
+                                <button type="button"  id="" class="btn btn-sm call_1 h-20">
+                                <i class="fa fa-plus-circle">&nbsp;Add photo</i>
+                              </div>
+                           </div>
+                           <div class="">
+                            <div class="card h-200 width-150">
+                                <img src="assets/img/icons/ic-perm-identity.png" alt="" class="h-200 width-150">
+                                <input type="file" name="img"  value="" class="call">
+                                <button type="button"  id="" class="btn btn-sm call_1 h-20">
+                                <i class="fa fa-plus-circle">&nbsp;Add photo</i>
+                              </div>
+                           </div>
+                           <div class="">
+                            <div class="card h-200 width-150">
+                                <img src="assets/img/icons/ic-perm-identity.png" alt="" class="h-200 width-150">
+                                <input type="file" name="img"  value="" class="call">
+                                <button type="button"  id="" class="btn btn-sm call_1 h-20">
+                                <i class="fa fa-plus-circle">&nbsp;Add photo</i>
+                              </div>
+                           </div>
+                           <div class="">
+                            <div class="card h-200 width-150">
+                                <img src="assets/img/icons/ic-perm-identity.png" alt="" class="h-200 width-150">
+                                <input type="file" name="img"  value="" class="call">
+                                <button type="button"  id="" class="btn btn-sm call_1 h-20">
+                                <i class="fa fa-plus-circle">&nbsp;Add photo</i>
+                              </div>
+                           </div>
+                           <div class="">
+                              <div class="card h-200 width-150">
+                                <img src="assets/img/icons/ic-perm-identity.png" alt="" class="h-200 width-150">
+                                <input type="file" name="img"  value="" class="call">
+                                <button type="button"  id="" class="btn btn-sm call_1 h-20">
+                                <i class="fa fa-plus-circle">&nbsp;Add photo</i>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="dis-flex pull-left">
+                         <button type="button" class="btn btn-lg btn-outline-brand m-t-20 h-40 width-100">Post</button>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <button type="button" class="btn btn-lg btn-outline-brand m-t-20">Post</button>
-                </div>
+                </div> 
+                <!-- /. add images for products -->
             </form>
           </div>
         </section>
@@ -294,32 +263,12 @@
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="assets/plugins/mdb/js/mdb.min.js"></script>
 
-        <script type="text/javascript">
-       var app = {
-            imageHandler:function (){
-                $('#upload').on('change', function(){
-                    //alert("alert");
-                    readUrl();
-                });
-                function readUrl(argument) {
-                    var file = $("#upload")[0].files[0];
-                    //console.log(file);
-                    var reader = new FileReader();
-                    reader.onloadend = function () {
-                        //console.log(reader.result);
-                        $("#post").attr('src', reader.result);
-                    }
-                    if(file){
-                        reader.readAsDataURL(file);
-                    }
-                }
-            }
-        }
-        app.imageHandler();
-
-
+        <!-- Main JS -->
+        <script type="text/javascript" src="assets/js/main.js"></script>
+        <script>
+        app.addProductImageHandler();
        
-   </script>
+        </script>
 
     </body>
 

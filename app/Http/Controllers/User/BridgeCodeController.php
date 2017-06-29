@@ -29,7 +29,7 @@ class BridgeCodeController extends Controller
             $user_id = (string)auth()->user()->id;
             $user_id = $user_id[0];
             $random_string = str_random(2);
-            $brige_code = 'DB' . $user_id . $random_string;
+            $brige_code = strtoupper('DB' . $user_id . $random_string);
             $code = BridgeCode::where('code', $brige_code)->first();
             if (empty($code)){
                 return $brige_code;

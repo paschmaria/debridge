@@ -317,7 +317,7 @@ class ProductController extends Controller
     }
 
     public function product_hype(Product $product, Request $request){
-            dd($request->input('title'));
+            dd($request->title);
            $hype = ProductHype::where(['product_id' => $product->id, 'user_id' => auth()->user()->id])->first();
             if ($hype) {
                 return back()->with('info', 'Product already hyped by you!');
