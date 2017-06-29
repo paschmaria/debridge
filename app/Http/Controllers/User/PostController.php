@@ -69,6 +69,7 @@ class PostController extends Controller
         $post = new Post([
             'title' => $request->title,
             'content' => $request->content,
+            'reference' => str_random(7) . time() . uniqid(),
             ]);
         //mulitple image upload system
         if(!empty($request->file('file'))){
@@ -82,7 +83,8 @@ class PostController extends Controller
         //please nuru fix the json 
         return response()->json([
           'title' => $post->title,
-          'content'    =>  $post->content
+          'content'    =>  $post->content,
+          'reference' => $post->reference,
         ]);
     }
 

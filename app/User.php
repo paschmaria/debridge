@@ -22,7 +22,9 @@ class User extends Authenticatable
         'date_of_birth',
         'gender',
         'confirm_code',
-        'user_token'
+        'user_token',
+        'registration_status',
+        'reference'
     ];
 
     /**

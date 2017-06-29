@@ -82,6 +82,7 @@ class ProductController extends Controller
         $product->price = $request->input('product_price');
         $product->quantity = $request->input('quantity');
         $product->product_category_id = $request->input('category');
+        $product->reference = str_random(7) . time() . uniqid(),
         
         if(!empty($request->file('file'))){
             $album = $this->photo_album->store($request);
@@ -253,9 +254,9 @@ class ProductController extends Controller
             } else {
                 $price = $product->price;
             }
-            
+            //notify all merchant of the change
             $product_notification = ProductNotification::create([
-                    'message' => 'Notice: ' . $product->inventory->merchant->user->first_name . "'s product of the week is " . $product->name . ' at ' . $price,
+                    'message' => 'Notice: ' . $product->inventory->merchant->user->first_fullname() . "'s product of the week is " . $product->name . ' at ' . $price,
                     'product_id'=> $product->id, 
                     'description_id' => 2
                 ]);
@@ -329,6 +330,8 @@ class ProductController extends Controller
                     'title' => $request->input('title'),
                     'content' => $request->input('body'),
                     'photo_album_id' => $product->photo_album_id
+                    'product_id' => 
+                    'reference' => str_random(7) . time() . uniqid(),
                 ]);
             }       
         
@@ -343,5 +346,4 @@ class ProductController extends Controller
         return view('products', compact('products'));
     }
 
-    
 }

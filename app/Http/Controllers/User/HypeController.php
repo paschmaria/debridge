@@ -42,6 +42,7 @@ class HypeController extends Controller
                     'title' => $post->title ,
                     'content' => $post->content,
                     'photo_album_id' => $post->photo_album_id
+                    'reference' => str_random(7) . time() . uniqid(),
                 ]);
             }       
         }

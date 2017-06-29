@@ -66,10 +66,11 @@ class UserController extends Controller
             'date_of_birth' => $request->date_of_birth,
             'user_token' => $user_token,
             'gender' => $request->gender,
+            'reference' => str_random(7) . time() . uniqid(),
             'registration_status' => 1,
             ]);
-        
-        if($role == Role::where('name', 'Merchant')->first()){
+
+        if($role === Role::where('name', 'Merchant')->first()){
             
             $user->role()->associate($role);
             $user->save();
