@@ -44,6 +44,12 @@ body {
    		@include pos(absolute, $t: -10px, $l: 0, $z: -1);
    	}
 }
+.pics{
+	max-width: 70px;
+    max-height: 70px;
+    width: 100%;
+    height: auto;
+}
 
 .box.back {
    	top: -20px;
@@ -225,4 +231,19 @@ del span {
 		height: 44.19px;
 		
 	}
+}
+
+.product-img-group > card-group{
+	margin: 36px;
+	margin-buttom: 18px;
+}
+.card-group .card:first-child{
+	margin-left: 4px;
+}
+.card-group .card:last-child{
+	margin-right: 4px;
+}
+.card-group .card:nth-child(2), .card-group .card:nth-child(3){
+	margin-right: 4px;
+	margin-left: 4px;
 }
