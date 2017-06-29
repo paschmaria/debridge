@@ -15,6 +15,7 @@ class AddProductIdToPostsTable extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             $table->integer('product_id')->nullable();
+            $table->string('reference')->nullable();
         });
     }
 

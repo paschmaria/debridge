@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddRegistrationStatusColToUsersTable extends Migration
+class AddReferenceToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,7 @@ class AddRegistrationStatusColToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('registration_status')->nullable();
+        Schema::table('products', function (Blueprint $table) {
             $table->string('reference')->nullable();
         });
     }
@@ -26,7 +25,7 @@ class AddRegistrationStatusColToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('products', function (Blueprint $table) {
             //
         });
     }

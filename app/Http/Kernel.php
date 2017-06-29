@@ -59,5 +59,6 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\Admin::class,
         'merchant' => \App\Http\Middleware\Merchant::class,
         'super_admin' => \App\Http\Middleware\SuperAdmin::class,
+        'follow_require' => \App\Http\Middleware\FollowRequire::class,
     ];
 }
