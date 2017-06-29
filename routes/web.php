@@ -13,8 +13,10 @@
 
 Route::get('/', 'Auth\UserController@index')->name('index');
 
-Route::get('/logout', 'User\FriendsController@user_logout')->name('logout');
+Route::get('/users/follow/more', 'Auth\UserController@index')->name('index');
 
+
+Route::get('/logout', 'User\FriendsController@user_logout')->name('logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -39,7 +41,7 @@ Route::get('/user/follow/friends', 'FollowController@getUser')->name('follow_fri
 Route::get('/user/follow/merchants', 'FollowController@getMerchant')->name('follow_merchants');
 Route::post('/user/follow/friends', 'FollowController@update')->name('follow_friends');
 
-Route::get('users', 'Auth\UserController@viewUsers')->name('view_users');
+Route::get('/users/follow/more', 'Auth\UserController@viewUsers')->name('view_users');
 
 Route::get('users/profile_picture/{id}', 'Auth\UserController@profile_picture')->name('profile_picture');
 
