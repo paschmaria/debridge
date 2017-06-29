@@ -1,571 +1,510 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<title>De-Bridge Follow Friends</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="Description" content="An E-commerce site where users can meet socially and as well carry out businesses">
-    <meta name="Keywords" content="social media, business, friends, buy, sell, contacts">
-    
-    <!-- fav icon -->
-    <link rel="shortcut icon" type="image/png" href="assets/img/logo/debridge-logo.png"/>
+	<head>
+		<title>De-Bridge Follow Friends</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	    <meta name="Description" content="An E-commerce site where users can meet socially and as well carry out businesses">
+	    <meta name="Keywords" content="social media, business, friends, buy, sell, contacts">
+	    
+	    <!-- fav icon -->
+	    <link rel="shortcut icon" type="image/png" href="assets/img/logo/debridge-logo.png"/>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
+	    <!-- Font Awesome -->
+	    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
 
-    <!-- slick carousel -->
-    <link rel="stylesheet" type="text/css" href="assets/plugins/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/plugins/slick/slick-theme.css"/>
+	    <!-- slick carousel -->
+	    <link rel="stylesheet" type="text/css" href="assets/plugins/slick/slick.css"/>
+	    <link rel="stylesheet" type="text/css" href="assets/plugins/slick/slick-theme.css"/>
 
-    <!-- Bootstrap core CSS -->
-    <link href="assets/plugins/mdb/css/bootstrap.css" rel="stylesheet">
+	    <!-- Bootstrap core CSS -->
+	    <link href="assets/plugins/mdb/css/bootstrap.css" rel="stylesheet">
 
-    <!-- Material Design Bootstrap -->
-   <link rel="stylesheet" href="assets/plugins/mdb/css/mdb.min.css">
+	    <!-- Material Design Bootstrap -->
+	   <link rel="stylesheet" href="assets/plugins/mdb/css/mdb.min.css">
 
-    <!-- Your custom styles (optional) -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <style type="text/css">
-    	.page-item.active .page-link{
-    		background: #008751;
-    	}
-    </style>
-</head>
-<body data-page="bridger-request">
-	
-	<!-- header begins here-->
-        <header>
-            <div class="container-fluid bg-brand z-2500">
-                <div class="row p-t-35 p-b-10">
-                    <div class="col col-sm-3 col-md-3">
-                        <div class="dis-flex">
-                            <figure class="m-0">
-                                <a href="#">
-                                    <img src="assets/img/logo/debridge-logo.png" class="img-fluid m-auto">
-                                </a>
-                                <figcaption class="motto f-12 m-0 m-t-5"><a href="9.html" class="c-white">MY PROFILE</a> |  <a href="registered-users.html" class="c-white">NIGERIAN MARKET</a></figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                    <div class="col-6 col-sm-6 col-md-6">
-                        <div class="page_heading text-center">
-                            <form class="" action="" method="GET">
-                                <div class="input-group input-shadow">
-                                    <input type="search" class="form-control input-alternate bd-dark-lite" placeholder="e.g. Phones in Lagos, bags in Abuja...">
-                                    <span class="input-group-btn">
-                                        <button type="submit" class="btn btn-brand-lite btn-lg waves-effect waves-light m-0 no-shadow"><i class="fa fa-search f-17 c-dark"></i></button>
-                                    </span>
-                                </div>
-                            </form>
-                            
-                        </div>
-                    </div>
-                    <div class="col col-sm-3 col-md-3">
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 col-12">
+	    <!-- Your custom styles (optional) -->
+	    <link rel="stylesheet" href="assets/css/main.css">
+	</head>
+	<body data-page="bridger-request">
+		
+		<!-- header begins here-->
+	        <header>
+	            <div class="container-fluid bg-brand z-2500">
+	                <div class="row p-t-35 p-b-10">
+	                    <div class="col col-sm-3 col-md-3">
+	                        <div class="dis-flex">
+	                            <figure class="m-0">
+	                                <a href="#">
+	                                    <img src="assets/img/logo/debridge-logo.png" class="img-fluid m-auto">
+	                                </a>
+	                                <figcaption class="motto f-12 m-0 m-t-5"><a href="9.html" class="c-white">MY PROFILE</a> |  <a href="registered-users.html" class="c-white">NIGERIAN MARKET</a></figcaption>
+	                            </figure>
+	                        </div>
+	                    </div>
+	                    <div class="col-6 col-sm-6 col-md-6">
+	                        <div class="page_heading text-center">
+	                            <form class="" action="" method="GET">
+	                                <div class="input-group input-shadow">
+	                                    <input type="search" class="form-control input-alternate bd-dark-lite" placeholder="e.g. Phones in Lagos, bags in Abuja...">
+	                                    <span class="input-group-btn">
+	                                        <button type="submit" class="btn btn-brand-lite btn-lg waves-effect waves-light m-0 no-shadow"><i class="fa fa-search f-17 c-dark"></i></button>
+	                                    </span>
+	                                </div>
+	                            </form>
+	                            
+	                        </div>
+	                    </div>
+	                    <div class="col col-sm-3 col-md-3">
+	                        <div class="row">
+	                            <div class="col-md-12 col-sm-12 col-12">
 
-                                <ul class="navbar-nav dis-flex flex-row z-10000">
-                                    <li class="nav-item animated bounceIn list-inline-item dis-block">
-                                        <img src="assets/img/oval-6.png" class="" width="50" height="50">
-                                    </li>
-                                    <li class="nav-item animated bounceIn list-inline-item dis-block">
-                                        <div class="dropdown">
-                                            <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Oladele
-                                            </a>
-                                            <div class="dropdown-menu animated bounceIn" aria-labelledby="dropdownMenu3">
-                                                <a class="dropdown-item waves-effect waves-light" href="editprofile.html">Edit Profile</a>
-                                                <a class="dropdown-item waves-effect waves-light" href="#">Inventory</a>
+	                                <ul class="navbar-nav dis-flex flex-row">
+	                                    <li class="nav-item animated bounceIn list-inline-item dis-block">
+	                                        <img src="assets/img/oval-6.png" class="" width="50" height="50">
+	                                    </li>
+	                                    <li class="nav-item animated bounceIn list-inline-item dis-block z-1000">
+	                                        <div class="dropdown">
+	                                            <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                                            Oladele
+	                                            </a>
+	                                            <div class="dropdown-menu animated bounceIn" aria-labelledby="dropdownMenu3">
+	                                                <a class="dropdown-item waves-effect waves-light" href="editprofile.html">Edit Profile</a>
+	                                                <a class="dropdown-item waves-effect waves-light" href="#">Inventory</a>
 
-                                                <a class="dropdown-item waves-effect waves-light" href="#">Log Out</a>
+	                                                <a class="dropdown-item waves-effect waves-light" href="#">Log Out</a>
 
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-12 col-sm-12 col-12 m-t-10">
-                                <ul class="navbar-nav dis-flex flex-row">
-                                    <li class="animated bounceIn"> 
-                                        <a href="mycart.html" class="p-l-10 p-r-10">
-                                            <span class="pos-rel z-5000">
-                                                <i class="fa fa-shopping-cart fa-lg c-white" aria-hidden="true"></i>
-                                                <span class="cart-count">3</span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="animated bounceIn"> 
-                                        <a href="#" class="p-l-10 p-r-10">
-                                            <span class="pos-rel z-5000">
-                                                <i class="fa fa-envelope fa-lg c-white" aria-hidden="true"></i>
-                                                <span class="cart-count">3</span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="animated bounceIn"> 
-                                        <a class="p-l-10 p-r-10 dropdown white-text" id="dropdownNotify" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="pos-rel z-5000">
-                                                <i class="fa fa-bell fa-lg c-white" aria-hidden="true"></i>
-                                                <span class="cart-count">3</span>
-                                            </span>
-                                        </a>
-                                        <div class="dropdown-menu notify-dropdown animated bounceIn f-12" aria-labelledby="dropdownNotify">
-                                                <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">
-                                                <img src="assets/img/p-photo-6.jpeg" class="h-40 width-40 m-r-5 bd-50p">
-                                                <span>Ejike Jhud started following you</span>
-                                                </a>
-                                                <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#"><img src="assets/img/pphoto-4.jpg" class="h-40 width-40 m-r-5 bd-50p">
-                                                <span>Ejike Jhud Admired an item in your store</span></a>
-                                                <a class="dropdown-item waves-effect waves-light p-l-10" href="#"><img src="assets/img/pphoto-301.jpeg" class="h-40 width-40 m-r-5 bd-50p"><span>Ejike Jhud shared a post</span>
-                                                </a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-            </div>
-            <!-- navigations/links right here -->
-            <nav class="navbar navbar-toggleable-sm navbar-light transparent p-t-15 p-b-15 no-shadow border-top border-bottom" role="navigation">
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-            
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div id="navbarNav1" class="collapse navbar-collapse">
-                        <ul class="nav navbar-nav">
-                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="bridger.html">Friends</a></li>
-                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="tradeline.html">Tradeline</a></li>
-                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Shopline</a></li>
-                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Business Invitation</a></li>
-                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Models</a></li>
-                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Market Value</a></li>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div>
-            </nav>
-            <!-- navigations/links ends here -->
-        </header>
-    <!-- header ends here -->
-    <!--main section begins here-->
-    <section class="main">
-    	<div class="container">
-    		<div id="navbarNav1 m-t-40">
-	            <h3 class="h3-responsive c-brand f-24 m-t-30 m-b-8">ADD TO FRIEND'S LIST</h3>
-	            <div class="h-30">
-	            	<p class="c-gray f-14 dis-inline-b">Follow more friends to view more products</p>
+	                                            </div>
+	                                        </div>
+	                                    </li>
+	                                </ul>
+	                            </div>
+	                            <div class="col-md-12 col-sm-12 col-12 m-t-10">
+	                                <ul class="navbar-nav dis-flex flex-row">
+	                                    <li class="animated bounceIn"> 
+	                                        <a href="mycart.html" class="p-l-10 p-r-10">
+	                                            <span class="pos-rel">
+	                                                <i class="fa fa-shopping-cart fa-lg c-white" aria-hidden="true"></i>
+	                                                <span class="cart-count">3</span>
+	                                            </span>
+	                                        </a>
+	                                    </li>
+	                                    <li class="animated bounceIn"> 
+	                                        <a href="#" class="p-l-10 p-r-10">
+	                                            <span class="pos-rel">
+	                                                <i class="fa fa-envelope fa-lg c-white" aria-hidden="true"></i>
+	                                                <span class="cart-count">3</span>
+	                                            </span>
+	                                        </a>
+	                                    </li>
+	                                    <li class="animated bounceIn"> 
+	                                        <a class="p-l-10 p-r-10 dropdown white-text" id="dropdownNotify" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                                            <span class="pos-rel">
+	                                                <i class="fa fa-bell fa-lg c-white" aria-hidden="true"></i>
+	                                                <span class="cart-count">3</span>
+	                                            </span>
+	                                        </a>
+	                                        <div class="dropdown-menu notify-dropdown animated bounceIn f-12" aria-labelledby="dropdownNotify">
+	                                                <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">
+	                                                <img src="assets/img/p-photo-6.jpeg" class="h-40 width-40 m-r-5 bd-50p">
+	                                                <span>Ejike Jhud started following you</span>
+	                                                </a>
+	                                                <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#"><img src="assets/img/pphoto-4.jpg" class="h-40 width-40 m-r-5 bd-50p">
+	                                                <span>Ejike Jhud Admired an item in your store</span></a>
+	                                                <a class="dropdown-item waves-effect waves-light p-l-10" href="#"><img src="assets/img/pphoto-301.jpeg" class="h-40 width-40 m-r-5 bd-50p"><span>Ejike Jhud shared a post</span>
+	                                                </a>
+	                                        </div>
+	                                    </li>
+	                                </ul>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div> 
 	            </div>
-	        </div>
-	        <!-- friends display  -->
-	        <div class="m-t-40 m-b-140">
-	        	<div class="row">
-	        		<!-- first column of friends -->
-	        		<div class="col-md-6">
-	        			<!-- first friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="assets/img/pphoto-3.jpeg" class="p-10">
+	            <!-- navigations/links right here -->
+	            <nav class="navbar navbar-toggleable-sm navbar-light transparent p-t-15 p-b-15 no-shadow border-top border-bottom" role="navigation">
+	                <div class="container-fluid">
+	                    <!-- Brand and toggle get grouped for better mobile display -->
+	                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+	                        <span class="navbar-toggler-icon"></span>
+	                    </button>
+	            
+	                    <!-- Collect the nav links, forms, and other content for toggling -->
+	                    <div id="navbarNav1" class="collapse navbar-collapse">
+	                        <ul class="nav navbar-nav">
+	                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="bridger.html">Friends</a></li>
+	                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="tradeline.html">Tradeline</a></li>
+	                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Shopline</a></li>
+	                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Business Invitation</a></li>
+	                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Models</a></li>
+	                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Market Value</a></li>
+	                        </ul>
+	                    </div><!-- /.navbar-collapse -->
+	                </div>
+	            </nav>
+	            <!-- navigations/links ends here -->
+	        </header>
+	    <!-- header ends here -->
+	    <!--main section begins here-->
+	    <section class="main">
+	    	<div class="container">
+	    		<div id="navbarNav1 m-t-40">
+		            <h3 class="h3-responsive c-brand f-24 m-t-30 m-b-8">ADD TO FRIEND'S LIST</h3>
+		            <div class="h-30">
+		            	<p class="c-gray f-14 dis-inline-b">Follow more friends to view more products</p>
+		            </div>
+		        </div>
+		        <!-- friends display  -->
+		        <div class="m-t-40 m-b-40">
+		        	<div class="row">
+		        		<!-- first column of friends -->
+		        		<div class="col-md-6">
+		        			<!-- first friend -->
+		        			<div class="h-114 width-563 m-b-30">
+		        				<div class="row">
+		        					<div class="col-md-3">
+		        						<div class="profile-picture dis-inline">
+				        					<img src="assets/img/pphoto-3.jpeg" class="p-10">
+				        				</div>
+		        					</div>
+			        				<div class="col-md-5 col-sm-5 p-t-10">
+			        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
+											<p class="f-14 m-t-30">JHUD EJIKE</p>
+											<p class="f-12">Business owner at Sony.</p>
+										</div>
 			        				</div>
-	        					</div>
-		        				<div class="col-md-5 col-sm-5 p-t-10">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14 m-t-30">JHUD EJIKE</p>
-										<p class="f-12">Business owner at Sony.</p>
-									</div>
-		        				</div>
-		        				<div class="col-md-4 col-sm-4">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / first friend -->
-	        			<!-- second friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3 col-sm-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="assets/img/pphoto-1.jpg" class="p-10">
+			        				<div class="col-md-4 col-sm-4">
+			        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
 			        				</div>
-	        					</div>
-		        				<div class="col-md-5 col-sm-5 p-t-10">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14 m-t-30">JHUD EJIKE</p>
-										<p class="f-12">Business owner at Sony</p>
-									</div>
 		        				</div>
-		        				<div class="col-md-4 col-sm-4">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / second friend-->
-	        			<!-- third friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3 col-sm-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="assets/img/pphoto-7.jpeg" class="p-10">
+		        			</div>
+		        			<!-- / first friend -->
+		        			<!-- second friend -->
+		        			<div class="h-114 width-563 m-b-30">
+		        				<div class="row">
+		        					<div class="col-md-3 col-sm-3">
+		        						<div class="profile-picture dis-inline">
+				        					<img src="assets/img/pphoto-1.jpg" class="p-10">
+				        				</div>
+		        					</div>
+			        				<div class="col-md-5 col-sm-5 p-t-10">
+			        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
+											<p class="f-14 m-t-30">JHUD EJIKE</p>
+											<p class="f-12">Business owner at Sony</p>
+										</div>
 			        				</div>
-	        					</div>
-		        				<div class="col-md-5 col-sm-5 p-t-10">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14 m-t-30">JHUD EJIKE</p>
-										<p class="f-12">Business owner at Sony.</p>
-									</div>
+			        				<div class="col-md-4 col-sm-4">
+			        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
+			        				</div>
+		        				</div>
+		        			</div>
+		        			<!-- / second friend-->
+		        			<!-- third friend -->
+		        			<div class="h-114 width-563 m-b-30">
+		        				<div class="row">
+		        					<div class="col-md-3 col-sm-3">
+		        						<div class="profile-picture dis-inline">
+				        					<img src="assets/img/pphoto-7.jpeg" class="p-10">
+				        				</div>
+		        					</div>
+			        				<div class="col-md-5 col-sm-5 p-t-10">
+			        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
+											<p class="f-14 m-t-30">JHUD EJIKE</p>
+											<p class="f-12">Business owner at Sony.</p>
+										</div>
 
-		        				</div>
-		        				<div class="col-md-4 col-sm-4">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / third friend -->
-	        			<!--  4th friend -->
-						<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3 col-sm-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="assets/img/p-photo-6.jpeg" class="p-10">
 			        				</div>
-	        					</div>
-		        				<div class="col-md-5 col-sm-5 p-t-35">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14">JHUD EJIKE</p>
-										<p class="f-12">Business owner at Sony.</p>
-									</div>
-		        				</div>
-		        				<div class="col-md-4 col-sm-4">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / 4th friend -->
-	        			<!-- 5th friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="assets/img/pphoto-3.jpeg" class="p-10">
+			        				<div class="col-md-4 col-sm-4">
+			        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
 			        				</div>
-	        					</div>
-		        				<div class="col-md-5 p-t-35">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14">JHUD EJIKE</p>
-										<p class="f-12">Business owner at Sony</p>
-									</div>
 		        				</div>
-		        				<div class="col-md-4 col-sm-4">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / 5th friend -->
-	        			<!-- 6th friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="assets/img/pphoto-5.jpeg" class="p-10">
+		        			</div>
+		        			<!-- / third friend -->
+		        			<!--  4th friend -->
+							<div class="h-114 width-563 m-b-30">
+		        				<div class="row">
+		        					<div class="col-md-3 col-sm-3">
+		        						<div class="profile-picture dis-inline">
+				        					<img src="assets/img/p-photo-6.jpeg" class="p-10">
+				        				</div>
+		        					</div>
+			        				<div class="col-md-5 col-sm-5 p-t-35">
+			        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
+											<p class="f-14">JHUD EJIKE</p>
+											<p class="f-12">Business owner at Sony.</p>
+										</div>
 			        				</div>
-	        					</div>
-		        				<div class="col-md-5 p-t-35">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14">JHUD EJIKE</p>
-										<p class="f-12">Business owner at Sony</p>
-									</div>
-		        				</div>
-		        				<div class="col-md-4">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / 6th friend -->
-	        			<!-- 7th friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="assets/img/pphoto-301.jpeg" class="p-10">
+			        				<div class="col-md-4 col-sm-4">
+			        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
 			        				</div>
-	        					</div>
-		        				<div class="col-md-5 p-t-35">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14">JHUD EJIKE</p>
-										<p class="f-12">Business owner at Sony</p>
-									</div>
 		        				</div>
-		        				<div class="col-md-4">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / 7th friend -->
-	        		</div>
-	        		<!-- / first column of riends -->
-	        		<!-- second column of friends -->
-	        		<div class="col-md-6 col-sm-6">
-	        			<!-- first friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="assets/img/pphoto-10.jpeg" class="p-10">
+		        			</div>
+		        			<!-- / 4th friend -->
+		        			<!-- 5th friend -->
+		        			<div class="h-114 width-563 m-b-30">
+		        				<div class="row">
+		        					<div class="col-md-3">
+		        						<div class="profile-picture dis-inline">
+				        					<img src="assets/img/pphoto-3.jpeg" class="p-10">
+				        				</div>
+		        					</div>
+			        				<div class="col-md-5 p-t-35">
+			        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
+											<p class="f-14">JHUD EJIKE</p>
+											<p class="f-12">Business owner at Sony</p>
+										</div>
 			        				</div>
-	        					</div>
-		        				<div class="col-md-5 p-t-35">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14">JHUD EJIKE</p>
-										<p class="f-12">Business owner at Sony</p>
-									</div>
-		        				</div>
-		        				<div class="col-md-4">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / first friend -->
-	        			<!-- second friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="assets/img/pphoto-4.jpg" class="p-10">
+			        				<div class="col-md-4 col-sm-4">
+			        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
 			        				</div>
-	        					</div>
-		        				<div class="col-md-5 p-t-35">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14">JHUD EJIKE</p>
-										<p class="f-12">Business owner at Sony</p>
-									</div>
 		        				</div>
-		        				<div class="col-md-4">
-		        					<button class="btn btn-sm f-14 c-brand  btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / second friend-->
-	        			<!-- third friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="assets/img/pphoto-1.jpg" class="p-10">
+		        			</div>
+		        			<!-- / 5th friend -->
+		        			<!-- 6th friend -->
+		        			<div class="h-114 width-563 m-b-30">
+		        				<div class="row">
+		        					<div class="col-md-3">
+		        						<div class="profile-picture dis-inline">
+				        					<img src="assets/img/pphoto-5.jpeg" class="p-10">
+				        				</div>
+		        					</div>
+			        				<div class="col-md-5 p-t-35">
+			        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
+											<p class="f-14">JHUD EJIKE</p>
+											<p class="f-12">Business owner at Sony</p>
+										</div>
 			        				</div>
-	        					</div>
-		        				<div class="col-md-5 p-t-35">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14">JHUD EJIKE</p>
-										<p class="f-12">Business owner at Sony</p>
-									</div>
-		        				</div>
-		        				<div class="col-md-4">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
-	        					</div>
-	        				</div>
-	        			</div>
-	        			<!-- / third friend -->
-	        			<!--  4th friend -->
-						<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="assets/img/pphoto-301.jpeg" class="p-10">
+			        				<div class="col-md-4">
+			        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
 			        				</div>
-	        					</div>
-		        				<div class="col-md-5 p-t-35">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14">JHUD EJIKE</p>
-										<p class="f-12">Business owner Sony</p>
-									</div>
 		        				</div>
-		        				<div class="col-md-4">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / 4th friend -->
-	        			<!-- 5th friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="assets/img/pphoto-9.jpeg" class="p-10">
+		        			</div>
+		        			<!-- / 6th friend -->
+		        			<!-- 7th friend -->
+		        			<div class="h-114 width-563 m-b-30">
+		        				<div class="row">
+		        					<div class="col-md-3">
+		        						<div class="profile-picture dis-inline">
+				        					<img src="assets/img/pphoto-301.jpeg" class="p-10">
+				        				</div>
+		        					</div>
+			        				<div class="col-md-5 p-t-35">
+			        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
+											<p class="f-14">JHUD EJIKE</p>
+											<p class="f-12">Business owner at Sony</p>
+										</div>
 			        				</div>
-	        					</div>
-		        				<div class="col-md-5 p-t-35">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14">JHUD EJIKE</p>
-										<p class="f-12">Business Owner at Sony</p>
-									</div>
-		        				</div>
-		        				<div class="col-md-4">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / 5th friend -->
-	        			<!-- 6th friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="assets/img/pphoto-2.jpeg" class="p-10">
+			        				<div class="col-md-4">
+			        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
 			        				</div>
-	        					</div>
-		        				<div class="col-md-5 p-t-35">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14">JHUD EJIKE</p>
-										<p class="f-12">Business owner at Sony</p>
-									</div>
 		        				</div>
-		        				<div class="col-md-4">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / 6th friend -->
-	        			<!-- 7th friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="assets/img/pphoto-8.jpeg" class="p-10">
+		        			</div>
+		        			<!-- / 7th friend -->
+		        		</div>
+		        		<!-- / first column of riends -->
+		        		<!-- second column of friends -->
+		        		<div class="col-md-6 col-sm-6">
+		        			<!-- first friend -->
+		        			<div class="h-114 width-563 m-b-30">
+		        				<div class="row">
+		        					<div class="col-md-3">
+		        						<div class="profile-picture dis-inline">
+				        					<img src="assets/img/pphoto-10.jpeg" class="p-10">
+				        				</div>
+		        					</div>
+			        				<div class="col-md-5 p-t-35">
+			        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
+											<p class="f-14">JHUD EJIKE</p>
+											<p class="f-12">Business owner at Sony</p>
+										</div>
 			        				</div>
-	        					</div>
-		        				<div class="col-md-5 p-t-35">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14">JHUD EJIKE</p>
-										<p class="f-12">Business owner at Sony</p>
-									</div>
+			        				<div class="col-md-4">
+			        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
+			        				</div>
 		        				</div>
-		        				<div class="col-md-4">
-		        					<button class="btn btn-sm f-14 c-brand  btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
+		        			</div>
+		        			<!-- / first friend -->
+		        			<!-- second friend -->
+		        			<div class="h-114 width-563 m-b-30">
+		        				<div class="row">
+		        					<div class="col-md-3">
+		        						<div class="profile-picture dis-inline">
+				        					<img src="assets/img/pphoto-4.jpg" class="p-10">
+				        				</div>
+		        					</div>
+			        				<div class="col-md-5 p-t-35">
+			        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
+											<p class="f-14">JHUD EJIKE</p>
+											<p class="f-12">Business owner at Sony</p>
+										</div>
+			        				</div>
+			        				<div class="col-md-4">
+			        					<button class="btn btn-sm f-14 c-brand  btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
+			        				</div>
 		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / 7th friend -->
-	        		</div>
-	        		<!-- / second column of friends -->
-	        	</div>
-
-
-	        </div>
-	        <!-- / friends display -->
-	        <!-- pagination begins here -->
-	         <div class="pagination-wrapper width-300 h-30 m-auto m-b-20">
-	        	<nav class="dis-flex text-center">
-	        		<ul class="pagination footer f-14 c-gray">
-	        			<li class="page-item diabled">
-	        				<a href="#" class="page-link" aria-label="Previous">
-	        					<span aria-hidden="true">&laquo;</span>
-	        					<span class="sr-only">Prev</span>
-	        				</a>
-	        			</li>
-	        			<li class="page-item active">
-	        				<a href="#" class="page-link">1<span class="sr-only">(current)</span></a>
-	        			</li>
-	        			<li class="page-item">
-	        				<a href="#" class="page-link">2</a>
-	        			</li>
-	        			<li class="page-item">
-	        				<a href="#" class="page-link">3</a>
-	        			</li>
-	        			<li class="page-item">
-	        				<a href="#" class="page-link">4</a>
-	        			</li>
-	        			<li class="page-item">
-	        				<a href="#" class="page-link">5</a>
-	        			</li>
-	        			<li class="page-item">
-	        				<a href="#" class="page-link">6</a>
-	        			</li>
-	        			<li class="page-item">
-	        				<a href="#" class="page-link" aria-label="Next">
-	        					<span class="c-brand" aria-hidden="true">&raquo;</span>
-	        					<span class="sr-only">Next</span>
-	        				</a>
-	        			</li>
-	        		</ul>
-	        	</nav>
-	        </div>
-	        <!-- pagination ends here -->
-    	</div>
-    </section>
-    <!-- main section ends here -->
+		        			</div>
+		        			<!-- / second friend-->
+		        			<!-- third friend -->
+		        			<div class="h-114 width-563 m-b-30">
+		        				<div class="row">
+		        					<div class="col-md-3">
+		        						<div class="profile-picture dis-inline">
+				        					<img src="assets/img/pphoto-1.jpg" class="p-10">
+				        				</div>
+		        					</div>
+			        				<div class="col-md-5 p-t-35">
+			        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
+											<p class="f-14">JHUD EJIKE</p>
+											<p class="f-12">Business owner at Sony</p>
+										</div>
+			        				</div>
+			        				<div class="col-md-4">
+			        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
+		        					</div>
+		        				</div>
+		        			</div>
+		        			<!-- / third friend -->
+		        			<!--  4th friend -->
+							<div class="h-114 width-563 m-b-30">
+		        				<div class="row">
+		        					<div class="col-md-3">
+		        						<div class="profile-picture dis-inline">
+				        					<img src="assets/img/pphoto-301.jpeg" class="p-10">
+				        				</div>
+		        					</div>
+			        				<div class="col-md-5 p-t-35">
+			        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
+											<p class="f-14">JHUD EJIKE</p>
+											<p class="f-12">Business owner Sony</p>
+										</div>
+			        				</div>
+			        				<div class="col-md-4">
+			        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
+			        				</div>
+		        				</div>
+		        			</div>
+		        			<!-- / 4th friend -->
+		        			<!-- 5th friend -->
+		        			<div class="h-114 width-563 m-b-30">
+		        				<div class="row">
+		        					<div class="col-md-3">
+		        						<div class="profile-picture dis-inline">
+				        					<img src="assets/img/pphoto-9.jpeg" class="p-10">
+				        				</div>
+		        					</div>
+			        				<div class="col-md-5 p-t-35">
+			        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
+											<p class="f-14">JHUD EJIKE</p>
+											<p class="f-12">Business Owner at Sony</p>
+										</div>
+			        				</div>
+			        				<div class="col-md-4">
+			        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
+			        				</div>
+		        				</div>
+		        			</div>
+		        			<!-- / 5th friend -->
+		        			<!-- 6th friend -->
+		        			<div class="h-114 width-563 m-b-30">
+		        				<div class="row">
+		        					<div class="col-md-3">
+		        						<div class="profile-picture dis-inline">
+				        					<img src="assets/img/pphoto-2.jpeg" class="p-10">
+				        				</div>
+		        					</div>
+			        				<div class="col-md-5 p-t-35">
+			        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
+											<p class="f-14">JHUD EJIKE</p>
+											<p class="f-12">Business owner at Sony</p>
+										</div>
+			        				</div>
+			        				<div class="col-md-4">
+			        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
+			        				</div>
+		        				</div>
+		        			</div>
+		        			<!-- / 6th friend -->
+		        			<!-- 7th friend -->
+		        			<div class="h-114 width-563 m-b-30">
+		        				<div class="row">
+		        					<div class="col-md-3">
+		        						<div class="profile-picture dis-inline">
+				        					<img src="assets/img/pphoto-8.jpeg" class="p-10">
+				        				</div>
+		        					</div>
+			        				<div class="col-md-5 p-t-35">
+			        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
+											<p class="f-14">JHUD EJIKE</p>
+											<p class="f-12">Business owner at Sony</p>
+										</div>
+			        				</div>
+			        				<div class="col-md-4">
+			        					<button class="btn btn-sm f-14 c-brand  btn-outline-brand m-t-40 m-b-50"><span class="fa fa-plus">&nbsp; &nbsp;</span>Follow</button>
+			        				</div>
+		        				</div>
+		        			</div>
+		        			<!-- / 7th friend -->
+		        		</div>
+		        		<!-- / second column of friends -->
+		        	</div>
 
 
-	 <!-- SCRIPTS -->
+		        </div>
+		        <!-- / friends display -->
+		        <!-- pagination begins here -->
+    	        <nav class="dis-flex m-t-20 m-b-20">
+                    <ul class="pagination footer m-0">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+		        <!-- pagination ends here -->
+	    	</div>
+	    </section>
+	    <!-- main section ends here -->
 
-    <!-- JQuery -->
-    <script type="text/javascript" src="assets/plugins/mdb/js/jquery-3.1.1.min.js"></script>
 
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="assets/plugins/mdb/js/tether.min.js"></script>
+		 <!-- SCRIPTS -->
 
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="assets/plugins/mdb/js/bootstrap.min.js"></script>
+	    <!-- JQuery -->
+	    <script type="text/javascript" src="assets/plugins/mdb/js/jquery-3.1.1.min.js"></script>
 
-    <!-- MDL core JavaScript -->
-    <script type="text/javascript" src="assets/plugins/mdb/js/mdb.min.js"></script>
+	    <!-- Bootstrap tooltips -->
+	    <script type="text/javascript" src="assets/plugins/mdb/js/tether.min.js"></script>
 
-    <!-- slick carousel -->
-    <script type="text/javascript" src="assets/plugins/slick/slick.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('.carousel_big').slick({
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                dots: true,
-                arrows: false,
-                fade: true,
-                autoplay: true,
-                asNavFor: '.carousel_small'
-            });
-            $('.carousel_small').slick({
-                infinite: true,
-                slidesToShow: 2,
-                slidesToScroll: 1,
-                arrows: false,
-                asNavFor: '.carousel_big',
-                focusOnSelect: true,
-                autoplay: true,
-                autoplaySpeed: 2000,
-                vertical: true,
-                centerPadding: '0px',
-                responsive: [
-                    // {
-                    //   breakpoint: 1024,
-                    //   settings: {
-                    //     slidesToShow: 3,
-                    //     slidesToScroll: 3,
-                    //     infinite: true
-                    //   }
-                    // },
-                    {
-                      breakpoint: 600,
-                      settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2,
-                        infinite: true
-                      }
-                    },
-                    {
-                      breakpoint: 480,
-                      settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        infinite: true
-                      }
-                    }
-                ]
-            });
-        });
-    </script>
-</body>
+	    <!-- Bootstrap core JavaScript -->
+	    <script type="text/javascript" src="assets/plugins/mdb/js/bootstrap.min.js"></script>
+
+	    <!-- MDL core JavaScript -->
+	    <script type="text/javascript" src="assets/plugins/mdb/js/mdb.min.js"></script>
+
+	    <!-- slick carousel -->
+	    <script type="text/javascript" src="assets/plugins/slick/slick.min.js"></script>
+
+	    <!-- Main JS -->
+	    <script type="text/javascript" src="assets/js/main.js"></script>
+	    <script>
+	        document.onreadystatechange = () => {
+	            if (document.readyState === "complete") {
+	                app.stickyHeader();
+	            }
+	        }
+	    </script>
+	</body>
 </html>

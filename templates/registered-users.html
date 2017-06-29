@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <title>De-Bridge</title>
         <meta charset="utf-8">
@@ -27,7 +26,6 @@
 
         <!-- Your custom styles (optional) -->
         <link rel="stylesheet" href="assets/css/main.css">
-
     </head>
 
     <body data-page="registered-users">
@@ -61,11 +59,11 @@
                     <div class="col col-sm-3 col-md-3">
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-12">
-                                <ul class="navbar-nav dis-flex flex-row z-10000">
+                                <ul class="navbar-nav dis-flex flex-row">
                                     <li class="nav-item animated bounceIn list-inline-item dis-block">
                                         <img src="assets/img/oval-6.png" class="" width="50" height="50">
                                     </li>
-                                    <li class="nav-item animated bounceIn list-inline-item dis-block">
+                                    <li class="nav-item animated bounceIn list-inline-item dis-block z-1000">
                                         <div class="dropdown">
                                             <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Oladele
@@ -83,7 +81,7 @@
                                 <ul class="navbar-nav dis-flex flex-row">
                                     <li class="animated bounceIn"> 
                                         <a href="mycart.html" class="p-l-10 p-r-10">
-                                            <span class="pos-rel z-5000">
+                                            <span class="pos-rel">
                                                 <i class="fa fa-shopping-cart fa-lg c-white" aria-hidden="true"></i>
                                                 <span class="cart-count">3</span>
                                             </span>
@@ -91,7 +89,7 @@
                                     </li>
                                     <li class="animated bounceIn"> 
                                         <a href="#" class="p-l-10 p-r-10">
-                                            <span class="pos-rel z-5000">
+                                            <span class="pos-rel">
                                                 <i class="fa fa-envelope fa-lg c-white" aria-hidden="true"></i>
                                                 <span class="cart-count">3</span>
                                             </span>
@@ -100,7 +98,7 @@
                                     <li class="animated bounceIn">
                                         <div class="dropdown">
                                             <a class="p-l-10 p-r-10 dropdown white-text" id="dropdownNotify" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span class="pos-rel z-5000">
+                                                <span class="pos-rel">
                                                     <i class="fa fa-bell fa-lg c-white" aria-hidden="true"></i>
                                                     <span class="cart-count">3</span>
                                                 </span>
@@ -292,7 +290,7 @@
                                     <div class="md-form m-0">
                                         <textarea type="text" id="status_update" class="md-textarea input-alternate p-10 h-100 border-box" placeholder="What's on your mind?"></textarea>
                                     </div>
-                                    <div id="product-img-wrapper" class="dis-flex flex-row">
+                                    <div id="product-img-wrapper" class="dis-none flex-row">
                                         <ul id="product-imgs" class=""></ul>
                                         <span class="add-img pos-rel">
                                             <span class=""><input type="file" class="product-img-input" multiple></span>
@@ -509,65 +507,55 @@
         <!-- Main JS -->
         <script type="text/javascript" src="assets/js/main.js"></script>
         <script>
-            $(document).ready(function(){
-                $('.carousel_big').slick({
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    dots: true,
-                    arrows: false,
-                    fade: true,
-                    autoplay: true,
-                    asNavFor: '.carousel_small'
-                });
-                $('.carousel_small').slick({
-                    infinite: true,
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    arrows: false,
-                    asNavFor: '.carousel_big',
-                    focusOnSelect: true,
-                    autoplay: true,
-                    autoplaySpeed: 2000,
-                    vertical: true,
-                    centerPadding: '0px',
-                    responsive: [
-                        // {
-                        //   breakpoint: 1024,
-                        //   settings: {
-                        //     slidesToShow: 3,
-                        //     slidesToScroll: 3,
-                        //     infinite: true
-                        //   }
-                        // },
-                        {
-                          breakpoint: 600,
-                          settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2,
-                            infinite: true
-                          }
-                        },
-                        {
-                          breakpoint: 480,
-                          settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            infinite: true
-                          }
-                        }
-                    ]
-                });
-
-                new WOW().init();
-                $('[data-toggle="tooltip"]').tooltip();
-            });
-        </script>
-        <script>
             document.onreadystatechange = () => {
                 if (document.readyState === "complete") {
-                    app.productImageUpload(4);
+                    $('.carousel_big').slick({
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        dots: true,
+                        arrows: false,
+                        fade: true,
+                        autoplay: true,
+                        asNavFor: '.carousel_small'
+                    });
+                    $('.carousel_small').slick({
+                        infinite: true,
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        arrows: false,
+                        asNavFor: '.carousel_big',
+                        focusOnSelect: true,
+                        autoplay: true,
+                        autoplaySpeed: 2000,
+                        vertical: true,
+                        centerPadding: '0px',
+                        responsive: [
+                            {
+                              breakpoint: 600,
+                              settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 2,
+                                infinite: true
+                              }
+                            },
+                            {
+                              breakpoint: 480,
+                              settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                infinite: true
+                              }
+                            }
+                        ]
+                    });
+
+                    new WOW().init();
+                    $('[data-toggle="tooltip"]').tooltip();
+                    app.likeToggler();
+                    app.commentHandler();
+                    app.stickyHeader();
                 }
-            }
+            };
         </script> 
 
     </body>

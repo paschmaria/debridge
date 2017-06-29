@@ -59,11 +59,11 @@
                     <div class="col col-sm-3 col-md-3">
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-12">
-                                <ul class="navbar-nav dis-flex flex-row z-10000">
+                                <ul class="navbar-nav dis-flex flex-row">
                                     <li class="nav-item animated bounceIn list-inline-item dis-block">
                                         <img src="assets/img/oval-6.png" class="" width="50" height="50">
                                     </li>
-                                    <li class="nav-item animated bounceIn list-inline-item dis-block">
+                                    <li class="nav-item animated bounceIn list-inline-item dis-block z-1000">
                                         <div class="dropdown">
                                             <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Oladele
@@ -81,7 +81,7 @@
                                 <ul class="navbar-nav dis-flex flex-row">
                                     <li class="animated bounceIn"> 
                                         <a href="mycart.html" class="p-l-10 p-r-10">
-                                            <span class="pos-rel z-5000">
+                                            <span class="pos-rel">
                                                 <i class="fa fa-shopping-cart fa-lg c-white" aria-hidden="true"></i>
                                                 <span class="cart-count">3</span>
                                             </span>
@@ -89,7 +89,7 @@
                                     </li>
                                     <li class="animated bounceIn"> 
                                         <a href="#" class="p-l-10 p-r-10">
-                                            <span class="pos-rel z-5000">
+                                            <span class="pos-rel">
                                                 <i class="fa fa-envelope fa-lg c-white" aria-hidden="true"></i>
                                                 <span class="cart-count">3</span>
                                             </span>
@@ -97,7 +97,7 @@
                                     </li>
                                     <li class="animated bounceIn"> 
                                         <a class="p-l-10 p-r-10 dropdown white-text"  id="dropdownNotify" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="pos-rel z-5000">
+                                            <span class="pos-rel">
                                                 <i class="fa fa-bell fa-lg c-white" aria-hidden="true"></i>
                                                 <span class="cart-count">3</span>
                                             </span>
@@ -813,25 +813,25 @@
                 </div>
 
                 <nav class="dis-flex m-t-20 m-b-20">
-                  <ul class="pagination footer m-0">
-                    <li class="page-item disabled">
-                      <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                    </li>
-                    <li class="page-item active">
-                      <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                      <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                        <span class="sr-only">Next</span>
-                      </a>
-                    </li>
-                  </ul>
+                    <ul class="pagination footer m-0">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    </ul>
                 </nav>
 
             </div>
@@ -842,7 +842,7 @@
                     <div class="modal-content">
                         <!--Header-->
                         <div class="modal-header bg-brand">
-                            <h6 class="modal-title w-100" id="myModalLabel">Share on your tradeline</h6>
+                            <h6 class="modal-title w-100" id="myModalLabel">Share on your timeline</h6>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true" class="c-white">&times;</span>
                             </button>
@@ -894,7 +894,7 @@
                 </div>
             </div>
             <!-- Modal -->
-            <!-- Modal Share-->
+            <!-- Modal Delete-->
             <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <!--Content-->
@@ -917,7 +917,7 @@
                 </div>
             </div>
             <!-- Modal -->
-            <!-- Modal Share-->
+            <!-- Modal Product Details-->
             <div class="modal fade" id="product-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <!--Content-->
@@ -961,7 +961,7 @@
                                 </div>
                                 <div class="text-center">
                                     <button type="button" class="btn-md btn-flat c-gray" data-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn btn-md btn-outline-brand">Post</button>
+                                    <button type="submit" class="btn btn-md btn-outline-brand"><a href="addproduct.html" class="c-brand">Edit</a></button>
                                 </div>
                             </form>
                         </div>
@@ -1000,6 +1000,7 @@
             document.onreadystatechange = () => {
                 if (document.readyState === "complete") {
                     app.likeToggler();
+                    app.stickyHeader();
                 }
             }
         </script>
