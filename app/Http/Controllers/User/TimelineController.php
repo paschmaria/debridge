@@ -5,6 +5,8 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\PostAdmire;
+use App\Models\PostHype;
 class TimelineController extends Controller
 {
     /**
@@ -19,7 +21,19 @@ class TimelineController extends Controller
     public function index()
     {
         $following = auth()->user()->following()->with([ 'posts' => function ($query) {
-            $query->orderBy('created_at', 'desc')->with('user');
+            $query->orderBy('created_at', 'desc')->with([
+                'user' => function($q){
+                    $q->with('profile_picture');
+                }, 
+                'comments' => function($q){
+                    $q->with(['user' => function($q){
+                        $q->with('profile_picture');
+                    }]);
+                },
+                'pictures' => function($q){
+                    $q->with('images');
+                }
+            ]);
 
         }])->get();
         $timeline = $following->flatMap(function ($values) {
@@ -28,9 +42,12 @@ class TimelineController extends Controller
         $sorted = $timeline->sortByDesc(function ($posts) {
             return $posts->created_at;
         });
+        $admired = PostAdmire::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
+        $hyped = PostHype::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
 
         $posts = $sorted->values()->all();
-        return view('users.timeline', compact('posts'));
+        // dd($posts);
+        return view('users.user_tradeline', compact('posts', 'admired', 'hyped'));
     }
 
     /**

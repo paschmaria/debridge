@@ -33,11 +33,11 @@
     <body data-page="index">
         <!-- header begins here-->
         <header>
-            <div class="container-fluid bg-brand">
+            <div class="container-fluid bg-brand z-2500">
                 <div class="row p-t-35 p-b-10">
                     <div class="col col-sm-3 col-md-3">
                         <div class="dis-flex">
-                            <figure class="m-0 m-b-10">
+                            <figure class="m-0">
                                 <a href="/">
                                     <img src="{{ asset('img/logo/debridge-logo.png')}}" class="img-fluid m-auto">
                                 </a>
@@ -78,19 +78,33 @@
                             </div>
                         @else
                             <div class="col-md-12 col-sm-12 col-12">
-                                <ul class="navbar-nav dis-flex flex-row z-10000">
+                                <ul class="navbar-nav dis-flex flex-row">
                                     <li class="nav-item animated bounceIn list-inline-item dis-block">
-                                        <!-- <img src="{{ route('image', [$user_picture, '']) }}" class="" width="50" height="50"> -->
+             @if (auth()->user()->image_id != null)
+                                            <img src="{{ route('image', [auth()->user()->profile_picture->image_reference,'']) }}" class="img img-circle" width="50" height="50">
+                                        @else
+                                            <img src="{{ asset('img/icons/profiled.png') }}" class="" width="50" height="50">
+                                        @endif
                                     </li>
-                                    <li class="nav-item animated bounceIn list-inline-item dis-block">
+                                    <li class="nav-item animated bounceIn list-inline-item dis-block z-1000">
                                         <div class="dropdown">
                                             <!-- <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ auth()->user()->first_name }}
                                             </a> -->
+
+                                            <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{ auth()->user()->first_name }}
+                                            </a>
                                             <div class="dropdown-menu animated bounceIn" aria-labelledby="dropdownMenu3">
+                                                <a class="dropdown-item waves-effect waves-light" href="{{ url('friends') }}">My Friends</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="{{ url('follow') }}">Followers</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="{{ url('upload') }}">Gallery</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="#">Edit Profile</a>
-                                                <a class="dropdown-item waves-effect waves-light" href="#">Inventory</a>
-                                                <a class="dropdown-item waves-effect waves-light" href="#">Something here</a>
+                                                @if(auth()->user()->role_id == 2)
+                                                    <a class="dropdown-item waves-effect waves-light" href="{{ url('friend_requests') }}">Trade Requests</a>
+                                                    <a class="dropdown-item waves-effect waves-light" href="#">Inventory</a>
+                                                @endif
+                                                <a class="dropdown-item waves-effect waves-light" href="{{ route('logout') }}">Logout</a>
                                             </div>
                                         </div>
                                     </li>
@@ -101,38 +115,60 @@
                                     <li class="animated bounceIn"> 
                                         <a href="{{ route('viewCart') }}" class="p-l-10 p-r-10">
                                             <span class="pos-rel z-5000">
+                                        <a href="mycart.html" class="p-l-10 p-r-10">
+                                            <span class="pos-rel">
                                                 <i class="fa fa-shopping-cart fa-lg c-white" aria-hidden="true"></i>
                                                 <span class="cart-count">{{ $item_count }}</span>
                                             </span>
                                         </a>
                                     </li>
-                                    <li class="animated bounceIn"> 
+                                   {{--  <li class="animated bounceIn"> 
                                         <a href="#" class="p-l-10 p-r-10">
-                                            <span class="pos-rel z-5000">
+                                            <span class="pos-rel">
                                                 <i class="fa fa-envelope fa-lg c-white" aria-hidden="true"></i>
                                                 <span class="cart-count">3</span>
                                             </span>
                                         </a>
-                                    </li>
+                                    </li> --}}
                                     <li class="animated bounceIn">
                                         <div class="dropdown">
                                             <a class="p-l-10 p-r-10 dropdown white-text" id="dropdownNotify" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span class="pos-rel z-5000">
+                                                <span class="pos-rel">
                                                     <i class="fa fa-bell fa-lg c-white" aria-hidden="true"></i>
-                                                    <span class="cart-count">3</span>
+                                                    <span class="cart-count">{{ count(auth()->user()->socialNotification) }}</span>
                                                 </span>
                                             </a>
                                             <div class="dropdown-menu notify-dropdown animated bounceIn f-12" aria-labelledby="dropdownNotify">
-                                                <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">
+                                                @forelse ($notifications as $notification)
+                                                    <p class="dropdown-item waves-effect waves-light p-l-10 border-bottom">
+                                                        <a href="{{ route('user_profile', $notification->foreigner->email) }}">
+                                                            @if ($notification->foreigner->profile_picture != null)
+                                                                <img src="{{ route('image', [$notification->foreigner->profile_picture->image_reference,'']) }}" class="h-40 width-40 m-r-5 bd-50p">
+                                                            @else
+                                                                <img src="{{ asset('img/icons/profiled.png') }}" class="" width="50" height="50">
+                                                            @endif
+                                                        </a>
+                                                        <span>{{ $notification->message }}</span>
+                                                        <a href="/"><small class="pull-right">Mark as read</small></a>
+                                                    </p>
+                                                @empty
+                                                    <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="" disabled>
+                                                        <span>Hi {{ auth()->user()->first_name }}, you have no notification</span>
+                                                    </a>
+                                                @endforelse
+                                               {{--  <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">
                                                 <img src="{{ asset('img/p-photo-6.jpeg') }}" class="h-40 width-40 m-r-5 bd-50p">
                                                 <span>Ejike Jhud started following you</span>
                                                 </a>
-                                                <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#"><img src="{{ asset('img/p-photo-4.jpeg') }}" class="h-40 width-40 m-r-5 bd-50p">
+                                                <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#"><img src="{{ asset('img/pphoto-4.jpg') }}" class="h-40 width-40 m-r-5 bd-50p">
                                                 <span>Ejike Jhud Admired an item in your store</span></a>
-                                                <a class="dropdown-item waves-effect waves-light p-l-10" href="#"><img src="{{ asset('img/p-photo-301.jpeg') }}" class="h-40 width-40 m-r-5 bd-50p"><span>Ejike Jhud shared a post</span>
-                                                </a>
+                                                <a class="dropdown-item waves-effect waves-light p-l-10" href="#"><img src="{{ asset('img/pphoto-301.jpeg') }}" class="h-40 width-40 m-r-5 bd-50p"><span>Ejike Jhud shared a post</span>
+                                                </a> --}}
                                             </div>
-                                        </div>          
+                                        </div>
+                                        
+                                             
+                                            
                                     </li>
                                 </ul>
                             </div>
@@ -227,34 +263,12 @@
             });
         </script>
         <script>
-            app.commentHandler();
-        </script>
-
-           <script type="text/javascript">
-       var app = {
-    
-    imageHandler:function (){
-        $('#upload').on('change', function(){
-            //alert("alert");
-            readUrl();
-        });
-        function readUrl(argument) {
-            var file = $("#upload")[0].files[0];
-            //console.log(file);
-            var reader = new FileReader();
-            reader.onloadend = function () {
-                //console.log(reader.result);
-                $('#post').attr('src', reader.result);
+            document.onreadystatechange = () => {
+                if (document.readyState === "complete") {
+                    app.productImageUpload(4);
+                }
             }
-            if(file){
-                reader.readAsDataURL(file);
-            }
-        }
-    }
-
-}
-app.imageHandler();
-   </script>
+        </script> 
 
     <script>
             document.onreadystatechange = () => {

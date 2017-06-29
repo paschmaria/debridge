@@ -32,34 +32,9 @@ class Product extends Model
         return $this->hasMany('App\Models\ProductAdmire');
     }
 
-    public function hottest_1()
+    public function promo()
     {
-    	return $this->hasOne('App\Models\HottestProduct', 'product_1_id', 'id');
-    }
-
-    public function hottest_2()
-    {
-    	return $this->hasOne('App\Models\HottestProduct', 'product_2_id', 'id');
-    }
-
-    public function hottest_3()
-    {
-    	return $this->hasOne('App\Models\HottestProduct', 'product_3_id', 'id');
-    }
-
-    public function hottest_4()
-    {
-    	return $this->hasOne('App\Models\HottestProduct', 'product_4_id', 'id');
-    }
-
-    public function hottest_5()
-    {
-    	return $this->hasOne('App\Models\HottestProduct', 'product_5_id', 'id');
-    }
-
-    public function hottest_6()
-    {
-    	return $this->hasOne('App\Models\HottestProduct', 'product_6_id', 'id');
+        return $this->hasOne('App\Model\ProductPromo');
     }
 
     public function pictures()

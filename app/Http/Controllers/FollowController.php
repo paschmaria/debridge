@@ -21,12 +21,13 @@ class FollowController extends Controller
 
     public function index()
     {
-        $following =  auth()->user()->following;
-        $followers =  auth()->user()->followers;
-        $following_count =  auth()->user()->following()->count() - 1;
-        $followers_count =  auth()->user()->followers()->count() - 1;
-        return view('users.follow', 
-            compact('followers', 'following', 'followers_count', 'following_count')
+        $following =  auth()->user()->following->where('id', '!=', auth()->user()->id);
+        $followers =  auth()->user()->followers->where('id', '!=', auth()->user()->id);
+        $following_count =  count($following);
+        $followers_count =  count($followers);
+        $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
+        return view('users.bridger', 
+            compact('followers', 'following', 'followers_count', 'following_count', 'following_ids')
             );
     }
 
@@ -68,9 +69,19 @@ class FollowController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function getUser(Request $request)
     {
-        //
+        // get the id of the users that the auth user follows
+        $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
+        $users = User::with(['profile_picture', 'community' ])->where('id', '!=', auth()->user()->id)->where('role_id', 1)->paginate(8);
+        return view('users.follow_friends', compact('users', 'following_ids'));
+    }
+
+    public function getMerchant($value='')
+    {
+        $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
+        $users = User::with(['profile_picture', 'community' ])->where('id', '!=', auth()->user()->id)->where('role_id', 2)->paginate(8);
+        return view('users.follow_brands', compact('users', 'following_ids'));
     }
 
     /**
@@ -91,9 +102,19 @@ class FollowController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+
+        if(\Session::has('to_follow')){
+            $to_follow = \Session::get('to_follow');
+        }
+        foreach ($request->request as $key => $value) {
+            if ($value){
+                $to_follow[] = $value;
+            }
+        }
+        \Session::put('to_follow', $to_follow);
+        return response()->json(true);
     }
 
     /**
