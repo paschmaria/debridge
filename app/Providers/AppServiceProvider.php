@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
 use App\Models\Image;
 use App\Models\Cart;
 use App\Models\SocialNotification;
@@ -20,16 +19,18 @@ class AppServiceProvider extends ServiceProvider
         \Schema::defaultStringLength(191);
 
 
-        // view()->composer('*', function($view) {
-        //         if(auth()->check() && isset(auth()->user()->image_id)){
-        //         $user_picture = auth()->user()->image_id;
-        //         $user_picture = Image::find($user_picture);
-        //         $user_picture = $user_picture->image_reference;
-        //         $item_count = Cart::where('user_id', auth()->user()->id)->get()->count();
+
+        view()->composer('*', function($view) {
+                if(auth()->check() && isset(auth()->user()->image_id)){
+                $user_picture = auth()->user()->image_id;
+                $user_picture = Image::find($user_picture);
+                $user_picture = $user_picture->image_reference;
+                $item_count = Cart::where('user_id', auth()->user()->id)->get()->count();
                 
-        //         $view->with(['user_picture' => $user_picture, 'item_count' => $item_count]);
-        //         }
-        view()->composer('*', function($view){
+                $view->with(['user_picture' => $user_picture, 'item_count' => $item_count]);
+                }
+
+
             if(auth()->check()){
                 $item_count = Cart::where('user_id', auth()->user()->id)->get()->count();
                 $notifications = SocialNotification::where(['user_id' => auth()->user()->id])->with(['foreigner' => function($q)
