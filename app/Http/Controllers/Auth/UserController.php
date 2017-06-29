@@ -14,6 +14,9 @@ use App\Models\Image;
 use App\Models\Role;
 use App\Models\State;
 use App\Models\TradeCommunity;
+use App\Models\Product;
+use App\Models\MerchantAccount;
+use App\Models\Inventory;
 
 class UserController extends Controller
 {
@@ -21,7 +24,7 @@ class UserController extends Controller
     function __construct(BridgeCodeController $bride_code)
     {
         $this->bride_code = $bride_code;
-    	$this->middleware('guest')->except(['logout', 'verifyToken', 'resendActivationMail','market','viewUsers', 'brigeCode', 'profile_picture', 'index', 'arahaMarket', 'merchantTradeline', 'bridger', 'bridgerRequest', 'bridgeShops', 'exhibition', 'followBrands', 'followFriends', 'hiring', 'lagosMarket', 'merchantStore', 'myCart', 'port_harcourtMarket']);
+    	$this->middleware('guest')->except(['logout', 'verifyToken', 'resendActivationMail','market','viewUsers', 'brigeCode', 'profile_picture', 'index', 'arahaMarket', 'merchantTradeline', 'bridger', 'bridgerRequest', 'bridgeShops', 'exhibition', 'followBrands', 'followFriends', 'hiring', 'lagosMarket', 'merchantStore', 'myCart', 'port_harcourtMarket', 'userTradeline',]);
     }
 
     public function register()
@@ -214,6 +217,19 @@ class UserController extends Controller
 
     public function myCart(){
         return view('mycart');
+    }
+
+    public function userTradeline(){
+        $products = Product::latest()->get();
+        $inventory = Inventory::all();
+        $merchant = MerchantAccount::all();
+        $user = User::all();
+        // dd($product);
+        
+        return view('user_tradeline', compact('products', 'inventory', 'merchant', 'user'));
+      
+        
+        
     }
 
     

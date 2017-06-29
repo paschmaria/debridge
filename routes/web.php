@@ -26,10 +26,13 @@ Route::post('/comment/{post}', 'User\CommentController@store')->name('create_com
 
 Route::get('/hype/{post}', 'User\HypeController@create')->name('hype');
 
-Route::get('/product_hype/{product}', 'Merchant\ProductController@product_hype')->name('product_hype');
+Route::post('/product_hype/{product}', 'Merchant\ProductController@product_hype')->name('product_hype');
 
 Route::get('/admire/{post}', 'User\AdmireController@create')->name('admire');
 Route::get('/unadmire/{post}', 'User\AdmireController@destroy')->name('unadmire');
+
+Route::get('/admire/{product}', 'User\AdmireController@create')->name('product_admire');
+Route::get('/unadmire/{product}', 'User\AdmireController@destroy')->name('product_unadmire');
 
 Route::get('/timeline', 'User\TimelineController@index')->name('timeline');
 Route::get('/user/follow/friends', 'FollowController@getUser')->name('follow_friends');
@@ -146,7 +149,21 @@ Route::get('/lagos_market', 'Auth\UserController@lagosMarket')->name('lagos_mark
 
 Route::get('/port-harcourt_market', 'Auth\UserController@port_harcourtMarket')->name('port-harcourt_market');
 
-Route::get('/mycart', 'Auth\UserController@myCart')->name('mycart');
+// Route::get('/mycart', 'Auth\UserController@myCart')->name('mycart');
 
-// Route::get('/merchant_store', 'Auth\UserController@merchantStore')->name('merchant_store');
+Route::get('/merchant_store', 'Merchant\ProductController@merchantStore')->name('merchant_store');
+
+Route::get('/cart/addItem/{product}', 'User\CartController@addToCart')->name('addToCart')->middleware('auth');
+;
+
+Route::get('/cart/removeItem/{item}', 'User\CartController@removeItem')->name('removeItem')->middleware('auth');
+;
+
+Route::get('/cart/clearCart', 'User\CartController@clearCart')->name('clearCart')->middleware('auth');
+;
+
+Route::get('/cart/viewCart', 'User\CartController@viewCart')->name('viewCart')->middleware('auth');
+;
+
+Route::get('/user_tradeline', 'Auth\UserController@userTradeline')->name('user_tradeline')->middleware('auth');
 

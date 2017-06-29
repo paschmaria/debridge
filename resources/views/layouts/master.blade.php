@@ -80,7 +80,7 @@
                             <div class="col-md-12 col-sm-12 col-12">
                                 <ul class="navbar-nav dis-flex flex-row">
                                     <li class="nav-item animated bounceIn list-inline-item dis-block">
-                                        @if (auth()->user()->image_id != null)
+             @if (auth()->user()->image_id != null)
                                             <img src="{{ route('image', [auth()->user()->profile_picture->image_reference,'']) }}" class="img img-circle" width="50" height="50">
                                         @else
                                             <img src="{{ asset('img/icons/profiled.png') }}" class="" width="50" height="50">
@@ -88,6 +88,10 @@
                                     </li>
                                     <li class="nav-item animated bounceIn list-inline-item dis-block z-1000">
                                         <div class="dropdown">
+                                            <!-- <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{ auth()->user()->first_name }}
+                                            </a> -->
+
                                             <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ auth()->user()->first_name }}
                                             </a>
@@ -109,10 +113,12 @@
                             <div class="col-md-12 col-sm-12 col-12 m-t-10">
                                 <ul class="navbar-nav dis-flex flex-row">
                                     <li class="animated bounceIn"> 
+                                        <a href="{{ route('viewCart') }}" class="p-l-10 p-r-10">
+                                            <span class="pos-rel z-5000">
                                         <a href="mycart.html" class="p-l-10 p-r-10">
                                             <span class="pos-rel">
                                                 <i class="fa fa-shopping-cart fa-lg c-white" aria-hidden="true"></i>
-                                                <span class="cart-count">3</span>
+                                                <span class="cart-count">{{ $item_count }}</span>
                                             </span>
                                         </a>
                                     </li>
@@ -263,6 +269,14 @@
                 }
             }
         </script> 
+
+    <script>
+            document.onreadystatechange = () => {
+                if (document.readyState === "complete") {
+                    app.likeToggler();
+                }
+            }
+    </script>
 
 
      <script type="text/javascript">
