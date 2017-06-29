@@ -86,6 +86,7 @@ class PostController extends Controller
           'content'    =>  $post->content,
           'reference' => $post->reference,
         ]);
+
     }
 
     /**

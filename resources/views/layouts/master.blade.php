@@ -96,8 +96,8 @@
                                             {{ auth()->user()->first_name }}
                                             </a>
                                             <div class="dropdown-menu animated bounceIn" aria-labelledby="dropdownMenu3">
-                                                <a class="dropdown-item waves-effect waves-light" href="{{ url('friends') }}">My Friends</a>
-                                                <a class="dropdown-item waves-effect waves-light" href="{{ route('follow_page') }}">Followers</a>
+                                                 <!-- <a class="dropdown-item waves-effect waves-light" href="{{ url('friends') }}">Trade Request</a> -->
+                                                <a class="dropdown-item waves-effect waves-light" href="{{ url('follow') }}">Followers</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ url('upload') }}">Gallery</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="#">Edit Profile</a>
                                                 @if(auth()->user()->role_id == 2)

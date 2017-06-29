@@ -31,7 +31,7 @@
     		<div id="navbarNav1 m-t-40">
 	            <h3 class="h3-responsive c-brand f-24 m-t-30 m-b-8">BRIDGER</h3>
 	            <div class="">
-	            	<button class="btn btn-md btn-sm pull-right f-17 m-b-10 bg-brand-lite btn-outline-brand"><a href="bridgerRequest.html" class="c-brand"><span class="fa fa-plus m-r-10"></span>Follow More</a></button>
+	            	<button class="btn btn-md btn-sm pull-right f-17 m-b-10 bg-brand-lite btn-outline-brand"><a href="{{url('/users/follow/more')}}" class="c-brand"><span class="fa fa-plus m-r-10"></span>Follow More</a></button>
 	            </div><br>
 	        </div>
 	        <!-- friends display  -->
