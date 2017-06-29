@@ -1,0 +1,25 @@
+//Import all partials here
+
+@import "helpers/variables.scss";
+@import "helpers/mixins.scss";
+
+@import "base/reset.scss";
+
+@import "layout/header.scss";
+@import "layout/nav.scss";
+@import "layout/footer.scss";
+<<<<<<< HEAD
+
+@import "modules/buttons.scss";
+<<<<<<< HEAD
+@import "modules/typography.scss";
+=======
+
+@import "modules/buttons.scss";
+@import "modules/typography.scss";
+
+>>>>>>> 265bd53d092ea0b6af7050def49137489fa25b6d
+=======
+@import "modules/inputs.scss";
+@import "modules/typography.scss";
+>>>>>>> 6b19583a7580f47e45697a6dd87fc28013ae537f

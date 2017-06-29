@@ -4,6 +4,8 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
+use App\Models\Image;
 
 class AccountController extends Controller
 {
@@ -17,9 +19,23 @@ class AccountController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index($email)
     {
         //
+                $user = User::where('email', $email)->with('profile_picture')->first();
+
+      if($user->image_id!=null){
+            $user_picture = $user->image_id;
+            $user_picture = Image::find($user_picture);
+
+            $user_picture = $user_picture->image_reference;
+            // dd($user_picture);
+
+            return view('users.user_profile', compact('user_picture', 'user'));
+        }else{
+        return view('users.user_profile', compact('user'));
+        }
+    
     }
 
     /**
@@ -87,4 +103,7 @@ class AccountController extends Controller
     {
         //
     }
+
+     
+
 }

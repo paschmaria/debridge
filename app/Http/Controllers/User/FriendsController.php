@@ -98,7 +98,10 @@ class FriendsController extends Controller
             'message' => auth()->user()->first_name . ' accepted your friendship!',
             'description_id' => 4 
             ]);
-        return back()->with('info', 'You declined ' . $user->first_name . ' friendship!');
+
+        return response()->json($email);
+        
+        // return back()->with('info', 'You declined ' . $user->first_name . ' friendship!');
     }
 
     /**
@@ -115,4 +118,9 @@ class FriendsController extends Controller
         $user->friends()->detach($auth_user);
         return back()->with('info', 'You unfriended ' . $user->first_name . '!');
     }
+
+    public function user_logout(){
+        \Auth::logout();
+        return redirect('/');
+     }
 }

@@ -65,10 +65,26 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\PostHype');
     }
 
+    public function productHypes()
+    {
+        return $this->hasMany('App\Models\ProductHype');
+    }
+
     public function admires()
     {
         return $this->hasMany('App\Models\PostAdmire');
     }
+    // accounts relationship
+    public function user_account()
+    {
+        return $this->hasOne('App\Models\UserAccount');
+    }
+
+    public function merchant_account()
+    {
+        return $this->hasOne('App\Models\MerchantAccount');
+    }
+    //end of accounts relationship
 
     public function following()
     {
@@ -104,5 +120,15 @@ class User extends Authenticatable
     {
         // get user social notifications
         return $this->hasMany('App\Models\SocialNotification');
+    }
+
+    public function productNotifications()
+    {
+        return $this->belongsToMany('App\Models\ProductNotification', 'product_notification_pivots', 'user_id', 'notification_id');
+    }
+
+    public function community()
+    {
+        return $this->belongsTo('App\Models\TradeCommunity', 'community_id');
     }
 }
