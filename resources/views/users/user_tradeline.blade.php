@@ -206,16 +206,16 @@
                                         <!--/.Card image-->
                                     </div>
                                 </div>
-                                <div class="col-sm-12 m-t-10"><p>{{ $post->content }}</p></div>
+                                <div class="m-t-10 p-5"><p>{{ $post->content }}</p></div>
 
                                 <div class="m-b-20">
                                     <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10 col-sm-12" role="group" aria-label="Ad Action Buttons">
                                         @if(!in_array($post->id, $admired))
-                                            <a href="{{ route('admire', $post->id) }}"><button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 width-200">
+                                            <a href="{{ route('admire', $post->reference) }}"><button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 width-200">
                                                 <span class="">Admire&nbsp;</span><span class=""><i class="fa fa-heart-o"></i></span>
                                             </button></a>
                                         @else
-                                            <a href="{{ route('unadmire', $post->id) }}"><button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 width-200">
+                                            <a href="{{ route('unadmire', $post->reference) }}"><button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 width-200">
                                                 <span class="">Unadmire&nbsp;</span><span class=""><i class="fa fa-heart"></i></span>
                                             </button></a>
                                         @endif
@@ -223,7 +223,7 @@
                                             <span class="">Comment&nbsp;</span><span class=""><i class="fa fa-comment"></i></span>
                                         </button>
                                         @if (!in_array($post->id, $hyped))
-                                            <a href="{{ route('hype', $post->id) }}"><button type="button" class="btn bg-white m-l-3 f-14 width-200">
+                                            <a href="{{ route('hype', $post->reference) }}"><button type="button" class="btn bg-white m-l-3 f-14 width-200">
                                                 <span class="">Hype&nbsp;</span><span class=""><i class="fa fa-share-alt"></i></span>
                                             </button></a>
                                         @else
@@ -244,7 +244,7 @@
                                         @endif --}}
                                     </a>
                                     <div class="media-body">
-                                        <form method="post" action="{{ route('create_comment', $post->id) }}">
+                                        <form method="post" action="{{ route('create_comment', $post->reference) }}">
                                             {{ csrf_field() }}
                                             <textarea name="content" id="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Press enter to send..."></textarea>
                                             <button type="submit" class="btn btn-brand btn-sm pull-right">comment</button>

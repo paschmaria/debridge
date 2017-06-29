@@ -114,8 +114,6 @@
                                 <ul class="navbar-nav dis-flex flex-row">
                                     <li class="animated bounceIn"> 
                                         <a href="{{ route('viewCart') }}" class="p-l-10 p-r-10">
-                                            <span class="pos-rel z-5000">
-                                        <a href="mycart.html" class="p-l-10 p-r-10">
                                             <span class="pos-rel">
                                                 <i class="fa fa-shopping-cart fa-lg c-white" aria-hidden="true"></i>
                                                 <span class="cart-count">{{ $item_count }}</span>
