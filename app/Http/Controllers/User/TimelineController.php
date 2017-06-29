@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
 use App\Models\Post;
 use App\Models\PostAdmire;
 use App\Models\PostHype;
@@ -18,9 +19,10 @@ class TimelineController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index()
+    public function index($reference)
     {
-        $following = auth()->user()->following()->with([ 'posts' => function ($query) {
+        $user = User::with(['profile_picture', 'role'])->where('reference', $reference)->first();
+        $following = $user->following()->with([ 'posts' => function ($query) {
             $query->orderBy('created_at', 'desc')->with([
                 'user' => function($q){
                     $q->with('profile_picture');
@@ -32,7 +34,7 @@ class TimelineController extends Controller
                 },
                 'pictures' => function($q){
                     $q->with('images');
-                }
+                },
             ]);
 
         }])->get();
@@ -47,7 +49,7 @@ class TimelineController extends Controller
 
         $posts = $sorted->values()->all();
         // dd($posts);
-        return view('users.user_tradeline', compact('posts', 'admired', 'hyped'));
+        return view('users.user_tradeline', compact('user', 'posts', 'admired', 'hyped'));
     }
 
     /**

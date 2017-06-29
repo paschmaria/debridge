@@ -36,7 +36,7 @@ Route::get('/unadmire/{post}', 'User\AdmireController@destroy')->name('unadmire'
 Route::get('/admire/{product}', 'User\AdmireController@create')->name('product_admire');
 Route::get('/unadmire/{product}', 'User\AdmireController@destroy')->name('product_unadmire');
 
-Route::get('/timeline', 'User\TimelineController@index')->name('timeline');
+Route::get('/timeline/{reference}', 'User\TimelineController@index')->name('timeline');
 Route::get('/user/follow/friends', 'FollowController@getUser')->name('follow_friends');
 Route::get('/user/follow/merchants', 'FollowController@getMerchant')->name('follow_merchants');
 Route::post('/user/follow/friends', 'FollowController@update')->name('follow_friends');
@@ -51,11 +51,11 @@ Route::post('/send_request/{email}', 'User\FriendRequestController@create')->nam
 
 Route::post('/undo_request/{email}', 'User\FriendRequestController@destroy')->name('undo_request');
 
-Route::post('/follow/{email}', 'FollowController@store')->name('follow');
+Route::post('/follow/{reference}', 'FollowController@store')->name('follow');
 
 Route::get('/follow', 'FollowController@index')->name('follow_page');
 
-Route::post('/unfollow/{email}', 'FollowController@destroy')->name('unfollow');
+Route::post('/unfollow/{reference}', 'FollowController@destroy')->name('unfollow');
 
 Route::get('/delete_comment/{id}', 'User\CommentController@destroy')->name('delete_comment');
 Route::get('/delete_post/{post}', 'User\PostController@destroy')->name('delete_post');

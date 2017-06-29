@@ -96,7 +96,7 @@
                                             {{ auth()->user()->first_name }}
                                             </a>
                                             <div class="dropdown-menu animated bounceIn" aria-labelledby="dropdownMenu3">
-                                                <!-- <a class="dropdown-item waves-effect waves-light" href="{{ url('friends') }}">Trade Request</a> -->
+                                                 <!-- <a class="dropdown-item waves-effect waves-light" href="{{ url('friends') }}">Trade Request</a> -->
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ url('follow') }}">Followers</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ url('upload') }}">Gallery</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="#">Edit Profile</a>
@@ -139,8 +139,9 @@
                                                 </span>
                                             </a>
                                             <div class="dropdown-menu notify-dropdown animated bounceIn f-12" aria-labelledby="dropdownNotify">
+                                            <ul>
                                                 @forelse ($notifications as $notification)
-                                                    <p class="dropdown-item waves-effect waves-light p-l-10 border-bottom">
+                                                    <li class="dropdown-item waves-effect waves-light p-l-10 border-bottom">
                                                         <a href="{{ route('user_profile', $notification->foreigner->email) }}">
                                                             @if ($notification->foreigner->profile_picture != null)
                                                                 <img src="{{ route('image', [$notification->foreigner->profile_picture->image_reference,'']) }}" class="h-40 width-40 m-r-5 bd-50p">
@@ -150,12 +151,13 @@
                                                         </a>
                                                         <span>{{ $notification->message }}</span>
                                                         <a href="/"><small class="pull-right">Mark as read</small></a>
-                                                    </p>
+                                                    </li>
                                                 @empty
-                                                    <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="" disabled>
+                                                    <li class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="" disabled>
                                                         <span>Hi {{ auth()->user()->first_name }}, you have no notification</span>
-                                                    </a>
+                                                    </li>
                                                 @endforelse
+                                            </ul>
                                                {{--  <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">
                                                 <img src="{{ asset('img/p-photo-6.jpeg') }}" class="h-40 width-40 m-r-5 bd-50p">
                                                 <span>Ejike Jhud started following you</span>
@@ -318,7 +320,7 @@
           toastr.error("{{$errors->first('image_reference')}}");
         @endif
       </script>
-
+      @yield('scripts')
 
     </body>
 

@@ -23,7 +23,9 @@ class User extends Authenticatable
         'date_of_birth',
         'gender',
         'confirm_code',
-        'user_token'
+        'user_token',
+        'registration_status',
+        'reference'
     ];
 
     /**
@@ -37,7 +39,7 @@ class User extends Authenticatable
 
     public function full_name()
     {
-        return ucwords($this->first_name . ' ' . $this->last_name);
+        return strtoupper($this->first_name . ' ' . $this->last_name);
     }
     public function comments()
     {

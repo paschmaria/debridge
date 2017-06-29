@@ -29,11 +29,11 @@ class AdmireController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Post $post)
+    public function create($reference)
     {
+        $post = Post::where('reference', $reference)->first();
         $admire = PostAdmire::where(['post_id' => $post->id, 'user_id' => \Auth::user()->id])->first();
         if ($admire) {
-            // $admire->delete();
             return back()->with('info', 'Post already admired by you!');
         } else {
             PostAdmire::create(['post_id' => $post->id, 'user_id' => \Auth::user()->id]);

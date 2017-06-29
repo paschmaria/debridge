@@ -48,19 +48,19 @@ class FollowController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($email)
+    public function store($reference)
     {
         // Find the User. Redirect if the User doesn't exist
-        $user = User::where('email', $email)->first();
+        $user = User::where('reference', $reference)->first();
         auth()->user()->following()->attach($user->id);
         // notify $user the he has been followed by auth user
         SocialNotification::create([
             'user_id' => $user->id,
             'foreigner_id' => auth()->user()->id,
-            'message' => auth()->user()->first_name . ' is now following you!',
+            'message' => auth()->user()->full_name() . ' is now following you!',
             'description_id' => 1 
             ]);
-        return response()->json($email);
+        return response()->json($user->email);
         // return back()->with('success', 'Now following ' . $user->email);
     }
 
@@ -78,7 +78,7 @@ class FollowController extends Controller
         return view('users.follow_friends', compact('users', 'following_ids'));
     }
 
-    public function getMerchant($value='')
+    public function getMerchant(Request $request)
     {
         $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
         $users = User::with(['profile_picture', 'community' ])->where('id', '!=', auth()->user()->id)->where('role_id', 2)->paginate(8);
@@ -106,16 +106,6 @@ class FollowController extends Controller
     public function update(Request $request)
     {
 
-        if(\Session::has('to_follow')){
-            $to_follow = \Session::get('to_follow');
-        }
-        foreach ($request->request as $key => $value) {
-            if ($value){
-                $to_follow[] = $value;
-            }
-        }
-        \Session::put('to_follow', $to_follow);
-        return response()->json(true);
     }
 
     /**
@@ -124,19 +114,19 @@ class FollowController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($email)
+    public function destroy($reference)
     {
         // Find the User. Redirect if the User doesn't exist
-        $user = User::where('email', $email)->first();
+        $user = User::where('reference', $reference)->first();
         auth()->user()->following()->detach($user->id);
         //notify $user that he has been unfollowed by auth user
         SocialNotification::create([
             'user_id' => $user->id,
             'foreigner_id' => auth()->user()->id,
-            'message' => auth()->user()->first_name . ' unfollowed you!',
+            'message' => auth()->user()->full_name() . ' unfollowed you!',
             'description_id' => 2 
             ]);
-        return response()->json($email);
+        return response()->json($user->email);
         
         // return back()->with('info', 'unfollowed ' . $email);
     }
