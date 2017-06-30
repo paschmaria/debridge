@@ -30,6 +30,13 @@
     	.page-item.active .page-link{
     		background: #008751;
     	}
+    	.date:focus{
+    		border-bottom: none!important;
+    		box-shadow: 0 1px 0 0 transparent!important;
+    	}
+    	.input-group{
+    		border: 1px solid #eee!important;
+    	}
     </style>
 </head>
 <body data-page="bridger">
@@ -180,8 +187,9 @@
 											      <img src="assets/img/switcH.png" class="media-object pics">
 											    </div>
 											    <div class="media-body">
-											      <p class="media-heading">Product designer at switch <br>2015-present</p>
+											      <a class="c-brand" id="product"> <p class="media-heading">Product designer at switch <br>2015-present</p></a>
 											    </div>
+											    <div><a class="c-brand" data-toggle="modal" data-target="#Changework1" class="media-heading" id="edit"><i class="fa fa-pencil c-brand"></i></div></a>
 											</div>
 										</div>
 										<div class="col-12">
@@ -190,7 +198,7 @@
 											      <img src="assets/img/rectangle-2009.png" class="media-object pics">
 											    </div>
 											    <div class="media-body">
-											      <p class="media-heading">Studied mathematics at university of benin<br>2009-2013</p>
+											      <a class="c-brand" data-toggle="modal" data-target="#Education1" class="media-heading"><p class="media-heading">Studied mathematics at university of benin<br>2009-2013</p></a>
 											    </div>
 											</div>
 										</div>
@@ -200,16 +208,16 @@
 											      <img src="assets/img/rectangle-244.png" class="media-object pics">
 											    </div>
 											    <div class="media-body">
-											      <p class="media-heading">Lives at Ikeja, Lagos.<br>From benin, Nigeria.</p>
+											      <a class="c-brand" data-toggle="modal" data-target="#Changecity1" class="media-heading"><p class="media-heading">Lives at Ikeja, Lagos.<br>From benin, Nigeria.</p></a>
 											    </div>
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="col-sm-6 col-md-6 col-12">
-									<a href="#" class="c-brand"><i class="fa fa-mobile"><span class="m-l-10">08073404890</span></i></a><br>
-	                                <a href="#" class="c-brand"><i class="fa fa-envelope-o"><span class="m-l-10">judejike85@gmail.com</span></i></a><br>
-	                                <a href="#" class="c-brand"><i class="fa fa-user-o"><span class="m-l-10">BG2306</span></i></a>
+									<a  class="c-brand" data-toggle="modal" data-target="#Changecontact1" class="media-heading"><i class="fa fa-mobile"><span class="m-l-10">08073404890</span></i></a><br>
+	                                <a class="c-brand" data-toggle="modal" data-target="#Changecontact1" class="media-heading"><i class="fa fa-envelope-o"><span class="m-l-10">judejike85@gmail.com</span></i></a><br>
+	                                <a class="c-brand" data-toggle="modal" data-target="#Changecontact1" class="media-heading"><i class="fa fa-user-o"><span class="m-l-10">BG2306</span></i></a>
 								</div>
 							</div>
 						</div>
@@ -350,7 +358,178 @@
 		</div>
 	</section>
     <!-- main section ends here -->
-
+    <!-- Modal for change contact-->
+	<div class="modal fade" id="Changecontact1" tabindex="-1" role="dialog" aria-labelledby="Changecontact" aria-hidden="true">
+	    <div class="modal-dialog" role="document">
+	        <!--Content-->
+	        <div class="modal-content m-t-180">
+	            <!--Header-->
+	            <div class="modal-header">
+	            	<h4 class="modal-title w-100 c-brand f-17" id="Changecontact1">Change Contact</h4>
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                    <span aria-hidden="true">&times;</span>
+	                </button>
+	            </div>
+	            <!--Body-->
+	            <div class="modal-body">
+	                <form class="m-l-60">
+		                <div class="row">
+		                    <div class="col-md-11">
+		                        <div class="">
+		                            <label for="Email">Change Email</label>
+		                            <input type="text" name="Email" id="" class="form-control bd-3 h-40 input-alternate border-box bg-white">
+		                        </div>
+		                    </div>
+	                	</div>
+		                <div class="row">
+		                    <div class="col-md-11">
+		                        <div class="">
+		                            <label for="Number">Change Phone Number</label>
+		                            <input type="text" name="Phone" id="" class="form-control bd-3 h-40 input-alternate border-box bg-white">
+		                        </div>
+		                    </div>
+	                	</div>
+	                	<button type="button" class="btn btn-sm btn-outline-brand pull-right m-r-40">Save</button>
+	                </form>
+	            </div>
+	        </div>
+	        <!--/.Content-->
+	    </div>
+	</div>
+<!-- Modal -->
+<!-- Modal for change city-->
+	<div class="modal fade" id="Changecity1" tabindex="-1" role="dialog" aria-labelledby="Changecity" aria-hidden="true">
+	    <div class="modal-dialog" role="document">
+	        <!--Content-->
+	        <div class="modal-content m-t-180">
+	            <!--Header-->
+	            <div class="modal-header">
+	            	<h4 class="modal-title w-100 c-brand f-17" id="Changecity1">Change city</h4>
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                    <span aria-hidden="true">&times;</span>
+	                </button>
+	            </div>
+	            <!--Body-->
+	            <div class="modal-body">
+	                <form class="m-l-60">
+		                <div class="row">
+		                    <div class="col-md-11">
+		                        <div class="">
+		                            <label for="Live">WHRE DO YOU LIVE</label>
+		                            <input type="text" name="" id="" class="form-control bd-3 h-40 input-alternate border-box bg-white">
+		                        </div>
+		                    </div>
+	                	</div>
+		                <div class="row">
+		                    <div class="col-md-11">
+		                        <div class="">
+		                            <label for="State">STATE OF ORIGIN</label>
+		                            <input type="text" name="" id="" class="form-control bd-3 h-40 input-alternate border-box bg-white">
+		                        </div>
+		                    </div>
+	                	</div>
+	                	<button type="button" class="btn btn-sm btn-outline-brand pull-right m-r-40">Save</button>
+	                </form>
+	            </div>
+	        </div>
+	        <!--/.Content-->
+	    </div>
+	</div>
+<!-- Modal -->
+<!-- Modal for Education-->
+	<div class="modal fade" id="Education1" tabindex="-1" role="dialog" aria-labelledby="Education" aria-hidden="true">
+	    <div class="modal-dialog" role="document">
+	        <!--Content-->
+	        <div class="modal-content m-t-180">
+	            <!--Header-->
+	            <div class="modal-header">
+	            	<h4 class="modal-title w-100 c-brand f-17" id="Education1">Change University</h4>
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                    <span aria-hidden="true">&times;</span>
+	                </button>
+	            </div>
+	            <!--Body-->
+	            <div class="modal-body">
+	                <form class="m-l-10">
+		                <div class="row">
+		                    <div class="col-md-11">
+		                        <div class="">
+		                            <label for="Study">WHRE DID YOU STUDY</label>
+		                            <input type="text" name="" id="" class="form-control bd-3 h-40 input-alternate border-box bg-white">
+		                        </div>
+		                    </div>
+	                	</div>
+		                <div class="row">
+		                    <div class="col-md-6">
+		                    <label for="Number">START DATE</label>
+		                        <div class="input-group">
+									<input type="text" class="form-control date datepicker"  id="date-picker-example"/>
+									<span class="input-group-addon"><i class="fa fa-calendar c-brand"></i></span>
+		                        </div>
+		                    </div>
+		                   <div class="col-md-6">
+		                    <label for="Number">END DATE</label>
+		                        <div class="input-group">
+									<input type="text" class="form-control date"/>
+									<span class="input-group-addon"><i class="fa fa-calendar c-brand"></i></span>
+		                        </div>
+		                    </div>
+	                	</div>
+	                	<button type="button" class="btn btn-sm btn-outline-brand pull-right m-r-40">Save</button>
+	                </form>
+	            </div>
+	        </div>
+	        <!--/.Content-->
+	    </div>
+	</div>
+<!-- Modal -->
+<!-- Modal for Change work-->
+	<div class="modal fade" id="Changework1" tabindex="-1" role="dialog" aria-labelledby="Changework" aria-hidden="true">
+	    <div class="modal-dialog" role="document">
+	        <!--Content-->
+	        <div class="modal-content m-t-180">
+	            <!--Header-->
+	            <div class="modal-header">
+	            	<h4 class="modal-title w-100 c-brand f-17" id="Changework1">Change Work</h4>
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                    <span aria-hidden="true">&times;</span>
+	                </button>
+	            </div>
+	            <!--Body-->
+	            <div class="modal-body">
+	                <form class="m-l-10">
+		                <div class="row">
+		                    <div class="col-md-11">
+		                        <div class="">
+		                            <label for="Study">WHRE DO YOU WORK</label>
+		                            <input type="text" name="" id="" class="form-control bd-3 h-40 input-alternate border-box bg-white">
+		                        </div>
+		                    </div>
+	                	</div>
+		                <div class="row">
+		                    <div class="col-md-6">
+		                    <label for="Number">START DATE</label>
+		                        <div class="input-group">
+									<input type="text" class="form-control date datepicker"  id="date-picker-example"/>
+									<span class="input-group-addon"><i class="fa fa-calendar c-brand"></i></span>
+		                        </div>
+		                    </div>
+		                   <div class="col-md-6">
+		                    <label for="Number">END DATE</label>
+		                        <div class="input-group">
+									<input type="text" class="form-control date"/>
+									<span class="input-group-addon"><i class="fa fa-calendar c-brand"></i></span>
+		                        </div>
+		                    </div>
+	                	</div>
+	                	<button type="button" class="btn btn-sm btn-outline-brand pull-right m-r-40">Save</button>
+	                </form>
+	            </div>
+	        </div>
+	        <!--/.Content-->
+	    </div>
+	</div>
+<!-- Modal -->
 
 	 <!-- SCRIPTS -->
 
@@ -418,6 +597,38 @@
                 ]
             });
         });
+    </script>
+    <script>
+    	$('#edit').hide(function(){
+    	});
+
+    	$('#product').hover(function(){
+    		$('#edit').show();
+    	});
+
+    	$('#product').mouseleave(function(){
+    		$('#edit').hide();
+    	});
+
+    	
+    	var edit = document.getElementById('edit');
+
+    	edit.addEventListener('click', EditHandler);
+
+    	function EditHandler(){
+    		// e.preventDefault();
+    		if(edit.onclick){
+    			click;
+    		}
+    	}
+    	
+    	// var pro = document.getElementById('product');
+
+    	// pro.addEventListener('click', ProHandler);
+
+    	// function ProHandler(){
+    	// 	alert('yeah!!')
+    	// }
     </script>
 </body>
 </html>
