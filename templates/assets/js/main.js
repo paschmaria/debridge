@@ -542,15 +542,7 @@ const app = {
           }
  		});
     },
-    LogIn() {
-    	$('#Send').click(function(){
- 			if((document.getElementById("username").value == "")){
- 				document.getElementById("error_username").innerHTML = "provide a password";
- 				return false;
- 			}
- 		});
-    },
-    addProductImageHandler:function (){
+    addProductImageHandler() {
         $('input').on('change', function(){
             //alert("alert");
             //console.log($(this));
