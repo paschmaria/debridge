@@ -33,6 +33,28 @@ class FollowController extends Controller
             );
     }
 
+    public function following($reference)
+    {
+        $user = User::where('reference', $reference)->first();
+        $following =  $user->following->where('id', '!=', $user->id)->sortBy('first_name')->splice(0,19);
+        $following_count =  count($following);
+        $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
+        return view('users.bridger', 
+            compact('following', 'following_count', 'following_ids')
+            );
+    }
+
+    public function follower($reference)
+    {
+        $user = User::where('reference', $reference)->first();
+        $followers =  $user->follower->with('profile_picture')->where('id', '!=', $user->id)->sortBy('first_name')->splice(0,19);
+        $followers_count =  count($followers);
+        $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
+        return view('users.bridger', 
+            compact('following', 'following_count', 'following_ids')
+            );
+    }
+
     /**
      * Show the form for creating a new resource.
      *

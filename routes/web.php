@@ -175,4 +175,5 @@ Route::get('/cart/viewCart', 'User\CartController@viewCart')->name('viewCart')->
 ;
 
 Route::get('/user_tradeline', 'Auth\UserController@userTradeline')->name('user_tradeline')->middleware('auth');
+Route::get('/users/following/{reference}', 'FollowController@following')->name('xx');
 
