@@ -25,7 +25,9 @@ class User extends Authenticatable
         'confirm_code',
         'user_token',
         'registration_status',
-        'reference'
+        'reference',
+        'role_id',
+        'community_id'
     ];
 
     /**

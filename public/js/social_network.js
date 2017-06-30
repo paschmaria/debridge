@@ -96,23 +96,26 @@ $(document).on('click', ".follow", function(e){
           // alert('clickrf now kilonshele');
             e.preventDefault();
             var reciever_email = $(this).data("email");
+            var reciever_full_name = $(this).data("fname");
+
             // alert(reciever_email);
-            $(this).removeClass('follow').text('unfollow');
+            $(this).removeClass('follow').text(' unfollow');
             $(this).addClass('unfollow');
+            $(this).addClass('fa fa-check');
 
             $.ajax({
-                url:'follow/'+reciever_email,
+                url:'/follow/'+reciever_email,
                 type:'POST',
-                data: {email:reciever_email},
+                data: {reference:reciever_email},
                 success:function(data){
                     // alert(data);
                     // console.log(data);
                     toastr.options.preventDuplicates = true;
-                    toastr.success("Now following "+reciever_email);
+                    toastr.success("Now following "+reciever_full_name);
                 },
                 error: function (data) {
                     toastr.options.preventDuplicates = true;
-                    toastr.error("An error occured while following "+ reciever_email);
+                    toastr.error("An error occured while following "+ reciever_full_name);
                     // var obj = jQuery.parseJSON( data.responseText );
                 }
             });
@@ -122,22 +125,28 @@ $(document).on('click', ".unfollow", function(e){
           // alert('clickrf now kilonshele');
             e.preventDefault();
             var reciever_email = $(this).data("email");
+            var reciever_full_name = $(this).data("fname");
+
             // alert(reciever_email);
-            $(this).removeClass('unfollow').text('follow');
+            $(this).removeClass('unfollow').text(' follow');
             $(this).addClass('follow');
+            $(this).addClass('fa fa-user');
+            $(this).addClass('f-14');
+
+
             $.ajax({
-                url:'unfollow/'+reciever_email,
+                url:'/unfollow/'+reciever_email,
                 type:'POST',
-                data: {email:reciever_email},
+                data: {reference:reciever_email},
                 success:function(data){
                     // alert(data);
                     // console.log(data);
                     toastr.options.preventDuplicates = true;
-                    toastr.info("You unfollowed "+reciever_email);
+                    toastr.info("You unfollowed "+reciever_full_name);
                 },
                 error: function (data) {
                     toastr.options.preventDuplicates = true;
-                    toastr.error("An error occured while following "+ reciever_email);
+                    toastr.error("An error occured while following "+ reciever_full_name);
                     // var obj = jQuery.parseJSON( data.responseText );
                 }
             });

@@ -29,10 +29,11 @@ class UserController extends Controller
 
     public function register()
     {
-        $role = Role::where('name', 'Merchant')->first();
+        $roles = Role::where('name', '!=', 'Admin')->get();
+        // dd($roles);
         $states = State::all();
         $trade_communities = TradeCommunity::all();
-        return view('register1', compact('role', 'states', 'trade_communities'));
+        return view('register1', compact('roles', 'states', 'trade_communities'));
     }
 
     public function index(){
@@ -68,15 +69,19 @@ class UserController extends Controller
             'gender' => $request->gender,
             'reference' => str_random(7) . time() . uniqid(),
             'registration_status' => 1,
-            ]);
+            'role_id' => $request->user_trade_interest,
+            'community_id' => $request->user_trade_community,
 
-        if($role === Role::where('name', 'Merchant')->first()){
+            ]);
+        // dd($user);
+
+        // if($role === Role::where('name', 'Merchant')->first()){
             
-            $user->role()->associate($role);
-            $user->save();
-        }
-        $user->community()->associate($trade_community);
-        $user->save();
+        //     $user->role()->associate($role);
+        //     $user->save();
+        // }
+        // $user->community()->associate($trade_community);
+        // $user->save();
         // user follows himself so he can see his won post on his timeline
         $user->following()->attach($user);
         

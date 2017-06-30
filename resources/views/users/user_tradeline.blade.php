@@ -28,8 +28,7 @@
          <!-- main section begins here-->
         <section class="main">
           <div class="container-fluid">
-
-            @if($user->role->name !== 'Merchant')
+            @if($user->role->name !== "Merchant")
                 <div class="">
                     <h1 class="h1-responsive f-48 text-center m-t-20 m-b-25 c-brand w-500">{{ strtoupper($user->full_name()) }}</h1>
                 </div>
