@@ -29,7 +29,7 @@
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 </head>
-
+{{-- I HATE TALKS!!!!!!!!!!!!!!!!!!!!!! --}}
 <body data-page="login">
      <!-- main section begins here-->
     <div class="container">

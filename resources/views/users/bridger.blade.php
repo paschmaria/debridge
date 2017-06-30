@@ -67,7 +67,8 @@
 			        				</div>
 			        				<div class="col-md-5 col-sm-5 col-xs-5">
 			        					<form method="post" action="{{ route('unfollow', $user->email) }}">
-			        						<button type="submit" class="btn btn-sm f-14 waves-light waves-effect c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Unfollow</button>
+			        						<!-- <button type="submit" class="btn btn-sm f-14 waves-light waves-effect c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Unfollow</button> -->
+			        						<button class="btn unfollow btn-sm f-14 waves-light waves-effect c-brand btn-outline-brand m-t-40 m-b-50" data-email="{{$user->reference}}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}" ><span class="fa fa-check">&nbsp; &nbsp;</span>Unfollow</button>
 			        					</form>
 			        				</div>
 		        				</div>
@@ -113,9 +114,10 @@
 				        				</div>
 			        				@else
 			        					<div class="col-md-5 col-sm-5 col-xs-5">
-				        					<form method="post" action="{{ route('follow', $user->reference) }}">
-				        						<button type="submit" class="btn bg-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Follow</button>
-				        					</form>
+				        					<!-- <form method="post" action="{{ route('follow', $user->reference) }}"> -->
+				        						<!-- <button type="submit" class="btn bg-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Follow</button> -->
+				        					<!-- </form> -->
+				        					<button class="btn follow  btn-sm f-14 waves-light waves-effect c-brand btn-outline-brand m-t-40 m-b-50" data-email="{{$user->reference}}" data-fname="{{$user->full_name()}}" data-id="{{$user->id}}" ><span class="fa fa-user">&nbsp; &nbsp;</span>Follow</button>
 				        				</div>
 			        				@endif
 		        				</div>
