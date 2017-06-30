@@ -69,6 +69,7 @@ class PostController extends Controller
         $post = new Post([
             'title' => $request->title,
             'content' => $request->content,
+            'reference' => str_random(7) . time() . uniqid(),
             ]);
         //mulitple image upload system
         if(!empty($request->file('file'))){
@@ -82,8 +83,10 @@ class PostController extends Controller
         //please nuru fix the json 
         return response()->json([
           'title' => $post->title,
-          'content'    =>  $post->content
+          'content'    =>  $post->content,
+          'reference' => $post->reference,
         ]);
+
     }
 
     /**
@@ -126,13 +129,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request, $reference)
     {
         //
-        $post = Post::find($id);
+        $post = Post::where('reference', $reference)->first();
         $post->comments()->delete();
-        $post->images()->delete();
-        $post = Post::destroy($id);
+        $post->delete();
         $request->session()->flash('success', 'Post deleted successfully!');
         return back();
     }

@@ -37,300 +37,37 @@
 	        </div>
 	        <!-- friends display  -->
 	        <div class="m-t-40 m-b-140">
-	        	<div class="row">
-	        		<!-- first column of friends -->
-	        		<div class="col-md-6 col-sm-6 col-xs-6 col-12">
-	        			<!-- first friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3 col-sm-3 col-xs-6">
-	        							<div class="profile-picture dis-inline">
-				        					<img src="{{ asset('img/pphoto-2.jpeg') }}" class="p-10">
+	        	@foreach($users->chunk(2) as $userChuncked)
+		        	<div class="row">
+		        		<!-- first column of friends -->
+		        		@foreach($userChuncked as $user)
+		        			<div class="col-md-6 col-sm-6 col-xs-6 col-12">
+			        			<!-- first friend -->
+			        			<div class="h-114 width-563 m-b-30">
+			        				<div class="row">
+			        					<div class="col-md-3 col-sm-3 col-xs-6">
+			        							<div class="profile-picture dis-inline">
+						        					<img src="{{ asset('img/pphoto-2.jpeg') }}" class="p-10">
+					        					</div>
+			        						
 			        					</div>
-	        						
-	        					</div>
-		        				<div class="col-md-4 col-sm-4 col-xs-4 col-12 p-t-10">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14 m-t-30 text-fluid">JHUD EJIKE</p>
-										<p class="f-12 text-fluid">Business owner at Sony.</p>
-									</div>
-		        				</div>
-		        				<div class="col-md-5 col-sm-5 col-xs-5">
-		        					<button class="btn btn-sm f-14 waves-light waves-effect c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Following</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / first friend -->
-	        			<!-- second friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3 col-sm-3 col-xs-6">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="{{ asset('img/pphoto-4.jpg') }}"class="p-10">
+				        				<div class="col-md-4 col-sm-4 col-xs-4 col-12 p-t-10">
+				        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
+												<p class="f-14 m-t-30 text-fluid c-brand">{{$user->full_name()}}</p>
+												<p class="f-12 text-fluid">Business owner at Sony.</p>
+											</div>
+				        				</div>
+				        				<div class="col-md-5 col-sm-5 col-xs-5">
+				        					<button class="btn btn-sm f-14 waves-light waves-effect c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Following</button>
+				        				</div>
 			        				</div>
-	        					</div>
-		        				<div class="col-md-4 col-sm-4 p-t-10">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14 m-t-30 text-fluid">JHUD EJIKE</p>
-										<p class="f-12 text-fluid">Business owner at Sony</p>
-									</div>
-		        				</div>
-		        				<div class="col-md-5 col-sm-5">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Following</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / second friend-->
-	        			<!-- third friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3 col-sm-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="{{ asset('img/pphoto-301.jpeg') }}" class="p-10">
-			        				</div>
-	        					</div>
-		        				<div class="col-md-4 col-sm-4 p-t-10">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14 m-t-30 text-fluid">JHUD EJIKE</p>
-										<p class="f-12 text-fluid">Business owner at Sony.</p>
-									</div>
-
-		        				</div>
-		        				<div class="col-md-5 col-sm-5">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Following</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / third friend -->
-	        			<!--  4th friend -->
-						<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3 col-sm-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="{{ asset('img/pphoto-5.jpeg') }}" class="p-10">
-			        				</div>
-	        					</div>
-		        				<div class="col-md-4 col-sm-4 p-t-10">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14">JHUD EJIKE</p>
-										<p class="f-12">Business owner at Sony.</p>
-									</div>
-		        				</div>
-		        				<div class="col-md-5 col-sm-5">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Following</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / 4th friend -->
-	        			<!-- 5th friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3 col-sm-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="{{ asset('img/pphoto-7.jpeg') }}"class="p-10">
-			        				</div>
-	        					</div>
-		        				<div class="col-md-4 col-sm-4 p-t-10">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14 text-fluid">JHUD EJIKE</p>
-										<p class="f-12 text-fluid ">Business owner at Sony</p>
-									</div>
-		        				</div>
-		        				<div class="col-md-5 col-sm-5">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Following</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / 5th friend -->
-	        			<!-- 6th friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="{{ asset('img/p-photo-6.jpeg') }}" class="p-10">
-			        				</div>
-	        					</div>
-		        				<div class="col-md-4 col-sm-4 p-t-10">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14 text-fluid">JHUD EJIKE</p>
-										<p class="f-12 text-fluid">Business owner at Sony</p>
-									</div>
-		        				</div>
-		        				<div class="col-md-5 col-sm-5">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Following</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / 6th friend -->
-	        			<!-- 7th friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3 col-sm-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="{{ asset('img/pphoto-8.jpeg') }}" class="p-10">
-			        				</div>
-	        					</div>
-		        				<div class="col-md-4 col-sm-4 p-t-10">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14 text-fluid">JHUD EJIKE</p>
-										<p class="f-12 text-fluid">Business owner at Sony</p>
-									</div>
-		        				</div>
-		        				<div class="col-md-5 col-sm-5">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Following</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / 7th friend -->
-	        		</div>
-	        		<!-- / first column of friends -->
-	        		<!-- second column of friends -->
-	        		<div class="col-md-6 col-sm-6 col-xs-12 col-12">
-	        			<!-- first friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3 col-xs-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="{{ asset('img/pphoto-10.jpeg') }}" class="p-10">
-			        				</div>
-	        					</div>
-		        				<div class="col-md-4 col-sm-4 col-xs-8  p-t-35">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14 text-fluid">JHUD EJIKE</p>
-										<p class="f-12 text-fluid">Business owner at Sony</p>
-									</div>
-		        				</div>
-		        				<div class="col-md-5 col-sm-5">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Following</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / first friend -->
-	        			<!-- second friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3 col-sm-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="{{ asset('img/pphoto-9.jpeg') }}" class="p-10">
-			        				</div>
-	        					</div>
-		        				<div class="col-md-4 col-sm-4 p-t-35">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14 text-fluid">JHUD EJIKE</p>
-										<p class="f-12 text-fluid">Business owner at Sony</p>
-									</div>
-		        				</div>
-		        				<div class="col-md-5 col-sm-5">
-		        					<button class="btn btn-sm f-14 c-brand  btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Following</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / second friend-->
-	        			<!-- third friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3 col-sm-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="{{ asset('img/pphoto-8.jpeg') }}" class="p-10">
-			        				</div>
-	        					</div>
-		        				<div class="col-md-4 p-t-35">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14">JHUD EJIKE</p>
-										<p class="f-12">Business owner at Sony</p>
-									</div>
-		        				</div>
-		        				<div class="col-md-5 col-sm-5">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Following</button>
-	        					</div>
-	        				</div>
-	        			</div>
-	        			<!-- / third friend -->
-	        			<!--  4th friend -->
-						<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3 col-sm-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="{{ asset('img/p-photo-6.jpeg') }}" class="p-10">
-			        				</div>
-	        					</div>
-		        				<div class="col-md-4 col-sm-4 p-t-35">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14 text-fluid">JHUD EJIKE</p>
-										<p class="f-12 text-fluid">Business owner Sony</p>
-									</div>
-		        				</div>
-		        				<div class="col-md-5 col-sm-5">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Following</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / 4th friend -->
-	        			<!-- 5th friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3 col-sm-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="{{ asset('img/pphoto-7.jpeg') }}" class="p-10">
-			        				</div>
-	        					</div>
-		        				<div class="col-md-4 col-sm-4 p-t-35">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14">JHUD EJIKE</p>
-										<p class="f-12">Business Owner at Sony</p>
-									</div>
-		        				</div>
-		        				<div class="col-md-5 col-sm-5">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Following</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / 5th friend -->
-	        			<!-- 6th friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="{{ asset('img/pphoto-10.jpeg') }}" class="p-10">
-			        				</div>
-	        					</div>
-		        				<div class="col-md-4 p-t-35">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14">JHUD EJIKE</p>
-										<p class="f-12">Business owner at Sony</p>
-									</div>
-		        				</div>
-		        				<div class="col-md-5">
-		        					<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Following</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / 6th friend -->
-	        			<!-- 7th friend -->
-	        			<div class="h-114 width-563 m-b-30">
-	        				<div class="row">
-	        					<div class="col-md-3">
-	        						<div class="profile-picture dis-inline">
-			        					<img src="{{ asset('img/pphoto-301.jpeg') }}" class="p-10">
-			        				</div>
-	        					</div>
-		        				<div class="col-md-4 p-t-35">
-		        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-										<p class="f-14">JHUD EJIKE</p>
-										<p class="f-12">Business owner at Sony</p>
-									</div>
-		        				</div>
-		        				<div class="col-md-5">
-		        					<button class="btn btn-sm  f-14 c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Following</button>
-		        				</div>
-	        				</div>
-	        			</div>
-	        			<!-- / 7th friend -->
-	        		</div>
-	        		<!-- / second column of friends -->
-	        	</div>
-
-
+			        			</div>
+			        			<!-- / first friend -->
+			        		</div>
+		        		@endforeach
+		        		<!-- / second column of friends -->
+		        	</div>
+		        @endforeach
 	        </div>
 	        <!-- / friends display -->
 	        <!-- pagination begins here -->

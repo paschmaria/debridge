@@ -66,10 +66,11 @@ class UserController extends Controller
             'date_of_birth' => $request->date_of_birth,
             'user_token' => $user_token,
             'gender' => $request->gender,
+            'reference' => str_random(7) . time() . uniqid(),
             'registration_status' => 1,
             ]);
-        
-        if($role == Role::where('name', 'Merchant')->first()){
+
+        if($role === Role::where('name', 'Merchant')->first()){
             
             $user->role()->associate($role);
             $user->save();
@@ -146,7 +147,7 @@ class UserController extends Controller
         $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
         // get the id of the users that the auth user sent a friend request
         $sent_request = FriendRequest::where('sender_id', auth()->user()->id)->pluck('receiver_id')->toArray();
-        return view('users.users', compact('users', 'following_ids', 'sent_request'));
+        return view('bridger', compact('users', 'following_ids', 'sent_request'));
      }
 
      public function profile_picture(Request $request, $id){

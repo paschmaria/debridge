@@ -13,7 +13,11 @@
                         <ul class="nav navbar-nav">
                             <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('follow_page') }}">FRIENDS</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline" href="tradeline.html">TRADELINE</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('timeline', auth()->user()->id) }}">TIMELINE</a></li>
+
+                            <!-- <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('timeline', auth()->user()->id) }}">TIMELINE</a></li> -->
+
+                            <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('timeline', auth()->user()->reference) }}">TIMELINE</a></li>
+
                             <li class="nav-item"><a class="nav-link hover-underline" href="#">BUSINESS INVITATION</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline" href="#">MODELS</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline" href="#">MARKET VALUE</a></li> 
@@ -29,9 +33,15 @@
         <section class="main">
           <div class="container-fluid">
 
-            {{-- <div class="">
-                <h1 class="h1-responsive f-48 text-center m-t-20 m-b-25 c-brand w-500">OLADELE AWOSIKA</h1>
-            </div> --}}
+            @if($user->role->name !== 'Merchant')
+                <div class="">
+                    <h1 class="h1-responsive f-48 text-center m-t-20 m-b-25 c-brand w-500">{{ strtoupper($user->full_name()) }}</h1>
+                </div>
+            @else
+                <div class="">
+                    <h1 class="h1-responsive f-48 text-center m-t-20 m-b-25 c-brand w-500">{{ strtoupper($user->full_name()) }}</h1>
+                </div>
+            @endif
 
             <div class="row">
                 <div class="hidden-xs-down col-sm-3 col-md-3 m-t-20">
@@ -145,7 +155,7 @@
                                 <div id="product-img-wrapper" class="dis-none flex-row">
                                     <ul id="product-imgs" class=""></ul>
                                     <span class="add-img pos-rel">
-                                        <span class=""><input type="file" class="product-img-input" multiple></span>
+                                        <span class=""><input type="file" name="file[]" class="product-img-input" multiple></span>
                                         <button type="button" class="btn-upload btn-product-img"><i class="fa fa-plus fa-3x"></i></button>
                                     </span>
                                 </div>
@@ -171,7 +181,11 @@
                                     </a>
                                     <div class="media-body">
                                         <h6 class="media-heading c-brand w-500">
-                                            <a href="{{ route('tradeline', $post->user->id) }}" class="c-brand">{{ $post->user->full_name() }}</a>
+
+                                            <!-- <a href="{{ route('tradeline', $post->user->id) }}" class="c-brand">{{ $post->user->full_name() }}</a> -->
+
+                                            <a href="{{ route('timeline', $post->user->reference) }}" class="c-brand">{{ $post->user->full_name() }}</a>
+
                                             <span class="pull-right" style="color:grey">{{$post->updated_at->diffForHumans()}}</span>
                                         </h6>
                                         <p>{{ $post->title }}</p> {{-- <a href="#" class="c-brand">View Product</a></p> --}}
@@ -269,7 +283,7 @@
                                                         @endif --}}
                                                     </div>
                                                     <div class="media-body">
-                                                        <form method="post" action="{{ route('create_comment', $post->id) }}">
+                                                        <form method="post" action="{{ route('create_comment', $post->reference) }}">
                                                             {{ csrf_field() }}
                                                             <textarea name="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Write a reply..."></textarea>
                                                         </form>
@@ -295,30 +309,9 @@
           </div>
         </section>
         <!-- main section ends here-->
- @endsection()       
-       {{--  <!--
-            <footer></footer>
-        -->
+ @endsection()  
 
-        <!-- SCRIPTS -->
-
-        <!-- JQuery -->
-        <script type="text/javascript" src="assets/plugins/mdb/js/jquery-3.1.1.min.js"></script>
-
-        <!-- Bootstrap tooltips -->
-        <script type="text/javascript" src="assets/plugins/mdb/js/tether.min.js"></script>
-
-        <!-- Bootstrap core JavaScript -->
-        <script type="text/javascript" src="assets/plugins/mdb/js/bootstrap.min.js"></script>
-
-        <!-- MDB core JavaScript -->
-        <script type="text/javascript" src="assets/plugins/mdb/js/mdb.min.js"></script>
-
-        <!-- slick carousel -->
-        <script type="text/javascript" src="assets/plugins/slick/slick.min.js"></script>
-
-        <!-- Main JS -->
-        <script type="text/javascript" src="assets/js/main.js"></script>
+ @section('scripts') 
         <script>
             document.onreadystatechange = () => {
                 if (document.readyState === "complete") {
@@ -343,14 +336,14 @@
                         vertical: true,
                         centerPadding: '0px',
                         responsive: [
-                            // {
-                            //   breakpoint: 1024,
-                            //   settings: {
-                            //     slidesToShow: 3,
-                            //     slidesToScroll: 3,
-                            //     infinite: true
-                            //   }
-                            // },
+                            {
+                              breakpoint: 1024,
+                              settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 3,
+                                infinite: true
+                              }
+                            },
                             {
                               breakpoint: 600,
                               settings: {
@@ -377,9 +370,34 @@
                 }
             }
         </script>
+ @endsection()    
+        <!--
+            <footer></footer>
+        -->
+
+        <!-- SCRIPTS -->
+
+        <!-- JQuery -->
+        {{-- <script type="text/javascript" src="assets/plugins/mdb/js/jquery-3.1.1.min.js"></script>
+
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="assets/plugins/mdb/js/tether.min.js"></script>
+
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="assets/plugins/mdb/js/bootstrap.min.js"></script>
+
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="assets/plugins/mdb/js/mdb.min.js"></script>
+
+        <!-- slick carousel -->
+        <script type="text/javascript" src="assets/plugins/slick/slick.min.js"></script>
+
+        <!-- Main JS -->
+        <script type="text/javascript" src="assets/js/main.js"></script>
+ --}}        
         <script>
         </script>
     
     </body>
 
-</html> --}}
+</html>

@@ -14,7 +14,7 @@
                         <ul class="nav navbar-nav">
                             <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('follow_page') }}">Friends</a></li>
                             <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="tradeline.html">Tradeline</a></li>
-                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('timeline') }}">Timeline</a></li>
+                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('timeline', auth()->user()->reference) }}">Timeline</a></li>
                             <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Business Invitation</a></li>
                             <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Models</a></li>
                             <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Market Value</a></li>
@@ -31,7 +31,7 @@
     		<div id="navbarNav1 m-t-40">
 	            <h3 class="h3-responsive c-brand f-24 m-t-30 m-b-8">BRIDGER</h3>
 	            <div class="">
-	            	<button class="btn btn-md btn-sm pull-right f-17 m-b-10 bg-brand-lite btn-outline-brand"><a href="bridgerRequest.html" class="c-brand"><span class="fa fa-plus m-r-10"></span>Follow More</a></button>
+	            	<button class="btn btn-md btn-sm pull-right f-17 m-b-10 bg-brand-lite btn-outline-brand"><a href="{{url('/users/follow/more')}}" class="c-brand"><span class="fa fa-plus m-r-10"></span>Follow More</a></button>
 	            </div><br>
 	        </div>
 	        <!-- friends display  -->
@@ -56,8 +56,8 @@
 		        					</div>
 			        				<div class="col-md-4 col-sm-4 col-xs-4 col-12 p-t-10">
 			        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-											<a href="{{ route('user_profile', $user->email) }}"><p class="f-14 m-t-30 text-fluid c-brand">
-												{{ strtoupper($user->first_name . ' ' . $user->last_name) }} 
+											<a href="{{ route('timeline', $user->reference) }}"><p class="f-14 m-t-30 text-fluid c-brand">
+												{{ strtoupper($user->full_name()) }} 
 												@if($user->role_id != null && $user->role->name == 'Merchant')
 													(Merchant)
 												@endif
@@ -96,8 +96,8 @@
 		        					</div>
 			        				<div class="col-md-4 col-sm-4 col-xs-4 col-12 p-t-10">
 			        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-											<a href="{{ route('user_profile', $user->email) }}"><p class="f-14 m-t-30 text-fluid c-brand">
-												{{ strtoupper($user->first_name . ' ' . $user->last_name) }} 
+											<a href="{{ route('timeline', $user->reference) }}"><p class="f-14 m-t-30 text-fluid c-brand">
+												{{ $user->full_name() }} 
 												@if($user->role_id != null && $user->role->name == 'Merchant')
 													(Merchant)
 												@endif
@@ -107,13 +107,13 @@
 			        				</div>
 			        				@if(in_array($user->id, $following_ids))
 				        				<div class="col-md-5 col-sm-5 col-xs-5">
-				        					<form method="post" action="{{ route('unfollow', $user->email) }}">
+				        					<form method="post" action="{{ route('unfollow', $user->reference) }}">
 				        						<button type="submit" class="btn btn-sm f-14 waves-light waves-effect c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Unfollow</button>
 				        					</form>
 				        				</div>
 			        				@else
 			        					<div class="col-md-5 col-sm-5 col-xs-5">
-				        					<form method="post" action="{{ route('follow', $user->email) }}">
+				        					<form method="post" action="{{ route('follow', $user->reference) }}">
 				        						<button type="submit" class="btn bg-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Follow</button>
 				        					</form>
 				        				</div>

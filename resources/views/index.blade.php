@@ -45,7 +45,7 @@
                         <a href="#" class="list-group-item list-group-item-action">BRIDGE POINT</a>
                         @if(Auth::check() && isset(auth()->user()->bridgeCode))
                             <a href="" class="list-group-item list-group-item-action" disable>
-                                BRIDGE CODE: {{ auth()->user()->bridgeCode->code }}
+                                BRIDGE CODE: ({{ auth()->user()->bridgeCode->code }})
                             </a>
                         @endif
                     </div>

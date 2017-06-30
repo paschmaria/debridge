@@ -64,11 +64,11 @@
                                             <!-- black circle -->
                                                 <div class="follow_div z-100">
                                                 @if(!in_array($user->id, $following_ids))
-                                                    <form method="post" action="{{ route('follow', $user->email) }}">
+                                                    <form method="post" action="{{ route('follow', $user->reference) }}">
                                                         <button class="follow_btn" id="follow"></button>
                                                     </form>
                                                 @else
-                                                    <form method="post" action="{{ route('unfollow', $user->email) }}">
+                                                    <form method="post" action="{{ route('unfollow', $user->reference) }}">
                                                         <button class="unfollow_btn" id="follow"><i class="fa fa-check unfollow_i"></i></button>
                                                     </form>
                                                 @endif 
@@ -98,7 +98,7 @@
                         <div class="button_wrapper m-t-40 m-b-40 text-center">
                             {{-- <button class="btn f-20 width-300 p-b-10 bg-brand-lite btn-outline-brand h-58">Add more friends</button> --}}
                             @if (count(auth()->user()->following->where('role_id', 1)) >= 10)
-                                <a href="{{ route('follower_merchant') }}"><button class="f-20 btn btn-brand width-200 h-40 p-b-43 p-t-43">Continue</button></a>
+                                <a href="{{ route('follow_merchants') }}"><button class="f-20 btn btn-brand width-200 h-40 p-b-43 p-t-43">Continue</button></a>
                             @else
                                 <button class="f-20 btn btn-brand width-200 h-40 p-b-43 p-t-43 disabled">Continue</button>
                             @endif
