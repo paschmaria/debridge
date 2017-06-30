@@ -1993,8 +1993,29 @@ header input[type=search].input-alternate:hover, header input[type=search].input
 }
 
 .pics {
-  max-width: 70px;
+  max-width: 70px !important;
   max-height: 70px;
+  width: 100%;
+  height: auto;
+}
+
+.pics2 {
+  max-width: 250px;
+  max-height: 207px;
+  width: 100%;
+  height: auto;
+}
+
+.picfix {
+  max-width: 90px;
+  max-height: 120px;
+  width: 100%;
+  height: auto;
+}
+
+.picfix2 {
+  max-width: 238px;
+  max-height: 185px;
   width: 100%;
   height: auto;
 }
