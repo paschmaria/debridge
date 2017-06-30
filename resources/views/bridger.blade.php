@@ -49,14 +49,23 @@
 			        							<div class="profile-picture dis-inline">
 						        					<img src="{{ asset('img/pphoto-2.jpeg') }}" class="p-10">
 					        					</div>
-			        						
 			        					</div>
-				        				<div class="col-md-4 col-sm-4 col-xs-4 col-12 p-t-10">
+			        					<div class="col-md-4 col-sm-4 col-xs-4 col-12 p-t-10">
 				        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
-												<p class="f-14 m-t-30 text-fluid c-brand">{{$user->full_name()}}</p>
+												<p class="f-14 m-t-30 text-fluid c-brand"><a style="color: #16a085 ;" href="{{url('/timeline', $user->reference)}}">{{$user->full_name()}}</a></p>
 												<p class="f-12 text-fluid">Business owner at Sony.</p>
 											</div>
 				        				</div>
+			        					@if(!in_array($user->id, $following_ids))
+			        						<div class="col-md-5 col-sm-5 col-xs-5">
+			        							<button class="btn follow  btn-sm f-14 waves-light waves-effect c-brand btn-outline-brand m-t-40 m-b-50" data-email="{{$user->reference}}" data-fname="{{$user->full_name()}}" data-id="{{$user->id}}" ><span class="fa fa-user">&nbsp; &nbsp;</span>Follow</button>
+			        						</div>
+			        					@else
+			        						<div class="col-md-5 col-sm-5 col-xs-5">
+			        							<button class="btn unfollow btn-sm f-14 waves-light waves-effect c-brand btn-outline-brand m-t-40 m-b-50" data-email="{{$user->reference}}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}" ><span class="fa fa-check">&nbsp; &nbsp;</span>Unfollow</button>
+			        						</div>
+			        					@endif
+				        				
 				        				<div class="col-md-5 col-sm-5 col-xs-5">
 				        					<button class="btn btn-sm f-14 waves-light waves-effect c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Following</button>
 				        				</div>

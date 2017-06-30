@@ -61,7 +61,7 @@ class FollowController extends Controller
             'message' => auth()->user()->full_name() . ' is now following you!',
             'description_id' => 1 
             ]);
-        return response()->json($user->email);
+        return response()->json($user->reference);
         // return back()->with('success', 'Now following ' . $user->email);
     }
 

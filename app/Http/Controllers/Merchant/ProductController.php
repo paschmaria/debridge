@@ -341,7 +341,8 @@ class ProductController extends Controller
         $merchant = MerchantAccount::firstOrCreate(['user_id' => auth()->user()->id]);
         $inventory = Inventory::firstOrCreate(['merchant_account_id' => $merchant->id]);
         $products = Product::where('inventory_id', $inventory->id)->get();
-        return view('products', compact('products'));
+        $user = auth()->user();
+        return view('products', compact('products', 'user'));
     }
 
 
