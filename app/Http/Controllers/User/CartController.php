@@ -35,9 +35,18 @@ class CartController extends Controller
 
     public function viewCart()
     {
-    	
     	// $items = Cart::where('user_id', auth()->user()->id)->with('product')->get();
         $items = auth()->user()->cart_products;
+        // dd($items);
+        foreach ($items as $cart) {
+            // dd($cart->promo_price);
+            if(!empty($cart->promo_price)) {
+                // dd($cart->promo_price);
+                $items = $cart->promo_price;
+            }else{
+                $items = $cart->price;
+            }
+        }
         // dd($items);
     	return view('mycart', compact('items'));
     }

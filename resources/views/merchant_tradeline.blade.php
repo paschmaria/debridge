@@ -49,7 +49,7 @@
                         <a href="9.html" class="list-group-item list-group-item-action"><i class="fa fa-user fa-2x p-r-40"></i><span class="p-l-40">VIEW PROFILE</span></a>
                         <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-users fa-2x p-r-40"></i><span class="p-l-40">TRADE GROUPS</span></a>
                         <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-globe fa-2x p-r-40"></i><span class="p-l-40">TRADE COMMUNITY</span</a>
-                        <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-archive fa-2x p-r-40"></i><span class="p-l-40">INVENTORY</span></a>
+                        <a href="{{ route('user_store', $user->reference) }}" class="list-group-item list-group-item-action"><i class="fa fa-archive fa-2x p-r-40"></i><span class="p-l-40">INVENTORY</span></a>
                     </div>
                 </div>
             </div>
@@ -152,13 +152,13 @@
                                    <button type="button" class="btn btn-brand waves-effect">upload</button>
                                    <button type="submit" class="btn btn-brand waves-effect">post</button> -->
                            </div>
-
+                        @forelse($posts as $post)
                             <div class="media">
                                 <a class="pull-left" href="#">
                                     <img class="media-object p-r-10" src="{{ asset('img/acc-img-1.png') }}" alt="Image">
                                 </a>
                                 <div class="media-body">
-                                    <h6 class="media-heading c-brand w-500">Jhud Fashion House</h6>
+                                    <a href="{{ route('timeline', $post->user->reference) }}"><h6 class="media-heading c-brand w-500">{{ $post->user->full_name() }}</h6></a>
                                     <p>New arrivals are everywhere. Get Quality 2017 dresses which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing</p>
                                 </div>
                             </div>
@@ -207,173 +207,15 @@
                                     <textarea name="" id="" class="md-textarea input-alternate p-10 h-58 border-box comment_box" placeholder="Press enter to send..."></textarea>
                                 </div>
                             </div>
-                            <div class="media m-b-40 comment flex-column">
-                                <!-- <div class="media">
-                                    <div class="pull-left p-r-10">
-                                        <img class="media-object " src="assets/img/acc-img-2.png" alt="Image">
-                                    </div>
-                                    <div class="media-body">
-                                        <h6 class="media-heading w-700 m-b-5 f-12">Cindy Fashion House </h6>
-                                        <p m-b- f-12>New arrivals are everywhere. Get Quality 2017 dresses which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing</p>
-                                        <ul class="m-b-0 f-12">
-                                            <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart-o"></i></span> Like</a></li>
-                                        <li class="c-brand dis-inline-b p-l-10 p-r-10"><a href="#">Reply</a></li>
-                                        <li class="c-brand dis-inline-b p-l-10">31 May 2017</li>
-                                        </ul>
-                                        <div class="media m-t-5">
-                                            <div class="pull-left p-r-10">
-                                                <img src="assets/img/acc-img-1.png" class="media-object">
-                                            </div>
-                                            <div class="media-body">
-                                                <textarea name="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Write a reply..."></textarea>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                </div> -->
-                            </div> 
-                            <!-- /.comment section -->
-                            <div class="card-group">
-                                <div class="card m-5">
-                                    <!--Card image-->
-                                    <div class="view overlay hm-white-slight">
-                                        <img src="{{ asset('img/products/timeline-product-3.png') }}" class="img-fluid width-100p" alt="">
-                                        <a href="#">
-                                            <div class="mask waves-effect waves-light"></div>
-                                        </a>
-                                    </div>
-                                    <!--/.Card image-->
-                                </div>
-                                <div class="card m-5">
-                                    <!--Card image-->
-                                    <div class="view overlay hm-white-slight">
-                                        <img src="{{ asset('img/products/timeline-product-3.png') }}" class="img-fluid width-100p" alt="">
-                                        <a href="#">
-                                            <div class="mask waves-effect waves-light"></div>
-                                        </a>
-                                    </div>
-                                    <!--/.Card image-->
-                                </div>
-                            </div>
-
-                            <div class="m-t-10 m-b-50">
-                                <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10" role="group" aria-label="Ad Ad Action Buttons">
-                                    <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 width-200 like">
-                                        <span class="">Admire&nbsp;</span><span class=""><i class="fa fa-heart"></i></span>
-                                    </button>
-                                    <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
-                                        <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
-                                    </button>
-                                    <button type="button" class="btn bg-white m-l-3 f-14 width-200">
-                                        <span class="">Hype&nbsp;</span><span class=""><i class="fa fa-share-alt"></i></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- coomment section -->
-                            <div class="media m-b-15">
-                                <a class="pull-left" href="#">
-                                <img class="media-object p-r-10" src="{{ asset('img/acc-img-1.png') }}" alt="Image">
-                                </a>
-                                <div class="media-body">
-                                    <textarea name="" id="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Press enter to send..."></textarea>
-                                </div>
-                            </div>
-                            <div class="media m-b-40 flex-column">
-                                <div class="media">
-                                    <div class="pull-left p-r-10">
-                                        <img class="media-object " src="{{ asset('img/acc-img-2.png') }}" alt="Image">
-                                    </div>
-                                    <div class="media-body">
-                                        <h6 class="media-heading w-700 m-b-5 f-12">Cindy Fashion House </h6>
-                                        <p m-b- f-12>New arrivals are everywhere. Get Quality 2017 dresses which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing</p>
-                                        <ul class="m-b-0 f-12">
-                                            <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart-o"></i></span> Like</a></li>
-                                        <li class="c-brand dis-inline-b p-l-10 p-r-10"><a href="#">Reply</a></li>
-                                        <li class="c-brand dis-inline-b p-l-10">31 May 2017</li>
-                                        </ul>
-                                        <div class="media m-t-5">
-                                            <div class="pull-left p-r-10">
-                                                <img src="{{ asset('img/acc-img-1.png" class="media-object') }}">
-                                            </div>
-                                            <div class="media-body">
-                                                <textarea name="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Write a reply..."></textarea>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                </div>
-                            </div>  
-                            <!-- /.comment section -->
-                            <div class="card-group">
-                                <div class="card m-5">
-                                    <!--Card image-->
-                                    <div class="view overlay hm-white-slight">
-                                        <img src="{{ asset('img/products/timeline-product-2.png') }}" class="img-fluid width-100p" alt="">
-                                        <a href="#">
-                                            <div class="mask waves-effect waves-light"></div>
-                                        </a>
-                                    </div>
-                                    <!--/.Card image-->
-                                </div>
-                                <div class="card m-5">
-                                    <!--Card image-->
-                                    <div class="view overlay hm-white-slight">
-                                        <img src="{{ asset('img/products/timeline-product-2.png') }}" class="img-fluid width-100p" alt="">
-                                        <a href="#">
-                                            <div class="mask waves-effect waves-light"></div>
-                                        </a>
-                                    </div>
-                                    <!--/.Card image-->
-                                </div>
-                            </div>
-                            <div class="m-t-10 m-b-50">
-                                <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10" role="group" aria-label="Ad Ad Action Buttons">
-                                    <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 width-200 like">
-                                        <span class="">Admire&nbsp;</span><span class=""><i class="fa fa-heart"></i></span>
-                                    </button>
-                                    <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
-                                        <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
-                                    </button>
-                                    <button type="button" class="btn bg-white m-l-3 f-14 width-200">
-                                        <span class="">Hype&nbsp;</span><span class=""><i class="fa fa-share-alt"></i></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- coomment section -->
-                            <div class="media m-b-15">
-                                <a class="pull-left" href="#">
-                                <img class="media-object p-r-10" src="{{ asset('img/acc-img-1.png') }}" alt="Image">
-                                </a>
-                                <div class="media-body">
-                                    <textarea name="" id="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Press enter to send..."></textarea>
-                                </div>
-                            </div>
-                            <div class="media m-b-40 flex-column">
-                                <div class="media">
-                                    <div class="pull-left p-r-10">
-                                        <img class="media-object " src="{{ asset('img/acc-img-2.png') }}" alt="Image">
-                                    </div>
-                                    <div class="media-body">
-                                        <h6 class="media-heading w-700 m-b-5 f-12">Cindy Fashion House </h6>
-                                        <p m-b- f-12>New arrivals are everywhere. Get Quality 2017 dresses which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing</p>
-                                        <ul class="m-b-0 f-12">
-                                            <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart-o"></i></span> Like</a></li>
-                                        <li class="c-brand dis-inline-b p-l-10 p-r-10"><a href="#">Reply</a></li>
-                                        <li class="c-brand dis-inline-b p-l-10">31 May 2017</li>
-                                        </ul>
-                                        <div class="media m-t-5">
-                                            <div class="pull-left p-r-10">
-                                                <img src="{{ asset('img/acc-img-1.png') }}" class="media-object">
-                                            </div>
-                                            <div class="media-body">
-                                                <textarea name="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Write a reply..."></textarea>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                </div>
-                            </div>  
-                            <!-- /.comment section -->
+                @empty
+                            <p>hhhh</p>
                         </div>
+                @endforelse
+                        <p>kkkk</p>
                     </div> 
+                    <p>llll</p>
                 </div>
+
                 <div class="hidden-xs-down col-sm-3 col-md-3 m-t-20">
                     <p class="text-center w-500 c-brand">MOST VISITED PRODUCT IN MY STORE</p>
                     <!--Carousel Wrapper-->
