@@ -83,7 +83,7 @@ class ProductController extends Controller
         $product->price = $request->input('product_price');
         $product->quantity = $request->input('quantity');
         $product->product_category_id = $request->input('category');
-        $product->reference = str_random(7) . time() . uniqid(),
+        $product->reference = str_random(7) . time() . uniqid();
         
         if(!empty($request->file('file'))){
             $album = $this->photo_album->store($request);
@@ -327,8 +327,8 @@ class ProductController extends Controller
                     'user_id' => auth()->user()->id,
                     'title' => $request->input('title'),
                     'content' => $request->input('body'),
-                    'photo_album_id' => $product->photo_album_id
-                    'product_id' => 
+                    'photo_album_id' => $product->photo_album_id,
+                    'product_id' => $product->id,
                     'reference' => str_random(7) . time() . uniqid(),
                 ]);
             }       
@@ -346,10 +346,11 @@ class ProductController extends Controller
     }
 
 
-    public function StoreForUser(User $user){
+    public function StoreForUser($reference){
         
         //get or create merchant acount and inventory
         // dd($user->id);
+        $user = User::where('reference', $reference)->first();
         $merchant = MerchantAccount::where(['user_id' => $user->id])->first();
         // dd($merchant);
         $inventory = Inventory::where(['merchant_account_id' => $merchant->id])->first();
