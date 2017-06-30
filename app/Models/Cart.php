@@ -9,12 +9,12 @@ class Cart extends Model
 
 	protected $fillable = ['product_id', 'user_id'];
 	
-    public function bridgeCode()
+    public function user()
     {
-        return $this->hasOne('App\Models\BridgeCode');
+        return $this->belongsTo('App\Models\User');
     }
 
-    public function products(){
-    	return $this->hasMany('App\Models\Product');
+    public function product(){
+    	return $this->belongsTo('App\Models\Product');
     }
 }

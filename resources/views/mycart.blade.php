@@ -15,7 +15,7 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="m-l-10 m-t-10">
-                                <h6>Products name</h6>
+                                <h6>{{ $item->name }}</h6>
                                  <h6>12, Olu-Akerele street, Allen ikeja</h6>
                                 </div>
                             </div> 
@@ -31,7 +31,7 @@
                             <div class="col-md-6">
                                 <div class="m-l-78 m-t-10">
                                 <h6>Price</h6>
-                                <h6 class="c-brand">&#8358;6000</h6>
+                                <h6 class="c-brand">&#8358;{{ $item->price }}</h6>
                                 </div>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                             <h6 class="">Total</h6>
                         </div>
                         <div class="col-md-3">
-                            <h6 class=" c-brand">&#8358;18,000</h6>
+                            <h6 class=" c-brand">&#8358; {{ $items->pluck('price')->sum() }}</h6>
                             <a class="btn btn-sm bg-brand" href="{{ route('clearCart') }}">Clear</a>
 
                         </div>

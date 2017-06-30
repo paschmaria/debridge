@@ -146,16 +146,24 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\BridgeCode');
     }
 
-    public function cart()
+    // public function cart()
+    // {
+    //     return $this->hasOne('App\Models\Cart');
+    // }
+
+    public function cart_products()
     {
-        return $this->hasOne('App\Models\Cart');
+        return $this->belongsToMany('App\Models\Product', 'carts', 'user_id', 'product_id');
     }
 
-    public function ownsShop($id){
+
+    public function ownsShop($id=null){
         $merchant_ownership = MerchantAccount::where('user_id', $id)->first();
         // dd($merchant_ownership);
+
+        // $merchant_ownership
         
-        if($merchant_ownership->id === auth()->user()->id){
+        if($merchant_ownership->user_id == auth()->user()->id){
             return true;
         }else{
             return false;

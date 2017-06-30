@@ -55,9 +55,9 @@
                                         <i class="fa fa-trash-o"></i>
                                     </button>
                                     @else
-                                    <button type="button" class="btn bg-white c-brand m-r-3 f-14" data-toggle="modal">
+                                    <a href="{{ route('addToCart', $product->id) }}"><button type="button" class="btn bg-white c-brand m-r-3 f-14" data-toggle="modal">
                                                 <i class="fa fa-shopping-cart"></i>
-                                    </button>
+                                    </button></a>
                                     @endif
                                     <a href="{{ route('product_admire', $product->id) }}" class="btn bg-white c-brand m-l-3 f-14 m-r-3 like">
                                         <i class="fa fa-heart-o"></i>
