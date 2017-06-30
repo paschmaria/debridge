@@ -8,7 +8,7 @@ use App\User;
 use App\Models\Post;
 use App\Models\PostAdmire;
 use App\Models\PostHype;
-use App\User;
+
 use App\Models\Role;
 
 class TimelineController extends Controller
@@ -22,7 +22,6 @@ class TimelineController extends Controller
     {
         $this->middleware('auth');
     }
-
 
     public function index($reference)
     {
@@ -56,19 +55,21 @@ class TimelineController extends Controller
         $posts = $sorted->values()->all();
         // dd($posts);
 
+        // dd($user->role()->first());
+
 
         $role = Role::where('name', 'Merchant')->first()->name;
         
         if(isset($user->role_id) && $user->role()->first()->name === $role){
-            return view('merchant_tradeline', compact('posts', 'admired', 'hyped'));
-        }else{
-            return view('users.user_tradeline', compact('posts', 'admired', 'hyped'));
-        }
+            return view('merchant_tradeline', compact('posts', 'admired', 'hyped', 'user'));
 
-        return view('users.user_tradeline', compact('user', 'posts', 'admired', 'hyped'));
+        }else{
+            return view('users.user_tradeline', compact('posts', 'admired', 'hyped', 'user'));
+        }
+        return view('users.user_tradeline', compact('user', 'posts', 'admired', 'hyped', 'user'));
 
     }
-        // return view('users.user_tradeline', compact('posts', 'admired', 'hyped'));
+        
     
 
     /**

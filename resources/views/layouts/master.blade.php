@@ -104,7 +104,7 @@
                                                     <a class="dropdown-item waves-effect waves-light" href="{{ url('friend_requests') }}">Trade Requests</a>
                                                     <a class="dropdown-item waves-effect waves-light" href="#">Inventory</a>
                                                 @endif
-                                                <a class="dropdown-item waves-effect waves-light" href="{{ route('timeline', auth()->user()->id) }}">Timeline</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="{{ route('timeline', auth()->user()->reference) }}">Timeline</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('logout') }}">Logout</a>
                                             </div>
                                         </div>

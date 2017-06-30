@@ -37,7 +37,7 @@ Route::get('/admire/{product}', 'User\AdmireController@create')->name('product_a
 Route::get('/unadmire/{product}', 'User\AdmireController@destroy')->name('product_unadmire');
 
 
-// Route::get('/timeline/{user}', 'User\TimelineController@index')->name('timeline')
+
 Route::get('/timeline/{reference}', 'User\TimelineController@index')->name('timeline');
 
 Route::get('/user/follow/friends', 'FollowController@getUser')->name('follow_friends');
