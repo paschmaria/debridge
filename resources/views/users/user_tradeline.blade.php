@@ -13,7 +13,11 @@
                         <ul class="nav navbar-nav">
                             <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('follow_page') }}">FRIENDS</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline" href="tradeline.html">TRADELINE</a></li>
+
+                            <!-- <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('timeline', auth()->user()->id) }}">TIMELINE</a></li> -->
+
                             <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('timeline', auth()->user()->reference) }}">TIMELINE</a></li>
+
                             <li class="nav-item"><a class="nav-link hover-underline" href="#">BUSINESS INVITATION</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline" href="#">MODELS</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline" href="#">MARKET VALUE</a></li> 
@@ -176,7 +180,11 @@
                                     </a>
                                     <div class="media-body">
                                         <h6 class="media-heading c-brand w-500">
+
+                                            <!-- <a href="{{ route('tradeline', $post->user->id) }}" class="c-brand">{{ $post->user->full_name() }}</a> -->
+
                                             <a href="{{ route('timeline', $post->user->reference) }}" class="c-brand">{{ $post->user->full_name() }}</a>
+
                                             <span class="pull-right" style="color:grey">{{$post->updated_at->diffForHumans()}}</span>
                                         </h6>
                                         <p>{{ $post->title }}</p> {{-- <a href="#" class="c-brand">View Product</a></p> --}}

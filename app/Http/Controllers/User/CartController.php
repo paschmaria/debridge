@@ -19,9 +19,10 @@ class CartController extends Controller
     	return back()->with('info', 'Item Added to Cart');
     }
 
-    public function removeItem(Cart $item)
+    public function removeItem(Product $item)
     {
-    	$item->delete();
+        $cart = Cart::where(['user_id'=> auth()->user()->id, 'product_id' => $item->id])->first();
+    	$cart->delete();
     	return back()->with('info', 'Item Removed');
 
     }
@@ -35,9 +36,9 @@ class CartController extends Controller
     public function viewCart()
     {
     	
-    	$items = Cart::where('user_id', auth()->user()->id)->get();
-    	// $items->load('products');
-    	// dd($items);
+    	// $items = Cart::where('user_id', auth()->user()->id)->with('product')->get();
+        $items = auth()->user()->cart_products;
+        // dd($items);
     	return view('mycart', compact('items'));
     }
 }

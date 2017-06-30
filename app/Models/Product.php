@@ -52,7 +52,7 @@ class Product extends Model
         return $this->hasMany('App\Models\ProductHype');
     }
 
-    public function cart(){
-        $this->belongsTo('App\Models\Cart');
+    public function carts(){
+        $this->belongsToMany('App\Models\Product', 'carts', 'product_id', 'user_id');
     }
 }

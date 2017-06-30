@@ -36,7 +36,10 @@ Route::get('/unadmire/{post}', 'User\AdmireController@destroy')->name('unadmire'
 Route::get('/admire/{product}', 'User\AdmireController@create')->name('product_admire');
 Route::get('/unadmire/{product}', 'User\AdmireController@destroy')->name('product_unadmire');
 
+
+
 Route::get('/timeline/{reference}', 'User\TimelineController@index')->name('timeline');
+
 Route::get('/user/follow/friends', 'FollowController@getUser')->name('follow_friends');
 Route::get('/user/follow/merchants', 'FollowController@getMerchant')->name('follow_merchants');
 Route::post('/user/follow/friends', 'FollowController@update')->name('follow_friends');
@@ -131,7 +134,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 Route::get('/user/{email}', 'User\AccountController@index')->name('user_profile');
 Route::get('/araha_market', 'Auth\UserController@arahaMarket')->name('araha_market');
 
-Route::get('/merchant_tradeline', 'Auth\UserController@merchantTradeline')->name('merchant_tradeline');
+Route::get('/merchant_tradeline/{user}', 'User\TimelineController@index')->name('tradeline');
 
 Route::get('/bridger', 'Auth\UserController@bridger')->name('bridger');
 

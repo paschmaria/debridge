@@ -173,9 +173,15 @@ class UserController extends Controller
         return view('araha_market');
     }
 
-    public function merchantTradeline(){
-        return view('merchant_tradeline');
-    }
+    // public function merchantTradeline(User $user){
+    //     $role = Role::where('name', 'Merchant')->first()->name;
+    //     // dd($role);
+    //     if(isset($user->role_id) && $user->role()->first()->name === $role){
+    //         return view('merchant_tradeline');
+    //     }else{
+    //         return redirect()->route('timeline', $user->id) ;
+    //     }
+    // }
 
      public function merchantTimeline(){
         return view('merchant_timeline');
