@@ -70,10 +70,7 @@
                                     <li class="dis-inline-b">
                                         <a href="{{ route('register') }}" class="btn-outline-white btn waves-effect">Log In / Register</a>
                                     </li>
-                                    <li class="dis-inline-b pos-rel">
-                                        <a href="#" class="p-l-10 p-r-10"><span><i class="fa fa-shopping-cart fa-lg c-white" aria-hidden="true"></i></span></a>
-                                        <span class="cart-count">3</span>
-                                    </li>
+                                        
                                 </ul>
                             </div>
                         @else
