@@ -79,9 +79,9 @@
                                     <li class="nav-item animated bounceIn list-inline-item dis-block">
 
                                         @if (auth()->user()->image_id != null)
-                                            <img src="{{ route('image', [auth()->user()->profile_picture->image_reference,'']) }}" class="img img-circle" width="50" height="50">
+                                            <img src="{{ route('image', [auth()->user()->profile_picture->image_reference,'']) }}" class="img img-circle bd-50p" width="50" height="50">
                                         @else
-                                            <img src="{{ asset('img/icons/profiled.png') }}" class="" width="50" height="50">
+                                            <img src="{{ asset('img/icons/profiled.png') }}" class="bd-50p" width="50" height="50">
                                         @endif
                                     </li>
                                     <li class="nav-item animated bounceIn list-inline-item dis-block z-1000">
@@ -97,7 +97,7 @@
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ url('follow') }}">Followers</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ url('upload') }}">Gallery</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="#">Edit Profile</a>
-                                                @if(auth()->user()->role_id == 2)
+                                                @if(strtolower(auth()->user()->role->name) === 'merchant')
                                                     <a class="dropdown-item waves-effect waves-light" href="{{ url('friend_requests') }}">Trade Requests</a>
                                                     <a class="dropdown-item waves-effect waves-light" href="#">Inventory</a>
                                                 @endif
@@ -112,8 +112,6 @@
                                 <ul class="navbar-nav dis-flex flex-row">
                                     <li class="animated bounceIn"> 
                                         <a href="{{ route('viewCart') }}" class="p-l-10 p-r-10">
-                                            <span class="pos-rel z-5000">
-                                        <a href="{{ route('viewCart') }}"" class="p-l-10 p-r-10">
                                             <span class="pos-rel">
                                                 <i class="fa fa-shopping-cart fa-lg c-white" aria-hidden="true"></i>
                                                 <span class="cart-count">{{ $item_count }}</span>
@@ -144,11 +142,11 @@
                                                             @if ($notification->foreigner->profile_picture != null)
                                                                 <img src="{{ route('image', [$notification->foreigner->profile_picture->image_reference,'']) }}" class="h-40 width-40 m-r-5 bd-50p">
                                                             @else
-                                                                <img src="{{ asset('img/icons/profiled.png') }}" class="" width="50" height="50">
+                                                                <img src="{{ asset('img/icons/profiled.png') }}" class="h-40 width-40 m-r-5 bd-50p">
                                                             @endif
                                                         </a>
                                                         <span>{{ $notification->message }}</span>
-                                                        <a href="/"><small class="pull-right">Mark as read</small></a>
+                                                        <a href="{{ route('delete_social_notification', $notification->id) }}"><small class="pull-right">Mark as read</small></a>
                                                     </li>
                                                 @empty
                                                     <li class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="" disabled>

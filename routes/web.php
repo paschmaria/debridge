@@ -40,9 +40,11 @@ Route::get('/unadmire/{product}', 'User\AdmireController@destroy')->name('produc
 
 Route::get('/timeline/{reference}', 'User\TimelineController@index')->name('timeline');
 
-Route::get('/user/follow/friends', 'FollowController@getUser')->name('follow_friends');
-Route::get('/user/follow/merchants', 'FollowController@getMerchant')->name('follow_merchants');
-Route::post('/user/follow/friends', 'FollowController@update')->name('follow_friends');
+Route::get('/users/follow/friends', 'FollowController@getUser')->name('follow_friends');
+Route::get('/users/follow/merchants', 'FollowController@getMerchant')->name('follow_merchants');
+Route::post('/users/follow/friends', 'FollowController@friendsFollowComplete')->name('follow_friends');
+Route::post('/users/follow/merchants', 'FollowController@merchantsFollowComplete')->name('follow_merchants');
+Route::get('/users/social_notification/delete/{notification}', 'User\SocialNotificationController@destroy')->name('delete_social_notification');
 
 Route::get('/users/follow/more', 'Auth\UserController@viewUsers')->name('view_users');
 
