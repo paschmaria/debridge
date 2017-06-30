@@ -168,6 +168,7 @@ body{
 .t-12 {top:12px;}
 .t-15 {top:15px; }
 .t-24 {top:-24px;}
+.t-40 {top:40%; }
 .t-65p {top:65%; }
 
 /****  Bottom  ****/
@@ -187,6 +188,7 @@ body{
 .l-12 {left:12px;}
 .l-15 {left:15px; }
 .l-30 {left:30px; }
+.l-30p {left:30%; }
 
 /****  Right  ****/
 .r-0 {right:0; }
@@ -194,6 +196,7 @@ body{
 .r-10 {right:10px; }
 .r-15 {right:15px; }
 .r-10p {right:10%; }
+.r-29 {right:29%; }
 .r-50 {right:50%; }
 .r-58 {right:58%; }
 
@@ -270,6 +273,7 @@ body{
 .width-50 {width:50px !important;}
 .width-60 {width:60px !important;}
 .width-82 {width:82px !important;}
+.width-100 {width:100px !important;}
 .width-110 {width:110px !important;}
 .width-125 {width:125px !important;}
 .width-130 {width:130px !important;}
@@ -311,6 +315,7 @@ body{
 .h-300 {height: 300px !important;overflow: hidden !important}
 .h-310 {height: 310px !important;overflow: hidden !important}
 .h-350 {height: 350px !important;overflow: hidden !important}
+.h-100p {height: 100% !important;overflow: hidden !important}
 .h-inherit {height: inherit !important;overflow: hidden !important}
 .h-initial {height: 30initial !important;overflow: hidden !important}
 .max-height {max-height:400px !important;}
