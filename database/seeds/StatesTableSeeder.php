@@ -14,155 +14,155 @@ class StatesTableSeeder extends Seeder
         //
 
         DB::table('states')->insert([
-        	'name' => 'Lagos',
+        	'name' => 'Lagos', 'country_id' => 1
         ]);
 
         DB::table('states')->insert([
-        	'name' => 'Abia',
+        	'name' => 'Abia', 'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Adamawa',
+        	'name' => 'Adamawa', 'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Anambra',
+        	'name' => 'Anambra', 'country_id' => 1
         ]);
         
          DB::table('states')->insert([
-        	'name' => 'Akwa Ibom',
+        	'name' => 'Akwa Ibom', 'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Bauchi',
+        	'name' => 'Bauchi', 'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Bayelsa',
+        	'name' => 'Bayelsa', 'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Benue',
+        	'name' => 'Benue', 'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Borno',
+        	'name' => 'Borno', 'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Cross River',
+        	'name' => 'Cross River', 'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Delta',
+        	'name' => 'Delta', 'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Ebonyi',
+        	'name' => 'Ebonyi', 'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Enugu',
+        	'name' => 'Enugu', 'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Edo',
+        	'name' => 'Edo', 'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Ekiti',
+        	'name' => 'Ekiti', 'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Gombe',
+        	'name' => 'Gombe', 'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Imo',
+        	'name' => 'Imo',  'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Jigawa',
+        	'name' => 'Jigawa',  'country_id' => 1
         ]);
 
 
          DB::table('states')->insert([
-        	'name' => 'Kaduna',
+        	'name' => 'Kaduna',  'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Kano',
+        	'name' => 'Kano',  'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Katsina',
+        	'name' => 'Katsina',  'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Kebbi',
+        	'name' => 'Kebbi',  'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Kogi',
+        	'name' => 'Kogi',  'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Kwara',
-        ]);
-
-        
-         DB::table('states')->insert([
-        	'name' => 'Nasarawa',
-        ]);
-
-         DB::table('states')->insert([
-        	'name' => 'Niger',
-        ]);
-
-         DB::table('states')->insert([
-        	'name' => 'Ogun',
-        ]);
-
-         DB::table('states')->insert([
-        	'name' => 'Ondo',
-        ]);
-
-         DB::table('states')->insert([
-        	'name' => 'Osun',
+        	'name' => 'Kwara',  'country_id' => 1
         ]);
 
         
          DB::table('states')->insert([
-        	'name' => 'Oyo',
+        	'name' => 'Nasarawa',  'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Plateau',
+        	'name' => 'Niger',  'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Rivers',
+        	'name' => 'Ogun',  'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Sokoto',
+        	'name' => 'Ondo',  'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Taraba',
-        ]);
-
-         DB::table('states')->insert([
-        	'name' => 'Yobe',
+        	'name' => 'Osun',  'country_id' => 1
         ]);
 
         
          DB::table('states')->insert([
-        	'name' => 'Zamfara',
+        	'name' => 'Oyo',  'country_id' => 1
         ]);
 
          DB::table('states')->insert([
-        	'name' => 'Fct',
+        	'name' => 'Plateau',  'country_id' => 1
+        ]);
+
+         DB::table('states')->insert([
+        	'name' => 'Rivers',  'country_id' => 1
+        ]);
+
+         DB::table('states')->insert([
+        	'name' => 'Sokoto',  'country_id' => 1
+        ]);
+
+         DB::table('states')->insert([
+        	'name' => 'Taraba',  'country_id' => 1
+        ]);
+
+         DB::table('states')->insert([ 
+        	'name' => 'Yobe', 'country_id' => 1
+        ]);
+
+        
+         DB::table('states')->insert([
+        	'name' => 'Zamfara', 'country_id' => 1
+        ]);
+
+         DB::table('states')->insert([
+        	'name' => 'Abuja', 'country_id' => 1
         ]);
 
                 
