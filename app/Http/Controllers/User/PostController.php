@@ -10,6 +10,7 @@ use App\Models\Image;
 use App\Models\PostAdmire;
 use App\Models\PostHype;
 use Carbon\Carbon;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -32,6 +33,9 @@ class PostController extends Controller
         $admired = PostAdmire::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
         $hyped = PostHype::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
         return view('post', compact('posts', 'admired', 'hyped'));
+        $admired_count = PostAdmire::all();
+        $hyped_count = PostHype::all();
+        return view('post', compact('posts', 'admired', 'hyped', 'admired_count', 'hyped_count'));
     }
 
     /**
@@ -55,12 +59,18 @@ class PostController extends Controller
         $this->validate($request, [
             'title' => 'string|max:128',
             'content' => 'string|max:3000',
-            // 'image' => 'image:jpg,jpeg,png'
-            ]);
+        ]);
+
+        if(!empty($request->file('file'))){
+            $this->validate($request, [
+                'file.*' => 'required|mimes:jpg,jpeg,png,gif'
+            ], ['All files must be images (jpg, jpeg, png, gif)']);
+        }
 
         $post = new Post([
             'title' => $request->title,
             'content' => $request->content,
+            'reference' => str_random(7) . time() . uniqid(),
             ]);
         //mulitple image upload system
         if(!empty($request->file('file'))){
@@ -74,8 +84,10 @@ class PostController extends Controller
         //please nuru fix the json 
         return response()->json([
           'title' => $post->title,
-          'content'    =>  $post->content
+          'content'    =>  $post->content,
+          'reference' => $post->reference,
         ]);
+
     }
 
     /**
@@ -118,13 +130,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request, $reference)
     {
         //
-        $post = Post::find($id);
+        $post = Post::where('reference', $reference)->first();
         $post->comments()->delete();
-        $post->images()->delete();
-        $post = Post::destroy($id);
+        $post->delete();
         $request->session()->flash('success', 'Post deleted successfully!');
         return back();
     }

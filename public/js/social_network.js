@@ -1,5 +1,5 @@
 $(document).ready(function(){
-        var postForm = $("#postForm");
+        var postForm = $("#postForm1"); // i change the class from postForm to PostForm1
         postForm.submit(function(e){
             e.preventDefault();
             var formData = postForm.serialize();
@@ -104,6 +104,17 @@ $(document).on('click', ".follow", function(e){
                 url:'follow/'+reciever_email,
                 type:'POST',
                 data: {email:reciever_email},
+            var reciever_full_name = $(this).data("fname");
+
+            // alert(reciever_email);
+            $(this).removeClass('follow').text(' unfollow');
+            $(this).addClass('unfollow');
+            $(this).addClass('fa fa-check');
+
+            $.ajax({
+                url:'/follow/'+reciever_email,
+                type:'POST',
+                data: {reference:reciever_email},
                 success:function(data){
                     // alert(data);
                     // console.log(data);
@@ -113,6 +124,11 @@ $(document).on('click', ".follow", function(e){
                 error: function (data) {
                     toastr.options.preventDuplicates = true;
                     toastr.error("An error occured while following "+ reciever_email);
+                    toastr.success("Now following "+reciever_full_name);
+                },
+                error: function (data) {
+                    toastr.options.preventDuplicates = true;
+                    toastr.error("An error occured while following "+ reciever_full_name);
                     // var obj = jQuery.parseJSON( data.responseText );
                 }
             });
@@ -129,6 +145,19 @@ $(document).on('click', ".unfollow", function(e){
                 url:'unfollow/'+reciever_email,
                 type:'POST',
                 data: {email:reciever_email},
+            var reciever_full_name = $(this).data("fname");
+
+            // alert(reciever_email);
+            $(this).removeClass('unfollow').text(' follow');
+            $(this).addClass('follow');
+            $(this).addClass('fa fa-user');
+            $(this).addClass('f-14');
+
+
+            $.ajax({
+                url:'/unfollow/'+reciever_email,
+                type:'POST',
+                data: {reference:reciever_email},
                 success:function(data){
                     // alert(data);
                     // console.log(data);
@@ -138,6 +167,11 @@ $(document).on('click', ".unfollow", function(e){
                 error: function (data) {
                     toastr.options.preventDuplicates = true;
                     toastr.error("An error occured while following "+ reciever_email);
+                    toastr.info("You unfollowed "+reciever_full_name);
+                },
+                error: function (data) {
+                    toastr.options.preventDuplicates = true;
+                    toastr.error("An error occured while following "+ reciever_full_name);
                     // var obj = jQuery.parseJSON( data.responseText );
                 }
             });

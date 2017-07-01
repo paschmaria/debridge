@@ -29,6 +29,12 @@ class PhotoAlbumController extends Controller
     public function create(Request $request)
     {
         //dd('hello');
+        if(!empty($request->file('file'))){
+            $this->validate($request, [
+                'file.*' => 'required|mimes:jpg,jpeg,png,gif'
+            ], ['All files must be images (jpg, jpeg, png, gif)']);
+        }
+
         $files = $request->file('file');
         if(!empty($files)){
             $album = PhotoAlbum::create(['user_id' => auth()->user()->id]);
@@ -118,6 +124,9 @@ class PhotoAlbumController extends Controller
         $album = PhotoAlbum::where(['id' => $id ])->first();
         \Storage::disk('custom')->deleteDirectory("album-$album->id");
         $album->delete();
+        $user = auth()->user();
+        $user->image_id = null;
+        $user->save();
         return back()->with('info', 'Album deleted!');
     }
 }

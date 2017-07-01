@@ -108,10 +108,3 @@
 	align-content: $align-content;
 	justify-content: $justify-content;
 }
-
-@mixin tab-prop(){
-	background:$grey-color;
-	color:#FFF;
-	text-align:center;
-	font-size:14px;
-}

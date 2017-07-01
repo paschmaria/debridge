@@ -8,14 +8,20 @@
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
-|
+| 
 */
+
 
 Route::get('/', 'Auth\UserController@index')->name('index');
 
+Route::get('/', 'Auth\UserController@index')->name('index'); 
+
+Route::get('/users/follow/more', 'Auth\UserController@index')->name('index');
+
+
 Route::get('users/logout', 'User\FriendsController@user_logout')->name('user_logout');
 
-Auth::routes();
+Route::get('/logout', 'User\FriendsController@user_logout')->name('logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -34,6 +40,27 @@ Route::get('/timeline', 'User\TimelineController@index')->name('timeline');
 
 Route::get('users', 'Auth\UserController@viewUsers')->name('view_users');
 
+Route::post('/product_hype/{product}', 'Merchant\ProductController@product_hype')->name('product_hype');
+
+Route::get('/admire/{post}', 'User\AdmireController@create')->name('admire');
+Route::get('/unadmire/{post}', 'User\AdmireController@destroy')->name('unadmire');
+
+Route::get('/admire/{product}', 'User\AdmireController@create')->name('product_admire');
+Route::get('/unadmire/{product}', 'User\AdmireController@destroy')->name('product_unadmire');
+
+
+
+Route::get('/timeline/{reference}', 'User\TimelineController@index')->name('timeline');
+
+Route::get('/users/follow/friends', 'FollowController@getUser')->name('follow_friends');
+Route::get('/users/follow/merchants', 'FollowController@getMerchant')->name('follow_merchants');
+Route::post('/users/follow/friends', 'FollowController@friendsFollowComplete')->name('follow_friends');
+Route::post('/users/follow/merchants', 'FollowController@merchantsFollowComplete')->name('follow_merchants');
+Route::get('/users/social_notification/delete/{notification}', 'User\SocialNotificationController@destroy')->name('delete_social_notification');
+
+Route::get('/users/follow/more', 'Auth\UserController@viewUsers')->name('view_users');
+
+
 Route::get('users/profile_picture/{id}', 'Auth\UserController@profile_picture')->name('profile_picture');
 
 Route::post('users/profile_picture/{id}', 'Auth\UserController@profile_picture')->name('profile_picture');
@@ -42,11 +69,19 @@ Route::post('/send_request/{email}', 'User\FriendRequestController@create')->nam
 
 Route::post('/undo_request/{email}', 'User\FriendRequestController@destroy')->name('undo_request');
 
+
 Route::post('/follow/{email}', 'FollowController@store')->name('follow');
 
 Route::get('/follow', 'FollowController@index')->name('follow_page');
 
 Route::post('/unfollow/{email}', 'FollowController@destroy')->name('unfollow');
+
+Route::post('/follow/{reference}', 'FollowController@store')->name('follow');
+
+Route::get('/follow', 'FollowController@index')->name('follow_page');
+
+Route::post('/unfollow/{reference}', 'FollowController@destroy')->name('unfollow');
+
 
 Route::get('/delete_comment/{id}', 'User\CommentController@destroy')->name('delete_comment');
 Route::get('/delete_post/{post}', 'User\PostController@destroy')->name('delete_post');
@@ -84,7 +119,11 @@ Route::group(['prefix' => 'merchant', 'middleware'=> 'merchant'], function (){
 
 	Route::post('/addProduct', 'Merchant\ProductController@store')->name('addProduct');
 	Route::get('/allProduct', 'Merchant\ProductController@viewAllProduct')->name('allProduct');
+
 	Route::get('/logout', 'Auth\UserController@logout')->name('mechant_logout');
+
+	// Route::get('/logout', 'Auth\UserController@logout')->name('mechant_logout');
+
 	Route::get('/delete/{id}', 'Merchant\ProductController@destroy')->name('delete');
 	Route::get('/edit_product/{id}', 'Merchant\ProductController@edit')->name('edit_product');
 	Route::post('/update_product/{id}', 'Merchant\ProductController@edit')->name('update_product');
@@ -98,12 +137,22 @@ Route::group(['prefix' => 'merchant', 'middleware'=> 'merchant'], function (){
 	Route::post('/update_promo/{id}', 'Merchant\ProductController@promo')->name('update_promo');
 
 	Route::get('/delete_promo/{id}', 'Merchant\ProductController@remove_promo')->name('remove_promo');
+
 	Route::get('/whats_new/', 'Merchant\ProductController@whats_new')->name('whats_new');
+
+	Route::get('/whats_new', 'Merchant\ProductController@whats_new')->name('whats_new');
+	Route::get('/addhottest/{product}', 'Merchant\HottestProductController@create')->name('add_hottest');
+	Route::get('/delhottest/{product}', 'Merchant\HottestProductController@destroy')->name('del_hottest');
+
 
 });
 Route::get('/merchant/product/{id}', 'Merchant\ProductController@show')->name('product');
 
+
 Route::get('/brigeCode/{id}', 'Auth\UserController@brigeCode')->name('brige_code');
+
+Route::get('/brigeCode/{id}', 'User\BridgeCodeController@create')->name('brige_code');
+
 
 Route::match(['get', 'post'], '/admin', 'Admin\AdminController@signin');
 
@@ -118,3 +167,47 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 });
 
 Route::get('/user/{email}', 'User\AccountController@index')->name('user_profile');
+
+Route::get('/user/{email}', 'User\AccountController@index')->name('user_profile');
+Route::get('/araha_market', 'Auth\UserController@arahaMarket')->name('araha_market');
+
+Route::get('/merchant_tradeline/{user}', 'User\TimelineController@index')->name('tradeline');
+
+Route::get('/bridger', 'Auth\UserController@bridger')->name('bridger');
+
+Route::get('/bridger_request', 'Auth\UserController@bridgerRequest')->name('bridger_request');
+
+Route::get('/bridge_shops', 'Auth\UserController@bridgeShops')->name('bridge_shops');
+
+Route::get('/edit_profile', 'User\AccountController@editProfile')->name('edit_profile');
+
+Route::get('/exhibition', 'Auth\UserController@exhibition')->name('exhibition');
+
+Route::get('/follow_brands', 'Auth\UserController@followBrands')->name('follow_brands');
+
+Route::get('/hiring', 'Auth\UserController@hiring')->name('hiring');
+
+Route::get('/lagos_market', 'Auth\UserController@lagosMarket')->name('lagos_market');
+
+Route::get('/port-harcourt_market', 'Auth\UserController@port_harcourtMarket')->name('port-harcourt_market');
+
+// Route::get('/mycart', 'Auth\UserController@myCart')->name('mycart');
+
+Route::get('/merchant_store/', 'Merchant\ProductController@merchantStore')->name('merchant_store')->middleware('merchant');
+
+Route::get('/merchant_store/{user}', 'Merchant\ProductController@StoreForUser')->name('user_store');
+
+Route::get('/cart/addItem/{product}', 'User\CartController@addToCart')->name('addToCart')->middleware('auth');
+;
+
+Route::get('/cart/removeItem/{item}', 'User\CartController@removeItem')->name('removeItem')->middleware('auth');
+;
+
+Route::get('/cart/clearCart', 'User\CartController@clearCart')->name('clearCart')->middleware('auth');
+;
+
+Route::get('/cart/viewCart', 'User\CartController@viewCart')->name('viewCart')->middleware('auth');
+;
+
+Route::get('/user_tradeline', 'Auth\UserController@userTradeline')->name('user_tradeline')->middleware('auth');
+Route::get('/users/following/{reference}', 'FollowController@following')->name('xx');

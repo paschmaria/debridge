@@ -50,6 +50,19 @@ class Product extends Model
     public function hottest_6()
     {
     	return $this->hasOne('App\Models\HottestProduct', 'product_6_id', 'id');
+    public function hottest()
+    {
+        return $this->belongsTo('App\Models\HottestProduct', 'hottest_product_id');
+    }
+
+    public function admires()
+    {
+        return $this->hasMany('App\Models\ProductAdmire');
+    }
+
+    public function promo()
+    {
+        return $this->hasOne('App\Model\ProductPromo');
     }
 
     public function pictures()
@@ -65,5 +78,9 @@ class Product extends Model
     public function hypes()
     {
         return $this->hasMany('App\Models\ProductHype');
+    }
+
+    public function carts(){
+        $this->belongsToMany('App\Models\Product', 'carts', 'product_id', 'user_id');
     }
 }

@@ -2,8 +2,6 @@
 
 @section('content')
 <div class="container">
-    
-
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -40,6 +38,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
+
+                        <div class="form-group{{ $errors->has('file.*') ? ' has-error' : '' }}">
+
                             <label for="file" class="col-md-4 control-label">file</label>
 
                             <div class="col-md-6">
@@ -48,6 +49,9 @@
                                 @if ($errors->has('file'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('file') }}</strong>
+                                @if ($errors->has('file.*'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('file.*') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -82,6 +86,13 @@
                                     <a href="{{ route('admire', $post->id) }}"><button class="btn btn-success">Admire</button></a>
                                 @else
                                     <a href="{{ route('unadmire', $post->id) }}"><button class="btn btn-success">Unadmire</button></a>
+                                    <a href="{{ route('hype', $post->id) }}"><button class="btn btn-primary">Hype&nbsp<span class="badge">{{ $hyped_count->where('post_id', $post->id)->count() }}</span></button></a></button></a>
+                                @endif
+                                @if(!in_array($post->id, $admired))
+                                    <a href="{{ route('admire', $post->id) }}"><button class="btn btn-success">Admire&nbsp<span class="badge">{{ $admired_count->where('post_id', $post->id)->count() }}</span></button></a>
+                                @else
+                                    <a href="{{ route('unadmire', $post->id) }}"><button class="btn btn-success">Unadmire<span class="badge">{{ $admired_count->where('post_id', $post->id)->count() }}</span></button></a>
+                                    </button></a>
                                 @endif
                                 @if($post->user_id===auth()->user()->id)
                                 <a href="{{ route('admire', $post->id) }}"><button class="btn btn-success">Edit</button></a>

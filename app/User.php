@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\MerchantAccount;
 
 class User extends Authenticatable
 {
@@ -21,9 +22,12 @@ class User extends Authenticatable
         'password',
         'date_of_birth',
         'gender',
-        'account_type_id',
         'confirm_code',
-        'user_token'
+        'user_token',
+        'registration_status',
+        'reference',
+        'role_id',
+        'community_id'
     ];
 
     /**
@@ -35,6 +39,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function full_name()
+    {
+        return strtoupper($this->first_name . ' ' . $this->last_name);
+    }
     public function comments()
     {
         return $this->hasMany('App\Models\Comment');
@@ -47,7 +55,7 @@ class User extends Authenticatable
 
     public function profile_picture()
     {
-        return $this->belongsTo('App\Models\Image');
+        return $this->belongsTo('App\Models\Image', 'image_id');
     }
 
     public function role()
@@ -73,6 +81,22 @@ class User extends Authenticatable
     public function admires()
     {
         return $this->hasMany('App\Models\PostAdmire');
+    }
+    // accounts relationship
+    public function user_account()
+    {
+        return $this->hasOne('App\Models\UserAccount');
+    }
+
+    public function merchant_account()
+    {
+        return $this->hasOne('App\Models\MerchantAccount');
+    }
+    //end of accounts relationship
+
+    public function product_admired()
+    {
+        return $this->hasMany('App\Models\ProductAdmire');
     }
     // accounts relationship
     public function user_account()
@@ -130,5 +154,36 @@ class User extends Authenticatable
     public function community()
     {
         return $this->belongsTo('App\Models\TradeCommunity', 'community_id');
+    }
+
+    public function bridgeCode()
+    {
+        return $this->hasOne('App\Models\BridgeCode');
+    }
+
+    // public function cart()
+    // {
+    //     return $this->hasOne('App\Models\Cart');
+    // }
+
+    public function cart_products()
+    {
+        return $this->belongsToMany('App\Models\Product', 'carts', 'user_id', 'product_id');
+    }
+
+
+    public function ownsShop($id=null){
+        $merchant_ownership = MerchantAccount::where('user_id', $id)->first();
+        // dd($merchant_ownership);
+
+        // $merchant_ownership
+        
+        if($merchant_ownership->user_id == auth()->user()->id){
+            return true;
+        }else{
+            return false;
+
+        }
+
     }
 }

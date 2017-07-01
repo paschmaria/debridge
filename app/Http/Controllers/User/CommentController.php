@@ -39,8 +39,9 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Post $post)
+    public function store(Request $request, $reference)
     {
+        $post = Post::where('reference', $reference)->first();
         $this->validate($request, ['content' => 'required|string|max:255']);
         Comment::create([
             'content' => $request->content,

@@ -166,6 +166,7 @@
                     </div>
 
                     <div class="row">
+                    <!-- <div class="row">
                         <div class="col-md-6 col-sm-6 col-12 form-group">
                             <label for="state" data-error="wrong" data-success="right">State</label>
                             <input type="text" name="state" id="usr-state" class="form-control bd-3 h-40 validate input-alternate border-box" list="States" placeholder="Choose State" required value="{{ old('state') }}">
@@ -187,6 +188,21 @@
                                 <option>Agege</option>
                                 <option>Surulere</option>
                                 <option>Onipanu</option>
+                                @foreach($states as $state)
+                                    <option>{{ $state->name }}</option>
+                                @endforeach
+                                
+                            </datalist>
+                        </div> -->
+
+                        <div class="col-md-12 col-sm-6 col-12 form-group">
+                            <label for="trade_community">Trade Community</label>
+                            <select name="user_trade_community" id="usr-trade_community" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow" required value = "{{ old('trade_community') }}">
+                                <option disabled selected>Choose Community...</option>
+                                @foreach($trade_communities as $trade_community)
+                                <option value="{{$trade_community->id}}" >{{ $trade_community->name }}</option>
+                                @endforeach
+                              
                             </select>
                         </div>
                     </div>
@@ -198,7 +214,13 @@
                                 <option disabled selected>Choose...</option>
                                 <option> Individual User</option>
                                 <option>{{ $role->name }}</option>
-                                
+
+                            <select name="user_trade_interest" id="usr-persona" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow" required value = "{{ old('trade_interest') }}">
+                                <option disabled selected>Choose...</option>
+                                <option> Individual User</option>
+                                @foreach($roles as $role)
+                                <option value="{{$role->id}}" >{{ $role->name }}</option>
+                                @endforeach                                
                                 
                             </select>
                         </div>

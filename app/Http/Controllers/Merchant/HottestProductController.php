@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Merchant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Models\Product;
+use App\Models\HottestProduct;
+use Carbon\Carbon;
+
+
 class HottestProductController extends Controller
 {
     /**
@@ -12,6 +17,13 @@ class HottestProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        // $this->middleware('merchant')
+    }
+
+
     public function index()
     {
         //
@@ -25,13 +37,38 @@ class HottestProductController extends Controller
     public function create()
     {
         //
+    public function create(Product $product)
+    {
+        $hot_prod  = HottestProduct::firstOrCreate(['merchant_account_id' => auth()->user()->merchant_account->id]);
+        if($hot_prod->interval_time == null){
+            $hot_prod->interval_time = Carbon::now()->subWeek(2);
+        }
+        $interval_time = Carbon::createFromFormat('Y-m-d H:i:s', $hot_prod->interval_time);
+        $diff_in_days = Carbon::now()->diffInDays($interval_time);
+        if($diff_in_days >= 7){
+            $hot_prod->interval_time = Carbon::now();
+        }
+        if ((int)$hot_prod->slots <= 6) {
+            $product->hottest()->associate($hot_prod);
+            $hot_prod->slots += 1;
+            $hot_prod->save();
+            $product->save();
+            return back()->with('success', 'Product was successfully added!');
+        } else{
+            return back()->with('delete_message', 'You exhausted you available slots!');
+        }
+
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+<<<<<<< HEAD
      * @return \Illuminate\Http\Response
+=======
+     * @return \Illuminate\http_date()p\Response
+
      */
     public function store(Request $request)
     {
@@ -81,5 +118,12 @@ class HottestProductController extends Controller
     public function destroy($id)
     {
         //
+    public function destroy(Product $product)
+    {
+        $hot_prod  = auth()->user()->merchant_account->hottest_product;
+        $product->hottest()->dissociate();
+        $product->save();
+        return back()->with('info', $product->name . ' remove from hottest items!');
+
     }
 }

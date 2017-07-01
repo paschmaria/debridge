@@ -15,6 +15,7 @@ class CreateProductNotificationDescriptionsTable extends Migration
     {
         Schema::create('product_notification_descriptions', function (Blueprint $table) {
             $table->increments('id')->nullable();
+            $table->increments('id');
             $table->string('name')->nullable();
             $table->timestamps();
         });

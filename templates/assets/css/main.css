@@ -277,9 +277,6 @@ body {
 }
 
 /****  Margin Right  ****/
-.m-r-0 {
-  margin-right: 0 !important;
-}
 .m-r-3 {
   margin-right: 3px !important;
 }
@@ -1361,13 +1358,6 @@ a, a:focus, a:hover, a:active {
   justify-content: center;
 }
 
-.tab-prop {
-  background: #d8d8d8;
-  color: #FFF;
-  text-align: center;
-  font-size: 14px;
-}
-
 /**** z-index ****/
 .z-10 {
   z-index: 10 !important;
@@ -1634,6 +1624,13 @@ header.sticky {
   white-space: nowrap;
   background: none;
   padding-top: 10px;
+}
+
+.tab-prop {
+  background: #d8d8d8;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 14px;
 }
 
 .material-button span {

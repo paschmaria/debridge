@@ -34,6 +34,20 @@ class AccountController extends Controller
             return view('users.user_profile', compact('user_picture', 'user'));
         }else{
         return view('users.user_profile', compact('user'));
+        $user = User::where('email', $email)->with('profile_picture')->first();
+
+      if(isset($user) && isset($user->image_id)){
+
+            // this is to get the user account and display is picture
+            $user_picture1 = $user->image_id;
+            $user_picture1 = Image::find($user_picture1);
+
+            $user_picture1 = $user_picture1->image_reference;
+            // dd($user_picture);
+
+            return view('users.user_profile', compact('user_picture1', 'user'));
+        }else{
+        return view('users.user_profile', compact('user', 'user_picture1'));
         }
     
     }
@@ -104,6 +118,9 @@ class AccountController extends Controller
         //
     }
 
+    public function editProfile(){
+        return view('edit_profile');
+    }
      
 
 }

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class HottestProduct extends Model
 {
+    protected $fillable = ['merchant_account_id'];
     public function merchant()
     {
     	return $this->belongsTo('App\Models\MerchantAccount');
@@ -39,5 +40,9 @@ class HottestProduct extends Model
     public function product_6()
     {
     	return $this->belongsTo('App\Models\Product', 'product_6_id');
+    }
+    public function products()
+    {
+        return $this->hasMany('App\Models\Product');
     }
 }

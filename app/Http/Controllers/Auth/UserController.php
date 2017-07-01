@@ -4,42 +4,39 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\User\BridgeCodeController;
 use App\User;
 use App\Mail\Welcome;
 use App\Models\Follower;
 use App\Models\FriendRequest;
+use App\Models\SocialNotification;
 use App\Models\Image;
 use App\Models\Role;
+use App\Models\State;
+use App\Models\TradeCommunity;
+use App\Models\Product;
+use App\Models\MerchantAccount;
+use App\Models\Inventory;
 
 class UserController extends Controller
 {
-    function __construct()
+    
+    function __construct(BridgeCodeController $bride_code)
     {
-    	$this->middleware('guest')->except(['logout', 'verifyToken', 'resendActivationMail','market','viewUsers', 'brigeCode', 'profile_picture', 'index']);
+        $this->bride_code = $bride_code;
+    	$this->middleware('guest')->except(['logout', 'verifyToken', 'resendActivationMail','market','viewUsers', 'brigeCode', 'profile_picture', 'index', 'arahaMarket', 'merchantTradeline', 'bridger', 'bridgerRequest', 'bridgeShops', 'exhibition', 'followBrands', 'followFriends', 'hiring', 'lagosMarket', 'merchantStore', 'myCart', 'port_harcourtMarket', 'userTradeline',]);
     }
 
     public function register()
     {
-        $role = Role::where('name', 'Merchant')->first();
-        return view('register1', compact('role'));
+        $roles = Role::where('name', '!=', 'Admin')->get();
+        // dd($roles);
+        $states = State::all();
+        $trade_communities = TradeCommunity::all();
+        return view('register1', compact('roles', 'states', 'trade_communities'));
     }
 
     public function index(){
-        if(auth()->check()){
-            // dd('hi');
-            $user_picture_id = auth()->user()->image_id;
-            // $user_picture = Image::find($user_picture_id);
-            // dd($user_picture);
-            if(isset($user_picture)){
-                // dd('he');
-                $user_picture = auth()->user()->image_id;
-                $user_picture = Image::find($user_picture);
-                $user_picture = $user_picture->image_reference;
-                // dd($user_picture);
-                return view('index', compact('user_picture'));
-            }
-        }
-
         return view('index');
     }
     
@@ -53,11 +50,14 @@ class UserController extends Controller
             'password' => 'required|confirmed|min:6',
             'date_of_birth' => 'date',
             'gender' => 'alpha',
-            // 'account_type_id' => 'required|integer',
+            
             ]);
         
         $user_token =  str_random(64);
         $role = Role::where('name', $request->input('trade_interest'))->first();
+        $trade_community = TradeCommunity::where('name', $request->input('trade_community'))->first();
+
+        // $state = State::where('name', $request->input('state'))->first();
 
         $user = User::create([
             'first_name' => $request->first_name,
@@ -65,8 +65,25 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => \Hash::make($request->password),
             'date_of_birth' => $request->date_of_birth,
-            'user_token' => $user_token
+            'user_token' => $user_token,
+            'gender' => $request->gender,
+            'reference' => str_random(7) . time() . uniqid(),
+            'registration_status' => 1,
+            'role_id' => $request->user_trade_interest,
+            'community_id' => $request->user_trade_community,
+
             ]);
+        // dd($user);
+
+        // if($role === Role::where('name', 'Merchant')->first()){
+            
+        //     $user->role()->associate($role);
+        //     $user->save();
+        // }
+        // $user->community()->associate($trade_community);
+        // $user->save();
+        // user follows himself so he can see his won post on his timeline
+        $user->following()->attach($user);
         
         if($role == Role::where('name', 'Merchant')->first()){
             
@@ -83,7 +100,9 @@ class UserController extends Controller
         // \Mail::to($user)->send(new Welcome($user));
         // \Session::flash('success', 'Welcome to Debridge');
         \Auth::login($user);
-        return redirect(route('post'))->with('info', 'Welcome, '. $user->email);
+        //generate  debride code for user
+        $this->bride_code->store();
+        return redirect(route('follow_friends'))->with('info', 'Welcome, '. $user->full_name());
     }
 
     public function getLogin()
@@ -136,12 +155,6 @@ class UserController extends Controller
      	Mail::to($user)->send(new Welcome($user));
      	return back();
      }
-
-    public function market()
-     {
-         return view('market');
-     }
-
     public function viewUsers()
      {
         $users = User::where('id','!=', auth()->user()->id)->get();
@@ -149,25 +162,8 @@ class UserController extends Controller
         $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
         // get the id of the users that the auth user sent a friend request
         $sent_request = FriendRequest::where('sender_id', auth()->user()->id)->pluck('receiver_id')->toArray();
-        return view('users.users', compact('users', 'following_ids', 'sent_request'));
+        return view('bridger', compact('users', 'following_ids', 'sent_request'));
      }
-
-     public function brigeCode(Request $request, $id)
-     {
-        $user = User::find($id);
-
-        $user_id = (string)$user->id;
-
-        $user_id = $user_id[0];
-
-        $random_string = str_random(2);
-
-        $brige_code = 'DB'.$user_id.$random_string;
-
-        dd($brige_code);
-
-     }
-
      public function profile_picture(Request $request, $id){
 
         $profile_picture = Image::find($id);
@@ -182,6 +178,79 @@ class UserController extends Controller
         }
      }
 
-    
+    public function arahaMarket(){
+        return view('araha_market');
+    }
+
+    // public function merchantTradeline(User $user){
+    //     $role = Role::where('name', 'Merchant')->first()->name;
+    //     // dd($role);
+    //     if(isset($user->role_id) && $user->role()->first()->name === $role){
+    //         return view('merchant_tradeline');
+    //     }else{
+    //         return redirect()->route('timeline', $user->id) ;
+    //     }
+    // }
+
+     public function merchantTimeline(){
+        return view('merchant_timeline');
+    }
+
+    public function bridger(){
+        return view('bridger');
+    }
+
+    public function bridgeRequest(){
+        return view('bridgerRequest');
+    }
+
+    public function bridgeShops(){
+        return view('bridgeShops');
+    }
+
+    public function exhibition(){
+        return view('exhibition_stand');
+    }
+
+    public function followBrands(){
+        return view('follow_brands');
+    }
+
+    public function followFriends(){
+        return view('follow_friends');
+    }
+
+    public function hiring(){
+        return view('hiring');
+    }
+
+    public function lagosMarket(){
+        return view('lagos_market');
+    }
+
+    public function port_harcourtMarket(){
+        return view('port-harcourt_market');
+    }
+
+    public function merchantStore(){
+        return view('m-store');
+    }
+
+    public function myCart(){
+        return view('mycart');
+    }
+
+    public function userTradeline(){
+        $products = Product::latest()->get();
+        $inventory = Inventory::all();
+        $merchant = MerchantAccount::all();
+        $user = User::all();
+        // dd($product);
+        
+        return view('user_tradeline', compact('products', 'inventory', 'merchant', 'user'));
+      
+        
+        
+    }
 
 }

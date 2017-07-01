@@ -1,7 +1,3 @@
-body {
-	background: $brand-color-lite;
-}
-
 [data-page="login"] .container {
 
 	@include screenSize(large-desktop) { width: 550px; }
@@ -43,6 +39,30 @@ body {
    		@include prefix(transform, scale(.95), webkit ms);
    		@include pos(absolute, $t: -10px, $l: 0, $z: -1);
    	}
+}
+.pics{
+	max-width: 70px!important;
+    max-height: 70px;
+    width: 100%;
+    height: auto;
+}
+.pics2{
+	max-width: 250px;
+    max-height: 207px;
+    width: 100%;
+    height: auto;
+}
+.picfix{
+	max-width: 90px;
+    max-height: 120px;
+    width: 100%;
+    height: auto;
+}
+.picfix2{
+	max-width: 238px;
+    max-height: 185px;
+    width: 100%;
+    height: auto;
 }
 
 .box.back {
@@ -103,7 +123,7 @@ body {
 .scale-overbox {
 	border: none;
 	box-shadow: none;
-	background: transparent;
+	background: $transparent-color;
 	height: 20px;
 	
 	@include prefix(transform, translateX(15px), webkit ms);
@@ -170,4 +190,74 @@ del span {
 	&:hover, &:active, &:focus, {
 		color: $brand-color;
 	}
+}
+
+#product-img-wrapper{
+	padding: 10px;
+	height: 120px;
+	border-radius: 2px;
+	justify-content: flex-start !important;
+	border: 1px solid $dark-color-lite;
+
+	& ul#product-imgs {
+		margin: 0;
+		display: inherit;
+
+		& img {
+			display: inline;
+			padding:5px;
+			width: 100px;
+			height: 100px;
+		}
+	}
+
+	& .add-img {
+		width: 100px;
+		height: 100px;
+		padding: 5px;
+
+		& .product-img-input {
+			position: relative !important;
+			width: 100px;
+			display: none;
+		}
+	}
+}
+
+#product-upload-form div:last-child {
+	position: relative !important;
+	text-align: right !important;
+	margin-bottom: 20px !important;
+	height: 56.19px;
+
+	& .btn-flat {
+		height: 44.19px;
+
+		@include pos(absolute, $r: 118.156px)
+	}
+
+	& input[type="file"] {
+		width: 100px;
+		display: none !important;
+	}
+
+	& .btn-brand {
+		height: 44.19px;
+		
+	}
+}
+
+.product-img-group > card-group{
+	margin: 36px;
+	margin-buttom: 18px;
+}
+.card-group .card:first-child{
+	margin-left: 4px;
+}
+.card-group .card:last-child{
+	margin-right: 4px;
+}
+.card-group .card:nth-child(2), .card-group .card:nth-child(3){
+	margin-right: 4px;
+	margin-left: 4px;
 }
