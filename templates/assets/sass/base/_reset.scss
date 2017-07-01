@@ -408,8 +408,6 @@ a, a:focus, a:hover, a:active {  outline: 0;}
 .line-through{text-decoration: line-through;}
 .t-ellipsis {text-overflow: ellipsis;display: block;white-space: nowrap;overflow: hidden;}
 
-.no-shadow { @include prefix(box-shadow, none !important, webkit ms); }
-
 /* =====GENERAL CSS STYLING END==== */
 
 /* =====CUSTOM CSS STYLING==== */

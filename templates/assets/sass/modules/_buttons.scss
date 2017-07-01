@@ -152,3 +152,11 @@ button.btn-upload {
         opacity: .75;
     }
 }
+
+.detail-edit-icon {
+	display: none;
+}
+
+.media-heading:hover > .detail-edit-icon, .detail:hover > .detail-edit-icon {
+	display: block;
+}
