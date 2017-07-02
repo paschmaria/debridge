@@ -93,8 +93,8 @@
                                             {{ auth()->user()->first_name }}
                                             </a>
                                             <div class="dropdown-menu animated bounceIn" aria-labelledby="dropdownMenu3">
-                                                 <!-- <a class="dropdown-item waves-effect waves-light" href="{{ url('friends') }}">Trade Request</a> -->
-                                                <a class="dropdown-item waves-effect waves-light" href="{{ url('follow') }}">Followers</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="{{ route('followers', auth()->user()->reference) }}">Followers</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="{{ route('following', auth()->user()->reference) }}">Following</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ url('upload') }}">Gallery</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="#">Edit Profile</a>
                                                 @if(strtolower(auth()->user()->role->name) === 'merchant')
@@ -149,8 +149,8 @@
                                                         <a href="{{ route('delete_social_notification', $notification->id) }}"><small class="pull-right">Mark as read</small></a>
                                                     </li>
                                                 @empty
-                                                    <li class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="" disabled>
-                                                        <span>Hi {{ auth()->user()->first_name }}, you have no notification</span>
+                                                    <li class="dropdown-item waves-effect waves-light p-l-10" href="">
+                                                        <span>Hi {{ ucfirst(auth()->user()->first_name) }}, you have no notification</span>
                                                     </li>
                                                 @endforelse
                                             </ul>

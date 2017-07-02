@@ -63,7 +63,7 @@ Route::get('/follow', 'FollowController@index')->name('follow_page');
 Route::post('/unfollow/{reference}', 'FollowController@destroy')->name('unfollow');
 
 Route::get('/delete_comment/{id}', 'User\CommentController@destroy')->name('delete_comment');
-Route::get('/delete_post/{post}', 'User\PostController@destroy')->name('delete_post');
+Route::get('users/post/delete/{reference}', 'User\PostController@destroy')->name('delete_post');
 
 Route::get('/register', 'Auth\UserController@register')->name('register');
 
@@ -175,5 +175,5 @@ Route::get('/cart/viewCart', 'User\CartController@viewCart')->name('viewCart')->
 ;
 
 Route::get('/user_tradeline', 'Auth\UserController@userTradeline')->name('user_tradeline')->middleware('auth');
-Route::get('/users/following/{reference}', 'FollowController@following')->name('xx');
-
+Route::get('/users/following/{reference}', 'FollowController@following')->name('following');
+Route::get('/users/followers/{reference}', 'FollowController@followers')->name('followers');

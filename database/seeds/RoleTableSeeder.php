@@ -12,11 +12,11 @@ class RoleTableSeeder extends Seeder
     public function run()
     {
         DB::table('roles')->insert([
-        	'name' => 'Merchant',
+        	'name' => 'User',
         ]);
 
         DB::table('roles')->insert([
-        	'name' => 'User',
+            'name' => 'Merchant',
         ]);  
 
         DB::table('roles')->insert([
