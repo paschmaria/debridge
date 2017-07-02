@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Merchant;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 use App\Models\Product;
 use App\Models\HottestProduct;
 use Carbon\Carbon;
+
 
 class HottestProductController extends Controller
 {
@@ -15,10 +17,12 @@ class HottestProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function __construct()
     {
         // $this->middleware('merchant')
     }
+
 
     public function index()
     {
@@ -30,6 +34,9 @@ class HottestProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function create()
+    {
+        //
     public function create(Product $product)
     {
         $hot_prod  = HottestProduct::firstOrCreate(['merchant_account_id' => auth()->user()->merchant_account->id]);
@@ -50,13 +57,18 @@ class HottestProductController extends Controller
         } else{
             return back()->with('delete_message', 'You exhausted you available slots!');
         }
+
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+<<<<<<< HEAD
+     * @return \Illuminate\Http\Response
+=======
      * @return \Illuminate\http_date()p\Response
+
      */
     public function store(Request $request)
     {
@@ -103,11 +115,15 @@ class HottestProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function destroy($id)
+    {
+        //
     public function destroy(Product $product)
     {
         $hot_prod  = auth()->user()->merchant_account->hottest_product;
         $product->hottest()->dissociate();
         $product->save();
         return back()->with('info', $product->name . ' remove from hottest items!');
+
     }
 }

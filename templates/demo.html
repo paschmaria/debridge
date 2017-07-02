@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Card Layouts</title>
+		<link rel="stylesheet" href="">
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			body {
+				background: #34e678;
+			}
+			.card-list {
+				display: inline-block;
+				list-style-type: none;
+			}
+
+			.card {
+				background: #ffffff;
+				padding: 5px;
+				margin: 5px;
+			}
+		</style>
+		<script type='text/javascript' src='swfobject.js'></script>
+	</head>
+	<body>
+		<header>
+			
+		</header>
+		<section>
+			<ul>
+				<li class="card-list">
+					<div class="card">
+						<div class="card_title">
+							<h1>Our header 1</h1>
+						</div>
+						<figure class="card_body">
+							<img src="assets/img/background/rectangle-3-copy-2.png" alt="">
+							<figcaption></figcaption>
+						</figure>
+					</div>
+				</li>
+				<li class="card-list">
+					<div class="card">
+						<div class="card_title">
+							<h1>Our Header 2</h1>
+						</div>
+						<figure class="card_body">
+							<img src="assets/img/background/rectangle-3-copy-2.png" alt="">
+							<figcaption></figcaption>
+						</figure>
+					</div>
+				</li>
+				<li class="card-list">
+					<div class="card">
+						<div class="card_title">
+							<h1>Our Header 3</h1>
+						</div>
+						<figure class="card_body">
+							<img src="assets/img/background/rectangle-3-copy-2.png" alt="">
+							<figcaption></figcaption>
+						</figure>
+					</div>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<div id='mediaspace'>Playing FLV</div>
+			<object width="400" height="409" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0">
+			  <param name="allowscriptaccess" value="always"></param>
+			  <param name="file" value="cocaine">  
+			  <embed height="500" width="650" flashvars="file=cocaine&amp;streamer=rtmp://75.102.34.154:1935/flvplayback&amp;rtmp.subscribe=true&amp;quality=best&amp;controlbar=bottom&amp;rtmp.tunneling=false&amp;frontcolor=#fff&amp;backcolor=#000&amp;stretching=exactfit&amp;autostart=true" wmode="transparent" allowfullscreen="true" allowscriptaccess="always" quality="high" src="http://s.zuuk.net/ply.swf" type="application/x-shockwave-flash"/> 
+			</object>
+		</footer>
+	</body>
+</html>

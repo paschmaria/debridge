@@ -37,12 +37,18 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
+
                         <div class="form-group{{ $errors->has('file.*') ? ' has-error' : '' }}">
+
                             <label for="file" class="col-md-4 control-label">file</label>
 
                             <div class="col-md-6">
                                 <input id="file" type="file" class="form-control" name="file[]" multiple>
 
+                                @if ($errors->has('file'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('file') }}</strong>
                                 @if ($errors->has('file.*'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('file.*') }}</strong>
@@ -74,6 +80,12 @@
                         @endif
                             <p>
                                 @if (!in_array($post->id, $hyped))
+                                    <a href="{{ route('hype', $post->id) }}"><button class="btn btn-primary">Hype</button></a>
+                                @endif
+                                @if(!in_array($post->id, $admired))
+                                    <a href="{{ route('admire', $post->id) }}"><button class="btn btn-success">Admire</button></a>
+                                @else
+                                    <a href="{{ route('unadmire', $post->id) }}"><button class="btn btn-success">Unadmire</button></a>
                                     <a href="{{ route('hype', $post->id) }}"><button class="btn btn-primary">Hype&nbsp<span class="badge">{{ $hyped_count->where('post_id', $post->id)->count() }}</span></button></a></button></a>
                                 @endif
                                 @if(!in_array($post->id, $admired))

@@ -9,6 +9,24 @@
         <meta name="Keywords" content="social media, business, friends, buy, sell, contacts">
         
         <!-- fav icon -->
+        <link rel="shortcut icon" type="image/png" href="{{ asset('img/logo/debridge-logo.png') }}"/>
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}">
+
+        <!-- slick carousel -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('plugins/slick/slick.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('plugins/slick/slick-theme.css') }}"/>
+        <link rel="stylesheet" href="{{asset ('css/toastr.min.css') }}" rel="stylesheet" />
+
+        <!-- Bootstrap core CSS -->
+        <link href="{{ asset('plugins/mdb/css/bootstrap.css') }}" rel="stylesheet">
+
+        <!-- Material Design Bootstrap -->
+       <link rel="stylesheet" href="{{ asset('plugins/mdb/css/mdb.min.css') }}">
+
+        <!-- Your custom styles (optional) -->
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
         <link rel="shortcut icon" type="image/png" href="{{ asset('img/logo/debridge-logo.png')}}"/>
 
         <!-- Font Awesome -->
@@ -33,12 +51,16 @@
     <body data-page="index">
         <!-- header begins here-->
         <header>
+            <div class="container-fluid bg-brand">
             <div class="container-fluid bg-brand z-2500">
                 <div class="row p-t-35 p-b-10">
                     <div class="col col-sm-3 col-md-3">
                         <div class="dis-flex">
                             <figure class="m-0">
                                 <a href="/">
+                                    <img src="{{ asset('img/logo/debridge-logo.png') }}" class="img-fluid m-auto">
+                                </a>
+                                <figcaption class="motto f-12 m-0 m-t-5">HOME | THE MARKET</figcaption>
                                     <img src="{{ asset('img/logo/debridge-logo.png')}}" class="img-fluid m-auto">
                                 </a>
                                 @if(auth()->check())
@@ -62,6 +84,42 @@
                             
                         </div>
                     </div>
+                    @if(!Auth::check())
+
+                    <div class="col col-sm-3 col-md-3">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-12 text-center">
+                                <ul class="list-style-none user-conversion">
+                                
+                                    <li class="dis-inline-b">
+                                        <a href="{{ route('register') }}" class="btn-outline-white btn waves-effect">Log In / Register</a>
+                                    </li>
+                              
+                                    <li class="dis-inline-b pos-rel">
+                                        <a href="#" class="p-l-10 p-r-10"><span><i class="fa fa-shopping-cart fa-lg c-white" aria-hidden="true"></i></span></a>
+                                        <span class="cart-count">3</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    @else
+                    <div class="col col-sm-3 col-md-3">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-12">
+                                <ul class="navbar-nav dis-flex flex-row">
+                                    @if(isset($user_picture))
+                                    <p>{{ $user_picture }}</p>
+                                    <li class="nav-item animated bounceIn list-inline-item dis-block">
+                                        <a href="{{ route('image', [$user_picture, '']) }}"><img src="{{ route('image', [$user_picture, '']) }}" class="" width="50" height="50"></a>
+                                    </li>
+                                    @endif
+                                    <p></p>
+
+                                    <li class="nav-item animated bounceIn list-inline-item dis-block">
+                                        <div class="dropdown">
+
                     <div class="col col-sm-3 col-md-3">
                         <div class="row">
                         @if(!auth()->check())
@@ -93,6 +151,21 @@
                                             {{ auth()->user()->first_name }}
                                             </a>
                                             <div class="dropdown-menu animated bounceIn" aria-labelledby="dropdownMenu3">
+                                                <a class="dropdown-item waves-effect waves-light" href="{{ url('friends') }}">My friends</a>
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ url('follow') }}">Followers</a>
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ url('friend_requests') }}">Friend requests</a>
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ url('upload') }}">Albums</a>
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ url('notifications') }}">Notifications</a>
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ url('users') }}">De-bridge users</a>
+
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ route('user_logout') }}"
+                                                    onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                                    Logout
+                                                </a>
+
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ route('logout') }}">Logout</a>
+
                                                  <!-- <a class="dropdown-item waves-effect waves-light" href="{{ url('friends') }}">Trade Request</a> -->
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ url('follow') }}">Followers</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ url('upload') }}">Gallery</a>
@@ -110,6 +183,48 @@
                             </div>
                             <div class="col-md-12 col-sm-12 col-12 m-t-10">
                                 <ul class="navbar-nav dis-flex flex-row">
+                                    <li class=""> 
+                                        <a href="#" class="p-l-10 p-r-10">
+                                            <span class="pos-rel">
+                                                <i class="fa fa-shopping-cart fa-lg c-white" aria-hidden="true"></i>
+                                                <span class="cart-count">3</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    @endif
+                </div>               
+            </div>
+            <!-- navigations/links right here -->
+            <nav class="navbar navbar-toggleable-sm navbar-light transparent p-t-15 p-b-15 no-shadow border-top border-bottom" role="navigation">
+    			<div class="container-fluid">
+    				<!-- Brand and toggle get grouped for better mobile display -->
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    		
+    				<!-- Collect the nav links, forms, and other content for toggling -->
+    				<div id="navbarNav1" class="collapse navbar-collapse">
+    					<ul class="nav navbar-nav">
+    						<li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Black Market</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="hiring.html">Hiring Arena</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="arahamarket.html">Araha Market</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="BridgeShops.html">Bridge Shops</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Invest Hub</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Consultancy Unit</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="exhibitionStand.html">Exhibition Stand</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">B - Mentor</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Window Shopping</a></li>
+                            <li class="nav-item"><a class="nav-link c-brand w-700 text-uppercase" href="#">Apply for Bridge Code</a></li>
+    					</ul>
+    				</div><!-- /.navbar-collapse -->
+    			</div>
+    		</nav>
+            <!-- navigations/links ends here -->
                                     <li class="animated bounceIn"> 
                                         <a href="{{ route('viewCart') }}" class="p-l-10 p-r-10">
                                             <span class="pos-rel">
@@ -181,6 +296,26 @@
         <!-- header ends here -->
 
 @yield('content')
+        <!--
+            <footer></footer>
+        -->
+
+        <!-- SCRIPTS -->
+
+        <!-- JQuery -->
+        <script type="text/javascript" src="{{ asset('plugins/mdb/js/jquery-3.1.1.min.js') }}"></script>
+
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="{{ asset('plugins/mdb/js/tether.min.js') }}"></script>
+
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="{{ asset('plugins/mdb/js/bootstrap.min.js') }}"></script>
+
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="{{ asset('plugins/mdb/js/mdb.min.js') }}"></script>
+
+        <!-- slick carousel -->
+        <script type="text/javascript" src="{{ asset('plugins/slick/slick.min.js') }}"></script>
         
         
 
@@ -260,6 +395,9 @@
                 $('[data-toggle="tooltip"]').tooltip();
             });
         </script>
+
+        <script src="{{asset('js/social_network.js')}}"></script>
+        <script src="{{asset('js/toastr.min.js')}}"></script>
         <script>
             document.onreadystatechange = () => {
                 if (document.readyState === "complete") {
