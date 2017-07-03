@@ -22,7 +22,6 @@ class TimelineController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index()
 
     public function index($reference)
     {
@@ -30,7 +29,7 @@ class TimelineController extends Controller
         $following = $user->following()->with([ 'posts' => function ($query) {
             $query->orderBy('created_at', 'desc')->with([
                 'user' => function($q){
-                    // $q->with('profile_picture');
+                    $q->with('profile_picture');
                 }, 
                 'comments' => function($q){
                     $q->with(['user' => function($q){
@@ -46,16 +45,12 @@ class TimelineController extends Controller
         $timeline = $following->flatMap(function ($values) {
             return $values->posts;
         });
-        $sorted = $timeline->sortByDesc(function ($posts) {
-            return $posts->created_at;
-        });
-
-        $posts = $sorted->values()->all();
-        return view('users.timeline', compact('posts'));
+        
+        $user_post = Post::where('user_id', $user->id)->get();
+        $posts = $user_post->merge($timeline->values()->all())->sortByDesc('created_at');
+        
         $admired = PostAdmire::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
         $hyped = PostHype::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
-
-        $posts = $sorted->values()->all();
         // dd($posts);
 
         // dd($user->role()->first());

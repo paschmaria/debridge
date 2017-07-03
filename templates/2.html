@@ -38,7 +38,7 @@
 
                 <h3 class="title text-center">LOG IN</h3>
 
-                <form action="registered-users.html" method="POST" id="regUser" name="regUser">
+                <form action="registered-users.html" method="POST">
                     <div class="input">
                         <label for="usrname">Username</label>
                         <input type="text" name="usrname" id="username" class="form-control bd-3 h-40 input-alternate border-box">
@@ -221,29 +221,7 @@
     </script>
     <script>
         app.validation();
-     
-     var form = {
-        regUser: document.getElementById("regUser"),
-        usrname: document.getElementById("username"),
-        userpassword: document.getElementById("usrpassword")
-       };
-       // handle form submission
-       form.regUser.addEventListener('submit', submitHandler);
-
-       function submitHandler(e){
-            e.preventDefault();
-            if(form.usrname.value == ""){
-                alert('Provide a username');
-                return;
-            }
-            else if(form.userpassword.value == ""){
-                alert('Enter a passowrd');
-                return;
-            }
-            else {
-                form.regUser.submit();
-            }
-       } 
+        app.LogIn();
     </script>
 
 </body>
