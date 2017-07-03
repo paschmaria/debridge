@@ -45,3 +45,15 @@
 .tooltip > .tooltip-arrow {
   	border-top: 5px solid $brand-color;
 }
+
+.page-item.active .page-link{
+	background: $brand-color;
+}
+
+.page-item:not(.active) .page-link{
+	background: $transparent-color;
+}
+
+.page-item:not(.disabled):not(.active) .page-link{
+	color: $brand-color;
+}

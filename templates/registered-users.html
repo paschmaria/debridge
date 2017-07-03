@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <title>De-Bridge</title>
         <meta charset="utf-8">
@@ -27,7 +26,6 @@
 
         <!-- Your custom styles (optional) -->
         <link rel="stylesheet" href="assets/css/main.css">
-
     </head>
 
     <body data-page="registered-users">
@@ -509,65 +507,55 @@
         <!-- Main JS -->
         <script type="text/javascript" src="assets/js/main.js"></script>
         <script>
-            $(document).ready(function(){
-                $('.carousel_big').slick({
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    dots: true,
-                    arrows: false,
-                    fade: true,
-                    autoplay: true,
-                    asNavFor: '.carousel_small'
-                });
-                $('.carousel_small').slick({
-                    infinite: true,
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    arrows: false,
-                    asNavFor: '.carousel_big',
-                    focusOnSelect: true,
-                    autoplay: true,
-                    autoplaySpeed: 2000,
-                    vertical: true,
-                    centerPadding: '0px',
-                    responsive: [
-                        // {
-                        //   breakpoint: 1024,
-                        //   settings: {
-                        //     slidesToShow: 3,
-                        //     slidesToScroll: 3,
-                        //     infinite: true
-                        //   }
-                        // },
-                        {
-                          breakpoint: 600,
-                          settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2,
-                            infinite: true
-                          }
-                        },
-                        {
-                          breakpoint: 480,
-                          settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            infinite: true
-                          }
-                        }
-                    ]
-                });
-
-                new WOW().init();
-                $('[data-toggle="tooltip"]').tooltip();
-            });
-        </script>
-        <script>
             document.onreadystatechange = () => {
                 if (document.readyState === "complete") {
-                    app.productImageUpload(4);
+                    $('.carousel_big').slick({
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        dots: true,
+                        arrows: false,
+                        fade: true,
+                        autoplay: true,
+                        asNavFor: '.carousel_small'
+                    });
+                    $('.carousel_small').slick({
+                        infinite: true,
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        arrows: false,
+                        asNavFor: '.carousel_big',
+                        focusOnSelect: true,
+                        autoplay: true,
+                        autoplaySpeed: 2000,
+                        vertical: true,
+                        centerPadding: '0px',
+                        responsive: [
+                            {
+                              breakpoint: 600,
+                              settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 2,
+                                infinite: true
+                              }
+                            },
+                            {
+                              breakpoint: 480,
+                              settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                infinite: true
+                              }
+                            }
+                        ]
+                    });
+
+                    new WOW().init();
+                    $('[data-toggle="tooltip"]').tooltip();
+                    app.likeToggler();
+                    app.commentHandler();
+                    app.stickyHeader();
                 }
-            }
+            };
         </script> 
 
     </body>

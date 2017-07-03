@@ -180,10 +180,6 @@ const app = {
 			      			alert("Sorry, you can't upload more than four images at a time!");
 			      			return;
 			      		}
-			      		// else if ((input.files.length > 4) &&  (slots < 4)) {
-			      		// 	alert("Yay");
-			      		// 	return;
-			      		// }
 			      		else{
 				      		products = input.files;
 				      		imageList.unshift(products)
@@ -462,7 +458,8 @@ const app = {
     	    
     	    },
     	    createComment: function(arg){
-    	        var $textarea = arg.val();//gets the text put in the text area
+    	    	//gets the text put in the text area
+    	        var $textarea = arg.val();
     	        //console.log($textarea);
     	        comment.users.unshift({
     	            comment: $textarea,
@@ -477,8 +474,6 @@ const app = {
     	    if(e.which === 13 && $(this).val() !== '' && $(this).val().trim() !== '') {
     	        e.preventDefault();
     	        // console.log($(this));
-    	        // $addComment[0].offsetParent.children[4].removeClass('m-b-50')
-    	        //     .addClass('m-b-15');
     	        comment.createComment($(this));
     	        comment.updateComment($(this));
     	    }
@@ -494,7 +489,7 @@ const app = {
             //to STOP the form from submiting
             return false;
           }
-          if((document.getElementById("lastname").value == "")){
+          else if((document.getElementById("lastname").value == "")){
             document.getElementById("error_lastname").innerHTML = "Provide your lastname";
             //to STOP the form from submiting
             return false;
