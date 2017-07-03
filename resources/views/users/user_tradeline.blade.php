@@ -181,13 +181,11 @@
                                     <div class="media-body">
                                         <h6 class="media-heading c-brand w-500">
 
+                                            <!-- <a href="{{ route('tradeline', $post->user->id) }}" class="c-brand">{{ $post->user->full_name() }}</a> -->
+
                                             <a href="{{ route('timeline', $post->user->reference) }}" class="c-brand">{{ $post->user->full_name() }}</a>
 
-                                            <span class="pull-right" style="color:grey">{{$post->updated_at->diffForHumans()}}
-                                            @if(auth()->user()->id === $post->user->id)
-                                            <a href="{{ route('delete_post', $post->reference) }}"><i class="fa fa-trash c-brand"></i></a>
-                                            @endif
-                                            </span>
+                                            <span class="pull-right" style="color:grey">{{$post->updated_at->diffForHumans()}}</span>
                                         </h6>
                                         <p>{{ $post->title }}</p> {{-- <a href="#" class="c-brand">View Product</a></p> --}}
                                     </div>
@@ -270,9 +268,8 @@
                                                 <h6 class="media-heading w-700 m-b-5 f-12">{{ $comment->user->full_name() }}</h6>
                                                 <p m-b- f-12>{{ $comment->content }}</p>
                                                 <ul class="m-b-0 f-12">
-                                                    {{-- <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart-o"></i></span> Like</a></li> --}}
+                                                    <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart-o"></i></span> Like</a></li>
                                                 <li class="c-brand dis-inline-b p-l-10 p-r-10"><a href="#">Reply</a></li>
-                                                <li class="dis-inline-b p-l-10 p-r-10"><a href="{{ route('delete_comment', $comment->id) }}"><i class="fa fa-trash"></i> Delete</a></li>
                                                 <li class="c-brand dis-inline-b p-l-10">{{ $comment->updated_at->diffForHumans() }}</li>
                                                 </ul>
                                                 <div class="media m-t-5">
@@ -318,57 +315,57 @@
             document.onreadystatechange = () => {
                 if (document.readyState === "complete") {
                     $('.carousel_big').slick({
-                    //     slidesToShow: 1,
-                    //     slidesToScroll: 1,
-                    //     dots: true,
-                    //     arrows: false,
-                    //     fade: true,
-                    //     autoplay: true,
-                    //     asNavFor: '.carousel_small'
-                    // });
-                    // $('.carousel_small').slick({
-                    //     infinite: true,
-                    //     slidesToShow: 2,
-                    //     slidesToScroll: 1,
-                    //     arrows: false,
-                    //     asNavFor: '.carousel_big',
-                    //     focusOnSelect: true,
-                    //     autoplay: true,
-                    //     autoplaySpeed: 2000,
-                    //     vertical: true,
-                    //     centerPadding: '0px',
-                    //     responsive: [
-                    //         {
-                    //           breakpoint: 1024,
-                    //           settings: {
-                    //             slidesToShow: 3,
-                    //             slidesToScroll: 3,
-                    //             infinite: true
-                    //           }
-                    //         },
-                    //         {
-                    //           breakpoint: 600,
-                    //           settings: {
-                    //             slidesToShow: 2,
-                    //             slidesToScroll: 2,
-                    //             infinite: true
-                    //           }
-                    //         },
-                    //         {
-                    //           breakpoint: 480,
-                    //           settings: {
-                    //             slidesToShow: 1,
-                    //             slidesToScroll: 1,
-                    //             infinite: true
-                    //           }
-                    //         }
-                    //     ]
-                    // });
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        dots: true,
+                        arrows: false,
+                        fade: true,
+                        autoplay: true,
+                        asNavFor: '.carousel_small'
+                    });
+                    $('.carousel_small').slick({
+                        infinite: true,
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        arrows: false,
+                        asNavFor: '.carousel_big',
+                        focusOnSelect: true,
+                        autoplay: true,
+                        autoplaySpeed: 2000,
+                        vertical: true,
+                        centerPadding: '0px',
+                        responsive: [
+                            {
+                              breakpoint: 1024,
+                              settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 3,
+                                infinite: true
+                              }
+                            },
+                            {
+                              breakpoint: 600,
+                              settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 2,
+                                infinite: true
+                              }
+                            },
+                            {
+                              breakpoint: 480,
+                              settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                infinite: true
+                              }
+                            }
+                        ]
+                    });
 
-                    // new WOW().init();
-                    // $('[data-toggle="tooltip"]').tooltip();
-                    // app.productImageUpload(4);
-                    // app.commentHandler();
+                    new WOW().init();
+                    $('[data-toggle="tooltip"]').tooltip();
+                    app.productImageUpload(4);
+                    app.commentHandler();
                 }
             }
         </script>

@@ -165,12 +165,25 @@
                                             {{ auth()->user()->first_name }}
                                             </a>
                                             <div class="dropdown-menu animated bounceIn" aria-labelledby="dropdownMenu3">
+                                                <a class="dropdown-item waves-effect waves-light" href="{{ url('friends') }}">My friends</a>
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ url('follow') }}">Followers</a>
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ url('friend_requests') }}">Friend requests</a>
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ url('upload') }}">Albums</a>
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ url('notifications') }}">Notifications</a>
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ url('users') }}">De-bridge users</a>
 
-                                                <a class="dropdown-item waves-effect waves-light" href="{{ route('followers', auth()->user()->reference) }}">Followers</a>
-                                                <a class="dropdown-item waves-effect waves-light" href="{{ route('following', auth()->user()->reference) }}">Following</a>
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ route('user_logout') }}"
+                                                    onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                                    Logout
+                                                </a>
 
+                                                <a class="dropdown-item waves-effect waves-light"  href="{{ route('logout') }}">Logout</a>
+
+                                                 <!-- <a class="dropdown-item waves-effect waves-light" href="{{ url('friends') }}">Trade Request</a> -->
+                                                <a class="dropdown-item waves-effect waves-light" href="{{ url('follow') }}">Followers</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ url('upload') }}">Gallery</a>
-                                                <a class="dropdown-item waves-effect waves-light" href="{{ route('edit_profile') }}">Edit Profile</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="#">Edit Profile</a>
                                                 @if(strtolower(auth()->user()->role->name) === 'merchant')
                                                     <a class="dropdown-item waves-effect waves-light" href="{{ url('friend_requests') }}">Trade Requests</a>
                                                     <a class="dropdown-item waves-effect waves-light" href="{{ route('user_store', auth()->user()->reference) }}">Inventory</a>
@@ -265,8 +278,8 @@
                                                         <a href="{{ route('delete_social_notification', $notification->id) }}"><small class="pull-right">Mark as read</small></a>
                                                     </li>
                                                 @empty
-                                                    <li class="dropdown-item waves-effect waves-light p-l-10" href="">
-                                                        <span>Hi {{ ucfirst(auth()->user()->first_name) }}, you have no notification</span>
+                                                    <li class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="" disabled>
+                                                        <span>Hi {{ auth()->user()->first_name }}, you have no notification</span>
                                                     </li>
                                                 @endforelse
                                             </ul>

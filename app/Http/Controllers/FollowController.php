@@ -22,6 +22,12 @@ class FollowController extends Controller
 
     public function index()
     {
+        $following =  auth()->user()->following;
+        $followers =  auth()->user()->followers;
+        $following_count =  auth()->user()->following()->count() - 1;
+        $followers_count =  auth()->user()->followers()->count() - 1;
+        return view('users.follow', 
+            compact('followers', 'following', 'followers_count', 'following_count')
         $following =  auth()->user()->following->where('id', '!=', auth()->user()->id);
         $followers =  auth()->user()->followers->where('id', '!=', auth()->user()->id);
         $following_count =  count($following);
@@ -33,49 +39,27 @@ class FollowController extends Controller
             );
     }
 
-    protected function isValidPageNumber($page)
+    public function following($reference)
     {
-        return $page >= 2 && filter_var($page, FILTER_VALIDATE_INT) !== false;
-    }
-
-    public function following(Request $request, $reference)
-    {
-        $user = User::where('reference', $reference)->with(['following' => function ($q){
-            $q->with(['profile_picture', 'role']);
-        }])->first();
-
-        $following_count = count($user->following);
-
-        if (!$this->isValidPageNumber($request->next)) {
-            $following =  $user->following->sortBy('first_name')->splice(0,20);
-        } else {
-            $start =  20 + (((int)$request->next - 2) * 10);
-            $end = $start + 10;
-            $following =  $user->following->sortBy('name')->splice($start, $end);
-        }
-        return view('users.following_bridger', 
-            compact('user', 'following', 'following_count', 'following_ids')
+        $user = User::where('reference', $reference)->first();
+        $following =  $user->following->where('id', '!=', $user->id)->sortBy('first_name')->splice(0,19);
+        $following_count =  count($following);
+        $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
+        return view('users.bridger', 
+            compact('following', 'following_count', 'following_ids')
             );
     }
 
-    public function followers(Request $request, $reference)
+    public function follower($reference)
     {
-        $user = User::where('reference', $reference)->with(['following' => function ($q){
-            $q->with('profile_picture');
-        }])->first();
-
-        $followers_count =  count($user->followers);
-
-        if (!$this->isValidPageNumber($request->next)) {
-            $followers = $user->followers->sortBy('first_name')->splice(0,20);
-        } else {
-            $start =  20 + (((int)$request->next - 2) * 10);
-            $end = $start + 10;
-            $followers =  $user->followers->sortBy('name')->splice($start, $end);
-        }
+        $user = User::where('reference', $reference)->first();
+        $followers =  $user->follower->with('profile_picture')->where('id', '!=', $user->id)->sortBy('first_name')->splice(0,19);
+        $followers_count =  count($followers);
         $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
-
-        return view('users.followers_bridger', compact('user', 'followers', 'followers_count', 'following_ids'));
+        return view('users.bridger', 
+            compact('following', 'following_count', 'following_ids')
+>>>>>>> 0400c0a7d184b340f3c7fbb0281c20d3b407e348
+            );
     }
 
     /**
