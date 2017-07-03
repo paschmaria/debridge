@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class BridgeCode extends Model
 {
+
+    //
 	protected $fillable = ['code', 'user_id'];
 	
     public function user()

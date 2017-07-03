@@ -74,9 +74,8 @@ class FollowController extends Controller
             $followers =  $user->followers->sortBy('name')->splice($start, $end);
         }
         $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
-        return view('users.followers_bridger', 
-            compact('user', 'followers', 'followers_count', 'following_ids')
-            );
+
+        return view('users.followers_bridger', compact('user', 'followers', 'followers_count', 'following_ids'));
     }
 
     /**
@@ -107,6 +106,7 @@ class FollowController extends Controller
             'message' => auth()->user()->full_name() . ' is now following you!',
             'description_id' => 1 
             ]);
+        return response()->json($email);
         return response()->json($user->reference);
         // return back()->with('success', 'Now following ' . $user->email);
     }
@@ -189,6 +189,8 @@ class FollowController extends Controller
             'message' => auth()->user()->full_name() . ' unfollowed you!',
             'description_id' => 2 
             ]);
+        return response()->json($email);
+
         return response()->json($user->email);
         
         // return back()->with('info', 'unfollowed ' . $email);
