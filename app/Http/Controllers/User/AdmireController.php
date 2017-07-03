@@ -34,7 +34,6 @@ class AdmireController extends Controller
         $post = Post::where('reference', $reference)->first();
         $admire = PostAdmire::where(['post_id' => $post->id, 'user_id' => \Auth::user()->id])->first();
         if ($admire) {
-            // $admire->delete();
             return back()->with('info', 'Post already admired by you!');
         } else {
             PostAdmire::create(['post_id' => $post->id, 'user_id' => \Auth::user()->id]);

@@ -23,16 +23,17 @@
         <link href="assets/plugins/mdb/css/bootstrap.css" rel="stylesheet">
 
         <!-- Material Design Bootstrap -->
-       <link rel="stylesheet" href="assets/plugins/mdb/css/mdb.css">
+       <link rel="stylesheet" href="assets/plugins/mdb/css/mdb.min.css">
 
         <!-- Your custom styles (optional) -->
         <link rel="stylesheet" href="assets/css/main.css">
+
     </head>
 
-    <body data-page="lagos">
+    <body data-page="registered-users">
         <!-- header begins here-->
         <header>
-            <div class="container-fluid bg-brand z-2500">
+           <div class="container-fluid bg-brand z-2500">
                 <div class="row p-t-35 p-b-10">
                     <div class="col col-sm-3 col-md-3">
                         <div class="dis-flex">
@@ -60,19 +61,19 @@
                     <div class="col col-sm-3 col-md-3">
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-12">
-                                <ul class="navbar-nav dis-flex flex-row">
+                                <ul class="navbar-nav dis-flex flex-row z-10000">
                                     <li class="nav-item animated bounceIn list-inline-item dis-block">
                                         <img src="assets/img/oval-6.png" class="" width="50" height="50">
                                     </li>
-                                    <li class="nav-item animated bounceIn list-inline-item dis-block z-1000">
+                                    <li class="nav-item animated bounceIn list-inline-item dis-block">
                                         <div class="dropdown">
                                             <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Oladele
                                             </a>
                                             <div class="dropdown-menu animated bounceIn" aria-labelledby="dropdownMenu3">
-                                                <a class="dropdown-item waves-effect waves-light" href="editprofile.html">Edit Profile</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="#">Edit Profile</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="#">Inventory</a>
-                                                <a class="dropdown-item waves-effect waves-light" href="#">Log Out</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="#">Something here</a>
                                             </div>
                                         </div>
                                     </li>
@@ -82,7 +83,7 @@
                                 <ul class="navbar-nav dis-flex flex-row">
                                     <li class="animated bounceIn"> 
                                         <a href="mycart.html" class="p-l-10 p-r-10">
-                                            <span class="pos-rel">
+                                            <span class="pos-rel z-5000">
                                                 <i class="fa fa-shopping-cart fa-lg c-white" aria-hidden="true"></i>
                                                 <span class="cart-count">3</span>
                                             </span>
@@ -90,20 +91,21 @@
                                     </li>
                                     <li class="animated bounceIn"> 
                                         <a href="#" class="p-l-10 p-r-10">
-                                            <span class="pos-rel">
+                                            <span class="pos-rel z-5000">
                                                 <i class="fa fa-envelope fa-lg c-white" aria-hidden="true"></i>
                                                 <span class="cart-count">3</span>
                                             </span>
                                         </a>
                                     </li>
-                                    <li class="animated bounceIn"> 
-                                        <a class="p-l-10 p-r-10 dropdown white-text" id="dropdownNotify" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="pos-rel">
-                                                <i class="fa fa-bell fa-lg c-white" aria-hidden="true"></i>
-                                                <span class="cart-count">3</span>
-                                            </span>
-                                        </a>
-                                        <div class="dropdown-menu notify-dropdown animated bounceIn f-12" aria-labelledby="dropdownNotify">
+                                    <li class="animated bounceIn">
+                                        <div class="dropdown">
+                                            <a class="p-l-10 p-r-10 dropdown white-text" id="dropdownNotify" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span class="pos-rel z-5000">
+                                                    <i class="fa fa-bell fa-lg c-white" aria-hidden="true"></i>
+                                                    <span class="cart-count">3</span>
+                                                </span>
+                                            </a>
+                                            <div class="dropdown-menu notify-dropdown animated bounceIn f-12" aria-labelledby="dropdownNotify">
                                                 <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">
                                                 <img src="assets/img/p-photo-6.jpeg" class="h-40 width-40 m-r-5 bd-50p">
                                                 <span>Ejike Jhud started following you</span>
@@ -112,7 +114,11 @@
                                                 <span>Ejike Jhud Admired an item in your store</span></a>
                                                 <a class="dropdown-item waves-effect waves-light p-l-10" href="#"><img src="assets/img/pphoto-301.jpeg" class="h-40 width-40 m-r-5 bd-50p"><span>Ejike Jhud shared a post</span>
                                                 </a>
+                                            </div>
                                         </div>
+                                        
+                                             
+                                            
                                     </li>
                                 </ul>
                             </div>
@@ -139,7 +145,6 @@
                             <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Consultancy Unit</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="exhibitionStand.html">Exhibition Stand</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">B - Mentor</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Window Shopping</a></li>
                             <li class="nav-item"><a class="nav-link c-brand w-700 text-uppercase" href="#">Apply for Bridge Code</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
@@ -151,7 +156,6 @@
 
         <!-- main section begins here-->
         <section class="main">
-
             <div class="container-fluid">
 
                 <div class="row m-t-20">
@@ -161,12 +165,12 @@
                             <a href="tradeRequest.html" class="list-group-item list-group-item-action">TRADE REQUEST</a>
                             <a href="#" class="list-group-item list-group-item-action">TRADE COMMUNITY</a>
                             <a href="#" class="list-group-item list-group-item-action">BRIDGE POINT</a>
-                            <a href="#" class="list-group-item list-group-item-action">BRIDGE CODE</a>
+                            <a href="#" class="list-group-item list-group-item-action">BRIDGE CODE&nbsp;(Unavailable)</a>
                         </div>
-                        <a href="#" class="btn btn-outline-brand btn-block waves-effect">B - ANALYTOR</a>
+                        <a href="#" class="btn btn-outline-default btn-block waves-effect">B - ANALYTOR</a>
                     </div>
                     <div class="col-sm-3 push-sm-6 col-md-3">
-                        <figure class="m-0 text-center m-b-10">
+                        <figure class="m-0">
                             <svg xmlns:mapsvg="http://mapsvg.com" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" geoViewBox="2.667421 13.892750 14.680752 4.269658" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 744 599">
                               <a href="#" title="Go to Abia Market" data-toggle="tooltip"><path d="m 291.01165,491.65874 0.6,0.77 4.83,-0.89 2.71,0.27 2.05,1.34 0.33,1.46 0,0 0.07,4.36 -0.55,2.86 0.05,0.73 0.94,1.03 14.09,0.86 1.24,1.86 0.22,2.19 0.7,1.04 3.21,2.33 1.34,0.21 0,0 1.08,1.29 -0.59,3.72 0.15,3.78 1.37,4.63 0.73,1.68 1.71,2 0.76,2.55 -0.6,1.21 -3.42,-0.76 0,0 -2.69,-2.61 -2.54,-0.84 -2.76,-2.14 -0.58,-2.11 -1.19,-1.47 -3.4,-0.91 -2.42,0.14 -0.28,0.91 0.53,3.51 -1.84,5.1 0.32,0.45 2.23,-0.16 -0.7,2.44 -0.73,0.9 -6.08,-0.16 -1.1,0.98 -0.07,0.75 1.07,1.94 -1.21,5.81 -0.03,2.4 0.66,2.49 -1.17,2.89 -2.52,1.94 0.09,0.77 -0.47,0.64 0.22,1.47 0.59,0.67 0.02,1.17 -0.67,1.62 1.79,3.37 0.13,1.85 0,0 -2.36,-1.79 -2.94,-1.41 -1.8,0.43 -3.28,-1.22 -2.79,0.12 -1.11,0.64 -3.13,0.58 -1.8,-0.27 -1.45,-1.41 -0.59,-1.1 0.16,-1.1 1.37,-3.7 3.42,-4.33 2.39,-4.19 -0.05,-2.78 -0.66,-1.72 -0.54,-0.05 0,0 3.09,-10.25 2.1,-3.87 1.82,-1.68 1.18,-3.04 0.89,-0.9 0.43,-2.01 -0.36,-3.45 0.28,-2.05 -1.51,-2.44 1.23,-0.77 -0.38,-8.47 -0.47,-1.35 -1.04,-1.45 -5.34,-1.78 -2.01,-1.69 0,0 1.27,-2.22 1.36,-1.3 z" id="NG-AB" class="mapsvg-region" style="vector-effect: non-scaling-stroke;"></path></a>
                               <a href="#" title="Go to Adamawa Market" data-toggle="tooltip"><path d="m 682.64165,187.16874 -0.13,1.83 -0.82,1.76 -1.02,1.57 -1.1,0.83 -1.77,2.9 -1.36,4.89 -2.66,2.45 -0.48,1.1 -0.61,3.01 0.72,3.61 0.77,1.06 0,1.7 -1.61,1.66 -0.26,4.61 -0.97,1.67 0.13,3.45 -0.78,1.94 -2.05,2.57 -0.26,3.02 -1.61,1.04 -1.44,2.61 -5.87,1.16 -4.18,5.88 0.15,0.98 1.54,1.62 0.04,0.64 -1.15,2.74 -1.85,1.39 -0.03,1.77 0.69,1.6 2.69,1.33 1.01,1.59 -2.16,3.09 -0.13,2.25 -0.54,1.29 0.27,1.11 -1.08,1.47 0.33,0.78 -0.22,1.41 0.43,0.63 -0.74,2.2 -1.02,1.64 -0.97,-0.13 -1.7,1.32 -8.01,0.82 -2.75,2.16 -1.62,0.29 -3.76,3.39 -3.76,1.98 0.09,1.34 2.37,0.27 0.49,0.42 0.09,7.48 -0.73,0.69 -0.83,4.41 0.84,2.07 -1.16,4.03 0.3,1.32 -2.81,4.8 -2.64,2.3 -0.01,1 0.71,0.99 -0.82,2.05 1.27,3.92 -1.13,1.85 -1.09,0.38 -1.67,-0.23 -1.46,0.54 -0.57,1.1 -0.16,2.73 -0.98,0.74 -0.99,1.85 -2.18,0.19 -3.4,2.76 -0.83,0.12 -5.88,-1.64 -0.66,0.66 -0.24,1.71 -1.18,1.16 -0.81,3.05 -1.77,2.34 -2.33,0.14 -1.12,0.89 -2.47,-0.28 -1.85,1.21 -1.91,0.33 -0.72,0.82 -0.68,4.04 1.44,5.22 0.58,5.77 -0.06,1.04 -0.77,0.56 -2.43,4.51 0.62,2.51 0.22,3.73 -4.13,6.35 -3.49,3.09 -1.76,3.01 -0.48,2 -1.12,1.47 -0.41,3.45 -1.11,1.56 0.69,6.14 0.65,1.8 -2.93,1.48 -1.96,0.27 -2.75,3.14 0,0 -1.22,-0.88 0.05,-1.56 -1.94,-4.62 -0.38,-3.54 -0.74,-1.73 0.58,-5.49 -1.04,-2.02 -2.15,-2.6 -4.32,-3.84 -2.5,-3.15 -1.52,-1.12 -1.42,-0.43 -1.64,0.38 -2.83,4.01 -2.72,1.99 -2.71,-2.45 -2.91,-4.7 -2.52,-6.73 0.82,-1.58 4.14,-4.78 3.8,-3.22 5.08,-5.48 8.63,-11.52 6.12,-5.22 0.44,-2.08 -0.38,-5.78 5.99,-11.44 1,-3.62 -0.26,-1.81 -2.02,-3.84 -4.14,-1.47 -2.66,-2.94 -0.34,-3.84 0.46,-2.17 -5.26,-9.82 -2.08,-1.29 -4.65,-1.08 -1.46,-1.92 -5.45,-10.18 0,0 6.2,-0.91 3.37,-1.43 9.4,-5.66 5.75,-4 1.1,-2.33 -0.52,-3.7 0.68,-10.23 0,0 6.34,0.97 2.7,-0.19 4.57,-1.32 1.74,-1.07 1.7,-1.9 3.73,-5.55 6.2,-7.06 2.51,-0.87 6.29,-0.49 5.9,-2.22 2.44,-2.62 0.82,-2.66 3.32,-0.14 2.35,-1.14 2.22,-3.7 2.1,-2.16 2.51,-1.47 8.52,0.79 2.87,1.03 2.58,1.55 2.84,3.11 2.43,1.15 2.38,1.02 4.39,-0.01 1.14,-1.22 1.48,-7.76 2.71,-5.68 1.22,-3.64 0.88,-4.1 0.28,-8.01 3.09,-0.43 0.62,0.74 3.75,1.14 3.86,-0.29 5.62,-1.74 0,0 z" id="NG-AD" class="mapsvg-region" style="vector-effect: non-scaling-stroke; ;"></path></a>
@@ -207,7 +211,7 @@
                               <a href="#" title="Go to Zamfara Market" data-toggle="tooltip"><path d="m 258.59165,50.268745 5.45,6.52 5.08,-0.11 3.34,-0.61 0,0 -1.44,10.82 0.99,6.17 -0.07,6.05 1,5.17 0.39,4.75 1.31,3.21 -0.4,3.57 2.5,5.199995 0.69,3.05 -0.13,1.68 0.95,2.47 -1.09,5.16 -1.82,3.63 1.26,1.21 2.53,1.16 2.68,2.29 1.16,1.43 0.5,1.95 -1.89,1.62 -3.34,-0.81 -0.55,3.2 -4.88,3.97 -1.28,-0.87 -6.61,0.13 -1.5,0.84 -0.65,4 -1.56,4.14 -0.45,3.76 0.16,1.07 1.91,1.9 0.9,3.69 -1.25,6.1 -0.02,2.33 0,0 -1.01,-0.03 -2.34,2.38 -2.75,1.77 -0.85,1.14 -1.71,3.41 -0.64,3.55 -1.51,3.23 -3.04,3.1 -2.33,1.51 -4.71,0.62 -7.94,-0.57 -5.64,0.95 -5.27,4.71 -2.86,4.16 -1.28,0.76 -1.68,0.12 0,0 0.07,-0.84 -1.59,-4.09 -3.8,-6.64 -3.32,-4.4 0,0 -0.21,-5.48 -1.38,-7.58 -1.93,-3.01 -5.38,-2.71 0,-1.2 2.05,-6.49 0.01,-2.47 -1.41,-2.15 -4.35,-1.77 -4.85,-0.62 -1.22,0.81 -2.49,0.59 -3.79,-0.5 -5.47,0.76 -3.65,-2.41 -2.87,-0.11 -1.69,-3.3 -1.08,-0.57 -3.61,0.65 -2.09,-0.31 -0.91,-0.64 -0.79,0.15 -1.06,0.62 -0.82,2.32 -6.34,1.46 -4.11,-2.25 -1.82,0 -0.86,0.48 0,0 0.66,-13.78 -0.1,-18.21 0.93,-4.51 0.92,-0.6 9.33,1.67 4.47,-0.33 2.64,0.31 4.8,-0.64 1.28,0.29 6.11,-0.53 2.46,-1.7 0.74,-3.029995 -0.65,-4.25 -1.43,-4.64 -0.06,-2.88 3.07,-1.91 1.88,-1.87 5.83,-8.58 6.09,-0.95 10.02,-0.79 4.04,-1.64 1.35,-1 -0.07,-8.44 -0.78,-5.14 0.11,-0.7 2.11,-1.82 4.85,-1.56 2.79,0 2.7,1.44 0.5,-0.22 0.73,-1.89 0.59,-5.48 4.97,0.19 2.27,0.68 1.7,2.05 1.9,0.66 9.51,1.28 7.1,-4 3.03,-2.6 0,0 z" id="NG-ZA" class="mapsvg-region" style="vector-effect: non-scaling-stroke;"></path></a>
                             </svg>
                         </figure>
-                        <a href="#" class="btn btn-outline-brand btn-block waves-effect hidden-lg-up hidden-md-up">visit state market</a>
+                        <a href="#" class="btn btn-outline-default btn-block waves-effect hidden-lg-up hidden-md-up">visit state market</a>
                     </div>
                     <div class="col-sm-6 pull-sm-3 col-md-6">
                         <div class="row no-gutters">
@@ -261,8 +265,8 @@
                             </div>  
                         </div>
                         <div class="c-brand">
-                            <h2 class="text-left h2-responsive f-32">THE LAGOS MARKET</h2>
-                            <p class="text-right text-fluid f-24">...The Center of Excellence</p>
+                            <h2 class="text-left h2-responsive">THE NIGERIAN MARKET</h2>
+                            <p class="text-right text-fluid">…The Largest Black Market in the Globe</p>
                         </div>
                     </div>
                 </div>
@@ -270,257 +274,93 @@
                 <div class="row m-t-20">
                     <div class="hidden-xs-down col-sm-3 col-md-3">
                         <!--Card-->
-                        <div class="card m-b-16 wow fadeInUp">
-                            <!--Card image-->
-                            <div class="view overlay hm-black-light hm-zoom">
-                                <img src="assets/img/background/rectangle.png" class="img-fluid width-100p" alt="">
-                                <div class="white-text mask flex-center">
-                                <div class="text-center">
-                                    <h2 class="m-b-20 w-700">Product Name</h2>
-                                    <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
-                                    <p class="m-b-20">25% Off</p>
-                                    <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
-                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add item</a>
-                                </div>
-                            </div>
-                            </div>
-                            <!--/.Card image-->
-                        </div>
-                        <!--/.Card-->
-                        <!--Card-->
-                        <div class="card m-b-16 wow fadeInUp">
-                            <!--Card image-->
-                            <div class="view overlay hm-black-light hm-zoom">
-                                <img src="assets/img/background/carousels/rectangle-copy.png" class="img-fluid width-100p" alt="">
-                                <div class="white-text mask flex-center">
-                                <div class="text-center">
-                                    <h2 class="m-b-20 w-700">Product Name</h2>
-                                    <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
-                                    <p class="m-b-20">25% Off</p>
-                                    <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
-                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add item</a>
-                                </div>
-                            </div>
-                            </div>
-                            <!--/.Card image-->
-                        </div>
-                        <!--/.Card-->
-                        <!--Card-->
-                        <div class="card m-b-16 wow fadeInUp">
-                            <!--Card image-->
-                            <div class="view overlay hm-black-light hm-zoom">
-                                <img src="assets/img/background/rectangle-copy-2.png" class="img-fluid width-100p" alt="">
-                                <div class="white-text mask flex-center">
-                                <div class="text-center">
-                                    <h2 class="m-b-20 w-700">Product Name</h2>
-                                    <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
-                                    <p class="m-b-20">25% Off</p>
-                                    <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
-                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add item</a>
-                                </div>
-                            </div>
-                            </div>
-                            <!--/.Card image-->
-                        </div>
-                        <!--/.Card-->
-                        <!-- Card -->
-                        <div class="card m-b-16 wow fadeInUp">
-                            <!-- Card image -->
-                            <div class="view overlay hm-black-light hm-zoom">
-                                <img src="assets/img/background/rectangle-copy-3.png" class="img-fluid width-100p" alt="">
-                                <div class="white-text mask flex-center">
-                                <div class="text-center">
-                                    <h2 class="m-b-20 w-700">Product Name</h2>
-                                    <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
-                                    <p class="m-b-20">25% Off</p>
-                                    <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
-                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add item</a>
-                                </div>
-                            </div>
-                            </div>
-                            <!--/.Card image-->
-                        </div>
-                         <!--Card-->
-                        <div class="card m-b-16 wow fadeInUp">
-                            <!--Card image-->
-                            <div class="view overlay hm-black-light hm-zoom">
-                                <img src="assets/img/background/rectangle-copy-4.png" class="img-fluid width-100p" alt="">
-                                <div class="white-text mask flex-center">
-                                <div class="text-center">
-                                    <h2 class="m-b-20 w-700">Product Name</h2>
-                                    <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
-                                    <p class="m-b-20">25% Off</p>
-                                    <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
-                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add item</a>
-                                </div>
-                            </div>
-                            </div>
-                            <!--/.Card image-->
-                        </div>
                         <!--/.Card-->
                     </div>
                     <div class="col col-sm-6 col-md-6">
                         <nav class="navbar user-type-navbar no-shadow">
-                        <ul class="nav user-type-nav text-center">
-                            <li class="nav-item"><a class="nav-link hover-underline active" href="#">MANUFACTURERS</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="#">WHOLESALERS</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="#">RETAILERS</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="#">FARMERS</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="#">PROFESSIONALS</a></li>
-                        </ul>
-                    </nav>
+                            <ul class="nav user-type-nav">
+                                <li class="nav-item"><a class="nav-link hover-underline active" href="#">MANUFACTURERS</a></li>
+                                <li class="nav-item"><a class="nav-link hover-underline" href="#">WHOLESALERS</a></li>
+                                <li class="nav-item"><a class="nav-link hover-underline" href="#">RETAILERS</a></li>
+                                <li class="nav-item"><a class="nav-link hover-underline" href="#">FARMERS</a></li>
+                                <li class="nav-item"><a class="nav-link hover-underline" href="#">PROFESSIONALS</a></li>
+                            </ul>
+                        </nav>
                         <div class="card m-t-20 p-18">
-                                <div class="card-block p-0">
-                                    <form action="" id="product-upload-form">
-                                        <div class="md-form m-0">
-                                            <textarea type="text" id="status_update" class="md-textarea input-alternate p-10 h-100 border-box" placeholder="What's on your mind?"></textarea>
-                                        </div>
-                                        <div id="product-img-wrapper" class="dis-none flex-row">
-                                            <ul id="product-imgs" class=""></ul>
-                                            <span class="add-img pos-rel">
-                                                <span class=""><input type="file" class="product-img-input" multiple></span>
-                                                <button type="button" class="btn-upload btn-product-img"><i class="fa fa-plus fa-3x"></i></button>
-                                            </span>
-                                        </div>
-                                        <div id="">
-                                            <button type="button" class="btn-flat btn-product-img"><i class="fa fa-image"></i> upload</button>
-                                            <input type="file" class="product-img-input" multiple>
-                                            <button type="submit" class="btn btn-brand waves-effect">post</button>
-                                        </div>
-                                    </form>
-                                </div>
-
-                                <!-- first post wrapper -->
-                                <div class="media">
-                                    <a href="#" class="pull-left">
-                                        <img src="assets/img/background/rectangle-60.png" class="media-object p-r-10" alt="Image">
-                                    </a>
-                                    <div class="media-body">
-                                        <h6 class="media-heading c-brand w-500">Jhud's Fashion House</h6>
-                                        <p>New arrivals are everywhere. Get Quality 2017 dresses which never goes out of style. Call Us: 08073404890 or visit jhuds.com/clothing</p>
+                            <div class="card-block p-0">
+                                <form action="" id="product-upload-form">
+                                    <div class="md-form m-0">
+                                        <textarea type="text" id="status_update" class="md-textarea input-alternate p-10 h-100 border-box" placeholder="What's on your mind?"></textarea>
                                     </div>
-                                </div>
-                                <div class="card-group">
-                                    <div class="card m-5">
-                                        <!-- card Image -->
-                                        <div class="view overlay hm-white-slight">
-                                            <img src="assets/img/background/carousels/rectangle-4.png" class="img-fluid width-100p" alt="">
-                                            <a href="#">
-                                                <div class="mask waves-effect waves-light"></div>
-                                            </a>
-                                        </div>
-                                        <!-- / card Image -->
+                                    <div id="product-img-wrapper" class="dis-flex flex-row">
+                                        <ul id="product-imgs" class=""></ul>
+                                        <span class="add-img pos-rel">
+                                            <span class=""><input type="file" class="product-img-input" multiple></span>
+                                            <button type="button" class="btn-upload btn-product-img"><i class="fa fa-plus fa-3x"></i></button>
+                                        </span>
                                     </div>
-                                    <div class="card m-5">
-                                        <!-- card Image -->
-                                        <div class="view overlay hm-white-slight">
-                                            <img src="assets/img/background/rectangle-3-copy-2a.png">
-                                            <a href="#">
-                                                <div class="mask waves-effect waves-light"></div>
-                                            </a>
-                                        </div>
+                                    <div id="">
+                                        <button type="button" class="btn-flat btn-product-img"><i class="fa fa-image"></i> upload</button>
+                                        <input type="file" class="product-img-input" multiple>
+                                        <button type="submit" class="btn btn-brand waves-effect">post</button>
                                     </div>
+                                </form>
+                                <!-- <div class="md-form m-0">
+                                    <textarea type="text" id="status_update" class="md-textarea input-alternate p-10 h-100 border-box" placeholder=""></textarea>
                                 </div>
-                                <div class="m-t-10 m-b-50">
-                                    <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10" role="group" aria-label="Ad Action Buttons">
-                                        <button type="button" class="btn bg-white m-r-3 f-14">
-                                            <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
-                                        </button>
-                                        <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
-                                            <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
-                                        </button>
-                                        <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
-                                            <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
-                                        </button>
-                                        <button type="button" class="btn bg-white m-l-3 f-14">
-                                            <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <!--/.first post wrapper -->
-                                <!-- comment section-->
-                            <div class="media m-b-15">
-                                <a class="pull-left" href="#">
-                                <img class="media-object p-r-10" src="assets/img/acc-img-1.png" alt="Image">
+                                <div class="text-right m-b-20">
+                                    <button type="submit" class="btn btn-brand waves-effect">POST</button>
+                                </div> -->
+                            </div>
+                            <!-- first post wrapper -->
+                            <div class="media">
+                                <a href="#" class="pull-left">
+                                    <img src="assets/img/background/rectangle-60.png" class="media-object p-r-10" alt="Image">
                                 </a>
                                 <div class="media-body">
-                                    <textarea name="" id="" class="md-textarea input-alternate p-10 h-58 border-box comment_box" placeholder="Press enter to send..."></textarea>
+                                    <h6 class="media-heading c-brand w-500">Jhud's Fashion House</h6>
+                                    <p>New arrivals are everywhere. Get Quality 2017 dresses which never goes out of style. Call Us: 08073404890 or visit jhuds.com/clothing</p>
                                 </div>
                             </div>
-                            <div class="media m-b-40 flex-column comment">
-                                <div class="media">
-                                    <div class="pull-left p-r-10">
-                                        <img class="media-object " src="assets/img/acc-img-2.png" alt="Image">
+                            <div class="card-group">
+                                <div class="card m-5">
+                                    <!-- card Image -->
+                                    <div class="view overlay hm-white-slight">
+                                        <img src="assets/img/background/carousels/rectangle-3.png" class="img-fluid width-100p" alt="">
+                                        <a href="#">
+                                            <div class="mask waves-effect waves-light"></div>
+                                        </a>
                                     </div>
-                                    <div class="media-body">
-                                        <h6 class="media-heading w-700 m-b-5 f-12">Cindy Fashion House </h6>
-                                        <p m-b- f-12>New arrivals are everywhere. Get Quality 2017 dresses which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing</p>
-                                        <ul class="m-b-0 f-12">
-                                            <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart-o"></i></span> Like</a></li>
-                                        <li class="c-brand dis-inline-b p-l-10 p-r-10"><a href="#">Reply</a></li>
-                                        <li class="c-brand dis-inline-b p-l-10">31 May 2017</li>
-                                        </ul>
-                                        <div class="media m-t-5">
-                                            <div class="pull-left p-r-10">
-                                                <img src="assets/img/acc-img-1.png" class="media-object">
-                                            </div>
-                                            <div class="media-body">
-                                                <textarea name="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Write a reply..."></textarea>
-                                            </div>
-                                        </div> 
+                                    <!-- / card Image -->
+                                </div>
+                                <div class="card m-5">
+                                    <!-- card Image -->
+                                    <div class="view overlay hm-white-slight">
+                                        <img src="assets/img/background/rectangle-3-copy-2.png">
+                                        <a href="#">
+                                            <div class="mask waves-effect waves-light"></div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                            <!--/. comment section--> 
-                                
-                                <!-- second post wrapper -->
-                                <div class="media">
-                                    <a href="#" class="pull-left">
-                                        <img src="assets/img/background/carousels/rectangle-60.png" class="media-object p-r-10" alt="Image">
-                                    </a>
-                                    <div class="media-body">
-                                        <h6 class="media-heading c-barnd w-500">Jhud's Fashion House</h6>
-                                        <p>New arrivals are everywhere. Get Quality 2017 dresses which never goes out of style. Call Us: 08073404890 or visit jhuds.com/clothing</p>
-                                    </div>
+                            <div class="m-t-10 m-b-50">
+                                <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10 m-l-5" role="group" aria-label="Ad Action Buttons">
+                                    <!-- <button type="button" class="btn bg-white m-r-3 f-14">
+                                        <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
+                                    </button> -->
+                                    <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 width-200">
+                                        <span class="">Admire&nbsp;</span><span class=""><i class="fa fa-heart"></i></span>
+                                    </button>
+                                    <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
+                                        <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
+                                    </button>
+                                    <button type="button" class="btn bg-white m-l-3 f-14 width-200">
+                                        <span class="">Hype&nbsp;</span><span class=""><i class="fa fa-share-alt"></i></span>
+                                    </button>
                                 </div>
-                                <div class="card-group">
-                                    <div class="card m-5">
-                                        <!-- card Image -->
-                                        <div class="view overlay hm-white-slight">
-                                            <img src="assets/img/background/carousels/rectangle-3.png">
-                                            <a href="#">
-                                                <div class="mask waves-effect waves-light"></div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card m-5">
-                                        <!-- card Image -->
-                                        <div class="view overlay hm-white-slight">
-                                            <img src="assets/img/background/rectangle-3-copy-2b.png">
-                                            <a href="#">
-                                                <div class="mask waves-effect waves-light"></div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="m-t-10 m-b-50">
-                                    <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10" role="group" aria-label="Ad Action Buttons">
-                                        <button type="button" class="btn bg-white m-r-3 f-14">
-                                            <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
-                                        </button>
-                                        <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
-                                            <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
-                                        </button>
-                                        <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
-                                            <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
-                                        </button>
-                                        <button type="button" class="btn bg-white m-l-3 f-14">
-                                            <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <!--/.second post wrapper -->
-                                <!-- comment section-->
+                            </div>
+                            <!--/.first post wrapper -->
+                            <!-- comment section-->
                             <div class="media m-b-15">
                                 <a class="pull-left" href="#">
                                 <img class="media-object p-r-10" src="assets/img/acc-img-1.png" alt="Image">
@@ -552,18 +392,96 @@
                                         </div> 
                                     </div>
                                 </div>
-                            </div> 
-                            <!--/. comment section--> 
-                        </div>
-                    </div> 
+                            </div>  
+                            <!--/. comment section-->
+                            <!-- second wrapper here -->
+                            <div class="media">
+                                <a href="#" class="pull-left">
+                                    <img src="assets/img/background/rectangle-60.png" class="media-object p-r-10" alt="Image">
+                                </a>
+                                <div class="media-body">
+                                    <h6 class="media-heading c-brand w-500">Jhud's Fashion House</h6>
+                                    <p>New arrivals are everywhere. Get Quality 2017 dresses which never goes out of style. Call Us: 08073404890 or visit jhuds.com/clothing</p>
+                                </div>
+                            </div>
+                            <div class="card-group">
+                                <div class="card m-5">
+                                    <!-- card Image -->
+                                    <div class="view overlay hm-white-slight">
+                                        <img src="assets/img/background/carousels/rectangle-3.png" class="img-fluid width-100p" alt="">
+                                        <a href="#">
+                                            <div class="mask waves-effect waves-light"></div>
+                                        </a>
+                                    </div>
+                                    <!-- / card Image -->
+                                </div>
+                                <div class="card m-5">
+                                    <!-- card Image -->
+                                    <div class="view overlay hm-white-slight">
+                                        <img src="assets/img/background/carousels/rectangle-3-copy-2.png">
+                                        <a href="#">
+                                            <div class="mask waves-effect waves-light"></div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-t-10 m-b-50">
+                                <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10 m-l-5" role="group" aria-label="Ad Action Buttons">
+                                    <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 width-200">
+                                        <span class="">Admire&nbsp;</span><span class=""><i class="fa fa-heart"></i></span>
+                                    </button>
+                                    <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
+                                        <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
+                                    </button>
+                                    <button type="button" class="btn bg-white m-l-3 f-14 width-200">
+                                        <span class="">Hype&nbsp;</span><span class=""><i class="fa fa-share-alt"></i></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.second post wrapper -->
+                            <!-- comment section-->
+                            <div class="media m-b-15">
+                                <a class="pull-left" href="#">
+                                <img class="media-object p-r-10" src="assets/img/acc-img-1.png" alt="Image">
+                                </a>
+                                <div class="media-body">
+                                    <textarea name="" id="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Press enter to send..."></textarea>
+                                </div>
+                            </div>
+                            <div class="media m-b-40">
+                                <div class="media">
+                                    <div class="pull-left p-r-10">
+                                        <img class="media-object " src="assets/img/acc-img-2.png" alt="Image">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="media-heading w-700 m-b-5 f-12">Cindy Fashion House </h6>
+                                        <p m-b- f-12>New arrivals are everywhere. Get Quality 2017 dresses which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing</p>
+                                        <ul class="m-b-0 f-12">
+                                            <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart-o"></i></span> Like</a></li>
+                                        <li class="c-brand dis-inline-b p-l-10 p-r-10"><a href="#">Reply</a></li>
+                                        <li class="c-brand dis-inline-b p-l-10">31 May 2017</li>
+                                        </ul>
+                                        <div class="media m-t-5">
+                                            <div class="pull-left p-r-10">
+                                                <img src="assets/img/acc-img-1.png" class="media-object">
+                                            </div>
+                                            <div class="media-body">
+                                                <textarea name="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Write a reply..."></textarea>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>  
+                            <!--/. comment section-->                         
+                        </div>                    
+                    </div>
+                    <div class="hidden-xs-down col-sm-3 col-md-3">
+                        <!--Card-->
+                        <!--/.Card-->
+                    </div>
                 </div>
 
-                <div class="hidden-xs-down col-sm-3 col-md-3">
-                    <!--Card-->
-                    <!--/.Card-->
-                </div>
             </div>
-
         </section>
         <!-- main section ends here-->
         
@@ -648,9 +566,10 @@
             document.onreadystatechange = () => {
                 if (document.readyState === "complete") {
                     app.productImageUpload(4);
-                    app.commentHandler();
                 }
             }
-        </script>
+        </script> 
+
     </body>
+
 </html>
