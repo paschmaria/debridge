@@ -91,7 +91,7 @@ class UserController extends Controller
         \Auth::login($user);
         //generate  debride code for user
         $this->bride_code->store();
-        return redirect('/user/follow/friends')->with('info', 'Welcome, '. $user->full_name());
+        return redirect(route('follow_friends'))->with('info', 'Welcome, '. $user->full_name());
     }
 
     public function getLogin()
