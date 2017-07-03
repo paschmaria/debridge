@@ -373,7 +373,7 @@ class ProductController extends Controller
         // dd(empty($product_of_the_week));
 
         if($product_of_the_week!=null){
-            // dd('net');
+            // dd('net');ll
             $current_time = date('Y-m-d');
             $product_of_the_week_updated = date('Y-m-d', strtotime($product_of_the_week->updated_at));
             $current_time = date('Y-m-d', strtotime($current_time.' - 7days'));
