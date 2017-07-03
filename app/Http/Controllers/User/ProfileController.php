@@ -76,8 +76,8 @@ class ProfileController extends Controller
     {
         $user = auth()->user();
         $this->validate($request, [
-            'telephone' => 'digit|max:16',
-            'address' => 'string|max:150',
+            'telephone' => 'digits_between:5,16',
+            'address' => 'nullable|string|max:150',
             'state' => 'digit',
             'status' => 'max:180',
         ]);
@@ -101,13 +101,13 @@ class ProfileController extends Controller
     {
         $user = auth()->user();
         $this->validate($request, [
-            'telephone' => 'digit|max:16',
-            'address' => 'string|max:150',
-            'state' => 'digit',
+            'telephone' => 'digits_between:5,16',
+            'address' => 'nullable|string|max:150',
+            'state' => 'digits_between:1,10',
             'status' => 'max:180',
-            'store_name' => 'string|max:128'
+            'store_name' => 'nullable|string|max:128'
         ]);
-
+        
         $merchant = UserAccount::firstOrCreate(['user_id' => auth()->user()->id]);
         $merchant->telephone = $request->telephone;
         $merchant->store_name = $request->store_name;

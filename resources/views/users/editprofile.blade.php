@@ -121,6 +121,7 @@
                                             @else
                                                 action="{{ route('update_merchant') }}"
                                             @endif>
+                                            {{ csrf_field() }}
                                                 <div class="row">
                                                     <div class="col-md-12 col-sm-12 m-b-30">
                                                     <span class="c-brand fa fa-cog fa-2x">&nbsp; </span>
