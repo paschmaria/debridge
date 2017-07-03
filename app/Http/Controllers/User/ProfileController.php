@@ -144,7 +144,7 @@ class ProfileController extends Controller
         } else {
             return back()->with('delete', 'Wrong password!');
         }
-        
+        //
     }
 
     /**
