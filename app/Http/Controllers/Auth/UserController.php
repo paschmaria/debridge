@@ -58,7 +58,7 @@ class UserController extends Controller
         $trade_community = TradeCommunity::where('name', $request->input('trade_community'))->first();
 
         // $state = State::where('name', $request->input('state'))->first();
-
+        // dd($request->all());
         $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
