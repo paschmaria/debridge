@@ -84,7 +84,7 @@ Route::post('/unfollow/{reference}', 'FollowController@destroy')->name('unfollow
 
 
 Route::get('/delete_comment/{id}', 'User\CommentController@destroy')->name('delete_comment');
-Route::get('/delete_post/{post}', 'User\PostController@destroy')->name('delete_post');
+Route::get('users/post/delete/{reference}', 'User\PostController@destroy')->name('delete_post');
 
 Route::get('/register', 'Auth\UserController@register')->name('register');
 
@@ -210,7 +210,11 @@ Route::get('/cart/viewCart', 'User\CartController@viewCart')->name('viewCart')->
 ;
 
 Route::get('/user_tradeline', 'Auth\UserController@userTradeline')->name('user_tradeline')->middleware('auth');
-Route::get('/users/following/{reference}', 'FollowController@following')->name('xx');
+Route::get('/users/following/{reference}', 'FollowController@following')->name('following');
+Route::get('/users/followers/{reference}', 'FollowController@followers')->name('followers');
+Route::get('/users/profile/edit', 'User\ProfileController@index')->name('edit_profile')->middleware('auth');
+Route::post('/users/profile/edit/account', 'User\ProfileController@userSave')->name('update_profile')->middleware('auth');
+Route::post('/users/profile/edit/user', 'User\ProfileController@userAccountSave')->name('update_user')->middleware('auth');
+Route::post('/users/profile/edit/merchant', 'User\ProfileController@merchantAccountSave')->name('update_merchant')->middleware('auth');
+Route::post('/users/profile/edit/password', 'User\ProfileController@changePassword')->name('change_pasword')->middleware('auth');
 Route::get('product_details/{product}/{reference}', 'Merchant\ProductController@productDetails')->name('product_details');
-
-
