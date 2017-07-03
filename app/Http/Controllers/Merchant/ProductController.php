@@ -357,4 +357,33 @@ class ProductController extends Controller
         $products = Product::where('inventory_id', $inventory->id)->get();
         return view('products', compact('products', 'user'));
     }
+
+   public function productDetails(Product $product, $reference)
+    {
+        $user = User::where('reference', $reference)->first();
+        $merchant = MerchantAccount::where('user_id', $user->id)->first();
+        $product_of_the_week = ProductOfTheWeek::where('merchant_account_id', $merchant->id)->first();
+        // dd(empty($product_of_the_week));
+
+        if($product_of_the_week!=null){
+            // dd('net');ll
+            $current_time = date('Y-m-d');
+            $product_of_the_week_updated = date('Y-m-d', strtotime($product_of_the_week->updated_at));
+            $current_time = date('Y-m-d', strtotime($current_time.' - 7days'));
+            // dd($current_time);
+            $diff_in_days = $current_time >= $product_of_the_week_updated;
+
+            $admired = ProductAdmire::where(['user_id' => auth()->user()->id])->pluck('product_id')->toArray();
+            $hyped = ProductHype::where(['user_id' => auth()->user()->id])->pluck('product_id')->toArray();
+
+            $admired_count = ProductAdmire::all();
+            $hyped_count = ProductHype::all();
+          
+            
+
+            return view('product_details', compact('product', 'user', 'product_of_the_week', 'diff_in_days', 'hottest', 'admired', 'hyped', 'admired_count', 'hyped_count'));
+        }else{
+            return view('product_details', compact('product', 'user'));
+        }
+    }
 }
