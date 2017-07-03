@@ -48,6 +48,7 @@ class TimelineController extends Controller
         
         $user_post = Post::where('user_id', $user->id)->get();
         $posts = $user_post->merge($timeline->values()->all())->sortByDesc('created_at');
+        
         $admired = PostAdmire::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
         $hyped = PostHype::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
         // dd($posts);

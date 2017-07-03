@@ -134,29 +134,3 @@ button.btn-upload {
 	
 	@include pos(absolute, $l: 0)
 }
-
-.remove {
-	font-size: 1.5rem;
-    font-weight: bold;
-    line-height: 1;
-    color: $brand-color;
-    text-shadow: 0 0.5px 0 $white-color;
-    opacity: .5;
-    cursor: pointer;
-    padding: 5px 10px;
-
-    @include pos(absolute, $r: 0);
-
-    &:hover, &:active, &:focus {
-    	color: $brand-color;
-        opacity: .75;
-    }
-}
-
-.detail-edit-icon {
-	display: none;
-}
-
-.media-heading:hover > .detail-edit-icon, .detail:hover > .detail-edit-icon {
-	display: block;
-}

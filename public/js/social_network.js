@@ -96,14 +96,6 @@ $(document).on('click', ".follow", function(e){
           // alert('clickrf now kilonshele');
             e.preventDefault();
             var reciever_email = $(this).data("email");
-            // alert(reciever_email);
-            $(this).removeClass('follow').text('unfollow');
-            $(this).addClass('unfollow');
-
-            $.ajax({
-                url:'follow/'+reciever_email,
-                type:'POST',
-                data: {email:reciever_email},
             var reciever_full_name = $(this).data("fname");
 
             // alert(reciever_email);
@@ -119,11 +111,6 @@ $(document).on('click', ".follow", function(e){
                     // alert(data);
                     // console.log(data);
                     toastr.options.preventDuplicates = true;
-                    toastr.success("Now following "+reciever_email);
-                },
-                error: function (data) {
-                    toastr.options.preventDuplicates = true;
-                    toastr.error("An error occured while following "+ reciever_email);
                     toastr.success("Now following "+reciever_full_name);
                 },
                 error: function (data) {
@@ -138,13 +125,6 @@ $(document).on('click', ".unfollow", function(e){
           // alert('clickrf now kilonshele');
             e.preventDefault();
             var reciever_email = $(this).data("email");
-            // alert(reciever_email);
-            $(this).removeClass('unfollow').text('follow');
-            $(this).addClass('follow');
-            $.ajax({
-                url:'unfollow/'+reciever_email,
-                type:'POST',
-                data: {email:reciever_email},
             var reciever_full_name = $(this).data("fname");
 
             // alert(reciever_email);
@@ -162,11 +142,6 @@ $(document).on('click', ".unfollow", function(e){
                     // alert(data);
                     // console.log(data);
                     toastr.options.preventDuplicates = true;
-                    toastr.info("You unfollowed "+reciever_email);
-                },
-                error: function (data) {
-                    toastr.options.preventDuplicates = true;
-                    toastr.error("An error occured while following "+ reciever_email);
                     toastr.info("You unfollowed "+reciever_full_name);
                 },
                 error: function (data) {

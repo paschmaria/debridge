@@ -85,17 +85,6 @@ class UserController extends Controller
         // user follows himself so he can see his won post on his timeline
         // $user->following()->attach($user);
         
-        if($role == Role::where('name', 'Merchant')->first()){
-            
-            $user->role()->associate($role);
-            $user->save();
-        }
-        
-
-        
-        
-        $user->following()->attach($user);
-        
 
         // \Mail::to($user)->send(new Welcome($user));
         // \Session::flash('success', 'Welcome to Debridge');
@@ -155,6 +144,7 @@ class UserController extends Controller
      	Mail::to($user)->send(new Welcome($user));
      	return back();
      }
+     
     public function viewUsers()
      {
         $users = User::where('id','!=', auth()->user()->id)->get();
@@ -164,6 +154,7 @@ class UserController extends Controller
         $sent_request = FriendRequest::where('sender_id', auth()->user()->id)->pluck('receiver_id')->toArray();
         return view('bridger', compact('users', 'following_ids', 'sent_request'));
      }
+
      public function profile_picture(Request $request, $id){
 
         $profile_picture = Image::find($id);
@@ -252,5 +243,7 @@ class UserController extends Controller
         
         
     }
+
+    
 
 }

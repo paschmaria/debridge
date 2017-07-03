@@ -21,9 +21,6 @@
                             <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-user fa-2x p-r-40"></i><span class="p-l-40">VIEW PROFILE</span></a>
                             <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-users fa-2x p-r-40"></i><span class="p-l-40">TRADE GROUPS</span></a>
                             <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-globe fa-2x p-r-40"></i><span class="p-l-40">TRADE COMMUNITY</span></a>
-                            @if(auth()->user()->ownsShop($user->id))
-                            <a href="{{ route('addProduct') }}" class="list-group-item list-group-item-action"><i class="fa fa-plus fa-2x p-r-40"></i><span class="p-l-40">ADD PRODUCT</span></a>
-                            @endif
                         </div>
                     </div>
                 </div>
@@ -35,7 +32,7 @@
                             <!--Card image-->
                             <div class="view overlay hm-black-light p-5 hm-zoom">
                                 <img src="{{ asset('img/products/leftside-ad-3.png') }}" class="img-fluid width-100p" alt="">
-                                <a class="white-text mask flex-center" href="{{ route('product_details', [$product->id, $user->reference]) }}">
+                                <a class="white-text mask flex-center" data-toggle="modal" data-target="#product-modal">
                                     <div class="text-center">
                                         <h2 class="m-b-20 w-700">{{ $product->name }}</h2>
                                         @if(isset($product->promo_price))
