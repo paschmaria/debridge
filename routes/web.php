@@ -177,3 +177,8 @@ Route::get('/cart/viewCart', 'User\CartController@viewCart')->name('viewCart')->
 Route::get('/user_tradeline', 'Auth\UserController@userTradeline')->name('user_tradeline')->middleware('auth');
 Route::get('/users/following/{reference}', 'FollowController@following')->name('following');
 Route::get('/users/followers/{reference}', 'FollowController@followers')->name('followers');
+Route::get('/users/profile/edit', 'User\ProfileController@index')->name('edit_profile')->middleware('auth');
+Route::post('/users/profile/edit/account', 'User\ProfileController@userSave')->name('update_profile')->middleware('auth');
+Route::post('/users/profile/edit/user', 'User\ProfileController@userAccountSave')->name('update_user')->middleware('auth');
+Route::post('/users/profile/edit/merchant', 'User\ProfileController@merchantAccountSave')->name('update_merchant')->middleware('auth');
+Route::post('/users/profile/edit/password', 'User\ProfileController@changePassword')->name('change_pasword')->middleware('auth');

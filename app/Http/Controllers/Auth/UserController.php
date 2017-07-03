@@ -83,7 +83,7 @@ class UserController extends Controller
         // $user->community()->associate($trade_community);
         // $user->save();
         // user follows himself so he can see his won post on his timeline
-        $user->following()->attach($user);
+        // $user->following()->attach($user);
         
 
         // \Mail::to($user)->send(new Welcome($user));
@@ -107,7 +107,7 @@ class UserController extends Controller
             ]);
         //
         if (auth()->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
-            return redirect(route('post'))->with('info', 'Welcome back, '. \Auth::user()->email);
+            return redirect(route('index'))->with('info', 'Welcome back, '. \Auth::user()->email);
         } else {
             \Session::flash('danger', 'Invalid login credentials!');
             return back()->with('middleware', 'Wrong email or password');

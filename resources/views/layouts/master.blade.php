@@ -96,7 +96,7 @@
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('followers', auth()->user()->reference) }}">Followers</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('following', auth()->user()->reference) }}">Following</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ url('upload') }}">Gallery</a>
-                                                <a class="dropdown-item waves-effect waves-light" href="#">Edit Profile</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="{{ route('edit_profile') }}">Edit Profile</a>
                                                 @if(strtolower(auth()->user()->role->name) === 'merchant')
                                                     <a class="dropdown-item waves-effect waves-light" href="{{ url('friend_requests') }}">Trade Requests</a>
                                                     <a class="dropdown-item waves-effect waves-light" href="#">Inventory</a>
