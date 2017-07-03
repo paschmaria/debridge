@@ -28,6 +28,20 @@
         <!-- Your custom styles (optional) -->
         <link rel="stylesheet" href="{{ asset('css/main.css')}}">
 
+        <!-- font styles -->
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito">
+
+        <style>
+            .call{
+                opacity: 0;
+                position: absolute;
+                width: 100%;
+                bottom: 0px;
+                height: 30px;
+                z-index: 1000;
+                }
+        </style>
+
     </head>
 
     <body data-page="index">
@@ -99,7 +113,7 @@
                                                 <a class="dropdown-item waves-effect waves-light" href="#">Edit Profile</a>
                                                 @if(strtolower(auth()->user()->role->name) === 'merchant')
                                                     <a class="dropdown-item waves-effect waves-light" href="{{ url('friend_requests') }}">Trade Requests</a>
-                                                    <a class="dropdown-item waves-effect waves-light" href="#">Inventory</a>
+                                                    <a class="dropdown-item waves-effect waves-light" href="{{ route('user_store', auth()->user()->reference) }}">Inventory</a>
                                                 @endif
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('timeline', auth()->user()->reference) }}">Timeline</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('logout') }}">Logout</a>
@@ -205,6 +219,10 @@
         <script type="text/javascript" src="{{ asset('js/main.js')}}"></script>
         {{-- <script src="{{asset('js/social_network.js')}}"></script>
         <script src="{{asset('js/toastr.min.js')}}"></script> --}}
+        <script>
+            app.addProductImageHandler();
+       
+        </script>
         <!-- SCRIPTS -->
         <script>
             $(document).ready(function(){
