@@ -22,6 +22,7 @@ class TimelineController extends Controller
     {
         $this->middleware('auth');
     }
+    public function index()
 
     public function index($reference)
     {
@@ -48,6 +49,9 @@ class TimelineController extends Controller
         $sorted = $timeline->sortByDesc(function ($posts) {
             return $posts->created_at;
         });
+
+        $posts = $sorted->values()->all();
+        return view('users.timeline', compact('posts'));
         $admired = PostAdmire::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
         $hyped = PostHype::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
 

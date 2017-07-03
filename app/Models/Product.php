@@ -22,6 +22,34 @@ class Product extends Model
     }
 
     //hottest product relationships
+    public function hottest_1()
+    {
+    	return $this->hasOne('App\Models\HottestProduct', 'product_1_id', 'id');
+    }
+
+    public function hottest_2()
+    {
+    	return $this->hasOne('App\Models\HottestProduct', 'product_2_id', 'id');
+    }
+
+    public function hottest_3()
+    {
+    	return $this->hasOne('App\Models\HottestProduct', 'product_3_id', 'id');
+    }
+
+    public function hottest_4()
+    {
+    	return $this->hasOne('App\Models\HottestProduct', 'product_4_id', 'id');
+    }
+
+    public function hottest_5()
+    {
+    	return $this->hasOne('App\Models\HottestProduct', 'product_5_id', 'id');
+    }
+
+    public function hottest_6()
+    {
+    	return $this->hasOne('App\Models\HottestProduct', 'product_6_id', 'id');
     public function hottest()
     {
         return $this->belongsTo('App\Models\HottestProduct', 'hottest_product_id');
