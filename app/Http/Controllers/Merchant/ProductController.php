@@ -370,7 +370,7 @@ class ProductController extends Controller
         $user = User::where('reference', $reference)->first();
         $merchant = MerchantAccount::where('user_id', $user->id)->first();
         $product_of_the_week = ProductOfTheWeek::where('merchant_account_id', $merchant->id)->first();
-        dd(empty($product_of_the_week));
+        // dd(empty($product_of_the_week));
 
         if($product_of_the_week!=null){
             // dd('net');
