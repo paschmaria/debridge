@@ -369,10 +369,12 @@ public function StoreForUser($reference){
         $inventory = Inventory::where(['merchant_account_id' => $merchant->id])->first();
         $products = Product::where('inventory_id', $inventory->id)->latest()->get();
         return view('products', compact('products', 'user'));
+
 }
 
 
-    public function productDetails(Product $product, $reference)
+
+   public function productDetails(Product $product, $reference)
     {
         $user = User::where('reference', $reference)->first();
         $merchant = MerchantAccount::where('user_id', $user->id)->first();
