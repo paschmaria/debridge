@@ -186,3 +186,4 @@ Route::post('/users/profile/edit/merchant', 'User\ProfileController@merchantAcco
 Route::post('/users/profile/edit/password', 'User\ProfileController@changePassword')->name('change_pasword')->middleware('auth');
 Route::get('hottest_product/{reference}', 'Merchant\ProductController@hottestProduct')->name('hottest_products');
 
+

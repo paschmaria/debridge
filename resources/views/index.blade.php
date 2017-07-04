@@ -1,8 +1,6 @@
 @extends('layouts.master')
-
-    @section('content')
-
-    <!-- navigations/links right here -->
+    @section('header')
+            <!-- navigations/links right here -->
             <nav class="navbar navbar-toggleable-sm navbar-light transparent p-t-15 p-b-15 no-shadow border-top border-bottom" role="navigation">
                 <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
@@ -30,8 +28,8 @@
                 </div>
             </nav>
             <!-- navigations/links ends here -->
-     
-
+    @endsection
+    @section('content')
          <!-- main section begins here-->
         <section class="main">
           <div class="container-fluid">

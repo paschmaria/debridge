@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\MerchantAccount;
 use App\Models\UserAccount;
 use App\Models\State;
+use App\Models\Address;
+use App\User;
 
 class ProfileController extends Controller
 {
@@ -20,15 +22,26 @@ class ProfileController extends Controller
         $this->middleware('auth');
     }
 
+    public function show($reference)
+    {
+        $user = User::where('reference', $reference)->with(['profile_picture', 'role'])->first();
+        return view('users.user_profile', compact('user'));
+    }
+
     public function index()
     {
         $states = State::all();
         // dd($states);
         if (strtolower(auth()->user()->role->name) == 'user') {
 
-            $user_acc = UserAccount::firstOrCreate(['user_id' => auth()->user()->id]);
+            $user_acc = UserAccount::with(['address' => function($q){
+                $q->with('state');
+            }])->firstOrCreate(['user_id' => auth()->user()->id]);
+            // dd($user_acc);
         } else {
-            $merchant = MerchantAccount::firstOrCreate(['user_id' => auth()->user()->id]);
+            $merchant = MerchantAccount::with(['address' => function($q){
+                $q->with('state');
+            }])->firstOrCreate(['user_id' => auth()->user()->id]);
         }
         return view('users.editprofile', compact('user_acc', 'merchant', 'states'));
     }
@@ -78,22 +91,26 @@ class ProfileController extends Controller
         $this->validate($request, [
             'telephone' => 'digits_between:5,16',
             'address' => 'nullable|string|max:150',
-            'state' => 'digit',
+            'state' => 'digits_between:1,10',
             'status' => 'max:180',
         ]);
 
         $user_acc = UserAccount::firstOrCreate(['user_id' => auth()->user()->id]);
         $user_acc->telephone = $request->telephone;
-        if ($user_acc->address_id == null ) {
-            $user_acc->address->create([
+        $user_acc->status = $request->status;
+        if ($user_acc->address == null ) {
+            $address = Address::create([
                 'address' => $request->address, 
                 'state_id' => $request->state
                 ]);
+            $user_acc->address_id = $address->id;
         } else {
             $user_acc->address->address = $request->address;
-            $user_acc->state_id = $request->state;
+            $user_acc->address->state_id = $request->state;
         }
         $user_acc->save();
+
+        return back()->with('success', 'Information updated successfully!');
     }
 
 
@@ -111,16 +128,20 @@ class ProfileController extends Controller
         $merchant = UserAccount::firstOrCreate(['user_id' => auth()->user()->id]);
         $merchant->telephone = $request->telephone;
         $merchant->store_name = $request->store_name;
-        if ($merchant->address_id == null ) {
-            $merchant->address->create([
+        $merchant->status = $request->status;
+        if ($merchant->address == null ) {
+            $merchant = Address::create([
                 'address' => $request->address, 
                 'state_id' => $request->state
                 ]);
+            $merchant->address_id = $address->id;
         } else {
             $merchant->address->address = $request->address;
-            $merchant->state_id = $request->state;
+            $merchant->address->state_id = $request->state;
         }
         $merchant->save();
+
+        return back()->with('success', 'Information updated successfully!');
     }
 
 
@@ -130,7 +151,7 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function changePasword(Request $request)
+    public function changePassword(Request $request)
     {
         $user = auth()->user();
         $this->validate($request, [
@@ -142,7 +163,7 @@ class ProfileController extends Controller
             $user->save();
             return back()->with('success', 'Password changed successfully!');
         } else {
-            return back()->with('delete', 'Wrong password!');
+            return back()->with('delete_message', 'Incorrect password!');
         }
         //
     }

@@ -2,17 +2,17 @@
 <html lang="en">
     <head>
         <title>De-Bridge</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="Description" content="An E-commerce site where users can meet socially and as well carry out businesses">
-        <meta name="Keywords" content="social media, business, friends, buy, sell, contacts">
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+        <meta name="Description" content="An E-commerce site where users can meet socially and as well carry out businesses"/>
+        <meta name="Keywords" content="social media, business, friends, buy, sell, contacts"/>
         
         <!-- fav icon -->
         <link rel="shortcut icon" type="image/png" href="{{ asset('img/logo/debridge-logo.png')}}"/>
 
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css')}}"/>
 
         <!-- slick carousel -->
         <link rel="stylesheet" type="text/css" href="{{ asset('plugins/slick/slick.css')}}"/>
@@ -23,7 +23,7 @@
         <link href="{{ asset('plugins/mdb/css/bootstrap.css')}}" rel="stylesheet">
 
         <!-- Material Design Bootstrap -->
-       <link rel="stylesheet" href="{{ asset('plugins/mdb/css/mdb.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('plugins/mdb/css/mdb.min.css')}}">
 
         <!-- Your custom styles (optional) -->
         <link rel="stylesheet" href="{{ asset('css/main.css')}}">
@@ -97,7 +97,7 @@
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('followers', auth()->user()->reference) }}">Followers</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('following', auth()->user()->reference) }}">Following</a>
                                                <a class="dropdown-item waves-effect waves-light" href="{{ url('upload') }}">Gallery</a>
-                                                <a class="dropdown-item waves-effect waves-light" href="#">Edit Profile</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="{{ route('edit_profile') }}">Edit Profile</a>
                                                 @if(strtolower(auth()->user()->role->name) === 'merchant')
                                                     <a class="dropdown-item waves-effect waves-light" href="{{ url('friend_requests') }}">Trade Requests</a>
                                                     <a class="dropdown-item waves-effect waves-light" href="{{ route('user_store', auth()->user()->reference) }}">Inventory</a>
@@ -136,25 +136,30 @@
                                                 </span>
                                             </a>
                                             <div class="dropdown-menu notify-dropdown animated bounceIn f-12" aria-labelledby="dropdownNotify">
-                                            <ul>
-                                                @forelse ($notifications as $notification)
-                                                    <li class="dropdown-item waves-effect waves-light p-l-10 border-bottom">
-                                                        <a href="{{ route('user_profile', $notification->foreigner->email) }}">
-                                                            @if ($notification->foreigner->profile_picture != null)
-                                                                <img src="{{ route('image', [$notification->foreigner->profile_picture->image_reference,'']) }}" class="h-40 width-40 m-r-5 bd-50p">
-                                                            @else
-                                                                <img src="{{ asset('img/icons/profiled.png') }}" class="h-40 width-40 m-r-5 bd-50p">
-                                                            @endif
-                                                        </a>
-                                                        <span>{{ $notification->message }}</span>
-                                                        <a href="{{ route('delete_social_notification', $notification->id) }}"><small class="pull-right">Mark as read</small></a>
-                                                    </li>
-                                                @empty
-                                                    <li class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="" disabled>
-                                                        <span>Hi {{ auth()->user()->first_name }}, you have no notification</span>
-                                                    </li>
-                                                @endforelse
-                                            </ul>
+                                          <h6 class="notify-header border-bottom">
+                                            Notifications
+                                          </h6>
+                                          <div class="notify">
+                                                <ul>
+                                                    @forelse ($notifications as $notification)
+                                                        <li class="dropdown-item waves-effect waves-light p-l-10 border-bottom">
+                                                            <a href="{{ route('user_profile', $notification->foreigner->email) }}">
+                                                                @if ($notification->foreigner->profile_picture != null)
+                                                                    <img src="{{ route('image', [$notification->foreigner->profile_picture->image_reference,'']) }}" class="h-40 width-40 m-r-5 bd-50p">
+                                                                @else
+                                                                    <img src="{{ asset('img/icons/profiled.png') }}" class="h-40 width-40 m-r-5 bd-50p">
+                                                                @endif
+                                                            </a>
+                                                            <span>{{ $notification->message }}</span>
+                                                            <a href="{{ route('delete_social_notification', $notification->id) }}"><small class="pull-right">Mark as read</small></a>
+                                                        </li>
+                                                    @empty
+                                                        <li class="dropdown-item waves-effect waves-light" href="" disabled>
+                                                            <span>Hi {{ auth()->user()->first_name }}, you have no notification</span>
+                                                        </li>
+                                                    @endforelse
+                                                </ul>
+                                            </div>
                                                {{--  <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">
                                                 <img src="{{ asset('img/p-photo-6.jpeg') }}" class="h-40 width-40 m-r-5 bd-50p">
                                                 <span>Ejike Jhud started following you</span>
@@ -187,7 +192,7 @@
 
         <!-- JQuery -->
         <script type="text/javascript" src="{{ asset('plugins/mdb/js/jquery-3.1.1.min.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('js/jquery-3.1.1.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.min.js')}}"></script>
         <script src="{{asset('js/social_network.js')}}"></script>
         <script src="{{asset('js/toastr.min.js')}}"></script>
         <!-- Bootstrap tooltips -->
@@ -204,79 +209,70 @@
 
         <!-- Main JS -->
         <script type="text/javascript" src="{{ asset('js/main.js')}}"></script>
+
+        <!-- slimscroll JavaScript -->
+        <script type="text/javascript" src="{{ asset('plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+
         {{-- <script src="{{asset('js/social_network.js')}}"></script>
         <script src="{{asset('js/toastr.min.js')}}"></script> --}}
         <!-- SCRIPTS -->
         <script>
-            $(document).ready(function(){
-                $('.carousel_big').slick({
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    dots: true,
-                    arrows: false,
-                    fade: true,
-                    autoplay: true,
-                    asNavFor: '.carousel_small'
-                });
-                $('.carousel_small').slick({
-                    infinite: true,
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    arrows: false,
-                    asNavFor: '.carousel_big',
-                    focusOnSelect: true,
-                    autoplay: true,
-                    autoplaySpeed: 2000,
-                    vertical: true,
-                    centerPadding: '0px',
-                    responsive: [
-                        // {
-                        //   breakpoint: 1024,
-                        //   settings: {
-                        //     slidesToShow: 3,
-                        //     slidesToScroll: 3,
-                        //     infinite: true
-                        //   }
-                        // },
-                        {
-                          breakpoint: 600,
-                          settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2,
-                            infinite: true
-                          }
-                        },
-                        {
-                          breakpoint: 480,
-                          settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            infinite: true
-                          }
-                        }
-                    ]
-                });
-
-                new WOW().init();
-                $('[data-toggle="tooltip"]').tooltip();
-            });
-        </script>
-        <script>
             document.onreadystatechange = () => {
                 if (document.readyState === "complete") {
-                    app.productImageUpload(4);
-                }
-            }
-        </script> 
+                    $('.carousel_big').slick({
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        dots: true,
+                        arrows: false,
+                        fade: true,
+                        autoplay: true,
+                        asNavFor: '.carousel_small'
+                    });
+                    $('.carousel_small').slick({
+                        infinite: true,
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        arrows: false,
+                        asNavFor: '.carousel_big',
+                        focusOnSelect: true,
+                        autoplay: true,
+                        autoplaySpeed: 2000,
+                        vertical: true,
+                        centerPadding: '0px',
+                        responsive: [
+                            {
+                              breakpoint: 600,
+                              settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 2,
+                                infinite: true
+                              }
+                            },
+                            {
+                              breakpoint: 480,
+                              settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                infinite: true
+                              }
+                            }
+                        ]
+                    });
 
-    <script>
-            document.onreadystatechange = () => {
-                if (document.readyState === "complete") {
+                    new WOW().init();
+                    $('[data-toggle="tooltip"]').tooltip();
                     app.likeToggler();
-                }
-            }
-    </script>
+                    app.commentHandler();
+                    app.stickyHeader();
 
+                }
+                $(function(){
+                    $('.notify').slimScroll({
+                        height: '300px'
+                    });
+                });
+            };
+        </script> 
 
      <script type="text/javascript">
         toastr.options.preventDuplicates = true;

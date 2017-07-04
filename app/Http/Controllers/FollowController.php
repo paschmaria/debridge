@@ -20,6 +20,13 @@ class FollowController extends Controller
         $this->middleware('auth');
     }
 
+    public function show($reference)
+    {
+        $user = User::where('reference', $reference)->with([
+            'profile_picture', 
+            ])->first();
+    }
+
     public function index()
     {
         $following =  auth()->user()->following->where('id', '!=', auth()->user()->id);
