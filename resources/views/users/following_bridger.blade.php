@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('header')
-		<header>
 			<!-- navigations/links right here -->
             <nav class="navbar navbar-toggleable-sm navbar-light transparent p-t-15 p-b-15 no-shadow border-top border-bottom" role="navigation">
                 <div class="container-fluid">
@@ -124,4 +123,4 @@
 	        <!-- pagination ends here -->
     </section>
     <!-- main section ends here -->
-@endsection('content')
+@endsection

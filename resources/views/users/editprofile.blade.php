@@ -325,27 +325,36 @@
 
     @section('scripts')
     <script type="text/javascript">
-       var app = {
-            imageHandler:function (){
-                $('#upload').on('change', function(){
-                    //alert("alert");
-                    readUrl();
-                });
-                function readUrl(argument) {
-                    var file = $("#upload")[0].files[0];
-                    //console.log(file);
-                    var reader = new FileReader();
-                    reader.onloadend = function () {
-                        //console.log(reader.result);
-                        $('#post').attr('src', reader.result);
+            document.onreadystatechange = () => {
+                if (document.readyState === "complete") {
+                    var app2 = {
+                        imageHandler:function (){
+                            $('#upload').on('change', function(){
+                                //alert("alert");
+                                readUrl();
+                            });
+                            function readUrl(argument) {
+                                var file = $("#upload")[0].files[0];
+                                //console.log(file);
+                                var reader = new FileReader();
+                                reader.onloadend = function () {
+                                    //console.log(reader.result);
+                                    $("#post").attr('src', reader.result);
+                                }
+                                if (file) {
+                                    reader.readAsDataURL(file);
+                                }
+                            }
+                        }
                     }
-                    if(file){
-                        reader.readAsDataURL(file);
-                    }
+                    app2.imageHandler();
+                    app.stickyHeader();
+                     $(function(){
+                        $('.notify').slimScroll({
+                            height: '300px'
+                        });
+                    });
                 }
             }
-
-        }
-    app.imageHandler();
-   </script>
+       </script>
    @endsection
