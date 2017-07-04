@@ -8,6 +8,7 @@ use App\Models\MerchantAccount;
 use App\Models\UserAccount;
 use App\Models\State;
 use App\Models\Address;
+use App\User;
 
 class ProfileController extends Controller
 {
@@ -19,6 +20,12 @@ class ProfileController extends Controller
     function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function show($reference)
+    {
+        $user = User::where('reference', $reference)->with(['profile_picture', 'role'])->first();
+        return view('users.user_profile', compact('user'));
     }
 
     public function index()

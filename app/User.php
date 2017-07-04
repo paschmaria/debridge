@@ -161,11 +161,9 @@ class User extends Authenticatable
     }
 
 
-    public function ownsShop($id=null){
+    public function ownsShop($id=null)
+    {
         $merchant_ownership = MerchantAccount::where('user_id', $id)->first();
-        // dd($merchant_ownership);
-
-        // $merchant_ownership
         
         if($merchant_ownership->user_id == auth()->user()->id){
             return true;
