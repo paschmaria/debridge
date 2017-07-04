@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Address extends Model
 {
+    protected $fillable = ['address', 'state_id'];
 	public function lga()
 	{
 		return $this->belongsTo('App\Models\LocalGovt');
