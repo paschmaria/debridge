@@ -59,7 +59,7 @@ class ProductController extends Controller
     {
         //
         $product_categories = ProductCategory::all();
-        return view('merchant.add_product', compact('product_categories'));
+        return view('addproduct1', compact('product_categories'));
     }
 
     /**
