@@ -71,10 +71,10 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         
-        $this->validate($request,[
-            'product_name'=>'required|max:20',
-            'description' => 'required|max:50'
-            ]);
+        // $this->validate($request,[
+        //     'product_name'=>'required|max:20',
+        //     'description' => 'required|max:50'
+        //     ]);
 
         if(!empty($request->file('file'))){
             $this->validate($request, [
@@ -85,6 +85,9 @@ class ProductController extends Controller
         //get or create merchant acount and inventory
         $merchant = MerchantAccount::firstOrCreate(['user_id' => auth()->user()->id]);
         $inventory = Inventory::firstOrCreate(['merchant_account_id' => $merchant->id]);
+
+        $category = ProductCategory::where('name', $request->input('category'))->first();
+
         
         // $product_category_id = $request->input('category');
         $product = new Product();
@@ -92,7 +95,7 @@ class ProductController extends Controller
         $product->description = $request->input('description');
         $product->price = $request->input('product_price');
         $product->quantity = $request->input('quantity');
-        $product->product_category_id = $request->input('category');
+        $product->category()->associate($category);
         $product->reference = str_random(7) . time() . uniqid();
         
         if(!empty($request->file('file'))){
@@ -118,7 +121,7 @@ class ProductController extends Controller
         $product_notification->users()->attach(auth()->user()->followers);
         $product_notification->save();
 
-        return redirect()->route('merchant')->with('info', 'Product Added Sucessfully');        
+        return back()->with('info', 'Product Added Sucessfully');        
     }
 
     /**
