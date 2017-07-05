@@ -100,7 +100,7 @@
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('edit_profile') }}">Edit Profile</a>
                                                 @if(strtolower(auth()->user()->role->name) === 'merchant')
                                                     <a class="dropdown-item waves-effect waves-light" href="{{ url('friend_requests') }}">Trade Requests</a>
-                                                    <a class="dropdown-item waves-effect waves-light" href="#">Inventory</a>
+                                                    <a class="dropdown-item waves-effect waves-light" href="{{ route('user_store', auth()->user()->reference) }}">Inventory</a>
                                                 @endif
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('timeline', auth()->user()->reference) }}">Timeline</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('logout') }}">Logout</a>

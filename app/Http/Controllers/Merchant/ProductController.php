@@ -40,6 +40,16 @@ class ProductController extends Controller
         return view('merchant.merchant');
     }
 
+    public function hottestProduct($reference){
+        $user = User::where('reference', $reference)->first();
+        // dd($user->id);
+        $merchant = MerchantAccount::where('user_id', $user->id)->first();
+        // dd($merchant);
+        $hottest = HottestProduct::where('merchant_account_id', $merchant->id)->first();
+        $products = Product::where('hottest_product_id', $hottest->id)->get();
+        return view('hottest_products', compact('products', 'user'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -49,7 +59,7 @@ class ProductController extends Controller
     {
         //
         $product_categories = ProductCategory::all();
-        return view('merchant.add_product', compact('product_categories'));
+        return view('addproduct1', compact('product_categories'));
     }
 
     /**
@@ -61,10 +71,10 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         
-        $this->validate($request,[
-            'product_name'=>'required|max:20',
-            'description' => 'required|max:50'
-            ]);
+        // $this->validate($request,[
+        //     'product_name'=>'required|max:20',
+        //     'description' => 'required|max:50'
+        //     ]);
 
         if(!empty($request->file('file'))){
             $this->validate($request, [
@@ -75,6 +85,9 @@ class ProductController extends Controller
         //get or create merchant acount and inventory
         $merchant = MerchantAccount::firstOrCreate(['user_id' => auth()->user()->id]);
         $inventory = Inventory::firstOrCreate(['merchant_account_id' => $merchant->id]);
+
+        $category = ProductCategory::where('name', $request->input('category'))->first();
+
         
         // $product_category_id = $request->input('category');
         $product = new Product();
@@ -82,7 +95,7 @@ class ProductController extends Controller
         $product->description = $request->input('description');
         $product->price = $request->input('product_price');
         $product->quantity = $request->input('quantity');
-        $product->product_category_id = $request->input('category');
+        $product->category()->associate($category);
         $product->reference = str_random(7) . time() . uniqid();
         
         if(!empty($request->file('file'))){
@@ -108,7 +121,7 @@ class ProductController extends Controller
         $product_notification->users()->attach(auth()->user()->followers);
         $product_notification->save();
 
-        return redirect()->route('merchant')->with('info', 'Product Added Sucessfully');        
+        return back()->with('info', 'Product Added Sucessfully');        
     }
 
     /**
@@ -346,7 +359,7 @@ class ProductController extends Controller
     }
 
 
-    public function StoreForUser($reference){
+public function StoreForUser($reference){
         
         //get or create merchant acount and inventory
         // dd($user->id);
@@ -354,9 +367,12 @@ class ProductController extends Controller
         $merchant = MerchantAccount::where(['user_id' => $user->id])->first();
         // dd($merchant);
         $inventory = Inventory::where(['merchant_account_id' => $merchant->id])->first();
-        $products = Product::where('inventory_id', $inventory->id)->get();
+        $products = Product::where('inventory_id', $inventory->id)->latest()->get();
         return view('products', compact('products', 'user'));
-    }
+
+}
+
+
 
    public function productDetails(Product $product, $reference)
     {
@@ -364,6 +380,32 @@ class ProductController extends Controller
         $merchant = MerchantAccount::where('user_id', $user->id)->first();
         $product_of_the_week = ProductOfTheWeek::where('merchant_account_id', $merchant->id)->first();
         // dd(empty($product_of_the_week));
+
+        $hot_prod  = HottestProduct::firstOrCreate(['merchant_account_id' => auth()->user()->merchant_account->id]);
+        if($hot_prod->interval_time == null){
+            $hot_prod->interval_time = Carbon::now()->subWeek(2);
+        }
+        $interval_time = Carbon::createFromFormat('Y-m-d H:i:s', $hot_prod->interval_time);
+        $diff_in_days = Carbon::now()->diffInDays($interval_time);
+        if(($diff_in_days >= 7)){
+            $hot_prod->slots = 0;
+            $hot_prod->save();
+            if($hot_prod->products()->count() < 6){
+                $hottest = true;
+            } else {
+                $hottest = false;
+            }
+        } else {
+            if((int)$hot_prod->slots < 6){
+                if($hot_prod->products()->count() < 6){
+                    $hottest = true;
+                } else {
+                    $hottest = false;
+                }
+            } else {
+                $hottest = false;
+            }
+        }
 
         if($product_of_the_week!=null){
             // dd('net');ll
@@ -379,11 +421,12 @@ class ProductController extends Controller
             $admired_count = ProductAdmire::all();
             $hyped_count = ProductHype::all();
           
-            
+            // dd($hottest);
 
             return view('product_details', compact('product', 'user', 'product_of_the_week', 'diff_in_days', 'hottest', 'admired', 'hyped', 'admired_count', 'hyped_count'));
         }else{
-            return view('product_details', compact('product', 'user'));
+            return view('product_details', compact('product', 'user', 'hottest'));
         }
     }
+
 }
