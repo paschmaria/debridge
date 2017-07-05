@@ -50,8 +50,6 @@ class FollowController extends Controller
         $user = User::where('reference', $reference)->with(['following' => function ($q){
             $q->with(['profile_picture', 'role']);
         }])->first();
-        // dd(auth()->user()->id);
-        dd($user);
 
         $following_count = count($user->following);
 

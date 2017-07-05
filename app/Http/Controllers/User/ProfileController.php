@@ -31,11 +31,15 @@ class ProfileController extends Controller
             'followers' => function($q){
                 $q->with('profile_picture');
             },
+            'photo_albums' => function($q){
+                $q->with('images');
+            },
             ])->first();
         $following_count = $user->following->count();
         $followers_count = $user->followers->count();
         $following = $user->following->splice(0,3);
         $followers = $user->followers->splice(0,3);
+        $photo_albums = $user->photo_albums;
 
         if (strtolower($user->role->name) == 'user') {
 
@@ -48,8 +52,7 @@ class ProfileController extends Controller
                 $q->with('state');
             }])->firstOrCreate(['user_id' => auth()->user()->id]);
         }
-
-        return view('users.user_profile', compact('user', 'user_acc', 'merchant', 'followers', 'following', 'following_count', 'followers_count'));
+        return view('users.user_profile', compact('user', 'user_acc', 'merchant', 'followers', 'following', 'following_count', 'followers_count', 'photo_albums'));
     }
 
     public function index()
@@ -149,12 +152,12 @@ class ProfileController extends Controller
             'store_name' => 'nullable|string|max:128'
         ]);
         
-        $merchant = UserAccount::firstOrCreate(['user_id' => auth()->user()->id]);
+        $merchant = MerchantAccount::firstOrCreate(['user_id' => auth()->user()->id]);
         $merchant->telephone = $request->telephone;
         $merchant->store_name = $request->store_name;
         $merchant->status = $request->status;
         if ($merchant->address == null ) {
-            $merchant = Address::create([
+            $address = Address::create([
                 'address' => $request->address, 
                 'state_id' => $request->state
                 ]);

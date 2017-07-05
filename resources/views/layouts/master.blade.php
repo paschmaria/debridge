@@ -106,7 +106,7 @@
                                 <ul class="navbar-nav dis-flex flex-row">
                                     <li class="nav-item animated bounceIn list-inline-item dis-block">
 
-                                        @if (auth()->user()->image_id != null)
+                                        @if (auth()->user()->profile_picture != null)
                                             <img src="{{ route('image', [auth()->user()->profile_picture->image_reference,'']) }}" class="img img-circle bd-50p" width="50" height="50">
                                         @else
                                             <img src="{{ asset('img/icons/profiled.png') }}" class="bd-50p" width="50" height="50">
@@ -124,7 +124,7 @@
 
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('followers', auth()->user()->reference) }}">Followers</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('following', auth()->user()->reference) }}">Following</a>
-                                               <a class="dropdown-item waves-effect waves-light" href="{{ url('upload') }}">Gallery</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="{{ route('view_profile', auth()->user()->reference) }}">View Profile</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('edit_profile') }}">Edit Profile</a>
                                                 @if(strtolower(auth()->user()->role->name) === 'merchant')
                                                     <a class="dropdown-item waves-effect waves-light" href="{{ url('friend_requests') }}">Trade Requests</a>
@@ -171,15 +171,20 @@
                                                 <ul>
                                                     @forelse ($notifications as $notification)
                                                         <li class="dropdown-item waves-effect waves-light p-l-10 border-bottom">
-                                                            <a href="{{ route('user_profile', $notification->foreigner->email) }}">
-                                                                @if ($notification->foreigner->profile_picture != null)
-                                                                    <img src="{{ route('image', [$notification->foreigner->profile_picture->image_reference,'']) }}" class="h-40 width-40 m-r-5 bd-50p">
-                                                                @else
-                                                                    <img src="{{ asset('img/icons/profiled.png') }}" class="h-40 width-40 m-r-5 bd-50p">
-                                                                @endif
-                                                            </a>
-                                                            <span>{{ $notification->message }}</span>
-                                                            <a href="{{ route('delete_social_notification', $notification->id) }}"><small class="pull-right">Mark as read</small></a>
+                                                            <p>
+                                                                <a href="{{ route('user_profile', $notification->foreigner->email) }}">
+                                                                    @if ($notification->foreigner->profile_picture != null)
+                                                                        <img src="{{ route('image', [$notification->foreigner->profile_picture->image_reference,'']) }}" class="h-40 width-40 m-r-5 bd-50p">
+                                                                    @else
+                                                                        <img src="{{ asset('img/icons/profiled.png') }}" class="h-40 width-40 m-r-5 bd-50p">
+                                                                    @endif
+                                                                </a>
+                                                                <span>{{ $notification->message }}
+                                                                <br>
+                                                                <a href="{{ route('delete_social_notification', $notification->id) }}">
+                                                                    <i class="fa fa-trash text-danger pull-right"></i></a></span>
+                                                            </p>
+                                                            
                                                         </li>
                                                     @empty
                                                         <li class="dropdown-item waves-effect waves-light" href="" disabled>

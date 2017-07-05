@@ -13,9 +13,6 @@
 
 Route::get('/', 'Auth\UserController@index')->name('index'); 
 
-Route::get('/users/follow/more', 'Auth\UserController@index')->name('index');
-
-
 Route::get('/logout', 'User\FriendsController@user_logout')->name('logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -85,6 +82,7 @@ Route::post('/upload', 'User\PhotoAlbumController@create')->name('upload');
 Route::post('/upload', 'User\PhotoAlbumController@create')->name('upload');
 Route::get('/images/{folder}/{reference}', 'User\ImageController@show')->name('image');
 Route::post('/delete_image/{id}', 'User\ImageController@destroy')->name('delete_image');
+Route::get('/delete_image/{id}', 'User\ImageController@destroy')->name('delete_image');
 Route::post('/delete_album/{id}', 'User\PhotoAlbumController@destroy')->name('delete_album');
 Route::get('/register', 'Auth\UserController@register')->name('register');
 
@@ -180,6 +178,7 @@ Route::get('product_details/{product}/{reference}', 'Merchant\ProductController@
 Route::get('/users/following/{reference}', 'FollowController@following')->name('following');
 Route::get('/users/followers/{reference}', 'FollowController@followers')->name('followers');
 Route::get('/users/profile/edit', 'User\ProfileController@index')->name('edit_profile')->middleware('auth');
+Route::get('/users/profile/{reference}', 'User\ProfileController@show')->name('view_profile')->middleware('auth');
 Route::post('/users/profile/edit/account', 'User\ProfileController@userSave')->name('update_profile')->middleware('auth');
 Route::post('/users/profile/edit/user', 'User\ProfileController@userAccountSave')->name('update_user')->middleware('auth');
 Route::post('/users/profile/edit/merchant', 'User\ProfileController@merchantAccountSave')->name('update_merchant')->middleware('auth');
