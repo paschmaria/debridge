@@ -364,9 +364,10 @@ public function StoreForUser($reference){
         //get or create merchant acount and inventory
         // dd($user->id);
         $user = User::where('reference', $reference)->first();
-        $merchant = MerchantAccount::where(['user_id' => $user->id])->first();
+        // dd($user);
+        $merchant = MerchantAccount::firstOrCreate(['user_id' => $user->id]);
         // dd($merchant);
-        $inventory = Inventory::where(['merchant_account_id' => $merchant->id])->first();
+        $inventory = Inventory::firstOrCreate(['merchant_account_id' => $merchant->id]);
         $products = Product::where('inventory_id', $inventory->id)->latest()->get();
         return view('products', compact('products', 'user'));
 
@@ -377,7 +378,7 @@ public function StoreForUser($reference){
    public function productDetails(Product $product, $reference)
     {
         $user = User::where('reference', $reference)->first();
-        $merchant = MerchantAccount::where('user_id', $user->id)->first();
+        $merchant = MerchantAccount::where('user_id', $user->id);
         $product_of_the_week = ProductOfTheWeek::where('merchant_account_id', $merchant->id)->first();
         // dd(empty($product_of_the_week));
 

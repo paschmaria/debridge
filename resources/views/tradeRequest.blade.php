@@ -57,7 +57,19 @@
 									</div>
 		        				</div>
 		        				<div class="col-md-4">
-		        					<button class="f-14 width-130 c-brand h-30 btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp; Following</span></button>
+		        				@if(in_array($merchant->id, $fr))
+		        				<form action="{{ route('undo_trade_request', $merchant->reference) }}" method="post">
+		        					{{ csrf_field() }}
+		        					<button type="submit" class="f-14 width-130 c-brand h-30 btn-outline-brand m-t-40 m-b-50"><span>&nbsp; &nbsp; Cancel</span></button>
+		        					
+		        				</form>	
+		        				@else
+		        				<form action="{{ route('send_trade_request', $merchant->reference) }}" method="post">
+		        					{{ csrf_field() }}
+		        					<button type="submit" class="f-14 width-130 c-brand h-30 btn-outline-brand m-t-40 m-b-50"><span>&nbsp; &nbsp; Send Request</span></button>
+		        					
+		        				</form>
+		        				@endif
 		        				</div>
 	        				</div>
 	        			</div>
