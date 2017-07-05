@@ -64,13 +64,9 @@
                                             <!-- black circle -->
                                                 <div class="follow_div z-100">
                                                 @if(!in_array($user->id, $following_ids))
-                                                    <form method="post" action="{{ route('follow', $user->reference) }}">
-                                                        <button class="follow_btn" id="follow"></button>
-                                                    </form>
+                                                        <button class="follow_btn follow" data-email="{{$user->reference}}" data-fname="{{$user->full_name()}}" data-id="{{$user->id}}" id="follow"></button>
                                                 @else
-                                                    <form method="post" action="{{ route('unfollow', $user->reference) }}">
-                                                        <button class="unfollow_btn" id="follow"><i class="fa fa-check unfollow_i"></i></button>
-                                                    </form>
+                                                        <button class="unfollow_btn unfollow" data-email="{{$user->reference}}" data-fname="{{$user->full_name()}}" data-id="{{$user->id}}" id="follow"><i class="fa fa-check unfollow_i"></i></button>
                                                 @endif 
                                                    {{--  <input class="" name="checkbox{{ $counter }}" type="checkbox" id="checkbox{{ $counter }}" value="{{ $user->id }}">
                                                     <label for="checkbox{{ $counter }}"></label> --}}

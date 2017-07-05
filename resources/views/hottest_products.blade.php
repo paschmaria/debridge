@@ -21,16 +21,18 @@
                             <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-user fa-2x p-r-40"></i><span class="p-l-40">VIEW PROFILE</span></a>
                             <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-users fa-2x p-r-40"></i><span class="p-l-40">TRADE GROUPS</span></a>
                             <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-globe fa-2x p-r-40"></i><span class="p-l-40">TRADE COMMUNITY</span></a>
+                            <a href="{{ route('hottest_products', $user->reference) }}" class="list-group-item list-group-item-action"><i class="fa fa-star-o fa-2x p-r-40"></i><span class="p-l-40">HOTTEST PRODUCTS</span></a>
                             @if(auth()->user()->ownsShop($user->id))
                             <a href="{{ route('addProduct') }}" class="list-group-item list-group-item-action"><i class="fa fa-plus fa-2x p-r-40"></i><span class="p-l-40">ADD PRODUCT</span></a>
                             @endif
-                            <a href="{{ route('hottest_products', $user->reference) }}" class="list-group-item list-group-item-action"><i class="fa fa-star-o fa-2x p-r-40"></i><span class="p-l-40">HOTTEST PRODUCTS</span></a>
                         </div>
                     </div>
                 </div>
+                <div class="text-center"><strong>HOTTEST PRODUCTS</strong></div>
+                <hr>
                 <div class="row">
                
-                @foreach($products as $product)
+                @forelse($products as $product)
                     <div class="col-md-3 col-sm-6 col">
                         <div class="card m-t-20">
                             <!--Card image-->
@@ -149,11 +151,11 @@
                         </div>
                         <!--Body-->
                         <div class="modal-body bg-brand-lite c-dark dis-flex">
-                            <p class="text-responsive w-700 m-0">Are you sure you want to delete this product?</p>
+                            <p class="text-responsive w-700 m-0">Are you sure you want to delete remove as hottest deal</p>
                         </div>
                         <!--Footer-->
                         <div class="modal-footer bg-brand-lite justify-content-center">
-                            <a class="btn btn-md btn-outline-brand" href="{{ route('delete', $product->id) }}">Yes</a>
+                            <a class="btn btn-md btn-outline-brand" href="{{ route('del_hottest', $product->id) }}">Yes</a>
                             <button type="button" class="btn btn-md btn-outline-brand" data-dismiss="modal">No</button>
                         </div>
                     </div>
@@ -219,8 +221,9 @@
                 </div>
             </div>
             <!-- Modal -->
-                
-                @endforeach
+                @empty
+                <div class="container-fluid"><strong>No HOTTEST PRODUCTS</strong></div>
+                @endforelse
 
                        
                 </div>

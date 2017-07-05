@@ -39,6 +39,9 @@
                 </div>
                 @empty
                 <p>No Items in Cart</p>
+                <hr>
+                <h3>Suggestion</h3>
+
                 @endforelse
             
                 
@@ -56,7 +59,44 @@
 
                         </div>
                     </div>
-                    @endif
+                    @else
+                        @forelse($products as $product)
+
+                                <div class="row">
+                                <div class="col-md-7">
+                                    <div class="row">
+                                       <div class="col-md-4">
+                                            <img src="{{ asset('img/cart/rectangle-9.png') }}" class="bd-dark-light p-5">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="m-l-10 m-t-10">
+                                            <a>{{ $product->name }}</a>
+                                             <h6>12, Olu-Akerele street, Allen ikeja</h6>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="row m-t-20">
+                                        <div class="col-md-6">
+                                            <div class="m-l-60 m-t-20">
+                                                <a type="button" class="btn btn-sm bg-brand fa fa-shopping-cart" href="{{ route('addToCart', $product->id) }}"><span>&nbsp;&nbsp;</span>ADD TO CART</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="m-l-78 m-t-10">
+                                            <h6>Price</h6>
+                                            <h6 class="c-brand">&#8358;{{ $product->price }}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>
+
+                        @empty
+                        <p>Retry</p>
+                        @endforelse
+                        @endif
                     </div>
                 </div>
           </div>

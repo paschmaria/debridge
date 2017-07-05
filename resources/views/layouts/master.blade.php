@@ -58,6 +58,34 @@
                                         <button type="submit" class="btn btn-brand-lite btn-lg waves-effect waves-light m-0 no-shadow"><i class="fa fa-search f-17 c-dark"></i></button>
                                     </span>
                                 </div>
+                                {{-- <div style="position: relative; z-index: 1000;">
+                                    <div class="input-group input-shadow" >
+                                        <input type="search" style="background-color: #ccc;" class="form-control input-alternate bd-dark-lite" placeholder="e.g. Phones in Lagos, bags in Abuja...">
+                                        
+                                    </div>
+                                    <div class="input-group input-shadow" >
+                                        <input type="search" style="background-color: #ccc;" class="form-control input-alternate bd-dark-lite" placeholder="e.g. Phones in Lagos, bags in Abuja...">
+                                        
+                                    </div>
+                                    <div class="input-group input-shadow" >
+                                        <input type="search" style="background-color: #ccc;" class="form-control input-alternate bd-dark-lite" placeholder="e.g. Phones in Lagos, bags in Abuja...">
+                                        
+                                    </div>
+                                    <div class="input-group input-shadow" >
+                                        <input type="search" style="background-color: #ccc;" class="form-control input-alternate bd-dark-lite" placeholder="e.g. Phones in Lagos, bags in Abuja...">
+                                        
+                                    </div>
+                                    <div class="input-group input-shadow" >
+                                        <input type="search" style="background-color: #ccc;" class="form-control input-alternate bd-dark-lite" placeholder="e.g. Phones in Lagos, bags in Abuja...">
+                                        
+                                    </div>
+                                </div> --}}
+
+                                {{-- <div class="row"> --}}
+                                    {{-- div class="col-11 col-sm-6 col-md-11">
+                                        <a href="bridger.html" class="list-group-item list-group-item-action">BRIDGER</a>
+                                    </div> --}}
+                                {{-- </div> --}}
                             </form>
                             
                         </div>
@@ -100,7 +128,7 @@
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('edit_profile') }}">Edit Profile</a>
                                                 @if(strtolower(auth()->user()->role->name) === 'merchant')
                                                     <a class="dropdown-item waves-effect waves-light" href="{{ url('friend_requests') }}">Trade Requests</a>
-                                                    <a class="dropdown-item waves-effect waves-light" href="#">Inventory</a>
+                                                    <a class="dropdown-item waves-effect waves-light" href="{{ route('user_store', auth()->user()->reference) }}">Inventory</a>
                                                 @endif
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('timeline', auth()->user()->reference) }}">Timeline</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('logout') }}">Logout</a>

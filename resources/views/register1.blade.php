@@ -194,7 +194,7 @@
                             <label for="trade_interest">Trade Interest</label>
                             <select name="user_trade_interest" id="usr-persona" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow" required value = "{{ old('trade_interest') }}">
                                 <option disabled selected>Choose...</option>
-                                <option> Individual User</option>
+                                {{-- <option required> Individual User</option> --}}
                                 @foreach($roles as $role)
                                 <option value="{{$role->id}}" >{{ $role->name }}</option>
                                 @endforeach                                
