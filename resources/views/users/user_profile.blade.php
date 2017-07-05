@@ -51,167 +51,102 @@
 					<div class="card">
 						<div class="card-block">
 							<div class="row">
-								<div class="col-sm-6 col-md-6 col-12">
+								<div class="col-sm-12 col-md-12 col-12">
 									<div class="row">
 										<div class="col-12">
 											<div class="media border-bottom">
-											    {{-- <div class="media-left">
-											    @if(0)
-											    	<img src="assets/img/switcH.png" class="media-object pics">
-											    @else
-											    	<img src="{{ asset('img/icons/profiled.png') }}" class="media-object pics">
-											    @endif
-											    </div> --}}
 											    <div class="media-body c-brand">
-											    	<div class="media-heading w-500 clearfix">
+											    	<div class="media-heading w-500 clearfix m-b-5">
 											    		<span><i class="fa fa-user">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user->full_name() }}({{ $user->gender }})</span>
-											    		<a class="pull-right c-brand detail-edit-icon" data-toggle="modal" data-target="#Changework1"><i class="fa fa-pencil"></i></a>
+											    		@if($user->id == auth()->user()->id)
+											    			<a class="pull-right c-brand detail-edit-icon" data-toggle="modal" data-target="#Changework1"><i class="fa fa-pencil"></i></a>
+											    		@endif
 											    	</div>
 											    	<p class="m-b-5"><span><i class="fa fa-envelope">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user->email }}</span></p>
 											    	<p class="m-b-5"><span><i class="fa fa-calendar">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user->date_of_birth }}</span></p>
 											    </div>
 											</div>
-										</div>
-										<div class="col-12">
-											<div class="media border-bottom">
-											    <div class="media-left">
-											      <img src="assets/img/rectangle-2009.png" class="media-object pics">
-											    </div>
+
+											<div class="media">
 											    <div class="media-body c-brand">
-											    	<div class="media-heading w-500 clearfix">
-											    		<span class="pull-left detail-header">Studied mathematics at the university of benin</span>
-											    		<a class="pull-right c-brand detail-edit-icon" data-toggle="modal" data-target="#Education1"><i class="fa fa-pencil"></i></a>
+											    	<div class="media-heading w-500 clearfix m-b-5 m-t-10">
+											    		<span><i class="fa fa-map-o">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user->community->community_address() }}<small class="c-gray"> (Trade community)</small></span>
+											    		@if($user->id == auth()->user()->id)
+											    			<a class="pull-right c-brand detail-edit-icon" data-toggle="modal" data-target="#Changework1"><i class="fa fa-pencil"></i></a>
+											    		@endif
 											    	</div>
-											    	<p class="">2009-2013</p>
+											    	@if($user->checkRole())
+											    		@if($user_acc->address != null)
+											    			<p class="m-b-5"><span><i class="fa fa-user-circle">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user_acc->address->address }}</span></p>
+											    			@if($user_acc->address->state != null)
+											    				<p class="m-b-5"><span><i class="fa fa-user-circle">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user_acc->address->state->name }}</span></p>
+											    			@endif
+											    		@endif
+										    		@else
+
+										    		@endif
+											    	
+											    	<p class="m-b-5"><span><i class="fa fa-mobile f-20">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user_acc->telephone }}</span></p>
 											    </div>
 											</div>
+
 										</div>
-										<div class="col-12">
-											<div class="media border-bottom">
-											    <div class="media-left">
-											      <img src="assets/img/rectangle-244.png" class="media-object pics">
-											    </div>
-											    <div class="media-body c-brand">
-											    	<div class="media-heading w-500 clearfix">
-											    		<span class="pull-left detail-header">Lives at Ikeja, Lagos.</span>
-											    		<a class="pull-right c-brand detail-edit-icon" data-toggle="modal" data-target="#Changecity1"><i class="fa fa-pencil"></i></a>
-											    	</div>
-											    	<p class="">From benin, Nigeria.</p>
-											    </div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-6 col-md-6 col-12">
-									<div class="detail c-brand clearfix">
-										<div class="pull-left detail-header">
-											<p class="m-b-5"><span><i class="fa fa-mobile">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i></span><span>08073404890</span></p>
-											<p class="m-b-5"><span><i class="fa fa-envelope-o">&nbsp;&nbsp;</i></span> <span>judejike85@gmail.com</span></p>
-											<p><span><i class="fa fa-user-o">&nbsp;&nbsp;</i></span> <span>BG2306</span></p>
-										</div>
-										<a class="pull-right c-brand detail-edit-icon" data-toggle="modal" data-target="#Changecontact1"><i class="fa fa-pencil"></i></a>
+										
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="">
-						<h4 class="h1-responsive f-22 text-left m-t-20 m-b-25 c-brand">FRIENDS</h6>
-						<div class="row">
-							<div class="col-md-6 col-sm-6 col-12 m-t-10">
-								<div class="card">
+					<div class="row">
+						<div class="col-md-6 col-sm-6 col-12 m-t-10">
+							<h4 class="h2-responsive text-left m-b-10 c-brand p-l-5 m-t-5">FOLLOWING <small>({{ $following_count }})</small></h4>
+							@foreach($following as $person)
+								<div class="card m-b-10">
 									<div class="card-block">
 										<div class="media">
 										<div class="media-left">
-										    <img src="assets/img/photo000.png" class="media-object picfix">
+											@if($person->profile_picture != null)
+										    	<img src="assets/img/photo000.png" class="media-object picfix">
+										    @else
+										    	<img src="{{ asset('img/icons/profiled.png') }}" class="media-object picfix"> 
+										    @endif
 										    </div>
 										    <div class="media-body m-t-20">
-										      <p class="media-heading">JHUD EJIKE <br> Business owner at story</p>
+										      <p class="media-heading">{{ $person->full_name() }}<br>{{ $person->community_address() }}</p>
 										    </div>
 										    <button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40"><span class="fa fa-check">&nbsp; &nbsp;</span>Unfollow</button>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="col-md-6 col-sm-6 col-12 m-t-10">
-								<div class="card">
-									<div class="card-block">
-										<div class="media">
-										<div class="media-left">
-										    <img src="assets/img/photo000.png" class="media-object picfix">
-										    </div>
-										    <div class="media-body m-t-20">
-										      <p class="media-heading">JHUD EJIKE <br> Business owner at story</p>
-										    </div>
-										    <button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40"><span class="fa fa-check">&nbsp; &nbsp;</span>Unfollow</button>
-										</div>
-									</div>
-								</div>
-							</div>
+							@endforeach
+							<a href="{{ route('following', $user->reference) }}" >
+								<button class="btn btn-sm btn-brand pull-right m-r-5">Veiw all</button> 
+							</a>
 						</div>
-						<div class="row">
-							<div class="col-md-6 col-sm-6 col-12 m-t-10">
-								<div class="card">
+						<div class="col-md-6 col-sm-6 col-12 m-t-10">
+							<h4 class="h2-responsive text-left m-b-10 c-brand p-l-5 m-t-5">FOLLOWERS <small>({{ $followers_count }})</small></h4>
+							@foreach($followers as $person)
+								<div class="card m-b-10">
 									<div class="card-block">
 										<div class="media">
 										<div class="media-left">
-										    <img src="assets/img/photo000.png" class="media-object picfix">
+											@if($person->profile_picture != null)
+										    	<img src="assets/img/photo000.png" class="media-object picfix">
+										    @else
+										    	<img src="{{ asset('img/icons/profiled.png') }}" class="media-object picfix"> 
+										    @endif
 										    </div>
 										    <div class="media-body m-t-20">
-										      <p class="media-heading">JHUD EJIKE <br> Business owner at story</p>
+										      <p class="media-heading">{{ $person->full_name() }}<br>{{ $person->community_address() }}</p>
 										    </div>
 										    <button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40"><span class="fa fa-check">&nbsp; &nbsp;</span>Unfollow</button>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="col-md-6 col-sm-6 col-12 m-t-10">
-								<div class="card">
-									<div class="card-block">
-										<div class="media">
-										<div class="media-left">
-										    <img src="assets/img/photo000.png" class="media-object picfix">
-										    </div>
-										    <div class="media-body m-t-20">
-										      <p class="media-heading">JHUD EJIKE <br> Business owner at story</p>
-										    </div>
-										    <button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40"><span class="fa fa-check">&nbsp; &nbsp;</span>Unfollow</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6 col-sm-6 col-12 m-t-10">
-								<div class="card">
-									<div class="card-block">
-										<div class="media">
-										<div class="media-left">
-										    <img src="assets/img/photo000.png" class="media-object picfix">
-										    </div>
-										    <div class="media-body m-t-20">
-										      <p class="media-heading">JHUD EJIKE <br> Business owner at story</p>
-										    </div>
-										    <button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40"><span class="fa fa-check">&nbsp; &nbsp;</span>Unfollow</button>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 col-sm-6 col-12 m-t-10">
-								<div class="card">
-									<div class="card-block">
-										<div class="media">
-										<div class="media-left">
-										    <img src="assets/img/photo000.png" class="media-object picfix">
-										    </div>
-										    <div class="media-body m-t-30">
-										      <p class="media-heading">JHUD EJIKE <br> Business owner at story</p>
-										    </div>
-										    <button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40"><span class="fa fa-check">&nbsp; &nbsp;</span>Unfollow</button>
-										</div>
-									</div>
-								</div>
-							</div>
+							@endforeach
+							<a href="{{ route('followers', $user->reference) }}" >
+								<button class="btn btn-sm btn-brand pull-right m-r-5">Veiw all</button> 
+							</a>
 						</div>
 					</div>
 					<h4 class="h1-responsive f-22 text-left m-t-20 m-b-25 c-brand">PHOTO</h6>

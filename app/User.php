@@ -154,12 +154,20 @@ class User extends Authenticatable
     // {
     //     return $this->hasOne('App\Models\Cart');
     // }
+    public function community_address()
+    {
+        return ucwords($this->community->name . ', ' . $this->community->state->name);
+    }
 
     public function cart_products()
     {
         return $this->belongsToMany('App\Models\Product', 'carts', 'user_id', 'product_id');
     }
 
+    public function checkRole()
+    {
+        return strtolower($this->role->name) === 'user' ? true : false;
+    }
 
     public function ownsShop($id=null)
     {
