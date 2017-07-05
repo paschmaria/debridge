@@ -267,7 +267,7 @@ class ProductController extends Controller
             }
             //notify all merchant of the change
             $product_notification = ProductNotification::create([
-                    'message' => 'Notice: ' . $product->inventory->merchant->user->first_fullname() . "'s product of the week is " . $product->name . ' at ' . $price,
+                    'message' => 'Notice: ' . $product->inventory->merchant->user->full_name() . "'s product of the week is " . $product->name . ' at ' . $price,
                     'product_id'=> $product->id, 
                     'description_id' => 2
                 ]);
