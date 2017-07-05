@@ -11,17 +11,13 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div id="navbarNav1" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('follow_page') }}">FRIENDS</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="tradeline.html">TRADELINE</a></li>
-
-                            <!-- <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('timeline', auth()->user()->id) }}">TIMELINE</a></li> -->
-
-                            <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('timeline', auth()->user()->reference) }}">TIMELINE</a></li>
-
-                            <li class="nav-item"><a class="nav-link hover-underline" href="#">BUSINESS INVITATION</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="#">MODELS</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="#">MARKET VALUE</a></li> 
-                        </ul>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('following', auth()->user()->reference) }}">Following</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('followers', auth()->user()->reference) }}">Followers</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('timeline', auth()->user()->reference) }}">Tradeline</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Business Invitation</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Models</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Market Value</a></li>
+                    </ul>
                     </div><!-- /.navbar-collapse -->
                 </div>
             </nav>
@@ -45,7 +41,7 @@
             <div class="row">
                 <div class="hidden-xs-down col-sm-3 col-md-3 m-t-20">
                     <div class="list-group m-b-20">
-                        <a href="bridger.html" class="list-group-item list-group-item-action">BRIDGER</a>
+                        <a href="{{ route('view_users') }}" class="list-group-item list-group-item-action">BRIDGER</a>
                         <a href="tradeRequest.html" class="list-group-item list-group-item-action">TRADE REQUEST</a>
                         <a href="#" class="list-group-item list-group-item-action">TRADE COMMUNITY</a>
                         <a href="#" class="list-group-item list-group-item-action">BRIDGE POINT</a>
@@ -300,7 +296,7 @@
                             {{-- empty expr --}}
                         @endforelse
                 </div>
-                <div class="col-sm-3 col-md-3 m-t-20">
+                <div class="col-sm-3 col-md-3">
                     @include('layouts.partials.map_no_div')
                 </div>
             </div>

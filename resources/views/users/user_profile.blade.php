@@ -34,14 +34,14 @@
 				<aside class="col-md-2 col-sm-2 col-12">
 					<div class="">
 						@if($user->profile_picture != null)
-							<img src="{{ route('image', $user->profile_picture->image_reference) }}" class="bd-dark-light pics2 p-5">
+							<img src="{{ route('image', [$user->profile_picture->image_reference, '']) }}" class="bd-dark-light pics2 p-5">
 						@else
 					    	<img src="{{ asset('img/icons/profiled.png') }}" class="bd-dark-light pics2 p-5">
 					    @endif
 					</div>
 					<div class="list-group m-t-20">
-						<a href="#" class="list-group-item list-group-item-action f-12">TIMELINE</a>
-                        <a href="#" class="list-group-item list-group-item-action f-12">PHOTOS</a>
+						<a href="{{ route('timeline', $user->reference) }}" class="list-group-item list-group-item-action f-12">TIMELINE</a>
+                        <a href="#" class="list-group-item list-group-item-action f-12">PROFILE</a>
                         <a href="#" class="list-group-item list-group-item-action f-12">DOCUMENTS</a>
                         <a href="#" class="list-group-item list-group-item-action f-12">TRADE GROUPS</a>
                         <a href="#" class="list-group-item list-group-item-action f-12">COMMUNITY</a>
@@ -77,16 +77,24 @@
 											    	</div>
 											    	@if($user->checkRole())
 											    		@if($user_acc->address != null)
-											    			<p class="m-b-5"><span><i class="fa fa-user-circle">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user_acc->address->address }}</span></p>
+											    			<p class="m-b-5"><span><i class="fa fa-phone-book">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user_acc->address->address }}</span></p>
 											    			@if($user_acc->address->state != null)
-											    				<p class="m-b-5"><span><i class="fa fa-user-circle">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user_acc->address->state->name }}</span></p>
+											    				<p class="m-b-5"><span><i class="fa fa-map-pin">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user_acc->address->state->name }}</span></p>
 											    			@endif
 											    		@endif
+											    		<p class="m-b-5"><span><i class="fa fa-mobile f-20">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user_acc->telephone }}</span></p>
 										    		@else
-
+										    			<p class="m-b-5"><span><i class="fa fa-mobile f-20">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $merchant->store_name }}</span></p>
+										    			@if($merchant->address != null)
+											    			<p class="m-b-5"><span><i class="fa fa-user-circle">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $merchant->address->address }}</span></p>
+											    			@if($merchant->address->state != null)
+											    				<p class="m-b-5"><span><i class="fa fa-user-circle">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $merchant->address->state->name }}</span></p>
+											    			@endif
+											    		@endif
+											    		<p class="m-b-5"><span><i class="fa fa-mobile f-20">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $merchant->telephone }}</span></p>
 										    		@endif
 											    	
-											    	<p class="m-b-5"><span><i class="fa fa-mobile f-20">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user_acc->telephone }}</span></p>
+											    	
 											    </div>
 											</div>
 
@@ -119,9 +127,11 @@
 									</div>
 								</div>
 							@endforeach
-							<a href="{{ route('following', $user->reference) }}" >
-								<button class="btn btn-sm btn-brand pull-right m-r-5">Veiw all</button> 
-							</a>
+							@if($following_count > 3)
+								<a href="{{ route('following', $user->reference) }}" >
+									<button class="btn btn-sm btn-brand pull-right m-r-5">Veiw all</button> 
+								</a>
+							@endif
 						</div>
 						<div class="col-md-6 col-sm-6 col-12 m-t-10">
 							<h4 class="h2-responsive text-left m-b-10 c-brand p-l-5 m-t-5">FOLLOWERS <small>({{ $followers_count }})</small></h4>
@@ -144,42 +154,37 @@
 									</div>
 								</div>
 							@endforeach
-							<a href="{{ route('followers', $user->reference) }}" >
-								<button class="btn btn-sm btn-brand pull-right m-r-5">Veiw all</button> 
-							</a>
+							@if($followers_count > 3)
+								<a href="{{ route('followers', $user->reference) }}" >
+									<button class="btn btn-sm btn-brand pull-right m-r-5">Veiw all</button> 
+								</a>
+							@endif
 						</div>
 					</div>
-					<h4 class="h1-responsive f-22 text-left m-t-20 m-b-25 c-brand">PHOTO</h6>
-					<div class="product-img-group m-t-20 bd-dark-light">
-						<div class="card-group m-16">
-							<div class="card m-5">
-								<img src="assets/img/rectangle-499.png " class="picfix2">
-							</div>
-							<div class="card m-5">
-								<img src="assets/img/rectangle-496.png" class="picfix2">
-							</div>
-							<div class="card m-5">
-								<img src="assets/img/rectangle-495.png" class="picfix2">
-							</div>
-							<div class="card m-5">
-								<img src="assets/img/rectangle-494.png" class="picfix2">
-							</div>
+					<h4 class="h3-responsive f-22 text-left m-t-20 m-b-25 c-brand">PHOTO</h4>
+					@forelse($photo_albums as $photo_album)
+						<div class="product-img-group m-t-20 bd-dark-light">
+							@foreach($photo_album->images->chunk(4) as $images)
+								<div class="card-group m-16">
+									@foreach($images as $image)
+										<div class="card m-5">
+											<img src="{{ route('image', [$image->image_reference, '']) }}" class="picfix2">
+											<div class="col-sm-12">
+												<div class="row">
+													
+												<a href="{{ route('profile_picture', $image->id) }}"><button class="btn btn-sm btn-brand m-l-10">set as profile picture</button></a>
+												<a href="{{ route('delete_image', $image->id) }}"><i class="fa fa-trash p-10 text-danger pull-right p-l-20"></i></a>
+													
+												</div>
+											</div>
+										</div>
+									@endforeach
+								</div>
+							@endforeach
 						</div>
-						<div class="card-group m-t-10 m-16">
-							<div class="card m-5">
-								<img src="assets/img/rectangle-493.png" class="picfix2">
-							</div>
-							<div class="card m-5">
-								<img src="assets/img/rectangle-492.png" class="picfix2">
-							</div>
-							<div class="card m-5">
-								<img src="assets/img/rectangle-491.png" class="picfix2">
-							</div>
-							<div class="card m-5">
-								<img src="assets/img/rectangle-490.png" class="picfix2">
-							</div>
-						</div>
-					</div>
+					@empty
+						<h5 class="h5-responsive f-22 text-left m-t-20 m-b-25 c-gray">No photos to display</h5>
+					@endforelse
 				</main>
 			</div>
 		</section>
