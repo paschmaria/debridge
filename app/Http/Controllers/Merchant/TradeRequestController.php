@@ -20,7 +20,9 @@ class TradeRequestController extends Controller
 
     public function showMerchants(){
     	$role = Role::where('name', 'Merchant')->first();
-    	$merchants = User::where('role_id', $role->id)->where('id', '!=', auth()->user()->id)->get();
+    	$user_friends = auth()->user()->friends->pluck('id')->toArray();
+    	// dd($user_friends);
+    	$merchants = User::where('role_id', $role->id)->where('id', '!=', auth()->user()->id)->whereNotIn('id', $user_friends)->get();
     	$fr = FriendRequest::where('sender_id', auth()->user()->id)->pluck('receiver_id')->toArray();
     	// dd($fr);
 
