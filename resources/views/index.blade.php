@@ -16,7 +16,7 @@
                             <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="{{ route('araha_market') }}">Araha Market</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="BridgeShops.html">Bridge Shops</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Invest Hub</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Consultancy Unit</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Consultancyc Unit</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="exhibitionStand.html">Exhibition Stand</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">B - Mentor</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Window Shopping</a></li>
@@ -37,8 +37,11 @@
             <div class="row m-t-20">
                 <div class="hidden-xs-down col-sm-3 col-md-3">
                     <div class="list-group m-b-20">
-                        <a href="bridger.html" class="list-group-item list-group-item-action">BRIDGER</a>
-                        <a href="tradeRequest.html" class="list-group-item list-group-item-action">TRADE REQUEST</a>
+                        <a href="#" class="list-group-item list-group-item-action">BRIDGER</a>
+                        @if(auth()->check() && strtolower(auth()->user()->role->name) === 'merchant')
+
+                        <a href="{{ route('trade_request') }}" class="list-group-item list-group-item-action">TRADE REQUEST</a>
+                        @endif
                         <a href="#" class="list-group-item list-group-item-action">TRADE COMMUNITY</a>
                         <a href="#" class="list-group-item list-group-item-action">BRIDGE POINT</a>
                         @if(Auth::check() && isset(auth()->user()->bridgeCode))
