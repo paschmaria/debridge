@@ -24,8 +24,32 @@ class ProfileController extends Controller
 
     public function show($reference)
     {
-        $user = User::where('reference', $reference)->with(['profile_picture', 'role'])->first();
-        return view('users.user_profile', compact('user'));
+        $user = User::where('reference', $reference)->with(['profile_picture', 'role', 'community', 
+            'following' => function($q){
+                $q->with('profile_picture');
+            },
+            'followers' => function($q){
+                $q->with('profile_picture');
+            },
+            ])->first();
+        $following_count = $user->following->count();
+        $followers_count = $user->followers->count();
+        $following = $user->following->splice(0,3);
+        $followers = $user->followers->splice(0,3);
+
+        if (strtolower($user->role->name) == 'user') {
+
+            $user_acc = UserAccount::with(['address' => function($q){
+                $q->with('state');
+            }])->firstOrCreate(['user_id' => auth()->user()->id]);
+            // dd($user_acc);
+        } else {
+            $merchant = MerchantAccount::with(['address' => function($q){
+                $q->with('state');
+            }])->firstOrCreate(['user_id' => auth()->user()->id]);
+        }
+
+        return view('users.user_profile', compact('user', 'user_acc', 'merchant', 'followers', 'following', 'following_count', 'followers_count'));
     }
 
     public function index()
