@@ -58,7 +58,7 @@ class UserController extends Controller
         $trade_community = TradeCommunity::where('name', $request->input('trade_community'))->first();
 
         // $state = State::where('name', $request->input('state'))->first();
-
+        // dd($request->all());
         $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
@@ -107,7 +107,7 @@ class UserController extends Controller
             ]);
         //
         if (auth()->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
-            return redirect(route('post'))->with('info', 'Welcome back, '. \Auth::user()->email);
+            return redirect('/')->with('success', 'Welcome back, '. \Auth::user()->email);
         } else {
             \Session::flash('danger', 'Invalid login credentials!');
             return back()->with('middleware', 'Wrong email or password');
