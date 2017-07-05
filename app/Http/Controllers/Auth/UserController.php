@@ -107,7 +107,7 @@ class UserController extends Controller
             ]);
         //
         if (auth()->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
-            return redirect(route('post'))->with('info', 'Welcome back, '. \Auth::user()->email);
+            return redirect('/')->with('success', 'Welcome back, '. \Auth::user()->email);
         } else {
             \Session::flash('danger', 'Invalid login credentials!');
             return back()->with('middleware', 'Wrong email or password');

@@ -1,4 +1,4 @@
-$(document).ready(function(){
+    $(document).ready(function(){
         var postForm = $("#postForm1"); // i change the class from postForm to PostForm1
         postForm.submit(function(e){
             e.preventDefault();
@@ -110,8 +110,12 @@ $(document).on('click', ".follow", function(e){
                 success:function(data){
                     // alert(data);
                     // console.log(data);
+                    var current_count = $(".follow_count").text();
+                    current_count++;
+                    $(".follow_count").text(current_count);
                     toastr.options.preventDuplicates = true;
-                    toastr.success("Now following "+reciever_full_name);
+                    // toastr.success("Now following "+reciever_full_name);
+                    
                 },
                 error: function (data) {
                     toastr.options.preventDuplicates = true;
@@ -130,6 +134,7 @@ $(document).on('click', ".unfollow", function(e){
             // alert(reciever_email);
             $(this).removeClass('unfollow').text(' follow');
             $(this).addClass('follow');
+            // $(this).removeClass('follow');
             $(this).addClass('fa fa-user');
             $(this).addClass('f-14');
 
@@ -141,8 +146,11 @@ $(document).on('click', ".unfollow", function(e){
                 success:function(data){
                     // alert(data);
                     // console.log(data);
+                    var current_count = $(".follow_count").text();
+                    current_count--;
+                    $(".follow_count").text(current_count);
                     toastr.options.preventDuplicates = true;
-                    toastr.info("You unfollowed "+reciever_full_name);
+                    // toastr.info("You unfollowed "+reciever_full_name);
                 },
                 error: function (data) {
                     toastr.options.preventDuplicates = true;
