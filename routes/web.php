@@ -56,6 +56,11 @@ Route::post('/send_request/{email}', 'User\FriendRequestController@create')->nam
 
 Route::post('/undo_request/{email}', 'User\FriendRequestController@destroy')->name('undo_request');
 
+Route::post('/send_trade/{reference}', 'Merchant\TradeRequestController@create')->name('send_trade_request');
+
+Route::post('/undo_trade/{reference}', 'Merchant\TradeRequestController@cancelRequest')->name('undo_trade_request');
+
+
 Route::post('/follow/{reference}', 'FollowController@store')->name('follow');
 
 Route::get('/follow', 'FollowController@index')->name('follow_page');
@@ -75,11 +80,18 @@ Route::post('/accept_friend/{email}', 'User\FriendsController@create')->name('ac
 
 Route::post('/decline_friend/{email}', 'User\FriendsController@update')->name('decline_friend');
 
+
+Route::post('/accept_trade/{reference}', 'Merchant\TradeRequestController@acceptRequest')->name('accept_trade_request');
+
+Route::post('/decline_trade/{reference}', 'Merchant\TradeRequestController@declineRequest')->name('decline_trade_request');
+
 Route::post('/unfriend/{email}', 'User\FriendsController@destroy')->name('unfriend');
+
+Route::post('/untrade/{reference}', 'Merchant\TradeRequestController@destroy')->name('cancel_trade');
 
 Route::get('/notifications', 'User\SocialNotificationController@index')->name('notifications');
 
-Route::get('/friend_requests', 'User\FriendRequestController@index')->name('friend_requests');
+Route::get('/friend_requests', 'Merchant\TradeRequestController@index')->name('friend_requests');
 Route::get('/upload', 'User\PhotoAlbumController@index')->name('upload');
 Route::post('/upload', 'User\PhotoAlbumController@create')->name('upload');
 Route::post('/upload', 'User\PhotoAlbumController@create')->name('upload');
