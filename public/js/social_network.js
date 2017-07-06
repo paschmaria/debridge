@@ -92,9 +92,13 @@ $(document).ready(function(){
 
 //follow logic
 
+
 $(document).on('click', ".follow", function(e){
+        // console.log('clicked!');
           // alert('clickrf now kilonshele');
             e.preventDefault();
+            // alert('followed');
+
             var reciever_email = $(this).data("email");
             var reciever_full_name = $(this).data("fname");
 
@@ -159,6 +163,8 @@ $(document).on('click', ".unfollow", function(e){
                 }
             });
     });
+
+
 
 //accept friend_request
 $(document).on('click', ".accept_friend", function(e){
@@ -226,6 +232,92 @@ $(document).on('click', ".decline_friend", function(e){
                 error: function (data) {
                     toastr.options.preventDuplicates = true;
                     toastr.error("An error occured while accepting "+ reciever_email + " request");
+                    // var obj = jQuery.parseJSON( data.responseText );
+                }
+            });
+    });
+
+
+
+//continue registeration process for following some certain user and merchant
+
+// var followers_counter = $(".followers_counter").text();
+$(document).on('click', ".c_follow", function(e){
+        var follow_id = $(this).data("id");
+
+            var reciever_email = $(this).data("email");
+            var reciever_full_name = $(this).data("fname");
+
+            $(this).removeClass('c_follow');
+            $(this).addClass('c_unfollow');
+            $(this).addClass('unfollow_btn');
+            $(this).addClass('fa fa-check').css('color', 'white');
+            
+
+            $.ajax({
+                url:'/follow/'+reciever_email,
+                type:'POST',
+                data: {reference:reciever_email},
+                success:function(data){
+                    // console.log(data);
+                    var f_counter = $(".count").text(data.user_count);
+                    // if () {
+
+                    }
+                    // f_counter++;
+                    // toastr.options.preventDuplicates = true;
+                },
+                error: function (data) {
+                    toastr.options.preventDuplicates = true;
+                    toastr.error("An error occured while following "+ reciever_full_name);
+                    // var obj = jQuery.parseJSON( data.responseText );
+                }
+            });
+    });
+
+$(document).on('click', ".c_unfollow", function(e){
+
+          // alert('clickrf now kilonshele');
+            e.preventDefault();
+        var follow_id = $(this).data("id");
+            
+            var reciever_email = $(this).data("email");
+            var reciever_full_name = $(this).data("fname");
+
+            // alert(reciever_email);
+            // $(this).removeClass('unfollow').text(' follow');
+            // $(this).addClass('follow');
+             $(this).removeClass('c_unfollow');
+            $(this).addClass('c_follow');
+            $(this).removeClass('unfollow_btn');
+            $(this).addClass('follow_btn');
+            // $(this).remove('i');
+            // $(this).remove('i');
+            $(this).removeClass('fa fa-check');
+            // $(this).removeClass('follow');
+            // $(this).addClass('fa fa-user');
+            // $(this).addClass('f-14');
+
+
+            $.ajax({
+                url:'/unfollow/'+reciever_email,
+                type:'POST',
+                data: {reference:reciever_email},
+                success:function(data){
+                    console.log(data);
+                    var f_counter = $(".count").text(data.user_count);
+                    // 
+                    // alert(data);
+                    // console.log(data);
+                    // var current_count = $(".follow_count").text();
+                    // current_count--;
+                    // $(".follow_count").text(current_count);
+                    // toastr.options.preventDuplicates = true;
+                    // toastr.info("You unfollowed "+reciever_full_name);
+                },
+                error: function (data) {
+                    toastr.options.preventDuplicates = true;
+                    toastr.error("An error occured while following "+ reciever_full_name);
                     // var obj = jQuery.parseJSON( data.responseText );
                 }
             });
