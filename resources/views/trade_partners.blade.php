@@ -28,10 +28,10 @@
     <section class="main">
     	<div class="container">
     		<div id="navbarNav1 m-t-40">
-	            <h3 class="h3-responsive c-brand f-24 m-t-30 m-b-8">TRADE REQUEST</h3>
+	            <h3 class="h3-responsive c-brand f-24 m-t-30 m-b-8">TRADE PARTNERS</h3>
 	            <div class="h-58">
-	            	<p class="c-gray f-14 dis-inline-b">These are merchants you follow</p>
-	            	<button class="pull-right f-17 m-b-10 h-40 bg-brand-lite btn-outline-brand c-white"><a href="traderequester.html" class="c-brand"><span class="fa fa-plus m-r-10"></span>Follow Merchants</a></button>
+	            	<p class="c-gray f-14 dis-inline-b">These are merchants you trading with</p>
+	            	<a href="{{ route('trade_request') }}" class="c-brand"><button class="pull-right f-17 m-b-10 h-40 bg-brand-lite btn-outline-brand c-white"><span class="fa fa-plus m-r-10"></span>Send Trade Request</button></a>
 	            </div>
 	        </div>
 	        <!-- friends display  -->
@@ -57,19 +57,13 @@
 									</div>
 		        				</div>
 		        				<div class="col-md-4">
-		        				@if(in_array($merchant->id, $fr))
-		        				<form action="{{ route('undo_trade_request', $merchant->reference) }}" method="post">
+		        			
+		        				<form action="{{ route('cancel_trade', $merchant->reference) }}" method="post">
 		        					{{ csrf_field() }}
-		        					<button type="submit" class="f-14 width-130 c-brand h-30 btn-outline-brand m-t-40 m-b-50"><span>&nbsp; &nbsp; Cancel</span></button>
+		        					<button type="submit" class="f-14 width-130 c-brand h-30 btn-outline-brand m-t-40 m-b-50"><span>&nbsp; &nbsp; UnTrade</span></button>
 		        					
 		        				</form>	
-		        				@else
-		        				<form action="{{ route('send_trade_request', $merchant->reference) }}" method="post">
-		        					{{ csrf_field() }}
-		        					<button type="submit" class="f-14 width-130 c-brand h-30 btn-outline-brand m-t-40 m-b-50"><span>&nbsp; &nbsp; Send Request</span></button>
-		        					
-		        				</form>
-		        				@endif
+		        				
 		        				</div>
 	        				</div>
 	        			</div>
@@ -77,7 +71,9 @@
 	        			
 	        		</div>
 	        		<!-- / second column of friends -->
-	        	@endforeach
+	        	@empty
+	        	<p>No Trade Partners yet</p>
+	        	@endforelse
 	        	</div>
 
 

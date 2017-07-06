@@ -129,6 +129,8 @@
                                                 @if(strtolower(auth()->user()->role->name) === 'merchant')
                                                     <a class="dropdown-item waves-effect waves-light" href="{{ url('friend_requests') }}">Trade Requests</a>
                                                     <a class="dropdown-item waves-effect waves-light" href="{{ route('user_store', auth()->user()->reference) }}">Inventory</a>
+                                                    <a class="dropdown-item waves-effect waves-light" href="{{ route('trade_partners') }}">Trade Partners</a>
+
                                                 @endif
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('timeline', auth()->user()->reference) }}">Timeline</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('logout') }}">Logout</a>

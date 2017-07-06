@@ -37,6 +37,22 @@ class UserController extends Controller
     }
 
     public function index(){
+        // $auth_following_id = auth()->user()->following->pluck('id')->toArray();
+        // // dd($auth);
+        // $merchants = MerchantAccount::whereIn('user_id', $auth_following_id)->with(['inventory' => function($q){
+        //     $q->with('products');
+        // }])->get();
+    
+        // $inventories = $merchants->map(function($q){
+        //     return $q->inventory;
+        // });
+
+        // $products = $inventories->flatMap(function($q){
+        //     if($q != null){
+        //         return $q->products;
+        //     }
+        // });
+        // dd($products);
         return view('index');
     }
     
