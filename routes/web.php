@@ -73,7 +73,7 @@ Route::post('/register', 'Auth\UserController@create')->name('register');
 
 Route::get('/friends', 'User\FriendsController@index')->name('friends');
 
-Route::get('/tarde_partners', 'Merchant\TradeRequestController@tradePartner')->name('trade_partners');
+Route::get('/trade_partners', 'Merchant\TradeRequestController@tradePartner')->name('trade_partners');
 
 Route::post('/accept_friend/{email}', 'User\FriendsController@create')->name('accept_friend');
 
@@ -148,7 +148,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 Route::get('/user/{email}', 'User\AccountController@index')->name('user_profile');
 Route::get('/araha_market', 'Auth\UserController@arahaMarket')->name('araha_market');
 
-Route::get('/merchant_tradeline/{user}', 'User\TimelineController@index')->name('tradeline');
+// Route::get('/merchant_tradeline/{user}', 'User\TimelineController@index')->name('tradeline');
 
 Route::get('/bridger', 'Auth\UserController@bridger')->name('bridger');
 
@@ -186,7 +186,7 @@ Route::get('/cart/clearCart', 'User\CartController@clearCart')->name('clearCart'
 Route::get('/cart/viewCart', 'User\CartController@viewCart')->name('viewCart')->middleware('auth');
 ;
 
-Route::get('/user_tradeline', 'Auth\UserController@userTradeline')->name('user_tradeline')->middleware('auth');
+// Route::get('/user_tradeline', 'Auth\UserController@userTradeline')->name('user_tradeline')->middleware('auth');
 
 Route::get('product_details/{product}/{reference}', 'Merchant\ProductController@productDetails')->name('product_details');
 Route::get('/users/following/{reference}', 'FollowController@following')->name('following');
@@ -200,5 +200,7 @@ Route::post('/users/profile/edit/password', 'User\ProfileController@changePasswo
 Route::get('hottest_product/{reference}', 'Merchant\ProductController@hottestProduct')->name('hottest_products');
 Route::get('trade_request', 'Merchant\TradeRequestController@showMerchants')->name('trade_request')->middleware('merchant');
 // Route::post('trade_request/{reference}', 'Merchant\TradeRequestController')->name('trade_request')->middleware('merchant');
+
+Route::get('tradeline/{reference}', 'User\TradelineController@index')->name('tradeline')->middleware('auth');
 
 

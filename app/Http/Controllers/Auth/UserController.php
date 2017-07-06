@@ -24,7 +24,7 @@ class UserController extends Controller
     function __construct(BridgeCodeController $bride_code)
     {
         $this->bride_code = $bride_code;
-    	$this->middleware('guest')->except(['logout', 'verifyToken', 'resendActivationMail','market','viewUsers', 'brigeCode', 'profile_picture', 'index', 'arahaMarket', 'merchantTradeline', 'bridger', 'bridgerRequest', 'bridgeShops', 'exhibition', 'followBrands', 'followFriends', 'hiring', 'lagosMarket', 'merchantStore', 'myCart', 'port_harcourtMarket', 'userTradeline',]);
+    	$this->middleware('guest')->except(['logout', 'verifyToken', 'resendActivationMail','market','viewUsers', 'brigeCode', 'profile_picture', 'index', 'arahaMarket', 'merchantTradeline', 'bridger', 'bridgerRequest', 'bridgeShops', 'exhibition', 'followBrands', 'followFriends', 'hiring', 'lagosMarket', 'merchantStore', 'myCart', 'port_harcourtMarket',]);
     }
 
     public function register()
@@ -247,18 +247,18 @@ class UserController extends Controller
         return view('mycart');
     }
 
-    public function userTradeline(){
-        $products = Product::latest()->get();
-        $inventory = Inventory::all();
-        $merchant = MerchantAccount::all();
-        $user = User::all();
-        // dd($product);
+    // public function userTradeline(){
+    //     $products = Product::latest()->get();
+    //     $inventory = Inventory::all();
+    //     $merchant = MerchantAccount::all();
+    //     $user = User::all();
+    //     // dd($product);
         
-        return view('user_tradeline', compact('products', 'inventory', 'merchant', 'user'));
+    //     return view('user_tradeline', compact('products', 'inventory', 'merchant', 'user'));
       
         
         
-    }
+    // }
 
     
 
