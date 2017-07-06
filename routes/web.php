@@ -73,6 +73,8 @@ Route::post('/register', 'Auth\UserController@create')->name('register');
 
 Route::get('/friends', 'User\FriendsController@index')->name('friends');
 
+Route::get('/tarde_partners', 'Merchant\TradeRequestController@tradePartner')->name('trade_partners');
+
 Route::post('/accept_friend/{email}', 'User\FriendsController@create')->name('accept_friend');
 
 Route::post('/decline_friend/{email}', 'User\FriendsController@update')->name('decline_friend');

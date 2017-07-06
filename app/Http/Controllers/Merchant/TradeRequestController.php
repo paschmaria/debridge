@@ -18,6 +18,14 @@ class TradeRequestController extends Controller
         return view('friend_request');
     }
 
+    public function tradePartner(){
+    	 $role = Role::where('name', 'Merchant')->first();
+    	$user_friends = auth()->user()->friends->pluck('id')->toArray();
+    	// dd($user_friends);
+    	$merchants = User::where('role_id', $role->id)->where('id', '!=', auth()->user()->id)->whereIn('id', $user_friends)->get();
+    	return view('trade_partners', compact('merchants'));
+    }
+
     public function showMerchants(){
     	$role = Role::where('name', 'Merchant')->first();
     	$user_friends = auth()->user()->friends->pluck('id')->toArray();
