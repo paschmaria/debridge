@@ -28,7 +28,7 @@
          <!-- main section begins here-->
         <section class="main">
           <div class="container-fluid">
-            @if($user->role->name !== "Merchant")
+            @if($user->checkRole())
                 <div class="">
                     <h1 class="h1-responsive f-48 text-center m-t-20 m-b-25 c-brand w-500">{{ strtoupper($user->full_name()) }}</h1>
                 </div>
@@ -166,13 +166,11 @@
                         <div class="card m-t-20 p-18">
                                 <div class="media">
                                     <a class="pull-left" href="#">
-                                        <img class="media-object p-r-10" src="{{ asset('img/acc-img-1.png') }}" alt="Image">
-                                        {{-- correct one --}}
-                                        {{-- @if ($post->user->image_id == null)
-                                            <img src="{{ asset('img/icons/profiled.png') }}" class="media-object p-r-10" alt="">
+                                        @if ($post->user->profile_picture == null)
+                                            <img src="{{ asset('img/icons/profiled.png') }}" class="media-object p-r-10" alt="" width="50" height="50">
                                         @else
-                                            <img src="{{ route('image', [$post->user->profile_picture->image_reference, '']) }}" class="media-object p-r-10" alt="">
-                                        @endif --}}
+                                            <img src="{{ route('image', [$post->user->profile_picture->image_reference, '']) }}" class="media-object p-r-10" alt="" width="50" height="50">
+                                        @endif
                                     </a>
                                     <div class="media-body">
                                         <h6 class="media-heading c-brand w-500">
@@ -186,29 +184,41 @@
                                         <p>{{ $post->title }}</p> {{-- <a href="#" class="c-brand">View Product</a></p> --}}
                                     </div>
                                 </div>
+                                @if($post->pictures != null)
+                                    <div class="m-t-10">
+                                        <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+                                            <!--Indicators-->
+                                            <ol class="carousel-indicators">
+                                                @for ($i = 0; $i < count($post->pictures->images); $i++)
+                                                    <li data-target="#myCarousel" data-slide-to="{{ $i }}" @if($i === 0 )class="active"@endif></li>
+                                                @endfor
+                                            </ol>
+                                            <!--/.Indicators-->
 
-                                <div class="card-group">
-                                    <div class="card m-5">
-                                        <!--Card image-->
-                                        <div class="view overlay hm-white-slight">
-                                            <img src="{{ asset('img/products/timeline-product-1.png') }}" class="img-fluid width-100p" alt="">
-                                            <a href="#">
-                                                <div class="mask waves-effect waves-light"></div>
+                                            <!--Slides-->
+                                            <div class="carousel-inner" role="listbox" {{ $counter=0 }}>
+                                                @foreach ($post->pictures->images as $image)
+                                                    <div class="carousel-item @if($counter == 0) active @endif">
+                                                        <img src="{{ route('image', [$image->image_reference, '']) }}" class="img-fluid width-100p h-350" alt="First slide" {{ $counter++ }}>
+                                                    </div>
+                                                @endforeach()
+                                            </div>
+                                            <!--/.Slides-->
+
+                                            <!--Controls-->
+                                            <a class="left carousel-control pos-abs l-15 t-40" href="#myCarousel" role="button" data-slide="prev">
+                                                <span class="fa fa-chevron-left f-24 c-dark" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
                                             </a>
-                                        </div>
-                                        <!--/.Card image-->
-                                    </div>
-                                    <div class="card m-5">
-                                        <!--Card image-->
-                                        <div class="view overlay hm-white-slight">
-                                            <img src="{{ asset('img/products/timeline-product-2.png') }}" class="img-fluid width-100p" alt="">
-                                            <a href="#">
-                                                <div class="mask waves-effect waves-light"></div>
+                                            <a class="right carousel-control pos-abs r-15 t-40" href="#myCarousel" role="button" data-slide="next">
+                                                <span class="fa fa-chevron-right c-dark f-24" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
                                             </a>
+                                            <!--/.Controls-->
                                         </div>
-                                        <!--/.Card image-->
+                                        <!--/.Carousel Wrapper-->
                                     </div>
-                                </div>
+                                @endif
                                 <div class="m-t-10 p-5"><p>{{ $post->content }}</p></div>
 
                                 <div class="m-b-20">
@@ -239,12 +249,11 @@
                                 <!-- comment section-->
                                 <div class="media m-b-15">
                                     <a class="pull-left" href="#">
-                                        <img class="media-object p-r-10" src="{{ asset('img/acc-img-1.png') }}" alt="Image">
-                                        {{-- @if ($comment->user->image_id == null)
-                                            <img src="{{ asset('img/icons/profiled.png') }}" class="media-object p-r-10" alt="Image">
+                                        @if (auth()->user()->profile_picture == null)
+                                            <img src="{{ asset('img/icons/profiled.png') }}" class="media-object p-r-10" alt="Image" width="50" height="50">
                                         @else
-                                            <img src="{{ route('image', [auth()->user()->profile_picture->image_reference, '']) }}" class="img-fluid width-100p" alt="">
-                                        @endif --}}
+                                            <img src="{{ route('image', [auth()->user()->profile_picture->image_reference, '']) }}" class="media-object p-r-10" alt="" width="50" height="50">
+                                        @endif
                                     </a>
                                     <div class="media-body">
                                         <form method="post" action="{{ route('create_comment', $post->reference) }}">
@@ -255,36 +264,37 @@
                                     </div>
                                 </div>
                                 @forelse($post->comments as $comment)
-                                    <div class="media m-b-40">
-                                        <div class="media">
-                                            <div class="pull-left p-r-10">
-                                                <img class="media-object " src="{{ asset('img/acc-img-2.png') }}" alt="Image">
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="media-heading w-700 m-b-5 f-12">{{ $comment->user->full_name() }}</h6>
-                                                <p m-b- f-12>{{ $comment->content }}</p>
-                                                <ul class="m-b-0 f-12">
-                                                    <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart-o"></i></span> Like</a></li>
+                                    <div class="media m-b-20">
+                                        <div class="pull-left p-r-10">
+                                            @if ($comment->user->image_id == null)
+                                                <img src="{{ asset('img/icons/profiled.png') }}" class="media-object p-r-10" alt="Image" width="50" height="50">
+                                            @else
+                                                <img src="{{ route('image', [$comment->user->profile_picture->image_reference, '']) }}" class="media-object p-r-10" alt="" width="50" height="50">
+                                            @endif
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="media-heading w-700 m-b-5 f-12">{{ $comment->user->full_name() }}</h6>
+                                            <p m-b- f-12>{{ $comment->content }}</p>
+                                            <ul class="m-b-0 f-12">
+                                                <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart-o"></i></span> Like</a></li>
                                                 <li class="c-brand dis-inline-b p-l-10 p-r-10"><a href="#">Reply</a></li>
                                                 <li class="c-brand dis-inline-b p-l-10">{{ $comment->updated_at->diffForHumans() }}</li>
-                                                </ul>
-                                                <div class="media m-t-5">
-                                                    <div class="pull-left p-r-10">
-                                                        <img src="{{ asset('img/acc-img-1.png') }}" class="media-object">
-                                                        {{-- @if ($comment->user->image_id == null)
-                                                            <img src="{{ asset('img/icons/profiled.png') }}" class="media-object" alt="Image">
-                                                        @else
-                                                            <img src="{{ route('image', [auth()->user()->profile_picture->image_reference, '']) }}" class="media-object" alt="">
-                                                        @endif --}}
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <form method="post" action="{{ route('create_comment', $post->reference) }}">
-                                                            {{ csrf_field() }}
-                                                            <textarea name="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Write a reply..."></textarea>
-                                                        </form>
-                                                    </div>
-                                                </div> 
-                                            </div>
+                                            </ul>
+                                            <div class="media m-t-5">
+                                                <div class="pull-left p-r-10">
+                                                    @if (auth()->user()->profile_picture == null)
+                                                        <img src="{{ asset('img/icons/profiled.png') }}" class="media-object p-r-10" alt="Image" width="50" height="50">
+                                                    @else
+                                                        <img src="{{ route('image', [auth()->user()->profile_picture->image_reference, '']) }}" class="media-object p-r-10" alt="" width="50" height="50">
+                                                    @endif
+                                                </div>
+                                                <div class="media-body">
+                                                    <form method="post" action="{{ route('create_comment', $post->reference) }}">
+                                                        {{ csrf_field() }}
+                                                        <textarea name="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Write a reply..."></textarea>
+                                                    </form>
+                                                </div>
+                                            </div> 
                                         </div>
                                     </div>
                                 @empty
@@ -296,7 +306,7 @@
                             {{-- empty expr --}}
                         @endforelse
                 </div>
-                <div class="col-sm-3 col-md-3">
+                <div class="col-sm-3 col-md-3 m-t-20">
                     @include('layouts.partials.map_no_div')
                 </div>
             </div>
@@ -304,95 +314,14 @@
           </div>
         </section>
         <!-- main section ends here-->
- @endsection()  
+ @endsection  
 
  @section('scripts') 
-        <script>
-            document.onreadystatechange = () => {
-                if (document.readyState === "complete") {
-                    $('.carousel_big').slick({
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        dots: true,
-                        arrows: false,
-                        fade: true,
-                        autoplay: true,
-                        asNavFor: '.carousel_small'
-                    });
-                    $('.carousel_small').slick({
-                        infinite: true,
-                        slidesToShow: 2,
-                        slidesToScroll: 1,
-                        arrows: false,
-                        asNavFor: '.carousel_big',
-                        focusOnSelect: true,
-                        autoplay: true,
-                        autoplaySpeed: 2000,
-                        vertical: true,
-                        centerPadding: '0px',
-                        responsive: [
-                            {
-                              breakpoint: 1024,
-                              settings: {
-                                slidesToShow: 3,
-                                slidesToScroll: 3,
-                                infinite: true
-                              }
-                            },
-                            {
-                              breakpoint: 600,
-                              settings: {
-                                slidesToShow: 2,
-                                slidesToScroll: 2,
-                                infinite: true
-                              }
-                            },
-                            {
-                              breakpoint: 480,
-                              settings: {
-                                slidesToShow: 1,
-                                slidesToScroll: 1,
-                                infinite: true
-                              }
-                            }
-                        ]
-                    });
-
-                    new WOW().init();
-                    $('[data-toggle="tooltip"]').tooltip();
-                    app.productImageUpload(4);
-                    app.commentHandler();
-                }
+    <script>
+        document.onreadystatechange = () => {
+            if (document.readyState === "complete") {
+                app.productImageUpload(4);
             }
-        </script>
- @endsection()    
-        <!--
-            <footer></footer>
-        -->
-
-        <!-- SCRIPTS -->
-
-        <!-- JQuery -->
-        {{-- <script type="text/javascript" src="assets/plugins/mdb/js/jquery-3.1.1.min.js"></script>
-
-        <!-- Bootstrap tooltips -->
-        <script type="text/javascript" src="assets/plugins/mdb/js/tether.min.js"></script>
-
-        <!-- Bootstrap core JavaScript -->
-        <script type="text/javascript" src="assets/plugins/mdb/js/bootstrap.min.js"></script>
-
-        <!-- MDB core JavaScript -->
-        <script type="text/javascript" src="assets/plugins/mdb/js/mdb.min.js"></script>
-
-        <!-- slick carousel -->
-        <script type="text/javascript" src="assets/plugins/slick/slick.min.js"></script>
-
-        <!-- Main JS -->
-        <script type="text/javascript" src="assets/js/main.js"></script>
- --}}        
-        <script>
-        </script>
-    
-    </body>
-
-</html>
+        }
+    </script>
+ @endsection   

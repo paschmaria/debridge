@@ -65,7 +65,6 @@ class PostController extends Controller
                 'file.*' => 'required|mimes:jpg,jpeg,png,gif'
             ], ['All files must be images (jpg, jpeg, png, gif)']);
         }
-
         $post = new Post([
             'title' => $request->title,
             'content' => $request->content,

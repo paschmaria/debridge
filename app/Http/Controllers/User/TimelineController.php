@@ -46,7 +46,20 @@ class TimelineController extends Controller
             return $values->posts;
         });
         
-        $user_post = Post::where('user_id', $user->id)->get();
+        $user_post = Post::where('user_id', $user->id)->with([
+                'user' => function($q){
+                    $q->with('profile_picture');
+                }, 
+                'comments' => function($q){
+                    $q->with(['user' => function($q){
+                        $q->with('profile_picture');
+                    }]);
+                },
+                'pictures' => function($q){
+                    $q->with('images');
+                },
+            ])->get();
+        // dd($user_post);
         $posts = $user_post->merge($timeline->values()->all())->sortByDesc('created_at');
         
         $admired = PostAdmire::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
