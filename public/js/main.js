@@ -232,7 +232,7 @@ const app = {
 	    	    });
 		    },
 		    contentSubmit() {
-		    	productUploadForm.addEventListener('submit', (e) => {
+		    	productUploadForm1.addEventListener('submit', (e) => { //productUploadForm1 is supposed to be productUploadForm
 		    		e.preventDefault();
 
 		    		let output = "",

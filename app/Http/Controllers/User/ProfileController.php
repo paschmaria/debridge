@@ -8,6 +8,7 @@ use App\Models\MerchantAccount;
 use App\Models\UserAccount;
 use App\Models\State;
 use App\Models\Address;
+use App\Models\Follower;
 use App\User;
 
 class ProfileController extends Controller
@@ -52,13 +53,17 @@ class ProfileController extends Controller
                 $q->with('state');
             }])->firstOrCreate(['user_id' => auth()->user()->id]);
         }
-        return view('users.user_profile', compact('user', 'user_acc', 'merchant', 'followers', 'following', 'following_count', 'followers_count', 'photo_albums'));
+
+        $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
+        $states = State::all();
+
+        return view('users.user_profile', compact('user', 'user_acc', 'merchant', 'followers', 'following', 'following_count', 'followers_count', 'photo_albums', 'states', 'following_ids'));
     }
 
     public function index()
     {
         $states = State::all();
-        // dd($states);
+        
         if (strtolower(auth()->user()->role->name) == 'user') {
 
             $user_acc = UserAccount::with(['address' => function($q){
