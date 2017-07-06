@@ -27,7 +27,7 @@
 
         <!-- Your custom styles (optional) -->
         <link rel="stylesheet" href="{{ asset('css/main.css')}}">
-
+        <link rel="stylesheet" href="{{ asset('css/img_temp.css') }}">
     </head>
 
     <body data-page="index">
@@ -172,7 +172,7 @@
                                                     @forelse ($notifications as $notification)
                                                         <li class="dropdown-item waves-effect waves-light p-l-10 border-bottom">
                                                             <p>
-                                                                <a href="{{ route('user_profile', $notification->foreigner->email) }}">
+                                                                <a href="{{ route('view_profile', $notification->foreigner->reference) }}">
                                                                     @if ($notification->foreigner->profile_picture != null)
                                                                         <img src="{{ route('image', [$notification->foreigner->profile_picture->image_reference,'']) }}" class="h-40 width-40 m-r-5 bd-50p">
                                                                     @else

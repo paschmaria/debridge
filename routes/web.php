@@ -43,7 +43,7 @@ Route::post('/users/follow/friends', 'FollowController@friendsFollowComplete')->
 Route::post('/users/follow/merchants', 'FollowController@merchantsFollowComplete')->name('follow_merchants');
 Route::get('/users/social_notification/delete/{notification}', 'User\SocialNotificationController@destroy')->name('delete_social_notification');
 
-Route::get('/users/follow/more', 'Auth\UserController@viewUsers')->name('view_users');
+Route::get('/users/follow/more', 'Auth\UserController@viewUsers')->name('view_users')->middleware('auth');
 
 Route::get('users/profile_picture/{id}', 'Auth\UserController@profile_picture')->name('profile_picture');
 
