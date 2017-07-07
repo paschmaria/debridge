@@ -39,6 +39,7 @@ class HypeController extends Controller
             'content' => $post->content,
             'photo_album_id' => $post->photo_album_id,
             'reference' => str_random(7) . time() . uniqid(),
+            'product_id' => $post->product_id,
         ]);
         return back()->with('success', 'Post Hyped!');
     }

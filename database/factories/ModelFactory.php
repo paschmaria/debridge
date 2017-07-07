@@ -16,9 +16,18 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
+        'first_name' => $faker->firstName,
+        'last_name' => $faker->lastName,
         'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
+        'password' => $password ?: $password = bcrypt('qwerty'),
         'remember_token' => str_random(10),
+        'date_of_birth' => $faker->dateTimeThisCentury->format('Y-m-d'),
+        'reference' => str_random(7) . time() . uniqid(),
+        'registration_status' => rand(1,2),
+        'role_id' => rand(1,2),
+        'community_id' => rand(1,7),
+        'user_token' => str_random(64),
+        'created_at' => $faker->dateTimeThisMonth($max = 'now'),
+        'updated_at' => $faker->dateTimeThisMonth($max = 'now'),
     ];
 });

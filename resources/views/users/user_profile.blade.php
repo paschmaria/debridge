@@ -41,7 +41,7 @@
 					</div>
 					<div class="list-group m-t-20">
 						<a href="{{ route('timeline', $user->reference) }}" class="list-group-item list-group-item-action f-12">TIMELINE</a>
-                        <a href="{{ route('profile', $user->reference) }}" class="list-group-item list-group-item-action f-12">PROFILE</a>
+                        <a href="{{ route('view_profile', $user->reference) }}" class="list-group-item list-group-item-action f-12">PROFILE</a>
                         <a href="#" class="list-group-item list-group-item-action f-12">DOCUMENTS</a>
                         <a href="#" class="list-group-item list-group-item-action f-12">TRADE GROUPS</a>
                         <a href="#" class="list-group-item list-group-item-action f-12">COMMUNITY</a>
@@ -120,9 +120,9 @@
 										<div class="media">
 										<div class="media-left">
 											@if($person->profile_picture != null)
-										    	<img src="assets/img/photo000.png" class="media-object picfix">
+										    	<img src="{{ route('image', [$person->profile_picture->image_reference, '']) }}" class="img-responsive h-100 width-100">
 										    @else
-										    	<img src="{{ asset('img/icons/profiled.png') }}" class="media-object picfix"> 
+										    	<img src="{{ asset('img/icons/profiled.png') }}" class="img-responsive h-100 width-100"> 
 										    @endif
 										    </div>
 										    <div class="media-body m-t-20">
@@ -152,13 +152,15 @@
 										<div class="media">
 										<div class="media-left">
 											@if($person->profile_picture != null)
-										    	<img src="assets/img/photo000.png" class="media-object picfix">
+										    	<img src="{{ route('image', [$person->profile_picture->image_reference, '']) }}" class="img-responsive h-100 width-100">
 										    @else
-										    	<img src="{{ asset('img/icons/profiled.png') }}" class="media-object picfix"> 
+										    	<img src="{{ asset('img/icons/profiled.png') }}" class="img-responsive h-100 width-100"> 
 										    @endif
 										    </div>
 										    <div class="media-body m-t-20">
-										      <p class="media-heading">{{ $person->full_name() }}<br>{{ $person->community_address() }}</p>
+										      <p class="media-heading">
+											      <a href="{{ route('timeline', $person->reference) }}" class="c-brand">{{ $person->full_name() }}</a>
+											      <br>{{ $person->community_address() }}</p>
 										    </div>
 										    @if (in_array($person->id, $following_ids))
 										    	<a href="{{ route('unfollow', $person->reference) }}">
@@ -284,6 +286,28 @@
 	                                <input type="date" name="date_of_birth" id="usr-dob" class="form-control bd-3 h-40 validate input-alternate border-box f-14" value="{{ auth()->user()->date_of_birth }}" required>
 	                            </div>
 	                        </div>
+	                        <div class="row">
+                                <div class="col-md-12 col-sm-12 col-12 form-group">
+                                    <label class="f-14 c-dark">Trade Community</label>
+                                    <select name="community" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow f-14 p-l-10">
+                                        <option selected
+                                            @if(auth()->user()->community != null)
+                                            value="{{ auth()->user()->community->id }}">{{ auth()->user()->community->name }}
+                                            @else
+                                            disabled>Trade community state...
+                                            @endif
+                                        </option>
+                                        @foreach($communities as $community)
+                                            <option value="{{ $community->id }}">{{ $community->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('community'))
+                                    <span class="help-block text-danger">
+                                        <strong>{{ $errors->first('community') }}</strong>
+                                    </span><br><br>
+                                    @endif
+                                </div>
+                            </div>
 		                	<button type="submit" class="btn btn-sm btn-brand pull-right">Save</button>
 		                </form>
 		            </div>

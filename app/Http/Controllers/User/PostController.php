@@ -56,7 +56,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'string|max:128',
+            'title' => 'nullable|string|max:128',
             'content' => 'string|max:3000',
         ]);
 

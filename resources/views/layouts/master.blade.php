@@ -27,7 +27,6 @@
 
         <!-- Your custom styles (optional) -->
         <link rel="stylesheet" href="{{ asset('css/main.css')}}">
-        <link rel="stylesheet" href="{{ asset('css/img_temp.css') }}">
     </head>
 
     <body data-page="index">
@@ -299,6 +298,7 @@
                     app.likeToggler();
                     app.commentHandler();
                     app.stickyHeader();
+                    app.productImageUpload(4);
 
                 }
                 $(function(){

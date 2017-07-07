@@ -120,6 +120,28 @@
                                                         <input type="date" name="date_of_birth" id="usr-dob" class="form-control bd-3 h-40 validate input-alternate border-box f-14" value="{{ auth()->user()->date_of_birth }}" required>
                                                     </div>
                                                 </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 col-sm-12 col-12 form-group">
+                                                        <label class="f-14 c-dark">Trade Community</label>
+                                                        <select name="community" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow f-14 p-l-10">
+                                                            <option selected
+                                                                @if(auth()->user()->community != null)
+                                                                value="{{ auth()->user()->community->id }}">{{ auth()->user()->community->name }}
+                                                                @else
+                                                                disabled>Trade community state...
+                                                                @endif
+                                                            </option>
+                                                            @foreach($communities as $community)
+                                                                <option value="{{ $community->id }}">{{ $community->name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @if ($errors->has('community'))
+                                                        <span class="help-block text-danger">
+                                                            <strong>{{ $errors->first('community') }}</strong>
+                                                        </span><br><br>
+                                                        @endif
+                                                    </div>
+                                                </div>
                                                 <button type="submit" class="btn btn-brand m-t-20 pull-right">UPDATE</button>
                                                 
                                             </form>
