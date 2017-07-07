@@ -29,7 +29,7 @@ class UserController extends Controller
 
     public function register()
     {
-        $roles = Role::where('name', '!=', 'Admin')->get();
+        $roles = Role::where('name', '!=', 'Admin')->where('name', '!=', 'SuperAdmin')->get();
         // dd($roles);
         $states = State::all();
         $trade_communities = TradeCommunity::all();

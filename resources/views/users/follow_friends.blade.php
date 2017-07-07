@@ -36,8 +36,8 @@
             <div class="container">
                 <div class="overall_card_wrapper" style="padding-top:50px;padding-bottom:5px;">
                     <div class="header text-center p-b-30" style="color:#212121;">
-                        <h3 class="f-24">FOLLOW A FEW FRIENDS</h3>
-                        <p class="f-12">Thank you. Just a click away follow a few friends</p>
+                        <h3 class="f-24">FOLLOW A FEW FRIENDS</h3> <button disabled class="unfollow_btn c_unfollow"   id="follow"><i style="color: #fff;" class="followers_counter count" ></i></button>
+                        <p class="f-12">Thank you. Please follow atleat 10 friends to proceed.</p>
                     </div>
                     <div class="profiles_wrapper">
                         <div class="row">
@@ -64,9 +64,9 @@
                                             <!-- black circle -->
                                                 <div class="follow_div z-100">
                                                 @if(!in_array($user->id, $following_ids))
-                                                        <button class="follow_btn follow" data-email="{{$user->reference}}" data-fname="{{$user->full_name()}}" data-id="{{$user->id}}" id="follow"></button>
+                                                        <button class="follow_btn c_follow " data-email="{{$user->reference}}" data-fname="{{$user->full_name()}}" data-id="{{$user->id}}" id="follow"></button> 
                                                 @else
-                                                        <button class="unfollow_btn unfollow" data-email="{{$user->reference}}" data-fname="{{$user->full_name()}}" data-id="{{$user->id}}" id="follow"><i class="fa fa-check unfollow_i"></i></button>
+                                                        <button class="unfollow_btn c_unfollow" data-email="{{$user->reference}}" data-fname="{{$user->full_name()}}" data-id="{{$user->id}}" id="follow"><i id=""  class="fa fa-check unfollow_i"></i></button>
                                                 @endif 
                                                    {{--  <input class="" name="checkbox{{ $counter }}" type="checkbox" id="checkbox{{ $counter }}" value="{{ $user->id }}">
                                                     <label for="checkbox{{ $counter }}"></label> --}}
@@ -120,10 +120,12 @@
 
     <!-- slick carousel -->
     <script type="text/javascript" src="{{ asset('plugins/slick/slick.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('plugins/slick/slick.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/social_network.js') }}"></script>
    
     <script type="text/javascript">
         $("#check").click(function (){
-            $(":checkbox").show();
+            // $(":checkbox").show();
         })
     </script>
 

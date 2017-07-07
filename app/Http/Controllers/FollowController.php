@@ -104,6 +104,8 @@ class FollowController extends Controller
      */
     public function store($reference)
     {
+        $role_user = Role::where('name', 'User')->get();
+        $role_merchant = Role::where('name', 'Merchant')->get();
         // Find the User. Redirect if the User doesn't exist
         $user = User::where('reference', $reference)->first();
         auth()->user()->following()->attach($user->id);
@@ -114,7 +116,14 @@ class FollowController extends Controller
             'message' => auth()->user()->full_name() . ' is now following you!',
             'description_id' => 1 
             ]);
-        return response()->json($user->reference);
+        $num_of_user = count(auth()->user()->following()->whereIn('role_id', $role_user)->get());
+        $num_of_merchant = count(auth()->user()->following()->where('role_id', $role_merchant)->get());
+         return response()->json([
+          'reference' => $user->reference,
+          'user_count'    =>  $num_of_user,
+          'merchant_count' => $num_of_merchant
+        ]);
+        // return response()->json($user->reference]);
         // return back()->with('success', 'Now following ' . $user->email);
     }
 
@@ -127,10 +136,11 @@ class FollowController extends Controller
     public function getUser(Request $request)
     {
         // get the id of the users that the auth user follows
+        $num_of_user = $num_of_merchant = 0;
         $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
         $role_id = Role::where('name', 'User')->pluck('id')->toArray();
-        $users = User::with(['profile_picture', 'community' ])->where('id', '!=', auth()->user()->id)->whereIn('role_id', $role_id)->paginate(8);
-        return view('users.follow_friends', compact('users', 'following_ids'));
+        $users = User::with(['profile_picture', 'community' ])->where('id', '!=', auth()->user()->id)->whereIn('role_id', $role_id)->paginate(16);
+        return view('users.follow_friends', compact('users', 'following_ids', 'num_of_merchant', 'num_of_user'));
     }
 
     public function friendsFollowComplete()
@@ -186,6 +196,9 @@ class FollowController extends Controller
      */
     public function destroy($reference)
     {
+        $role_user = Role::where('name', 'User')->get();
+        $role_merchant = Role::where('name', 'Merchant')->get();
+        
         // Find the User. Redirect if the User doesn't exist
         $user = User::where('reference', $reference)->first();
         auth()->user()->following()->detach($user->id);
@@ -196,7 +209,14 @@ class FollowController extends Controller
             'message' => auth()->user()->full_name() . ' unfollowed you!',
             'description_id' => 2 
             ]);
-        return response()->json($user->email);
+        $num_of_user = count(auth()->user()->following()->whereIn('role_id', $role_user)->get());
+        $num_of_merchant = count(auth()->user()->following()->where('role_id', $role_merchant)->get());
+        // return response()->json($user->reference, $num_of_merchant, $num_of_user);
+        return response()->json([
+          'reference' => $user->reference,
+          'user_count'    =>  $num_of_user,
+          'merchant_count' => $num_of_merchant
+        ]);
         
         // return back()->with('info', 'unfollowed ' . $email);
     }
