@@ -29,17 +29,64 @@
         <section class="main">
           <div class="container-fluid">
             @if($user->checkRole())
-                <div class="">
-                    <h1 class="h1-responsive f-48 text-center m-t-20 m-b-25 c-brand w-500">{{ strtoupper($user->full_name()) }}</h1>
+                <div class="row m-t-10">
+                    <div class="col-sm-9">
+                        <h1 class="h1-responsive f-48 text-center m-t-20 m-b-5 c-brand w-500">{{ strtoupper($user->full_name()) }}</h1>
+                        @if($user->community)
+                            <p class="text-center">{{ $user->community_address() }}<small class="c-gray"> (Trade Community)</small></p>
+                        @endif
+                    </div>
+                    <div class="col-sm-3  m-t-10">
+                        <div class="list-group m-b-20">
+                            <a href="{{ route('view_profile', $user->reference) }}" class="list-group-item list-group-item-action">
+                                <i class="fa fa-user f-20"></i><span class="p-l-20">VIEW PROFILE</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <i class="fa fa-globe f-20"></i><span class="p-l-20">TRADE COMMUNITY</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             @else
-                <div class="">
-                    <h1 class="h1-responsive f-48 text-center m-t-20 m-b-25 c-brand w-500">{{ strtoupper($user->full_name()) }}</h1>
+                <div class="row m-t-10">
+                    <div class="col-sm-9 m-t-20">
+                        <h1 class="h1-responsive f-48 text-center m-t-20 m-b-5 c-brand w-500">{{ strtoupper($user->full_name()) }}</h1>
+                        <h4 class="h4-responsive c-brand text-center">{{ strtoupper($merchant->store_name) }}</h4>
+                        @if($user->community)
+                            <p class="text-center">{{ $user->community_address() }}<small class="c-gray"> (Trade Community)</small></p>
+                        @endif
+                        @if($merchant->address != null)
+                            <p class="text-center">{{ ucwords($merchant->address->address) }}
+                            @if($merchant->address->state != null)
+                                <span>, {{ ucwords($merchant->address->state->name) }}.</span>
+                            @endif
+                            </p>
+                        @endif
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="list-group m-b-20">
+                            <a href="{{ route('view_profile', $user->reference) }}" class="list-group-item list-group-item-action">
+                                <i class="fa fa-user f-20"></i><span class="p-l-20">VIEW PROFILE</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <i class="fa fa-globe f-20"></i><span class="p-l-20">TRADE COMMUNITY</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <i class="fa fa-users f-20"></i><span class="p-l-20">TRADE PARTNERS</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <i class="fa fa-archive f-20"></i><span class="p-l-20">INVENTORY</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <i class="fa fa-shopping-bag f-20"></i><span class="p-l-20">HOTTEST DEALS</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             @endif
 
             <div class="row">
-                <div class="hidden-xs-down col-sm-3 col-md-3 m-t-20">
+                <div class="hidden-xs-down col-sm-3 col-md-3 m-t-10">
                     <div class="list-group m-b-20">
                         <a href="{{ route('view_users') }}" class="list-group-item list-group-item-action">BRIDGER</a>
                         <a href="tradeRequest.html" class="list-group-item list-group-item-action">TRADE REQUEST</a>
@@ -135,7 +182,7 @@
                     <!--/.Card-->
                 </div>
                 <div class="col col-sm-6 col-md-6">
-                    <div class="card m-t-20 p-18">
+                    <div class="card m-t-10 p-18">
                          
                         <div class="card-block p-0">
                             
@@ -306,7 +353,7 @@
                             {{-- empty expr --}}
                         @endforelse
                 </div>
-                <div class="col-sm-3 col-md-3 m-t-20">
+                <div class="col-sm-3 col-md-3 m-t-10">
                     @include('layouts.partials.map_no_div')
                 </div>
             </div>
@@ -317,11 +364,11 @@
  @endsection  
 
  @section('scripts') 
-    <script>
-        document.onreadystatechange = () => {
-            if (document.readyState === "complete") {
-                app.productImageUpload(4);
-            }
-        }
-    </script>
+  {{--   <script>
+        // document.onreadystatechange = () => {
+        //     if (document.readyState === "complete") {
+        //         app.productImageUpload(4);
+        //     }
+        // }
+    </script> --}}
  @endsection   

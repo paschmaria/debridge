@@ -43,9 +43,9 @@ class ProductController extends Controller
     public function hottestProduct($reference){
         $user = User::where('reference', $reference)->first();
         // dd($user->id);
-        $merchant = MerchantAccount::where('user_id', $user->id)->first();
+        $merchant = MerchantAccount::firstOrCreate(['user_id' => $user->id]);
         // dd($merchant);
-        $hottest = HottestProduct::where('merchant_account_id', $merchant->id)->first();
+        $hottest = HottestProduct::firstOrCreate(['merchant_account_id' => $merchant->id]);
         $products = Product::where('hottest_product_id', $hottest->id)->get();
         return view('hottest_products', compact('products', 'user'));
     }
@@ -378,7 +378,7 @@ public function StoreForUser($reference){
    public function productDetails(Product $product, $reference)
     {
         $user = User::where('reference', $reference)->first();
-        $merchant = MerchantAccount::where('user_id', $user->id);
+        $merchant = MerchantAccount::firstOrCreate(['user_id' => $user->id]);
         $product_of_the_week = ProductOfTheWeek::where('merchant_account_id', $merchant->id)->first();
         // dd(empty($product_of_the_week));
 
