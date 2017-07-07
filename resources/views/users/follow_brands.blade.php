@@ -36,7 +36,7 @@
                 <div class="overall-card-wrapper" style="padding-top:120px; padding-bottom:5px;">
                     <div class="header text-center p-b-30" style="color:#212121;">
 
-                        <h3 class="f-24">Follow at least 10 Brands</h3>
+                        <h3 class="f-24">Follow at least 10 Brands</h3> <button disabled class="unfollow_btn c_unfollow"   id="follow"><i style="color: #fff;" class="followers_counter m_count"></i></button>
                         <p class="f-12">You are almost done with your sign up process, just follow a few stores of interest.</p>
                     </div>
                     <!-- select -->
@@ -96,13 +96,9 @@
                                         <!-- black circle -->
                                             <div class="follow_div z-100">
                                             @if(!in_array($user->id, $following_ids))
-                                                <form method="post" action="{{ route('follow', $user->reference) }}">
-                                                    <button class="follow_btn" id="follow"></button>
-                                                </form>
+                                                <button class="follow_btn c_follow " data-email="{{$user->reference}}" data-fname="{{$user->full_name()}}" data-id="{{$user->id}}" id="follow"></button>
                                             @else
-                                                <form method="post" action="{{ route('unfollow', $user->reference) }}">
-                                                    <button class="unfollow_btn" id="follow"><i class="fa fa-check unfollow_i"></i></button>
-                                                </form>
+                                                <button class="unfollow_btn c_unfollow" data-email="{{$user->reference}}" data-fname="{{$user->full_name()}}" data-id="{{$user->id}}" id="follow"><i id=""  class="fa fa-check unfollow_i"></i></button>
                                             @endif 
                                                {{--  <input class="" name="checkbox{{ $counter }}" type="checkbox" id="checkbox{{ $counter }}" value="{{ $user->id }}">
                                                 <label for="checkbox{{ $counter }}"></label> --}}
@@ -156,6 +152,9 @@
 
     <!-- slick carousel -->
     <script type="text/javascript" src="{{ asset('plugins/slick/slick.min.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('js/social_network.js') }}"></script>
+
     <script>
         $(document).ready(function(){
             $('.carousel_big').slick({
