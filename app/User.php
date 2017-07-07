@@ -156,6 +156,9 @@ class User extends Authenticatable
     // }
     public function community_address()
     {
+        if($this->community === null){
+            return;
+        }
         return ucwords($this->community->name . ', ' . $this->community->state->name);
     }
 
