@@ -13,7 +13,7 @@ class StateMarketController extends Controller
 {
     public function show($reference)
     {
-    	$state = State::where('reference', $reference)->with(['trade_communities' => function ($q){
+    	$state = State::where('name', $reference)->with(['trade_communities' => function ($q){
     		$q->with(['users' => function ($q){
     			$q->with(['posts' => function ($q){
     				$q->orderBy('created_at', 'desc')->with([
