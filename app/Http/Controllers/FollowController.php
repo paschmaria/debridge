@@ -117,7 +117,7 @@ class FollowController extends Controller
             'description_id' => 1 
             ]);
         $num_of_user = count(auth()->user()->following()->whereIn('role_id', $role_user)->get());
-        $num_of_merchant = count(auth()->user()->following()->where('role_id', $role_merchant)->get());
+        $num_of_merchant = count(auth()->user()->following()->whereIn('role_id', $role_merchant)->get());
          return response()->json([
           'reference' => $user->reference,
           'user_count'    =>  $num_of_user,
@@ -152,6 +152,7 @@ class FollowController extends Controller
 
     public function getMerchant(Request $request)
     {
+        // dd(auth()->user()->email);
         // get the id of the users that the auth user follows
         $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
         $role_id = Role::where('name', 'Merchant')->pluck('id')->toArray();
@@ -161,9 +162,14 @@ class FollowController extends Controller
 
     public function merchantsFollowComplete()
     {
-        auth()->user()->registration_status = null;
+        $done = auth()->user()->registration_status = null;
         auth()->user()->save();
-        return redirect('/');
+
+        return response()->json([
+          'success' => $done
+          
+        ]);
+        // return redirect('/');
     }
     /**
      * Show the form for editing the specified resource.
@@ -210,7 +216,7 @@ class FollowController extends Controller
             'description_id' => 2 
             ]);
         $num_of_user = count(auth()->user()->following()->whereIn('role_id', $role_user)->get());
-        $num_of_merchant = count(auth()->user()->following()->where('role_id', $role_merchant)->get());
+        $num_of_merchant = count(auth()->user()->following()->whereIn('role_id', $role_merchant)->get());
         // return response()->json($user->reference, $num_of_merchant, $num_of_user);
         return response()->json([
           'reference' => $user->reference,

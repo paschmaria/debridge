@@ -259,9 +259,31 @@ $(document).on('click', ".c_follow", function(e){
                 type:'POST',
                 data: {reference:reciever_email},
                 success:function(data){
-                    // console.log(data);
+                    console.log(data);
                     var f_counter = $(".count").text(data.user_count);
-                    // if () {
+                    var m_counter = $(".m_count").text(data.merchant_count);
+
+                    if ($(".count").text() >= 10) {
+                        window.location = "/users/follow/merchants";
+                        toastr.options.preventDuplicates = true;
+                        toastr.info("Now follow 5 or more stores of interest.");
+                    } else if(data.merchant_count >= 5) {
+                        // alert('Merchant completed');
+                        // users/follow/merc hants
+
+                        $.ajax({
+                            url:'/users/follow/merchants',
+                            type:'POST',
+                            // data: {success,},
+                            success:function(data){
+                                window.location = "/";
+                            },
+                            error: function (data) {
+                                toastr.options.preventDuplicates = true;
+                                toastr.error("An error occured while following "+ reciever_full_name);
+                                // var obj = jQuery.parseJSON( data.responseText );
+                            }
+                        });
 
                     }
                     // f_counter++;
@@ -306,6 +328,17 @@ $(document).on('click', ".c_unfollow", function(e){
                 success:function(data){
                     console.log(data);
                     var f_counter = $(".count").text(data.user_count);
+                    var m_counter = $(".m_count").text(data.merchant_count);
+
+                    if ($(".count").text() >= 10) {
+                        window.location = "/users/follow/merchants";
+                        toastr.options.preventDuplicates = true;
+                        toastr.info("Now follow 5 or more stores of interest.");
+                    } else if(data.merchant_count >= 5) {
+                        // alert('Merchant completed');
+
+
+                    }
                     // 
                     // alert(data);
                     // console.log(data);
@@ -322,3 +355,5 @@ $(document).on('click', ".c_unfollow", function(e){
                 }
             });
     });
+
+// function()
