@@ -18,6 +18,7 @@ class VerifyCsrfToken extends BaseVerifier
         'unfollow/*',
         'accept_friend/*',
         'decline_friend/*',
+        'users/follow/merchants',
         'user/follow/*'
     ];
 }
