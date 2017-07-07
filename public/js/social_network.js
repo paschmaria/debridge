@@ -356,4 +356,33 @@ $(document).on('click', ".c_unfollow", function(e){
             });
     });
 
-// function()
+// dlete social notification
+
+$(".del").click(function(e){
+    e.preventDefault();
+    $("#bridge_loader").show();
+    var notification_id = $(this).data("payload");
+    $(".notify_id"+notification_id).hide();
+            $.ajax({
+
+                         url: "users/social_notification/delete/"+notification_id,
+                         type: "GET",
+                         data: {success:notification_id},
+                         success: function(data){
+                            var count = $(".count_notify").text();
+                            var minus = count--;
+                            $(".count_notify").text(minus);
+                            // count--;
+                            // alert(count);
+                            $("#bridge_loader").hide();
+                            toastr.options.preventDuplicates = true;
+                            toastr.info("Notification Removed!");
+                            setTimeout(function(){ 
+                                $(".notify-dropdown").show(); 
+                            }, 0.000);
+                         },error:function(){
+                            toastr.options.preventDuplicates = true;
+                            toastr.error("Looks like something went wrong from the server!", "Ooops");
+                         }
+            });
+});
