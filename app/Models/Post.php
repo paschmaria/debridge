@@ -17,10 +17,10 @@ class Post extends Model
     	return $this->hasMany('App\Models\Comment');
     }
 
-   	// public function images()
-   	// {
-   	// 	return $this->hasMany('App\Models\Image');
-   	// }
+   	public function product()
+   	{
+   		return $this->belongsTo('App\Models\Product');
+   	}
 
    	public function hypes()
    	{

@@ -188,7 +188,7 @@ Route::get('/cart/viewCart', 'User\CartController@viewCart')->name('viewCart')->
 
 Route::get('/user_tradeline', 'Auth\UserController@userTradeline')->name('user_tradeline')->middleware('auth');
 
-Route::get('product_details/{product}/{reference}', 'Merchant\ProductController@productDetails')->name('product_details');
+Route::get('/product/details/{reference}', 'Merchant\ProductController@productDetails')->name('product_details');
 Route::get('/users/following/{reference}', 'FollowController@following')->name('following');
 Route::get('/users/followers/{reference}', 'FollowController@followers')->name('followers');
 Route::get('/users/profile/edit', 'User\ProfileController@index')->name('edit_profile')->middleware('auth');
@@ -200,5 +200,6 @@ Route::post('/users/profile/edit/password', 'User\ProfileController@changePasswo
 Route::get('hottest_product/{reference}', 'Merchant\ProductController@hottestProduct')->name('hottest_products');
 Route::get('trade_request', 'Merchant\TradeRequestController@showMerchants')->name('trade_request')->middleware('merchant');
 // Route::post('trade_request/{reference}', 'Merchant\TradeRequestController')->name('trade_request')->middleware('merchant');
+Route::get('/state/market/{reference}', 'User\StateMarketController@show')->name('state_market')->middleware('auth');
 
 
