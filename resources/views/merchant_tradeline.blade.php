@@ -19,7 +19,7 @@
                             <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Followers</a></li>
                             <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="bridger.html">Following</a></li>
                             <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Take a Tour</a></li>
-                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="tradeline.html">Trade Line</a></li>
+                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('tradeline', auth()->user()->reference) }}">Trade Line</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Trade Calendar</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->

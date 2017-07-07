@@ -13,7 +13,7 @@
                         <ul class="nav navbar-nav">
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('following', auth()->user()->reference) }}">Following</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('followers', auth()->user()->reference) }}">Followers</a></li>
-                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('timeline', auth()->user()->reference) }}">Tradeline</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('tradeline', auth()->user()->reference) }}">Tradeline</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Business Invitation</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Models</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Market Value</a></li>
@@ -22,7 +22,7 @@
                 </div>
             </nav>
             <!-- navigations/links ends here -->
-@endsection
+@endsection('header')
             
 @section('content')
          <!-- main section begins here-->
@@ -175,7 +175,7 @@
                                     <div class="media-body">
                                         <h6 class="media-heading c-brand w-500">
 
-                                            <!-- <a href="{{ route('tradeline', $post->user->id) }}" class="c-brand">{{ $post->user->full_name() }}</a> -->
+                                            
 
                                             <a href="{{ route('timeline', $post->user->reference) }}" class="c-brand">{{ $post->user->full_name() }}</a>
 
@@ -316,12 +316,15 @@
         <!-- main section ends here-->
  @endsection  
 
+
  @section('scripts') 
     <script>
         document.onreadystatechange = () => {
             if (document.readyState === "complete") {
                 app.productImageUpload(4);
             }
-        }
-    </script>
+
+        </script>   
+
  @endsection   
+
