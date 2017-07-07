@@ -228,7 +228,13 @@
 
                                             <span class="pull-right" style="color:grey">{{$post->updated_at->diffForHumans()}}</span>
                                         </h6>
-                                        <p>{{ $post->title }}</p> {{-- <a href="#" class="c-brand">View Product</a></p> --}}
+                                        <p>{{ $post->title }}
+                                            @if ($post->product !== null)
+                                                <a href="{{ route('product_details', $post->product->reference) }}">
+                                                    <span class="c-brand pull-right m-r-20">View Product</span>
+                                                </a>
+                                            @endif
+                                        </p> {{-- <a href="#" class="c-brand">View Product</a></p> --}}
                                     </div>
                                 </div>
                                 @if($post->pictures != null)

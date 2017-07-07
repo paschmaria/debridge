@@ -40,8 +40,8 @@ class StateMarketController extends Controller
 
     	$posts = $users->flatmap(function($q){
     		return $q->posts;
-    	});
-
+    	})->sortByDesc('created_at');
+    	// dd($posts);
     	$admired = PostAdmire::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
         $hyped = PostHype::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
 
