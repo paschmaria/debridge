@@ -59,12 +59,12 @@ class TimelineController extends Controller
         $role = Role::where('name', 'Merchant')->first()->name;
         
         if(isset($user->role_id) && $user->role()->first()->name === $role){
-            return view('merchant_timeline', compact('posts', 'admired', 'hyped', 'user'));
+            return view('merchant_tradeline', compact('posts', 'admired', 'hyped', 'user'));
 
         }else{
-            return view('users.user_timeline', compact('posts', 'admired', 'hyped', 'user'));
+            return view('users.user_tradeline', compact('posts', 'admired', 'hyped', 'user'));
         }
-        return view('users.user_timeline', compact('user', 'posts', 'admired', 'hyped', 'user'));
+        return view('users.user_tradeline', compact('user', 'posts', 'admired', 'hyped', 'user'));
 
     }
         
