@@ -45,7 +45,7 @@
                         </div>
                         <div class="carousel-item">
                             <div class="view">
-                                <img src="{{ asset('img/background/carousels/rectangle-43.png" class="img-fluid" alt="Hiring Ad">
+                                <img src="{{ asset('img/background/carousels/rectangle-43.png') }}" class="img-fluid" alt="Hiring Ad">
                             </div>
                             <div class="carousel-caption">
                                 <p class="m-b-0">ARAHA</p>

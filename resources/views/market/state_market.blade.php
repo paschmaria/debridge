@@ -13,7 +13,7 @@
                         <ul class="nav navbar-nav">
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('following', auth()->user()->reference) }}">Following</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('followers', auth()->user()->reference) }}">Followers</a></li>
-                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('tradeline', auth()->user()->reference) }}">Tradeline</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('timeline', auth()->user()->reference) }}">Tradeline</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Business Invitation</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Models</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Market Value</a></li>
@@ -22,74 +22,18 @@
                 </div>
             </nav>
             <!-- navigations/links ends here -->
-@endsection('header')
+@endsection
             
 @section('content')
          <!-- main section begins here-->
         <section class="main">
           <div class="container-fluid">
-            @if($user->checkRole())
-                <div class="row m-t-10">
-                    <div class="col-sm-9">
-                        <h1 class="h1-responsive f-48 text-center m-t-20 m-b-5 c-brand w-500">{{ strtoupper($user->full_name()) }}</h1>
-                        @if($user->community)
-                            <p class="text-center">{{ $user->community_address() }}<small class="c-gray"> (Trade Community)</small></p>
-                        @endif
-                    </div>
-                    <div class="col-sm-3  m-t-10">
-                        <div class="list-group m-b-20">
-                            <a href="{{ route('view_profile', $user->reference) }}" class="list-group-item list-group-item-action">
-                                <i class="fa fa-user f-20"></i><span class="p-l-20">VIEW PROFILE</span>
-                            </a>
-                            <a href="#" class="list-group-item list-group-item-action">
-                                <i class="fa fa-globe f-20"></i><span class="p-l-20">TRADE COMMUNITY</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            @else
-                <div class="row m-t-10">
-                    <div class="col-sm-9 m-t-20">
-                        <h1 class="h1-responsive f-48 text-center m-t-20 m-b-5 c-brand w-500">{{ strtoupper($user->full_name()) }}</h1>
-                        <h4 class="h4-responsive c-brand text-center">{{ strtoupper($merchant->store_name) }}</h4>
-                        @if($user->community)
-                            <p class="text-center">{{ $user->community_address() }}<small class="c-gray"> (Trade Community)</small></p>
-                        @endif
-                        @if($merchant->address != null)
-                            <p class="text-center">{{ ucwords($merchant->address->address) }}
-                            @if($merchant->address->state != null)
-                                <span>, {{ ucwords($merchant->address->state->name) }}.</span>
-                            @endif
-                            </p>
-                        @endif
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="list-group m-b-20">
-                            <a href="{{ route('view_profile', $user->reference) }}" class="list-group-item list-group-item-action">
-                                <i class="fa fa-user f-20"></i><span class="p-l-20">VIEW PROFILE</span>
-                            </a>
-                            <a href="#" class="list-group-item list-group-item-action">
-                                <i class="fa fa-globe f-20"></i><span class="p-l-20">TRADE COMMUNITY</span>
-                            </a>
-                            <a href="#" class="list-group-item list-group-item-action">
-                                <i class="fa fa-users f-20"></i><span class="p-l-20">TRADE PARTNERS</span>
-                            </a>
-                            <a href="#" class="list-group-item list-group-item-action">
-                                <i class="fa fa-archive f-20"></i><span class="p-l-20">INVENTORY</span>
-                            </a>
-                            <a href="#" class="list-group-item list-group-item-action">
-                                <i class="fa fa-shopping-bag f-20"></i><span class="p-l-20">HOTTEST DEALS</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            @endif
 
             <div class="row">
-                <div class="hidden-xs-down col-sm-3 col-md-3 m-t-10">
+                <div class="hidden-xs-down col-sm-3 col-md-3 m-t-20">
                     <div class="list-group m-b-20">
-                        <a href="{{ route('view_users') }}" class="list-group-item list-group-item-action">BRIDGER</a>
-                        <a href="tradeRequest.html" class="list-group-item list-group-item-action">TRADE REQUEST</a>
+                        <a href="#" class="list-group-item list-group-item-action">BRIDGER</a>
+                        <a href="#" class="list-group-item list-group-item-action">TRADE REQUEST</a>
                         <a href="#" class="list-group-item list-group-item-action">TRADE COMMUNITY</a>
                         <a href="#" class="list-group-item list-group-item-action">BRIDGE POINT</a>
                         <a href="#" class="list-group-item list-group-item-action">BRIDGE CODE</a>
@@ -181,7 +125,63 @@
                     </div>
                     <!--/.Card-->
                 </div>
-                <div class="col col-sm-6 col-md-6">
+                <div class="col col-sm-6 col-md-6 m-t-20">
+                    <div class="row no-gutters">
+                        <div class="col-md-8 col-sm-12 col">
+                            <div class="carousel_big">
+                                <figure class="pos-rel m-0">
+                                    <div class="c-white text-center carousel-ad-overlay bg-opacity-40 animated fadeInDown hidden-sm-down hidden-xs-down">
+                                        <p class="m-b-10">GET DISCOUNT ON FEMALE CLOTHING</p>
+                                        <p class="m-0">25% OFF</p>
+                                    </div>
+                                    <img src="{{ asset('img/background/carousels/carousel_img-1.png') }}" alt="" class="img-fluid">
+                                </figure>
+                              
+                                <figure class="pos-rel m-0">
+                                    <div class="c-white text-center carousel-ad-overlay bg-opacity-40 animated fadeInDown hidden-sm-down hidden-xs-down">
+                                        <p class="m-b-10">GET DISCOUNT ON FEMALE CLOTHING</p>
+                                        <p class="m-0">25% OFF</p>
+                                    </div>
+                                    <img src="{{ asset('img/background/carousels/carousel_img-2.png') }}" alt="" class="img-fluid">
+                                </figure>
+                                <figure class="pos-rel m-0">
+                                    <div class="c-white text-center carousel-ad-overlay bg-opacity-40 animated fadeInDown hidden-sm-down hidden-xs-down">
+                                        <p class="m-b-10">GET DISCOUNT ON FEMALE CLOTHING</p>
+                                        <p class="m-0">25% OFF</p>
+                                    </div>
+                                    <img src="{{ asset('img/background/carousels/carousel_img-3.png') }}" alt="" class="img-fluid">
+                                </figure>
+                                <figure class="pos-rel m-0">
+                                    <div class="c-white text-center carousel-ad-overlay bg-opacity-40 animated fadeInDown hidden-sm-down hidden-xs-down">
+                                        <p class="m-b-10">GET DISCOUNT ON FEMALE CLOTHING</p>
+                                        <p class="m-0">25% OFF</p>
+                                    </div>
+                                    <img src="{{ asset('img/background/carousels/carousel_img-4.png') }}" alt="" class="img-fluid">
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="col-md-4 hidden-sm-down hidden-xs-down">
+                            <div class="carousel_small">
+                                <figure class="m-0">
+                                    <img src="{{ asset('img/background/carousels/carousel_img-1.png') }}" alt="" class="img-fluid">
+                                </figure>
+                                <figure class="m-0">
+                                    <img src="{{ asset('img/background/carousels/carousel_img-2.png') }}" alt="" class="img-fluid">
+                                </figure>
+                                <figure class="m-0">
+                                    <img src="{{ asset('img/background/carousels/carousel_img-3.png') }}" alt="" class="img-fluid">
+                                </figure>
+                                <figure class="m-0">
+                                    <img src="{{ asset('img/background/carousels/carousel_img-4.png') }}" alt="" class="img-fluid">
+                                </figure>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="c-brand">
+                        <h2 class="text-left h2-responsive f-32">THE {{ strtoupper($state->name) }} MARKET</h2>
+                        <p class="text-right text-fluid f-24">...{{ ucfirst($state->slogan) }}</p>
+                    </div>
+
                     <div class="card m-t-10 p-18">
                          
                         <div class="card-block p-0">
@@ -221,7 +221,11 @@
                                 </a>
                                 <div class="media-body">
                                     <h6 class="media-heading c-brand w-500">
+
+                                        <!-- <a href="{{ route('tradeline', $post->user->id) }}" class="c-brand">{{ $post->user->full_name() }}</a> -->
+
                                         <a href="{{ route('timeline', $post->user->reference) }}" class="c-brand">{{ $post->user->full_name() }}</a>
+
                                         <span class="pull-right" style="color:grey">{{$post->updated_at->diffForHumans()}}</span>
                                     </h6>
                                     <p>{{ $post->title }}
@@ -358,7 +362,7 @@
                         {{-- empty expr --}}
                     @endforelse
                 </div>
-                <div class="col-sm-3 col-md-3 m-t-10">
+                <div class="col-sm-3 col-md-3 m-t-20">
                     @include('layouts.partials.map_no_div')
                 </div>
             </div>
@@ -368,9 +372,7 @@
         <!-- main section ends here-->
  @endsection  
 
-
  @section('scripts') 
-<<<<<<< resources/views/users/user_tradeline.blade.php
   {{--   <script>
         // document.onreadystatechange = () => {
         //     if (document.readyState === "complete") {
@@ -378,15 +380,4 @@
         //     }
         // }
     </script> --}}
-=======
-    <script>
-        document.onreadystatechange = () => {
-            if (document.readyState === "complete") {
-                app.productImageUpload(4);
-            }
-
-        </script>   
-
->>>>>>> resources/views/users/user_tradeline.blade.php
  @endsection   
-

@@ -13,7 +13,7 @@ class State extends Model
 
     public function trade_communities()
     {
-    	return $this->hasMany('App\Models\State');
+    	return $this->hasMany('App\Models\TradeCommunity');
     }
 
     public function addresses()

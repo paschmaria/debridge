@@ -27,7 +27,6 @@
 
         <!-- Your custom styles (optional) -->
         <link rel="stylesheet" href="{{ asset('css/main.css')}}">
-        <link rel="stylesheet" href="{{ asset('css/img_temp.css') }}">
     </head>
 
     <body data-page="index">
@@ -162,39 +161,40 @@
                                             <a class="p-l-10 p-r-10 dropdown white-text" id="dropdownNotify" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <span class="pos-rel">
                                                     <i class="fa fa-bell fa-lg c-white" aria-hidden="true"></i>
-                                                    <span class="cart-count">{{ count(auth()->user()->socialNotification) }}</span>
+                                                    <span class="cart-count count_notify">{{ count(auth()->user()->socialNotification) }}</span>
                                                 </span>
                                             </a>
                                             <div class="dropdown-menu notify-dropdown animated bounceIn f-12" aria-labelledby="dropdownNotify">
-                                          <h6 class="notify-header border-bottom">
-                                            Notifications
-                                          </h6>
-                                          <div class="notify">
-                                                <ul>
-                                                    @forelse ($notifications as $notification)
-                                                        <li class="dropdown-item waves-effect waves-light p-l-10 border-bottom">
-                                                            <p>
-                                                                <a href="{{ route('view_profile', $notification->foreigner->reference) }}">
-                                                                    @if ($notification->foreigner->profile_picture != null)
-                                                                        <img src="{{ route('image', [$notification->foreigner->profile_picture->image_reference,'']) }}" class="h-40 width-40 m-r-5 bd-50p">
-                                                                    @else
-                                                                        <img src="{{ asset('img/icons/profiled.png') }}" class="h-40 width-40 m-r-5 bd-50p">
-                                                                    @endif
-                                                                </a>
-                                                                <span>{{ $notification->message }}
-                                                                <br>
-                                                                <a href="{{ route('delete_social_notification', $notification->id) }}">
-                                                                    <i class="fa fa-trash text-danger pull-right"></i></a></span>
-                                                            </p>
-                                                            
-                                                        </li>
-                                                    @empty
-                                                        <li class="dropdown-item waves-effect waves-light" href="" disabled>
-                                                            <span>Hi {{ auth()->user()->first_name }}, you have no notification</span>
-                                                        </li>
-                                                    @endforelse
-                                                </ul>
-                                            </div>
+                                                  <h6 class="notify-header border-bottom">
+                                                    Notifications
+                                                  </h6>
+                                                 <div class="notify">
+                                                    <ul>
+                                                    <img src="{{asset('img/loader.gif')}}" id="bridge_loader" style="display: none;" style="position: absolute;" alt="gg">
+                                                        @forelse ($notifications as $notification)
+                                                            <li class="dropdown-item notify_id{{ $notification->id }} waves-effect waves-light p-l-10 border-bottom">
+                                                                <p>
+                                                                    <a href="{{ route('view_profile', $notification->foreigner->reference) }}">
+                                                                        @if ($notification->foreigner->profile_picture != null)
+                                                                            <img src="{{ route('image', [$notification->foreigner->profile_picture->image_reference,'']) }}" class="h-40 width-40 m-r-5 bd-50p">
+                                                                        @else
+                                                                            <img src="{{ asset('img/icons/profiled.png') }}" class="h-40 width-40 m-r-5 bd-50p">
+                                                                        @endif
+                                                                    </a>
+                                                                    <span>{{ $notification->message }}
+                                                                    <br>
+                                                                    <a class="del" data-payload="{{$notification->id}}">
+                                                                        <i class="fa fa-trash text-danger pull-right"></i></a></span>
+                                                                </p>
+                                                                
+                                                            </li>
+                                                        @empty
+                                                            <li class="dropdown-item waves-effect waves-light" href="" disabled>
+                                                                <span>Hi {{ auth()->user()->first_name }}, you have no notification</span>
+                                                            </li>
+                                                        @endforelse
+                                                    </ul>
+                                                 </div>
                                                {{--  <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">
                                                 <img src="{{ asset('img/p-photo-6.jpeg') }}" class="h-40 width-40 m-r-5 bd-50p">
                                                 <span>Ejike Jhud started following you</span>
@@ -299,6 +299,7 @@
                     app.likeToggler();
                     app.commentHandler();
                     app.stickyHeader();
+                    app.productImageUpload(4);
 
                 }
                 $(function(){

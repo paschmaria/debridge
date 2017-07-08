@@ -8,6 +8,8 @@ use App\User;
 use App\Models\Post;
 use App\Models\PostAdmire;
 use App\Models\PostHype;
+use App\Models\MerchantAccount;
+use App\Models\UserAccount;
 
 use App\Models\Role;
 
@@ -25,7 +27,7 @@ class TimelineController extends Controller
 
     public function index($reference)
     {
-        $user = User::with(['profile_picture', 'role'])->where('reference', $reference)->first();
+        $user = User::with(['profile_picture', 'role', 'community'])->where('reference', $reference)->first();
         $following = $user->following()->with([ 'posts' => function ($query) {
             $query->orderBy('created_at', 'desc')->with([
                 'user' => function($q){
@@ -64,20 +66,20 @@ class TimelineController extends Controller
         
         $admired = PostAdmire::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
         $hyped = PostHype::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
-        // dd($posts);
 
-        // dd($user->role()->first());
+        if (strtolower(auth()->user()->role->name) == 'user') {
 
-
-        $role = Role::where('name', 'Merchant')->first()->name;
-        
-        if(isset($user->role_id) && $user->role()->first()->name === $role){
-            return view('merchant_tradeline', compact('posts', 'admired', 'hyped', 'user'));
-
-        }else{
-            return view('users.user_tradeline', compact('posts', 'admired', 'hyped', 'user'));
+            $user_acc = UserAccount::with(['address' => function($q){
+                $q->with('state');
+            }])->firstOrCreate(['user_id' => auth()->user()->id]);
+            // dd($user_acc);
+        } else {
+            $merchant = MerchantAccount::with(['address' => function($q){
+                $q->with('state');
+            }])->firstOrCreate(['user_id' => auth()->user()->id]);
         }
-        return view('users.user_tradeline', compact('user', 'posts', 'admired', 'hyped', 'user'));
+        
+        return view('users.user_tradeline', compact('user', 'posts', 'admired', 'hyped', 'user_acc', 'merchant'));
 
     }
         

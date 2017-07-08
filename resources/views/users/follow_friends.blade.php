@@ -18,6 +18,8 @@
     <!-- slick carousel -->
     <link rel="stylesheet" type="text/css" href="{{ asset('plugins/slick/slick.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('plugins/slick/slick-theme.css') }}"/>
+    <link rel="stylesheet" href="{{asset ('css/toastr.min.css') }}" rel="stylesheet" />
+
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('plugins/mdb/css/bootstrap.css') }}" rel="stylesheet">
@@ -31,11 +33,26 @@
 </head>
 
 <body>
+<style type="text/css">
+    .follow_count_nav {
+      overflow: hidden;
+      /*background-color: whitesmoke;*/
+       background: rgba(54, 25, 25, .5);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .profiles_wrapper {
+        margin-top: 100px; /* Add a top margin to avoid content overlay */
+    }
+
+</style>
     <section class="main">
         <div class="page_wrapper width-100p" style="background:#f0fff0;">
             <div class="container">
                 <div class="overall_card_wrapper" style="padding-top:50px;padding-bottom:5px;">
-                    <div class="header text-center p-b-30" style="color:#212121;">
+                    <div class="header follow_count_nav text-center p-b-30" style="color:#fff;">
                         <h3 class="f-24">FOLLOW A FEW FRIENDS</h3> <button disabled class="unfollow_btn c_unfollow"   id="follow"><i style="color: #fff;" class="followers_counter count" ></i></button>
                         <p class="f-12">Thank you. Please follow atleat 10 friends to proceed.</p>
                     </div>
@@ -114,6 +131,8 @@
 
     <!-- Bootstrap core JavaScript -->
     <script type="text/javascript" src="{{ asset('plugins/mdb/js/bootstrap.min.js') }}"></script>
+    <script src="{{asset('js/toastr.min.js')}}"></script>
+
 
     <!-- MDL core JavaScript -->
     <script type="text/javascript" src="{{ asset('plugins/mdb/js/mdb.min.js') }}"></script>

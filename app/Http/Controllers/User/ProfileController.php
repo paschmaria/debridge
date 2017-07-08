@@ -8,6 +8,7 @@ use App\Models\MerchantAccount;
 use App\Models\UserAccount;
 use App\Models\State;
 use App\Models\Address;
+use App\Models\TradeCommunity;
 use App\Models\Follower;
 use App\User;
 
@@ -56,13 +57,15 @@ class ProfileController extends Controller
 
         $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
         $states = State::all();
+        $communities = TradeCommunity::all();
 
-        return view('users.user_profile', compact('user', 'user_acc', 'merchant', 'followers', 'following', 'following_count', 'followers_count', 'photo_albums', 'states', 'following_ids'));
+        return view('users.user_profile', compact('user', 'user_acc', 'merchant', 'followers', 'following', 'following_count', 'followers_count', 'photo_albums', 'states', 'following_ids', 'communities'));
     }
 
     public function index()
     {
         $states = State::all();
+        $communities = TradeCommunity::all();
         
         if (strtolower(auth()->user()->role->name) == 'user') {
 
@@ -75,7 +78,7 @@ class ProfileController extends Controller
                 $q->with('state');
             }])->firstOrCreate(['user_id' => auth()->user()->id]);
         }
-        return view('users.editprofile', compact('user_acc', 'merchant', 'states'));
+        return view('users.editprofile', compact('user_acc', 'merchant', 'states', 'communities'));
     }
 
     /**
@@ -103,6 +106,7 @@ class ProfileController extends Controller
             'last_name' => 'required|string|max:128',
             'gender' => 'string|max:12',
             'date_of_birth' => 'date',
+            'community' => 'digits_between:1,10|required'
         ]);
         if (strtolower($request->email) !== auth()->user()->email){
             $this->validate($request, ['email' => 'required|email|unique:users|max:180']);
