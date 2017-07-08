@@ -86,6 +86,8 @@ class SocialNotificationController extends Controller
     public function destroy(SocialNotification $notification)
     {
         $notification->delete();
-        return back();
+        $notifications_count = count(auth()->user()->socialNotification);
+        return response()->json($notifications_count);
+        // return back();
     }
 }

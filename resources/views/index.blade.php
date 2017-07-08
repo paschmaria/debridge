@@ -53,7 +53,11 @@
                     <a href="#" class="btn btn-outline-brand btn-block waves-effect">B - ANALYTOR</a>
                 </div>
 
-    @include('layouts.partials.map')
+                <div class="col-sm-3 push-sm-6 col-md-3">
+
+                    @include('layouts.partials.map_no_div')
+
+                </div>
 
                 <div class="col-sm-6 pull-sm-3 col-md-6">
                     <div class="row no-gutters">
