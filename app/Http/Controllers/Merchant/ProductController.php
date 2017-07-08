@@ -378,7 +378,8 @@ public function StoreForUser($reference){
    public function productDetails(Product $product, $reference)
     {
         $user = User::where('reference', $reference)->first();
-        $merchant = MerchantAccount::where('user_id', $user->id);
+        $merchant = MerchantAccount::where('user_id', $user->id)->first();
+        // dd($merchant);
         $product_of_the_week = ProductOfTheWeek::where('merchant_account_id', $merchant->id)->first();
         // dd(empty($product_of_the_week));
 
