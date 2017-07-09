@@ -24,7 +24,7 @@
                             @if(auth()->user()->ownsShop($user->id))
                             <a href="{{ route('addProduct') }}" class="list-group-item list-group-item-action"><i class="fa fa-plus fa-2x p-r-40"></i><span class="p-l-40">ADD PRODUCT</span></a>
                             @endif
-                            <a href="{{ route('hottest_products', $user->reference) }}" class="list-group-item list-group-item-action"><i class="fa fa-star-o fa-2x p-r-40"></i><span class="p-l-40">HOTTEST PRODUCTS</span></a>
+                            <a href="{{ route('hottest_products', $user->reference) }}" class="list-group-item list-group-item-action"><i class="fa fa-shopping-bag fa-2x p-r-40"></i><span class="p-l-40">HOTTEST DEALS</span></a>
                         </div>
                     </div>
                 </div>

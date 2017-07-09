@@ -17,6 +17,7 @@ use App\Models\TradeCommunity;
 use App\Models\Product;
 use App\Models\MerchantAccount;
 use App\Models\Inventory;
+use App\Models\ProductAdmire;
 
 class UserController extends Controller
 {
@@ -53,7 +54,15 @@ class UserController extends Controller
         //     }
         // });
         // dd($products);
-        return view('index');
+        $products = Product::inRandomOrder()->limit(5)->get();
+        if(auth()->check())
+        {
+            $products_admire = ProductAdmire::where('user_id', auth()->user()->id)->pluck('product_id')->toArray();
+            // dd($products_admire);
+            return view('index', compact('products', 'products_admire'));
+        } else{
+            return view('index', compact('products'));
+        }            
     }
     
     public function create(Request $request)

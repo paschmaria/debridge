@@ -74,10 +74,10 @@
                             <a href="#" class="list-group-item list-group-item-action">
                                 <i class="fa fa-users f-20"></i><span class="p-l-20">TRADE PARTNERS</span>
                             </a>
-                            <a href="#" class="list-group-item list-group-item-action">
+                            <a href="{{ route('user_store', $user->reference) }}" class="list-group-item list-group-item-action">
                                 <i class="fa fa-archive f-20"></i><span class="p-l-20">INVENTORY</span>
                             </a>
-                            <a href="#" class="list-group-item list-group-item-action">
+                            <a href="{{ route('hottest_products', $user->reference) }}" class="list-group-item list-group-item-action">
                                 <i class="fa fa-shopping-bag f-20"></i><span class="p-l-20">HOTTEST DEALS</span>
                             </a>
                         </div>

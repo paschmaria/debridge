@@ -93,7 +93,7 @@
                                             <div class="card-block">
                                                 <div class="card-content pos-abs m-t-m20">
                                                     <h4 class="f-14" style="color:#212121;">{{ $user->full_name() }}</h4>
-                                                    <p class="f-12" style="color:#526173;">{{ $user->community->community_address() }}</p>
+                                                    <p class="f-12" style="color:#526173;">{{ $user->community_address() }}</p>
                                                 </div>
                                                
                                             </div>

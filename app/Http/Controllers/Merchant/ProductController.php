@@ -56,7 +56,9 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {if (Schema::hasColumn('table', 'column')) {
+        //
+    }
         //
         $product_categories = ProductCategory::all();
         return view('addproduct1', compact('product_categories'));
@@ -379,6 +381,9 @@ public function StoreForUser($reference){
     {
         $product = Product::where('reference', $reference)->first();
         $user = User::where('reference', $reference)->first();
+        $merchant = MerchantAccount::where('user_id', $user->id)->first();
+        // dd($merchant);
+        $product_of_the_week = ProductOfTheWeek::where('merchant_account_id', $merchant->id)->first();
         $merchant = MerchantAccount::firstOrCreate(['user_id' => $user->id]);
         $product_of_the_week = ProductOfTheWeek::firstOrCreate(['merchant_account_id' => $merchant->id]);
         // dd(empty($product_of_the_week));
