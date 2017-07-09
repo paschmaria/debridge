@@ -56,7 +56,9 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {if (Schema::hasColumn('table', 'column')) {
+        //
+    }
         //
         $product_categories = ProductCategory::all();
         return view('addproduct1', compact('product_categories'));
