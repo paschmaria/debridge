@@ -264,9 +264,10 @@ $(document).on('click', ".c_follow", function(e){
                     var m_counter = $(".m_count").text(data.merchant_count);
 
                     if ($(".count").text() >= 10) {
-                        window.location = "/users/follow/merchants";
+                        // window.location = "/users/follow/merchants";
+                        $("#continue_follow").removeClass('disabled')
                         toastr.options.preventDuplicates = true;
-                        toastr.info("Now follow 5 or more stores of interest.");
+                        toastr.success("Now follow 5 or more stores of interest by Tapping Continue Button.");
                     } else if(data.merchant_count >= 5) {
                         // alert('Merchant completed');
                         // users/follow/merc hants
@@ -276,7 +277,8 @@ $(document).on('click', ".c_follow", function(e){
                             type:'POST',
                             // data: {success,},
                             success:function(data){
-                                window.location = "/";
+                                // window.location = "/";
+                                $("#continue_follow_merchant").removeClass('disabled');
                             },
                             error: function (data) {
                                 toastr.options.preventDuplicates = true;
@@ -329,16 +331,38 @@ $(document).on('click', ".c_unfollow", function(e){
                     console.log(data);
                     var f_counter = $(".count").text(data.user_count);
                     var m_counter = $(".m_count").text(data.merchant_count);
+                    
 
                     if ($(".count").text() >= 10) {
-                        window.location = "/users/follow/merchants";
+                        // window.location = "/users/follow/merchants";
+                        $("#continue_follow_merchant").removeClass('disabled');
+
                         toastr.options.preventDuplicates = true;
-                        toastr.info("Now follow 5 or more stores of interest.");
+                        toastr.success("Now follow 5 or more stores of interest by Tapping Continue Button.");
                     } else if(data.merchant_count >= 5) {
                         // alert('Merchant completed');
+                        $.ajax({
+                            url:'/users/follow/merchants',
+                            type:'POST',
+                            // data: {success,},
+                            success:function(data){
+                                // window.location = "/";
+                                $("#continue_follow_merchant").removeClass('disabled');
+                            },
+                            error: function (data) {
+                                toastr.options.preventDuplicates = true;
+                                toastr.error("An error occured while following "+ reciever_full_name);
+                                // var obj = jQuery.parseJSON( data.responseText );
+                            }
+                        });
+                    }else if(data.user_count < 10){
+                        $("#continue_follow").addClass('disabled')
 
-
+                    }else if(data.merchant_count < 5) {
+                        $("#continue_follow_merchant").addClass('disabled')
                     }
+                    // alert(data.merchant_count);
+
                     // 
                     // alert(data);
                     // console.log(data);
@@ -369,20 +393,43 @@ $(".del").click(function(e){
                          type: "GET",
                          data: {success:notification_id},
                          success: function(data){
-                            var count = $(".count_notify").text();
-                            var minus = count--;
-                            $(".count_notify").text(minus);
+                            // console.log(data);
+                            $(".count_notify").text(data);
                             // count--;
                             // alert(count);
                             $("#bridge_loader").hide();
                             toastr.options.preventDuplicates = true;
                             toastr.info("Notification Removed!");
-                            setTimeout(function(){ 
+                            var holdNotifyDiv = setTimeout(function(){ 
                                 $(".notify-dropdown").show(); 
                             }, 0.000);
+                            
+                            var notify_counter = $(".count_notify").text();
+                            if (notify_counter == 0) {
+                                $("#emptied_noification").show();
+                                // alert(a);
+                                 clearTimeout(holdNotifyDiv);
+                                // alert('done');
+                                // $(".notify-dropdown").css('display', 'none')
+
+                            }
                          },error:function(){
                             toastr.options.preventDuplicates = true;
                             toastr.error("Looks like something went wrong from the server!", "Ooops");
                          }
             });
+});
+
+
+// Scroll event begins for followers and followwing
+var lastScrollTop = 0;
+$(window).scroll(function(event){
+   var st = $(this).scrollTop();
+   if (st > lastScrollTop){
+       // downscroll from top of the page code begins
+
+   } else {
+      // upscroll code
+   }
+   lastScrollTop = st;
 });
