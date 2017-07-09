@@ -370,15 +370,6 @@
 
 
  @section('scripts') 
-<<<<<<< resources/views/users/user_tradeline.blade.php
-  {{--   <script>
-        // document.onreadystatechange = () => {
-        //     if (document.readyState === "complete") {
-        //         app.productImageUpload(4);
-        //     }
-        // }
-    </script> --}}
-=======
     <script>
         document.onreadystatechange = () => {
             if (document.readyState === "complete") {
@@ -386,7 +377,5 @@
             }
 
         </script>   
-
->>>>>>> resources/views/users/user_tradeline.blade.php
  @endsection   
 

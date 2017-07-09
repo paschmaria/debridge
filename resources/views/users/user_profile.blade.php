@@ -341,7 +341,7 @@
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-12 form-group">
                                     <label for="usr-password" data-error="wrong" data-success="right" class="f-14 c-dark">Telephone</label>
-                                    <input type="text" name="telephone" id="usr-password" class="form-control bd-3 h-40 validate input-alternate border-box bg-white f-14"@if (auth()->user()->checkRole())
+                                    <input type="text" name="telephone" id="usr-password" class="form-control bd-3 h-40 validate input-alternate border-box bg-white f-14"@if(auth()->user()->checkRole())
                                         value="{{ auth()->user()->user_account->telephone }}"
                                     @else
                                         value="{{  auth()->user()->merchant_account->telephone }}"
