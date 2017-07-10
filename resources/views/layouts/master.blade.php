@@ -190,9 +190,13 @@
                                                             </li>
                                                         @empty
                                                             <li class="dropdown-item waves-effect waves-light" href="" disabled>
-                                                                <span>Hi {{ auth()->user()->first_name }}, you have no notification</span>
+                                                                <span id="emptied_noification">Hi {{ auth()->user()->first_name }}, you have no notification</span>
                                                             </li>
                                                         @endforelse
+                                                        <center>
+                                                            <span style="display: none" id="emptied_noification" class="text-center" >Hi {{ auth()->user()->first_name }}, you have no notification yet!</span>
+                                                        </center>
+
                                                     </ul>
                                                  </div>
                                                {{--  <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">

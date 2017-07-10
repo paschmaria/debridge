@@ -83,7 +83,7 @@
                                             <div class="card-block">
                                                 <div class="card-content pos-abs m-t-m20">
                                                     <h4 class="f-14 c-brand">{{ $user->full_name() }}</h4>
-                                                    <p class="f-12">{{ $user->community->community_address() }}</p>
+                                                    <p class="f-12">{{ $user->community_address() }}</p>
                                                 </div>
                                                
                                             </div>
@@ -100,14 +100,14 @@
                     <footer>
                         <div class="button_wrapper m-t-40 m-b-40 text-center">
                             {{-- <button class="btn f-20 width-300 p-b-10 bg-brand-lite btn-outline-brand h-58">Add more friends</button> --}}
-                            @if (count(auth()->user()->following->where('role_id', 1)) >= 10)
-                                <form method="post" action="{{ route('follow_friends') }}">
-                                    {{ csrf_field() }}
-                                    <button class="f-20 btn btn-brand width-200 h-40 p-b-43 p-t-43">Continue</button>
-                                </form>
-                            @else
-                                <button class="f-20 btn btn-brand width-200 h-40 p-b-43 p-t-43 disabled">Continue</button>
-                            @endif
+                            {{-- @if (count(auth()->user()->following->where('role_id', 1)) >= 10) --}}
+                                {{-- <form method="post" action="{{ route('follow_friends') }}"> --}}
+                                    {{-- {{ csrf_field() }} --}}
+                                    <a  href="{{route('follow_merchants')}}" id="continue_follow" class=" disabled f-20 btn btn-brand width-200 h-40 p-b-43 p-t-43">Continue</a>
+                                {{-- </form> --}}
+                            {{-- @else --}}
+                                {{-- <button id="continue_follow" class="f-20 btn btn-brand width-200 h-40 p-b-43 p-t-43 disabled">Continue</button> --}}
+                            {{-- @endif --}}
                         </div>                 
                     </footer>
 

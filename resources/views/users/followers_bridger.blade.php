@@ -38,7 +38,7 @@
 	        <div class="m-t-40 m-b-140">
 	        	<div class="row">
 	        		<!-- first column of friends -->
-	        		<div class="p-10 m-b-20 bg-brand col-sm-12">{{ $user->full_name() }}'S FOLLOWERS <span class="badge bg-white c-brand">{{ $followers_count }}</span></div>
+	        		<div class="p-10 m-b-20 bg-brand col-sm-12">Bridgers following me <span class="badge bg-white c-brand">{{ $followers_count }}</span></div>
 	        		@forelse ($followers as $user)
 	        			<div class="col-md-6 col-sm-6 col-xs-6 col-12">
 	        				<div class="h-114 width-563 m-b-30">
@@ -66,20 +66,20 @@
 			        				</div>
 			        				<div class="col-md-5 col-sm-5 col-xs-5">
 			        				@if(in_array($user->id, $following_ids))
-			        					<form method="post" action="{{ route('unfollow', $user->reference) }}">
+			        					{{-- <form method="post" action="{{ route('unfollow', $user->reference) }}"> --}}
 			        						<button class="btn unfollow btn-sm f-14 waves-light waves-effect c-brand btn-outline-brand m-t-40 m-b-50" data-email="{{$user->reference}}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}" ><span class="fa fa-check">&nbsp; &nbsp;</span>Unfollow</button>
-			        					</form>
+			        					{{-- </form> --}}
 			        				@else
-			        					<form method="post" action="{{ route('follow', $user->reference) }}">
-			        						<button class="btn unfollow btn-sm f-14 waves-light waves-effect c-brand btn-outline-brand m-t-40 m-b-50" data-email="{{$user->reference}}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}" ><span class="fa fa-check">&nbsp; &nbsp;</span>Follow</button>
-			        					</form>
+			        					{{-- <form method="post" action="{{ route('follow', $user->reference) }}"> --}}
+			        						<button class="btn follow btn-sm f-14 waves-light waves-effect c-brand btn-outline-brand m-t-40 m-b-50" data-email="{{$user->reference}}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}" ><span class="fa fa-check">&nbsp; &nbsp;</span>Follow Back</button>
+			        					{{-- </form> --}}
 			        				@endif
 			        				</div>
 		        				</div>
 		        			</div>
 		        		</div>
         			@empty
-        				<div class="p-10 col-sm-12 c-brand"><p>No user is currently following {{ $user->full_name() }}</p></div>
+        				<div class="p-10 col-sm-12 c-brand"><p>No user is currently following me.</p></div>
         			@endforelse
 	        		</div>
 	        		<!-- / first column of friends -->

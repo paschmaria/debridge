@@ -100,14 +100,14 @@
                             @endforeach   
                         <!--/ second card row -->
                         <div class="button_wrapper width-300 m-auto m-t-40 m-b-40">
-                            @if (count(auth()->user()->following->where('role_id', 2)) >= 5)
-                                <form method="post" action="{{ route('follow_merchants') }}">
-                                    {{ csrf_field() }}
-                                    <button class="btn f-20 c-white  width-300 p-t-10 p-b-10 bg-brand-lite btn-outline-brand" style="width:256px; height:50px;">Continue</button>
-                                </form>
-                            @else
-                                <button class="btn f-20 c-white disabled width-300 p-t-10 p-b-10 bg-brand-lite btn-outline-brand" style="width:256px; height:50px;">Continue</button>
-                            @endif
+                            {{-- @if (count(auth()->user()->following->where('role_id', 2)) >= 5) --}}
+                                {{-- <form method="post" action="{{ route('follow_merchants') }}"> --}}
+                                    {{-- {{ csrf_field() }} --}}
+                                    <a href="{{url('/')}}" id="continue_follow_merchant" class="btn disabled f-20 c-white  width-300 p-t-10 p-b-10 bg-brand-lite btn-outline-brand" style="width:256px; height:50px;">Done</a>
+                                {{-- </form> --}}
+                            {{-- @else --}}
+                                {{-- <button class="btn f-20 c-white disabled width-300 p-t-10 p-b-10 bg-brand-lite btn-outline-brand" style="width:256px; height:50px;">Continue</button> --}}
+                            {{-- @endif --}}
                         </div>
                     </div>
                 </div>

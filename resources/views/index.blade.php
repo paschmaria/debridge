@@ -128,11 +128,11 @@
                             <img src="{{ asset('img/products/leftside-ad-1.png') }}" class="img-fluid width-100p" alt="">
                             <div class="white-text mask flex-center">
                                 <div class="text-center">
-                                    <h2 class="m-b-20 w-700">Product Name</h2>
-                                    <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
+                                    <h2 class="m-b-20 w-700">ADVERT TO BE HERE</h2>
+                                    <!-- <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
                                     <p class="m-b-20">25% Off</p>
                                     <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
-                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add to cart</a>
+                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add to cart</a> -->
                                 </div>
                             </div>
                         </div>
@@ -148,11 +148,11 @@
                             <img src="{{ asset('img/products/leftside-ad-2.png') }}" class="img-fluid width-100p" alt="">
                             <div class="white-text mask flex-center">
                                 <div class="text-center">
-                                    <h2 class="m-b-20 w-700">Product Name</h2>
-                                    <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
+                                    <h2 class="m-b-20 w-700">ADVERT TO BE HERE</h2>
+                                    <!-- <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
                                     <p class="m-b-20">25% Off</p>
                                     <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
-                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add to cart</a>
+                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add to cart</a> -->
                                 </div>
                             </div>
                         </div>
@@ -168,11 +168,11 @@
                             <img src="{{ asset('img/products/leftside-ad-3.png') }}" class="img-fluid width-100p" alt="">
                             <div class="white-text mask flex-center">
                                 <div class="text-center">
-                                    <h2 class="m-b-20 w-700">Product Name</h2>
-                                    <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
+                                    <h2 class="m-b-20 w-700">ADVERT TO BE HERE</h2>
+                                    <!-- <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
                                     <p class="m-b-20">25% Off</p>
                                     <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
-                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add to cart</a>
+                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add to cart</a> -->
                                 </div>
                             </div>
                         </div>
@@ -195,7 +195,7 @@
                         <div class="card-header m-b-16 bd-dark-light transparent">
                             <h4 class="h4-responsive text-center m-0">MOST SEARCHED PRODUCT IN NIGERIA</h4>
                         </div>
-
+                        @forelse($products as $product)
                         <div class="view overlay hm-white-slight p-5 bd-dark-light">
                             <img src="{{ asset('img/products/productside-1.png') }}" class="img-fluid width-100p" alt="">
                             <a href="#">
@@ -204,6 +204,34 @@
                         </div>
 
                         <div class="m-t-10 m-b-50">
+                        @if(auth()->check())
+                            <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10" role="group" aria-label="Ad Action Buttons">
+                                <a href="{{ route('addToCart', $product->id) }}">
+                                <button type="button" class="btn bg-white m-r-3 f-14" data-toggle="modal">
+                                    <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
+                                </button></a>
+                                @if(!in_array($product->id, $products_admire))
+                                <a href="{{ route('product_admire', $product->reference) }}">
+                                <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14" data-toggle="modal">
+                                    <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
+                                </button></a>
+                                @else
+                                <a href="{{ route('product_unadmire', $product->reference) }}">
+                                <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14" data-toggle="modal">
+                                    <span class="f-left">Unadmire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
+                                </button></a>
+                                @endif
+                                <a href="#">
+                                <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14" data-toggle="modal">
+                                    <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-envelope"></i></span>
+                                </button></a>
+                                <a href="">
+                                <form action="{{ route('product_hype', $product->id) }}" method="post">
+                                {{ csrf_field() }}
+                                <button type="submit" class="btn bg-white m-l-3 f-14" data-toggle="modal">
+                                    <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
+                                </button></a>
+                        @else
                             <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10" role="group" aria-label="Ad Action Buttons">
                                 <button type="button" class="btn bg-white m-r-3 f-14" data-toggle="modal" data-target="#basicExample">
                                     <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
@@ -218,6 +246,7 @@
                                     <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
                                 </button>
                                 <!-- modal start -->
+                        @endif
                                 <div class="modal fade width-100p" id="basicExample" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <!--Content-->
@@ -250,29 +279,13 @@
                                 </div>                                <!-- / modal ends here -->
                             </div>
                         </div>
+                        @empty
+                        <p>nothing</p>
+                        @endforelse
 
-                        <div class="view overlay hm-white-slight p-5 bd-dark-light">
-                            <img src="{{ asset('img/products/productside-2.png') }}" class="img-fluid width-100p" alt="">
-                            <a href="#">
-                                <div class="mask waves-effect waves-light"></div>
-                            </a>
-                        </div>
 
                         <div class="m-t-10 m-b-50">
-                                <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10" role="group" aria-label="Ad Action Buttons">
-                                    <button type="button" class="btn bg-white m-r-3 f-14" data-toggle="modal" data-target="#basicExample">
-                                        <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
-                                    </button>
-                                    <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14" data-toggle="modal" data-target="#basicExample">
-                                        <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
-                                    </button>
-                                    <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14" data-toggle="modal" data-target="#basicExample">
-                                        <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-envelope"></i></span>
-                                    </button>
-                                    <button type="button" class="btn bg-white m-l-3 f-14" data-toggle="modal" data-target="#basicExample">
-                                        <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
-                                    </button>
-                                </div>
+
                                 <!-- modal -->
                                 
                                 <!-- / modal -->
@@ -288,11 +301,11 @@
                             <img src="{{ asset('img/products/rightside-ad-1.png') }}" class="img-fluid width-100p" alt="">
                             <div class="white-text mask flex-center">
                                 <div class="text-center">
-                                    <h2 class="m-b-20 w-700">Product Name</h2>
-                                    <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
+                                    <h2 class="m-b-20 w-700">ADVERT TO BE HERE</h2>
+                                    <!-- <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
                                     <p class="m-b-20">25% Off</p>
                                     <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
-                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add to cart</a>
+                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add to cart</a> -->
                                 </div>
                             </div>
                         </div>
@@ -308,11 +321,11 @@
                             <img src="{{ asset('img/products/rightside-ad-2.png') }}" class="img-fluid width-100p" alt="">
                             <div class="white-text mask flex-center">
                                 <div class="text-center">
-                                    <h2 class="m-b-20 w-700">Product Name</h2>
-                                    <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
+                                    <h2 class="m-b-20 w-700">ADVERT TO BE HERE Name</h2>
+                                    <!-- <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
                                     <p class="m-b-20">25% Off</p>
                                     <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
-                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add to cart</a>
+                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add to cart</a> -->
                                 </div>
                             </div>
                         </div>
@@ -328,11 +341,11 @@
                             <img src="{{ asset('img/products/rightside-ad-3.png') }}" class="img-fluid width-100p" alt="">
                             <div class="white-text mask flex-center">
                                 <div class="text-center">
-                                    <h2 class="m-b-20 w-700">Product Name</h2>
-                                    <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
+                                    <h2 class="m-b-20 w-700">ADVERT TO BE HERE</h2>
+                                    <!-- <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
                                     <p class="m-b-20">25% Off</p>
                                     <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
-                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add to cart</a>
+                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add to cart</a> -->
                                 </div>
                             </div>
                         </div>
