@@ -101,7 +101,7 @@ class ProductController extends Controller
         $product->category()->associate($category);
         $product->reference = str_random(7) . time() . uniqid();
         
-        if(!empty($request->file())){
+        if(!empty($request->file('file'))){
             $album = $this->photo_album->store($request);
             $product->photo_album_id = $album;
             dd($album);
