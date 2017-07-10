@@ -56,9 +56,10 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {if (Schema::hasColumn('table', 'column')) {
+    {
+        // if (\Schema::hasColumn('table', 'column')) {
         //
-    }
+    // }
         //
         $product_categories = ProductCategory::all();
         return view('addproduct1', compact('product_categories'));
@@ -100,9 +101,10 @@ class ProductController extends Controller
         $product->category()->associate($category);
         $product->reference = str_random(7) . time() . uniqid();
         
-        if(!empty($request->file('file'))){
+        if(!empty($request->file())){
             $album = $this->photo_album->store($request);
             $product->photo_album_id = $album;
+            dd($album);
         }
 
         if ($product->promo_price) {
