@@ -379,9 +379,9 @@ public function StoreForUser($reference){
 
 
 
-   public function productDetails($reference)
+   public function productDetails($product_ref, $reference)
     {
-        $product = Product::where('reference', $reference)->first();
+        $product = Product::where('reference', $product_ref)->first();
         $user = User::where('reference', $reference)->first();
         $merchant = MerchantAccount::where('user_id', $user->id)->first();
         // dd($merchant);

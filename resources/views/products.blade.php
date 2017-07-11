@@ -36,7 +36,7 @@
                             <!--Card image-->
                             <div class="view overlay hm-black-light p-5 hm-zoom">
                                 <img src="{{ asset('img/products/leftside-ad-3.png') }}" class="img-fluid width-100p" alt="">
-                                <a class="white-text mask flex-center" href="{{ route('product_details', [$product->id, $user->reference]) }}">
+                                <a class="white-text mask flex-center" href="{{ route('product_details', [$product->reference, $user->reference]) }}">
                                     <div class="text-center">
                                         <h2 class="m-b-20 w-700">{{ $product->name }}</h2>
                                         @if(isset($product->promo_price))
