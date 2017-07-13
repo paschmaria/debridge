@@ -67,7 +67,7 @@ class TimelineController extends Controller
         $admired = PostAdmire::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
         $hyped = PostHype::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
 
-        if (strtolower(auth()->user()->role->name) == 'user') {
+        if ($user->checkRole()) {
 
             $user_acc = UserAccount::with(['address' => function($q){
                 $q->with('state');

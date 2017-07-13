@@ -27,6 +27,7 @@
 
         <!-- Your custom styles (optional) -->
         <link rel="stylesheet" href="{{ asset('css/main.css')}}">
+        @yield('extra_styles')
     </head>
 
     <body data-page="index">
