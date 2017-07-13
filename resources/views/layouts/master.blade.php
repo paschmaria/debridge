@@ -42,7 +42,7 @@
                                 </a>
                                 @if(auth()->check())
                                     <figcaption class="motto f-12 m-0 m-t-5">
-                                        <a href="" class="c-white">MY PROFILE</a> |  <a href="registered-users.html" class="c-white">NIGERIAN MARKET</a>
+                                        <a href="{{ route('view_profile', auth()->user()->reference) }}" class="c-white">MY PROFILE</a> |  <a href="{{ url('/') }}" class="c-white">NIGERIAN MARKET</a>
                                     </figcaption>
                                 @endif
                             </figure>
@@ -171,7 +171,7 @@
                                                  <div class="notify">
                                                     <ul>
                                                     <img src="{{asset('img/loader.gif')}}" id="bridge_loader" style="display: none;" style="position: absolute;" alt="gg">
-                                                        @forelse ($notifications as $notification)
+                                                        @forelse (auth()->user()->socialNotification as $notification)
                                                             <li class="dropdown-item notify_id{{ $notification->id }} waves-effect waves-light p-l-10 border-bottom">
                                                                 <p>
                                                                     <a href="{{ route('view_profile', $notification->foreigner->reference) }}">

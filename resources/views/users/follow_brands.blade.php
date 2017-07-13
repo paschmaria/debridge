@@ -31,43 +31,25 @@
 
 <body>
     <div class="main width-100p" style="height:100%;">
+                    <div class="header follow_count_nav text-center p-t-20 p-b-10 bg-brand">
+                        <h3 class="f-24">FOLLOW AT LEAST 5 MERCHANTS</h3>                             
+                            <button disabled class="unfollow_btn c_unfollow c-white" id="follow"><i class="followers_counter m_count c-white" ></i></button>
+                        <p class="f-16">You are almost done with your sign up process, just follow a few stores of interest.</p>
+                    </div>
         <div class="page_wrapper"style="background:#f0fff0;">
             <div class="container">
-                <div class="overall-card-wrapper" style="padding-top:120px; padding-bottom:5px;">
-                    <div class="header text-center p-b-30" style="color:#212121;">
-
-                        <h3 class="f-24">Follow at least 10 Brands</h3> <button disabled class="unfollow_btn c_unfollow"   id="follow"><i style="color: #fff;" class="followers_counter m_count"></i></button>
-                        <p class="f-12">You are almost done with your sign up process, just follow a few stores of interest.</p>
-                    </div>
+                <div class="overall-card-wrapper m-t-40" style="padding-top:120px; padding-bottom:5px;">
                     <!-- select -->
-                    <div class="row p-b-30">
-                        <div class="col-md-2">
+                    <div class="row p-b-10">
+                        <div class="col-md-4">
                              <div class="state_wrapper dis-inline" style="width:173px; color:#526173;">
-                                <div class="option_header dis-inline">
-                                    <h4 class="f-14">State</h4>
-                                </div>
                                 <div class="option_body">
-                                    <select class="bd-3 bg-white h-40" style="border:1px solid #526173; width:173px;">
-                                        <option>Abia</option>
-                                        <option>Ananmbra</option>
-                                        <option>Enugu</option>
-                                        <option>Lagos</option>
-                                        <option>PortHarcourt</option>
-                                        <option>Abuja</option>
-                                        <option>Kano</option>
-                                        <option>Kaduna</option>
-                                        <option>Edo</option>
+                                    <select name="state" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow f-14 p-l-10">
+                                        <option selected disabled>Filter by state...</option>
+                                        @foreach($states as $state)
+                                            <option value="{{ $state->id }}">{{ $state->name }}</option>
+                                        @endforeach
                                     </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="Trade_wrapper dis-inline">
-                                <div class="option_header dis-inline">
-                                    <h4 class="f-14">Trade of Interest</h4>
-                                </div>
-                                <div class="option_body">
-                                    <select class="bd-3 h-40 bg-white" style="width:173px;"><option></option></select>
                                 </div>
                             </div>
                         </div>
@@ -82,13 +64,12 @@
                                     <div class="card h-310">
                                         <!-- card image -->
                                         <div class="view overlay hm-white-slight">
-                                            <img src="{{ asset('img/pphoto-25.jpeg') }}">
-                                            {{-- @if($user->image_id == null)
-                                                <img src="{{ asset('img/icons/profiled.png') }}">
+                                            @if($user->image_id == null)
+                                                <img class="card width-100p h-200" src="{{ asset('img/icons/profiled.png') }}">
                                             @else
-                                                <img src="{{ route('image', [$user->profile_picture->image_reference, '']) }}">
-                                            @endif --}}
-                                            <a href="#">
+                                                <img class="card width-100p h-200" src="{{ route('image', [$user->profile_picture->image_reference, '']) }}">
+                                            @endif
+                                            <a href="">
                                                 <div class="mask waves-effect waves-light"></div>
                                             </a>
                                         </div>
@@ -107,8 +88,8 @@
                                         <!-- card content block-->
                                         <div class="card-block">
                                             <div class="card-content pos-abs m-t-m20">
-                                                <h4 class="f-14" style="color:#212121;">{{ $user->full_name() }}</h4>
-                                                <p class="f-12" style="color:#526173;">{{ $user->community->community_address() }}</p>
+                                                <h4 class="f-14 c-brand">{{ $user->full_name() }}</h4>
+                                                <p class="f-12">{{ $user->community->community_address() }}</p>
                                             </div>
                                            
                                         </div>
@@ -154,57 +135,10 @@
     <script type="text/javascript" src="{{ asset('plugins/slick/slick.min.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('js/social_network.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
 
     <script>
-        $(document).ready(function(){
-            $('.carousel_big').slick({
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                dots: true,
-                arrows: false,
-                fade: true,
-                autoplay: true,
-                asNavFor: '.carousel_small'
-            });
-            $('.carousel_small').slick({
-                infinite: true,
-                slidesToShow: 2,
-                slidesToScroll: 1,
-                arrows: false,
-                asNavFor: '.carousel_big',
-                focusOnSelect: true,
-                autoplay: true,
-                autoplaySpeed: 2000,
-                vertical: true,
-                centerPadding: '0px',
-                responsive: [
-                    // {
-                    //   breakpoint: 1024,
-                    //   settings: {
-                    //     slidesToShow: 3,
-                    //     slidesToScroll: 3,
-                    //     infinite: true
-                    //   }
-                    // },
-                    {
-                      breakpoint: 600,
-                      settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2,
-                        infinite: true
-                      }
-                    },
-                    {
-                      breakpoint: 480,
-                      settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        infinite: true
-                      }
-                    }
-                ]
-            });
-        });
+        
     </script>
 
 

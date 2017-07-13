@@ -11,8 +11,8 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div id="navbarNav1" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li class="nav-item"><a class="nav-link hover-underline" href="bridger.html">FRIENDS</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="tradeline.html">TRADELINE</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline" href="#">FRIENDS</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline" href="#">TRADELINE</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline" href="#">SHOPLINE</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline" href="#">BUSINESS INVITATION</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline" href="#">MODELS</a></li>

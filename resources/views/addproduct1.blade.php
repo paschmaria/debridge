@@ -120,7 +120,7 @@
                            </div>
                         </div>
                         <div class="dis-flex pull-left">
-                         <button type="submit" class="btn btn-lg btn-outline-brand m-t-20 h-40 width-100">Post</button>
+                         <button type="submit" class="btn btn-lg btn-outline-brand m-t-20 h-40 width-100 fa fa-plus"></button>
                         </div>
                     </div>
                 </div> 
