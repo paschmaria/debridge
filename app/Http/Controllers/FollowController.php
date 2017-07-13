@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Models\Role;
 use App\Models\Follower;
+use App\Models\State;
 use App\Models\SocialNotification;
 
 class FollowController extends Controller
@@ -154,10 +155,11 @@ class FollowController extends Controller
     {
         // dd(auth()->user()->email);
         // get the id of the users that the auth user follows
+        $states = State::all();
         $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
         $role_id = Role::where('name', 'Merchant')->pluck('id')->toArray();
         $users = User::with(['profile_picture', 'community' ])->where('id', '!=', auth()->user()->id)->whereIn('role_id', $role_id)->paginate(8);
-        return view('users.follow_brands', compact('users', 'following_ids'));
+        return view('users.follow_brands', compact('users', 'following_ids', 'states'));
     }
 
     public function merchantsFollowComplete()

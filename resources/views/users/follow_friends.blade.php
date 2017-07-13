@@ -34,29 +34,19 @@
 
 <body>
 <style type="text/css">
-    .follow_count_nav {
-      overflow: hidden;
-      /*background-color: whitesmoke;*/
-       background: rgba(54, 25, 25, .5);
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-    .profiles_wrapper {
-        margin-top: 100px; /* Add a top margin to avoid content overlay */
-    }
 
 </style>
     <section class="main">
+                    <div class="header follow_count_nav text-center p-t-20 p-b-10 bg-brand">
+                        <h3 class="f-24">FOLLOW A FEW FRIENDS</h3>                             
+                            <button disabled class="unfollow_btn c_unfollow c-white" id="follow"><i class="followers_counter count c-white" ></i></button>
+                        <p class="f-16">Thank you for registering, Please follow atleat 10 friends to proceed.</p>
+                    </div>
         <div class="page_wrapper width-100p" style="background:#f0fff0;">
             <div class="container">
                 <div class="overall_card_wrapper" style="padding-top:50px;padding-bottom:5px;">
-                    <div class="header follow_count_nav text-center p-b-30" style="color:#fff;">
-                        <h3 class="f-24">FOLLOW A FEW FRIENDS</h3> <button disabled class="unfollow_btn c_unfollow"   id="follow"><i style="color: #fff;" class="followers_counter count" ></i></button>
-                        <p class="f-12">Thank you. Please follow atleat 10 friends to proceed.</p>
-                    </div>
-                    <div class="profiles_wrapper">
+                    
+                    <div class="m-t-120">
                         <div class="row">
                             <!-- fisrt card row-->
                             
@@ -67,13 +57,13 @@
                                         <div class="card h-310">
                                             <!-- card image -->
                                             <div class="view overlay hm-white-slight">
-                                                <img src="{{ asset('img/pphoto-25.jpeg') }}">
-                                                {{-- @if($user->image_id == null)
-                                                    <img src="{{ asset('img/icons/profiled.png') }}">
+                                                {{-- <img src="{{ asset('img/pphoto-25.jpeg') }}"> --}}
+                                                @if($user->image_id == null)
+                                                    <img class="card width-100p h-200" src="{{ asset('img/icons/profiled.png') }}">
                                                 @else
-                                                    <img src="{{ route('image', [$user->profile_picture->image_reference, '']) }}">
-                                                @endif --}}
-                                                <a href="#">
+                                                    <img class="card width-100p h-200 " src="{{ route('image', [$user->profile_picture->image_reference, '']) }}">
+                                                @endif
+                                                <a>
                                                     <div class="mask waves-effect waves-light"></div>
                                                 </a>
                                             </div>
@@ -92,8 +82,8 @@
                                             <!-- card content block-->
                                             <div class="card-block">
                                                 <div class="card-content pos-abs m-t-m20">
-                                                    <h4 class="f-14" style="color:#212121;">{{ $user->full_name() }}</h4>
-                                                    <p class="f-12" style="color:#526173;">{{ $user->community_address() }}</p>
+                                                    <h4 class="f-14 c-brand">{{ $user->full_name() }}</h4>
+                                                    <p class="f-12">{{ $user->community_address() }}</p>
                                                 </div>
                                                
                                             </div>

@@ -171,7 +171,7 @@
                                                  <div class="notify">
                                                     <ul>
                                                     <img src="{{asset('img/loader.gif')}}" id="bridge_loader" style="display: none;" style="position: absolute;" alt="gg">
-                                                        @forelse ($notifications as $notification)
+                                                        @forelse (auth()->user()->socialNotification as $notification)
                                                             <li class="dropdown-item notify_id{{ $notification->id }} waves-effect waves-light p-l-10 border-bottom">
                                                                 <p>
                                                                     <a href="{{ route('view_profile', $notification->foreigner->reference) }}">
