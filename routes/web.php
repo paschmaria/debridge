@@ -11,6 +11,9 @@
 | 104.131.168.249
 */
 
+// Route::get('users/follow/new/merchant', 'Auth\UserController@viewMerchant')->middleware('auth');
+
+
 Route::get('/', 'Auth\UserController@index')->name('index'); 
 
 Route::get('/logout', 'User\FriendsController@user_logout')->name('logout');
@@ -42,6 +45,9 @@ Route::get('/users/follow/merchants', 'FollowController@getMerchant')->name('fol
 Route::post('/users/follow/friends', 'FollowController@friendsFollowComplete')->name('follow_friends');
 Route::post('/users/follow/merchants', 'FollowController@merchantsFollowComplete')->name('follow_merchants');
 Route::get('/users/social_notification/delete/{notification}', 'User\SocialNotificationController@destroy')->name('delete_social_notification');
+
+
+
 
 Route::get('/users/follow/more', 'Auth\UserController@viewUsers')->name('view_users')->middleware('auth');
 
