@@ -188,7 +188,7 @@ Route::get('/cart/viewCart', 'User\CartController@viewCart')->name('viewCart')->
 
 // Route::get('/user_tradeline', 'Auth\UserController@userTradeline')->name('user_tradeline')->middleware('auth');
 
-Route::get('/product/details/{reference}', 'Merchant\ProductController@productDetails')->name('product_details');
+Route::get('/product/details/{product_ref}/{reference}', 'Merchant\ProductController@productDetails')->name('product_details');
 Route::get('/users/following/{reference}', 'FollowController@following')->name('following');
 Route::get('/users/followers/{reference}', 'FollowController@followers')->name('followers');
 Route::get('/users/profile/edit', 'User\ProfileController@index')->name('edit_profile')->middleware('auth');

@@ -56,9 +56,10 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {if (Schema::hasColumn('table', 'column')) {
+    {
+        // if (\Schema::hasColumn('table', 'column')) {
         //
-    }
+    // }
         //
         $product_categories = ProductCategory::all();
         return view('addproduct1', compact('product_categories'));
@@ -103,6 +104,7 @@ class ProductController extends Controller
         if(!empty($request->file('file'))){
             $album = $this->photo_album->store($request);
             $product->photo_album_id = $album;
+            dd($album);
         }
 
         if ($product->promo_price) {
@@ -377,9 +379,9 @@ public function StoreForUser($reference){
 
 
 
-   public function productDetails($reference)
+   public function productDetails($product_ref, $reference)
     {
-        $product = Product::where('reference', $reference)->first();
+        $product = Product::where('reference', $product_ref)->first();
         $user = User::where('reference', $reference)->first();
         $merchant = MerchantAccount::where('user_id', $user->id)->first();
         // dd($merchant);

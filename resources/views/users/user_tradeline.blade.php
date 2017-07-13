@@ -89,7 +89,7 @@
                 <div class="hidden-xs-down col-sm-3 col-md-3 m-t-10">
                     <div class="list-group m-b-20">
                         <a href="{{ route('view_users') }}" class="list-group-item list-group-item-action">BRIDGER</a>
-                        <a href="tradeRequest.html" class="list-group-item list-group-item-action">TRADE REQUEST</a>
+                        <a href="{{ route('trade_request') }}" class="list-group-item list-group-item-action">TRADE REQUEST</a>
                         <a href="#" class="list-group-item list-group-item-action">TRADE COMMUNITY</a>
                         <a href="#" class="list-group-item list-group-item-action">BRIDGE POINT</a>
                         <a href="#" class="list-group-item list-group-item-action">BRIDGE CODE</a>
@@ -115,8 +115,8 @@
                                     <h2 class="m-b-20 w-700">Product Name</h2>
                                     <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
                                     <p class="m-b-20">25% Off</p>
-                                    <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
-                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add Item</a>
+                                    <a href="#" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
+                                    <a href="#" class="btn btn-md btn-outline-white waves-effect waves-light">Add Item</a>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
                                     <h2 class="m-b-20 w-700">Product Name</h2>
                                     <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
                                     <p class="m-b-20">25% Off</p>
-                                    <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
+                                    <a href="#" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
                                     <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add Item</a>
                                 </div>
                             </div>
@@ -143,7 +143,7 @@
                                     <h2 class="m-b-20 w-700">Product Name</h2>
                                     <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
                                     <p class="m-b-20">25% Off</p>
-                                    <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
+                                    <a href="#" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
                                     <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add Item</a>
                                 </div>
                             </div>
@@ -157,8 +157,8 @@
                                     <h2 class="m-b-20 w-700">Product Name</h2>
                                     <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
                                     <p class="m-b-20">25% Off</p>
-                                    <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
-                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add Item</a>
+                                    <a href="#" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
+                                    <a href="#" class="btn btn-md btn-outline-white waves-effect waves-light">Add Item</a>
                                 </div>
                             </div>
                         </div>
@@ -171,8 +171,8 @@
                                     <h2 class="m-b-20 w-700">Product Name</h2>
                                     <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
                                     <p class="m-b-20">25% Off</p>
-                                    <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
-                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add Item</a>
+                                    <a href="#" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
+                                    <a href="#" class="btn btn-md btn-outline-white waves-effect waves-light">Add Item</a>
                                 </div>
                             </div>
                         </div>
@@ -226,7 +226,7 @@
                                     </h6>
                                     <p>{{ $post->title }}
                                         @if ($post->product !== null)
-                                            <a href="{{ route('product_details', $post->product->reference) }}">
+                                            <a href="{{ route('product_details', [$post->product->reference, $user->reference]) }}">
                                                 <span class="c-brand pull-right m-r-20">View Product</span>
                                             </a>
                                         @endif
