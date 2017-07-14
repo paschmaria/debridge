@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\MerchantAccount;
 use App\Models\Product;
+use App\Models\BridgeCode;
+
 
 class UserSearchController extends Controller
 {
@@ -26,12 +28,12 @@ class UserSearchController extends Controller
         									];
         								});
 
-        $user = BridgeCode::with('user')->where('code', 'like', $request->search.'%')
+        $codes = BridgeCode::with('user')->where('code', 'like', $request->search.'%')
                                         ->get()
                                         ->each(function($code) use (&$results){
                                             $results[] = [
                                                 'name' => $code->user->capFirstName(),
-                                                'type' => $user->email . ' ' .'(User)',
+                                                'type' => $code->user->email . ' ' .'(User)',
                                                 'link' => route('timeline', $code->user->reference)
                                             ];
                                         });
