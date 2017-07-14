@@ -77,7 +77,7 @@ class UserController extends Controller
                 'pictures' => function($q){
                     $q->with('images');
                 },
-                'product'
+                'product', 'admires'
              ])->get();   
         if(auth()->check()){
             $admired = PostAdmire::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
