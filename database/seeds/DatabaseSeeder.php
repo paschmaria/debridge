@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call(StatesTableSeeder::class);
         $this->call(TradeCommunityTableSeeder::class);
         $this->call(CountriesTableSeeder::class);
-
+        // realpath(path)
+        // base_path()
+         // realpath(base_path()."/../images/pictures/");
     }
 }

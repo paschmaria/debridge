@@ -14,9 +14,10 @@ class UserSearchController extends Controller
     {
         // $search = $request->input('search');
         $results = [];
-        $user = User::with('bridgeCode')->where('first_name', 'like', $request->search.'%')
+        $user = User::where('first_name', 'like', $request->search.'%')
         								->orWhere('last_name', 'like', $request->search.'%')
-        								->orWhere('email', 'like', $request->search.'%')->get()
+                                        ->get()
+        								// ->orWhere('email', 'like', $request->search.'%')->get()
         								->each(function($user) use (&$results){
         									$results[] = [
         										'name' => $user->capFirstName(),
@@ -24,6 +25,16 @@ class UserSearchController extends Controller
         										'link' => route('timeline', $user->reference)
         									];
         								});
+
+        $user = BridgeCode::with('user')->where('code', 'like', $request->search.'%')
+                                        ->get()
+                                        ->each(function($code) use (&$results){
+                                            $results[] = [
+                                                'name' => $code->user->capFirstName(),
+                                                'type' => $user->email . ' ' .'(User)',
+                                                'link' => route('timeline', $code->user->reference)
+                                            ];
+                                        });
             
         $products = Product::where('name', 'like', $request->search.'%')->get()
         								->each(function($product) use (&$results){
