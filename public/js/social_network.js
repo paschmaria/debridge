@@ -444,13 +444,17 @@ $("#querySelector").on("keyup", function(e){
                               var output = '<ul class="suggestions"  >';
                               // console.log(response.data);
                               $.each(data.user, function(key, val){
-
-                                  output += '<li class="z-1000" id="' + val.id + '"data-user_id="' + "user_id"+ val.id + ' "data-full_name = "' + val.first_name + '" data-email = "' + val.email + '">';
-                                  // output += '<div class="">'+
-                                  output += '<span class="text-center">' + '<a class="p-l-20 c-brand" href="/timeline/'+val.reference+'">' + val.first_name +" " + val.last_name + '</a>' + '</span>'+
-                                        '<small class="text-center price c-gray">' + " " + "(" +val.email + ")" + '</small><br>'
-                                    '</div>';
-                                  output += '</li> <hr>';
+                                if (data.user.length > 0 ) {
+                                    output += '<li class="z-1000" id="' + val.id + '"data-user_id="' + "user_id"+ val.id + ' "data-full_name = "' + val.first_name + '" data-email = "' + val.email + '">';
+                                    // output += '<div class="">'+
+                                    output += '<span class="text-center">' + '<a class="p-l-20 c-brand" href="/timeline/'+val.reference+'">' + val.first_name +" " + val.last_name + '</a>' + '</span>'+
+                                          '<small class="text-center price c-gray">' + " " + "(" +val.email + ")" + '</small><br>'
+                                      '</div>';
+                                    output += '</li> <hr>';                                    
+                                }else if(data.user.length <= 0 ){
+                                    // output += '<li class="z-1000" > No Result found for + </li>';
+                                    // alert('null');
+                                }
                               });
                               output += '</ul>';
 
