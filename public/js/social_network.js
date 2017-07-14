@@ -423,6 +423,15 @@ $(".del").click(function(e){
 
 $("#querySelector").on("keyup", function(e){
         // alert('jdd');
+        if ($("#querySelector").val() === '') {
+            $(".dropdown-dark").hide();
+
+        }
+        else {
+
+         $(".dropdown-dark").show();
+
+        }
         var search_input = $("#querySelector").val();
         // alert($("#querySelector").val());
         $.ajax({
@@ -432,26 +441,34 @@ $("#querySelector").on("keyup", function(e){
                          data: {user:search_input},
                          success: function(data){
                             console.log(data);
-                              var output = '<ul class="suggestions">';
+                              var output = '<ul class="suggestions"  >';
                               // console.log(response.data);
                               $.each(data.user, function(key, val){
 
-                                  output += '<li id="' + val.id + '"data-user_id="' + "user_id"+ val.id + ' "data-full_name = "' + val.first_name + '" data-email = "' + val.email + '">';
-                                  output += '<div class="clearfix pos-rel">'+
-                                        '<span class="text-center">' + '<a href="timeline/'+val.reference+'" target="_blank">' + val.first_name +" " + val.last_name + '</a>' + '</span>'+
-                                        '<span class="text-center price">' + " " + "(" +val.email + ")" + '</span><br>'
+                                  output += '<li class="z-1000" id="' + val.id + '"data-user_id="' + "user_id"+ val.id + ' "data-full_name = "' + val.first_name + '" data-email = "' + val.email + '">';
+                                  // output += '<div class="">'+
+                                  output += '<span class="text-center">' + '<a class="p-l-20 c-brand" href="/timeline/'+val.reference+'">' + val.first_name +" " + val.last_name + '</a>' + '</span>'+
+                                        '<small class="text-center price c-gray">' + " " + "(" +val.email + ")" + '</small><br>'
                                     '</div>';
                                   output += '</li> <hr>';
                               });
                               output += '</ul>';
 
-                            $(".update").html(output);
+                            $(".dropdown-dark").html(output);
                             // }
                          },error:function(){
                             
                          }
             });
     });
+$(document).on("click", function(e) {
+     // $("#querySelector").hide
+     var clear = '';
+     $(".dropdown-dark").hide();
+     $("#querySelector").val(clear);
+
+});
+ 
 
 
 // Scroll event begins for followers and followwing

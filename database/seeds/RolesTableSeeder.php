@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class RoleTableSeeder extends Seeder
+class RolesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,6 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        //
         
         DB::table('roles')->insert([
         	'name' => 'User',
@@ -26,7 +25,7 @@ class RoleTableSeeder extends Seeder
         ]);  
 
         DB::table('roles')->insert([
-        	'name' => 'SuperAdmin',
+        	'name' => 'SuperAdmin'
         ]);
     }
 }
