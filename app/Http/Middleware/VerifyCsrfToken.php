@@ -20,6 +20,8 @@ class VerifyCsrfToken extends BaseVerifier
         'decline_friend/*',
         'users/follow/merchants',
         'user/follow/*',
-        'users/social_notification/delete/*'
+        'users/social_notification/delete/*',
+        'search/user/*',
+        
     ];
 }

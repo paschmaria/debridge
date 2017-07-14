@@ -14,6 +14,8 @@
 // Route::get('users/follow/new/merchant', 'Auth\UserController@viewMerchant')->middleware('auth');
 
 
+Route::get('/search/user/{search}', 'Search\UserSearchController@search')->name('search_user'); 
+
 Route::get('/', 'Auth\UserController@index')->name('index'); 
 
 Route::get('/logout', 'User\FriendsController@user_logout')->name('logout');

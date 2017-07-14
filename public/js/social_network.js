@@ -421,7 +421,42 @@ $(".del").click(function(e){
 });
 
 
+$("#querySelector").on("keyup", function(e){
+        // alert('jdd');
+        var search_input = $("#querySelector").val();
+        // alert($("#querySelector").val());
+        $.ajax({
+
+                         url: "/search/user/"+search_input,
+                         type: "GET",
+                         data: {user:search_input},
+                         success: function(data){
+                            console.log(data);
+                              var output = '<ul class="suggestions">';
+                              // console.log(response.data);
+                              $.each(data.user, function(key, val){
+
+                                  output += '<li id="' + val.id + '"data-user_id="' + "user_id"+ val.id + ' "data-full_name = "' + val.first_name + '" data-email = "' + val.email + '">';
+                                  output += '<div class="clearfix pos-rel">'+
+                                        '<span class="text-center">' + '<a href="timeline/'+val.reference+'" target="_blank">' + val.first_name +" " + val.last_name + '</a>' + '</span>'+
+                                        '<span class="text-center price">' + " " + "(" +val.email + ")" + '</span><br>'
+                                    '</div>';
+                                  output += '</li> <hr>';
+                              });
+                              output += '</ul>';
+
+                            $(".update").html(output);
+                            // }
+                         },error:function(){
+                            
+                         }
+            });
+    });
+
+
 // Scroll event begins for followers and followwing
+
+
 var lastScrollTop = 0;
 $(window).scroll(function(event){
    var st = $(this).scrollTop();
