@@ -42,9 +42,12 @@ class UserSearchController extends Controller
         										'link' => route('user_store', $stores->user->reference)
         									];
         								});
-
+        $sorted = array_values(array_sort($results, function($value){
+            return $value['name'];
+        }));
+        
         return response()->json([
-            'results' => $results
+            'results' => $sorted
         ]);         
     }
 
