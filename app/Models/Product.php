@@ -39,7 +39,7 @@ class Product extends Model
 
     public function pictures()
     {
-        return $this->belongsTo('App\Models\PhotoAlbum');
+        return $this->belongsTo('App\Models\PhotoAlbum', 'photo_album_id');
     }
 
     public function notifications()

@@ -104,6 +104,7 @@ Route::post('/upload', 'User\PhotoAlbumController@create')->name('upload');
 Route::post('/upload', 'User\PhotoAlbumController@create')->name('upload');
 Route::get('/images/{folder}/{reference}', 'User\ImageController@show')->name('image');
 Route::post('/delete_image/{id}', 'User\ImageController@destroy')->name('delete_image');
+Route::post('/users/profile/edit/picture', 'User\ImageController@store')->name('upload_profile_pic');
 Route::get('/delete_image/{id}', 'User\ImageController@destroy')->name('delete_image');
 Route::post('/delete_album/{id}', 'User\PhotoAlbumController@destroy')->name('delete_album');
 Route::get('/register', 'Auth\UserController@register')->name('register');
@@ -119,7 +120,7 @@ Route::group(['prefix' => 'merchant', 'middleware'=> 'merchant'], function (){
 	Route::post('/addProduct', 'Merchant\ProductController@store')->name('addProduct');
 	Route::get('/allProduct', 'Merchant\ProductController@viewAllProduct')->name('allProduct');
 	// Route::get('/logout', 'Auth\UserController@logout')->name('mechant_logout');
-	Route::get('/delete/{id}', 'Merchant\ProductController@destroy')->name('delete');
+	Route::get('/delete/{reference}', 'Merchant\ProductController@destroy')->name('delete');
 	Route::get('/edit_product/{id}', 'Merchant\ProductController@edit')->name('edit_product');
 	Route::post('/update_product/{id}', 'Merchant\ProductController@edit')->name('update_product');
 
@@ -196,7 +197,7 @@ Route::get('/cart/viewCart', 'User\CartController@viewCart')->name('viewCart')->
 
 // Route::get('/user_tradeline', 'Auth\UserController@userTradeline')->name('user_tradeline')->middleware('auth');
 
-Route::get('/product/details/{product_ref}/{reference}', 'Merchant\ProductController@productDetails')->name('product_details');
+Route::get('/product/details/{reference}', 'Merchant\ProductController@productDetails')->name('product_details');
 Route::get('/users/following/{reference}', 'FollowController@following')->name('following');
 Route::get('/users/followers/{reference}', 'FollowController@followers')->name('followers');
 Route::get('/users/profile/edit', 'User\ProfileController@index')->name('edit_profile')->middleware('auth');
@@ -208,7 +209,7 @@ Route::post('/users/profile/edit/password', 'User\ProfileController@changePasswo
 Route::get('hottest_product/{reference}', 'Merchant\ProductController@hottestProduct')->name('hottest_products');
 Route::get('trade_request', 'Merchant\TradeRequestController@showMerchants')->name('trade_request')->middleware('merchant');
 // Route::post('trade_request/{reference}', 'Merchant\TradeRequestController')->name('trade_request')->middleware('merchant');
-Route::get('/state/market/{reference}', 'User\StateMarketController@show')->name('state_market')->middleware('auth');
+Route::get('/state/market/{reference}', 'User\StateMarketController@show')->name('state_market');//->middleware('auth');
 
 Route::get('tradeline/{reference}', 'User\TradelineController@index')->name('tradeline')->middleware('auth');
 

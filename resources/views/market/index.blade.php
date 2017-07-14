@@ -23,6 +23,8 @@
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Business Invitation</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Models</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Market Value</a></li>
+                        <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Black Market</a></li>
+                        <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Exhibition Stand</a></li>
                     </ul>
                     </div><!-- /.navbar-collapse -->
                 </div>
@@ -113,8 +115,8 @@
                         </div>  
                     </div>
                     <div class="c-brand p-5">
-                        <h2 class="text-left h2-responsive f-32">THE {{ strtoupper($state->name) }} MARKET</h2>
-                        <p class="text-right text-fluid f-20">...{{ ucfirst($state->slogan) }}</p>
+                        <h2 class="text-left h2-responsive f-32">THE NIGERIAN MARKET</h2>
+                        <p class="text-right text-fluid f-20">...The Largest African Market</p>
                     </div>
                 </div>                
             </div>
@@ -212,9 +214,9 @@
                     @endif
                     <nav class="navbar user-type-navbar no-shadow">
                         <ul class="nav user-type-nav text-center">
-                            <li class="nav-item"><a class="nav-link hover-underline active" href="{{ route('index') }}">ALL</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('index') }}?type=merchant">MERCHANT</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('index') }}?type=user">INDIVIDUALS</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline active" href="#">ALL</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline" href="#">MERCHANT</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline" href="#">INDIVIDUALS</a></li>
                         </ul>
                     </nav>
                     @forelse ($posts as $post)
