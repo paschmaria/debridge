@@ -443,15 +443,16 @@ $("#querySelector").on("keyup", function(e){
                             console.log(data);
                               var output = '<ul class="suggestions"  >';
                               // console.log(response.data);
-                              $.each(data.user, function(key, val){
-                                if (data.user.length > 0 ) {
-                                    output += '<li class="z-1000" id="' + val.id + '"data-user_id="' + "user_id"+ val.id + ' "data-full_name = "' + val.first_name + '" data-email = "' + val.email + '">';
+                              $.each(data.results, function(key, val){
+                                // console.log(val);
+                                if (data.results.length > 0 ) {
+                                    output += '<li class="z-1000" ">';
                                     // output += '<div class="">'+
-                                    output += '<span class="text-center">' + '<a class="p-l-20 c-brand" href="/timeline/'+val.reference+'">' + val.first_name +" " + val.last_name + '</a>' + '</span>'+
-                                          '<small class="text-center price c-gray">' + " " + "(" +val.email + ")" + '</small><br>'
+                                    output += '<span class="text-center">' + '<a class="p-l-20 c-brand" href='+val.link+'>' + val.name +'</a>' + '</span>'+
+                                          '<small class="text-center price c-gray">' + " " + "" +val.type + "" + '</small><br>'
                                       '</div>';
                                     output += '</li> <hr>';                                    
-                                }else if(data.user.length <= 0 ){
+                                }else if(data.results.length <= 0 ){
                                     // output += '<li class="z-1000" > No Result found for + </li>';
                                     // alert('null');
                                 }
