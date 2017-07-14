@@ -35,8 +35,12 @@
                         <div class="card m-t-20">
                             <!--Card image-->
                             <div class="view overlay hm-black-light p-5 hm-zoom">
-                                <img src="{{ asset('img/products/leftside-ad-3.png') }}" class="img-fluid width-100p" alt="">
-                                <a class="white-text mask flex-center" href="{{ route('product_details', [$product->reference, $user->reference]) }}">
+                                @if($product->pictures != null && $product->pictures->images[0] != null )
+                                    <img src="{{ route('image', [$product->pictures->images[0]->image_reference, '']) }}" class="img-fluid width-100p h-350" alt="">
+                                @else
+                                    <img src="{{ asset('img/products/leftside-ad-3.png') }}" class="img-fluid width-100p h-350" alt="">
+                                @endif
+                                <a class="white-text mask flex-center" href="{{ route('product_details', $product->reference) }}">
                                     <div class="text-center">
                                         <h2 class="m-b-20 w-700">{{ $product->name }}</h2>
                                         @if(isset($product->promo_price))
@@ -55,13 +59,13 @@
                             <div class="card-block p-5">
                                 <div class="btn-group bd-dark-light p-5" role="group" aria-label="Ad Action Buttons">
                                     @if(auth()->user()->ownsShop($user->id))
-                                    <button type="button" class="btn bg-white c-brand m-r-3 f-14" data-toggle="modal" data-target="#delete-modal{{ $product->id }}">
-                                        <i class="fa fa-trash-o"></i>
-                                    </button>
+                                        <button type="button" class="btn bg-white c-brand m-r-3 f-14" data-toggle="modal" data-target="#delete-modal{{ $product->id }}">
+                                            <i class="fa fa-trash-o"></i>
+                                        </button>
                                     @else
-                                    <a href="{{ route('addToCart', $product->id) }}"><button type="button" class="btn bg-white c-brand m-r-3 f-14" data-toggle="modal">
-                                                <i class="fa fa-shopping-cart"></i>
-                                    </button></a>
+                                        <a href="{{ route('addToCart', $product->id) }}"><button type="button" class="btn bg-white c-brand m-r-3 f-14" data-toggle="modal">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                        </button></a>
                                     @endif
                                     <a href="{{ route('product_admire', $product->id) }}" class="btn bg-white c-brand m-l-3 f-14 m-r-3 like">
                                         <i class="fa fa-heart-o"></i>
@@ -76,7 +80,7 @@
                     </div>
 
                     <!-- Modal Share-->
-            <div class="modal fade" id="share-modal{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade m-t-120" id="share-modal{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <!--Content-->
                     <div class="modal-content">
@@ -91,38 +95,32 @@
                         <div class="modal-body bg-brand-lite">
                             <form action="{{ route('product_hype', $product->id) }}" method="POST">
                                 {{ csrf_field() }}
-                                <div class="media m-b-15">
+                                <div class="media m-b-10">
                                     <div class="media-body">
                                         <textarea name="body" id="" class="md-textarea input-alternate p-10 h-5 border-box bg-white" placeholder="Write a message..."></textarea>
                                     </div>
                                 </div>
-                                <div class="media m-b-40">
+                                <div class="media m-b-20">
                                     <a class="pull-left" href="#">
                                         <img class="media-object p-r-10" src="{{ asset('img/acc-img-2.png') }}" alt="Image">
                                     </a>
                                     <div class="media-body">
                                         <h6 class="media-heading w-700 m-b-5 f-12 c-brand">{{ auth()->user()->first_name }}</h6>
-                                        <input type="hidden" class="m-b-5 f-12 c-dark" name ='title' value="New arrivals are everywhere. Get Quality 2017 {{ $product->name }} which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing">
+                                        <input type="hidden" class="m-b-5 f-12 c-dark" name ='title' value="{{ $product->name }} at &#8358 {{ $product->price }}">
 
-                                        <p class="m-b-5 f-12 c-dark" name ='title'>New arrivals are everywhere. Get Quality 2017 {{ $product->name }} which never goes out of style. Call us: 08073404890 or Visit jhuds.com/clothing"</p>
+                                        <p class="m-b-5 f-12 c-dark" name ='title'>{{ $product->name }} at &#8358 {{ $product->price }}</p>
 
                                     </div>
                                 </div> 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="row">
-                                            <figure class="col-md-6">
-                                                <img src="{{ asset('img/cart/rectangle-7.png') }}" class="m-l-90">
-                                            </figure>
-                                            <figure class="col-md-6">
+                                        <div class="card-group">
+                                            <div class="card m-5">
                                                 <img src="{{ asset('img/cart/rectangle-7.png') }}">
-                                            </figure>
-                                            <figure class="col-md-6">
-                                                <img src="{{ asset('img/cart/rectangle-7.png') }}" class="m-l-90">
-                                            </figure>
-                                            <figure class="col-md-6">
+                                            </div>
+                                            <div class="card m-5">
                                                 <img src="{{ asset('img/cart/rectangle-7.png') }}">
-                                            </figure>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -139,7 +137,7 @@
             </div>
             <!-- Modal -->
             <!-- Modal Share-->
-            <div class="modal fade" id="delete-modal{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade m-t-180" id="delete-modal{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <!--Content-->
                     <div class="modal-content">
@@ -153,7 +151,7 @@
                         </div>
                         <!--Footer-->
                         <div class="modal-footer bg-brand-lite justify-content-center">
-                            <a class="btn btn-md btn-outline-brand" href="{{ route('delete', $product->id) }}">Yes</a>
+                            <a class="btn btn-md btn-outline-brand" href="{{ route('delete', $product->reference) }}">Yes</a>
                             <button type="button" class="btn btn-md btn-outline-brand" data-dismiss="modal">No</button>
                         </div>
                     </div>

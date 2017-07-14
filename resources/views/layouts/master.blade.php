@@ -27,6 +27,8 @@
 
         <!-- Your custom styles (optional) -->
         <link rel="stylesheet" href="{{ asset('css/main.css')}}">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito">
+    
         @yield('extra_styles')
     </head>
 

@@ -1503,6 +1503,10 @@ header.sticky {
   background-color: #f0fff0 !important;
 }
 
+.sticky ~ .main {
+  padding-top: 154px;
+}
+
 .hover-underline {
   position: relative;
   text-decoration: none;

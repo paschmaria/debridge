@@ -57,12 +57,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        // if (\Schema::hasColumn('table', 'column')) {
-        //
-    // }
-        //
         $product_categories = ProductCategory::all();
-        return view('addproduct1', compact('product_categories'));
+        return view('merchant.addproduct', compact('product_categories'));
     }
 
     /**
@@ -73,12 +69,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        
-        // $this->validate($request,[
-        //     'product_name'=>'required|max:20',
-        //     'description' => 'required|max:50'
-        //     ]);
-
+        $this->validate($request, [
+            'product_name' => 'string|required|max:120',
+            'description' => 'string|nullable',
+            'price' => 'numeric',
+            'category' => 'digits_between:1,20'
+            ]);
         if(!empty($request->file('file'))){
             $this->validate($request, [
                 'file.*' => 'required|mimes:jpg,jpeg,png,gif'
@@ -92,13 +88,14 @@ class ProductController extends Controller
         $category = ProductCategory::where('name', $request->input('category'))->first();
 
         
-        // $product_category_id = $request->input('category');
         $product = new Product();
         $product->name = $request->input('product_name');
         $product->description = $request->input('description');
         $product->price = $request->input('product_price');
-        $product->quantity = $request->input('quantity');
-        $product->category()->associate($category);
+        // $product->quantity = $request->input('quantity');
+        if ($category != null){
+            $product->category()->associate($category);
+        }
         $product->reference = str_random(7) . time() . uniqid();
         
         if(!empty($request->file('file'))){
@@ -184,6 +181,9 @@ class ProductController extends Controller
     public function destroy($reference)
     {
         $product = Product::where('reference', $reference)->first();
+        if(!$product){
+             return back()->with('info', 'Product does not exist!');
+        }
         return back()->with('info', 'Product Deleted Sucessfully');
     }
 
@@ -362,18 +362,24 @@ class ProductController extends Controller
     }
 
 
-public function StoreForUser($reference){
+    public function StoreForUser($reference){
         
         //get or create merchant acount and inventory
         $user = User::where('reference', $reference)->first();
+        if ($user && $user->checkRole()) {
+            return redirect(route('view_profile', $user->reference));
+        }
         // dd($user);
         $merchant = MerchantAccount::firstOrCreate(['user_id' => $user->id]);
         // dd($merchant);
         $inventory = Inventory::firstOrCreate(['merchant_account_id' => $merchant->id]);
-        $products = Product::where('inventory_id', $inventory->id)->latest()->get();
+        $products = Product::with(['pictures' => function($q){
+                                    $q->with('images');
+                                }])->where('inventory_id', $inventory->id)->latest()->get();
+        
         return view('products', compact('products', 'user'));
 
-}
+    }
 
 
 

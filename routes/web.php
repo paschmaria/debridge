@@ -112,7 +112,7 @@ Route::group(['prefix' => 'merchant', 'middleware'=> 'merchant'], function (){
 	Route::post('/addProduct', 'Merchant\ProductController@store')->name('addProduct');
 	Route::get('/allProduct', 'Merchant\ProductController@viewAllProduct')->name('allProduct');
 	// Route::get('/logout', 'Auth\UserController@logout')->name('mechant_logout');
-	Route::get('/delete/{id}', 'Merchant\ProductController@destroy')->name('delete');
+	Route::get('/delete/{reference}', 'Merchant\ProductController@destroy')->name('delete');
 	Route::get('/edit_product/{id}', 'Merchant\ProductController@edit')->name('edit_product');
 	Route::post('/update_product/{id}', 'Merchant\ProductController@edit')->name('update_product');
 
