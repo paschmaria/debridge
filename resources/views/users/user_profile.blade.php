@@ -182,7 +182,7 @@
 							@endif
 						</div>
 					</div>
-					<h4 class="h3-responsive f-22 text-left m-t-20 m-b-25 c-brand">PHOTO</h4>
+					{{-- <h4 class="h3-responsive f-22 text-left m-t-20 m-b-25 c-brand">PHOTO</h4>
 					@forelse($photo_albums as $photo_album)
 						<div class="product-img-group m-t-20 bd-dark-light">
 							@foreach($photo_album->images->chunk(4) as $images)
@@ -205,7 +205,7 @@
 						</div>
 					@empty
 						<h5 class="h5-responsive f-22 text-left m-t-20 m-b-25 c-gray">No photos to display</h5>
-					@endforelse
+					@endforelse --}}
 				</main>
 			</div>
 		</section>

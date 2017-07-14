@@ -43,6 +43,12 @@ class User extends Authenticatable
     {
         return strtoupper($this->first_name . ' ' . $this->last_name);
     }
+
+    public function capFirstName()
+    {
+        return ucwords($this->first_name . ' ' . $this->last_name);
+    }
+
     public function comments()
     {
         return $this->hasMany('App\Models\Comment');
