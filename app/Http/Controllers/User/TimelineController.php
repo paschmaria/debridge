@@ -41,6 +41,7 @@ class TimelineController extends Controller
                 'pictures' => function($q){
                     $q->with('images');
                 },
+                'admires', 'product'
             ]);
 
         }])->get();
@@ -60,6 +61,7 @@ class TimelineController extends Controller
                 'pictures' => function($q){
                     $q->with('images');
                 },
+                'admires'
             ])->get();
         // dd($user_post);
         $posts = $user_post->merge($timeline->values()->all())->sortByDesc('created_at');

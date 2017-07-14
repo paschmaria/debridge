@@ -28,7 +28,7 @@ class StateMarketController extends Controller
 		                'pictures' => function($q){
 		                    $q->with('images');
 		                },
-		                'product'
+		                'product', 'admires'
 		             ]);
     			}]);
     		}]);
