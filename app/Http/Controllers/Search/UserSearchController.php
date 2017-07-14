@@ -16,7 +16,8 @@ class UserSearchController extends Controller
         $results = [];
         $user = User::where('first_name', 'like', $request->search.'%')
         								->orWhere('last_name', 'like', $request->search.'%')
-        								->orWhere('email', 'like', $request->search.'%')->get()
+                                        ->get()
+        								// ->orWhere('email', 'like', $request->search.'%')->get()
         								->each(function($user) use (&$results){
         									$results[] = [
         										'name' => $user->capFirstName(),
