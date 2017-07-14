@@ -52,39 +52,15 @@
                         <div class="page_heading text-center">
                             <form class="" action="" method="GET">
                                 <div class="input-group input-shadow">
-                                    <input type="search" class="form-control input-alternate bd-dark-lite" placeholder="e.g. Phones in Lagos, bags in Abuja...">
+                                    <input type="search" id="querySelector" class="form-control input-alternate bd-dark-lite" placeholder="e.g. Phones in Lagos, bags in Abuja..." autocomplete="off">
+                                        
                                     <span class="input-group-btn">
-                                        <button type="submit" class="btn btn-brand-lite btn-lg waves-effect waves-light m-0 no-shadow"><i class="fa fa-search f-17 c-dark"></i></button>
-                                    </span>
+                                        {{-- <button type="submit" class="btn btn-brand-lite btn-lg waves-effect waves-light m-0 no-shadow"><i class="fa fa-search f-17 c-dark"></i></button> --}}
+                                    </span> <br> <br>
                                 </div>
-                                {{-- <div style="position: relative; z-index: 1000;">
-                                    <div class="input-group input-shadow" >
-                                        <input type="search" style="background-color: #ccc;" class="form-control input-alternate bd-dark-lite" placeholder="e.g. Phones in Lagos, bags in Abuja...">
-                                        
-                                    </div>
-                                    <div class="input-group input-shadow" >
-                                        <input type="search" style="background-color: #ccc;" class="form-control input-alternate bd-dark-lite" placeholder="e.g. Phones in Lagos, bags in Abuja...">
-                                        
-                                    </div>
-                                    <div class="input-group input-shadow" >
-                                        <input type="search" style="background-color: #ccc;" class="form-control input-alternate bd-dark-lite" placeholder="e.g. Phones in Lagos, bags in Abuja...">
-                                        
-                                    </div>
-                                    <div class="input-group input-shadow" >
-                                        <input type="search" style="background-color: #ccc;" class="form-control input-alternate bd-dark-lite" placeholder="e.g. Phones in Lagos, bags in Abuja...">
-                                        
-                                    </div>
-                                    <div class="input-group input-shadow" >
-                                        <input type="search" style="background-color: #ccc;" class="form-control input-alternate bd-dark-lite" placeholder="e.g. Phones in Lagos, bags in Abuja...">
-                                        
-                                    </div>
-                                </div> --}}
+                                <div class="update search_dropdown" style="background-color:rgba(51,51,51,0.75); position: absolute; width: 95.5%;">
 
-                                {{-- <div class="row"> --}}
-                                    {{-- div class="col-11 col-sm-6 col-md-11">
-                                        <a href="bridger.html" class="list-group-item list-group-item-action">BRIDGER</a>
-                                    </div> --}}
-                                {{-- </div> --}}
+                                </div>
                             </form>
                             
                         </div>
@@ -311,6 +287,15 @@
                         height: '300px'
                     });
                 });
+
+                $(function(){
+                    $('.search_dropdown').slimScroll({
+                        // position:'absolute'
+                        // position: 'relative',
+                        // height: '200px'
+
+                    })
+                })
             };
         </script> 
 

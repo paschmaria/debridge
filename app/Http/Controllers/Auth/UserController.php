@@ -169,6 +169,22 @@ class UserController extends Controller
      	Mail::to($user)->send(new Welcome($user));
      	return back();
      }
+
+     public function viewMerchant(Request $request)
+    {
+        dd("dd");
+        // dd(auth()->user()->email);
+        // get the id of the users that the auth user follows
+        $roles = Role::where('name', '!=', 'Admin')->where('name', '!=', 'SuperAdmin')->where('name', '!=', 'User')->get();
+        dd($role);
+        $users = User::where('id','!=', auth()->user()->id)->get();
+        // get the id of the users that the auth user follows
+        $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
+        // get the id of the users that the auth user sent a friend request
+        $sent_request = FriendRequest::where('sender_id', auth()->user()->id)->pluck('receiver_id')->toArray();
+        
+        return view('merchant.all_merchant', compact('users', 'following_ids', 'sent_request'));
+    }
      
     public function viewUsers()
      {
@@ -179,6 +195,8 @@ class UserController extends Controller
         $sent_request = FriendRequest::where('sender_id', auth()->user()->id)->pluck('receiver_id')->toArray();
         return view('bridger', compact('users', 'following_ids', 'sent_request'));
      }
+
+
 
      public function profile_picture(Request $request, $id){
 
@@ -208,7 +226,7 @@ class UserController extends Controller
     //     }
     // }
 
-     public function merchantTimeline(){
+    public function merchantTimeline(){
         return view('merchant_timeline');
     }
 

@@ -36,7 +36,7 @@
                             <button disabled class="unfollow_btn c_unfollow c-white" id="follow"><i class="followers_counter m_count c-white" ></i></button>
                         <p class="f-16">You are almost done with your sign up process, just follow a few stores of interest.</p>
                     </div>
-        <div class="page_wrapper"style="background:#f0fff0;">
+        <div class="page_wrapper" style="background:#f0fff0;">
             <div class="container">
                 <div class="overall-card-wrapper m-t-40" style="padding-top:120px; padding-bottom:5px;">
                     <!-- select -->
