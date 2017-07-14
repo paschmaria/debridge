@@ -274,11 +274,11 @@
                                 <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10 col-sm-12" role="group" aria-label="Ad Action Buttons">
                                     @if(!in_array($post->id, $admired))
                                         <a href="{{ route('admire', $post->reference) }}"><button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 width-200">
-                                            <span class="">Admire&nbsp;</span><span class=""><i class="fa fa-heart-o"></i><small class="c-gray f-12"> </small></span>
+                                            <span class="">Admire&nbsp;</span><span class=""><i class="fa fa-heart-o"></i><small class="c-gray f-12"> {{ $post->admires->count() }}</small></span>
                                         </button></a>
                                     @else
                                         <a href="{{ route('unadmire', $post->reference) }}"><button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 width-200">
-                                            <span class="">Unadmire&nbsp;</span><span class=""><i class="fa fa-heart"></i></span>
+                                            <span class="">Unadmire&nbsp;</span><span class=""><i class="fa fa-heart"></i><small class="c-gray f-12"> {{ $post->admires->count() }}</small></span>
                                         </button></a>
                                     @endif
                                     <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 width-200">
@@ -307,7 +307,7 @@
                                 <div class="media-body">
                                     <form method="post" action="{{ route('create_comment', $post->reference) }}">
                                         {{ csrf_field() }}
-                                        <textarea name="content" id="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Press enter to send..."></textarea>
+                                        <textarea name="content" id="" class="md-textarea input-alternate p-10 h-58 border-box" placeholder="Press enter to send..." required></textarea>
                                         <button type="submit" class="btn btn-brand btn-sm pull-right">comment</button>
                                     </form>
                                 </div>

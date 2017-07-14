@@ -33,7 +33,7 @@ Route::get('/hype/{post}', 'User\HypeController@create')->name('hype');
 Route::post('/product_hype/{product}', 'Merchant\ProductController@product_hype')->name('product_hype');
 
 Route::get('/admire/{post}', 'User\AdmireController@create')->name('admire');
-Route::get('/unadmire/{post}', 'User\AdmireController@destroy')->name('unadmire');
+Route::get('/unadmire/{reference}', 'User\AdmireController@destroy')->name('unadmire');
 
 Route::get('/product_admire/{reference}', 'User\ProductAdmireController@create')->name('product_admire');
 Route::get('/product_unadmire/{reference}', 'User\ProductAdmireController@destroy')->name('product_unadmire');

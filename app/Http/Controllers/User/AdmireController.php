@@ -37,7 +37,10 @@ class AdmireController extends Controller
             return back()->with('info', 'Post already admired by you!');
         } else {
             PostAdmire::create(['post_id' => $post->id, 'user_id' => \Auth::user()->id]);
-        }       
+        }    
+        return response()-json([
+            'count' => $post->admires->count() 
+            ]);   
         return back()->with('success', 'Admired!');
     }
 
@@ -92,12 +95,16 @@ class AdmireController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($reference)
     {
-        $admire = PostAdmire::where(['post_id' => $id, 'user_id' => \Auth::user()->id])->first();
+        $post = Post::where('reference', $reference)->first();
+        $admire = PostAdmire::where(['post_id' => $post->id, 'user_id' => \Auth::user()->id])->first();
         if ($admire) {
             $admire->delete();
-        }      
+        }
+        return response()-json([
+            'count' => $post->admires->count() 
+            ]);      
         return back()->with('info', 'Unadmired!');
     }
 }
