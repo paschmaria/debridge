@@ -58,7 +58,7 @@
                                         {{-- <button type="submit" class="btn btn-brand-lite btn-lg waves-effect waves-light m-0 no-shadow"><i class="fa fa-search f-17 c-dark"></i></button> --}}
                                     </span> <br> <br>
                                 </div>
-                                <div class="update search_dropdown" style="background-color:rgba(51,51,51,0.75); position: absolute; width: 95.5%;">
+                                <div class="update search_dropdown" style="background-color:rgba(51,51,51,0.75); position: relative; width: 95.5%;">
 
                                 </div>
                             </form>
@@ -292,7 +292,7 @@
                     $('.search_dropdown').slimScroll({
                         // position:'absolute'
                         // position: 'relative',
-                        // height: '200px'
+                        height: '50px'
 
                     })
                 })
