@@ -18,6 +18,9 @@ use App\Models\Product;
 use App\Models\MerchantAccount;
 use App\Models\Inventory;
 use App\Models\ProductAdmire;
+use App\Models\Post;
+use App\Models\PostAdmire;
+use App\Models\PostHype;
 
 class UserController extends Controller
 {
@@ -54,15 +57,34 @@ class UserController extends Controller
         //     }
         // });
         // dd($products);
-        $products = Product::inRandomOrder()->limit(5)->get();
-        if(auth()->check())
-        {
-            $products_admire = ProductAdmire::where('user_id', auth()->user()->id)->pluck('product_id')->toArray();
-            // dd($products_admire);
-            return view('index', compact('products', 'products_admire'));
-        } else{
-            return view('index', compact('products'));
-        }            
+        // $products = Product::inRandomOrder()->limit(5)->get();
+        // if(auth()->check())
+        // {
+        //     $products_admire = ProductAdmire::where('user_id', auth()->user()->id)->pluck('product_id')->toArray();
+        //     // dd($products_admire);
+        //     return view('index', compact('products', 'products_admire'));
+        // } else{
+        //     return view('index', compact('products'));
+        $posts = Post::orderBy('created_at', 'desc')->with([
+                'user' => function($q){
+                    $q->with('profile_picture');
+                }, 
+                'comments' => function($q){
+                    $q->with(['user' => function($q){
+                        $q->with('profile_picture');
+                    }]);
+                },
+                'pictures' => function($q){
+                    $q->with('images');
+                },
+                'product'
+             ])->get();   
+        if(auth()->check()){
+            $admired = PostAdmire::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
+            $hyped = PostHype::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
+        }
+
+        return view('market.index', compact('posts', 'admired', 'hyped'));       
     }
     
     public function create(Request $request)

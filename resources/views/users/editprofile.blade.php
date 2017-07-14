@@ -36,19 +36,31 @@
 	    			<div class="col-md-7 col-sm-7 m-t-20">
 	    				<div class="row">
 	    					<div class="col-md-4 col-sm-4">
-                                <div class="card">
-                                    <div class="profile-img-holder bd-all width-185 h-261 m-r-40">
-                                        <div class="photo_wrapper h-200 p-l-5 p-t-5">
-                                            <img src="" id="post" class="h-200 width-100pf">
+                                <form method="post" action="{{ route('upload_profile_pic') }}" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                    <div class="card">
+                                        <div class="profile-img-holder width-185 h-261 m-r-40">
+                                        @if(auth()->user()->profile_picture == null)
+                                            <div class="photo_wrapper h-200 p-l-5 p-t-5">
+                                                <img src="{{ asset('img/icons/profiled.png') }}" id="post" class="h-200 width-100pf">
+                                            </div>
+                                        @else
+                                            <div class="photo_wrapper h-200 p-l-5 p-t-5">
+                                                <img src="{{ route('image', [auth()->user()->profile_picture->image_reference, '']) }}" id="post" class="h-200 width-100pf">
+                                            </div>
+                                        @endif                                            
+                                            <div class="pos-rel">
+                                                <button type="submit" class="btn btn-brand btn-flat m-l-18">
+                                                <i class="fa fa-plus-circle"></i>
+                                                Upload</button>
+                                               <input name="img_ref" type="file" class="pos-abs l-30 width-125 h-40 t-8 hide z-10" id="upload">
+                                            </div>
                                         </div>
-                                       <div class="pos-rel">
-                                            <button type="submit" class="btn btn-brand btn-flat m-l-18">
-                                            <i class="fa fa-plus-circle"></i>
-                                            Upload</button>
-                                           <input type="file" class="pos-abs l-30 width-125 h-40 t-8 hide z-10" id="upload">
-                                       </div> 
                                     </div>
-                                </div>
+                                    <div class="text-center m-t-10">
+                                        <button class="btn btn-sm btn-brand">save</button>
+                                    </div> 
+                                </form>
 	    					</div>
 	    					<div class="col-md-8 col-sm-8">
 	    						<div class="card c-dark">

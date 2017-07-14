@@ -38,14 +38,45 @@
 @section('content')   
         <section class="main">
             <div class="container bd-dark-light m-t-30 m-b-30 ">
-                <h2 class="h2-responsive m-t-20 text-center">ADD PRODUCT</h2>
+                <h2 class="h2-responsive m-t-20 text-center c-brand">ADD PRODUCT</h2><hr>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div><hr>
+                @endif
                 <form class="m-t-10 m-l-60" action="{{ route('addProduct') }}" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="">
                                 {{ csrf_field() }}
                                 <label for="product_name">Product name</label>
-                                <input type="text" name="product_name" id="usrname" class="form-control bd-3 h-40 input-alternate border-box bg-white">
+                                <input type="text" value="{{ old('product_name') }}" name="product_name" id="usrname" class="form-control bd-3 h-40 input-alternate border-box bg-white" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                       <div class="col-md-4 sm-6">
+                            <div class="">
+                                <label for="product_price">Price</label>
+                                <input type="number" value="{{ old('product_price') }}" name="product_price" class="form-control bd-3 h-40 input-alternate border-box bg-white" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                       <div class="col-md-4 sm-6">
+                            <div class="">
+                                <label for="category">Category</label>
+                                <select name="category" class="form-control bd-3 h-40 input-alternate border-box bg-white p-5" required>
+                                <option disabled selected>Please a category...</option>
+                                @foreach($product_categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -53,28 +84,7 @@
                        <div class="col-md-4 sm-6">
                             <div class="">
                                 <label for="product_description">Description</label>
-                                <textarea type="text" name="product_description" class="form-control bd-3 h-150 input-alternate border-box md-textarea bg-white"></textarea> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                       <div class="col-md-4 sm-6">
-                            <div class="">
-                                <label for="product_price">Price</label>
-                                <input type="number" name="product_price" class="form-control bd-3 h-40 input-alternate border-box bg-white">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                       <div class="col-md-4 sm-6">
-                            <div class="">
-                                <label for="category">Category</label>
-                                <select name="category" class="form-control bd-3 h-40 input-alternate border-box bg-white">
-                                @foreach($product_categories as $category)
-                                    <option>{{ $category->name }}</option>
-                                @endforeach
-                                </select>
+                                <textarea type="text" value="{{ old('product_description') }}" name="product_description" class="form-control bd-3 h-150 input-alternate border-box md-textarea bg-white"></textarea> 
                             </div>
                         </div>
                     </div>
@@ -133,7 +143,7 @@
                                </div>
                             </div>
                             <div class="dis-flex pull-left m-t-10 m-b-20">
-                             <button type="button" class="btn btn-brand">Add Product</button>
+                             <button type="submit" class="btn btn-brand">Add Product</button>
                             </div>
                         </div>
                     </div>

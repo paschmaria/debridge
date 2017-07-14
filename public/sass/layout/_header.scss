@@ -80,3 +80,7 @@ header.sticky {
     padding-bottom:5px !important;
     background-color: $brand-color-lite !important;
 }
+
+.sticky ~ .main {
+  padding-top: 154px;
+}
