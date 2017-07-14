@@ -61,9 +61,20 @@
                                         {{-- <button type="submit" class="btn btn-brand-lite btn-lg waves-effect waves-light m-0 no-shadow"><i class="fa fa-search f-17 c-dark"></i></button> --}}
                                     </span> <br> <br>
                                 </div>
-                                <div class="update search_dropdown" style="background-color:rgba(51,51,51,0.75); position: relative; width: 95.5%;">
+                                {{-- <div class="update search_dropdown" style=" background-color:white; position: relative; z-index: 20000;">
 
+                                </div> --}}
+                                <div class="dropdown">
+
+                                    <!--Trigger-->
+                                    <!--Menu-->
+                                    <div class="dropdown-menu dropdown-dark animated fadeIn" style="width: 100%; max-height: 150px; overflow-y: scroll; padding-left: 10px">
+                                        
+                                    </div>
                                 </div>
+        <!--Dropdown dark-->
+
+
                             </form>
                             
                         </div>
@@ -295,7 +306,8 @@
                     $('.search_dropdown').slimScroll({
                         // position:'absolute'
                         // position: 'relative',
-                        height: '50px'
+                        height: '0px',
+
 
                     })
                 })
