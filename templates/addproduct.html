@@ -27,16 +27,14 @@
         <!-- Your custom styles (optional) -->
         <link rel="stylesheet" href="assets/css/main.css">
         <style>
-            .width-800 {
-                    width: 850px !important;
+            .call{
+                opacity: 0;
+                position: absolute;
+                width: 100%;
+                bottom: 0px;
+                height: 30px;
+                z-index: 1000;
                 }
-                .h-800 {
-                  height: 800px !important;
-                  overflow: hidden !important;
-                }
-            .m-l-2{
-                margin-left: 2px ! important;
-            }
         </style>
     </head>
 
@@ -115,14 +113,40 @@
                                             </span>
                                         </a>
                                         <div class="dropdown-menu notify-dropdown animated bounceIn f-12" aria-labelledby="dropdownNotify">
-                                                <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">
-                                                <img src="assets/img/p-photo-6.jpeg" class="h-40 width-40 m-r-5 bd-50p">
-                                                <span>Ejike Jhud started following you</span>
-                                                </a>
-                                                <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#"><img src="assets/img/pphoto-4.jpg" class="h-40 width-40 m-r-5 bd-50p">
-                                                <span>Ejike Jhud Admired an item in your store</span></a>
-                                                <a class="dropdown-item waves-effect waves-light p-l-10" href="#"><img src="assets/img/pphoto-301.jpeg" class="h-40 width-40 m-r-5 bd-50p"><span>Ejike Jhud shared a post</span>
-                                                </a>
+                                          <h6 class="notify-header border-bottom">
+                                            Notifications
+                                          </h6>
+                                          <div class="notify"">
+                                            <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">
+                                              <img src="assets/img/p-photo-6.jpeg" class="h-40 width-40 m-r-5 bd-50p">
+                                              <span>Ejike Jhud started following you</span>
+                                            </a>
+                                            <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">
+                                              <img src="assets/img/pphoto-4.jpg" class="h-40 width-40 m-r-5 bd-50p">
+                                              <span>Ejike Jhud Admired an item in your store</span>
+                                            </a>
+                                            <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">
+                                              <img src="assets/img/pphoto-301.jpeg" class="h-40 width-40 m-r-5 bd-50p"><span>Ejike Jhud shared a post</span>
+                                            </a>
+                                            <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">
+                                              <img src="assets/img/pphoto-301.jpeg" class="h-40 width-40 m-r-5 bd-50p"><span>Ejike Jhud shared a post</span>
+                                            </a>
+                                            <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">
+                                              <img src="assets/img/pphoto-301.jpeg" class="h-40 width-40 m-r-5 bd-50p"><span>Ejike Jhud shared a post</span>
+                                            </a>
+                                            <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">
+                                              <img src="assets/img/pphoto-301.jpeg" class="h-40 width-40 m-r-5 bd-50p"><span>Ejike Jhud shared a post</span>
+                                            </a>
+                                            <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">
+                                              <img src="assets/img/pphoto-301.jpeg" class="h-40 width-40 m-r-5 bd-50p"><span>Ejike Jhud shared a post</span>
+                                            </a>
+                                            <a class="dropdown-item waves-effect waves-light p-l-10 border-bottom" href="#">
+                                              <img src="assets/img/pphoto-301.jpeg" class="h-40 width-40 m-r-5 bd-50p"><span>Ejike Jhud shared a post</span>
+                                            </a>
+                                          </div>
+                                          <a href="#" class="notify-footer border-top">
+                                            See all...
+                                          </a>
                                         </div>
                                     </li>
                                 </ul>
@@ -193,83 +217,57 @@
                         <p class="m-b-0">photo</p>
                         <h6>Ads with photo get 5x more clients. Accepted formats are .jpg, .gif and .png.</h6>
                         </div>
-                        <div class="row">
-                            <div class="col-md-2">
-                                <div class="card profile-img-holder h-200 width-150">
-                                <center style="position:absolute;width: 100%; height: 100%; ">
-                                    <img src="assets/img/icons/ic-perm-identity.png" id="post" style="position:absolute;width: 150px; height: 200px; ">
-                                </center>
-                                    
-                                   <!-- <div class="text-center m-t-10">
-                                     
-                                   </div> -->
-                                   <div class="card" style="top:80%; background-color: #a9a9a9;">
-                                     <div class="pos-rel" >
-                                            <button type="button" class="btn-flat" >
-                                            <i class="fa fa-plus-circle c-gray f-12 m-r-10">&nbsp;&nbsp;</i>Add photo
-                                            </button>
-                                            <input type="file" id="upload" class="pos-abs hide width-130 l-6 b-5 z-100">
-                                        </div>  
-                                   </div>     
-                               </div> 
-                            </div>
-                            <div class="col-md-2">
-                                <div class="card bd-dark-light h-200 width-150 m-l-20">
-                               <div class="text-center m-t-60">
-                                    <i class="fa fa-user-o fa-5x c-gray" aria-hidden="true"></i>
-                               </div>
-                                <div class="pos-rel">
-                                        <button type="button" class="btn btn-sm m-t-30">
-                                        <i class="fa fa-plus-circle c-gray f-12 m-r-10">&nbsp;&nbsp;</i>Add photo
-                                        </button>
-                                        <input type="file" class="pos-abs hide width-130 l-6 b-5 z-100">    
-                                    </div>
-                               </div>  
-                            </div>
-                            <div class="col-md-2">
-                                <div class="card bd-dark-light h-200 width-150 m-l-40">
-                                    <div class="text-center m-t-60">
-                                    <i class="fa fa-user-o fa-5x c-gray" aria-hidden="true"></i>
-                                </div>
-                                <div class="pos-rel">
-                                   <button type="button" class="btn btn-sm m-t-30">
-                                        <i class="fa fa-plus-circle c-gray f-12 m-r-10">&nbsp;&nbsp;</i>Add photo
-                                        </button>
-                                        <input type="file" class="pos-abs hide width-130 l-6 b-5 z-100">     
-                                    </div>
-                               </div>  
-                            </div>
-                            <div class="col-md-2">
-                                <div class="card bd-dark-light h-200 width-150 m-l-60">
-                               <div class="text-center m-t-60">
-                                    <i class="fa fa-user-o fa-5x c-gray" aria-hidden="true"></i>
-                               </div>
-                                <div class="pos-rel">
-                                    <button type="button" class="btn btn-sm m-t-30">
-                                        <i class="fa fa-plus-circle c-gray f-12 m-r-10">&nbsp;&nbsp;</i>Add photo
-                                    </button>
-                                    <input type="file" class="pos-abs hide width-130 l-6 b-5 z-100">     
-                                </div>
-                               </div>  
-                            </div>
-                            <div class="col-md-2">
-                                <div class="card bd-dark-light h-200 width-150 m-l-78">
-                                <div class="img"></div>
-                               <div class="text-center m-t-60">
-                                    <i class="fa fa-user-o fa-5x c-gray" aria-hidden="true"></i>
-                               </div>
-                                <div class="pos-rel">
-                                    <button type="button" class="btn btn-sm m-t-30">
-                                        <i class="fa fa-plus-circle c-gray f-12 m-r-10">&nbsp;&nbsp;</i>Add photo
-                                    </button>
-                                    <input type="file" class="pos-abs hide width-130 l-6 b-5 z-100">     
-                                </div> 
-                            </div>
+                        <div class="dis-flex flex-row justify-content-between">
+                           <div class="m-5">
+                              <div class="card h-200 width-150">
+                                <img src="assets/img/icons/ic-perm-identity.png" alt="" class="h-200 width-150 p-5">
+                                <input type="file" name="img"  value="" class="call">
+                                <button type="button"  id="" class="btn-flat call_1 h-20 p-0 c-gray">
+                                    <i class="fa fa-plus-circle"></i><span> Add photo</span>
+                                </button>
+                              </div>
+                           </div>
+                           <div class="m-5">
+                            <div class="card h-200 width-150">
+                                <img src="assets/img/icons/ic-perm-identity.png" alt="" class="h-200 width-150 p-5">
+                                <input type="file" name="img"  value="" class="call">
+                                <button type="button"  id="" class="btn-flat call_1 h-20 p-0 c-gray">
+                                    <i class="fa fa-plus-circle"></i><span> Add photo</span>
+                                </button>
+                              </div>
+                           </div>
+                           <div class="m-5">
+                            <div class="card h-200 width-150">
+                                <img src="assets/img/icons/ic-perm-identity.png" alt="" class="h-200 width-150 p-5">
+                                <input type="file" name="img"  value="" class="call">
+                                <button type="button"  id="" class="btn-flat call_1 h-20 p-0 c-gray">
+                                    <i class="fa fa-plus-circle"></i><span> Add photo</span>
+                                </button>
+                              </div>
+                           </div>
+                           <div class="m-5">
+                            <div class="card h-200 width-150">
+                                <img src="assets/img/icons/ic-perm-identity.png" alt="" class="h-200 width-150 p-5">
+                                <input type="file" name="img"  value="" class="call">
+                                <button type="button"  id="" class="btn-flat call_1 h-20 p-0 c-gray">
+                                    <i class="fa fa-plus-circle"></i><span> Add photo</span>
+                                </button>
+                              </div>
+                           </div>
+                           <div class="m-5">
+                              <div class="card h-200 width-150">
+                                <img src="assets/img/icons/ic-perm-identity.png" alt="" class="h-200 width-150 p-5">
+                                <input type="file" name="img"  value="" class="call">
+                                <button type="button"  id="" class="btn-flat call_1 h-20 p-0 c-gray">
+                                    <i class="fa fa-plus-circle"></i><span> Add photo</span>
+                                </button>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="dis-flex pull-left m-t-20">
+                         <button type="button" class="btn btn-lg btn-outline-brand m-t-20 h-40 width-100">Post</button>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <button type="button" class="btn btn-lg btn-outline-brand m-t-20">Post</button>
                 </div>
             </form>
           </div>
@@ -293,34 +291,20 @@
 
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="assets/plugins/mdb/js/mdb.min.js"></script>
+        
+        <!-- slimscroll JavaScript -->
+        <script type="text/javascript" src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
         <!-- Main JS -->
         <script type="text/javascript" src="assets/js/main.js"></script>
         <script type="text/javascript">
             document.onreadystatechange = () => {
                 if (document.readyState === "complete") {
-                    var app2 = {
-                        imageHandler:function (){
-                            $('#upload').on('change', function(){
-                                //alert("alert");
-                                readUrl();
-                            });
-                            function readUrl(argument) {
-                                var file = $("#upload")[0].files[0];
-                                //console.log(file);
-                                var reader = new FileReader();
-                                reader.onloadend = function () {
-                                    //console.log(reader.result);
-                                    $("#post").attr('src', reader.result);
-                                }
-                                if(file){
-                                    reader.readAsDataURL(file);
-                                }
-                            }
-                        }
-                    }
-                    app2.imageHandler();
+                    app.addProductImageHandler();
                     app.stickyHeader();
+                    $('.notify').slimScroll({
+                        height: '300px'
+                    });
                 }
             }
         </script>

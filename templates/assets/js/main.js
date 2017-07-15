@@ -542,13 +542,24 @@ const app = {
           }
  		});
     },
-    LogIn() {
-    	$('#Send').click(function(){
- 			if((document.getElementById("username").value == "")){
- 				document.getElementById("error_username").innerHTML = "provide a password";
- 				return false;
- 			}
- 		});
+    addProductImageHandler() {
+        $('input').on('change', function(){
+            //alert("alert");
+            //console.log($(this));
+            readUrl($(this));
+        });
+        function readUrl(argument) {
+            var file = argument[0].files[0];
+            //console.log(argument[0]);
+            var reader = new FileReader();
+            reader.onloadend = function () {
+                //console.log(argument[0].previousElementSibling());
+                argument.prev().attr('src', reader.result);
+            }
+            if(file){
+                reader.readAsDataURL(file);
+            }
+        }
     }
     
 }

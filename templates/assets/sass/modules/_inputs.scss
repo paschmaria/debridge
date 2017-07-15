@@ -4,6 +4,14 @@
 	&:hover {
 		@include shadow((0 3px 8px 0 rgba(0,0,0,.2),0 0 0 1px rgba(0,0,0,.08)));
 	}
+
+    & input[type="text"].no-shadow { 
+        @include prefix(box-shadow, none !important, webkit ms);
+
+        &:hover, &:active, &:visited {
+            @include prefix(box-shadow, none !important, webkit ms);
+        }
+    }
 }
 
 .form-control {
@@ -71,4 +79,8 @@ header input[type=search].input-alternate {
 .checkbox input[type="checkbox"]:checked + label {
     background: $brand-color;
     background-color: $brand-color;
+}
+
+.e-date1{
+    margin-bottom: 6px!important;
 }

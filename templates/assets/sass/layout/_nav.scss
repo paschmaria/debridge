@@ -57,3 +57,39 @@
 .page-item:not(.disabled):not(.active) .page-link{
 	color: $brand-color;
 }
+
+.notify-header {
+	width: 100%;
+	padding: 3px 1.5rem;
+	clear: both;
+	color: #292b2c;
+	text-align: center;
+	white-space: nowrap;
+	background: none;
+	padding-bottom:10px;
+	margin:0;
+}
+
+.notify {
+	height: 200px; 
+	overflow-y: scroll;
+}
+
+.notify-footer {
+	display: block;
+	width: 100%;
+	padding: 3px 1.5rem;
+	clear: both;
+	color: #292b2c;
+	text-align: center;
+	white-space: nowrap;
+	background: none;
+	padding-top:10px;
+}
+
+.tab-prop {
+	background:$grey-color;
+	color:$white-color;
+	text-align:center;
+	font-size:14px;
+}
