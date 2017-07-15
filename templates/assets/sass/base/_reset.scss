@@ -11,7 +11,6 @@ html,body{
     padding: 0px;
     width: 100%;
 }
-
 html{
     min-height: 100%;
 }
@@ -48,7 +47,6 @@ body{
 .m-t-40{margin-top:40px !important;}
 .m-t-50{margin-top:50px !important;}
 .m-t-60{margin-top:60px !important;}
-.m-t-80{margin-top:80px !important;}
 .m-t-120{margin-top:120px !important;}
 .m-t-180{margin-top:180px !important;}
 .m-t-m20{margin-top:-20px !important;}
@@ -139,7 +137,6 @@ body{
 .p-b-30 {padding-bottom:30px !important;}
 .p-b-35 {padding-bottom:35px !important;}
 .p-b-43 {padding-bottom:43px !important;}
-
  
 /****  Padding Left  ****/
 .p-l-0 {padding-left:0px !important;}
@@ -337,6 +334,7 @@ img.img-right { border: 1px solid #ccc; float: right; margin-left: 15px; padding
 
 a, a:focus, a:hover, a:active {  outline: 0;}
 .appear-none {-webkit-appearance:none;}
+
 /****  Font Size  ****/
 .f-12{font-size:12px !important;}
 .f-14{font-size:14px !important;}
@@ -364,7 +362,6 @@ a, a:focus, a:hover, a:active {  outline: 0;}
 .w-900 {font-weight:900 !important;}
 
 /****  Font Color  ****/
-
 .c-brand {color: $brand-color !important;}
 .c-red {color: $red-color !important;}
 .c-blue {color: $blue-color !important;}
@@ -403,11 +400,11 @@ a, a:focus, a:hover, a:active {  outline: 0;}
 .border-box { box-sizing: border-box !important; }
 .content-box { box-sizing: content-box !important; }
 
-
 .help-block {color: #AFAAAA;font-weight: 500;font-size: 12px;}
 .line-through{text-decoration: line-through;}
 .t-ellipsis {text-overflow: ellipsis;display: block;white-space: nowrap;overflow: hidden;}
 
+.no-shadow { @include prefix(box-shadow, none !important, webkit ms); }
 /* =====GENERAL CSS STYLING END==== */
 
 /* =====CUSTOM CSS STYLING==== */
