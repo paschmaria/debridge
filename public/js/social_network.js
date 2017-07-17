@@ -440,24 +440,33 @@ $("#querySelector").on("keyup", function(e){
                          type: "GET",
                          data: {user:search_input},
                          success: function(data){
-                            console.log(data);
-                              var output = '<ul class="suggestions"  >';
-                              // console.log(response.data);
-                              $.each(data.results, function(key, val){
-                                // console.log(val);
-                                if (data.results.length > 0 ) {
-                                    output += '<li class="z-1000" ">';
-                                    // output += '<div class="">'+
-                                    output += '<span class="text-center">' + '<a class="p-l-20 c-brand" href='+val.link+'>' + val.name +'</a>' + '</span>'+
-                                          '<small class="text-center price c-gray">' + " " + "" +val.type + "" + '</small><br>'
-                                      '</div>';
-                                    output += '</li> <hr>';                                    
-                                }else if(data.results.length <= 0 ){
-                                    // output += '<li class="z-1000" > No Result found for + </li>';
-                                    // alert('null');
-                                }
-                              });
-                              output += '</ul>';
+                            // console.log(data);
+                        var output = '<ul class="suggestions"  >';                            
+                            if(data.results.length > 0){
+                                // console.log(response.data);
+                                $.each(data.results, function(key, val){
+                                    // console.log(val);
+                                    if (data.results.length > 0 ) {
+                                        // alert('true');
+                                        output += '<a href="www.facebook.com" >'+' <li class="z-1000" ">';
+                                        // output += '<div class="">'+
+                                        output += '<span class="text-center">' + '<a class="p-l-20 c-brand" href='+val.link+'>' + val.name +'</a>' + '</span>'+
+                                            '<small class="text-center price c-gray">' + " " + "" +val.type + "" + '</small><br>'
+                                        '</div>';
+                                        output += '</li> </a> <hr>';                                    
+                                    
+                                    }
+                                });
+                            }else{
+                                        output += '<li class="z-1000" ">';
+                                        // output += '<div class="">'+
+                                        output += '<span class="text-center">' + '<a class="p-l-20 c-brand" >' +'No result found for "'+ search_input+'" </a>' + '</span>'+
+                                              '<small class="text-center price c-gray">' + " " + "" + '</small><br>'
+                                          '</div>';
+                                        output += '</li> <hr>';   
+                                        // output += '<li class="z-1000" > No Result found for + </li>';
+                            }
+                            output += '</ul>';
 
                             $(".dropdown-dark").html(output);
                             // }
