@@ -237,8 +237,7 @@ class ProductController extends Controller
           
             return view('merchant.products', compact('products', 'product_of_the_week', 'diff_in_days', 'hottest', 'admired', 'hyped', 'admired_count', 'hyped_count'));
         }else {
-            // dd('hello');
-            $admired = ProductAdmire::where(['user_id' => auth()->user()->id])->pluck('product_id')->toArray();
+            // dd('hello');  => auth()->user()->id])->pluck('product_id')->toArray();
             $hyped = ProductHype::where(['user_id' => auth()->user()->id])->pluck('product_id')->toArray();
 
             $admired_count = ProductAdmire::all();
@@ -389,8 +388,8 @@ class ProductController extends Controller
         $user = $product->inventory->merchant->user;
         $merchant = $product->inventory->merchant;
         // dd($merchant);
-        $product_of_the_week = ProductOfTheWeek::where('merchant_account_id', $merchant->id)->first();
-        $merchant = MerchantAccount::firstOrCreate(['user_id' => $user->id]);
+        // $product_of_the_week = ProductOfTheWeek::where('merchant_account_id', $merchant->id)->first();
+        // $merchant = MerchantAccount::firstOrCreate(['user_id' => $user->id]);
         $product_of_the_week = ProductOfTheWeek::firstOrCreate(['merchant_account_id' => $merchant->id]);
         // dd(empty($product_of_the_week));
 
@@ -420,7 +419,7 @@ class ProductController extends Controller
             }
         }
 
-        if($product_of_the_week!=null){
+        if($product_of_the_week != null){
             // dd('net');ll
             $current_time = date('Y-m-d');
             $product_of_the_week_updated = date('Y-m-d', strtotime($product_of_the_week->updated_at));

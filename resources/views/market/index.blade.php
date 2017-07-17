@@ -117,6 +117,7 @@
                     <div class="c-brand p-5">
                         <h2 class="text-left h2-responsive f-32">THE NIGERIAN MARKET</h2>
                         <p class="text-right text-fluid f-20">...The Largest African Market</p>
+                        <input type="hidden" name="timestamp" id="timestamp" value="{{ $timestamp }}">
                     </div>
                 </div>                
             </div>
@@ -214,9 +215,9 @@
                     @endif
                     <nav class="navbar user-type-navbar no-shadow">
                         <ul class="nav user-type-nav text-center">
-                            <li class="nav-item"><a class="nav-link hover-underline active" href="#">ALL</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="#">MERCHANT</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="#">INDIVIDUALS</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline active" href="{{ route('nigeria') }}">ALL</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('nigeria', 'merchant') }}">MERCHANT</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('nigeria', 'user') }}">INDIVIDUALS</a></li>
                         </ul>
                     </nav>
                     @forelse ($posts as $post)

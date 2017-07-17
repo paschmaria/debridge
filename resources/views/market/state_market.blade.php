@@ -212,9 +212,9 @@
                     @endif
                     <nav class="navbar user-type-navbar no-shadow">
                         <ul class="nav user-type-nav text-center">
-                            <li class="nav-item"><a class="nav-link hover-underline active" href="{{ route('index') }}">ALL</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('index') }}?type=merchant">MERCHANT</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('index') }}?type=user">INDIVIDUALS</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline active" href="{{ route('state_market', $reference) }}">ALL</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('state_market', [$reference, 'merchant']) }}">MERCHANT</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('state_market', [$reference, 'user']) }}">INDIVIDUALS</a></li>
                         </ul>
                     </nav>
                     @forelse ($posts as $post)

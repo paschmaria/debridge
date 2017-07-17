@@ -17,6 +17,7 @@
 Route::get('/search/user/{search}', 'Search\UserSearchController@search')->name('search_user'); 
 
 Route::get('/', 'Auth\UserController@index')->name('index'); 
+Route::get('/nigeria/market/{filter?}', 'Auth\UserController@index')->name('nigeria'); 
 
 Route::get('/logout', 'User\FriendsController@user_logout')->name('logout');
 
@@ -209,7 +210,7 @@ Route::post('/users/profile/edit/password', 'User\ProfileController@changePasswo
 Route::get('hottest_product/{reference}', 'Merchant\ProductController@hottestProduct')->name('hottest_products');
 Route::get('trade_request', 'Merchant\TradeRequestController@showMerchants')->name('trade_request')->middleware('merchant');
 // Route::post('trade_request/{reference}', 'Merchant\TradeRequestController')->name('trade_request')->middleware('merchant');
-Route::get('/state/market/{reference}', 'User\StateMarketController@show')->name('state_market');//->middleware('auth');
+Route::get('/state/market/{reference}/{filter?}', 'User\StateMarketController@show')->name('state_market');//->middleware('auth');
 
 Route::get('tradeline/{reference}', 'User\TradelineController@index')->name('tradeline')->middleware('auth');
 

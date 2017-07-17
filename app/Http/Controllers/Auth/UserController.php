@@ -21,6 +21,7 @@ use App\Models\ProductAdmire;
 use App\Models\Post;
 use App\Models\PostAdmire;
 use App\Models\PostHype;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -40,31 +41,12 @@ class UserController extends Controller
         return view('register1', compact('roles', 'states', 'trade_communities'));
     }
 
-    public function index(){
-        // $auth_following_id = auth()->user()->following->pluck('id')->toArray();
-        // // dd($auth);
-        // $merchants = MerchantAccount::whereIn('user_id', $auth_following_id)->with(['inventory' => function($q){
-        //     $q->with('products');
-        // }])->get();
-    
-        // $inventories = $merchants->map(function($q){
-        //     return $q->inventory;
-        // });
+    protected function isValidPageNumber($page)
+    {
+        return $page >= 2 && filter_var($page, FILTER_VALIDATE_INT) !== false;
+    }
 
-        // $products = $inventories->flatMap(function($q){
-        //     if($q != null){
-        //         return $q->products;
-        //     }
-        // });
-        // dd($products);
-        // $products = Product::inRandomOrder()->limit(5)->get();
-        // if(auth()->check())
-        // {
-        //     $products_admire = ProductAdmire::where('user_id', auth()->user()->id)->pluck('product_id')->toArray();
-        //     // dd($products_admire);
-        //     return view('index', compact('products', 'products_admire'));
-        // } else{
-        //     return view('index', compact('products'));
+    public function index($filter = null, Request $request){
         $posts = Post::orderBy('created_at', 'desc')->with([
                 'user' => function($q){
                     $q->with('profile_picture');
@@ -78,13 +60,39 @@ class UserController extends Controller
                     $q->with('images');
                 },
                 'product', 'admires'
-             ])->get();   
+             ]);//->get();   
         if(auth()->check()){
             $admired = PostAdmire::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
             $hyped = PostHype::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
         }
+        //on page load from url page is null there intialize the timestamp
+        if ( $request->page == null && $request->timestamp == null) {
+            $timestamp = Carbon::now();
+        } else {
+            $timestamp = $request->timestamp;
+        }
 
-        return view('market.index', compact('posts', 'admired', 'hyped'));       
+        $posts = $posts->where('created_at','<=',$timestamp);
+        // get the user role in the role model...
+        $user_role = Role::where('name', 'User')->pluck('id')->toArray();
+        // get the ids of all user with the role 'user'
+        $user_ids = User::whereIn('role_id', $user_role)->pluck('id')->toArray();
+
+        //filter the output based on the filter parameter
+        if (strtolower($filter) == 'user') {
+            $posts = $posts->whereIn('user_id', $user_ids)->paginate(15);
+        } elseif (strtolower($filter) == 'merchant') {
+            $posts = $posts->whereNotIn('user_id', $user_ids)->paginate(15);
+        } else {
+            // for blank and any other type of filter
+            $posts = $posts->paginate(15);
+        }
+        
+        if($this->isValidPageNumber($request->page) && $timestamp){
+            return response()->json(compact('posts', 'admired', 'hyped', 'timestamp')); 
+        } else {
+            return view('market.index', compact('posts', 'admired', 'hyped', 'timestamp')); 
+        }      
     }
     
     public function create(Request $request)
