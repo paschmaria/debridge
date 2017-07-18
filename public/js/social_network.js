@@ -441,16 +441,16 @@ $("#querySelector").on("keyup", function(e){
                          data: {user:search_input},
                          success: function(data){
                             // console.log(data);
-                        var output = '<ul class="suggestions"  >';                            
+                        var output = '<ul class="suggestions "  >';                            
                             if(data.results.length > 0){
                                 // console.log(response.data);
                                 $.each(data.results, function(key, val){
                                     // console.log(val);
                                     if (data.results.length > 0 ) {
                                         // alert('true');
-                                        output += '<a href="www.facebook.com" >'+' <li class="z-1000" ">';
+                                        output += '<a href="" >'+' <li class="z-1000" ">';
                                         // output += '<div class="">'+
-                                        output += '<span class="text-center">' + '<a class="p-l-20 c-brand" href='+val.link+'>' + val.name +'</a>' + '</span>'+
+                                        output += '<span class="text-center hover">' + '<a class="p-l-20 c-brand" href='+val.link+'>' + val.name +'</a>' + '</span>'+
                                             '<small class="text-center price c-gray">' + " " + "" +val.type + "" + '</small><br>'
                                         '</div>';
                                         output += '</li> </a> <hr>';                                    
