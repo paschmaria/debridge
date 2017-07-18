@@ -5,13 +5,20 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\State;
+use App\Models\Role;
+use App\User;
 use App\Models\TradeCommunity;
 use App\Models\PostAdmire;
 use App\Models\PostHype;
 
 class StateMarketController extends Controller
 {
-    public function show($reference)
+    protected function isValidPageNumber($page)
+    {
+        return $page >= 2 && filter_var($page, FILTER_VALIDATE_INT) !== false;
+    }
+
+    public function show($reference, $filter = null, Request $request)
     {
     	$state = State::where('name', $reference)->with(['trade_communities' => function ($q){
     		$q->with(['users' => function ($q){
@@ -47,7 +54,30 @@ class StateMarketController extends Controller
             $hyped = PostHype::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
         }
     	
+        // get the user role in the role model...
+        $user_role = Role::where('name', 'user')->pluck('id')->toArray();
+        // get the ids of all user with the role 'user'
+        $user_ids = User::whereIn('role_id', $user_role)->pluck('id')->toArray();
 
-    	return view('market.state_market', compact('posts', 'admired', 'hyped', 'state'));
+        //filter the output based on the filter parameter
+        if (strtolower($filter) == 'user') {
+            $posts = $posts->whereIn('user_id', $user_ids);
+        } elseif (strtolower($filter) == 'merchant') {
+            $posts = $posts->whereNotIn('user_id', $user_ids);
+        } else {
+            // for blank and any other type of filter
+            //$posts = $posts;
+        }
+
+        // manual pigination since $posts is not a query builder but a colletion
+        if (!$this->isValidPageNumber($request->page)) {
+            $posts =  $posts->splice(0,15);
+        } else {
+            $start =  15 + (((int)$request->page - 2) * 15);
+            $end = $start + 15;
+            $posts =  $posts->splice($start, $end);
+        }
+
+    	return view('market.state_market', compact('posts', 'admired', 'hyped', 'state', 'reference'));
     }
 }
