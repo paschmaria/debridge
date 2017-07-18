@@ -41,7 +41,7 @@ class AdmireController extends Controller
         return response()-json([
             'count' => $post->admires->count() 
             ]);   
-        return back()->with('success', 'Admired!');
+        // return back()->with('success', 'Admired!');
     }
 
     /**
