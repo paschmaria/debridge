@@ -54,10 +54,11 @@ class FollowController extends Controller
 
         $following_count = count($user->following);
 
-        if (!$this->isValidPageNumber($request->next)) {
+        // manual pigination since $following is not a query builder but a colletion
+        if (!$this->isValidPageNumber($request->page)) {
             $following =  $user->following->sortBy('first_name')->splice(0,20);
         } else {
-            $start =  20 + (((int)$request->next - 2) * 10);
+            $start =  20 + (((int)$request->page - 2) * 10);
             $end = $start + 10;
             $following =  $user->following->sortBy('name')->splice($start, $end);
         }
@@ -74,10 +75,10 @@ class FollowController extends Controller
 
         $followers_count =  count($user->followers);
 
-        if (!$this->isValidPageNumber($request->next)) {
+        if (!$this->isValidPageNumber($request->page)) {
             $followers = $user->followers->sortBy('first_name')->splice(0,20);
         } else {
-            $start =  20 + (((int)$request->next - 2) * 10);
+            $start =  20 + (((int)$request->page - 2) * 10);
             $end = $start + 10;
             $followers =  $user->followers->sortBy('name')->splice($start, $end);
         }

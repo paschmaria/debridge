@@ -238,6 +238,8 @@
 
         <!-- Main JS -->
         <script type="text/javascript" src="{{ asset('js/main.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('js/social_onscroll.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('js/moment.js')}}"></script>
 
         <!-- slimscroll JavaScript -->
         <script type="text/javascript" src="{{ asset('plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
@@ -295,25 +297,22 @@
                     app.stickyHeader();
                     app.productImageUpload(4);
 
-                }
-                $(function(){
                     $('.notify').slimScroll({
                         height: '300px'
                     });
-                });
 
-                $(function(){
                     $('.search_dropdown').slimScroll({
                         // position:'absolute'
                         // position: 'relative',
                         height: '0px',
+                    });
 
-
-                    })
-                })
+                }
             };
         </script> 
 
+        @yield('scripts')
+        
      <script type="text/javascript">
         toastr.options.preventDuplicates = true;
         // toastr.success("ola");
@@ -353,7 +352,7 @@
           toastr.error("{{$errors->first('image_reference')}}");
         @endif
       </script>
-      @yield('scripts')
+      
 
     </body>
 
