@@ -64,6 +64,7 @@ class UserController extends Controller
         if(auth()->check()){
             $admired = PostAdmire::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
             $hyped = PostHype::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
+            $user_pic = auth()->user()->profile_picture;
         }
         //on page load from url page is null there intialize the timestamp
         if ( $request->page == null && $request->timestamp == null) {
@@ -72,7 +73,7 @@ class UserController extends Controller
             $timestamp = $request->timestamp;
         }
 
-        $posts = $posts->where('created_at','<=',$timestamp);
+        $posts = $posts->where('created_at','<=', $timestamp);
         // get the user role in the role model...
         $user_role = Role::where('name', 'User')->pluck('id')->toArray();
         // get the ids of all user with the role 'user'
@@ -87,9 +88,13 @@ class UserController extends Controller
             // for blank and any other type of filter
             $posts = $posts->paginate(15);
         }
-        
+
         if($this->isValidPageNumber($request->page) && $timestamp){
-            return response()->json(compact('posts', 'admired', 'hyped', 'timestamp')); 
+            // return response()->json([
+            //     compact('posts', 'admired', 'hyped', 'timestamp', 'user_pic'), 
+            //     'auth' => auth()->check(),
+            //     ]);  
+            return view('market.partials.timeline', compact('posts', 'admired', 'hyped', 'timestamp')); 
         } else {
             return view('market.index', compact('posts', 'admired', 'hyped', 'timestamp')); 
         }      

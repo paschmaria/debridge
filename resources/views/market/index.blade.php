@@ -183,7 +183,7 @@
                     </div>
                     <!--/.Card-->
                 </div>
-                <div class="col col-sm-6 col-md-6">
+                <div class="col col-sm-6 col-md-6" id="timeline">
                     
                     @if(auth()->check()) 
                         <div class="card m-t-10 p-18 m-b-20">    
@@ -250,11 +250,11 @@
                             </div>
                             @if($post->pictures != null)
                                 <div class="m-t-10">
-                                    <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+                                    <div id="myCarousel{{ $post->id }}" class="carousel slide carousel-fade" data-ride="carousel">
                                         <!--Indicators-->
                                         <ol class="carousel-indicators">
                                             @for ($i = 0; $i < count($post->pictures->images); $i++)
-                                                <li data-target="#myCarousel" data-slide-to="{{ $i }}" @if($i === 0 )class="active"@endif></li>
+                                                <li data-target="#myCarousel{{ $post->id }}" data-slide-to="{{ $i }}" @if($i === 0 )class="active"@endif></li>
                                             @endfor
                                         </ol>
                                         <!--/.Indicators-->
@@ -270,11 +270,11 @@
                                         <!--/.Slides-->
 
                                         <!--Controls-->
-                                        <a class="left carousel-control pos-abs l-15 t-40" href="#myCarousel" role="button" data-slide="prev">
+                                        <a class="left carousel-control pos-abs l-15 t-40" href="#myCarousel{{ $post->id }}" role="button" data-slide="prev">
                                             <span class="fa fa-chevron-left f-24 c-dark" aria-hidden="true"></span>
                                             <span class="sr-only">Previous</span>
                                         </a>
-                                        <a class="right carousel-control pos-abs r-15 t-40" href="#myCarousel" role="button" data-slide="next">
+                                        <a class="right carousel-control pos-abs r-15 t-40" href="#myCarousel{{ $post->id }}" role="button" data-slide="next">
                                             <span class="fa fa-chevron-right c-dark f-24" aria-hidden="true"></span>
                                             <span class="sr-only">Next</span>
                                         </a>
@@ -493,11 +493,27 @@
  @endsection  
 
  @section('scripts') 
-  {{--   <script>
-        // document.onreadystatechange = () => {
-        //     if (document.readyState === "complete") {
-        //         app.productImageUpload(4);
-        //     }
-        // }
-    </script> --}}
+    <script>
+        $(document).ready(function () {
+            $(window).scroll(function(){
+                var timestamp = $('#timestamp').val();
+                var scroll_height = $(window).scrollTop() + $(window).height();
+                var doc_height = $(document).height();
+                var page = 2;
+                if ( scroll_height === doc_height ) {
+                    $.ajax({
+                        url:'/',
+                        type:'GET',
+                        data:{'page': page, 'timestamp': timestamp},
+                        success:function(data){
+                            $('#timeline').append(data) ;
+                        },
+                        error: function (data) {
+                            
+                        }
+                    });
+                }
+            });
+        }); 
+    </script>
  @endsection   

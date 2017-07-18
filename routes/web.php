@@ -29,11 +29,11 @@ Route::post('/post', 'User\PostController@store')->name('create_post');
 
 Route::post('/comment/{post}', 'User\CommentController@store')->name('create_comment');
 
-Route::get('/hype/{post}', 'User\HypeController@create')->name('hype');
+Route::get('/hype/{reference}', 'User\HypeController@create')->name('hype');
 
 Route::post('/product_hype/{product}', 'Merchant\ProductController@product_hype')->name('product_hype');
 
-Route::get('/admire/{post}', 'User\AdmireController@create')->name('admire');
+Route::get('/admire/{reference}', 'User\AdmireController@create')->name('admire');
 Route::get('/unadmire/{reference}', 'User\AdmireController@destroy')->name('unadmire');
 
 Route::get('/product_admire/{reference}', 'User\ProductAdmireController@create')->name('product_admire');
