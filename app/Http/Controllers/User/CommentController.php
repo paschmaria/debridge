@@ -43,12 +43,14 @@ class CommentController extends Controller
     {
         $post = Post::where('reference', $reference)->first();
         $this->validate($request, ['content' => 'required|string|max:255']);
-        Comment::create([
+        $comment = Comment::create([
             'content' => $request->content,
             'user_id' => auth()->user()->id,
             'post_id' => $post->id
             ]);
-        return response('')
+        return response()->json([
+            'success' => $comment
+        ]);    
         // $request->session()->flash('success', 'Comment succesful');
         // return back();
     }

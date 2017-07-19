@@ -222,7 +222,7 @@
                                 </button></a>
                                 @endif
                                 <a href="#">
-                                <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14" data-toggle="modal">
+                                <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 " data-toggle="modal">
                                     <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-envelope"></i></span>
                                 </button></a>
                                 <a href="">
@@ -280,7 +280,7 @@
                             </div>
                         </div>
                         @empty
-                        <p>nothing</p>
+                        <p>No Post was Found you can tell us whats on you mind by creating a new <a href="{{url('/')}}">post</a> </p>
                         @endforelse
 
 
@@ -358,4 +358,4 @@
           </div>
         </section>
         <!-- main section ends here-->
-    @endsection('content')    
+    @endsection
