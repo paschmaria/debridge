@@ -497,6 +497,7 @@
         $(document).ready(function () {
             $(window).scroll(function(){
                 var timestamp = $('#timestamp').val();
+                // console.log(timestamp);
                 var scroll_height = $(window).scrollTop() + $(window).height();
                 var doc_height = $(document).height();
                 var page = 2;
@@ -506,10 +507,12 @@
                         type:'GET',
                         data:{'page': page, 'timestamp': timestamp},
                         success:function(data){
+                            console.log(data);
+
+
                             $('#timeline').append(data) ;
                         },
                         error: function (data) {
-                            
                         }
                     });
                 }
