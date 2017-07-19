@@ -66,7 +66,7 @@ class UserController extends Controller
             $hyped = PostHype::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
             $user_pic = auth()->user()->profile_picture;
         }
-        //on page load from url page is null there intialize the timestamp
+        //on page load from url page is null there intialize the timestamp by with the post is being filtered
         if ( $request->page == null && $request->timestamp == null) {
             $timestamp = Carbon::now();
         } else {
@@ -74,6 +74,7 @@ class UserController extends Controller
         }
 
         $posts = $posts->where('created_at','<=', $timestamp);
+        
         // get the user role in the role model...
         $user_role = Role::where('name', 'User')->pluck('id')->toArray();
         // get the ids of all user with the role 'user'
