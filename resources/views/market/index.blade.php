@@ -495,11 +495,11 @@
  @section('scripts') 
     <script>
         $(document).ready(function () {
+            var page = 2;
             $(window).scroll(function(){
                 var timestamp = $('#timestamp').val();
                 var scroll_height = $(window).scrollTop() + $(window).height();
                 var doc_height = $(document).height();
-                var page = 2;
                 if ( scroll_height === doc_height ) {
                     $.ajax({
                         url:'/',
@@ -512,6 +512,8 @@
                             
                         }
                     });
+                    page += 1;
+                    console.log(page)
                 }
             });
         }); 
