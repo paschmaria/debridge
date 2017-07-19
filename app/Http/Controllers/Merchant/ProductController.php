@@ -62,7 +62,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * create a new product.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -103,11 +103,11 @@ class ProductController extends Controller
             $product->photo_album_id = $album;
         }
 
-        if ($product->promo_price) {
-            $price = $product->promo_price;
-        } else {
-            $price = $product->price;
-        }
+        // if ($product->promo_price) {
+        //     $price = $product->promo_price;
+        // } else {
+        //     $price = $product->price;
+        // }
 
         $product->inventory()->associate($inventory);
         $product->save();
@@ -184,6 +184,7 @@ class ProductController extends Controller
         if(!$product){
              return back()->with('info', 'Product does not exist!');
         }
+        $product->delete();
         return back()->with('info', 'Product Deleted Sucessfully');
     }
 
@@ -191,7 +192,7 @@ class ProductController extends Controller
         //get or create merchant acount and inventory
         $merchant = MerchantAccount::firstOrCreate(['user_id' => auth()->user()->id]);
         $inventory = Inventory::firstOrCreate(['merchant_account_id' => $merchant->id]);
-        $products = Product::where('inventory_id', $inventory->id)->get();
+        $products = $inventory->products; 
         $product_of_the_week = ProductOfTheWeek::where('merchant_account_id', $merchant->id)->first();
         
         //hottest deal button status

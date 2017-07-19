@@ -41,7 +41,7 @@ Route::get('/product_unadmire/{reference}', 'User\ProductAdmireController@destro
 
 
 
-Route::get('/timeline/{reference}', 'User\TimelineController@index')->name('timeline');
+Route::get('/timeline/{reference}/{filter?}', 'User\TimelineController@index')->name('timeline');
 
 Route::get('/users/follow/friends', 'FollowController@getUser')->name('follow_friends');
 Route::get('/users/follow/merchants', 'FollowController@getMerchant')->name('follow_merchants');

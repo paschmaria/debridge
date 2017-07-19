@@ -30,6 +30,7 @@ class HottestProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function create(Product $product)
     {
         $hot_prod  = HottestProduct::firstOrCreate(['merchant_account_id' => auth()->user()->merchant_account->id]);

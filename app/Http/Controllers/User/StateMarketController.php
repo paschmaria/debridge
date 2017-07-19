@@ -10,6 +10,7 @@ use App\User;
 use App\Models\TradeCommunity;
 use App\Models\PostAdmire;
 use App\Models\PostHype;
+use Carbon\Carbon;
 
 class StateMarketController extends Controller
 {
@@ -69,6 +70,15 @@ class StateMarketController extends Controller
             //$posts = $posts;
         }
 
+        //on page load from url page is null there intialize the timestamp by with the post is being filtered
+        if ( $request->page == null && $request->timestamp == null) {
+            $timestamp = Carbon::now();
+        } else {
+            $timestamp = $request->timestamp;
+        }
+
+        $posts = $posts->where('created_at','<=', $timestamp);
+
         // manual pigination since $posts is not a query builder but a colletion
         if (!$this->isValidPageNumber($request->page)) {
             $posts =  $posts->splice(0,15);
@@ -78,6 +88,10 @@ class StateMarketController extends Controller
             $posts =  $posts->splice($start, $end);
         }
 
-    	return view('market.state_market', compact('posts', 'admired', 'hyped', 'state', 'reference'));
+        if($this->isValidPageNumber($request->page) && $timestamp){
+            return view('market.partials.timeline', compact('posts', 'admired', 'hyped', 'timestamp')); 
+        } else {
+    	   return view('market.state_market', compact('posts', 'admired', 'hyped', 'state', 'reference', 'timestamp'));
+        }
     }
 }

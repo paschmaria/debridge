@@ -239,7 +239,7 @@
         <!-- Main JS -->
         <script type="text/javascript" src="{{ asset('js/main.js')}}"></script>
         <script type="text/javascript" src="{{ asset('js/social_onscroll.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('js/moment.js')}}"></script>
+        {{-- <script type="text/javascript" src="{{ asset('js/moment.js')}}"></script> --}}
 
         <!-- slimscroll JavaScript -->
         <script type="text/javascript" src="{{ asset('plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
