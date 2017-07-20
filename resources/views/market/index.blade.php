@@ -332,10 +332,11 @@
             var page = 2;
             $(window).scroll(function(){
                 var timestamp = $('#timestamp').val();
-                // console.log(timestamp);
+                
                 var scroll_height = $(window).scrollTop() + $(window).height();
-                var doc_height = $(document).height();
-                if ( scroll_height === doc_height ) {
+                var doc_height = $(document).height() - 10;
+                if ( scroll_height >= doc_height ) {
+                    // console.log(timestamp);
                     $.ajax({
                         url: document.URL,
                         type:'GET',

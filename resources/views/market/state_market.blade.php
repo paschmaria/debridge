@@ -338,8 +338,8 @@
             $(window).scroll(function(){
                 var timestamp = $('#timestamp').val();
                 var scroll_height = $(window).scrollTop() + $(window).height();
-                var doc_height = $(document).height();
-                if ( scroll_height === doc_height ) {
+                var doc_height = $(document).height() - 10;
+                if ( scroll_height >= doc_height ) {
                     $.ajax({
                         url: document.URL,
                         type:'GET',
