@@ -180,20 +180,21 @@ Route::get('/port-harcourt_market', 'Auth\UserController@port_harcourtMarket')->
 
 // Route::get('/mycart', 'Auth\UserController@myCart')->name('mycart');
 
-Route::get('/merchant_store/', 'Merchant\ProductController@merchantStore')->name('merchant_store')->middleware('merchant');
+// Route::get('/merchant_store/', 'Merchant\ProductController@merchantStore')->name('merchant_store')->middleware('merchant');
 
-Route::get('/merchant_store/{user}', 'Merchant\ProductController@StoreForUser')->name('user_store');
+// Route::get('/merchant_store/{user}', 'Merchant\ProductController@StoreForUser')->name('user_store');
+Route::get('/merchant/store/{reference}', 'Merchant\InventoryController@index')->name('view_inventory');
 
-Route::get('/cart/addItem/{product}', 'User\CartController@addToCart')->name('addToCart')->middleware('auth');
+Route::get('/cart/add/{reference}', 'User\CartController@addToCart')->name('addToCart')->middleware('auth');
 ;
 
-Route::get('/cart/removeItem/{item}', 'User\CartController@removeItem')->name('removeItem')->middleware('auth');
+Route::get('/cart/remove/{reference}', 'User\CartController@removeItem')->name('removeItem')->middleware('auth');
 ;
 
-Route::get('/cart/clearCart', 'User\CartController@clearCart')->name('clearCart')->middleware('auth');
+Route::get('/cart/clear', 'User\CartController@clearCart')->name('clearCart')->middleware('auth');
 ;
 
-Route::get('/cart/viewCart', 'User\CartController@viewCart')->name('viewCart')->middleware('auth');
+Route::get('/cart/view', 'User\CartController@viewCart')->name('viewCart')->middleware('auth');
 ;
 
 // Route::get('/user_tradeline', 'Auth\UserController@userTradeline')->name('user_tradeline')->middleware('auth');
