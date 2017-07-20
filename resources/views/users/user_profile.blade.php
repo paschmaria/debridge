@@ -42,7 +42,9 @@
 					<div class="list-group m-t-20">
 						<a href="{{ route('timeline', $user->reference) }}" class="list-group-item list-group-item-action f-12">TIMELINE</a>
                         <a href="{{ route('view_profile', $user->reference) }}" class="list-group-item list-group-item-action f-12">PROFILE</a>
-                        <a href="#" class="list-group-item list-group-item-action f-12">DOCUMENTS</a>
+                        @if(!$user->checkRole())
+                        	<a href="{{ route('view_inventory', $user->reference) }}" class="list-group-item list-group-item-action f-12">INVENTORY</a>
+                        @endif
                         <a href="#" class="list-group-item list-group-item-action f-12">TRADE GROUPS</a>
                         <a href="#" class="list-group-item list-group-item-action f-12">COMMUNITY</a>
 					</div>

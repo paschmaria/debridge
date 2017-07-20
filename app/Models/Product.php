@@ -53,6 +53,6 @@ class Product extends Model
     }
 
     public function carts(){
-        $this->belongsToMany('App\Models\Product', 'carts', 'product_id', 'user_id');
+        $this->belongsToMany('App\User', 'carts', 'product_id', 'user_id');
     }
 }

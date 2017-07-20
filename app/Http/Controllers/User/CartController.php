@@ -9,18 +9,24 @@ use App\Models\Product;
 
 class CartController extends Controller
 {
-    //
-
-    public function addToCart(Product $product)
+    public function addToCart($reference)
     {
-    	# code...
-
-    	$item = Cart::create(['product_id' => $product->id, 'user_id'=>auth()->user()->id]);
-    	return back()->with('info', 'Item Added to Cart');
+        $product = Product::where('reference', $reference)->first();
+        if ($product) {
+                $cart = Cart::where(['product_id' => $product->id, 'user_id' => auth()->user()->id])->first();
+                if ( $cart ){
+                    return back()->with('item already in cart!');
+                }
+                $item = Cart::create(['product_id' => $product->id, 'user_id' => auth()->user()->id]);
+                return back()->with('success', 'Item Added to Cart');
+        } else {
+            return back()->with('info', 'product no longer exist!');
+        }
     }
 
-    public function removeItem(Product $item)
+    public function removeItem($reference)
     {
+        $product = Product::where('reference', $reference)->first();
         $cart = Cart::where(['user_id'=> auth()->user()->id, 'product_id' => $item->id])->first();
     	$cart->delete();
     	return back()->with('info', 'Item Removed');
@@ -35,21 +41,8 @@ class CartController extends Controller
 
     public function viewCart()
     {
-    	// $items = Cart::where('user_id', auth()->user()->id)->with('product')->get();
-        $items = auth()->user()->cart_products;
-        // // dd($items);
-        // foreach ($items as $cart) {
-        //     // dd($cart->promo_price);
-        //     if(!empty($cart->promo_price)) {
-        //         // dd($cart->promo_price);
-        //         $items = $cart->promo_price;
-        //     }else{
-        //         $items = $cart->price;
-        //     }
-        // }
-        // dd($items);
+    	$items = auth()->user()->cart_products;
         $products = Product::inRandomOrder()->limit(10)->get();
-        // dd($products);
-    	return view('mycart', compact('items', 'products'));
+        return view('mycart', compact('items', 'products'));
     }
 }

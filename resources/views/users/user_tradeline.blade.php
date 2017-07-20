@@ -50,7 +50,7 @@
             @else
                 <div class="row m-t-10">
                     <div class="col-sm-9 m-t-20">
-                        <h1 class="h1-responsive f-48 text-center m-t-20 m-b-5 c-brand w-500">{{ strtoupper($user->full_name()) }}</h1>
+                        <h1 class="h1-responsive f-48 text-center m-t-20 m-b-5 c-brand w-500">{{ $user->full_name() }}</h1>
                         <h4 class="h4-responsive c-brand text-center">{{ strtoupper($merchant->store_name) }}</h4>
                         @if($user->community)
                             <p class="text-center">{{ $user->community_address() }}<small class="c-gray"> (Trade Community)</small></p>
@@ -74,7 +74,7 @@
                             <a href="#" class="list-group-item list-group-item-action">
                                 <i class="fa fa-users f-20"></i><span class="p-l-20">TRADE PARTNERS</span>
                             </a>
-                            <a href="{{ route('user_store', $user->reference) }}" class="list-group-item list-group-item-action">
+                            <a href="{{ route('view_inventory', $user->reference) }}" class="list-group-item list-group-item-action">
                                 <i class="fa fa-archive f-20"></i><span class="p-l-20">INVENTORY</span>
                             </a>
                             <a href="{{ route('hottest_products', $user->reference) }}" class="list-group-item list-group-item-action">
