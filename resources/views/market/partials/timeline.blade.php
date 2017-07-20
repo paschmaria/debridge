@@ -137,11 +137,11 @@
                                         <a href="{{ route('view_profile', $comment->user->reference) }}"><h6 class="media-heading w-700 m-b-5 f-12 c-brand">{{ $comment->user->full_name() }}</h6></a>
                                         <p m-b- f-12>{{ $comment->content }}</p>
                                         <ul class="m-b-0 f-12">
-                                            <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart-o"></i></span> Like</a></li>
-                                            <li class="c-brand dis-inline-b p-l-10 p-r-10"><a href="#">Reply</a></li>
+                                            {{-- <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart-o"></i></span> Like</a></li>
+                                            <li class="c-brand dis-inline-b p-l-10 p-r-10"><a href="#">Reply</a></li> --}}
                                             <li class="c-brand dis-inline-b p-l-10">{{ $comment->updated_at->diffForHumans() }}</li>
                                         </ul>
-                                        @if(auth()->check())
+                                        {{-- @if(auth()->check())
                                             <div class="media m-t-5">
                                                 <div class="pull-left p-r-10">
                                                     @if (auth()->user()->profile_picture == null)
@@ -157,7 +157,7 @@
                                                     </form>
                                                 </div>
                                             </div> 
-                                        @endif
+                                        @endif --}}
                                     </div>
                                 </div>
                             @empty

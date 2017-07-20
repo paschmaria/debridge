@@ -98,7 +98,7 @@
                                         @if (auth()->user()->profile_picture != null)
                                             <img src="{{ route('image', [auth()->user()->profile_picture->image_reference,'']) }}" class="img img-circle bd-50p" width="50" height="50">
                                         @else
-                                            <img src="{{ asset('img/icons/profiled.png') }}" class="bd-50p" width="50" height="50">
+                                            <img src="{{ asset('/img/icons/profiled.png') }}" class="bd-50p" width="50" height="50">
                                         @endif
                                     </li>
                                     <li class="nav-item animated bounceIn list-inline-item dis-block z-1000">

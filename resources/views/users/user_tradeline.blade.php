@@ -248,9 +248,9 @@
             var page = 2;
             $(window).scroll(function(){
                 var timestamp = $('#timestamp').val();
-                var scroll_height = $(window).scrollTop() + $(window).height();
-                var doc_height = $(document).height();
-                if ( scroll_height === doc_height ) {
+                var scroll_height = $(window).scrollTop() + $(window).height() -10;
+                var doc_height = $(document).height() - 10;
+                if ( scroll_height >= doc_height ) {
                     $.ajax({
                         url: document.URL,
                         type:'GET',
