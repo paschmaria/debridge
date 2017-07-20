@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -13,14 +13,14 @@
     <link rel="shortcut icon" type="image/png" href="{{ asset('img/logo/debridge-logo.png') }}"/>
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}"/>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{ asset ('plugins/mdb/css/bootstrap.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ asset ('plugins/mdb/css/bootstrap.css') }}"/>
+ 
     <!-- Material Design Bootstrap -->
-   <link rel="stylesheet" href="{{ asset('plugins/mdb/css/mdb.min.css') }}">
-    <link rel="stylesheet" href="{{asset ('css/toastr.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('plugins/mdb/css/mdb.min.css') }}">
+    <link rel="stylesheet" href="{{asset ('css/toastr.min.css') }}"/>
    
 
     <!-- font styles -->
@@ -29,7 +29,6 @@
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 </head>
-
 <body data-page="login">
      <!-- main section begins here-->
     <div class="container">
@@ -165,8 +164,8 @@
                         </div>
                     </div>
 
-                    <!-- <div class="row">
-                        <div class="col-md-6 col-sm-6 col-12 form-group">
+                    <div class="row">
+                        <!-- <div class="col-md-6 col-sm-6 col-12 form-group">
                             <label for="state" data-error="wrong" data-success="right">State</label>
                             <input type="text" name="state" id="usr-state" class="form-control bd-3 h-40 validate input-alternate border-box" list="States" placeholder="Choose State" required value="{{ old('state') }}">
                             <datalist id="States">
@@ -190,11 +189,23 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-12 col-sm-12 col-12 form-group">
-                            <label for="trade_interest">Trade Interest</label>
-                            <select name="user_trade_interest" id="usr-persona" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow" required value = "{{ old('trade_interest') }}">
+                        <div class="col-md-12 col-sm-12 col-12 form-group acc_type_wrapper">
+                            <label for="account_type">Account Type</label>
+                            <select name="user_trade_interest" id="account_type" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow" required value = "{{ old('trade_interest') }}">
                                 <option disabled selected>Choose...</option>
                                 {{-- <option required> Individual User</option> --}}
+                                @foreach($roles as $role)
+                                <option value="{{$role->id}}">{{ $role->name }}</option>
+                                @endforeach                                
+                                
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 col-sm-12 col-12 form-group trade_interest_wrapper dis-none">
+                            <label for="trade_interest">Trade Interest</label>
+                            <select name="trade_interest" id="trade_interest" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow" required value = "{{ old('trade_interest') }}">
+                                <option disabled selected>Choose...</option>
+                                {{-- <option required>User Category</option> --}}
                                 @foreach($roles as $role)
                                 <option value="{{$role->id}}" >{{ $role->name }}</option>
                                 @endforeach                                
@@ -254,49 +265,67 @@
             if (document.readyState === "complete") {
                 app.loginToggler();
                 $('[data-toggle="tooltip"]').tooltip();
+
+                toastr.options.preventDuplicates = true;
+                // toastr.success("ola");
+                @if (session('middleware'))
+                toastr.error("{{session('middleware')}}");
+                @endif
+
+                @if (session('welcome_back'))
+                toastr.success("{{session('welcome_back')}}");
+                @endif
+
+                @if (session('welcome'))
+                toastr.success("{{session('welcome')}}");
+                @endif
+
+                @if (session('delete_message'))
+                toastr.error("{{session('delete_message')}}");
+                @endif
+
+                @if (session('success'))
+                toastr.success("{{session('success')}}");
+                @endif
+
+                @if (session('info'))
+                toastr.info("{{session('info')}}");
+                @endif
+
+                @if (session('success_image'))
+                toastr.success("{{session('success_image')}}");
+                @endif
+
+                @if (session('delete'))
+                toastr.error("{{session('error_image')}}");
+                @endif
+
+                @if ($errors->has('image_reference')) 
+                toastr.error("{{$errors->first('image_reference')}}");
+                @endif
+
+                $('#account_type').on('change', function(e){
+                    // console.log(e);
+                    if (
+                            e.target.selectedOptions[0].index === 2
+                            &&
+                            $('.trade_interest_wrapper').hasClass('dis-none')
+                        ) {
+                        // console.log('Yay!');
+                        $('.trade_interest_wrapper').removeClass('dis-none');
+                    }
+                    else if (
+                            e.target.selectedOptions[0].index === 1
+                            &&
+                            (!$('.trade_interest_wrapper').hasClass('dis-none'))
+                        ) {
+                        // console.log('Nay!');
+                        $('.trade_interest_wrapper').addClass('dis-none');
+                    }
+                })
             }
         }
     </script>
-     <script type="text/javascript">
-        toastr.options.preventDuplicates = true;
-        // toastr.success("ola");
-        @if (session('middleware'))
-          toastr.error("{{session('middleware')}}");
-        @endif
-
-        @if (session('welcome_back'))
-          toastr.success("{{session('welcome_back')}}");
-        @endif
-
-        @if (session('welcome'))
-          toastr.success("{{session('welcome')}}");
-        @endif
-
-        @if (session('delete_message'))
-          toastr.error("{{session('delete_message')}}");
-        @endif
-
-        @if (session('success'))
-          toastr.success("{{session('success')}}");
-        @endif
-
-        @if (session('info'))
-          toastr.info("{{session('info')}}");
-        @endif
-
-        @if (session('success_image'))
-          toastr.success("{{session('success_image')}}");
-        @endif
-
-        @if (session('delete'))
-          toastr.error("{{session('error_image')}}");
-        @endif
-
-        @if ($errors->has('image_reference')) 
-          toastr.error("{{$errors->first('image_reference')}}");
-        @endif
-      </script>
-
 </body>
 
 </html>
