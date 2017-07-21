@@ -212,9 +212,9 @@
                     @endif
                     <nav class="navbar user-type-navbar no-shadow">
                         <ul class="nav user-type-nav text-center">
-                            <li class="nav-item"><a class="nav-link hover-underline active" href="{{ route('state_market', $reference) }}">ALL</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('state_market', [$reference, 'merchant']) }}">MERCHANT</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('state_market', [$reference, 'user']) }}">INDIVIDUALS</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline @if(strtolower($filter == ''))active @endif" href="{{ route('state_market', $reference) }}">ALL</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline @if($filter == 'merchant')active @endif" href="{{ route('state_market', [$reference, 'merchant']) }}">MERCHANT</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline @if($filter == 'user')active @endif" href="{{ route('state_market', [$reference, 'user']) }}">INDIVIDUALS</a></li>
                         </ul>
                     </nav>
                     

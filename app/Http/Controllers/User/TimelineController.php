@@ -120,9 +120,9 @@ class TimelineController extends Controller
         }
 
         if($this->isValidPageNumber($request->page) && $timestamp){
-            return view('market.partials.timeline', compact('posts', 'admired', 'hyped', 'timestamp')); 
+            return view('market.partials.timeline', compact('posts', 'admired', 'hyped', 'timestamp', 'filter')); 
         } else {
-            return view('users.user_tradeline', compact('user', 'posts', 'admired', 'hyped', 'user_acc', 'merchant', 'timestamp'));
+            return view('users.user_tradeline', compact('user', 'posts', 'admired', 'hyped', 'user_acc', 'merchant', 'timestamp', 'filter'));
         }
 
     }

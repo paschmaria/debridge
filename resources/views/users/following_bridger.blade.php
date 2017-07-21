@@ -1,27 +1,28 @@
 @extends('layouts.master')
 @section('header')
-			<!-- navigations/links right here -->
-            <nav class="navbar navbar-toggleable-sm navbar-light transparent p-t-15 p-b-15 no-shadow border-top border-bottom" role="navigation">
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-            
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div id="navbarNav1" class="collapse navbar-collapse">
-                        <ul class="nav navbar-nav">
-                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('following', auth()->user()->reference) }}">Following</a></li>
-	                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('followers', auth()->user()->reference) }}">Followers</a></li>
-	                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('timeline', auth()->user()->reference) }}">Tradeline</a></li>
-	                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Business Invitation</a></li>
-	                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Models</a></li>
-	                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Market Value</a></li>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div>
-            </nav>
-            <!-- navigations/links ends here -->
+	        <!-- navigations/links right here -->
+        <nav class="navbar navbar-toggleable-sm navbar-light transparent p-t-15 p-b-15 no-shadow border-top border-bottom" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div id="navbarNav1" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('following', auth()->user()->reference) }}">Following</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('followers', auth()->user()->reference) }}">Followers</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('timeline', auth()->user()->reference) }}">Tradeline</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('community', auth()->user()->reference) }}">Trade Community</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Business Invitation</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Models</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Market Value</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </nav>
+        <!-- navigations/links ends here -->
 @endsection
 
 @section('content')
@@ -38,27 +39,35 @@
 	        <div class="m-t-40 m-b-140">
 	        	<div class="row">
 	        		<!-- first column of friends -->
-	        		<div class="p-10 m-b-20 bg-brand col-sm-12"> {{ ucwords(strtolower($user->full_name())) }} - following <span class="badge bg-white c-brand follow_count" >{{ $following_count }}</span></div>
+	        		<div class="p-10 m-b-10 bg-brand col-sm-12"> {{ ucwords(strtolower($user->full_name())) }} - following <span class="badge bg-white c-brand follow_count" >{{ $following_count }}</span></div>
+	        		<div class="m-b-20 col-sm-12">
+		        		<nav class="navbar user-type-navbar no-shadow">
+	                        <ul class="nav user-type-nav text-center">
+	                            <li class="nav-item"><a class="nav-link hover-underline @if(strtolower($filter == ''))active @endif" href="{{ route('following', $user->reference) }}">ALL</a></li>
+	                            <li class="nav-item"><a class="nav-link hover-underline @if($filter == 'merchant')active @endif" href="{{ route('following', [$user->reference, 'merchant']) }}">MERCHANT</a></li>
+	                            <li class="nav-item"><a class="nav-link hover-underline @if($filter == 'user')active @endif" href="{{ route('following', [$user->reference, 'user']) }}">INDIVIDUALS</a></li>
+	                        </ul>
+	                    </nav>
+		        	</div>
 	        		@forelse ($following as $user)
 	        			<div class="col-md-6 col-sm-6 col-xs-6 col-12">
-	        				<div class="h-114 width-563 m-b-30">
+	        				<div class="">
 		        				<div class="row">
 		        					<div class="col-md-3 col-sm-3 col-xs-6">
 		        							<div class="profile-picture dis-inline">
-			        							@if($user->image_id != null)
-			        								<img src="{{ asset('img/icons/profiled.png') }}" class="p-10">
-						        					{{-- <img src="{{ route('image', [$user->profile_picture->image_reference,'']) }}" class="p-10"> --}}
+			        							@if($user->profile_picture != null)
+			        								<img src="{{ route('image', [$user->profile_picture->image_reference,'']) }}" class="p-10 h-100 width-100 card image-resposive">
 						        				@else
-						        					<img src="{{ asset('img/icons/profiled.png') }}" class="p-10">
+						        					<img src="{{ asset('img/icons/profiled.png') }}" class="p-10 h-100 width-100 card image-resposive">
 						        				@endif
 				        					</div>
 		        					</div>
-			        				<div class="col-md-4 col-sm-4 col-xs-4 col-12 p-t-10">
-			        					<div class="profile-description dis-inline width-200 h-114 c-gray-medium">
+			        				<div class="col-md-4 col-sm-4 col-xs-4 col-12">
+			        					<div class="profile-description dis-inline c-gray-medium">
 											<a href="{{ route('timeline', $user->reference) }}"><p class="f-14 m-t-30 text-fluid c-brand">
-												{{ strtoupper($user->full_name()) }} 
+												{{ $user->full_name() }} 
 												@if($user->role_id != null && $user->role->name == 'Merchant')
-													(Merchant)
+													<small>(Merchant)</small>
 												@endif
 											</p></a>
 											<p class="f-12 text-fluid">{{ $user->email }}</p>

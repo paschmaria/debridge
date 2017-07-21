@@ -21,6 +21,7 @@
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('following', auth()->user()->reference) }}">Following</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('followers', auth()->user()->reference) }}">Followers</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('timeline', auth()->user()->reference) }}">Tradeline</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('community', auth()->user()->reference) }}">Trade Community</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Business Invitation</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Models</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Market Value</a></li>
@@ -78,7 +79,7 @@
                         	<a href="{{ route('view_inventory', $user->reference) }}" class="list-group-item list-group-item-action f-12">INVENTORY</a>
                         @endif
                         <a href="#" class="list-group-item list-group-item-action f-12">TRADE GROUPS</a>
-                        <a href="#" class="list-group-item list-group-item-action f-12">COMMUNITY</a>
+                        <a href="{{ route('community', $user->reference) }}" class="list-group-item list-group-item-action f-12">COMMUNITY</a>
 					</div>
 				</aside>
 				<main class="col-md-10 col-sm-10 col-12">

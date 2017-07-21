@@ -4,12 +4,40 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Post;
+use App\User;
+use App\Models\TradeCommunity;
+use App\Models\Role;
+use App\Models\Follower;
 
 class TradeCommunityController extends Controller
 {
-    public function show()
+    public function index($reference, $filter = null)
     {
-    	$post::where('product_id', '!=', null)->get();
+    	$user = User::where('reference', $reference)->first();
+    	$trade_community = TradeCommunity::where('id', $user->community_id)->first();
+    	if ($trade_community) {
+    		$users = User::where('community_id', $trade_community->id);
+    		
+    		$following_ids = [];
+
+    		if(auth()->check()){
+    			$following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
+    		}
+
+	    	$user_role = Role::where('name', 'User')->pluck('id')->toArray();
+	        
+	        if (strtolower($filter) == 'merchant') {
+	            $users = $users->whereNotIn('role_id', $user_role)->paginate(30);
+	        } elseif (strtolower($filter) == 'user') {
+	            $users = $users->whereIn('role_id', $user_role)->paginate(30);
+	        } else {
+	            $users = $users->paginate(30);
+	            $filter = '';
+	        }
+	        return view('bridger.trade_community', compact('users', 'following_ids', 'filter', 'trade_community', 'user'));
+    	} else {
+    		return back()->with('info', "User doesn't belong to any trade community!");
+    	}
+    	
     }
 }

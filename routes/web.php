@@ -52,7 +52,8 @@ Route::get('/users/social_notification/delete/{notification}', 'User\SocialNotif
 
 
 
-Route::get('/users/follow/more', 'Auth\UserController@viewUsers')->name('view_users')->middleware('auth');
+Route::get('/users/community/{reference}/{filter?}', 'User\TradeCommunityController@index')->name('community')->middleware('auth');
+Route::get('/users/follow/more/{filter?}', 'Auth\UserController@viewUsers')->name('view_users')->middleware('auth');
 
 Route::get('users/profile_picture/{id}', 'Auth\UserController@profile_picture')->name('profile_picture');
 
@@ -200,8 +201,8 @@ Route::get('/cart/view', 'User\CartController@viewCart')->name('viewCart')->midd
 // Route::get('/user_tradeline', 'Auth\UserController@userTradeline')->name('user_tradeline')->middleware('auth');
 
 Route::get('/product/details/{reference}', 'Merchant\ProductController@productDetails')->name('product_details');
-Route::get('/users/following/{reference}', 'FollowController@following')->name('following');
-Route::get('/users/followers/{reference}', 'FollowController@followers')->name('followers');
+Route::get('/users/following/{reference}/{filter?}', 'FollowController@following')->name('following');
+Route::get('/users/followers/{reference}/{filter?}', 'FollowController@followers')->name('followers');
 Route::get('/users/profile/edit', 'User\ProfileController@index')->name('edit_profile')->middleware('auth');
 Route::get('/users/profile/{reference}', 'User\ProfileController@show')->name('view_profile')->middleware('auth');
 Route::post('/users/profile/edit/account', 'User\ProfileController@userSave')->name('update_profile')->middleware('auth');

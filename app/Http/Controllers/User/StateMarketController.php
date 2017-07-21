@@ -89,9 +89,9 @@ class StateMarketController extends Controller
         }
 
         if($this->isValidPageNumber($request->page) && $timestamp){
-            return view('market.partials.timeline', compact('posts', 'admired', 'hyped', 'timestamp')); 
+            return view('market.partials.timeline', compact('posts', 'admired', 'hyped', 'timestamp', 'filter')); 
         } else {
-    	   return view('market.state_market', compact('posts', 'admired', 'hyped', 'state', 'reference', 'timestamp'));
+    	   return view('market.state_market', compact('posts', 'admired', 'hyped', 'state', 'reference', 'timestamp', 'filter'));
         }
     }
 }
