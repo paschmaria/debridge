@@ -27,7 +27,7 @@ Route::get('/post', 'User\PostController@index')->name('post');
 
 Route::post('/post', 'User\PostController@store')->name('create_post');
 
-Route::post('/comment/{post}', 'User\CommentController@store')->name('create_comment');
+Route::post('/post/comment/create/{reference}', 'User\CommentController@store')->name('create_comment');
 
 Route::get('/hype/{reference}', 'User\HypeController@create')->name('hype');
 
@@ -52,7 +52,8 @@ Route::get('/users/social_notification/delete/{notification}', 'User\SocialNotif
 
 
 
-Route::get('/users/follow/more', 'Auth\UserController@viewUsers')->name('view_users')->middleware('auth');
+Route::get('/users/community/{reference}/{filter?}', 'User\TradeCommunityController@index')->name('community')->middleware('auth');
+Route::get('/users/follow/more/{filter?}', 'Auth\UserController@viewUsers')->name('view_users')->middleware('auth');
 
 Route::get('users/profile_picture/{id}', 'Auth\UserController@profile_picture')->name('profile_picture');
 
@@ -73,8 +74,8 @@ Route::get('/follow', 'FollowController@index')->name('follow_page');
 
 Route::post('/unfollow/{reference}', 'FollowController@destroy')->name('unfollow');
 
-Route::get('/delete_comment/{id}', 'User\CommentController@destroy')->name('delete_comment');
-Route::get('/delete_post/{post}', 'User\PostController@destroy')->name('delete_post');
+Route::get('/post/comment/delete/{id}', 'User\CommentController@destroy')->name('delete_comment');
+Route::get('/post/delete/{reference}', 'User\PostController@destroy')->name('delete_post');
 
 Route::get('/register', 'Auth\UserController@register')->name('register');
 
@@ -200,8 +201,8 @@ Route::get('/cart/view', 'User\CartController@viewCart')->name('viewCart')->midd
 // Route::get('/user_tradeline', 'Auth\UserController@userTradeline')->name('user_tradeline')->middleware('auth');
 
 Route::get('/product/details/{reference}', 'Merchant\ProductController@productDetails')->name('product_details');
-Route::get('/users/following/{reference}', 'FollowController@following')->name('following');
-Route::get('/users/followers/{reference}', 'FollowController@followers')->name('followers');
+Route::get('/users/following/{reference}/{filter?}', 'FollowController@following')->name('following');
+Route::get('/users/followers/{reference}/{filter?}', 'FollowController@followers')->name('followers');
 Route::get('/users/profile/edit', 'User\ProfileController@index')->name('edit_profile')->middleware('auth');
 Route::get('/users/profile/{reference}', 'User\ProfileController@show')->name('view_profile')->middleware('auth');
 Route::post('/users/profile/edit/account', 'User\ProfileController@userSave')->name('update_profile')->middleware('auth');

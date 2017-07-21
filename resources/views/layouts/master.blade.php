@@ -96,9 +96,9 @@
                                     <li class="nav-item animated bounceIn list-inline-item dis-block">
 
                                         @if (auth()->user()->profile_picture != null)
-                                            <img src="{{ route('image', [auth()->user()->profile_picture->image_reference,'']) }}" class="img img-circle bd-50p" width="50" height="50">
+                                            <img src="{{ route('image', [auth()->user()->profile_picture->image_reference,'']) }}" class="img img-circle bd-50p" width="50" height="50" id="profile_picture_main">
                                         @else
-                                            <img src="{{ asset('/img/icons/profiled.png') }}" class="bd-50p" width="50" height="50">
+                                            <img src="{{ asset('/img/icons/profiled.png') }}" class="bd-50p" width="50" height="50" id="profile_picture_main">
                                         @endif
                                     </li>
                                     <li class="nav-item animated bounceIn list-inline-item dis-block z-1000">

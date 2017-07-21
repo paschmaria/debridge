@@ -22,6 +22,7 @@ class VerifyCsrfToken extends BaseVerifier
         'user/follow/*',
         'users/social_notification/delete/*',
         'search/user/*',
+        '/users/profile/edit/picture'
         
     ];
 }

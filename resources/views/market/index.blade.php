@@ -45,7 +45,11 @@
 
                         <a href="{{ route('trade_request') }}" class="list-group-item list-group-item-action">TRADE REQUEST</a>
                         @endif
-                        <a href="#" class="list-group-item list-group-item-action">TRADE COMMUNITY</a>
+                        @if(auth()->check())
+                            <a href="{{ route('community', auth()->user()->reference) }}" class="list-group-item list-group-item-action">TRADE COMMUNITY</a>
+                        @else
+                            <a data-toggle="modal" data-target="#basicExample" class="list-group-item list-group-item-action">TRADE COMMUNITY</a>
+                        @endif
                         <a href="#" class="list-group-item list-group-item-action">BRIDGE POINT</a>
                         @if(Auth::check() && isset(auth()->user()->bridgeCode))
                             <a href="" class="list-group-item list-group-item-action" disable>
@@ -214,9 +218,9 @@
                     @endif
                     <nav class="navbar user-type-navbar no-shadow">
                         <ul class="nav user-type-nav text-center">
-                            <li class="nav-item"><a class="nav-link hover-underline active" href="{{ route('nigeria') }}">ALL</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('nigeria', 'merchant') }}">MERCHANT</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="{{ route('nigeria', 'user') }}">INDIVIDUALS</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline @if(strtolower($filter == ''))active @endif" href="{{ route('nigeria') }}">ALL</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline @if($filter == 'merchant')active @endif" href="{{ route('nigeria', 'merchant') }}">MERCHANT</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline @if($filter == 'user')active @endif" href="{{ route('nigeria', 'user') }}">INDIVIDUALS</a></li>
                         </ul>
                     </nav>
 

@@ -1,4 +1,11 @@
 @extends('layouts.master')
+@section('extra_styles')
+	<style typ>
+		.border-right {
+		  border-right: 1px solid rgba(0, 0, 0, 0.125) !important;
+		}
+	</style>
+@endsection
 @section('header')
 	        <!-- navigations/links right here -->
         <nav class="navbar navbar-toggleable-sm navbar-light transparent p-t-15 p-b-15 no-shadow border-top border-bottom" role="navigation">
@@ -14,6 +21,7 @@
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('following', auth()->user()->reference) }}">Following</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('followers', auth()->user()->reference) }}">Followers</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('timeline', auth()->user()->reference) }}">Tradeline</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('community', auth()->user()->reference) }}">Trade Community</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Business Invitation</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Models</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Market Value</a></li>
@@ -33,11 +41,36 @@
 			<div class="row m-t-20">
 				<aside class="col-md-2 col-sm-2 col-12">
 					<div class="">
-						@if($user->profile_picture != null)
+						{{-- @if($user->profile_picture != null)
 							<img src="{{ route('image', [$user->profile_picture->image_reference, '']) }}" class="bd-dark-light pics2 p-5">
 						@else
 					    	<img src="{{ asset('img/icons/profiled.png') }}" class="bd-dark-light pics2 p-5">
-					    @endif
+					    @endif --}}
+					    <form method="post" action="{{ route('upload_profile_pic') }}" enctype="multipart/form-data" id="upload_form">
+                        {{ csrf_field() }}
+                            <div class="card">
+                                <div class="profile-img-holder width-185 h-261 m-r-40">
+                                @if(auth()->user()->profile_picture == null)
+                                    <div class="photo_wrapper h-200 p-l-5 p-t-5">
+                                        <img src="{{ asset('img/icons/profiled.png') }}" id="post" class="h-200 width-100p">
+                                    </div>
+                                @else
+                                    <div class="photo_wrapper h-200 p-l-5 p-t-5">
+                                        <img src="{{ route('image', [auth()->user()->profile_picture->image_reference, '']) }}" id="post" class="h-200 width-100p">
+                                    </div>
+                                @endif                                            
+                                    <div class="pos-rel">
+                                        <button type="submit" class="btn btn-brand btn-flat m-l-18">
+                                        <i class="fa fa-plus-circle"></i>
+                                        Upload</button>
+                                       <input name="img_ref" type="file" class="pos-abs l-30 width-125 h-40 t-8 hide z-10" id="upload">
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- <div class="text-center m-t-10">
+                                <button class="btn btn-sm btn-brand">save</button>
+                            </div>  --}}
+                        </form>
 					</div>
 					<div class="list-group m-t-20">
 						<a href="{{ route('timeline', $user->reference) }}" class="list-group-item list-group-item-action f-12">TIMELINE</a>
@@ -46,7 +79,7 @@
                         	<a href="{{ route('view_inventory', $user->reference) }}" class="list-group-item list-group-item-action f-12">INVENTORY</a>
                         @endif
                         <a href="#" class="list-group-item list-group-item-action f-12">TRADE GROUPS</a>
-                        <a href="#" class="list-group-item list-group-item-action f-12">COMMUNITY</a>
+                        <a href="{{ route('community', $user->reference) }}" class="list-group-item list-group-item-action f-12">COMMUNITY</a>
 					</div>
 				</aside>
 				<main class="col-md-10 col-sm-10 col-12">
@@ -55,55 +88,51 @@
 							<div class="row">
 								<div class="col-sm-12 col-md-12 col-12">
 									<div class="row">
-										<div class="col-12">
-											<div class="media border-bottom">
-											    <div class="media-body c-brand">
-											    	<div class="media-heading w-500 clearfix m-b-5">
-											    		<span><i class="fa fa-user">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user->full_name() }}({{ $user->gender }})</span>
-											    		@if($user->id == auth()->user()->id)
-											    			<a class="pull-right c-brand detail-edit-icon" data-toggle="modal" data-target="#changeaccount"><i class="fa fa-pencil"></i></a>
-											    		@endif
-											    	</div>
-											    	<p class="m-b-5"><span><i class="fa fa-envelope">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user->email }}</span></p>
-											    	<p class="m-b-5"><span><i class="fa fa-calendar">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user->date_of_birth }}</span></p>
-											    	<p><span><i class="fa fa-map-o">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user->community->community_address() }}<small class="c-gray"> (Trade community)</small></span></p>
-											    </div>
-											</div>
-
-											<div class="media">
-											    <div class="media-body c-brand">
-											    	<div class="media-heading w-500 clearfix m-b-5 m-t-10">
-											    	@if($user->checkRole())
-											    		<span><i class="fa fa-phone-square f-20">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user_acc->telephone }}</span>
-											    	@else
-											    		<span><i class="fa fa-phone-square f-20">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $merchant->telephone }}</span>
-											    	@endif
-											    		@if($user->id == auth()->user()->id)
-											    			<a class="pull-right c-brand detail-edit-icon" data-toggle="modal" data-target="#Changecontact"><i class="fa fa-pencil"></i></a>
-											    		@endif
-											    	</div>
-											    	@if($user->checkRole())
-											    		@if($user_acc->address != null)
-											    			<p class="m-b-5"><span><i class="fa fa-map-o">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user_acc->address->address }}</span></p>
-											    			@if($user_acc->address->state != null)
-											    				<p class="m-b-5"><span><i class="fa fa-map-pin">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user_acc->address->state->name }}</span></p>
-											    			@endif
-											    		@endif
-											    		<p class="m-b-5"><span><i class="fa fa-mobile f-20">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user_acc->status }}</span></p>
-										    		@else
-										    			<p class="m-b-5"><span><i class="fa fa-mobile f-20">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $merchant->store_name }}</span></p>
-										    			@if($merchant->address != null)
-											    			<p class="m-b-5"><span><i class="fa fa-map-o">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $merchant->address->address }}</span></p>
-											    			@if($merchant->address->state != null)
-											    				<p class="m-b-5"><span><i class="fa fa-map-pin">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $merchant->address->state->name }}</span></p>
-											    			@endif
-											    		@endif
-											    		<p class="m-b-5"></p>
-											    		<p class="m-b-5 width-500"><span><i class="fa fa-quote-right f-20">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $merchant->status }}</span></p>
+										<div class="col-md-6 media border-right">
+										    <div class="media-body c-brand">
+										    	<div class="media-heading w-500 clearfix m-b-5">
+										    		<span><i class="fa fa-user">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user->full_name() }}({{ $user->gender }})</span>
+										    		@if($user->id == auth()->user()->id)
+										    			<a class="pull-right c-brand detail-edit-icon" data-toggle="modal" data-target="#changeaccount"><i class="fa fa-pencil"></i></a>
 										    		@endif
-											    	
-											    	
-											    </div>
+										    	</div>
+										    	<p class="m-b-5"><span><i class="fa fa-envelope">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user->email }}</span></p>
+										    	<p class="m-b-5"><span><i class="fa fa-calendar">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user->date_of_birth }}</span></p>
+										    	<p><span><i class="fa fa-map-o">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user->community->community_address() }}<small class="c-gray"> (Trade community)</small></span></p>
+										    </div>
+										</div>
+
+										<div class="media col-md-6">
+										    <div class="media-body c-brand">
+										    	<div class="media-heading w-500 clearfix m-b-5">
+										    	@if($user->checkRole())
+										    		<span><i class="fa fa-phone-square f-20">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user_acc->telephone }}</span>
+										    	@else
+										    		<span><i class="fa fa-phone-square f-20">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $merchant->telephone }}</span>
+										    	@endif
+										    		@if($user->id == auth()->user()->id)
+										    			<a class="pull-right c-brand detail-edit-icon" data-toggle="modal" data-target="#Changecontact"><i class="fa fa-pencil"></i></a>
+										    		@endif
+										    	</div>
+										    	@if($user->checkRole())
+										    		@if($user_acc->address != null)
+										    			<p class="m-b-5"><span><i class="fa fa-map-o">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user_acc->address->address }}</span></p>
+										    			@if($user_acc->address->state != null)
+										    				<p class="m-b-5"><span><i class="fa fa-map-pin">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user_acc->address->state->name }}</span></p>
+										    			@endif
+										    		@endif
+										    		<p class="m-b-5"><span><i class="fa fa-mobile f-20">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $user_acc->status }}</span></p>
+									    		@else
+									    			<p class="m-b-5"><span><i class="fa fa-mobile f-20">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $merchant->store_name }}</span></p>
+									    			@if($merchant->address != null)
+										    			<p class="m-b-5"><span><i class="fa fa-map-o">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $merchant->address->address }}</span></p>
+										    			@if($merchant->address->state != null)
+										    				<p class="m-b-5"><span><i class="fa fa-map-pin">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $merchant->address->state->name }}</span></p>
+										    			@endif
+										    		@endif
+										    		<p class="m-b-5"></p>
+										    		<p class="m-b-5 width-500"><span><i class="fa fa-quote-right f-20">&nbsp;&nbsp;</i></span><span class="c-dark">{{ $merchant->status }}</span></p>
+									    		@endif
 											</div>
 
 										</div>
@@ -458,5 +487,46 @@
 @endsection
 
 @section('scripts')
-
+	<script>
+		 $(document).ready(function () {
+			var app2 = {
+                imageHandler:function (){
+                    $('#upload').on('change', function(){
+                    	var img_ref = $("#upload")[0].files[0];
+                    	console.log(img_ref);
+                    	data = new FormData();
+						data.append('img_ref', img_ref);
+                    	$.ajax({
+                    		url: "/users/profile/edit/picture",
+	                        type:"POST",
+	                        eenctype: 'multipart/form-data', 
+	                        data: data,
+	                        processData: false,  // do not process the data as url encoded params
+    						contentType: false,
+	                        success: function(data){
+	                        	console.log(data)
+	                        	readUrl();
+	                            toastr.success("Profile picture has been updated!");
+	                        },
+	                        error: function (data) {
+	                        	toastr.error("Somthing went wrong")
+	                        }
+                    	});
+                    });
+                    function readUrl(argument) {
+                        var file = $("#upload")[0].files[0];
+                        var reader = new FileReader();
+                        reader.onloadend = function () {
+                            $("#post").attr('src', reader.result);
+                            $("#profile_picture_main").attr('src', reader.result);
+                        }
+                        if (file) {
+                            reader.readAsDataURL(file);
+                        }
+                    }
+                }
+	        }
+	        app2.imageHandler();
+	    });
+	</script>
 @endsection
