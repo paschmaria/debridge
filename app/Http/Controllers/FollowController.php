@@ -46,7 +46,7 @@ class FollowController extends Controller
         return $page >= 2 && filter_var($page, FILTER_VALIDATE_INT) !== false;
     }
 
-    public function following(Request $request, $reference)
+    public function following(Request $request, $reference, $filter = null)
     {
         $user = User::where('reference', $reference)->with(['following' => function ($q){
             $q->with(['profile_picture', 'role']);
@@ -54,37 +54,64 @@ class FollowController extends Controller
 
         $following_count = count($user->following);
 
+        $user_role = Role::where('name', 'User')->pluck('id')->toArray();
+          
+        if (strtolower($filter) == 'merchant') {
+            $following = $user->following->whereNotIn('role_id', $user_role)
+                              ->sortBy('first_name')->sortBy('last_name');
+        } elseif (strtolower($filter) == 'user') {
+            $following = $user->following->whereIn('role_id', $user_role)
+                              ->sortBy('first_name')->sortBy('last_name');
+        } else {
+            $following = $user->following->sortBy('first_name')->sortBy('last_name');
+            $filter = '';
+        }
+
         // manual pigination since $following is not a query builder but a colletion
         if (!$this->isValidPageNumber($request->page)) {
-            $following =  $user->following->sortBy('first_name')->splice(0,20);
+            $following =  $following->splice(0,20);
         } else {
-            $start =  20 + (((int)$request->page - 2) * 10);
-            $end = $start + 10;
-            $following =  $user->following->sortBy('name')->splice($start, $end);
+            $start =  20 + (((int)$request->page - 2) * 20);
+            $end = $start + 20;
+            $following =  $following->sortBy('name')->splice($start, $end);
         }
         return view('users.following_bridger', 
-            compact('user', 'following', 'following_count', 'following_ids')
+            compact('user', 'following', 'following_count', 'following_ids', 'filter')
             );
     }
 
-    public function followers(Request $request, $reference)
+    public function followers(Request $request, $reference, $filter = null)
     {
         $user = User::where('reference', $reference)->with(['following' => function ($q){
             $q->with('profile_picture');
         }])->first();
 
+
         $followers_count =  count($user->followers);
 
+        $user_role = Role::where('name', 'User')->pluck('id')->toArray();
+          
+        if (strtolower($filter) == 'merchant') {
+            $followers = $user->followers->whereNotIn('role_id', $user_role)
+                              ->sortBy('first_name')->sortBy('last_name');
+        } elseif (strtolower($filter) == 'user') {
+            $followers = $user->followers->whereIn('role_id', $user_role)
+                              ->sortBy('first_name')->sortBy('last_name');
+        } else {
+            $followers = $user->followers->sortBy('first_name')->sortBy('last_name');
+            $filter = '';
+        }
+
         if (!$this->isValidPageNumber($request->page)) {
-            $followers = $user->followers->sortBy('first_name')->splice(0,20);
+            $followers = $followers->sortBy('first_name')->splice(0,20);
         } else {
             $start =  20 + (((int)$request->page - 2) * 10);
             $end = $start + 10;
-            $followers =  $user->followers->sortBy('name')->splice($start, $end);
+            $followers =  $followers->sortBy('name')->splice($start, $end);
         }
         $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
         return view('users.followers_bridger', 
-            compact('user', 'followers', 'followers_count', 'following_ids')
+            compact('user', 'followers', 'followers_count', 'following_ids', 'filter')
             );
     }
 

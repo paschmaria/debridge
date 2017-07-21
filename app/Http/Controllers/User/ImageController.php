@@ -43,7 +43,9 @@ class ImageController extends Controller
         $image = Image::create(['image_reference' => $filename]);
         auth()->user()->image_id = $image->id;
         auth()->user()->save();
-        return back()->with('success', 'Profile picture update successful!');
+
+        // return back()->with('success', 'Profile picture update successful!');
+        return response()->json(['status' => 'success']);
     }
 
     /**

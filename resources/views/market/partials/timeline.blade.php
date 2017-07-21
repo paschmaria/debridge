@@ -15,7 +15,12 @@
 
                                         <a href="{{ route('timeline', $post->user->reference) }}" class="c-brand">{{ $post->user->full_name() }}</a>
 
-                                        <span class="pull-right" style="color:grey">{{$post->updated_at->diffForHumans()}}</span>
+                                        <span class="pull-right" style="color:grey">
+                                            {{$post->updated_at->diffForHumans()}}
+                                            @if(Auth::id() == $post->user->id)
+                                                <a href="{{ route('delete_post', $post->reference) }}"><i class="fa fa-trash c-red"></i></a>
+                                            @endif
+                                        </span>
                                     </h6>
                                     <p>{{ $post->title }}
                                         @if ($post->product !== null)
@@ -66,23 +71,23 @@
                                 <div class="m-b-20">
                                     <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10 col-sm-12" role="group" aria-label="Ad Action Buttons">
                                         @if(!in_array($post->id, $admired))
-                                            <a href="{{ route('admire', $post->reference) }}"><button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 width-200">
-                                                <span class="">Admire&nbsp;</span><span class=""><i class="fa fa-heart-o"><small class="c-gray f-12"> {{ $post->admires->count() }}</small></i></span>
+                                            <a href="{{ route('admire', $post->reference) }}"><button type="button" class="btn bg-white m-l-3 f-14 m-r-5 f-14 width-200">
+                                                <span class="">Admire<small class="c-gray f-10">({{ $post->admires->count() }})</small>&nbsp;</span><span class=""><i class="fa fa-heart-o"></i></span>
                                             </button></a>
                                         @else
-                                            <a href="{{ route('unadmire', $post->reference) }}"><button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 width-200">
-                                                <span class="">Unadmire&nbsp;</span><span class=""><i class="fa fa-heart"></i><small class="c-gray f-12"> {{ $post->admires->count() }}</small></span>
+                                            <a href="{{ route('unadmire', $post->reference) }}"><button type="button" class="btn bg-white m-l-3 f-14 m-r-5 f-14 width-200">
+                                                <span class="">Unadmire<small class="c-gray f-10">({{ $post->admires->count() }})</small>&nbsp;</span><span class=""><i class="fa fa-heart"></i></span>
                                             </button></a>
                                         @endif
-                                        <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 width-200">
-                                            <span class="">Comment&nbsp;</span><span class=""><i class="fa fa-comment"></i></span>
-                                        </button>
+                                        <a href=""><button type="button" class="btn bg-white m-l-10 f-14 m-r-10 f-14 width-200">
+                                            <span class="">Comments<small class="c-gray f-10">({{ $post->comments->count() }})</small>&nbsp;</span><span class=""><i class="fa fa-comment"></i></span>
+                                        </button></a>
                                         @if (!in_array($post->id, $hyped))
-                                            <a href="{{ route('hype', $post->reference) }}"><button type="button" class="btn bg-white m-l-3 f-14 width-200">
+                                            <a href="{{ route('hype', $post->reference) }}"><button type="button" class="btn bg-white m-l-3 f-14 width-150">
                                                 <span class="">Hype&nbsp;</span><span class=""><i class="fa fa-share-alt"></i></span>
                                             </button></a>
                                         @else
-                                            <button type="button" class="btn m-l-3 f-14 width-200">
+                                            <button type="button" class="btn m-l-5 f-14 width-150">
                                                 <span class="">Hyped&nbsp;</span><span class=""><i class="fa fa-share-alt"></i></span>
                                             </button>
                                         @endif
@@ -108,20 +113,20 @@
                             @else
                                 <div class="m-b-20">
                                     <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10 col-sm-12" role="group" aria-label="Ad Action Buttons">
-                                        <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 width-200" data-toggle="modal" data-target="#basicExample" >
-                                            <span class="">Admire&nbsp;</span><span class=""><i class="fa fa-heart-o"></i><small class="c-gray f-12"> {{ $post->admires->count() }}</small></span>
+                                        <button type="button" class="btn bg-white m-l-5 f-14 m-r-3 f-14 width-200" data-toggle="modal" data-target="#basicExample" >
+                                            <span class="">Admire<small class="c-gray f-10">({{ $post->admires->count() }})</small>&nbsp;</span><span class=""><i class="fa fa-heart-o"></i></span>
                                         </button>
                                         
-                                        <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 width-200" data-toggle="modal" data-target="#basicExample">
-                                            <span class="">Comment&nbsp;</span><span class=""><i class="fa fa-comment"></i></span>
+                                        <button type="button" class="btn bg-white m-l-10 f-14 m-r-10 f-14 width-200" data-toggle="modal" data-target="#basicExample">
+                                            <span class="">Comments<small class="c-gray f-10">({{ $post->comments->count() }})</small>&nbsp;</span><span class=""><i class="fa fa-comment"></i></span>
                                         </button>
-                                        <button type="button" class="btn bg-white m-l-3 f-14 width-200" data-toggle="modal" data-target="#basicExample">
+                                        <button type="button" class="btn bg-white m-l-5 f-14 width-150" data-toggle="modal" data-target="#basicExample">
                                             <span class="">Hype&nbsp;</span><span class=""><i class="fa fa-share-alt"></i></span>
                                         </button>
                                     </div>
                                 </div>
                             @endif
-                            @forelse($post->comments as $comment)
+                            @forelse($post->comments->sortByDesc('created_at')->slice(0,5) as $comment)
                                 <div class="media m-b-20">
                                     <div class="pull-left p-r-10">
                                         <a href="{{ route('view_profile', $comment->user->reference) }}">
@@ -134,14 +139,22 @@
                                         </a>
                                     </div>
                                     <div class="media-body">
-                                        <a href="{{ route('view_profile', $comment->user->reference) }}"><h6 class="media-heading w-700 m-b-5 f-12 c-brand">{{ $comment->user->full_name() }}</h6></a>
+                                        <h6 class="media-heading w-700 m-b-5 f-12 c-brand">
+                                            <a class="c-brand" href="{{ route('view_profile', $comment->user->reference) }}">
+                                                {{ $comment->user->full_name() }}
+                                            </a>
+                                            <span class="pull-right c-gray dis-inline-b p-l-10 p-r-10">{{ $comment->updated_at->diffForHumans() }} &nbsp 
+                                                @if(Auth::id() == $comment->user_id)
+                                                    <a href="{{ route('delete_comment', $comment->id) }}"><i class="fa fa-trash c-red"></i></a>
+                                                @endif
+                                            </span>
+                                        </h6>
                                         <p m-b- f-12>{{ $comment->content }}</p>
-                                        <ul class="m-b-0 f-12">
-                                            {{-- <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart-o"></i></span> Like</a></li>
-                                            <li class="c-brand dis-inline-b p-l-10 p-r-10"><a href="#">Reply</a></li> --}}
-                                            <li class="c-brand dis-inline-b p-l-10">{{ $comment->updated_at->diffForHumans() }}</li>
+                                        {{-- <ul class="m-b-0 f-12">
+                                            <li class="c-brand dis-inline-b p-r-10"><a href="#"><span><i class="fa fa-heart-o"></i></span> Like</a></li>
+                                            <li class="c-brand dis-inline-b p-l-10 p-r-10"><a href="#">Reply</a></li>
                                         </ul>
-                                        {{-- @if(auth()->check())
+                                        @if(auth()->check())
                                             <div class="media m-t-5">
                                                 <div class="pull-left p-r-10">
                                                     @if (auth()->user()->profile_picture == null)
@@ -163,6 +176,9 @@
                             @empty
                                 {{-- empty expr --}}
                             @endforelse  
+                            @if($post->comments->count() > 5)
+                                <a href="" class="pull-right c-brand"><p class="pull-right c-brand">view all ({{ $post->comments->count() }}) comments</p></a>
+                            @endif
                             <!--/. comment section-->
                         </div>
                     @empty

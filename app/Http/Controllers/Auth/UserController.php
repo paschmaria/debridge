@@ -95,9 +95,9 @@ class UserController extends Controller
             //     compact('posts', 'admired', 'hyped', 'timestamp', 'user_pic'), 
             //     'auth' => auth()->check(),
             //     ]);  
-            return view('market.partials.timeline', compact('posts', 'admired', 'hyped', 'timestamp')); 
+            return view('market.partials.timeline', compact('posts', 'admired', 'hyped', 'timestamp', 'filter')); 
         } else {
-            return view('market.index', compact('posts', 'admired', 'hyped', 'timestamp')); 
+            return view('market.index', compact('posts', 'admired', 'hyped', 'timestamp', 'filter')); 
         }      
     }
     
@@ -222,14 +222,27 @@ class UserController extends Controller
         return view('merchant.all_merchant', compact('users', 'following_ids', 'sent_request'));
     }
      
-    public function viewUsers()
+    public function viewUsers($filter = null)
      {
-        $users = User::where('id','!=', auth()->user()->id)->get();
+        $users = User::with(['profile_picture'])
+                    ->where('id','!=', auth()->user()->id);
         // get the id of the users that the auth user follows
         $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
+        
+
+        $user_role = $user_role = Role::where('name', 'User')->pluck('id')->toArray();
+        if (strtolower($filter) == 'merchant') {
+            $users = $users->whereNotIn('role_id', $user_role)->paginate(30);
+        } elseif (strtolower($filter) == 'user') {
+            $users = $users->whereIn('role_id', $user_role)->paginate(30);
+        } else {
+            $users = $users->paginate(30);
+            $filter = '';
+        }
+
         // get the id of the users that the auth user sent a friend request
         $sent_request = FriendRequest::where('sender_id', auth()->user()->id)->pluck('receiver_id')->toArray();
-        return view('bridger', compact('users', 'following_ids', 'sent_request'));
+        return view('bridger.bridger', compact('users', 'following_ids', 'sent_request', 'filter'));
      }
 
 
