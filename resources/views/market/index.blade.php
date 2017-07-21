@@ -346,7 +346,7 @@
                         type:'GET',
                         data:{'page': page, 'timestamp': timestamp},
                         success:function(data){
-                            console.log(data);
+                            // console.log(data);
 
 
                             $('#timeline').append(data) ;
