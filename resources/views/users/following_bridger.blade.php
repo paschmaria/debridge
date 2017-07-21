@@ -38,7 +38,7 @@
 	        <div class="m-t-40 m-b-140">
 	        	<div class="row">
 	        		<!-- first column of friends -->
-	        		<div class="p-10 m-b-20 bg-brand col-sm-12">Bridgers am following <span class="badge bg-white c-brand follow_count" >{{ $following_count }}</span></div>
+	        		<div class="p-10 m-b-20 bg-brand col-sm-12"> {{ ucwords(strtolower($user->full_name())) }} - following <span class="badge bg-white c-brand follow_count" >{{ $following_count }}</span></div>
 	        		@forelse ($following as $user)
 	        			<div class="col-md-6 col-sm-6 col-xs-6 col-12">
 	        				<div class="h-114 width-563 m-b-30">

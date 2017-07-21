@@ -37,13 +37,18 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
+        // if(!$request->img_ref)){
+        //         return response()->json(compact('request'));
+        //     }
         $this->validate($request, ['img_ref' => 'required|mimes:jpg,jpeg,png,gif']);
         $filename = "profile-" . auth()->user()->id . '/' . $request->file('img_ref')->getClientOriginalName();
         \Storage::disk('custom')->put($filename, file_get_contents($request->file('img_ref')));
         $image = Image::create(['image_reference' => $filename]);
         auth()->user()->image_id = $image->id;
         auth()->user()->save();
-        return back()->with('success', 'Profile picture update successful!');
+
+        // return back()->with('success', 'Profile picture update successful!');
+        return response()->json(['status' => 'success', 'data' => $image]);
     }
 
     /**

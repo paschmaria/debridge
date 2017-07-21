@@ -48,11 +48,11 @@ class CommentController extends Controller
             'user_id' => auth()->user()->id,
             'post_id' => $post->id
             ]);
-        return response()->json([
-            'success' => $comment
-        ]);    
-        // $request->session()->flash('success', 'Comment succesful');
-        // return back();
+        // return response()->json([
+        //     'success' => $comment
+        // ]);    
+        $request->session()->flash('success', 'Comment succesful');
+        return back();
     }
 
     /**
@@ -90,7 +90,7 @@ class CommentController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from the comment.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -99,7 +99,6 @@ class CommentController extends Controller
     {
         //
         Comment::destroy($id);
-        $request->session()->flash('success', 'Comment deleted successfully!');
-        return back();
+        return back()->with('success', 'Comment deleted successfully!');
     }
 }

@@ -27,7 +27,7 @@ Route::get('/post', 'User\PostController@index')->name('post');
 
 Route::post('/post', 'User\PostController@store')->name('create_post');
 
-Route::post('/comment/{post}', 'User\CommentController@store')->name('create_comment');
+Route::post('/post/comment/create/{reference}', 'User\CommentController@store')->name('create_comment');
 
 Route::get('/hype/{reference}', 'User\HypeController@create')->name('hype');
 
@@ -73,8 +73,8 @@ Route::get('/follow', 'FollowController@index')->name('follow_page');
 
 Route::post('/unfollow/{reference}', 'FollowController@destroy')->name('unfollow');
 
-Route::get('/delete_comment/{id}', 'User\CommentController@destroy')->name('delete_comment');
-Route::get('/delete_post/{post}', 'User\PostController@destroy')->name('delete_post');
+Route::get('/post/comment/delete/{id}', 'User\CommentController@destroy')->name('delete_comment');
+Route::get('/post/delete/{reference}', 'User\PostController@destroy')->name('delete_post');
 
 Route::get('/register', 'Auth\UserController@register')->name('register');
 
