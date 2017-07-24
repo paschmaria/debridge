@@ -41,7 +41,7 @@
 
          <!-- main section begins here-->
         <section class="main">
-          <div class="container bd-dark-light m-t-60 width-800">
+          <div class="container bd-dark-light m-t-60 width-800 m-b-20">
                 <h6 class="m-t-30 m-l-2">MY CART</h6>
                 @forelse($items as $item)
                 <div class="row">

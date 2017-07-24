@@ -113,8 +113,9 @@ class ProductController extends Controller
         $product->save();
 
         // product notification for followers
-        $product_notification = ProductNotification::create([
-                'message' => 'Notice: ' . $product->inventory->merchant->user->first_name . " now has " . $product->name . ' at ' . $product->price,
+        $social_notification = SocialNotification::create([
+                'message' => 'Notice: ' . $product->inventory->merchant->user->full_name() .  " now has " . $product->name . ' at ' . $product->price,
+                'foriegner_id' => $product->inventory->merchant->user->id,
                 'product_id'=> $product->id, 
                 'description_id' => 1
             ]);
