@@ -1,7 +1,7 @@
-const app = {
-	stickyHeader() {
+var app = {
+	stickyHeader: function() {
 
-		let body = document.querySelector('header');
+		var body = document.querySelector('header');
 
 		window.onscroll = function() {
 		    // console.log(window.pageYOffset);
@@ -26,9 +26,9 @@ const app = {
 			
 		// });
 	},
-	loginToggler() {
+	loginToggler: function() {
 
-		let cardBlock = $(".overbox .card-block"),
+		var cardBlock = $(".overbox .card-block"),
 			subtitle = $(".overbox .sub-title"),
 			divider = $(".overbox .divider"),
 			title = $(".overbox .title"),
@@ -143,10 +143,10 @@ const app = {
 
 	   	});
 	},
-	productImageUpload(arg) {
+	productImageUpload: function(arg) {
 		window.URL = window.URL || window.webkitURL;
 
-		let productUploadElem = document.getElementsByClassName("product-img-input"),
+		var productUploadElem = document.getElementsByClassName("product-img-input"),
 			productUploadBtn = document.getElementsByClassName("btn-product-img"),
 			timeline = document.getElementsByClassName("timeline"),
 			productImgWrapper = document.getElementById("product-img-wrapper"),
@@ -157,14 +157,14 @@ const app = {
 		    imageList = [],
 			products;
 
-		const postController = {
-			toggleWrapper(class1, class2) {
+		var postController = {
+			toggleWrapper: function(class1, class2) {
 				if (productImgWrapper.classList.contains(class1)) {
 				        productImgWrapper.classList.add(class2)
 				        productImgWrapper.classList.remove(class1);
 				}
 			},
-			inputClicker() {
+			inputClicker: function() {
 				Array.from(productUploadBtn).forEach( button => {
 			      	button.addEventListener('click', (e) => {
 			      		Array.from(productUploadElem).some( (input) => {
@@ -177,7 +177,7 @@ const app = {
 			      	}, false);
 			    });
 			},
-			imagePicker() {
+			imagePicker: function() {
 				Array.from(productUploadElem).forEach( input => {
 			      	input.addEventListener('change', (e) => {
 			      		// productImgWrapper.style.display = "block";
@@ -206,7 +206,7 @@ const app = {
 			      	}, false);
 			    });
 			},
-		    imageUploader(files) {
+		    imageUploader: function(files) {
 	    		Array.from(files).forEach( file => {
 		    		if ((file.type !== "image/jpeg") && (file.type !== "image/png")) {
 
@@ -214,7 +214,7 @@ const app = {
 
 		    		} else {
 
-		    			let imageItem = document.createElement("li"),
+		    			var imageItem = document.createElement("li"),
 		    				image = document.createElement("img"),
 		    				removeBtn = document.createElement("span");
 
@@ -243,12 +243,12 @@ const app = {
 		    			}
 		    		}
 	    	    });
-		    },
-		    // contentSubmit() {
+		    }
+		    // contentSubmit: function() {
 		    // 	productUploadForm.addEventListener('submit', (e) => { //productUploadForm1 is supposed to be productUploadForm
 		    // 		e.preventDefault();
 
-		    // 		let output = "",
+		    // 		var output = "",
 		    // 			counter = 0;
 		    // 		if (statusTextarea.value === '') {
 		    // 			alert("Please provide product details!");
@@ -369,8 +369,8 @@ const app = {
 		// postController.contentSubmit();
 
 	},
-	likeToggler() {
-        let likeBtn = document.getElementsByClassName("like");
+	likeToggler: function() {
+        var likeBtn = document.getElementsByClassName("like");
 
     	for (var i = 0;	i < likeBtn.length; i++ ) {
     		// console.log(likeBtn[i].parentElement.lastElementChild);
@@ -392,7 +392,7 @@ const app = {
 				btn.addEventListener('click', (e) => {
 					e.preventDefault();
 					// console.log(e);
-					let dislikeHTML = `<i class="fa fa-heart-o"></i>`,
+					var dislikeHTML = `<i class="fa fa-heart-o"></i>`,
 						likeHTML = `<i class="fa fa-heart"></i>`;
 					$.ajax({
 						// pass url here
@@ -420,16 +420,16 @@ const app = {
 
     	likeBtnClicker();
     },
-    commentHandler() {
-    	let $container = $('section.main'),
+    commentHandler: function() {
+    	var $container = $('section.main'),
     		$addComment = $container.find('.comment_box');
 
     	// creating messages
-    	let callbackdata = JSON.parse(localStorage.getItem('story'));
-    	let comment = callbackdata || {}; //
+    	var callbackdata = JSON.parse(localStorage.getItem('story'));
+    	var comment = callbackdata || {}; //
     	comment.users = comment.users || []; //
     	//console.log({stories});
-    	const commentParameters = {
+    	var commentParameters = {
     	    shouldEdit: false,
     	    userIndex: "",
     	    allUsers: comment.users.length,
@@ -439,7 +439,7 @@ const app = {
     	        //console.log(stories.users.length);
     	        //console.log(arg.val());
     	        
-    	        let output = "";
+    	        var output = "";
     	        for (var i = 0; i < comment.users.length; ++i) {
     	            output += ` <div class="media m-b-20">
     	                            <div class="pull-left p-r-10">
@@ -494,7 +494,7 @@ const app = {
     	     
     	});
     },
-    validation(){
+    validation: function(){
     	$('#register').click(function(){
         
          //prevent a form from submitting if no email
@@ -556,7 +556,7 @@ const app = {
           }
  		});
     },
-    addProductImageHandler() {
+    addProductImageHandler: function() {
         $('input').on('change', function(){
             //alert("alert");
             //console.log($(this));

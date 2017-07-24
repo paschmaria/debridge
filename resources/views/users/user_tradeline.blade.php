@@ -237,7 +237,7 @@
 
  @section('scripts') 
     <script>
-        document.onreadystatechange = () => {
+        document.onreadystatechange = function() {
             if (document.readyState === "complete") {
                 app.productImageUpload(4);
             }

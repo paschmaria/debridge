@@ -134,7 +134,7 @@
     <!-- Main JS -->
     <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
     <script>
-        document.onreadystatechange = () => {
+        document.onreadystatechange = function() {
             if (document.readyState === "complete") {
                 app.loginToggler();
                 $('[data-toggle="tooltip"]').tooltip();

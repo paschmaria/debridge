@@ -557,7 +557,7 @@
         <!-- Main JS -->
         <script type="text/javascript" src="assets/js/main.js"></script>
         <script>
-            document.onreadystatechange = () => {
+            document.onreadystatechange = function() {
                 if (document.readyState === "complete") {
                     $('.carousel_big').slick({
                         slidesToShow: 1,

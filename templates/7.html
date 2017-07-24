@@ -579,7 +579,7 @@
          <!-- Main JS -->
         <script type="text/javascript" src="assets/js/main.js"></script>
         <script>
-            document.onreadystatechange = () => {
+            document.onreadystatechange = function() {
                 if (document.readyState === "complete") {
                     app.likeToggler();
                     app.productImageUpload(4);
