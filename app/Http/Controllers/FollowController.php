@@ -74,6 +74,10 @@ class FollowController extends Controller
             $start =  20 + (((int)$request->page - 2) * 20);
             $end = $start + 20;
             $following =  $following->sortBy('name')->splice($start, $end);
+
+            return view('users.partials.following_bridger', 
+            compact('user', 'following', 'following_ids', 'filter')
+            );
         }
         return view('users.following_bridger', 
             compact('user', 'following', 'following_count', 'following_ids', 'filter')
@@ -108,7 +112,12 @@ class FollowController extends Controller
             $start =  20 + (((int)$request->page - 2) * 10);
             $end = $start + 10;
             $followers =  $followers->sortBy('name')->splice($start, $end);
+
+            return view('users.partials.followers_bridger', 
+            compact('user', 'followers', 'followers_ids', 'filter')
+            );
         }
+
         $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
         return view('users.followers_bridger', 
             compact('user', 'followers', 'followers_count', 'following_ids', 'filter')

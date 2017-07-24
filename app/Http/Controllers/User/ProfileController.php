@@ -125,7 +125,7 @@ class ProfileController extends Controller
     {
         $user = auth()->user();
         $this->validate($request, [
-            'telephone' => 'digits_between:5,16',
+            'telephone' => 'nullable|digits_between:5,16',
             'address' => 'nullable|string|max:150',
             'state' => 'digits_between:1,10',
             'status' => 'max:180',
@@ -154,7 +154,7 @@ class ProfileController extends Controller
     {
         $user = auth()->user();
         $this->validate($request, [
-            'telephone' => 'digits_between:5,16',
+            'telephone' => 'nullable|digits_between:5,16',
             'address' => 'nullable|string|max:150',
             'state' => 'digits_between:1,10',
             'status' => 'max:180',

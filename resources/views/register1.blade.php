@@ -191,7 +191,7 @@
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-12 form-group acc_type_wrapper">
                             <label for="account_type">Account Type</label>
-                            <select name="user_trade_interest" id="account_type" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow" required value = "{{ old('trade_interest') }}">
+                            <select name="account_type" id="account_type" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow" required value = "{{ old('account_type') }}">
                                 <option disabled selected>Choose...</option>
                                 {{-- <option required> Individual User</option> --}}
                                 @foreach($roles as $role)
@@ -206,8 +206,8 @@
                             <select name="trade_interest" id="trade_interest" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow" required value = "{{ old('trade_interest') }}">
                                 <option disabled selected>Choose...</option>
                                 {{-- <option required>User Category</option> --}}
-                                @foreach($roles as $role)
-                                <option value="{{$role->id}}" >{{ $role->name }}</option>
+                                @foreach($trade_interests as $trade_interest)
+                                <option value="{{$trade_interest->id}}" >{{ $trade_interest->name }}</option>
                                 @endforeach                                
                                 
                             </select>

@@ -25,6 +25,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'reference' => str_random(7) . time() . uniqid(),
         'registration_status' => rand(1,2),
         'role_id' => rand(1,2),
+        'trade_interest_id' => rand(1,5),
         'community_id' => rand(1,7),
         'user_token' => str_random(64),
         'created_at' => $faker->dateTimeThisMonth($max = 'now'),
