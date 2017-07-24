@@ -359,7 +359,7 @@
 
     @section('scripts')
     <script type="text/javascript">
-            document.onreadystatechange = () => {
+            document.onreadystatechange = function() {
                 if (document.readyState === "complete") {
                     var app2 = {
                         imageHandler:function (){

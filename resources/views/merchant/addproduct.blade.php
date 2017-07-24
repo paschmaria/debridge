@@ -155,7 +155,7 @@
 
  @section('scripts')
     <script type="text/javascript">
-        document.onreadystatechange = () => {
+        document.onreadystatechange = function() {
             if (document.readyState === "complete") {
                 app.addProductImageHandler();
                 app.stickyHeader();

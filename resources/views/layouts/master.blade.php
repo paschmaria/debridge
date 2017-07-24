@@ -248,7 +248,7 @@
         <script src="{{asset('js/toastr.min.js')}}"></script> --}}
         <!-- SCRIPTS -->
         <script>
-            document.onreadystatechange = () => {
+            document.onreadystatechange = function() {
                 if (document.readyState === "complete") {
                     $('.carousel_big').slick({
                         slidesToShow: 1,

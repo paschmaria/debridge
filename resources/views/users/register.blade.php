@@ -249,7 +249,7 @@
     <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
     <script src="{{asset('js/toastr.min.js')}}"></script>
     <script>
-        document.onreadystatechange = () => {
+        document.onreadystatechange = function() {
             if (document.readyState === "complete") {
                 app.loginToggler();
                 $('[data-toggle="tooltip"]').tooltip();
