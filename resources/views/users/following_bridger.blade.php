@@ -37,7 +37,7 @@
 	        </div>
 	        <!-- friends display  -->
 	        <div class="m-t-40 m-b-140">
-	        	<div class="row">
+	        	<div class="row" id="following_list">
 	        		<!-- first column of friends -->
 	        		<div class="p-10 m-b-10 bg-brand col-sm-12"> {{ ucwords(strtolower($user->full_name())) }} - following <span class="badge bg-white c-brand follow_count" >{{ $following_count }}</span></div>
 	        		<div class="m-b-20 col-sm-12">
@@ -83,7 +83,7 @@
 		        			</div>
 		        		</div>
         			@empty
-        				<div class="p-10 col-sm-12 c-brand"><p>no one is currently following you.</p></div>
+        				<div class="p-10 col-sm-12 c-brand"><p>{{ ucwords(strtolower($user->full_name())) }} is currently following no one.</p></div>
         			@endforelse
 	        		</div>
 	        		<!-- / first column of friends -->
@@ -132,4 +132,29 @@
 	        <!-- pagination ends here -->
     </section>
     <!-- main section ends here -->
+@endsection
+
+@section('scripts')
+	<script>
+        $(document).ready(function () {
+            var page = 2;
+            $(window).scroll(function(){
+               	var scroll_height = $(window).scrollTop() + $(window).height();
+                var doc_height = $(document).height() - 10;
+                if ( scroll_height >= doc_height ) {
+                   $.ajax({
+                        url: document.URL,
+                        type:'GET',
+                        data:{'page': page},
+                        success:function(data){
+                            $('#following_list').append(data) ;
+                        },
+                        error: function (data) {
+                        }
+                    });
+                    page += 1;
+                }
+            });
+        }); 
+    </script>
 @endsection

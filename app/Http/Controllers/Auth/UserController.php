@@ -12,6 +12,7 @@ use App\Models\FriendRequest;
 use App\Models\SocialNotification;
 use App\Models\Image;
 use App\Models\Role;
+use App\Models\TradeInterest;
 use App\Models\State;
 use App\Models\TradeCommunity;
 use App\Models\Product;
@@ -35,10 +36,11 @@ class UserController extends Controller
     public function register()
     {
         $roles = Role::where('name', '!=', 'Admin')->where('name', '!=', 'SuperAdmin')->get();
+        $trade_interests = TradeInterest::all();
         // dd($roles);
         $states = State::all();
         $trade_communities = TradeCommunity::all();
-        return view('register1', compact('roles', 'states', 'trade_communities'));
+        return view('register1', compact('roles', 'states', 'trade_communities', 'trade_interests'));
     }
 
     protected function isValidPageNumber($page)
@@ -103,7 +105,6 @@ class UserController extends Controller
     
     public function create(Request $request)
     {
-        
         $this->validate($request, [
             'first_name' => 'required|alpha|max:180',
             'last_name' => 'required|alpha|max:180',
@@ -111,12 +112,19 @@ class UserController extends Controller
             'password' => 'required|confirmed|min:6',
             'date_of_birth' => 'date',
             'gender' => 'alpha',
-            
+            'account_type' => 'required'
             ]);
+
+        // only if the role is that of a merchant
+        $merchant_role = Role::where('name', 'Merchant')->pluck('id')->toArray();        
+        if (in_array(intval($request->account_type), $merchant_role)){
+            $this->validate($request, [ 'trade_interest' => 'required']);
+        }
+
         
         $user_token =  str_random(64);
-        $role = Role::where('name', $request->input('trade_interest'))->first();
-        $trade_community = TradeCommunity::where('name', $request->input('trade_community'))->first();
+        // $role = Role::where('name', $request->input('trade_interest'))->first();
+        // $trade_community = TradeCommunity::where('name', $request->input('trade_community'))->first();
 
         // $state = State::where('name', $request->input('state'))->first();
         // dd($request->all());
@@ -130,9 +138,9 @@ class UserController extends Controller
             'gender' => $request->gender,
             'reference' => str_random(7) . time() . uniqid(),
             'registration_status' => 1,
-            'role_id' => $request->user_trade_interest,
+            'role_id' => $request->account_type,
+            'trade_interest_id' => $request->trade_interest,
             'community_id' => $request->user_trade_community,
-
             ]);
         // dd($user);
 

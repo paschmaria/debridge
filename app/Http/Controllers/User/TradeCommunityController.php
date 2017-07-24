@@ -11,7 +11,12 @@ use App\Models\Follower;
 
 class TradeCommunityController extends Controller
 {
-    public function index($reference, $filter = null)
+    protected function isValidPageNumber($page)
+    {
+        return $page >= 2 && filter_var($page, FILTER_VALIDATE_INT) !== false;
+    }
+
+    public function index($reference, $filter = null, Request $request)
     {
     	$user = User::where('reference', $reference)->first();
     	$trade_community = TradeCommunity::where('id', $user->community_id)->first();
@@ -34,6 +39,10 @@ class TradeCommunityController extends Controller
 	            $users = $users->paginate(30);
 	            $filter = '';
 	        }
+
+            if ($this->isValidPageNumber($request->page)) {
+                return view('bridger.partials.trade_community', compact('users', 'following_ids', 'trade_community'));
+            }
 	        return view('bridger.trade_community', compact('users', 'following_ids', 'filter', 'trade_community', 'user'));
     	} else {
     		return back()->with('info', "User doesn't belong to any trade community!");

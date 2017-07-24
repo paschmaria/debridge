@@ -27,7 +27,8 @@ class User extends Authenticatable
         'registration_status',
         'reference',
         'role_id',
-        'community_id'
+        'community_id',
+        'trade_interest_id'
     ];
 
     /**
@@ -154,6 +155,11 @@ class User extends Authenticatable
     public function bridgeCode()
     {
         return $this->hasOne('App\Models\BridgeCode');
+    }
+
+    public function tradeInterest()
+    {
+        return $this->belongsTo('App\Models\TradeInterest');
     }
 
     // public function cart()

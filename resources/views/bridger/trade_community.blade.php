@@ -50,7 +50,7 @@
                     </nav>
 	        	</div>
 	        	{{-- @foreach($users->chunk(2) as $userChuncked) --}}
-		        	<div class="row">
+		        	<div class="row" id="users_list">
 		        		<!-- first column of friends -->
 		        		@foreach($users as $user)
 		        			<div class="col-md-6 col-sm-6 col-xs-6 col-12">
@@ -138,3 +138,28 @@
     </section>
     <!-- main section ends here -->
 @endsection('content')
+
+@section('scripts')
+	<script>
+        $(document).ready(function () {
+            var page = 2;
+            $(window).scroll(function(){
+               	var scroll_height = $(window).scrollTop() + $(window).height();
+                var doc_height = $(document).height() - 10;
+                if ( scroll_height >= doc_height ) {
+                   $.ajax({
+                        url: document.URL,
+                        type:'GET',
+                        data:{'page': page},
+                        success:function(data){
+                            $('#users_list').append(data) ;
+                        },
+                        error: function (data) {
+                        }
+                    });
+                    page += 1;
+                }
+            });
+        }); 
+    </script>
+@endsection
