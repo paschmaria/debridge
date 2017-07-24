@@ -100,7 +100,7 @@
                                             <i class="fa fa-trash-o"></i>
                                         </button>
                                     @else
-                                        <a href="{{ route('addToCart', $product->id) }}"><button type="button" class="btn bg-white c-brand m-r-3 f-14" data-toggle="modal">
+                                        <a href="{{ route('addToCart', $product->reference) }}"><button type="button" class="btn bg-white c-brand m-r-3 f-14" data-toggle="modal">
                                                     <i class="fa fa-shopping-cart"></i>
                                         </button></a>
                                     @endif

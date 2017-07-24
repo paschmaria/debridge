@@ -51,7 +51,7 @@
                             </figure>
                         </div>
                     </div>
-                    <div class="col-6 col-sm-6 col-md-6">
+                    <div class="col-6 col-sm-6 col-md-6 m-t-20">
                         <div class="page_heading text-center">
                             <form class="" action="" method="GET">
                                 <div class="input-group input-shadow">

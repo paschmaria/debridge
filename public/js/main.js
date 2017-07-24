@@ -12,6 +12,19 @@ const app = {
 		    	body.classList.remove("sticky", "z-depth-1")
 		    }
 		};
+
+		// window.addEventListener('scroll', function(e){
+		// 	var y = this.scrollY;
+		// 	console.log(y);
+
+		// 	if(y === 0){
+		// 		html.classList.remove('stuck');
+		// 	}
+		// 	else{
+		// 		html.classList.add('stuck');
+		// 	}
+			
+		// });
 	},
 	loginToggler() {
 

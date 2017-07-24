@@ -1480,6 +1480,16 @@ header.sticky {
   z-index: 5000;
 }
 
+/*.stuck header{
+  transition: all 1s both;
+  animation: navbar 1s both;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 5000;
+}
+*/
 @keyframes navbar {
   0% {
     opacity: 0;
