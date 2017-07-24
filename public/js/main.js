@@ -144,7 +144,7 @@ const app = {
 		    imageList = [],
 			products;
 
-		const postController = {
+		var postController = {
 			toggleWrapper(class1, class2) {
 				if (productImgWrapper.classList.contains(class1)) {
 				        productImgWrapper.classList.add(class2)
@@ -416,7 +416,7 @@ const app = {
     	let comment = callbackdata || {}; //
     	comment.users = comment.users || []; //
     	//console.log({stories});
-    	const commentParameters = {
+    	var commentParameters = {
     	    shouldEdit: false,
     	    userIndex: "",
     	    allUsers: comment.users.length,

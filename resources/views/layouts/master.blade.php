@@ -291,7 +291,7 @@
                     });
 
                     new WOW().init();
-                    $('[data-toggle="tooltip"]').tooltip();
+                    $( '[data-toggle="tooltip"]').tooltip();
                     app.likeToggler();
                     app.commentHandler();
                     app.stickyHeader();
@@ -302,9 +302,7 @@
                     });
 
                     $('.search_dropdown').slimScroll({
-                        // position:'absolute'
-                        // position: 'relative',
-                        height: '0px',
+                        height: '0px'
                     });
 
                 }
