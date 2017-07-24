@@ -1856,13 +1856,13 @@ button.btn-upload {
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
 }
 
-.input-shadow input[type="text"].no-shadow {
+.input-shadow input[type="text"].no-shadow, .no-shadow {
   -webkit-box-shadow: none !important;
   -ms-box-shadow: none !important;
   box-shadow: none !important;
 }
 
-.input-shadow input[type="text"].no-shadow:hover, .input-shadow input[type="text"].no-shadow:active, .input-shadow input[type="text"].no-shadow:visited {
+.input-shadow input[type="text"].no-shadow:hover, .no-shadow:hover , .input-shadow input[type="text"].no-shadow:active, .no-shadow:active, .input-shadow input[type="text"].no-shadow:visited, .no-shadow:visited {
   -webkit-box-shadow: none !important;
   -ms-box-shadow: none !important;
   box-shadow: none !important;

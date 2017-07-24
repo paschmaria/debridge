@@ -17,10 +17,10 @@
         <!-- slick carousel -->
         <link rel="stylesheet" type="text/css" href="{{ asset('plugins/slick/slick.css')}}"/>
         <link rel="stylesheet" type="text/css" href="{{ asset('plugins/slick/slick-theme.css')}}"/>
-        <link rel="stylesheet" href="{{asset ('css/toastr.min.css') }}" rel="stylesheet" />
+        <link rel="stylesheet" href="{{asset ('css/toastr.min.css') }}"/>
 
         <!-- Bootstrap core CSS -->
-        <link href="{{ asset('plugins/mdb/css/bootstrap.css')}}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('plugins/mdb/css/bootstrap.css')}}">
 
         <!-- Material Design Bootstrap -->
         <link rel="stylesheet" href="{{ asset('plugins/mdb/css/mdb.min.css')}}">
@@ -155,12 +155,12 @@
                                                 </span>
                                             </a>
                                             <div class="dropdown-menu notify-dropdown animated bounceIn f-12" aria-labelledby="dropdownNotify">
-                                                  <h6 class="notify-header border-bottom">
+                                                  <h6 class="notify-header border-bottom input-shadow">
                                                     Notifications
                                                   </h6>
                                                  <div class="notify">
                                                     <ul>
-                                                    <img src="{{asset('img/loader.gif')}}" id="bridge_loader" style="display: none;" style="position: absolute;" alt="gg">
+                                                    <img src="{{asset('img/loader.gif')}}" id="bridge_loader" style="display: none;position: absolute;" alt="loading...">
                                                         @forelse (auth()->user()->socialNotification as $notification)
                                                             <li class="dropdown-item notify_id{{ $notification->id }} waves-effect waves-light p-l-10 border-bottom">
                                                                 <p>
@@ -168,7 +168,7 @@
                                                                         @if ($notification->foreigner->profile_picture != null)
                                                                             <img src="{{ route('image', [$notification->foreigner->profile_picture->image_reference,'']) }}" class="h-40 width-40 m-r-5 bd-50p">
                                                                         @else
-                                                                            <img src="{{ asset('img/icons/profiled.png') }}" class="h-40 width-40 m-r-5 bd-50p">
+                                                                            <img src="{{ asset('img/icons/profile.png') }}" class="h-40 width-40 m-r-5 bd-50p">
                                                                         @endif
                                                                     </a>
                                                                     <span>{{ $notification->message }}

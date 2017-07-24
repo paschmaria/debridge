@@ -16,7 +16,7 @@
                             <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="{{ route('araha_market') }}">Araha Market</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Bridge Shops</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Invest Hub</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Consultancyc Unit</a></li>
+                            <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Consultancy Unit</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Exhibition Stand</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">B - Mentor</a></li>
                             <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Window Shopping</a></li>
