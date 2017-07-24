@@ -11,7 +11,7 @@ use App\Models\Inventory;
 use App\Models\Product;
 use App\Models\ProductOfTheWeek;
 use App\Models\HottestProduct;
-use App\Models\ProductNotification;
+use App\Models\Notification;
 use App\Models\ProductHype;
 use App\Models\ProductAdmire;
 use App\Models\Post;
@@ -113,14 +113,13 @@ class ProductController extends Controller
         $product->save();
 
         // product notification for followers
-        $social_notification = SocialNotification::create([
-                'message' => 'Notice: ' . $product->inventory->merchant->user->full_name() .  " now has " . $product->name . ' at ' . $product->price,
-                'foriegner_id' => $product->inventory->merchant->user->id,
+        $notification = Notification::create([
+                'message' => 'Notice: ' . $product->inventory->merchant->user->full_name() . " now has " . $product->name . ' at ' . $product->price,
                 'product_id'=> $product->id, 
-                'description_id' => 1
+                'user_id' => $product->inventory->merchant->user->id,
             ]);
-        $product_notification->users()->attach(auth()->user()->followers);
-        $product_notification->save();
+        $notification->users()->attach(auth()->user()->followers);
+        $notification->save();
 
         return back()->with('info', 'Product Added Sucessfully');        
     }
@@ -270,13 +269,13 @@ class ProductController extends Controller
                 $price = $product->price;
             }
             //notify all merchant of the change
-            $product_notification = ProductNotification::create([
-                    'message' => 'Notice: ' . $product->inventory->merchant->user->full_name() . "'s product of the week is " . $product->name . ' at ' . $price,
+            $notification = Notification::create([
+                    'message' => 'Notice: ' . $product->inventory->merchant->user->full_name() . "'s product of the week is " . $product->name . ' at #' . $price,
                     'product_id'=> $product->id, 
-                    'description_id' => 2
+                    'user_id' => $product->inventory->merchant->user->id,
                 ]);
-            $product_notification->users()->attach(auth()->user()->followers);
-            $product_notification->save();
+            $notification->users()->attach(auth()->user()->followers);
+            $notification->save();
             return back()->with('info', 'Product Of The Week Made');
         }else{
             return back();
@@ -296,13 +295,13 @@ class ProductController extends Controller
             $product->save();
             //notify all mmerchant followers
             
-            $product_notification = ProductNotification::create([
-                    'message' => 'Promo: ' . $product->inventory->merchant->user->first_name . ' now sells ' . $product->name . ' at ' . $product->promo_price,
+            $notification = Notification::create([
+                    'message' => 'Promo: ' . $product->inventory->merchant->user->first_name . ' now sells #' . $product->name . ' at #' . $product->promo_price . 'on promo',
                     'product_id'=> $product->id, 
-                    'description_id' => 3
+                    'user_id' => $product->inventory->merchant->user->id,
                 ]);
-            $product_notification->users()->attach(auth()->user()->followers);
-            $product_notification->save();
+            $notification->users()->attach(auth()->user()->followers);
+            $notification->save();
             
             return redirect()->route('allProduct')->with('info', 'Promo Sucessfully Added');
             
@@ -315,18 +314,18 @@ class ProductController extends Controller
         $product = Product::where('reference', $reference)->first();
         $product->promo_price = null;
         $product->save();
-        $product_notification = ProductNotification::create([
+        $notification = Notification::create([
                     'message' => 'Notice: ' . $product->inventory->merchant->user->first_name . "'s promo for " . $product->name . ' has ended!',
                     'product_id'=> $product->id, 
-                    'description_id' => 4
+                    'user_id' => $product->inventory->merchant->user->id,
                 ]);
-        $product_notification->users()->attach(auth()->user()->followers);
-        $product_notification->save();
+        $notification->users()->attach(auth()->user()->followers);
+        $notification->save();
         return redirect()->route('allProduct')->with('info', 'Promo Sucessfully Remove');
     }
 
     public function whats_new(){
-       $products = Product::orderBy('updated_at', 'desc')->paginate(5);
+       $products = Product::orderBy('updated_at', 'desc')->paginate(8);
 
        return view('merchant.whats_new', compact('products'));
 

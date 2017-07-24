@@ -162,6 +162,11 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\TradeInterest');
     }
 
+    public function notifications()
+    {
+        return $this->belongsToMany('App\Models\Notification');
+    }
+
     // public function cart()
     // {
     //     return $this->hasOne('App\Models\Cart');

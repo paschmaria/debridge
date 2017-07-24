@@ -47,7 +47,7 @@ Route::get('/users/follow/friends', 'FollowController@getUser')->name('follow_fr
 Route::get('/users/follow/merchants', 'FollowController@getMerchant')->name('follow_merchants');
 Route::post('/users/follow/friends', 'FollowController@friendsFollowComplete')->name('follow_friends');
 Route::post('/users/follow/merchants', 'FollowController@merchantsFollowComplete')->name('follow_merchants');
-Route::get('/users/social_notification/delete/{notification}', 'User\SocialNotificationController@destroy')->name('delete_social_notification');
+Route::get('/users/social_notification/delete/{notification}', 'NotificationController@destroy')->name('delete_social_notification');
 
 
 
