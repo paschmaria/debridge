@@ -42,14 +42,17 @@ class HottestProductController extends Controller
         if($diff_in_days >= 7){
             $hot_prod->interval_time = Carbon::now();
         }
-        if ((int)$hot_prod->slots <= 6) {
+        if ($hot_prod->slots <= 6) {
+            if ( $hot_prod->products()->count() <= 6 ) {
+                return back()->with('info', 'please remove some of your current product to add a new item on hottest deal you still have ' . 6 - $hot_prod->slots . ' slots' )
+            }
             $product->hottest()->associate($hot_prod);
             $hot_prod->slots += 1;
             $hot_prod->save();
             $product->save();
             return back()->with('success', 'Product was successfully added!');
         } else{
-            return back()->with('delete_message', 'You exhausted you available slots!');
+            return back()->with('info', 'You exhausted you available slots!');
         }
     }
 

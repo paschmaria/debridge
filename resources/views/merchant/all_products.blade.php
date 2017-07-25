@@ -34,9 +34,9 @@
                 <div class="row">
                     <div class="hidden-xs-down col-sm-3 col-md-3 text-center m-t-20">
                         @if($user->profile_picture != null)
-                            <img src="{{ route('image', [$user->profile_picture->image_reference, '']) }}" class="image-responsive bd-dark-light  p-5">
+                            <img src="{{ route('image', [$user->profile_picture->image_reference, '']) }}" class="image-responsive bd-dark-light  p-5 width-200">
                         @else
-                            <img src="{{ asset('img/icons/profiled.png') }}" class="image-responsive bd-dark-light p-5">
+                            <img src="{{ asset('img/icons/profiled.png') }}" class="image-responsive bd-dark-light p-5 h-350">
                         @endif
                     </div>
                     <div class="col-sm-6 col-md-6 text-center m-t-20">

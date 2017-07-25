@@ -173,11 +173,12 @@
                                                                     </a>
                                                                     <span>{{ $notification->message }}
                                                                     <br>
-                                                                    @if($notification->product != null)
-                                                                        <a href="{{ route('product_details', $notification->product->reference) }}" class="pull-right c-brand">view product</a>
-                                                                    @endif
                                                                     <a class="del" data-payload="{{$notification->id}}">
-                                                                        <i class="fa fa-trash text-danger pull-right"></i></a></span>
+                                                                        <i class="fa fa-trash text-danger pull-right"></i></a>
+                                                                    @if($notification->product != null)
+                                                                        <a href="{{ route('product_details', $notification->product->reference) }}" ><span class="pull-right m-r-20 c-brand">view product</span></a>
+                                                                    @endif
+                                                                    </span>
                                                                 </p>
                                                                 
                                                             </li>

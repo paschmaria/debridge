@@ -389,7 +389,7 @@ $(".del").click(function(e){
     $(".notify_id"+notification_id).hide();
             $.ajax({
 
-                         url: "users/social_notification/delete/"+notification_id,
+                         url: "/users/social_notification/delete/"+notification_id,
                          type: "GET",
                          data: {success:notification_id},
                          success: function(data){

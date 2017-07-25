@@ -15,7 +15,7 @@ class CartController extends Controller
         if ($product) {
                 $cart = Cart::where(['product_id' => $product->id, 'user_id' => auth()->user()->id])->first();
                 if ( $cart ){
-                    return back()->with('item already in cart!');
+                    return back()->with('info', 'item already in  your cart!');
                 }
                 $item = Cart::create(['product_id' => $product->id, 'user_id' => auth()->user()->id]);
                 return back()->with('success', 'Item Added to Cart');
