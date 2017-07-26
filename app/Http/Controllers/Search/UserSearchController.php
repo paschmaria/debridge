@@ -15,9 +15,11 @@ class UserSearchController extends Controller
     public function search(Request $request)
     {
         // $search = $request->input('search');
-        $results = [];
-        $user = User::where('first_name', 'like', $request->search.'%')
-        								->orWhere('last_name', 'like', $request->search.'%')
+        $search = $request->search;
+        $results = []; 
+        $user = User::where('first_name', 'like', '%'.$request->search.'%')
+        								->orWhere('last_name', 'like', '%'.$request->search.'%')
+                                        // ->orWhereRaw("concat(`first_name`, ' ', `last_name`) like %".  $search ." % ")
                                         ->get()
         								// ->orWhere('email', 'like', $request->search.'%')->get()
         								->each(function($user) use (&$results){
@@ -28,7 +30,7 @@ class UserSearchController extends Controller
         									];
         								});
 
-        $codes = BridgeCode::with('user')->where('code', 'like', $request->search.'%')
+        $codes = BridgeCode::with('user')->where('code', 'like', '%'.$request->search.'%')
                                         ->get()
                                         ->each(function($code) use (&$results){
                                             $results[] = [
@@ -38,7 +40,7 @@ class UserSearchController extends Controller
                                             ];
                                         });
             
-        $products = Product::where('name', 'like', $request->search.'%')->get()
+        $products = Product::where('name', 'like', '%'.$request->search.'%')->get()
         								->each(function($product) use (&$results){
         									$results[] = [
         										'name' => $product->name,
@@ -47,7 +49,7 @@ class UserSearchController extends Controller
         									];
         								});
 
-        $stores = MerchantAccount::with('user')->where('store_name', 'like', $request->search.'%')->get()
+        $stores = MerchantAccount::with('user')->where('store_name', 'like', '%'.$request->search.'%')->get()
         								->each(function($store) use (&$results){
         									$results[] = [
         										'name' => $store->store_name,

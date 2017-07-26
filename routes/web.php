@@ -68,7 +68,7 @@ Route::post('/send_trade/{reference}', 'Merchant\TradeRequestController@create')
 Route::post('/undo_trade/{reference}', 'Merchant\TradeRequestController@cancelRequest')->name('undo_trade_request');
 
 
-Route::post('/follow/{reference}', 'FollowController@store')->name('follow');
+Route::post('follow/{reference}', 'FollowController@store')->name('follow');
 
 Route::get('/follow', 'FollowController@index')->name('follow_page');
 

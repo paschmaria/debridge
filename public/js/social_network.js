@@ -244,7 +244,7 @@ $(document).on('click', ".decline_friend", function(e){
 // var followers_counter = $(".followers_counter").text();
 $(document).on('click', ".c_follow", function(e){
         var follow_id = $(this).data("id");
-
+            // alert('nacked');
             var reciever_email = $(this).data("email");
             var reciever_full_name = $(this).data("fname");
 
@@ -267,7 +267,7 @@ $(document).on('click', ".c_follow", function(e){
                         // window.location = "/users/follow/merchants";
                         $("#continue_follow").removeClass('disabled')
                         toastr.options.preventDuplicates = true;
-                        toastr.success("Now follow 5 or more stores of interest by Tapping Continue Button.");
+                        toastr.success("Now click the Continue button to follow 5 or more stores of interest.");
                     } else if(data.merchant_count >= 5) {
                         // alert('Merchant completed');
                         // users/follow/merc hants
