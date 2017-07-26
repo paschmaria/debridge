@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\HottestProduct;
 use App\Models\MerchantAccount;
+use App\Models\Notification;
 use App\User;
 use Carbon\Carbon;
 
@@ -53,6 +54,15 @@ class HottestProductController extends Controller
             $hot_prod->slots += 1;
             $hot_prod->save();
             $product->save();
+
+            if ($hot_prod->slots == 6){
+                $notification = Notification::create([
+                        'message' => 'Notice: you have used up all your hottest product slots. you get more by' . Carbon::createFromFormat('Y-m-d H:i:s', $hot_prod->interval_time)->subWeek(-1),
+                        'user_id' => auth()->user()->id,
+                    ]);
+                $notification->users()->attach(auth()->user());
+            }
+
             return back()->with('success', 'Product was successfully added!');
         } else{
             return back()->with('info', 'You exhausted you available slots!');
