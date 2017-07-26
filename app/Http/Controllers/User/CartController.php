@@ -15,7 +15,7 @@ class CartController extends Controller
         if ($product) {
                 $cart = Cart::where(['product_id' => $product->id, 'user_id' => auth()->user()->id])->first();
                 if ( $cart ){
-                    return back()->with('item already in cart!');
+                    return back()->with('info', 'item already in  your cart!');
                 }
                 $item = Cart::create(['product_id' => $product->id, 'user_id' => auth()->user()->id]);
                 return back()->with('success', 'Item Added to Cart');
@@ -27,7 +27,7 @@ class CartController extends Controller
     public function removeItem($reference)
     {
         $product = Product::where('reference', $reference)->first();
-        $cart = Cart::where(['user_id'=> auth()->user()->id, 'product_id' => $item->id])->first();
+        $cart = Cart::where(['user_id'=> auth()->user()->id, 'product_id' => $product->id])->first();
     	$cart->delete();
     	return back()->with('info', 'Item Removed');
 

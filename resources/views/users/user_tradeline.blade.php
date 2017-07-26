@@ -51,7 +51,17 @@
             @else
                 <div class="row m-t-10">
                     <div class="col-sm-9 m-t-20">
-                        <h1 class="h1-responsive f-48 text-center m-t-20 m-b-5 c-brand w-500">{{ $user->full_name() }}</h1>
+                        <h1 class="h1-responsive f-48 text-center m-t-20 m-b-5 c-brand w-500">{{ $user->full_name() }} 
+                            @if(auth()->user()->id != $user->id)
+                                @if(in_array($user, auth()->user()->following->toArray()))
+                                <a href="{{ route('follow', $user->reference) }}">
+                                    <button class="btn btn-sm btn-outline-brand follow" data-email="{{ $user->reference }}">follow></button>
+                                </a>
+                                @else
+                                    <button class="btn btn-sm btn-brand unfollow" data-email="{{ $user->reference }}"> unfollow </button>
+                                @endif
+                            @endif
+                        </h1>
                         <h4 class="h4-responsive c-brand text-center">{{ strtoupper($merchant->store_name) }}</h4>
                         @if($user->community)
                             <p class="text-center">{{ $user->community_address() }}<small class="c-gray"> (Trade Community)</small></p>
@@ -79,7 +89,7 @@
                                 <i class="fa fa-archive f-20"></i><span class="p-l-20">INVENTORY</span>
                             </a>
                             <a href="{{ route('hottest_products', $user->reference) }}" class="list-group-item list-group-item-action">
-                                <i class="fa fa-shopping-bag f-20"></i><span class="p-l-20">HOTTEST DEALS</span>
+                                <i class="fa fa-star f-20"></i><span class="p-l-20">HOTTEST DEALS</span>
                             </a>
                         </div>
                     </div>

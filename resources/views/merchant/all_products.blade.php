@@ -34,9 +34,18 @@
                 <div class="row">
                     <div class="hidden-xs-down col-sm-3 col-md-3 text-center m-t-20">
                         @if($user->profile_picture != null)
-                            <img src="{{ route('image', [$user->profile_picture->image_reference, '']) }}" class="image-responsive bd-dark-light  p-5">
+                            <img src="{{ route('image', [$user->profile_picture->image_reference, '']) }}" class="image-responsive bd-dark-light  p-5 width-200 h-200">
                         @else
-                            <img src="{{ asset('img/icons/profiled.png') }}" class="image-responsive bd-dark-light p-5">
+                            <img src="{{ asset('img/icons/profiled.png') }}" class="image-responsive bd-dark-light p-5 h-300">
+                        @endif
+                        @if(auth()->user()->id != $user->id)
+                            @if(in_array($user, auth()->user()->following->toArray()))
+                            <a href="{{ route('follow', $user->reference) }}">
+                                <button class="btn btn-sm btn-outline-brand follow" data-email="{{ $user->reference }}">follow></button>
+                            </a>
+                            @else
+                                <button class="btn btn-sm btn-brand unfollow" data-email="{{ $user->reference }}"> unfollow </button>
+                            @endif
                         @endif
                     </div>
                     <div class="col-sm-6 col-md-6 text-center m-t-20">
@@ -61,10 +70,14 @@
                             @if(auth()->user()->ownsShop($user->id))
                                 <a href="{{ route('addProduct') }}" class="list-group-item list-group-item-action p-10 p-l-20"><i class="fa fa-plus fa-2x p-r-40"></i><span class="p-l-40">ADD PRODUCT</span></a>
                             @endif
-                            <a href="{{ route('hottest_products', $user->reference) }}" class="list-group-item list-group-item-action p-10 p-l-20"><i class="fa fa-shopping-bag fa-2x p-r-40"></i><span class="p-l-40">HOTTEST DEALS</span></a>
+                            <a href="{{ route('hottest_products', $user->reference) }}" class="list-group-item list-group-item-action p-10 p-l-20"><i class="fa fa-star fa-2x p-r-40"></i><span class="p-l-40">HOTTEST DEALS</span></a>
                         </div>
                     </div>
                 </div>
+
+                <div class="text-center"><strong class="c-brand f-20">ALL PRODUCTS</strong></div>
+                <hr>
+
                 <div class="row">
                
                 @foreach($products as $product)
@@ -100,7 +113,7 @@
                                             <i class="fa fa-trash-o"></i>
                                         </button>
                                     @else
-                                        <a href="{{ route('addToCart', $product->id) }}"><button type="button" class="btn bg-white c-brand m-r-3 f-14" data-toggle="modal">
+                                        <a href="{{ route('addToCart', $product->reference) }}"><button type="button" class="btn bg-white c-brand m-r-3 f-14" data-toggle="modal">
                                                     <i class="fa fa-shopping-cart"></i>
                                         </button></a>
                                     @endif
@@ -117,98 +130,102 @@
                     </div>
 
                     <!-- Modal Share-->
-            <div class="modal fade m-t-120" id="share-modal{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <!--Content-->
-                    <div class="modal-content">
-                        <!--Header-->
-                        <div class="modal-header bg-brand">
-                            <h6 class="modal-title w-100" id="myModalLabel">Share on your timeline</h6>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true" class="c-white">&times;</span>
-                            </button>
-                        </div>
-                        <!--Body-->
-                        <div class="modal-body bg-brand-lite">
-                            <form action="{{ route('product_hype', $product->id) }}" method="POST">
-                                {{ csrf_field() }}
-                                {{-- <div class="media m-b-10">
-                                    <div class="media-body">
-                                        <textarea name="body" id="" class="md-textarea input-alternate p-10 h-5 border-box bg-white" placeholder="Write a message..."></textarea>
-                                    </div>
-                                </div> --}}
-                                <div class="media m-b-20">
-                                    <a class="pull-left" href="#">
-                                        <img class="media-object p-r-10" src="{{ asset('img/acc-img-2.png') }}" alt="Image">
-                                    </a>
-                                    <div class="media-body">
-                                        <h6 class="media-heading w-700 m-b-5 f-12 c-brand">{{ auth()->user()->first_name }}</h6>
-                                        <input type="hidden" class="m-b-5 f-12 c-dark" name ='title' value="{{ $product->name }} at &#8358 {{ $product->price }}">
+                    <div class="modal fade m-t-120" id="share-modal{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <!--Content-->
+                            <div class="modal-content">
+                                <!--Header-->
+                                <div class="modal-header bg-brand">
+                                    <h6 class="modal-title w-100" id="myModalLabel">Share on your timeline</h6>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true" class="c-white">&times;</span>
+                                    </button>
+                                </div>
+                                <!--Body-->
+                                <div class="modal-body bg-brand-lite">
+                                    <form action="{{ route('product_hype', $product->id) }}" method="POST">
+                                        {{ csrf_field() }}
+                                        {{-- <div class="media m-b-10">
+                                            <div class="media-body">
+                                                <textarea name="body" id="" class="md-textarea input-alternate p-10 h-5 border-box bg-white" placeholder="Write a message..."></textarea>
+                                            </div>
+                                        </div> --}}
+                                        <div class="media m-b-20">
+                                            <a class="pull-left" href="#">
+                                                <img class="media-object p-r-10" src="{{ asset('img/acc-img-2.png') }}" alt="Image">
+                                            </a>
+                                            <div class="media-body">
+                                                <h6 class="media-heading w-700 m-b-5 f-12 c-brand">{{ auth()->user()->first_name }}</h6>
+                                                <input type="hidden" class="m-b-5 f-12 c-dark" name ='title' value="{{ $product->name }} at &#8358 {{ $product->price }}">
 
-                                        <p class="m-b-5 f-12 c-dark" name ='title'>{{ $product->name }} at &#8358 {{ $product->price }} 
-                                            @if($merchant->store_name != null)
-                                                @ {{ $merchant->store_name }}
-                                            @endif
-                                        </p>
+                                                <p class="m-b-5 f-12 c-dark" name ='title'>{{ $product->name }} at &#8358 {{ $product->price }} 
+                                                    @if($merchant->store_name != null)
+                                                        @ {{ $merchant->store_name }}
+                                                    @endif
+                                                </p>
 
-                                    </div>
-                                </div> 
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="card-group">
-                                            @if($product->pictures != null)
-                                                @forelse($product->pictures->images as $image)
-                                                    <div class="card m-5">
-                                                        <img src="{{ route('image', [$image->image_reference, '']) }}" class="image-responsive col-md-12">
-                                                    </div>
-                                                @empty
-                                                    <h3 class="h3-responsive c-gray">Product has no image</h3>
-                                                @endforelse
-                                            @else
-                                                <h3 class="h3-responsive c-gray">Product has no image</h3>
-                                            @endif
+                                            </div>
+                                        </div> 
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="card-group">
+                                                    @if($product->pictures != null)
+                                                        @forelse($product->pictures->images as $image)
+                                                            <div class="card m-5">
+                                                                <img src="{{ route('image', [$image->image_reference, '']) }}" class="image-responsive col-md-12">
+                                                            </div>
+                                                        @empty
+                                                            <h3 class="h3-responsive c-gray">Product has no image</h3>
+                                                        @endforelse
+                                                    @else
+                                                        <h3 class="h3-responsive c-gray">Product has no image</h3>
+                                                    @endif
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <!--Footer-->
+                                        <div class="modal-footer justify-content-center">
+                                            <button type="button" class="btn-md btn-flat c-gray" data-dismiss="modal">Cancel</button>
+                                            <button type="submit" class="btn btn-md btn-outline-brand">Post</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!--/.Content-->
+                        </div>
+                    </div>
+                    <!--/ Modal Share-->
+                    <!-- Modal delete -->
+                    <div class="modal fade m-t-180" id="delete-modal{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <!--Content-->
+                            <div class="modal-content">
+                                <!--Header-->
+                                <div class="modal-header bg-brand text-right">
+                                    <button type="button" class="close c-white" data-dismiss="modal">&times;</button>
+                                </div>
+                                <!--Body-->
+                                <div class="modal-body bg-brand-lite c-dark dis-flex">
+                                    <p class="text-responsive w-700 m-0">Are you sure you want to delete this product?</p>
                                 </div>
                                 <!--Footer-->
-                                <div class="modal-footer justify-content-center">
-                                    <button type="button" class="btn-md btn-flat c-gray" data-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn btn-md btn-outline-brand">Post</button>
+                                <div class="modal-footer bg-brand-lite justify-content-center">
+                                    <a class="btn btn-md btn-outline-brand" href="{{ route('delete', $product->reference) }}">Yes</a>
+                                    <button type="button" class="btn btn-md btn-outline-brand" data-dismiss="modal">No</button>
                                 </div>
-                            </form>
+                            </div>
+                            <!--/.Content-->
                         </div>
                     </div>
-                    <!--/.Content-->
-                </div>
-            </div>
-            <!--/ Modal Share-->
-            <!-- Modal delete -->
-            <div class="modal fade m-t-180" id="delete-modal{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <!--Content-->
-                    <div class="modal-content">
-                        <!--Header-->
-                        <div class="modal-header bg-brand text-right">
-                            <button type="button" class="close c-white" data-dismiss="modal">&times;</button>
-                        </div>
-                        <!--Body-->
-                        <div class="modal-body bg-brand-lite c-dark dis-flex">
-                            <p class="text-responsive w-700 m-0">Are you sure you want to delete this product?</p>
-                        </div>
-                        <!--Footer-->
-                        <div class="modal-footer bg-brand-lite justify-content-center">
-                            <a class="btn btn-md btn-outline-brand" href="{{ route('delete', $product->reference) }}">Yes</a>
-                            <button type="button" class="btn btn-md btn-outline-brand" data-dismiss="modal">No</button>
-                        </div>
-                    </div>
-                    <!--/.Content-->
-                </div>
-            </div>
-            <!-- Modal -->
+                    <!-- Modal -->
                 
                 @endforeach
 
                        
+                </div>
+
+                <div class="m-t-20">
+                {{ $products->links() }}
                 </div>
 
                 {{-- <nav class="dis-flex m-t-20 m-b-20">

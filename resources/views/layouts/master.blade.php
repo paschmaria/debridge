@@ -51,7 +51,7 @@
                             </figure>
                         </div>
                     </div>
-                    <div class="col-6 col-sm-6 col-md-6">
+                    <div class="col-6 col-sm-6 col-md-6 m-t-20">
                         <div class="page_heading text-center">
                             <form class="" action="" method="GET">
                                 <div class="input-group input-shadow">
@@ -151,7 +151,7 @@
                                             <a class="p-l-10 p-r-10 dropdown white-text" id="dropdownNotify" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <span class="pos-rel">
                                                     <i class="fa fa-bell fa-lg c-white" aria-hidden="true"></i>
-                                                    <span class="cart-count count_notify">{{ count(auth()->user()->socialNotification) }}</span>
+                                                    <span class="cart-count count_notify">{{ count(auth()->user()->notifications) }}</span>
                                                 </span>
                                             </a>
                                             <div class="dropdown-menu notify-dropdown animated bounceIn f-12" aria-labelledby="dropdownNotify">
@@ -161,12 +161,12 @@
                                                  <div class="notify">
                                                     <ul>
                                                     <img src="{{asset('img/loader.gif')}}" id="bridge_loader" style="display: none;position: absolute;" alt="loading...">
-                                                        @forelse (auth()->user()->socialNotification as $notification)
+                                                        @forelse (auth()->user()->notifications as $notification)
                                                             <li class="dropdown-item notify_id{{ $notification->id }} waves-effect waves-light p-l-10 border-bottom">
                                                                 <p>
-                                                                    <a href="{{ route('view_profile', $notification->foreigner->reference) }}">
-                                                                        @if ($notification->foreigner->profile_picture != null)
-                                                                            <img src="{{ route('image', [$notification->foreigner->profile_picture->image_reference,'']) }}" class="h-40 width-40 m-r-5 bd-50p">
+                                                                    <a href="{{ route('view_profile', $notification->user->reference) }}">
+                                                                        @if ($notification->user->profile_picture != null)
+                                                                            <img src="{{ route('image', [$notification->user->profile_picture->image_reference,'']) }}" class="h-40 width-40 m-r-5 bd-50p">
                                                                         @else
                                                                             <img src="{{ asset('img/icons/profile.png') }}" class="h-40 width-40 m-r-5 bd-50p">
                                                                         @endif
@@ -174,7 +174,11 @@
                                                                     <span>{{ $notification->message }}
                                                                     <br>
                                                                     <a class="del" data-payload="{{$notification->id}}">
-                                                                        <i class="fa fa-trash text-danger pull-right"></i></a></span>
+                                                                        <i class="fa fa-trash text-danger pull-right"></i></a>
+                                                                    @if($notification->product != null)
+                                                                        <a href="{{ route('product_details', $notification->product->reference) }}" ><span class="pull-right m-r-20 c-brand">view product</span></a>
+                                                                    @endif
+                                                                    </span>
                                                                 </p>
                                                                 
                                                             </li>

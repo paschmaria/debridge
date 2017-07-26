@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Inventory;
 use App\Models\MerchantAccount;
+use App\Models\Product;
 use App\Models\ProductAdmire;
 use App\Models\HottestProduct;
 use App\Models\ProductOfTheWeek;
@@ -24,27 +25,23 @@ class InventoryController extends Controller
          //get or create merchant acount and of the user 
         $user = User::where('reference', $reference)->first();
         $merchant = MerchantAccount::firstOrCreate(['user_id' => $user->id]);
+        $inventory = Inventory::firstOrCreate(['merchant_account_id' => $merchant->id]);
 
-        $inventory = Inventory::with(['products' => function($q){
-                        return $q->with([
+        $products = Product::where('inventory_id', $inventory->id)->with([
                             'product_of_the_week', 'hottest', 
                             'admires', 'category', 'pictures' => function ($q){
                                     return $q->with('images');
                                 }
-                            ]);
-                    }])->firstOrCreate(['merchant_account_id' => $merchant->id]);
+                            ])->paginate(16);
 
-        $products = $inventory->products; 
-        
-        //check hottest deal button status
         if (auth()->Check()){
             if (auth()->user()->id == $user->id) {
 
-                $hottest = $this->checkHottestProductStatus($merchant);
+                $hottest = self::checkHottestProductStatus($merchant);
 
                 // get and check product of the week status for the merchant
                 $product_of_the_week = ProductOfTheWeek::where('merchant_account_id', $merchant->id)->first();
-                $product_of_the_week = $this->checkProductOftheWeekStatus($product_of_the_week);
+                $product_of_the_week = self::checkProductOftheWeekStatus($product_of_the_week);
             }
         }
 
@@ -53,7 +50,7 @@ class InventoryController extends Controller
         return view('merchant.all_products', compact('products', 'user', 'admired', 'merchant'));
     }
 
-    public function checkHottestProductStatus($merchant)
+    public static function checkHottestProductStatus($merchant)
     {
         $hot_prod  = HottestProduct::firstOrCreate(['merchant_account_id' => $merchant->id]);
         // intialize interval itime this part is to be reviewed
@@ -67,11 +64,7 @@ class InventoryController extends Controller
         if(($diff_in_days >= 7)){
             $hot_prod->slots = 0;
             $hot_prod->save();
-            if($hot_prod->products()->count() < 6){
-                $hottest = true;
-            } else {
-                $hottest = false;
-            }
+            $hottest = true;
         } else {
             if((int)$hot_prod->slots < 6){
                 if($hot_prod->products()->count() < 6){
@@ -87,7 +80,7 @@ class InventoryController extends Controller
         return $hottest;
     }
 
-    public function checkProductOftheWeekStatus($product_of_the_week)
+    public static function checkProductOftheWeekStatus($product_of_the_week)
     {
         if($product_of_the_week != null){
             $diff_in_days = Carbon::now()->diffInDays($product_of_the_week->created_at);

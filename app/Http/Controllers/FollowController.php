@@ -7,7 +7,7 @@ use App\User;
 use App\Models\Role;
 use App\Models\Follower;
 use App\Models\State;
-use App\Models\SocialNotification;
+use App\Models\Notification;
 
 class FollowController extends Controller
 {
@@ -148,12 +148,13 @@ class FollowController extends Controller
         $user = User::where('reference', $reference)->first();
         auth()->user()->following()->attach($user->id);
         // notify $user the he has been followed by auth user
-        SocialNotification::create([
-            'user_id' => $user->id,
-            'foreigner_id' => auth()->user()->id,
+        $notification = Notification::create([
+            'user_id' => auth()->user()->id,
             'message' => auth()->user()->full_name() . ' is now following you!',
-            'description_id' => 1 
             ]);
+        $notification->users()->attach($user);
+        $notification->save();
+
         $num_of_user = count(auth()->user()->following()->whereIn('role_id', $role_user)->get());
         $num_of_merchant = count(auth()->user()->following()->whereIn('role_id', $role_merchant)->get());
          return response()->json([
@@ -248,12 +249,13 @@ class FollowController extends Controller
         $user = User::where('reference', $reference)->first();
         auth()->user()->following()->detach($user->id);
         //notify $user that he has been unfollowed by auth user
-        SocialNotification::create([
-            'user_id' => $user->id,
-            'foreigner_id' => auth()->user()->id,
+        $notification = Notification::create([
+            'user_id' => auth()->user()->id,
             'message' => auth()->user()->full_name() . ' unfollowed you!',
-            'description_id' => 2 
             ]);
+        $notification->users()->attach($user);
+        $notification->save();
+
         $num_of_user = count(auth()->user()->following()->whereIn('role_id', $role_user)->get());
         $num_of_merchant = count(auth()->user()->following()->whereIn('role_id', $role_merchant)->get());
         // return response()->json($user->reference, $num_of_merchant, $num_of_user);

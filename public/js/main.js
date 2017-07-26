@@ -5,13 +5,26 @@ var app = {
 
 		window.onscroll = function() {
 		    // console.log(window.pageYOffset);
-		    if ((window.pageYOffset > 5) || (document.body.scrollTop > 5)) {
+		    if ((window.pageYOffset > 50) || (document.body.scrollTop > 50)) {
 		    	// console.log(body[0].firstElementChild);
 		    	body.classList.add("sticky", "z-depth-1");
 		    } else  {
 		    	body.classList.remove("sticky", "z-depth-1")
 		    }
 		};
+
+		// window.addEventListener('scroll', function(e){
+		// 	var y = this.scrollY;
+		// 	console.log(y);
+
+		// 	if(y === 0){
+		// 		html.classList.remove('stuck');
+		// 	}
+		// 	else{
+		// 		html.classList.add('stuck');
+		// 	}
+			
+		// });
 	},
 	loginToggler: function() {
 

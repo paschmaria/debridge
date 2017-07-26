@@ -31,7 +31,7 @@ Route::post('/post/comment/create/{reference}', 'User\CommentController@store')-
 
 Route::get('/hype/{reference}', 'User\HypeController@create')->name('hype');
 
-Route::post('/product_hype/{product}', 'Merchant\ProductController@product_hype')->name('product_hype');
+Route::post('/product/hype/{reference}', 'Merchant\ProductHypeController@create')->name('product_hype');
 
 Route::get('/admire/{reference}', 'User\AdmireController@create')->name('admire');
 Route::get('/unadmire/{reference}', 'User\AdmireController@destroy')->name('unadmire');
@@ -47,7 +47,7 @@ Route::get('/users/follow/friends', 'FollowController@getUser')->name('follow_fr
 Route::get('/users/follow/merchants', 'FollowController@getMerchant')->name('follow_merchants');
 Route::post('/users/follow/friends', 'FollowController@friendsFollowComplete')->name('follow_friends');
 Route::post('/users/follow/merchants', 'FollowController@merchantsFollowComplete')->name('follow_merchants');
-Route::get('/users/social_notification/delete/{notification}', 'User\SocialNotificationController@destroy')->name('delete_social_notification');
+Route::get('/users/social_notification/delete/{notification}', 'NotificationController@destroy')->name('delete_social_notification');
 
 
 
@@ -120,27 +120,24 @@ Route::group(['prefix' => 'merchant', 'middleware'=> 'merchant'], function (){
 	Route::get('/addProduct', 'Merchant\ProductController@create')->name('addProduct');
 
 	Route::post('/addProduct', 'Merchant\ProductController@store')->name('addProduct');
-	Route::get('/allProduct', 'Merchant\ProductController@viewAllProduct')->name('allProduct');
+	// Route::get('/allProduct', 'Merchant\ProductController@viewAllProduct')->name('allProduct');
 	// Route::get('/logout', 'Auth\UserController@logout')->name('mechant_logout');
 	Route::get('/delete/{reference}', 'Merchant\ProductController@destroy')->name('delete');
 	Route::get('/edit_product/{id}', 'Merchant\ProductController@edit')->name('edit_product');
 	Route::post('/update_product/{id}', 'Merchant\ProductController@edit')->name('update_product');
 
-	Route::post('/product_of_week/{id}', 'Merchant\ProductController@product_of_the_week')->name('product_of_the_week');
+	Route::post('/product_of_week/{reference}', 'Merchant\ProductOfTheWeekController@create')->name('product_of_the_week');
 
-	Route::get('/view_product_of_week', 'Merchant\ProductController@viewProductOfTheWeek')->name('view_product_of_the_week');
+	// Route::get('/view_product_of_week', 'Merchant\ProductController@viewProductOfTheWeek')->name('view_product_of_the_week');
 
-	Route::get('/edit_promo/{id}', 'Merchant\ProductController@promo')->name('promo');
-
-	Route::post('/update_promo/{id}', 'Merchant\ProductController@promo')->name('update_promo');
-
-	Route::get('/delete_promo/{id}', 'Merchant\ProductController@remove_promo')->name('remove_promo');
-	Route::get('/whats_new', 'Merchant\ProductController@whats_new')->name('whats_new');
-	Route::get('/addhottest/{product}', 'Merchant\HottestProductController@create')->name('add_hottest');
-	Route::get('/delhottest/{product}', 'Merchant\HottestProductController@destroy')->name('del_hottest');
+	Route::post('/promo/add/{reference}', 'Merchant\PromoController@create')->name('add_promo');
+	Route::get('/promo/remove/{id}', 'Merchant\PromoController@destroy')->name('remove_promo');
+	// Route::get('/whats_new', 'Merchant\ProductController@whats_new')->name('whats_new');
+	Route::get('/hottest_deals/add/{reference}', 'Merchant\HottestProductController@create')->name('add_hottest');
+	Route::get('/hottest_deals/remove/{reference}', 'Merchant\HottestProductController@destroy')->name('del_hottest');
 
 });
-Route::get('/merchant/product/{id}', 'Merchant\ProductController@show')->name('product');
+// Route::get('/merchant/product/{id}', 'Merchant\ProductController@show')->name('product');
 
 Route::get('/brigeCode/{id}', 'User\BridgeCodeController@create')->name('brige_code');
 
@@ -200,7 +197,7 @@ Route::get('/cart/view', 'User\CartController@viewCart')->name('viewCart')->midd
 
 // Route::get('/user_tradeline', 'Auth\UserController@userTradeline')->name('user_tradeline')->middleware('auth');
 
-Route::get('/product/details/{reference}', 'Merchant\ProductController@productDetails')->name('product_details');
+Route::get('/product/details/{reference}', 'Merchant\ProductController@show')->name('product_details')->middleware('auth');
 Route::get('/users/following/{reference}/{filter?}', 'FollowController@following')->name('following');
 Route::get('/users/followers/{reference}/{filter?}', 'FollowController@followers')->name('followers');
 Route::get('/users/profile/edit', 'User\ProfileController@index')->name('edit_profile')->middleware('auth');
@@ -209,7 +206,7 @@ Route::post('/users/profile/edit/account', 'User\ProfileController@userSave')->n
 Route::post('/users/profile/edit/user', 'User\ProfileController@userAccountSave')->name('update_user')->middleware('auth');
 Route::post('/users/profile/edit/merchant', 'User\ProfileController@merchantAccountSave')->name('update_merchant')->middleware('auth');
 Route::post('/users/profile/edit/password', 'User\ProfileController@changePassword')->name('change_pasword')->middleware('auth');
-Route::get('hottest_product/{reference}', 'Merchant\ProductController@hottestProduct')->name('hottest_products');
+Route::get('/merchant/store/product/hottest/{reference}', 'Merchant\HottestProductController@show')->name('hottest_products');
 Route::get('trade_request', 'Merchant\TradeRequestController@showMerchants')->name('trade_request')->middleware('merchant');
 // Route::post('trade_request/{reference}', 'Merchant\TradeRequestController')->name('trade_request')->middleware('merchant');
 Route::get('/state/market/{reference}/{filter?}', 'User\StateMarketController@show')->name('state_market');//->middleware('auth');

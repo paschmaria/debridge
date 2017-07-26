@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Merchant;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Merchant\InventoryController;
 use App\Http\Controllers\User\PhotoAlbumController;
 use App\Models\ProductCategory;
 use App\Models\MerchantAccount;
@@ -11,7 +12,7 @@ use App\Models\Inventory;
 use App\Models\Product;
 use App\Models\ProductOfTheWeek;
 use App\Models\HottestProduct;
-use App\Models\ProductNotification;
+use App\Models\Notification;
 use App\Models\ProductHype;
 use App\Models\ProductAdmire;
 use App\Models\Post;
@@ -33,25 +34,8 @@ class ProductController extends Controller
         //$this->middleware('merchant');
     }
 
-    public function index()
-    {
-        //
-        
-        return view('merchant.merchant');
-    }
-
-    public function hottestProduct($reference){
-        $user = User::where('reference', $reference)->first();
-        // dd($user->id);
-        $merchant = MerchantAccount::firstOrCreate(['user_id' => $user->id]);
-        // dd($merchant);
-        $hottest = HottestProduct::firstOrCreate(['merchant_account_id' => $merchant->id]);
-        $products = Product::where('hottest_product_id', $hottest->id)->get();
-        return view('hottest_products', compact('products', 'user'));
-    }
-
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new product.
      *
      * @return \Illuminate\Http\Response
      */
@@ -71,7 +55,7 @@ class ProductController extends Controller
     {
         $this->validate($request, [
             'product_name' => 'string|required|max:120',
-            'description' => 'string|nullable',
+            'product_description' => 'string|nullable',
             'price' => 'numeric',
             'category' => 'digits_between:1,20'
             ]);
@@ -84,15 +68,14 @@ class ProductController extends Controller
         //get or create merchant acount and inventory
         $merchant = MerchantAccount::firstOrCreate(['user_id' => auth()->user()->id]);
         $inventory = Inventory::firstOrCreate(['merchant_account_id' => $merchant->id]);
-
-        $category = ProductCategory::where('name', $request->input('category'))->first();
-
         
         $product = new Product();
         $product->name = $request->input('product_name');
-        $product->description = $request->input('description');
+        $product->description = $request->input('product_description');
         $product->price = $request->input('product_price');
-        // $product->quantity = $request->input('quantity');
+
+        // get category and associate product to it 
+        $category = ProductCategory::where('name', $request->input('category'))->first();
         if ($category != null){
             $product->category()->associate($category);
         }
@@ -103,23 +86,17 @@ class ProductController extends Controller
             $product->photo_album_id = $album;
         }
 
-        // if ($product->promo_price) {
-        //     $price = $product->promo_price;
-        // } else {
-        //     $price = $product->price;
-        // }
-
         $product->inventory()->associate($inventory);
         $product->save();
 
         // product notification for followers
-        $product_notification = ProductNotification::create([
-                'message' => 'Notice: ' . $product->inventory->merchant->user->first_name . " now has " . $product->name . ' at ' . $product->price,
+        $notification = Notification::create([
+                'message' => 'Notice: ' . $product->inventory->merchant->user->full_name() . " now has " . $product->name . ' at ' . $product->price,
                 'product_id'=> $product->id, 
-                'description_id' => 1
+                'user_id' => $product->inventory->merchant->user->id,
             ]);
-        $product_notification->users()->attach(auth()->user()->followers);
-        $product_notification->save();
+        $notification->users()->attach(auth()->user()->followers);
+        $notification->save();
 
         return back()->with('info', 'Product Added Sucessfully');        
     }
@@ -132,8 +109,25 @@ class ProductController extends Controller
      */
     public function show($reference)
     {
-        $product = Product::where('reference', $reference)->with('pictures')->first();
-        return view('merchant.product_details', compact('product'));
+        $product = Product::with(['category', 'product_of_the_week', 'admires', 'hypes',
+                            'pictures' => function($q){
+                                return $q->with('images');
+                            }])
+                            ->where('reference', $reference)->first();
+
+        $user = $product->inventory->merchant->user;
+        $merchant = $product->inventory->merchant;
+        
+        $hottest = InventoryController::checkHottestProductStatus($merchant);
+        $product_of_the_week = ProductOfTheWeek::firstOrCreate(['merchant_account_id' => $merchant->id]);
+        $product_of_the_week = InventoryController::checkProductOftheWeekStatus($product_of_the_week);
+
+        if(auth()->check()){
+            $admired = ProductAdmire::where(['user_id' => auth()->user()->id])->pluck('product_id')->toArray();
+            $hyped = ProductHype::where(['user_id' => auth()->user()->id])->pluck('product_id')->toArray();
+        }
+
+        return view('product_details', compact('product', 'user', 'merchant', 'hottest', 'product_of_the_week', 'admired'));
     }
 
     /**
@@ -173,7 +167,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * delete product completely from table.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -187,259 +181,4 @@ class ProductController extends Controller
         $product->delete();
         return back()->with('info', 'Product Deleted Sucessfully');
     }
-
-    public function viewAllProduct(){
-        //get or create merchant acount and inventory
-        $merchant = MerchantAccount::firstOrCreate(['user_id' => auth()->user()->id]);
-        $inventory = Inventory::firstOrCreate(['merchant_account_id' => $merchant->id]);
-        $products = $inventory->products; 
-        $product_of_the_week = ProductOfTheWeek::where('merchant_account_id', $merchant->id)->first();
-        
-        //hottest deal button status
-        $hot_prod  = HottestProduct::firstOrCreate(['merchant_account_id' => auth()->user()->merchant_account->id]);
-        if($hot_prod->interval_time == null){
-            $hot_prod->interval_time = Carbon::now()->subWeek(2);
-        }
-        $interval_time = Carbon::createFromFormat('Y-m-d H:i:s', $hot_prod->interval_time);
-        $diff_in_days = Carbon::now()->diffInDays($interval_time);
-        if(($diff_in_days >= 7)){
-            $hot_prod->slots = 0;
-            $hot_prod->save();
-            if($hot_prod->products()->count() < 6){
-                $hottest = true;
-            } else {
-                $hottest = false;
-            }
-        } else {
-            if((int)$hot_prod->slots < 6){
-                if($hot_prod->products()->count() < 6){
-                    $hottest = true;
-                } else {
-                    $hottest = false;
-                }
-            } else {
-                $hottest = false;
-            }
-        }
-        // dd($product_of_the_week);
-        if($product_of_the_week!=null){
-            // dd('net');
-            $current_time = date('Y-m-d');
-            $product_of_the_week_updated = date('Y-m-d', strtotime($product_of_the_week->updated_at));
-            $current_time = date('Y-m-d', strtotime($current_time.' - 7days'));
-            // dd($current_time);
-            $diff_in_days = $current_time >= $product_of_the_week_updated;
-
-            $admired = ProductAdmire::where(['user_id' => auth()->user()->id])->pluck('product_id')->toArray();
-            $hyped = ProductHype::where(['user_id' => auth()->user()->id])->pluck('product_id')->toArray();
-
-            $admired_count = ProductAdmire::all();
-            $hyped_count = ProductHype::all();
-          
-            return view('merchant.products', compact('products', 'product_of_the_week', 'diff_in_days', 'hottest', 'admired', 'hyped', 'admired_count', 'hyped_count'));
-        }else {
-            // dd('hello');  => auth()->user()->id])->pluck('product_id')->toArray();
-            $hyped = ProductHype::where(['user_id' => auth()->user()->id])->pluck('product_id')->toArray();
-
-            $admired_count = ProductAdmire::all();
-            $hyped_count = ProductHype::all();
-
-            return view('merchant.products', compact('products', 'product_of_the_week', 'hottest', 'admired', 'hyped', 'admired_count', 'hyped_count'));
-
-        }
-        // dd('hi');
-        // dd($product_of_the_week);
-        // dd($product_of_the_week_updated, $next_week_time);
-
-        // return view('merchant.products', compact('products', 'product_of_the_week'));
-    }
-    public function product_of_the_week(Request $request, $id){
-        // a user cannot tamper with the product of the week in any way
-        if($request->isMethod('post')){
-
-            $product = Product::find($id);
-
-            $merchant_account = MerchantAccount::where('user_id', auth()->user()->id)->first();
-            $merchant_account_id = $merchant_account->id;
-            $data = ['product_id' => $product->id, 'merchant_account_id' => $merchant_account_id, 'updated_at' => Carbon::now()];
-            $update = ProductOfTheWeek::updateOrCreate(['merchant_account_id'=> $merchant_account_id], $data);
-            if ($product->promo_price) {
-                $price = $product->promo_price;
-            } else {
-                $price = $product->price;
-            }
-            //notify all merchant of the change
-            $product_notification = ProductNotification::create([
-                    'message' => 'Notice: ' . $product->inventory->merchant->user->full_name() . "'s product of the week is " . $product->name . ' at ' . $price,
-                    'product_id'=> $product->id, 
-                    'description_id' => 2
-                ]);
-            $product_notification->users()->attach(auth()->user()->followers);
-            $product_notification->save();
-            return back()->with('info', 'Product Of The Week Made');
-        }else{
-            return back();
-        }
-    }
-
-    public function viewProductOfTheWeek($id){
-        $product_of_the_week = ProductOfTheWeek::find($id);
-        dd($product_of_the_week);
-    }
-
-    public function promo(Request $request, $id){
-        $product = Product::find($id);
-        if($request->isMethod('post')){
-
-            $product->promo_price = $request->input('promo_price');
-            $product->save();
-            //notify all mmerchant followers
-            
-            $product_notification = ProductNotification::create([
-                    'message' => 'Promo: ' . $product->inventory->merchant->user->first_name . ' now sells ' . $product->name . ' at ' . $product->promo_price,
-                    'product_id'=> $product->id, 
-                    'description_id' => 3
-                ]);
-            $product_notification->users()->attach(auth()->user()->followers);
-            $product_notification->save();
-            
-            return redirect()->route('allProduct')->with('info', 'Promo Sucessfully Added');
-            
-        }else{
-            return view('merchant.make_promo', compact('product'));
-        }
-    }
-
-    public function remove_promo($reference){
-        $product = Product::where('reference', $reference)->first();
-        $product->promo_price = null;
-        $product->save();
-        $product_notification = ProductNotification::create([
-                    'message' => 'Notice: ' . $product->inventory->merchant->user->first_name . "'s promo for " . $product->name . ' has ended!',
-                    'product_id'=> $product->id, 
-                    'description_id' => 4
-                ]);
-        $product_notification->users()->attach(auth()->user()->followers);
-        $product_notification->save();
-        return redirect()->route('allProduct')->with('info', 'Promo Sucessfully Remove');
-    }
-
-    public function whats_new(){
-       $products = Product::orderBy('updated_at', 'desc')->paginate(5);
-
-       return view('merchant.whats_new', compact('products'));
-
-    }
-
-    public function product_hype(Product $product, Request $request){
-            // dd($request);
-           $hype = ProductHype::where(['product_id' => $product->id, 'user_id' => auth()->user()->id])->first();
-            if ($hype) {
-                return back()->with('info', 'Product already hyped by you!');
-            } else {
-                $created_hype = ProductHype::create(['product_id' => $product->id, 'user_id' => auth()->user()->id]);
-
-                Post::create([
-                    'user_id' => auth()->user()->id,
-                    'title' => $request->input('title'),
-                    'content' => $request->input('body'),
-                    'photo_album_id' => $product->photo_album_id,
-                    'product_id' => $product->id,
-                    'reference' => str_random(7) . time() . uniqid(),
-                ]);
-            }       
-        
-        return back()->with('success', 'Product Hyped!');
-    }
-    
-    public function MerchantStore(){
-        //get or create merchant acount and inventory
-        $merchant = MerchantAccount::firstOrCreate(['user_id' => auth()->user()->id]);
-        $inventory = Inventory::firstOrCreate(['merchant_account_id' => $merchant->id]);
-        $products = Product::where('inventory_id', $inventory->id)->get();
-        $user = auth()->user();
-        return view('products', compact('products', 'user'));
-    }
-
-
-    public function StoreForUser($reference){
-        
-        //get or create merchant acount and inventory
-        $user = User::where('reference', $reference)->first();
-        if ($user && $user->checkRole()) {
-            return redirect(route('view_profile', $user->reference));
-        }
-        // dd($user);
-        $merchant = MerchantAccount::firstOrCreate(['user_id' => $user->id]);
-        // dd($merchant);
-        $inventory = Inventory::firstOrCreate(['merchant_account_id' => $merchant->id]);
-        $products = Product::with(['pictures' => function($q){
-                                    $q->with('images');
-                                }])->where('inventory_id', $inventory->id)->latest()->get();
-        
-        return view('products', compact('products', 'user'));
-
-    }
-
-
-
-   public function productDetails($reference)
-    {
-        $product = Product::where('reference', $reference)->first();
-        $user = $product->inventory->merchant->user;
-        $merchant = $product->inventory->merchant;
-        // dd($merchant);
-        // $product_of_the_week = ProductOfTheWeek::where('merchant_account_id', $merchant->id)->first();
-        // $merchant = MerchantAccount::firstOrCreate(['user_id' => $user->id]);
-        $product_of_the_week = ProductOfTheWeek::firstOrCreate(['merchant_account_id' => $merchant->id]);
-        // dd(empty($product_of_the_week));
-
-        $hot_prod  = HottestProduct::firstOrCreate(['merchant_account_id' => $merchant->id]);
-        if($hot_prod->interval_time == null){
-            $hot_prod->interval_time = Carbon::now()->subWeek(2);
-        }
-        $interval_time = Carbon::createFromFormat('Y-m-d H:i:s', $hot_prod->interval_time);
-        $diff_in_days = Carbon::now()->diffInDays($interval_time);
-        if(($diff_in_days >= 7)){
-            $hot_prod->slots = 0;
-            $hot_prod->save();
-            if($hot_prod->products()->count() < 6){
-                $hottest = true;
-            } else {
-                $hottest = false;
-            }
-        } else {
-            if((int)$hot_prod->slots < 6){
-                if($hot_prod->products()->count() < 6){
-                    $hottest = true;
-                } else {
-                    $hottest = false;
-                }
-            } else {
-                $hottest = false;
-            }
-        }
-
-        if($product_of_the_week != null){
-            // dd('net');ll
-            $current_time = date('Y-m-d');
-            $product_of_the_week_updated = date('Y-m-d', strtotime($product_of_the_week->updated_at));
-            $current_time = date('Y-m-d', strtotime($current_time.' - 7days'));
-            // dd($current_time);
-            $diff_in_days = $current_time >= $product_of_the_week_updated;
-
-            $admired = ProductAdmire::where(['user_id' => auth()->user()->id])->pluck('product_id')->toArray();
-            $hyped = ProductHype::where(['user_id' => auth()->user()->id])->pluck('product_id')->toArray();
-
-            $admired_count = ProductAdmire::all();
-            $hyped_count = ProductHype::all();
-          
-            // dd($hottest);
-
-            return view('product_details', compact('product', 'user', 'product_of_the_week', 'diff_in_days', 'hottest', 'admired', 'hyped', 'admired_count', 'hyped_count'));
-        }else{
-            return view('product_details', compact('product', 'user', 'hottest'));
-        }
-    }
-
 }

@@ -41,7 +41,7 @@
 
          <!-- main section begins here-->
         <section class="main">
-          <div class="container bd-dark-light m-t-60 width-800">
+          <div class="container bd-dark-light m-t-60 width-800 m-b-20">
                 <h6 class="m-t-30 m-l-2">MY CART</h6>
                 @forelse($items as $item)
                 <div class="row">
@@ -62,7 +62,7 @@
                         <div class="row m-t-20">
                             <div class="col-md-5">
                                 <div class="m-l-50 m-t-20">
-                                    <a href="{{ route('removeItem', $item->id) }}">
+                                    <a href="{{ route('removeItem', $item->reference) }}">
                                         <button type="button" class="btn btn-sm bg-brand"><span>&times;&nbsp;&nbsp;</span>Remove</button>
                                     </a>
                                 </div>
@@ -118,7 +118,7 @@
                                     <div class="row m-t-20">
                                         <div class="col-md-6">
                                             <div class="m-t-20">
-                                                <a href="{{ route('addToCart', $product->id) }}">
+                                                <a href="{{ route('addToCart', $product->reference) }}">
                                                     <button type="button" class="btn btn-sm bg-brand"><span>&times;&nbsp;&nbsp;</span>Add to cart</button>
                                                 </a>
                                             </div>
@@ -142,4 +142,4 @@
         </section>
         <!-- main section ends here-->
         
-@endsection('content')
+@endsection

@@ -78,7 +78,7 @@
                         @if(!$user->checkRole())
                         	<a href="{{ route('view_inventory', $user->reference) }}" class="list-group-item list-group-item-action f-12">INVENTORY</a>
                         @endif
-                        <a href="#" class="list-group-item list-group-item-action f-12">TRADE GROUPS</a>
+                        <a href="#" class="list-group-item list-group-item-action f-12">TRADE PARTNERS</a>
                         <a href="{{ route('community', $user->reference) }}" class="list-group-item list-group-item-action f-12">COMMUNITY</a>
 					</div>
 				</aside>
@@ -163,7 +163,7 @@
 											    </p>
 										    </div>
 										    <a href="{{ route('unfollow', $person->reference) }}">
-										    	<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40"><span class="fa fa-check">&nbsp; &nbsp;</span>Unfollow</button>
+										    	<button class="btn btn-sm f-14 btn-brand m-t-40 unfollow" data-email="{{ $person->reference }}">Unfollow</button>
 										    </a>
 										</div>
 									</div>
@@ -195,11 +195,11 @@
 										    </div>
 										    @if (in_array($person->id, $following_ids))
 										    	<a href="{{ route('unfollow', $person->reference) }}">
-										    		<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40"><span class="fa fa-check">&nbsp; &nbsp;</span>Unfollow</button>
+										    		<button class="btn btn-sm f-14 btn-brand m-t-40 unfollow" data-email="{{ $person->reference }}">Unfollow</button>
 										    	</a>
 										    @else
 										    	<a href="{{ route('follow', $person->reference) }}">
-											    	<button class="btn btn-sm f-14 c-brand btn-outline-brand m-t-40"><span class="fa fa-check">&nbsp; &nbsp;</span>Follow</button>
+											    	<button class="btn btn-sm f-14 btn-outline-brand m-t-40 follow" data-email="{{ $person->reference }}">Follow</button>
 											    </a>
 										    @endif
 										</div>
