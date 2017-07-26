@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Inventory;
 use App\Models\MerchantAccount;
+use App\Models\Product;
 use App\Models\ProductAdmire;
 use App\Models\HottestProduct;
 use App\Models\ProductOfTheWeek;
@@ -24,19 +25,15 @@ class InventoryController extends Controller
          //get or create merchant acount and of the user 
         $user = User::where('reference', $reference)->first();
         $merchant = MerchantAccount::firstOrCreate(['user_id' => $user->id]);
+        $inventory = Inventory::firstOrCreate(['merchant_account_id' => $merchant->id]);
 
-        $inventory = Inventory::with(['products' => function($q){
-                        return $q->with([
+        $products = Product::where('inventory_id', $inventory->id)->with([
                             'product_of_the_week', 'hottest', 
                             'admires', 'category', 'pictures' => function ($q){
                                     return $q->with('images');
                                 }
-                            ]);
-                    }])->firstOrCreate(['merchant_account_id' => $merchant->id]);
+                            ])->paginate(16);
 
-        $products = $inventory->products; 
-        
-        //check hottest deal button status
         if (auth()->Check()){
             if (auth()->user()->id == $user->id) {
 

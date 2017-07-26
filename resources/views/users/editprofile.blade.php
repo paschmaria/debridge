@@ -57,9 +57,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-center m-t-10">
+                                    {{-- <div class="text-center m-t-10">
                                         <button class="btn btn-sm btn-brand">save</button>
-                                    </div> 
+                                    </div>  --}}
                                 </form>
 	    					</div>
 	    					<div class="col-md-8 col-sm-8">
@@ -359,36 +359,45 @@
 
     @section('scripts')
     <script type="text/javascript">
-            document.onreadystatechange = function() {
-                if (document.readyState === "complete") {
-                    var app2 = {
-                        imageHandler:function (){
-                            $('#upload').on('change', function(){
-                                //alert("alert");
+            $(document).ready(function () {
+            var app2 = {
+                imageHandler:function (){
+                    $('#upload').on('change', function(){
+                        var img_ref = $("#upload")[0].files[0];
+                        // console.log(img_ref);
+                        data = new FormData();
+                        data.append('img_ref', img_ref);
+                        $.ajax({
+                            url: "/users/profile/edit/picture",
+                            type:"POST",
+                            eenctype: 'multipart/form-data', 
+                            data: data,
+                            processData: false,  // do not process the data as url encoded params
+                            contentType: false,
+                            success: function(data){
+                                // console.log(data)
                                 readUrl();
-                            });
-                            function readUrl(argument) {
-                                var file = $("#upload")[0].files[0];
-                                //console.log(file);
-                                var reader = new FileReader();
-                                reader.onloadend = function () {
-                                    //console.log(reader.result);
-                                    $("#post").attr('src', reader.result);
-                                }
-                                if (file) {
-                                    reader.readAsDataURL(file);
-                                }
+                                toastr.success("Profile picture has been updated!");
+                            },
+                            error: function (data) {
+                                toastr.error("Somthing went wrong")
                             }
-                        }
-                    }
-                    app2.imageHandler();
-                    app.stickyHeader();
-                     $(function(){
-                        $('.notify').slimScroll({
-                            height: '300px'
                         });
                     });
+                    function readUrl(argument) {
+                        var file = $("#upload")[0].files[0];
+                        var reader = new FileReader();
+                        reader.onloadend = function () {
+                            $("#post").attr('src', reader.result);
+                            $("#profile_picture_main").attr('src', reader.result);
+                        }
+                        if (file) {
+                            reader.readAsDataURL(file);
+                        }
+                    }
                 }
             }
+            app2.imageHandler();
+        });
        </script>
    @endsection

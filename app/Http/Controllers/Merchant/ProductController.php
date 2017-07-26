@@ -34,16 +34,6 @@ class ProductController extends Controller
         //$this->middleware('merchant');
     }
 
-    public function hottestProduct($reference){
-        $user = User::where('reference', $reference)->first();
-        // dd($user->id);
-        $merchant = MerchantAccount::firstOrCreate(['user_id' => $user->id]);
-        // dd($merchant);
-        $hottest = HottestProduct::firstOrCreate(['merchant_account_id' => $merchant->id]);
-        $products = Product::where('hottest_product_id', $hottest->id)->get();
-        return view('hottest_products', compact('products', 'user'));
-    }
-
     /**
      * Show the form for creating a new product.
      *
@@ -65,7 +55,7 @@ class ProductController extends Controller
     {
         $this->validate($request, [
             'product_name' => 'string|required|max:120',
-            'description' => 'string|nullable',
+            'product_description' => 'string|nullable',
             'price' => 'numeric',
             'category' => 'digits_between:1,20'
             ]);
@@ -78,15 +68,14 @@ class ProductController extends Controller
         //get or create merchant acount and inventory
         $merchant = MerchantAccount::firstOrCreate(['user_id' => auth()->user()->id]);
         $inventory = Inventory::firstOrCreate(['merchant_account_id' => $merchant->id]);
-
-        $category = ProductCategory::where('name', $request->input('category'))->first();
-
         
         $product = new Product();
         $product->name = $request->input('product_name');
-        $product->description = $request->input('description');
+        $product->description = $request->input('product_description');
         $product->price = $request->input('product_price');
-        // $product->quantity = $request->input('quantity');
+
+        // get category and associate product to it 
+        $category = ProductCategory::where('name', $request->input('category'))->first();
         if ($category != null){
             $product->category()->associate($category);
         }

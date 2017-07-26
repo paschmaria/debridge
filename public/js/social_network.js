@@ -105,7 +105,8 @@ $(document).on('click', ".follow", function(e){
             // alert(reciever_email);
             $(this).removeClass('follow').text(' unfollow');
             $(this).addClass('unfollow');
-            $(this).addClass('fa fa-check');
+            $(this).removeClass('btn-outline-brand');
+            $(this).addClass('btn-brand');
 
             $.ajax({
                 url:'/follow/'+reciever_email,
@@ -138,9 +139,9 @@ $(document).on('click', ".unfollow", function(e){
             // alert(reciever_email);
             $(this).removeClass('unfollow').text(' follow');
             $(this).addClass('follow');
-            // $(this).removeClass('follow');
-            $(this).addClass('fa fa-user');
-            $(this).addClass('f-14');
+            $(this).removeClass('btn-brand');
+            $(this).addClass('btn-outline-brand');
+            // $(this).addClass('f-14');
 
 
             $.ajax({

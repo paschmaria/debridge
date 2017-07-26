@@ -133,8 +133,8 @@ Route::group(['prefix' => 'merchant', 'middleware'=> 'merchant'], function (){
 	Route::post('/promo/add/{reference}', 'Merchant\PromoController@create')->name('add_promo');
 	Route::get('/promo/remove/{id}', 'Merchant\PromoController@destroy')->name('remove_promo');
 	// Route::get('/whats_new', 'Merchant\ProductController@whats_new')->name('whats_new');
-	Route::get('/addhottest/{product}', 'Merchant\HottestProductController@create')->name('add_hottest');
-	Route::get('/delhottest/{product}', 'Merchant\HottestProductController@destroy')->name('del_hottest');
+	Route::get('/hottest_deals/add/{reference}', 'Merchant\HottestProductController@create')->name('add_hottest');
+	Route::get('/hottest_deals/remove/{reference}', 'Merchant\HottestProductController@destroy')->name('del_hottest');
 
 });
 // Route::get('/merchant/product/{id}', 'Merchant\ProductController@show')->name('product');
@@ -206,7 +206,7 @@ Route::post('/users/profile/edit/account', 'User\ProfileController@userSave')->n
 Route::post('/users/profile/edit/user', 'User\ProfileController@userAccountSave')->name('update_user')->middleware('auth');
 Route::post('/users/profile/edit/merchant', 'User\ProfileController@merchantAccountSave')->name('update_merchant')->middleware('auth');
 Route::post('/users/profile/edit/password', 'User\ProfileController@changePassword')->name('change_pasword')->middleware('auth');
-Route::get('hottest_product/{reference}', 'Merchant\ProductController@hottestProduct')->name('hottest_products');
+Route::get('/merchant/store/product/hottest/{reference}', 'Merchant\HottestProductController@show')->name('hottest_products');
 Route::get('trade_request', 'Merchant\TradeRequestController@showMerchants')->name('trade_request')->middleware('merchant');
 // Route::post('trade_request/{reference}', 'Merchant\TradeRequestController')->name('trade_request')->middleware('merchant');
 Route::get('/state/market/{reference}/{filter?}', 'User\StateMarketController@show')->name('state_market');//->middleware('auth');

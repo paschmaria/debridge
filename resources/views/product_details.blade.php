@@ -86,17 +86,21 @@
 										@if(auth()->user()->ownsShop($user->id))
 											
 											@if($product_of_the_week)
-												<form action="{{ route('product_of_the_week', $product->reference) }}" method="post">
-												{{ csrf_field() }}
-												<button class="btn btn-sm dis-inline bg-brand c-white" type="submit">Make product of the week</button>
-												</form>
+												@if($product->product_of_the_week != null)
+													<p class="p-5 bg-brand c-white m-t-10">This is the product of the week</p>
+												@else
+													<form action="{{ route('product_of_the_week', $product->reference) }}" method="post">
+													{{ csrf_field() }}
+													<button class="btn btn-sm dis-inline bg-brand c-white" type="submit">Make product of the week</button>
+													</form>
+												@endif
 											@endif
-											<br>
+											{{-- <br> --}}
 											@if($hottest && $product->hottest)
-												<a href="{{ route('del_hottest', $product->id) }}" class="btn btn-sm bg-brand c-white">Remove Hottest Deals</a>
+												<a href="{{ route('del_hottest', $product->reference) }}" class="btn btn-sm bg-brand c-white">Remove Hottest Deals</a>
 											@else
 												@if ($hottest && !$product->product_of_the_week)
-													<a class="btn btn-sm bg-brand c-white" href="{{ route('add_hottest', $product->id) }}">Add to Hottest Deals</a>
+													<a class="btn btn-sm bg-brand c-white" href="{{ route('add_hottest', $product->reference) }}">Add to Hottest Deals</a>
 												@endif
 											@endif
 											@if(!$product->promo_price)
@@ -105,7 +109,11 @@
 												<button class="btn btn-sm dis-inline btn-outline-brand c-red" data-toggle="modal" data-target="#discount_delete_modal">Remove Discount</button>
 											@endif
 										@else
-											<br>
+											@if($product->product_of_the_week != null)
+												<p class="p-5 bg-brand c-white m-t-10">This is the product of the week</p>
+											@else
+												<br>
+											@endif
 											<a href="{{ route('addToCart', $product->reference) }}"><button class="btn btn-brand btn-sm">Add to Cart <i class="fa fa-shopping-cart"></i></button></a>
 										@endif
 										@if(!in_array($product->id, $admired))
@@ -114,6 +122,7 @@
 											<button class="btn btn-brand btn-sm">Unadmire <small>({{ $product->admires->count() }})</small> <i class="fa fa-heart"></i></button>
 										@endif
 										<button class="btn btn-brand btn-sm" data-toggle="modal" data-target="#share-modal">hype <small>({{ $product->hypes->count() }})</small> <i class="fa fa-share-alt"></i></button>
+										<a href="{{ route('view_inventory', $user->reference) }}"><button class="btn btn-brand btn-sm">Visit Store<i class="fa fa-shopping-cart"></i></button></a>
 									</div>
 								</div>
 							</div>
