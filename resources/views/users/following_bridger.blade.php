@@ -74,10 +74,10 @@
 										</div>
 			        				</div>
 			        				<div class="col-md-5 col-sm-5 col-xs-5">
-			        					<form method="post" action="{{ route('unfollow', $user->email) }}">
+			        					{{-- <form method="post" action="{{ route('unfollow', $user->email) }}"> --}}
 			        						<!-- <button type="submit" class="btn btn-sm f-14 waves-light waves-effect c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Unfollow</button> -->
-			        						<button class="btn unfollow btn-sm f-14 waves-light waves-effect c-brand btn-outline-brand m-t-40 m-b-50" data-email="{{$user->reference}}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}" ><span class="fa fa-check">&nbsp; &nbsp;</span>Unfollow</button>
-			        					</form>
+			        						<button class="btn unfollow btn-sm f-14 waves-light waves-effect btn-brand m-t-40 m-b-50" data-email="{{$user->reference}}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}" >Unfollow</button>
+			        					{{-- </form> --}}
 			        				</div>
 		        				</div>
 		        			</div>

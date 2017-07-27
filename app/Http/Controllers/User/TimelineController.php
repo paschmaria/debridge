@@ -32,7 +32,7 @@ class TimelineController extends Controller
 
     public function index($reference, $filter = null, Request $request)
     {
-        $user = User::with(['profile_picture', 'role', 'community'])->where('reference', $reference)->first();
+        $user = User::with(['profile_picture', 'role', 'community', 'bridgeCode'])->where('reference', $reference)->first();
         $following = $user->following()->with([ 'posts' => function ($query) {
             $query->orderBy('created_at', 'desc')->with([
                 'user' => function($q){

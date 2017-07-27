@@ -27,26 +27,6 @@ class PostController extends Controller
         $this->photo_album = $photo_album;
     }
     
-    public function index()
-    {
-        $posts = Post::latest()->get();
-        $admired = PostAdmire::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
-        $hyped = PostHype::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
-        $admired_count = PostAdmire::all();
-        $hyped_count = PostHype::all();
-        return view('post', compact('posts', 'admired', 'hyped', 'admired_count', 'hyped_count'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-       return view('post');
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -96,7 +76,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('post');
+        // return view('post');
     }
 
     /**

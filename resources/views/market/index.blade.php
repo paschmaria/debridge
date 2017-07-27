@@ -42,8 +42,7 @@
                     <div class="list-group m-b-20">
                         <a href="{{ route('view_users') }}" class="list-group-item list-group-item-action">BRIDGER</a>
                         @if(auth()->check() && strtolower(auth()->user()->role->name) === 'merchant')
-
-                        <a href="{{ route('trade_request') }}" class="list-group-item list-group-item-action">TRADE REQUEST</a>
+                            <a href="{{ route('view_trade_request') }}" class="list-group-item list-group-item-action">TRADE REQUEST</a>
                         @endif
                         @if(auth()->check())
                             <a href="{{ route('community', auth()->user()->reference) }}" class="list-group-item list-group-item-action">TRADE COMMUNITY</a>

@@ -34,7 +34,7 @@
                     <div class="col-sm-9">
                         <h1 class="h1-responsive f-48 text-center m-t-20 m-b-5 c-brand w-500">{{ strtoupper($user->full_name()) }}
                             @if(auth()->user()->id != $user->id)
-                                @if(in_array($user, auth()->user()->following->toArray()))
+                                @if(!in_array($user->id, auth()->user()->following->pluck('id')->toArray()))
                                 <a href="{{ route('follow', $user->reference) }}">
                                     <button class="btn btn-sm btn-outline-brand follow" data-email="{{ $user->reference }}">follow></button>
                                 </a>
@@ -63,7 +63,7 @@
                     <div class="col-sm-9 m-t-20">
                         <h1 class="h1-responsive f-48 text-center m-t-20 m-b-5 c-brand w-500">{{ $user->full_name() }} 
                             @if(auth()->user()->id != $user->id)
-                                @if(in_array($user, auth()->user()->following->toArray()))
+                                @if(!in_array($user->id, auth()->user()->following->pluck('id')->toArray()))
                                 <a href="{{ route('follow', $user->reference) }}">
                                     <button class="btn btn-sm btn-outline-brand follow" data-email="{{ $user->reference }}">follow></button>
                                 </a>
@@ -74,7 +74,7 @@
                         </h1>
                         <h4 class="h4-responsive c-brand text-center">{{ strtoupper($merchant->store_name) }}</h4>
                         @if($user->community)
-                            <p class="text-center">{{ $user->community_address() }}<small class="c-gray"> (Trade Community)</small></p>
+                            <p class="text-center m-b-0">{{ $user->community_address() }}<small class="c-gray"> (Trade Community)</small></p>
                         @endif
                         @if($merchant->address != null)
                             <p class="text-center">{{ ucwords($merchant->address->address) }}
@@ -92,9 +92,9 @@
                             <a href="{{ route('community', $user->reference) }}" class="list-group-item list-group-item-action">
                                 <i class="fa fa-globe f-20"></i><span class="p-l-20">TRADE COMMUNITY</span>
                             </a>
-                            <a href="#" class="list-group-item list-group-item-action">
+                            {{-- <a href="#" class="list-group-item list-group-item-action">
                                 <i class="fa fa-users f-20"></i><span class="p-l-20">TRADE PARTNERS</span>
-                            </a>
+                            </a> --}}
                             <a href="{{ route('view_inventory', $user->reference) }}" class="list-group-item list-group-item-action">
                                 <i class="fa fa-archive f-20"></i><span class="p-l-20">INVENTORY</span>
                             </a>
@@ -110,10 +110,12 @@
                 <div class="hidden-xs-down col-sm-3 col-md-3 m-t-10">
                     <div class="list-group m-b-20">
                         <a href="{{ route('view_users') }}" class="list-group-item list-group-item-action">BRIDGER</a>
-                        <a href="{{ route('trade_request') }}" class="list-group-item list-group-item-action">TRADE REQUEST</a>
+                        <a href="{{ route('view_partners', $user->reference) }}" class="list-group-item list-group-item-action">TRADE PARTNERS</a>
                         <a href="{{ route('community', $user->reference) }}" class="list-group-item list-group-item-action">TRADE COMMUNITY</a>
-                        <a href="#" class="list-group-item list-group-item-action">BRIDGE POINT</a>
-                        <a href="#" class="list-group-item list-group-item-action">BRIDGE CODE</a>
+                        {{-- <a href="#" class="list-group-item list-group-item-action">BRIDGE POINT</a> --}}
+                        @if($user->bridgeCode)
+                            <a class="list-group-item list-group-item-action">BRIDGE CODE: {{ $user->bridgeCode->code }}</a>
+                        @endif
                     </div>
                     
                     <div class="btn-group-vertical width-100p" role="group" aria-label="Profile Navigation Links">

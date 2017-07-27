@@ -50,21 +50,23 @@
                         {{ csrf_field() }}
                             <div class="">
                                 <div class="profile-img-holder">
-                                @if(auth()->user()->profile_picture == null)
-                                    <div class="photo_wrapper p-10">
-                                        <img src="{{ asset('img/icons/profiler.png') }}" id="post" class="img-fluid width-100p">
-                                    </div>
-                                @else
-                                    <div class="photo_wrapper p-10">
-                                        <img src="{{ route('image', [auth()->user()->profile_picture->image_reference, '']) }}" id="post" class="h-200 width-100p">
-                                    </div>
-                                @endif                                            
-                                    <div class="pos-rel dis-flex">
-                                        <button type="submit" class="btn btn-brand">
-                                        <i class="fa fa-plus-circle"></i>
-                                        Upload</button>
-                                       <input name="img_ref" type="file" class="pos-abs l-30 width-125 h-40 t-8 hide z-10" id="upload">
-                                    </div>
+	                                @if($user->profile_picture == null)
+	                                    <div class="photo_wrapper p-10">
+	                                        <img src="{{ asset('img/icons/profiler.png') }}" id="post" class="img-fluid width-100p">
+	                                    </div>
+	                                @else
+	                                    <div class="photo_wrapper p-10">
+	                                        <img src="{{ route('image', [$user->profile_picture->image_reference, '']) }}" id="post" class="h-200 width-100p">
+	                                    </div>
+	                                @endif 
+	                                @if(auth()->user()->id == $user->id)                                           
+	                                    <div class="pos-rel dis-flex">
+	                                        <button type="submit" class="btn btn-brand">
+	                                        <i class="fa fa-plus-circle"></i>
+	                                        Upload</button>
+	                                       <input name="img_ref" type="file" class="pos-abs l-30 width-125 h-40 t-8 hide z-10" id="upload">
+	                                    </div>
+	                                @endif
                                 </div>
                             </div>
                             {{-- <div class="text-center m-t-10">

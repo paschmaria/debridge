@@ -40,7 +40,7 @@ class UserController extends Controller
         // dd($roles);
         $states = State::all();
         $trade_communities = TradeCommunity::all();
-        return view('register1', compact('roles', 'states', 'trade_communities', 'trade_interests'));
+        return view('auth.register', compact('roles', 'states', 'trade_communities', 'trade_interests'));
     }
 
     protected function isValidPageNumber($page)

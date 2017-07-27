@@ -76,11 +76,11 @@
 			        				<div class="col-md-5 col-sm-5 col-xs-5">
 			        				@if(in_array($user->id, $following_ids))
 			        					{{-- <form method="post" action="{{ route('unfollow', $user->reference) }}"> --}}
-			        						<button class="btn unfollow btn-sm f-14 waves-light waves-effect c-brand btn-outline-brand m-t-40 m-b-50" data-email="{{$user->reference}}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}" ><span class="fa fa-check">&nbsp; &nbsp;</span>Unfollow</button>
+			        						<button class="btn unfollow btn-sm f-14 waves-light waves-effect btn-brand m-t-40 m-b-50" data-email="{{$user->reference}}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}" >Unfollow</button>
 			        					{{-- </form> --}}
 			        				@else
 			        					{{-- <form method="post" action="{{ route('follow', $user->reference) }}"> --}}
-			        						<button class="btn follow btn-sm f-14 waves-light waves-effect c-brand btn-outline-brand m-t-40 m-b-50" data-email="{{$user->reference}}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}" ><span class="fa fa-check">&nbsp; &nbsp;</span>Follow Back</button>
+			        						<button class="btn follow btn-sm f-14 waves-light waves-effect btn-outline-brand m-t-40 m-b-50" data-email="{{$user->reference}}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}" >Follow Back</button>
 			        					{{-- </form> --}}
 			        				@endif
 			        				</div>
