@@ -44,7 +44,7 @@ class DropTables extends Command
 
         $colname = 'Tables_in_' . env('DB_DATABASE');
 
-        $tables = DB::select('SHOW TABLES');
+        $tables = \DB::select('SHOW TABLES');
 
         foreach($tables as $table) {
 
@@ -53,13 +53,13 @@ class DropTables extends Command
         }
         $droplist = implode(',', $droplist);
 
-        DB::beginTransaction();
+        \DB::beginTransaction();
         //turn off referential integrity
         //DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        DB::statement("DROP TABLE $droplist");
+        \DB::statement("DROP TABLE $droplist");
         //turn referential integrity back on
         //DB::statement('SET FOREIGN_KEY_CHECKS = 1');
-        DB::commit();
+        \DB::commit();
 
         $this->comment(PHP_EOL."If no errors showed up, all tables were dropped".PHP_EOL);
 
