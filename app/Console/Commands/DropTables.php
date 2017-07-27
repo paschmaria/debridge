@@ -43,8 +43,7 @@ class DropTables extends Command
         }
 
         $colname = 'Tables_in_' . env('DB_DATABASE');
-
-
+        
         $tables = \DB::select('SHOW TABLES');
 
         foreach($tables as $table) {

@@ -131,7 +131,7 @@
                                     <div class="pull-left p-r-10">
                                         <a href="{{ route('view_profile', $comment->user->reference) }}">
                                             @if ($comment->user->image_id == null)
-                                                <img src="{{ asset('img/icons/profiled.png') }}" class="card media-object img-responsive h-50 width-50 m-r-10" alt="">
+                                                <img src="{{ asset('img/icons/profile.png') }}" class="card media-object img-responsive h-50 width-50 m-r-10" alt="">
 
                                             @else
                                                 <img src="{{ route('image', [$comment->user->profile_picture->image_reference, '']) }}" class="card media-object img-responsive h-50 width-50 m-r-10" alt="">

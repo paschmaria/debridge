@@ -83,6 +83,7 @@
 												<small><del>&#8358;{{ $product->price }}</del></small>
 											</h3>
 										@endif
+										<br>
 										@if(auth()->user()->ownsShop($user->id))
 											
 											@if($product_of_the_week)
@@ -151,7 +152,7 @@
 									<br>
 									<h3 class="h3-responsive c-brand">{{ $product->name }}</h3>
 									<a href="{{ route('view_inventory', $user->reference) }}" class="c-brand"><p>{{ $merchant->store_name }}<small>{{ $user->full_name() }}</small></p></a>
-									<p>{{ $product->description }}</p>
+									<p class="p-r-20 text-justified">{{ $product->description }}</p>
 								</div>
 								<!--/ first panel -->
 								<!-- second panel -->
