@@ -19,22 +19,26 @@ class TradeRequestController extends Controller
     }
 
     public function tradePartner(){
-    	 $role = Role::where('name', 'Merchant')->first();
-    	$user_friends = auth()->user()->friends->pluck('id')->toArray();
-    	// dd($user_friends);
-    	$merchants = User::where('role_id', $role->id)->where('id', '!=', auth()->user()->id)->whereIn('id', $user_friends)->get();
-    	return view('trade_partners', compact('merchants'));
+    	// $role = Role::where('name', 'Merchant')->first();
+    	// $user_friends = auth()->user()->friends->pluck('id')->toArray();
+    	// $merchants = User::with(['profile_picture'])
+     //                        ->where('role_id', $role->id)
+     //                        ->where('id', '!=', auth()->user()->id)
+     //                        ->whereIn('id', $user_friends)->get();
+        $users = auth()->user()->friends;
+
+    	return view('bridger.trade_partners', compact('users'));
     }
 
     public function showMerchants(){
     	$role = Role::where('name', 'Merchant')->first();
-    	$user_friends = auth()->user()->friends->pluck('id')->toArray();
-    	// dd($user_friends);
-    	$merchants = User::where('role_id', $role->id)->where('id', '!=', auth()->user()->id)->whereNotIn('id', $user_friends)->get();
-    	$fr = FriendRequest::where('sender_id', auth()->user()->id)->pluck('receiver_id')->toArray();
-    	// dd($fr);
+        $user_friends = auth()->user()->friends->pluck('id')->toArray();
+        $merchants = User::with(['profile_picture'])
+                            ->where('role_id', $role->id)
+                            ->where('id', '!=', auth()->user()->id)
+                            ->whereNotIn('id', $user_friends)->get();
 
-    	// dd($merchants);
+    	$fr = FriendRequest::where('sender_id', auth()->user()->id)->pluck('receiver_id')->toArray();
 
     	return view('tradeRequest', compact('merchants', 'fr'));
     }

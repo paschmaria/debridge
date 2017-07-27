@@ -38,7 +38,7 @@ class AdmireController extends Controller
         } else {
             PostAdmire::create(['post_id' => $post->id, 'user_id' => \Auth::user()->id]);
         }    
-        return response()-json([
+        return response()->json([
             'count' => $post->admires->count() 
             ]);   
         // return back()->with('success', 'Admired!');
@@ -102,7 +102,7 @@ class AdmireController extends Controller
         if ($admire) {
             $admire->delete();
         }
-        return response()-json([
+        return response()->json([
             'count' => $post->admires->count() 
             ]);      
         return back()->with('info', 'Unadmired!');

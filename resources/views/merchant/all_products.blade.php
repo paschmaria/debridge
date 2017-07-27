@@ -143,7 +143,7 @@
                                 </div>
                                 <!--Body-->
                                 <div class="modal-body bg-brand-lite">
-                                    <form action="{{ route('product_hype', $product->id) }}" method="POST">
+                                    <form action="{{ route('product_hype', $product->reference) }}" method="POST">
                                         {{ csrf_field() }}
                                         {{-- <div class="media m-b-10">
                                             <div class="media-body">
