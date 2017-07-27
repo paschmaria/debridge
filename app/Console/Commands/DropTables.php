@@ -44,7 +44,8 @@ class DropTables extends Command
 
         $colname = 'Tables_in_' . env('DB_DATABASE');
 
-        $tables = \DB::select('show tables');
+
+        $tables = \DB::select('SHOW TABLES');
 
         foreach($tables as $table) {
 
@@ -56,7 +57,7 @@ class DropTables extends Command
         \DB::beginTransaction();
         //turn off referential integrity
         //DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        \DB::statement("drop table $droplist");
+        \DB::statement("DROP TABLE $droplist");
         //turn referential integrity back on
         //DB::statement('SET FOREIGN_KEY_CHECKS = 1');
         \DB::commit();
