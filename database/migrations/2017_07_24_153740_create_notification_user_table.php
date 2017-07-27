@@ -16,7 +16,7 @@ class CreateNotificationUserTable extends Migration
         Schema::create('notification_user', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->nullable();
-            $table->text('notification_id')->nullable();
+            $table->integer('notification_id')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateNotificationUserTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('notification_user');
     }
 }
