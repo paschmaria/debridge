@@ -228,4 +228,9 @@ class User extends Authenticatable
         return '';
     }
 
+    public function getProducts()
+    {
+        return $this->merchant_account->inventory->products();
+    }
+
 }

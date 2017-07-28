@@ -127,64 +127,42 @@
             </div>
             <div class="row m-t-20">
                 <div class="hidden-xs-down col-sm-3 col-md-3">
-                    <!--Card-->
-                    <div class="card m-b-16 wow fadeInUp">
 
-                        <!--Card image-->
-                        <div class="view overlay hm-black-light hm-zoom">
-                            <img src="{{ asset('img/products/leftside-ad-1.png') }}" class="img-fluid width-100p" alt="">
-                            <div class="white-text mask flex-center">
-                                <div class="text-center">
-                                    <h2 class="m-b-20 w-700">Product Name</h2>
-                                    <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
-                                    <p class="m-b-20">25% Off</p>
-                                    <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
-                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/.Card image-->
-
+                    <div class="card-header transparent">
+                        <p class="m-0 text-center w-500 c-brand"><i class="fa fa-star f-20"></i> &nbsp MOST VIEWED PRODUCTS</p>
                     </div>
-                    <!--/.Card-->
                     <!--Card-->
-                    <div class="card m-b-16 wow fadeInUp">
+                        @foreach($products->splice(0,3) as $product)
+                            <div class="card m-b-16 wow fadeInUp">
 
-                        <!--Card image-->
-                        <div class="view overlay hm-black-light hm-zoom">
-                            <img src="{{ asset('img/products/leftside-ad-2.png') }}" class="img-fluid width-100p" alt="">
-                            <div class="white-text mask flex-center">
-                                <div class="text-center">
-                                    <h2 class="m-b-20 w-700">Product Name</h2>
-                                    <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
-                                    <p class="m-b-20">25% Off</p>
-                                    <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
-                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add to cart</a>
-                                </div>
+                                <!--Card image-->
+                                    <div class="view overlay hm-black-light hm-zoom">
+                                        <a href="{{ route('product_details', $product->reference) }}" class="waves-effect waves-light">
+                                            @if($product->pictures != null && $product->pictures->images[0] != null)
+                                                <img src="{{ route('image', [$product->pictures->images[0]->image_reference, '']) }}" class="img-fluid width-100p h-300" >
+                                            @else
+                                                <img src="{{ asset('img/products/rectangle.png') }}" class="img-fluid width-100p h-300" >
+                                            @endif
+                                        </a>
+                                        <div class="white-text mask flex-center">
+                                            <div class="text-center">
+                                                <h2 class="m-b-20 w-700">{{ $product->name }}</h2>
+                                                @if($product->promo_price == null)
+                                                    <p class="m-b-20 f-24">&#8358;{{  $product->price }}</p>
+                                                @else
+                                                    <p class="m-b-20 f-24"><span>&#8358; {{ $product->promo_price }}</span> <del><span>&#8358; {{ $product->price }}</span></del></p>
+                                                @endif
+                                                <a href="{{ route('view_inventory', $product->user->reference) }}"><button class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</button></a>
+                                                @if (auth()->check())
+                                                    <a href="{{ route('addToCart', $product->reference) }}"><button class="btn btn-md btn-outline-white waves-effect waves-light">Add to cart</button></a>
+                                                @endif
+                                                <a href="{{ route('product_details', $product->reference) }}" class="waves-effect waves-light">click here to view product</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <!--/.Card image-->
                             </div>
-                        </div>
-                        <!--/.Card image-->
-
-                    </div>
-                    <!--/.Card-->
-                    <!--Card-->
-                    <div class="card m-b-16 wow fadeInUp">
-
-                        <!--Card image-->
-                        <div class="view overlay hm-black-light hm-zoom">
-                            <img src="{{ asset('img/products/leftside-ad-3.png') }}" class="img-fluid width-100p" alt="">
-                            <div class="white-text mask flex-center">
-                                <div class="text-center">
-                                    <h2 class="m-b-20 w-700">Product Name</h2>
-                                    <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
-                                    <p class="m-b-20">25% Off</p>
-                                    <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
-                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/.Card image-->
-                    </div>
+                        @endforeach
                     <!--/.Card-->
                 </div>
                 <div class="col col-sm-6 col-md-6" id="timeline">
@@ -228,68 +206,49 @@
                     <input type="hidden" name="timestamp" id="timestamp" value="{{ $timestamp }}">
 
                     @include('market.partials.timeline')
-
                 </div>
                 <div class="hidden-xs-down col-sm-3 col-md-3">
+
+                    <div class="card-header transparent">
+                        <p class="m-0 text-center w-500 c-brand"><i class="fa fa-star f-20"></i> &nbsp MOST VIEWED PRODUCTS</p>
+                    </div>
                     <!--Card-->
                     <div class="card m-b-16 wow fadeInUp">
 
-                        <!--Card image-->
-                        <div class="view overlay hm-black-light hm-zoom">
-                            <img src="{{ asset('img/products/rightside-ad-1.png') }}" class="img-fluid width-100p" alt="">
-                            <div class="white-text mask flex-center">
-                                <div class="text-center">
-                                    <h2 class="m-b-20 w-700">Product Name</h2>
-                                    <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
-                                    <p class="m-b-20">25% Off</p>
-                                    <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
-                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/.Card image-->
-
                     </div>
                     <!--/.Card-->
+                        @foreach($products->splice(3, 6) as $product)
+                            <div class="card m-b-16 wow fadeInUp">
+
+                                <!--Card image-->
+                                    <div class="view overlay hm-black-light hm-zoom">
+                                        <a href="{{ route('product_details', $product->reference) }}" class="waves-effect waves-light">
+                                            @if($product->pictures != null && $product->pictures->images[0] != null)
+                                                <img src="{{ route('image', [$product->pictures->images[0]->image_reference, '']) }}" class="img-fluid width-100p h-300" >
+                                            @else
+                                                <img src="{{ asset('img/products/rectangle.png') }}" class="img-fluid width-100p h-300" >
+                                            @endif
+                                        </a>
+                                        <div class="white-text mask flex-center">
+                                            <div class="text-center">
+                                                <h2 class="m-b-20 w-700">{{ $product->name }}</h2>
+                                                @if($product->promo_price == null)
+                                                    <p class="m-b-20 f-24">&#8358;{{  $product->price }}</p>
+                                                @else
+                                                    <p class="m-b-20 f-24"><span>&#8358; {{ $product->promo_price }}</span> <del><span>&#8358; {{ $product->price }}</span></del></p>
+                                                @endif
+                                                <a href="{{ route('view_inventory', $product->user->reference) }}"><button class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</button></a>
+                                                @if (auth()->check())
+                                                    <a href="{{ route('addToCart', $product->reference) }}"><button class="btn btn-md btn-outline-white waves-effect waves-light">Add to cart</button></a>
+                                                @endif
+                                                <a href="{{ route('product_details', $product->reference) }}" class="waves-effect waves-light">click here to view product</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <!--/.Card image-->
+                            </div>
+                        @endforeach
                     <!--Card-->
-                    <div class="card m-b-16 wow fadeInUp">
-
-                        <!--Card image-->
-                        <div class="view overlay hm-black-light hm-zoom">
-                            <img src="{{ asset('img/products/rightside-ad-2.png') }}" class="img-fluid width-100p" alt="">
-                            <div class="white-text mask flex-center">
-                                <div class="text-center">
-                                    <h2 class="m-b-20 w-700">Product Name</h2>
-                                    <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
-                                    <p class="m-b-20">25% Off</p>
-                                    <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
-                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/.Card image-->
-
-                    </div>
-                    <!--/.Card-->
-                    <!--Card-->
-                    <div class="card m-b-16 wow fadeInUp">
-
-                        <!--Card image-->
-                        <div class="view overlay hm-black-light hm-zoom">
-                            <img src="{{ asset('img/products/rightside-ad-3.png') }}" class="img-fluid width-100p" alt="">
-                            <div class="white-text mask flex-center">
-                                <div class="text-center">
-                                    <h2 class="m-b-20 w-700">Product Name</h2>
-                                    <p class="m-b-20 f-24"><span>&#8358; 8,000</span> <del><span>&#8358; 12,500</span></del></p>
-                                    <p class="m-b-20">25% Off</p>
-                                    <a href="8.html" class="btn btn-md btn-outline-white waves-effect waves-light">Visit Store</a>
-                                    <a href="" class="btn btn-md btn-outline-white waves-effect waves-light">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/.Card image-->
-                    </div>
-                    <!--/.Card-->
                 </div>
             </div>
 
