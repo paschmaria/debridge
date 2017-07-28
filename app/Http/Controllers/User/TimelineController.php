@@ -22,7 +22,7 @@ class TimelineController extends Controller
      */
     function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     protected function isValidPageNumber($page)
@@ -70,21 +70,40 @@ class TimelineController extends Controller
             ])->get();
         // dd($user_post);
         $posts = $user_post->merge($timeline->values()->all())->sortByDesc('created_at');
-        
-        $admired = PostAdmire::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
-        $hyped = PostHype::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
+        if (auth()->check()) {
+            $admired = PostAdmire::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
+            $hyped = PostHype::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
+        }
 
         if ($user->checkRole()) {
 
             $user_acc = UserAccount::with(['address' => function($q){
                 $q->with('state');
-            }])->firstOrCreate(['user_id' => auth()->user()->id]);
+            }])->firstOrCreate(['user_id' => $user->id]);
             // dd($user_acc);
         } else {
-            $merchant = MerchantAccount::with(['address' => function($q){
-                $q->with('state');
-            }])->firstOrCreate(['user_id' => auth()->user()->id]);
+            $merchant = MerchantAccount::with([
+                'address' => function($q){
+                    $q->with(['state']);
+                },
+                'hottest_product' => function($q){
+                    $q->with(['products' => function($q){
+                        $q->with(['pictures' => function($q){
+                            $q->with('images');
+                        }]);
+                    }]);
+                },
+                'potw' => function($q){
+                    $q->with(['product' => function($q){
+                        $q->with(['pictures' => function($q){
+                            $q->with('images');
+                        }]);
+                    }]);
+                }
+            ])->firstOrCreate(['user_id' => $user->id]);
         }
+
+        // dd($merchant);
 
         // get the user role in the role model...
         $user_role = Role::where('name', 'user')->pluck('id')->toArray();

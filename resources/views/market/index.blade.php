@@ -15,10 +15,12 @@
                             <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('following', auth()->user()->reference) }}">Following</a></li>
                             <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('followers', auth()->user()->reference) }}">Followers</a></li>
                             <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('timeline', auth()->user()->reference) }}">Tradeline</a></li>
+                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('community', auth()->user()->reference) }}">Trade Community</a></li>
                         @else
                             <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" data-toggle="modal" data-target="#basicExample">Following</a></li>
                             <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" data-toggle="modal" data-target="#basicExample">Followers</a></li>
                             <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" data-toggle="modal" data-target="#basicExample">Tradeline</a></li>
+                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" data-toggle="modal" data-target="#basicExample">Trade Community</a></li>
                         @endif
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Business Invitation</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Models</a></li>
@@ -292,39 +294,6 @@
             </div>
 
           </div>
-          <!--modal-->
-                <div class="modal fade width-100p m-t-180" id="basicExample" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <!--Content-->
-                        <div class="modal-content bg-brand-lite">
-                            <!--Header-->
-                            <div class="modal-header bg-brand">
-                                <h4 class="modal-title w-100 m-auto c-white text-center" id="myModalLabel">Join Debridge </h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true" class="c-white">&times;</span>
-                                </button>
-                            </div>
-                            <!--Body-->
-                            <div class="modal-body">
-                                <p class="text-center f-20 m-t-20 m-b-10 c-dark">Please sign up or log in to continue</p>
-                                <div class="modal-signup text-center m-b-10">
-                                    <a href="{{ route('register') }}">
-                                        <button class="btn btn-md bg-brand text-center f-16">Log in/Register</button>
-                                    </a>
-                                </div>
-                            </div>
-                            <!--Footer-->
-                            {{-- <div class="modal-footer border-top">
-                                <div class="m-auto">
-                                    <p class="text-center c-dark f-16">Have an account? <a href="#" class="c-brand">Log in</a></p>
-                                </div>
-                                
-                            </div> --}}
-                        </div>
-                        <!--/.Content-->
-                    </div>
-                </div>
-                            <!--/modal-->
         </section>
         <!-- main section ends here-->
  @endsection  

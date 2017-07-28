@@ -34,8 +34,9 @@
 	            	<a href="{{ route('add_more_partners') }}"><button class="btn btn-md btn-sm pull-right f-14 m-b-10 bg-brand-lite btn-outline-brand"><span class="fa fa-plus m-r-10"></span>ADD MORE PARTNERS</button></a>
 	            </div>
 	        </div>
+
 	        <!-- friends display  -->
-	        <div class="m-t-20 m-b-140">
+	        <div class="m-t-20 m-b-50">
 	        	{{-- <div class="m-b-20">
 	        		<nav class="navbar user-type-navbar no-shadow">
                         <ul class="nav user-type-nav text-center">
@@ -45,6 +46,7 @@
                         </ul>
                     </nav>
 	        	</div> --}}
+	        	<hr>
 	        	<div class="row">
 		        		<!-- first column of friends -->
 		        		@forelse(auth()->user()->received_trade_requests as $user)

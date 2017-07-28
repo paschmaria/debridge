@@ -46,6 +46,7 @@
                     </nav>
 	        	</div>
 	        	 --}}
+                <hr>
 	        	<div class="row" id="users_list">
 		        		<!-- first column of friends -->
 		        		@include('bridger.partials.trade_partners')

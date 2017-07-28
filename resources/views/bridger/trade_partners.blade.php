@@ -36,7 +36,7 @@
 	            </div>
 	        </div>
 	        <!-- friends display  -->
-	        <div class="m-t-20 m-b-140">
+	        <div class="m-t-20 m-b-50">
 	        	{{-- <div class="m-b-20">
 	        		<nav class="navbar user-type-navbar no-shadow">
                         <ul class="nav user-type-nav text-center">
@@ -47,10 +47,14 @@
                     </nav>
 	        	</div>
 	        	 --}}
+                <hr>
 	        	<div class="row" id="users_list">
 		        		<!-- first column of friends -->
 		        		@include('bridger.partials.trade_partners')
 		        		<!-- / second column of friends -->
+                        @if($merchants->count() < 1)
+                            <h4 class="h4-responsive c-gray p-20">{{ $merchant->full_name() }} {{ $merchant->getStoreName() }} has no trade partners </h4>
+                        @endif
 		        	</div>
 
 	        </div>

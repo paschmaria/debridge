@@ -110,18 +110,16 @@
                                             {{ auth()->user()->first_name }}
                                             </a>
                                             <div class="dropdown-menu animated bounceIn" aria-labelledby="dropdownMenu3">
-
+                                                <a class="dropdown-item waves-effect waves-light" href="{{ route('timeline', auth()->user()->reference) }}">Timeline</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('followers', auth()->user()->reference) }}">Followers</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('following', auth()->user()->reference) }}">Following</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('view_profile', auth()->user()->reference) }}">View Profile</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('edit_profile') }}">Edit Profile</a>
                                                 @if(strtolower(auth()->user()->role->name) === 'merchant')
-                                                    <a class="dropdown-item waves-effect waves-light" href="{{ url('friend_requests') }}">Trade Requests</a>
                                                     <a class="dropdown-item waves-effect waves-light" href="{{ route('view_inventory', auth()->user()->reference) }}">Inventory</a>
-                                                    <a class="dropdown-item waves-effect waves-light" href="{{ route('trade_partners') }}">Trade Partners</a>
-
+                                                    <a class="dropdown-item waves-effect waves-light" href="{{ route('view_partners', auth()->user()->reference) }}">Trade Partners</a>
+                                                     <a class="dropdown-item waves-effect waves-light" href="{{ url('friend_requests') }}">Trade Requests</a>
                                                 @endif
-                                                <a class="dropdown-item waves-effect waves-light" href="{{ route('timeline', auth()->user()->reference) }}">Timeline</a>
                                                 <a class="dropdown-item waves-effect waves-light" href="{{ route('logout') }}">Logout</a>
                                             </div>
                                         </div>

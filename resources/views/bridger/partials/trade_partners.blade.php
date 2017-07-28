@@ -22,27 +22,29 @@
 						<p class="f-12 text-fluid">{{ $user->email }}</p>
 					</div>
 				</div>
-				
-				@if(!auth()->user()->checkRole())
-					@if(in_array($user->id, auth()->user()->trade_partners->pluck('id')->toArray()))
-						<button class="btn btn-sm f-12 waves-light waves-effect btn-outline-brand m-t-40 m-b-50" data-toggle="modal" data-target="#cancel-modal{{ $user->id }}">
-    					cancel partnersip <i class="fa fa-times c-red"></i>
-    					</button>
-					@else
-						@if(!in_array($user->id, auth()->user()->sent_trade_requests->pluck('id')->toArray()))
-							<a href="{{ route('send_trade_request', $user->reference) }}">
-							<button class="btn btn-sm f-12 waves-light waves-effect btn-outline-brand m-t-40 m-b-50 ">Send Trade Request</button>
+				@if(auth()->user()-> != $user->id)
+    				@if(!auth()->user()->checkRole())
+    					@if(in_array($user->id, auth()->user()->trade_partners->pluck('id')->toArray()))
+    						<button class="btn btn-sm f-12 waves-light waves-effect btn-outline-brand m-t-40 m-b-50" data-toggle="modal" data-target="#cancel-modal{{ $user->id }}">
+        					cancel partnersip <i class="fa fa-times c-red"></i>
+        					</button>
+    					@else
+    						@if(!in_array($user->id, auth()->user()->sent_trade_requests->pluck('id')->toArray()))
+    							<a href="{{ route('send_trade_request', $user->reference) }}">
+    							<button class="btn btn-sm f-12 waves-light waves-effect btn-outline-brand m-t-40 m-b-50 ">Send Trade Request</button>
 
-						@else
-							<button class="btn btn-sm f-12 waves-light waves-effect btn-brand m-t-40 m-b-50" data-toggle="modal" data-target="#cancel-request-modal{{ $user->id }}">Cancel Trade Request</button>
-						@endif
-					@endif
-				@else
-					@if(in_array($user, auth()->user()->following->toArray()))
-						<button class="btn btn-sm f-12 waves-light waves-effect btn-outline-brand m-t-40 m-b-50 follow" data-email="{{$user->reference}}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}" >follow</button>
-					@else
-						<button class="btn btn-sm f-12 waves-light waves-effect btn-brand m-t-40 m-b-50 unfollow" data-email="{{$user->reference}}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}">unfollow</button>
-					@endif
+    						@else
+    							<button class="btn btn-sm f-12 waves-light waves-effect btn-brand m-t-40 m-b-50" data-toggle="modal" data-target="#cancel-request-modal{{ $user->id }}">Cancel Trade Request</button>
+    						@endif
+    					
+                        @endif
+    				@else
+    					@if(in_array($user, auth()->user()->following->toArray()))
+    						<button class="btn btn-sm f-12 waves-light waves-effect btn-outline-brand m-t-40 m-b-50 follow" data-email="{{$user->reference}}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}" >follow</button>
+    					@else
+    						<button class="btn btn-sm f-12 waves-light waves-effect btn-brand m-t-40 m-b-50 unfollow" data-email="{{$user->reference}}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}">unfollow</button>
+    					@endif
+                    @endif
 				@endif
 				<!-- Modal cancel_partnership -->
                     <div class="modal fade m-t-180" id="cancel-modal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

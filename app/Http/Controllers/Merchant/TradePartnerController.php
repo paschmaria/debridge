@@ -59,7 +59,6 @@ class TradePartnerController extends Controller
     {
     	$user = User::where('reference', $reference)->first();
     	auth()->user()->trade_partners()->attach($user);
-    	$user->trade_partners()->attach(auth()->user());
     	auth()->user()->received_trade_requests()->detach($user);
     	// notify $user
     	$notification = Notification::create([
@@ -76,7 +75,7 @@ class TradePartnerController extends Controller
     {
     	$user = User::where('reference', $reference)->first();
     	auth()->user()->trade_partners()->detach($user);
-    	$user->trade_partners()->detach(auth()->user());
+    	// $user->trade_partners()->detach(auth()->user());
     	// notify $user
     	$notification = Notification::create([
             'user_id' => auth()->user()->id,

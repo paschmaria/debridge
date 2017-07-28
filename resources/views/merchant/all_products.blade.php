@@ -16,7 +16,7 @@
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('following', auth()->user()->reference) }}">Following</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('followers', auth()->user()->reference) }}">Followers</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('tradeline', auth()->user()->reference) }}">Tradeline</a></li>
-                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Business Invitation</a></li>
+                        <li class="nauserv-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Business Invitation</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Models</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Market Value</a></li>
                     </ul>
@@ -36,7 +36,7 @@
                         @if($user->profile_picture != null)
                             <img src="{{ route('image', [$user->profile_picture->image_reference, '']) }}" class="image-responsive bd-dark-light  p-5 width-200 h-200">
                         @else
-                            <img src="{{ asset('img/icons/profiled.png') }}" class="image-responsive bd-dark-light p-5 h-300">
+                            <img src="{{ asset('img/icons/profiler.png') }}" class="image-responsive bd-dark-light p-5 width-200 h-200">
                         @endif
                         @if(auth()->user()->id != $user->id)
                             @if(in_array($user, auth()->user()->following->toArray()))
@@ -47,6 +47,67 @@
                                 <button class="btn btn-sm btn-brand unfollow" data-email="{{ $user->reference }}"> unfollow </button>
                             @endif
                         @endif
+                        @if(in_array($user->id, auth()->user()->trade_partners->pluck('id')->toArray()))
+                            <button class="btn btn-sm btn-brand" data-toggle="modal" data-target="#cancel-modal{{ $user->id }}">
+                            cancel partnerhsip <i class="fa fa-times c-red"></i>
+                            </button>
+                        @else
+                            @if(!in_array($user->id, auth()->user()->sent_trade_requests->pluck('id')->toArray()))
+                                <a href="{{ route('send_trade_request', $user->reference) }}">
+                                <button class="btn btn-sm btn-brand">Send Trade Request</button></a>
+
+                            @else
+                                <button class="btn btn-sm btn-brand" data-toggle="modal" data-target="#cancel-request-modal{{ $user->id }}">Cancel Trade Request</button>
+                            @endif
+                        @endif
+
+                        <!-- Modal cancel_partnership -->
+                            <div class="modal fade m-t-180" id="cancel-modal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <!--Content-->
+                                    <div class="modal-content">
+                                        <!--Header-->
+                                        <div class="modal-header bg-brand text-right">
+                                            <button type="button" class="close c-white" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!--Body-->
+                                        <div class="modal-body bg-brand-lite c-dark dis-flex">
+                                            <p class="text-responsive w-700 m-0">Are you sure you want to cancel this partnership?</p>
+                                        </div>
+                                        <!--Footer-->
+                                        <div class="modal-footer bg-brand-lite justify-content-center">
+                                            <a class="btn btn-md btn-outline-brand" href="{{ route('cancel_patrnership', $user->reference) }}">Yes</a>
+                                            <button type="button" class="btn btn-md btn-outline-brand" data-dismiss="modal">No</button>
+                                        </div>
+                                    </div>
+                                    <!--/.Content-->
+                                </div>
+                            </div>
+                        <!-- Modal -->
+
+                        <!-- Modal cancel_request -->
+                            <div class="modal fade m-t-180" id="cancel-request-modal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <!--Content-->
+                                    <div class="modal-content">
+                                        <!--Header-->
+                                        <div class="modal-header bg-brand text-right">
+                                            <button type="button" class="close c-white" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!--Body-->
+                                        <div class="modal-body bg-brand-lite c-dark dis-flex">
+                                            <p class="text-responsive w-700 m-0">Are you sure you want to cancel this trade request?</p>
+                                        </div>
+                                        <!--Footer-->
+                                        <div class="modal-footer bg-brand-lite justify-content-center">
+                                            <a class="btn btn-md btn-outline-brand" href="{{ route('undo_trade_request', $user->reference) }}">Yes</a>
+                                            <button type="button" class="btn btn-md btn-outline-brand" data-dismiss="modal">No</button>
+                                        </div>
+                                    </div>
+                                    <!--/.Content-->
+                                </div>
+                            </div>
+                        <!-- Modal -->
                     </div>
                     <div class="col-sm-6 col-md-6 text-center m-t-20">
                         <h1 class="h1-responsive f-48 text-center m-t-40 m-b-5 c-brand w-500">{{ $user->full_name() }}</h1>
@@ -65,7 +126,7 @@
                     <div class="col-sm-3 col-md-3 m-t-20 text-center">
                         <div class="list-group m-b-20">
                             <a href="{{ route('view_profile', $user->reference) }}" class="list-group-item list-group-item-action p-10 p-l-20"><i class="fa fa-user fa-2x p-r-40"></i><span class="p-l-40">VIEW PROFILE</span></a>
-                            <a href="#" class="list-group-item list-group-item-action p-10 p-l-20"><i class="fa fa-users fa-2x p-r-40"></i><span class="p-l-40">TRADE PARTNERS</span></a>
+                            <a href="{{ route('view_partners', $user->reference) }}" class="list-group-item list-group-item-action p-10 p-l-20"><i class="fa fa-users fa-2x p-r-40"></i><span class="p-l-40">TRADE PARTNERS</span></a>
                             <a href="#" class="list-group-item list-group-item-action p-10 p-l-20"><i class="fa fa-globe fa-2x p-r-40"></i><span class="p-l-40">TRADE COMMUNITY</span></a>
                             @if(auth()->user()->ownsShop($user->id))
                                 <a href="{{ route('addProduct') }}" class="list-group-item list-group-item-action p-10 p-l-20"><i class="fa fa-plus fa-2x p-r-40"></i><span class="p-l-40">ADD PRODUCT</span></a>

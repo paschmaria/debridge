@@ -169,7 +169,7 @@ Route::get('/port-harcourt_market', 'Auth\UserController@port_harcourtMarket')->
 // Route::get('/merchant_store/', 'Merchant\ProductController@merchantStore')->name('merchant_store')->middleware('merchant');
 
 // Route::get('/merchant_store/{user}', 'Merchant\ProductController@StoreForUser')->name('user_store');
-Route::get('/merchant/store/{reference}', 'Merchant\InventoryController@index')->name('view_inventory');
+Route::get('/merchant/store/{reference}', 'Merchant\InventoryController@index')->name('view_inventory')->middleware('auth');
 
 Route::get('/cart/add/{reference}', 'User\CartController@addToCart')->name('addToCart')->middleware('auth');
 ;
@@ -194,7 +194,7 @@ Route::post('/users/profile/edit/account', 'User\ProfileController@userSave')->n
 Route::post('/users/profile/edit/user', 'User\ProfileController@userAccountSave')->name('update_user')->middleware('auth');
 Route::post('/users/profile/edit/merchant', 'User\ProfileController@merchantAccountSave')->name('update_merchant')->middleware('auth');
 Route::post('/users/profile/edit/password', 'User\ProfileController@changePassword')->name('change_pasword')->middleware('auth');
-Route::get('/merchant/store/product/hottest/{reference}', 'Merchant\HottestProductController@show')->name('hottest_products');
+Route::get('/merchant/store/product/hottest/{reference}', 'Merchant\HottestProductController@show')->name('hottest_products')->middleware('auth');
 // Route::post('trade_request/{reference}', 'Merchant\TradeRequestController')->name('trade_request')->middleware('merchant');
 Route::get('/state/market/{reference}/{filter?}', 'User\StateMarketController@show')->name('state_market');//->middleware('auth');
 
