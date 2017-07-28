@@ -63,7 +63,7 @@ Route::match(['get', 'post'], '/merchant/trade/request/accept/{reference}', 'Mer
 Route::match(['get', 'post'], '/merchant/trade/request/decline/{reference}', 'Merchant\TradeRequestController@decline')->name('reject_partnership');
 Route::get('/merchant/trade/request/all', 'Merchant\TradeRequestController@index')->name('view_trade_request')->middleware('merchant');
 Route::get('/merchant/trade/find/partner', 'Merchant\TradePartnerController@findMore')->name('add_more_partners')->middleware('merchant');
-Route::get('/merchant/trade/partner/{reference}', 'Merchant\TradePartnerController@index')->name('view_partners')->middleware('merchant');
+Route::get('/merchant/trade/partner/{reference}', 'Merchant\TradePartnerController@show')->name('view_partners')->middleware('merchant');
 
 Route::post('/follow/{reference}', 'FollowController@store')->name('follow')->middleware('auth');
 

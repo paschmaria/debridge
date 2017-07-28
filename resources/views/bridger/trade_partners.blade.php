@@ -32,7 +32,7 @@
 	            <p class="c-gray">{{ $merchant->getStoreName() }}</p>
 	            <div class="h-58">
 	            	{{-- <p class="text-fluid c-gray f-14 dis-inline-b">All users on the bridge u can follow</p> --}}
-	            	<button class="btn btn-sm pull-right btn-outline-brand"><a href="{{ route('view_inentory', $merchant->reference) }}" class="c-brand">Visit Store <i class="fa fa-shopping-cart"></i></a></button>
+	            	<button class="btn btn-sm pull-right btn-outline-brand"><a href="{{ route('view_inventory', $merchant->reference) }}" class="c-brand">Visit Store <i class="fa fa-shopping-cart"></i></a></button>
 	            </div>
 	        </div>
 	        <!-- friends display  -->

@@ -36,7 +36,7 @@
 	            </div><br>
 	        </div>
 	        <!-- friends display  -->
-	        <div class="m-t-40 m-b-140">
+	        <div class="m-t-40 m-b-50">
 	        	<div class="row" id="followers_list">
 	        		<!-- first column of friends -->
 	        		<div class="p-10 p-l-20 m-b-10 bg-brand col-sm-12"> {{ ucwords(strtolower($user->full_name())) }} - followers <span class="badge bg-white c-brand">{{ $followers_count }}</span></div>
@@ -80,7 +80,7 @@
 			        					{{-- </form> --}}
 			        				@else
 			        					{{-- <form method="post" action="{{ route('follow', $user->reference) }}"> --}}
-			        						<button class="btn follow btn-sm f-14 waves-light waves-effect btn-outline-brand m-t-40 m-b-50" data-email="{{$user->reference}}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}" >Follow Back</button>
+			        						<button class="btn follow btn-sm f-14 waves-light waves-effect btn-outline-brand m-t-40 m-b-50" data-email="{{$user->reference}}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}" >Follow</button>
 			        					{{-- </form> --}}
 			        				@endif
 			        				</div>

@@ -36,7 +36,7 @@
 	            </div><br>
 	        </div>
 	        <!-- friends display  -->
-	        <div class="m-t-40 m-b-140">
+	        <div class="m-t-40 m-b-50">
 	        	<div class="row" id="following_list">
 	        		<!-- first column of friends -->
 	        		<div class="p-10 m-b-10 bg-brand col-sm-12"> {{ ucwords(strtolower($user->full_name())) }} - following <span class="badge bg-white c-brand follow_count" >{{ $following_count }}</span></div>

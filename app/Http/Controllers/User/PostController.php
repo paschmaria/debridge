@@ -57,6 +57,8 @@ class PostController extends Controller
         }
         auth()->user()->posts()->save($post);
 
+        // return view('market.patrials.post', compact('post'));
+
         return back()->with('success', 'Post Saved successfully!');
         
         //please nuru fix the json 
