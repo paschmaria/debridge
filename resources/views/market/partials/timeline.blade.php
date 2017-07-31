@@ -1,3 +1,4 @@
+<div id="all_posts">
                     @forelse ($posts as $post)
                         <div class="card m-t-20 p-18">
                             <div class="media">
@@ -184,6 +185,7 @@
                     @empty
                         {{-- empty expr --}}
                     @endforelse
+</div>
 
                     <!--modal-->
                         <div class="modal fade width-100p m-t-180" id="basicExample" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

@@ -79,17 +79,19 @@
                                 @else
                                     <button class="btn btn-sm btn-brand unfollow" data-email="{{ $user->reference }}"> unfollow </button>
                                 @endif
-                                @if(in_array($user->id, auth()->user()->trade_partners->pluck('id')->toArray()))
-                                    <button class="btn btn-sm btn-brand" data-toggle="modal" data-target="#cancel-modal{{ $user->id }}">
-                                    cancel partnership <i class="fa fa-times c-red"></i>
-                                    </button>
-                                @else
-                                    @if(!in_array($user->id, auth()->user()->sent_trade_requests->pluck('id')->toArray()))
-                                        <a href="{{ route('send_trade_request', $user->reference) }}">
-                                        <button class="btn btn-sm btn-brand">Send Trade Request</button></a>
-
+                                @if(!auth()->user()->checkRole())
+                                    @if(in_array($user->id, auth()->user()->trade_partners->pluck('id')->toArray()))
+                                        <button class="btn btn-sm btn-brand" data-toggle="modal" data-target="#cancel-modal{{ $user->id }}">
+                                        cancel partnership <i class="fa fa-times c-red"></i>
+                                        </button>
                                     @else
-                                        <button class="btn btn-sm btn-brand" data-toggle="modal" data-target="#cancel-request-modal{{ $user->id }}">Cancel Trade Request</button>
+                                        @if(!in_array($user->id, auth()->user()->sent_trade_requests->pluck('id')->toArray()))
+                                            <a href="{{ route('send_trade_request', $user->reference) }}">
+                                            <button class="btn btn-sm btn-brand">Send Trade Request</button></a>
+
+                                        @else
+                                            <button class="btn btn-sm btn-brand" data-toggle="modal" data-target="#cancel-request-modal{{ $user->id }}">Cancel Trade Request</button>
+                                        @endif
                                     @endif
                                 @endif
 
@@ -248,10 +250,15 @@
                          
                         <div class="card-block p-0">
                             
-                            <form enctype="multipart/form-data" method="POST" action="{{ route('create_post') }}" id="product-upload-form">
+                            <form enctype="multipart/form-data" method="POST" action="{{ route('create_post') }}" 
+                            @if(auth()->user()->id == $user->id) 
+                                data-status="1"
+                            @else 
+                                data-status="0"
+                            @endif  id="product-upload-form" >
                                 {{ csrf_field() }}
                                 <div class="md-form m-0 m-b-5">
-                                    <input class="input-alternate border-box" type="text" placeholder="Post title (optional)" name="title">
+                                    <input class="input-alternate border-box" type="text" placeholder="Post title (optional)" id="post_title" name="title">
                                 </div>
                                 <div class="md-form m-0">
                                     <textarea type="text" name="content" id="status_update" class="md-textarea input-alternate p-10 h-100 border-box" placeholder="What's on your mind?" required></textarea>
@@ -259,7 +266,7 @@
                                 <div id="product-img-wrapper" class="dis-none flex-row">
                                     <ul id="product-imgs" class=""></ul>
                                     <span class="add-img pos-rel">
-                                        <span class=""><input type="file" name="file[]" class="product-img-input" multiple></span>
+                                        <span class=""><input type="file" name="file[]" id="post_image" class="product-img-input" multiple></span>
                                         <button type="button" class="btn-upload btn-product-img"><i class="fa fa-plus fa-3x"></i></button>
                                     </span>
                                 </div>

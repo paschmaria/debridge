@@ -35,6 +35,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // return response()->json($request);
         $this->validate($request, [
             'title' => 'nullable|string|max:128',
             'content' => 'string|max:3000',
@@ -57,16 +58,16 @@ class PostController extends Controller
         }
         auth()->user()->posts()->save($post);
 
-        // return view('market.patrials.post', compact('post'));
+        return view('market.partials.post', compact('post'));
 
         return back()->with('success', 'Post Saved successfully!');
         
         //please nuru fix the json 
-        return response()->json([
-          'title' => $post->title,
-          'content'    =>  $post->content,
-          'reference' => $post->reference,
-        ]);
+        // return response()->json([
+        //   'title' => $post->title,
+        //   'content'    =>  $post->content,
+        //   'reference' => $post->reference,
+        // ]);
 
     }
 

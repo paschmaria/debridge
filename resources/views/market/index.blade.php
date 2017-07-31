@@ -174,7 +174,7 @@
                                 <form enctype="multipart/form-data" method="POST" action="{{ route('create_post') }}" id="product-upload-form">
                                     {{ csrf_field() }}
                                     <div class="md-form m-0 m-b-5">
-                                        <input class="input-alternate border-box" type="text" placeholder="Post title (optional)" name="title">
+                                        <input class="input-alternate border-box" type="text" placeholder="Post title (optional)" name="title" id="post_title">
                                     </div>
                                     <div class="md-form m-0">
                                         <textarea type="text" name="content" id="status_update" class="md-textarea input-alternate p-10 h-100 border-box" placeholder="What's on your mind?" required></textarea>
@@ -182,13 +182,13 @@
                                     <div id="product-img-wrapper" class="dis-none flex-row">
                                         <ul id="product-imgs" class=""></ul>
                                         <span class="add-img pos-rel">
-                                            <span class=""><input type="file" name="file[]" class="product-img-input" multiple></span>
+                                            <span class=""><input id="post_image" type="file" name="file[]" class="product-img-input" multiple></span>
                                             <button type="button" class="btn-upload btn-product-img"><i class="fa fa-plus fa-3x"></i></button>
                                         </span>
                                     </div>
                                     <div id="">
                                         <button type="button" class="btn-flat btn-product-img"><i class="fa fa-image"></i> upload</button>
-                                        <input type="file" class="product-img-input" name="file[]" multiple>
+                                        <input type="file" class="product-img-input" name="file[]"  multiple>
                                         <button type="submit" class="btn btn-brand waves-effect">post</button>
                                     </div>
                                 </form>
