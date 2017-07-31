@@ -19,29 +19,23 @@ Route::get('/search/user/{search}', 'Search\UserSearchController@search')->name(
 Route::get('/', 'Auth\UserController@index')->name('index'); 
 Route::get('/nigeria/market/{filter?}', 'Auth\UserController@index')->name('nigeria'); 
 
-Route::get('/logout', 'User\FriendsController@user_logout')->name('logout');
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/post', 'User\PostController@index')->name('post');
+Route::get('/logout', 'Auth\UserController@logout')->name('logout');
 
 Route::post('/post', 'User\PostController@store')->name('create_post');
 
 Route::post('/post/comment/create/{reference}', 'User\CommentController@store')->name('create_comment');
 
-Route::get('/hype/{reference}', 'User\HypeController@create')->name('hype');
+Route::get('/post/hype/{reference}', 'User\HypeController@create')->name('hype');
 
 Route::post('/product/hype/{reference}', 'Merchant\ProductHypeController@create')->name('product_hype');
 
-Route::get('/admire/{reference}', 'User\AdmireController@create')->name('admire');
-Route::get('/unadmire/{reference}', 'User\AdmireController@destroy')->name('unadmire');
+Route::get('/post/admire/{reference}', 'User\AdmireController@create')->name('admire');
+Route::get('/post/unadmire/{reference}', 'User\AdmireController@destroy')->name('unadmire');
 
-Route::get('/product_admire/{reference}', 'User\ProductAdmireController@create')->name('product_admire');
-Route::get('/product_unadmire/{reference}', 'User\ProductAdmireController@destroy')->name('product_unadmire');
+Route::get('/product/admire/{reference}', 'User\ProductAdmireController@create')->name('product_admire');
+Route::get('/product/unadmire/{reference}', 'User\ProductAdmireController@destroy')->name('product_unadmire');
 
-
-
-Route::get('/timeline/{reference}/{filter?}', 'User\TimelineController@index')->name('timeline');
+Route::get('/user/tradeline/{reference}/{filter?}', 'User\TimelineController@index')->name('timeline');
 
 Route::get('/users/follow/friends', 'FollowController@getUser')->name('follow_friends');
 Route::get('/users/follow/merchants', 'FollowController@getMerchant')->name('follow_merchants');
@@ -49,32 +43,33 @@ Route::post('/users/follow/friends', 'FollowController@friendsFollowComplete')->
 Route::post('/users/follow/merchants', 'FollowController@merchantsFollowComplete')->name('follow_merchants');
 Route::get('/users/social_notification/delete/{notification}', 'NotificationController@destroy')->name('delete_social_notification');
 
-
-
-
 Route::get('/users/community/{reference}/{filter?}', 'User\TradeCommunityController@index')->name('community')->middleware('auth');
 Route::get('/users/follow/more/{filter?}', 'Auth\UserController@viewUsers')->name('view_users')->middleware('auth');
 
-Route::get('users/profile_picture/{id}', 'Auth\UserController@profile_picture')->name('profile_picture');
+Route::post('users/profile_picture/{id}', 'Auth\UserController@profile_picture')->name('profile_picture')->middleware('auth');
 
-Route::post('users/profile_picture/{id}', 'Auth\UserController@profile_picture')->name('profile_picture');
+// Route::post('/send_request/{email}', 'User\FriendRequestController@create')->name('send_request');
 
-Route::post('/send_request/{email}', 'User\FriendRequestController@create')->name('send_request');
+// Route::post('/undo_request/{email}', 'User\FriendRequestController@destroy')->name('undo_request');
 
-Route::post('/undo_request/{email}', 'User\FriendRequestController@destroy')->name('undo_request');
+Route::match(['get', 'post'], '/merchant/trade/request/send/{reference}', 'Merchant\TradeRequestController@create')->name('send_trade_request')->middleware('merchant');
 
-Route::post('/send_trade/{reference}', 'Merchant\TradeRequestController@create')->name('send_trade_request');
+Route::post('/merchant/trade/partner/end/{reference}', 'Merchant\TradePartnerController@destroy')->name('cancel_patrnership');
 
-Route::post('/undo_trade/{reference}', 'Merchant\TradeRequestController@cancelRequest')->name('undo_trade_request');
+Route::match(['get', 'post'], '/merchant/trade/request/cancel/{reference}', 'Merchant\TradeRequestController@destroy')->name('undo_trade_request')->middleware('merchant');
 
+Route::match(['get', 'post'], '/merchant/trade/request/accept/{reference}', 'Merchant\TradePartnerController@create')->name('accept_partnership')->middleware('merchant');
 
-Route::post('follow/{reference}', 'FollowController@store')->name('follow');
+Route::match(['get', 'post'], '/merchant/trade/request/decline/{reference}', 'Merchant\TradeRequestController@decline')->name('reject_partnership');
+Route::get('/merchant/trade/request/all', 'Merchant\TradeRequestController@index')->name('view_trade_request')->middleware('merchant');
+Route::get('/merchant/trade/find/partner', 'Merchant\TradePartnerController@findMore')->name('add_more_partners')->middleware('merchant');
+Route::get('/merchant/trade/partner/{reference}', 'Merchant\TradePartnerController@show')->name('view_partners')->middleware('merchant');
 
-Route::get('/follow', 'FollowController@index')->name('follow_page');
+Route::post('/follow/{reference}', 'FollowController@store')->name('follow')->middleware('auth');
 
-Route::post('/unfollow/{reference}', 'FollowController@destroy')->name('unfollow');
+Route::post('/unfollow/{reference}', 'FollowController@destroy')->name('unfollow')->middleware('auth');
 
-Route::get('/post/comment/delete/{id}', 'User\CommentController@destroy')->name('delete_comment');
+Route::get('/post/comment/delete/{id}', 'User\CommentController@destroy')->name('delete_comment')->middleware('auth');
 Route::get('/post/delete/{reference}', 'User\PostController@destroy')->name('delete_post');
 
 Route::get('/register', 'Auth\UserController@register')->name('register');
@@ -89,14 +84,7 @@ Route::post('/accept_friend/{email}', 'User\FriendsController@create')->name('ac
 
 Route::post('/decline_friend/{email}', 'User\FriendsController@update')->name('decline_friend');
 
-
-Route::post('/accept_trade/{reference}', 'Merchant\TradeRequestController@acceptRequest')->name('accept_trade_request');
-
-Route::post('/decline_trade/{reference}', 'Merchant\TradeRequestController@declineRequest')->name('decline_trade_request');
-
 Route::post('/unfriend/{email}', 'User\FriendsController@destroy')->name('unfriend');
-
-Route::post('/untrade/{reference}', 'Merchant\TradeRequestController@destroy')->name('cancel_trade');
 
 Route::get('/notifications', 'User\SocialNotificationController@index')->name('notifications');
 
@@ -181,7 +169,7 @@ Route::get('/port-harcourt_market', 'Auth\UserController@port_harcourtMarket')->
 // Route::get('/merchant_store/', 'Merchant\ProductController@merchantStore')->name('merchant_store')->middleware('merchant');
 
 // Route::get('/merchant_store/{user}', 'Merchant\ProductController@StoreForUser')->name('user_store');
-Route::get('/merchant/store/{reference}', 'Merchant\InventoryController@index')->name('view_inventory');
+Route::get('/merchant/store/{reference}', 'Merchant\InventoryController@index')->name('view_inventory')->middleware('auth');
 
 Route::get('/cart/add/{reference}', 'User\CartController@addToCart')->name('addToCart')->middleware('auth');
 ;
@@ -206,8 +194,7 @@ Route::post('/users/profile/edit/account', 'User\ProfileController@userSave')->n
 Route::post('/users/profile/edit/user', 'User\ProfileController@userAccountSave')->name('update_user')->middleware('auth');
 Route::post('/users/profile/edit/merchant', 'User\ProfileController@merchantAccountSave')->name('update_merchant')->middleware('auth');
 Route::post('/users/profile/edit/password', 'User\ProfileController@changePassword')->name('change_pasword')->middleware('auth');
-Route::get('/merchant/store/product/hottest/{reference}', 'Merchant\HottestProductController@show')->name('hottest_products');
-Route::get('trade_request', 'Merchant\TradeRequestController@showMerchants')->name('trade_request')->middleware('merchant');
+Route::get('/merchant/store/product/hottest/{reference}', 'Merchant\HottestProductController@show')->name('hottest_products')->middleware('auth');
 // Route::post('trade_request/{reference}', 'Merchant\TradeRequestController')->name('trade_request')->middleware('merchant');
 Route::get('/state/market/{reference}/{filter?}', 'User\StateMarketController@show')->name('state_market');//->middleware('auth');
 

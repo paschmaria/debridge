@@ -7,112 +7,68 @@ use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\User;
 use App\Models\FriendRequest;
-use App\Models\SocialNotification;
+use App\Models\Notification;
 
 class TradeRequestController extends Controller
 {
-    //
 
     public function index()
     {
-        return view('friend_request');
-    }
-
-    public function tradePartner(){
-    	// $role = Role::where('name', 'Merchant')->first();
-    	// $user_friends = auth()->user()->friends->pluck('id')->toArray();
-    	// $merchants = User::with(['profile_picture'])
-     //                        ->where('role_id', $role->id)
-     //                        ->where('id', '!=', auth()->user()->id)
-     //                        ->whereIn('id', $user_friends)->get();
-        $users = auth()->user()->friends;
-
-    	return view('bridger.trade_partners', compact('users'));
-    }
-
-    public function showMerchants(){
-    	$role = Role::where('name', 'Merchant')->first();
-        $user_friends = auth()->user()->friends->pluck('id')->toArray();
-        $merchants = User::with(['profile_picture'])
-                            ->where('role_id', $role->id)
-                            ->where('id', '!=', auth()->user()->id)
-                            ->whereNotIn('id', $user_friends)->get();
-
-    	$fr = FriendRequest::where('sender_id', auth()->user()->id)->pluck('receiver_id')->toArray();
-
-    	return view('tradeRequest', compact('merchants', 'fr'));
+        // $merchant = User::where('reference', $reference)
+        //                 ->with([
+        //                     'merchant_account',
+        //                     'trade_requests' => function($q){
+        //                         return $q->with(['profile_picture', 'merchant_account']);
+        //                     }])->first();
+        return view('bridger.trade_request');
     }
 
     public function create($reference)
     {
-        // create trade request
-        $user = User::where('reference', $reference)->first();
-        auth()->user()->sent_requests()->attach($user);
+       $user = User::where('reference', $reference)->first();
+        auth()->user()->sent_trade_requests()->attach($user);
+        // notify $user
+        $notification = Notification::create([
+            'user_id' => auth()->user()->id,
+            'message' => auth()->user()->full_name() . auth()->user()->getStoreName() .  ' sent you a trade request!',
+            ]);
+        $notification->users()->attach($user);
+        $notification->save();
         // \Session::flash('success', 'Request sent!');
         // return response()->json($reference);
-        return back()->with('info', 'Trade Sent');
-    }
-
-    public function cancelRequest($reference)
-    {
-        $user = User::where('reference', $reference)->first();
-        $fr = FriendRequest::where(['sender_id' => auth()->user()->id, 'receiver_id' => $user->id]);
-        $fr->delete();
-        $user = User::where('reference', $reference)->first();
-        $auth_user = auth()->user();
-        $auth_user->friends()->detach($user);
-        // return response()->json($reference);
-
-        return back()->with('info', 'Request cancelled');
-    }
-
-    public function acceptRequest($reference)
-    {
-        //accept friend request
-        $auth_user = auth()->user();
-        $user = User::where('reference', $reference)->first();
-        $auth_user->friends()->attach($user);
-        $user->friends()->attach($auth_user);
-        $fr = FriendRequest::where(['sender_id' => $user->id, 'receiver_id' => $auth_user->id])->first();
-        $fr->delete();
-        // create notification for $user of acceptance
-        SocialNotification::create([
-            'user_id' => $user->id,
-            'foreigner_id' => auth()->user()->id,
-            'message' => auth()->user()->first_name . ' accepted your trade request!',
-            'description_id' => 3 
-            ]);
-        return back()->with('success', $user->first_name . ' is now trading with you!');
-    }
-
-    public function declineRequest(Request $request, $reference)
-    {
-        $auth_user = auth()->user();
-        $user = User::where('reference', $reference)->first();
-        $fr = FriendRequest::where(['sender_id' => $user->id, 'receiver_id' => $auth_user->id])->first();
-        $fr->delete();
-        // create notification for $user of rejection
-        SocialNotification::create([
-            'user_id' => $user->id,
-            'foreigner_id' => auth()->user()->id,
-            'message' => auth()->user()->first_name . ' accepted your trade_request!',
-            'description_id' => 4 
-            ]);
-
-        return response()->json($reference);
-        
-        // return back()->with('info', 'You declined ' . $user->first_name . ' friendship!');
+        return back()->with('success', 'Request Sent!');
     }
 
     public function destroy($reference)
     {
-        $auth_user = auth()->user();
-        $user = User::where('reference', $reference)->first();
-        $auth_user->friends()->detach($user);
-        $user->friends()->detach($auth_user);
-        return back()->with('info', 'You cancelled trade ' . $user->first_name . '!');
+       $user = User::where('reference', $reference)->first();
+        auth()->user()->sent_trade_requests()->detach($user);
+        $notification = Notification::create([
+            'user_id' => auth()->user()->id,
+            'message' => auth()->user()->full_name() . auth()->user()->getStoreName() .  ' cancelled trade request to you!',
+            ]);
+        $notification->users()->attach($user);
+        $notification->save();
+        // notify $user
+        // \Session::flash('success', 'Request sent!');
+        // return response()->json($reference);
+        return back()->with('info', 'Request Cancelled!');
     }
 
-
+    public function decline($reference)
+    {
+       $user = User::where('reference', $reference)->first();
+        auth()->user()->received_trade_requests()->detach($user);
+        $notification = Notification::create([
+            'user_id' => auth()->user()->id,
+            'message' => auth()->user()->full_name() . auth()->user()->getStoreName() .  ' decline trade request from you!',
+            ]);
+        $notification->users()->attach($user);
+        $notification->save();
+        // notify $user
+        // \Session::flash('success', 'Request sent!');
+        // return response()->json($reference);
+        return back()->with('info', 'Request declined!');
+    }
 
 }

@@ -10,6 +10,7 @@ use App\User;
 use App\Models\TradeCommunity;
 use App\Models\PostAdmire;
 use App\Models\PostHype;
+use App\Models\Product;
 use Carbon\Carbon;
 
 class StateMarketController extends Controller
@@ -17,6 +18,16 @@ class StateMarketController extends Controller
     protected function isValidPageNumber($page)
     {
         return $page >= 2 && filter_var($page, FILTER_VALIDATE_INT) !== false;
+    }
+
+    public function getProducts($state)
+    {
+        $products = Product::with(['pictures' => function ($q){
+                                    $q->with('images');
+                                }
+                            ])
+                            ->orderBy('views')->limit(6)->get();
+        return $products;
     }
 
     public function show($reference, $filter = null, Request $request)
@@ -79,6 +90,8 @@ class StateMarketController extends Controller
 
         $posts = $posts->where('created_at','<=', $timestamp);
 
+        $products = $this->getProducts($state);
+
         // manual pigination since $posts is not a query builder but a colletion
         if (!$this->isValidPageNumber($request->page)) {
             $posts =  $posts->splice(0,15);
@@ -91,7 +104,7 @@ class StateMarketController extends Controller
         if($this->isValidPageNumber($request->page) && $timestamp){
             return view('market.partials.timeline', compact('posts', 'admired', 'hyped', 'timestamp', 'filter')); 
         } else {
-    	   return view('market.state_market', compact('posts', 'admired', 'hyped', 'state', 'reference', 'timestamp', 'filter'));
+    	   return view('market.state_market', compact('posts', 'admired', 'hyped', 'state', 'reference', 'timestamp', 'filter', 'products'));
         }
     }
 }

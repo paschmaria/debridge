@@ -7,7 +7,7 @@
 							@if($user->profile_picture != null)
 								<img src="{{ route('image', [$user->profile_picture->image_reference,'']) }}" class="p-10 h-100 width-100 card image-resposive">
 	        				@else
-	        					<img src="{{ asset('img/icons/profiled.png') }}" class="p-10 h-100 width-100 card image-resposive">
+	        					<img src="{{ asset('img/icons/profile.png') }}" class="p-10 h-100 width-100 card image-resposive">
 	        				@endif
 						</div>
 				</div>

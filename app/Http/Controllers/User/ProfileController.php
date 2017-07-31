@@ -47,12 +47,12 @@ class ProfileController extends Controller
 
             $user_acc = UserAccount::with(['address' => function($q){
                 $q->with('state');
-            }])->firstOrCreate(['user_id' => auth()->user()->id]);
+            }])->firstOrCreate(['user_id' => $user->id]);
             // dd($user_acc);
         } else {
             $merchant = MerchantAccount::with(['address' => function($q){
                 $q->with('state');
-            }])->firstOrCreate(['user_id' => auth()->user()->id]);
+            }])->firstOrCreate(['user_id' => $user->id]);
         }
 
         $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();

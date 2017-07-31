@@ -28,19 +28,6 @@ class FollowController extends Controller
             ])->first();
     }
 
-    public function index()
-    {
-        $following =  auth()->user()->following->where('id', '!=', auth()->user()->id);
-        $followers =  auth()->user()->followers->where('id', '!=', auth()->user()->id);
-        $following_count =  count($following);
-        $followers_count =  count($followers);
-        $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
-        // dd($following_ids);
-        return view('users.bridger', 
-            compact('followers', 'following', 'followers_count', 'following_count', 'following_ids')
-            );
-    }
-
     protected function isValidPageNumber($page)
     {
         return $page >= 2 && filter_var($page, FILTER_VALIDATE_INT) !== false;
