@@ -52,7 +52,13 @@ class Product extends Model
         return $this->hasMany('App\Models\ProductHype');
     }
 
-    public function carts(){
-        $this->belongsToMany('App\User', 'carts', 'product_id', 'user_id');
+    public function carts()
+    {
+        return $this->belongsToMany('App\User', 'carts', 'product_id', 'user_id');
+    }
+
+    public function user()
+    {
+        return $this->inventory->merchant->user();
     }
 }

@@ -31,16 +31,17 @@ class AdmireController extends Controller
      */
     public function create($reference)
     {
-        $post = Post::where('reference', $reference)->first();
+        $post = Post::with('admires')->where('reference', $reference)->first();
         $admire = PostAdmire::where(['post_id' => $post->id, 'user_id' => \Auth::user()->id])->first();
         if ($admire) {
             return back()->with('info', 'Post already admired by you!');
         } else {
             PostAdmire::create(['post_id' => $post->id, 'user_id' => \Auth::user()->id]);
-        }    
-        return response()->json([
-            'count' => $post->admires->count() 
-            ]);   
+        }  
+        return view('market.partials.buttons.unadmire', compact('post'));  
+        // return response()->json([
+        //     'count' => $post->admires->count() 
+        //     ]);   
         // return back()->with('success', 'Admired!');
     }
 
@@ -97,14 +98,15 @@ class AdmireController extends Controller
      */
     public function destroy($reference)
     {
-        $post = Post::where('reference', $reference)->first();
+        $post = Post::with('admires')->where('reference', $reference)->first();
         $admire = PostAdmire::where(['post_id' => $post->id, 'user_id' => \Auth::user()->id])->first();
         if ($admire) {
             $admire->delete();
         }
-        return response()->json([
-            'count' => $post->admires->count() 
-            ]);      
-        return back()->with('info', 'Unadmired!');
+        return view('market.partials.buttons.admire', compact('post'));
+        // return response()->json([
+        //     'count' => $post->admires->count() 
+        //     ]);      
+        // return back()->with('info', 'Unadmired!');
     }
 }

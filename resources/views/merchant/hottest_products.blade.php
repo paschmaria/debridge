@@ -3,27 +3,35 @@
 
 @section('header')
     <!-- navigations/links right here -->
-            <nav class="navbar navbar-toggleable-sm navbar-light transparent p-t-15 p-b-15 no-shadow border-top border-bottom" role="navigation">
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-            
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div id="navbarNav1" class="collapse navbar-collapse">
-                        <ul class="nav navbar-nav">
-                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('following', auth()->user()->reference) }}">Following</a></li>
-                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('followers', auth()->user()->reference) }}">Followers</a></li>
-                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('tradeline', auth()->user()->reference) }}">Tradeline</a></li>
+        <nav class="navbar navbar-toggleable-sm navbar-light transparent p-t-15 p-b-15 no-shadow border-top border-bottom" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div id="navbarNav1" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        @if(auth()->check())
+                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('following', auth()->user()->reference) }}">Following</a></li>
+                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('followers', auth()->user()->reference) }}">Followers</a></li>
+                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('timeline', auth()->user()->reference) }}">Tradeline</a></li>
+                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('community', auth()->user()->reference) }}">Trade Community</a></li>
+                        @else
+                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" data-toggle="modal" data-target="#basicExample">Following</a></li>
+                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" data-toggle="modal" data-target="#basicExample">Followers</a></li>
+                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" data-toggle="modal" data-target="#basicExample">Tradeline</a></li>
+                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" data-toggle="modal" data-target="#basicExample">Trade Community</a></li>
+                        @endif
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Business Invitation</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Models</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Market Value</a></li>
                     </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div>
-            </nav>
-            <!-- navigations/links ends here -->
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </nav>
+    <!-- navigations/links ends here -->
 @endsection
 
 @section('content')
@@ -36,7 +44,7 @@
                         @if($user->profile_picture != null)
                             <img src="{{ route('image', [$user->profile_picture->image_reference, '']) }}" class="image-responsive bd-dark-light  p-5 width-200 h-200">
                         @else
-                            <img src="{{ asset('img/icons/profiled.png') }}" class="image-responsive bd-dark-light p-5 h-300">
+                            <img src="{{ asset('img/icons/profiler.png') }}" class="image-responsive bd-dark-light p-5 width-200 h-200">
                         @endif
                         @if(auth()->user()->id != $user->id)
                             @if(in_array($user, auth()->user()->following->toArray()))
@@ -80,7 +88,7 @@
 
                 <div class="row">
                
-                @foreach($products as $product)
+                @forelse($products as $product)
                     <div class="col-md-3 col-sm-6 col">
                         <div class="card m-t-20">
                             <!--Card image-->
@@ -221,8 +229,11 @@
                         </div>
                     </div>
                     <!-- Modal -->
-                
-                @endforeach
+                @empty
+                <div class="text-center col-12">
+                    <h3 class="c-gray h3-responsive   m-b-20 p-20 " >NO HOTTEST PRODUCTS</h3>
+                </div>
+                @endforelse
 
                        
                 </div>

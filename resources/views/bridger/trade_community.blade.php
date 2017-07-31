@@ -95,45 +95,6 @@
 		        	</div>
 		        {{-- @endforeach --}}
 	        </div>
-	        <!-- / friends display -->
-	        <!-- pagination begins here -->
-	       {{--  <div class="pagination-wrapper width-300 h-30 m-auto m-b-20">
-	        	<nav class="dis-flex text-center">
-	        		<ul class="pagination footer f-14 c-gray">
-	        			<li class="page-item diabled">
-	        				<a href="#" class="page-link" aria-label="Previous">
-	        					<span aria-hidden="true">&laquo;</span>
-	        					<span class="sr-only">Prev</span>
-	        				</a>
-	        			</li>
-	        			<li class="page-item active">
-	        				<a href="#" class="page-link">1<span class="sr-only">(current)</span></a>
-	        			</li>
-	        			<li class="page-item">
-	        				<a href="#" class="page-link">2</a>
-	        			</li>
-	        			<li class="page-item">
-	        				<a href="#" class="page-link">3</a>
-	        			</li>
-	        			<li class="page-item">
-	        				<a href="#" class="page-link">4</a>
-	        			</li>
-	        			<li class="page-item">
-	        				<a href="#" class="page-link">5</a>
-	        			</li>
-	        			<li class="page-item">
-	        				<a href="#" class="page-link">6</a>
-	        			</li>
-	        			<li class="page-item">
-	        				<a href="#" class="page-link" aria-label="Next">
-	        					<span class="c-brand" aria-hidden="true">&raquo;</span>
-	        					<span class="sr-only">Next</span>
-	        				</a>
-	        			</li>
-	        		</ul>
-	        	</nav>
-	        </div> --}}
-	        <!-- pagination ends here -->
     	</div>
     </section>
     <!-- main section ends here -->

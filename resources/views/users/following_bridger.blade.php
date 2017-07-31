@@ -36,7 +36,7 @@
 	            </div><br>
 	        </div>
 	        <!-- friends display  -->
-	        <div class="m-t-40 m-b-140">
+	        <div class="m-t-40 m-b-50">
 	        	<div class="row" id="following_list">
 	        		<!-- first column of friends -->
 	        		<div class="p-10 m-b-10 bg-brand col-sm-12"> {{ ucwords(strtolower($user->full_name())) }} - following <span class="badge bg-white c-brand follow_count" >{{ $following_count }}</span></div>
@@ -58,7 +58,7 @@
 			        							@if($user->profile_picture != null)
 			        								<img src="{{ route('image', [$user->profile_picture->image_reference,'']) }}" class="p-10 h-100 width-100 card image-resposive">
 						        				@else
-						        					<img src="{{ asset('img/icons/profiled.png') }}" class="p-10 h-100 width-100 card image-resposive">
+						        					<img src="{{ asset('img/icons/profile.png') }}" class="p-10 h-100 width-100 card image-resposive">
 						        				@endif
 				        					</div>
 		        					</div>
@@ -74,10 +74,10 @@
 										</div>
 			        				</div>
 			        				<div class="col-md-5 col-sm-5 col-xs-5">
-			        					<form method="post" action="{{ route('unfollow', $user->email) }}">
+			        					{{-- <form method="post" action="{{ route('unfollow', $user->email) }}"> --}}
 			        						<!-- <button type="submit" class="btn btn-sm f-14 waves-light waves-effect c-brand btn-outline-brand m-t-40 m-b-50"><span class="fa fa-check">&nbsp; &nbsp;</span>Unfollow</button> -->
-			        						<button class="btn unfollow btn-sm f-14 waves-light waves-effect c-brand btn-outline-brand m-t-40 m-b-50" data-email="{{$user->reference}}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}" ><span class="fa fa-check">&nbsp; &nbsp;</span>Unfollow</button>
-			        					</form>
+			        						<button class="btn unfollow btn-sm f-14 waves-light waves-effect btn-brand m-t-40 m-b-50" data-email="{{$user->reference}}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}" >Unfollow</button>
+			        					{{-- </form> --}}
 			        				</div>
 		        				</div>
 		        			</div>

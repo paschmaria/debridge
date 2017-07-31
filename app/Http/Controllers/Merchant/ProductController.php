@@ -126,6 +126,8 @@ class ProductController extends Controller
             $admired = ProductAdmire::where(['user_id' => auth()->user()->id])->pluck('product_id')->toArray();
             $hyped = ProductHype::where(['user_id' => auth()->user()->id])->pluck('product_id')->toArray();
         }
+        $product->views += 2;
+        $product->save();
 
         return view('product_details', compact('product', 'user', 'merchant', 'hottest', 'product_of_the_week', 'admired'));
     }

@@ -28,11 +28,10 @@
     <section class="main">
     	<div class="container">
     		<div id="navbarNav1 m-t-40">
-	            <h3 class="h3-responsive c-brand f-24 m-t-30 m-b-8">{{ $merchant->full_name() }} - TRADE PARTNERS</h3>
-	            <p class="c-gray">{{ $merchant->getStoreName() }}</p>
+	            <h3 class="h3-responsive c-brand f-24 m-t-30 m-b-8">FIND TRADE PARTNERS</h3>
 	            <div class="h-58">
 	            	{{-- <p class="text-fluid c-gray f-14 dis-inline-b">All users on the bridge u can follow</p> --}}
-	            	<button class="btn btn-sm pull-right btn-outline-brand"><a href="{{ route('view_inventory', $merchant->reference) }}" class="c-brand">Visit Store <i class="fa fa-shopping-cart"></i></a></button>
+	            	<a href="{{ route('view_users') }}"><button class="btn btn-sm f-14 pull-right btn-outline-brand">FOLLOW MORE BRIDGERS <i class="fa fa-plus f-17"></i></button></a>
 	            </div>
 	        </div>
 	        <!-- friends display  -->
@@ -52,9 +51,6 @@
 		        		<!-- first column of friends -->
 		        		@include('bridger.partials.trade_partners')
 		        		<!-- / second column of friends -->
-                        @if($merchants->count() < 1)
-                            <h4 class="h4-responsive c-gray p-20">{{ $merchant->full_name() }} {{ $merchant->getStoreName() }} has no trade partners </h4>
-                        @endif
 		        	</div>
 
 	        </div>

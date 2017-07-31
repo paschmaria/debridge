@@ -40,7 +40,7 @@ class UserController extends Controller
         // dd($roles);
         $states = State::all();
         $trade_communities = TradeCommunity::all();
-        return view('register1', compact('roles', 'states', 'trade_communities', 'trade_interests'));
+        return view('auth.register', compact('roles', 'states', 'trade_communities', 'trade_interests'));
     }
 
     protected function isValidPageNumber($page)
@@ -82,6 +82,12 @@ class UserController extends Controller
         // get the ids of all user with the role 'user'
         $user_ids = User::whereIn('role_id', $user_role)->pluck('id')->toArray();
 
+        $products = Product::with(['pictures' => function ($q){
+                                    $q->with('images');
+                                }
+                            ])
+                            ->orderBy('views')->limit(6)->get();
+
         //filter the output based on the filter parameter
         if (strtolower($filter) == 'user') {
             $posts = $posts->whereIn('user_id', $user_ids)->paginate(15);
@@ -99,7 +105,7 @@ class UserController extends Controller
             //     ]);  
             return view('market.partials.timeline', compact('posts', 'admired', 'hyped', 'timestamp', 'filter')); 
         } else {
-            return view('market.index', compact('posts', 'admired', 'hyped', 'timestamp', 'filter')); 
+            return view('market.index', compact('posts', 'admired', 'hyped', 'timestamp', 'filter', 'products')); 
         }      
     }
     

@@ -1,3 +1,71 @@
+$(document).ready(function () {
+    $('.delete_post').click(function (e) {
+        e.preventDefault();
+        // alert(this.href);
+         $.ajax({
+            url: this.href,
+            type:"GET",
+            data: {},
+            success: function(data){
+                $('#post__' + data.post_id).hide();
+                $('#post-delete-modal' + data.post_id).modal('toggle');
+                toastr.info("post has been deleted!");
+            },
+            error: function(data){
+                toastr.error("Somthing went wrong!");
+            }
+        });
+    });
+});
+
+
+
+
+$(document).ready(function () {
+    $('#product-upload-form').submit(function (e) {
+        e.preventDefault();
+        // var form = $('#product-upload-form');
+
+        var files = $('#post_image').prop('files');
+        var arr = $.map(files, function(value, index) {
+            return [value];
+        });
+        // console.log(arr);
+        var title = $('#post_title').val();
+        var content = $('#status_update').val();
+
+        var data = new FormData();
+        data.append('title', title);
+        data.append('content', content);
+
+        for (var i = 0; i < arr.length; i++) {
+            data.append('file[' + i +']', arr[i]);
+        }
+
+         $.ajax({
+            url: "/post",
+            type:"POST",
+            enctype: 'multipart/form-data', 
+            data: data,
+            processData: false,
+            contentType: false,
+            success: function(data){
+                if($('#product-upload-form').data('status') == 1){
+                    $('#all_posts').prepend(data);
+                }
+                $('#post_title').val(' ');
+                 $('#status_update').val(' ');
+                toastr.success("post made!");
+            },
+            error: function (data) {
+                toastr.error("Somthing went wrong");
+            }
+        });
+
+    });
+});
+
+
     $(document).ready(function(){
         var postForm = $("#postForm1"); // i change the class from postForm to PostForm1
         postForm.submit(function(e){

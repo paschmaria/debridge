@@ -27,26 +27,6 @@ class PostController extends Controller
         $this->photo_album = $photo_album;
     }
     
-    public function index()
-    {
-        $posts = Post::latest()->get();
-        $admired = PostAdmire::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
-        $hyped = PostHype::where(['user_id' => auth()->user()->id])->pluck('post_id')->toArray();
-        $admired_count = PostAdmire::all();
-        $hyped_count = PostHype::all();
-        return view('post', compact('posts', 'admired', 'hyped', 'admired_count', 'hyped_count'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-       return view('post');
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -55,6 +35,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // return response()->json($request);
         $this->validate($request, [
             'title' => 'nullable|string|max:128',
             'content' => 'string|max:3000',
@@ -77,14 +58,16 @@ class PostController extends Controller
         }
         auth()->user()->posts()->save($post);
 
+        return view('market.partials.post', compact('post'));
+
         return back()->with('success', 'Post Saved successfully!');
         
         //please nuru fix the json 
-        return response()->json([
-          'title' => $post->title,
-          'content'    =>  $post->content,
-          'reference' => $post->reference,
-        ]);
+        // return response()->json([
+        //   'title' => $post->title,
+        //   'content'    =>  $post->content,
+        //   'reference' => $post->reference,
+        // ]);
 
     }
 
@@ -96,7 +79,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('post');
+        // return view('post');
     }
 
     /**
@@ -130,11 +113,12 @@ class PostController extends Controller
      */
     public function destroy(Request $request, $reference)
     {
-        //
         $post = Post::where('reference', $reference)->first();
+        $post_id  = $post->id;
         $post->comments()->delete();
         $post->delete();
-        $request->session()->flash('success', 'Post deleted successfully!');
+        // $request->session()->flash('success', 'Post deleted successfully!');
+        return response()->json(compact('post_id'));
         return back();
     }
 }

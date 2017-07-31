@@ -35,8 +35,82 @@
 @section('content')
 <div class="col-12 main">
 	<section>
-    	<div class="container-fluid">
-		<h2 class="h1-responsive f-48 text-center m-t-20 m-b-25 c-brand w-500">{{ $user->full_name() }}</h2>
+    	<div class="container-fluid ">
+		<h2 class="h1-responsive f-48 text-center m-t-20 c-brand w-500 m-0">{{ $user->full_name() }}</h2> 
+			<div class="m-b-25 text-center">
+				@if(auth()->check() && auth()->user()->id != $user->id)
+	                @if(!in_array($user->id, auth()->user()->following->pluck('id')->toArray()))
+	                <a href="{{ route('follow', $user->reference) }}">
+	                    <button class="btn btn-sm btn-outline-brand follow" data-email="{{ $user->reference }}">follow</button>
+	                </a>
+	                @else
+	                    <button class="btn btn-sm btn-brand unfollow" data-email="{{ $user->reference }}"> unfollow </button>
+	                @endif
+	                @if(!auth()->user()->checkRole())
+		                @if(in_array($user->id, auth()->user()->trade_partners->pluck('id')->toArray()))
+		                    <button class="btn btn-sm btn-brand" data-toggle="modal" data-target="#cancel-modal{{ $user->id }}">
+		                    cancel partnership <i class="fa fa-times c-red"></i>
+		                    </button>
+		                @else
+		                    @if(!in_array($user->id, auth()->user()->sent_trade_requests->pluck('id')->toArray()))
+		                        <a href="{{ route('send_trade_request', $user->reference) }}">
+		                        <button class="btn btn-sm btn-brand">Send Trade Request</button></a>
+
+		                    @else
+		                        <button class="btn btn-sm btn-brand" data-toggle="modal" data-target="#cancel-request-modal{{ $user->id }}">Cancel Trade Request</button>
+		                    @endif
+		                @endif
+		            @endif
+
+	                <!-- Modal cancel_partnership -->
+	                    <div class="modal fade m-t-180" id="cancel-modal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	                        <div class="modal-dialog" role="document">
+	                            <!--Content-->
+	                            <div class="modal-content">
+	                                <!--Header-->
+	                                <div class="modal-header bg-brand text-right">
+	                                    <button type="button" class="close c-white" data-dismiss="modal">&times;</button>
+	                                </div>
+	                                <!--Body-->
+	                                <div class="modal-body bg-brand-lite c-dark dis-flex">
+	                                    <p class="text-responsive w-700 m-0">Are you sure you want to cancel this partnership?</p>
+	                                </div>
+	                                <!--Footer-->
+	                                <div class="modal-footer bg-brand-lite justify-content-center">
+	                                    <a class="btn btn-md btn-outline-brand" href="{{ route('cancel_patrnership', $user->reference) }}">Yes</a>
+	                                    <button type="button" class="btn btn-md btn-outline-brand" data-dismiss="modal">No</button>
+	                                </div>
+	                            </div>
+	                            <!--/.Content-->
+	                        </div>
+	                    </div>
+	                <!-- Modal -->
+
+	                <!-- Modal cancel_request -->
+	                    <div class="modal fade m-t-180" id="cancel-request-modal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	                        <div class="modal-dialog" role="document">
+	                            <!--Content-->
+	                            <div class="modal-content">
+	                                <!--Header-->
+	                                <div class="modal-header bg-brand text-right">
+	                                    <button type="button" class="close c-white" data-dismiss="modal">&times;</button>
+	                                </div>
+	                                <!--Body-->
+	                                <div class="modal-body bg-brand-lite c-dark dis-flex">
+	                                    <p class="text-responsive w-700 m-0">Are you sure you want to cancel this trade request?</p>
+	                                </div>
+	                                <!--Footer-->
+	                                <div class="modal-footer bg-brand-lite justify-content-center">
+	                                    <a class="btn btn-md btn-outline-brand" href="{{ route('undo_trade_request', $user->reference) }}">Yes</a>
+	                                    <button type="button" class="btn btn-md btn-outline-brand" data-dismiss="modal">No</button>
+	                                </div>
+	                            </div>
+	                            <!--/.Content-->
+	                        </div>
+	                    </div>
+	                <!-- Modal -->
+	            @endif
+            </div>
 		<section>
 			<div class="row">
 				<aside class="col-md-2 col-sm-2 col-12">
@@ -50,21 +124,23 @@
                         {{ csrf_field() }}
                             <div class="">
                                 <div class="profile-img-holder">
-                                @if(auth()->user()->profile_picture == null)
-                                    <div class="photo_wrapper p-10">
-                                        <img src="{{ asset('img/icons/profiler.png') }}" id="post" class="img-fluid width-100p">
-                                    </div>
-                                @else
-                                    <div class="photo_wrapper p-10">
-                                        <img src="{{ route('image', [auth()->user()->profile_picture->image_reference, '']) }}" id="post" class="h-200 width-100p">
-                                    </div>
-                                @endif                                            
-                                    <div class="pos-rel dis-flex">
-                                        <button type="submit" class="btn btn-brand">
-                                        <i class="fa fa-plus-circle"></i>
-                                        Upload</button>
-                                       <input name="img_ref" type="file" class="pos-abs l-30 width-125 h-40 t-8 hide z-10" id="upload">
-                                    </div>
+	                                @if($user->profile_picture == null)
+	                                    <div class="photo_wrapper p-10">
+	                                        <img src="{{ asset('img/icons/profiler.png') }}" id="post" class="img-fluid width-100p">
+	                                    </div>
+	                                @else
+	                                    <div class="photo_wrapper p-10">
+	                                        <img src="{{ route('image', [$user->profile_picture->image_reference, '']) }}" id="post" class="h-200 width-100p">
+	                                    </div>
+	                                @endif 
+	                                @if(auth()->user()->id == $user->id)                                           
+	                                    <div class="pos-rel dis-flex">
+	                                        <button type="submit" class="btn btn-brand">
+	                                        <i class="fa fa-plus-circle"></i>
+	                                        Upload</button>
+	                                       <input name="img_ref" type="file" class="pos-abs l-30 width-125 h-40 t-8 hide z-10" id="upload">
+	                                    </div>
+	                                @endif
                                 </div>
                             </div>
                             {{-- <div class="text-center m-t-10">
@@ -78,7 +154,7 @@
                         @if(!$user->checkRole())
                         	<a href="{{ route('view_inventory', $user->reference) }}" class="list-group-item list-group-item-action f-12">INVENTORY</a>
                         @endif
-                        <a href="#" class="list-group-item list-group-item-action f-12">TRADE PARTNERS</a>
+                        <a href="{{ route('view_partners', $user->reference) }}" class="list-group-item list-group-item-action f-12">TRADE PARTNERS</a>
                         <a href="{{ route('community', $user->reference) }}" class="list-group-item list-group-item-action f-12">COMMUNITY</a>
 					</div>
 				</aside>
@@ -153,7 +229,7 @@
 											@if($person->profile_picture != null)
 										    	<img src="{{ route('image', [$person->profile_picture->image_reference, '']) }}" class="img-responsive h-100 width-100 no-shadow bd-dark-light">
 										    @else
-										    	<img src="{{ asset('img/icons/profiled.png') }}" class="img-responsive h-100 width-100 no-shadow bd-dark-light"> 
+										    	<img src="{{ asset('img/icons/profiler.png') }}" class="img-responsive h-100 width-100 no-shadow bd-dark-light p-5"> 
 										    @endif
 										    </div>
 										    <div class="media-body m-t-20">
@@ -185,7 +261,7 @@
 											@if($person->profile_picture != null)
 										    	<img src="{{ route('image', [$person->profile_picture->image_reference, '']) }}" class="img-responsive h-100 width-100 no-shadow bd-dark-light">
 										    @else
-										    	<img src="{{ asset('img/icons/profiled.png') }}" class="img-responsive h-100 width-100 no-shadow bd-dark-light"> 
+										    	<img src="{{ asset('img/icons/profiler.png') }}" class="img-responsive h-100 width-100 no-shadow bd-dark-light p-5"> 
 										    @endif
 										    </div>
 										    <div class="media-body m-t-20">
@@ -493,7 +569,7 @@
                 imageHandler:function (){
                     $('#upload').on('change', function(){
                     	var img_ref = $("#upload")[0].files[0];
-                    	// console.log(img_ref);
+                    	console.log(img_ref);
                     	data = new FormData();
 						data.append('img_ref', img_ref);
                     	$.ajax({
