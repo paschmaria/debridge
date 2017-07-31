@@ -37,7 +37,7 @@
                                         <!--Indicators-->
                                         <ol class="carousel-indicators">
                                             @for ($i = 0; $i < count($post->pictures->images); $i++)
-                                                <li data-target="#myCarousel{{ $post->id }}" data-slide-to="{{ $i }}" @if($i === 0 )class="active"@endif></li>
+                                                <li data-target="#myCarousel{{ $post->id }}" data-slide-to="{{ $i }}" @if($i === 0 ) class="active"@endif></li>
                                             @endfor
                                         </ol>
                                         <!--/.Indicators-->
