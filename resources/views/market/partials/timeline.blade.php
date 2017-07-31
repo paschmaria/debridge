@@ -1,6 +1,6 @@
 <div id="all_posts">
                     @forelse ($posts as $post)
-                        <div class="card m-t-20 p-18">
+                        <div class="card m-t-20 p-18" id="post__{{ $post->id }}">
                             <div class="media">
                                 <a class="pull-left" href="{{ route('view_profile', $post->user->reference) }}">
                                     @if ($post->user->profile_picture == null)
@@ -19,7 +19,30 @@
                                         <span class="pull-right" style="color:grey">
                                             {{$post->updated_at->diffForHumans()}}
                                             @if(Auth::id() == $post->user->id)
-                                                <a href="{{ route('delete_post', $post->reference) }}"><i class="fa fa-trash c-red"></i></a>
+                                                <a data-toggle="modal" data-target="#post-delete-modal{{ $post->id }}" ><i class="fa fa-trash c-red"></i></a>
+                                                <!-- Modal delete -->
+                                                    <div class="modal fade m-t-180" id="post-delete-modal{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <!--Content-->
+                                                            <div class="modal-content">
+                                                                <!--Header-->
+                                                                <div class="modal-header bg-brand text-right">
+                                                                    <button type="button" class="close c-white" data-dismiss="modal">&times;</button>
+                                                                </div>
+                                                                <!--Body-->
+                                                                <div class="modal-body bg-brand-lite c-dark dis-flex">
+                                                                    <p class="text-responsive w-700 m-0">Are you sure you want to delete this post?</p>
+                                                                </div>
+                                                                <!--Footer-->
+                                                                <div class="modal-footer bg-brand-lite justify-content-center">
+                                                                    <a class="btn btn-md btn-outline-brand delete_post" href="{{ route('delete_post', $post->reference) }}">Yes</a>
+                                                                    <button type="button" class="btn btn-md btn-outline-brand" data-dismiss="modal">No</button>
+                                                                </div>
+                                                            </div>
+                                                            <!--/.Content-->
+                                                        </div>
+                                                    </div>
+                                                <!-- Modal -->
                                             @endif
                                         </span>
                                     </h6>
@@ -73,11 +96,11 @@
                                     <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10 col-sm-12" role="group" aria-label="Ad Action Buttons">
                                         @if(!in_array($post->id, $admired))
                                             <a href="{{ route('admire', $post->reference) }}"><button type="button" class="btn bg-white m-l-3 f-14 m-r-5 f-14 width-200">
-                                                <span class="">Admire<small class="c-gray f-10">({{ $post->admires->count() }})</small>&nbsp;</span><span class=""><i class="fa fa-heart-o"></i></span>
+                                                <span class="admire">Admire<small class="c-gray f-10">({{ $post->admires->count() }})</small>&nbsp;</span><span class=""><i class="fa fa-heart-o"></i></span>
                                             </button></a>
                                         @else
                                             <a href="{{ route('unadmire', $post->reference) }}"><button type="button" class="btn bg-white m-l-3 f-14 m-r-5 f-14 width-200">
-                                                <span class="">Unadmire<small class="c-gray f-10">({{ $post->admires->count() }})</small>&nbsp;</span><span class=""><i class="fa fa-heart"></i></span>
+                                                <span class="unadmire">Unadmire<small class="c-gray f-10">({{ $post->admires->count() }})</small>&nbsp;</span><span class=""><i class="fa fa-heart"></i></span>
                                             </button></a>
                                         @endif
                                         <a href=""><button type="button" class="btn bg-white m-l-10 f-14 m-r-10 f-14 width-200">
@@ -208,13 +231,6 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <!--Footer-->
-                                    {{-- <div class="modal-footer border-top">
-                                        <div class="m-auto">
-                                            <p class="text-center c-dark f-16">Have an account? <a href="#" class="c-brand">Log in</a></p>
-                                        </div>
-                                        
-                                    </div> --}}
                                 </div>
                                 <!--/.Content-->
                             </div>

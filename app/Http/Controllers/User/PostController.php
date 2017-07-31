@@ -113,11 +113,12 @@ class PostController extends Controller
      */
     public function destroy(Request $request, $reference)
     {
-        //
         $post = Post::where('reference', $reference)->first();
+        $post_id  = $post->id;
         $post->comments()->delete();
         $post->delete();
-        $request->session()->flash('success', 'Post deleted successfully!');
+        // $request->session()->flash('success', 'Post deleted successfully!');
+        return response()->json(compact('post_id'));
         return back();
     }
 }

@@ -171,7 +171,7 @@
                         <div class="card m-t-10 p-18 m-b-20">    
                             <div class="card-block p-0">
                                 
-                                <form enctype="multipart/form-data" method="POST" action="{{ route('create_post') }}" id="product-upload-form">
+                                <form enctype="multipart/form-data" method="POST" action="{{ route('create_post') }}" id="product-upload-form" data-status="1">
                                     {{ csrf_field() }}
                                     <div class="md-form m-0 m-b-5">
                                         <input class="input-alternate border-box" type="text" placeholder="Post title (optional)" name="title" id="post_title">

@@ -1,4 +1,27 @@
 $(document).ready(function () {
+    $('.delete_post').click(function (e) {
+        e.preventDefault();
+        // alert(this.href);
+         $.ajax({
+            url: this.href,
+            type:"GET",
+            data: {},
+            success: function(data){
+                $('#post__' + data.post_id).hide();
+                $('#post-delete-modal' + data.post_id).modal('toggle');
+                toastr.info("post has been deleted!");
+            },
+            error: function(data){
+                toastr.error("Somthing went wrong!");
+            }
+        });
+    });
+});
+
+
+
+
+$(document).ready(function () {
     $('#product-upload-form').submit(function (e) {
         e.preventDefault();
         // var form = $('#product-upload-form');

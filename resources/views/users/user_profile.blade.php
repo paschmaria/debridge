@@ -229,7 +229,7 @@
 											@if($person->profile_picture != null)
 										    	<img src="{{ route('image', [$person->profile_picture->image_reference, '']) }}" class="img-responsive h-100 width-100 no-shadow bd-dark-light">
 										    @else
-										    	<img src="{{ asset('img/icons/profiled.png') }}" class="img-responsive h-100 width-100 no-shadow bd-dark-light"> 
+										    	<img src="{{ asset('img/icons/profiler.png') }}" class="img-responsive h-100 width-100 no-shadow bd-dark-light p-5"> 
 										    @endif
 										    </div>
 										    <div class="media-body m-t-20">
@@ -261,7 +261,7 @@
 											@if($person->profile_picture != null)
 										    	<img src="{{ route('image', [$person->profile_picture->image_reference, '']) }}" class="img-responsive h-100 width-100 no-shadow bd-dark-light">
 										    @else
-										    	<img src="{{ asset('img/icons/profiled.png') }}" class="img-responsive h-100 width-100 no-shadow bd-dark-light"> 
+										    	<img src="{{ asset('img/icons/profiler.png') }}" class="img-responsive h-100 width-100 no-shadow bd-dark-light p-5"> 
 										    @endif
 										    </div>
 										    <div class="media-body m-t-20">
