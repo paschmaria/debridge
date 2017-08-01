@@ -47,17 +47,19 @@
                                 <button class="btn btn-sm btn-brand unfollow" data-email="{{ $user->reference }}"> unfollow </button>
                             @endif
                         @endif
-                        @if(in_array($user->id, auth()->user()->trade_partners->pluck('id')->toArray()))
-                            <button class="btn btn-sm btn-brand" data-toggle="modal" data-target="#cancel-modal{{ $user->id }}">
-                            cancel partnerhsip <i class="fa fa-times c-red"></i>
-                            </button>
-                        @else
-                            @if(!in_array($user->id, auth()->user()->sent_trade_requests->pluck('id')->toArray()))
-                                <a href="{{ route('send_trade_request', $user->reference) }}">
-                                <button class="btn btn-sm btn-brand">Send Trade Request</button></a>
-
+                        @if(!auth()->user()->checkRole())
+                            @if(in_array($user->id, auth()->user()->trade_partners->pluck('id')->toArray()))
+                                <button class="btn btn-sm btn-brand" data-toggle="modal" data-target="#cancel-modal{{ $user->id }}">
+                                cancel partnerhsip <i class="fa fa-times c-red"></i>
+                                </button>
                             @else
-                                <button class="btn btn-sm btn-brand" data-toggle="modal" data-target="#cancel-request-modal{{ $user->id }}">Cancel Trade Request</button>
+                                @if(!in_array($user->id, auth()->user()->sent_trade_requests->pluck('id')->toArray()))
+                                    <a href="{{ route('send_trade_request', $user->reference) }}">
+                                    <button class="btn btn-sm btn-brand">Send Trade Request</button></a>
+
+                                @else
+                                    <button class="btn btn-sm btn-brand" data-toggle="modal" data-target="#cancel-request-modal{{ $user->id }}">Cancel Trade Request</button>
+                                @endif
                             @endif
                         @endif
 

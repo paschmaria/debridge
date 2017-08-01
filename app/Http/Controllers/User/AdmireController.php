@@ -38,11 +38,11 @@ class AdmireController extends Controller
         } else {
             PostAdmire::create(['post_id' => $post->id, 'user_id' => \Auth::user()->id]);
         }  
-        return view('market.partials.buttons.unadmire', compact('post'));  
+        // return view('market.partials.buttons.unadmire', compact('post'));  
         // return response()->json([
         //     'count' => $post->admires->count() 
         //     ]);   
-        // return back()->with('success', 'Admired!');
+        return back()->with('success', 'Admired!');
     }
 
     /**

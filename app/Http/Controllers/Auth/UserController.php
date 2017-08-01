@@ -236,10 +236,11 @@ class UserController extends Controller
         return view('merchant.all_merchant', compact('users', 'following_ids', 'sent_request'));
     }
      
-    public function viewUsers($filter = null)
+    public function viewUsers($filter = null, Request $request)
      {
         $users = User::with(['profile_picture'])
-                    ->where('id','!=', auth()->user()->id);
+                    ->where('id','!=', auth()->user()->id)
+                    ->orderBy('first_name');
         // get the id of the users that the auth user follows
         $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
         
@@ -253,9 +254,14 @@ class UserController extends Controller
             $users = $users->paginate(30);
             $filter = '';
         }
-
         // get the id of the users that the auth user sent a friend request
         $sent_request = FriendRequest::where('sender_id', auth()->user()->id)->pluck('receiver_id')->toArray();
+
+        if($this->isValidPageNumber($request->page)){  
+            return view('bridger.partials.bridger', compact('users', 'following_ids', 'sent_request', 'filter')); 
+        } else {
+            return view('bridger.bridger', compact('users', 'following_ids', 'sent_request', 'filter')); 
+        }  
         return view('bridger.bridger', compact('users', 'following_ids', 'sent_request', 'filter'));
      }
 
@@ -336,20 +342,5 @@ class UserController extends Controller
     public function myCart(){
         return view('mycart');
     }
-
-    // public function userTradeline(){
-    //     $products = Product::latest()->get();
-    //     $inventory = Inventory::all();
-    //     $merchant = MerchantAccount::all();
-    //     $user = User::all();
-    //     // dd($product);
-        
-    //     return view('user_tradeline', compact('products', 'inventory', 'merchant', 'user'));
-      
-        
-        
-    // }
-
-    
 
 }
