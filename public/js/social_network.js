@@ -9,6 +9,7 @@ $(document).ready(function () {
             success: function(data){
                 $('#post__' + data.post_id).hide();
                 $('#post-delete-modal' + data.post_id).modal('toggle');
+
                 toastr.info("post has been deleted!");
             },
             error: function(data){
@@ -54,7 +55,10 @@ $(document).ready(function () {
                     $('#all_posts').prepend(data);
                 }
                 $('#post_title').val(' ');
-                 $('#status_update').val(' ');
+                $('#status_update').val(' ');
+                $('#product-imgs').html(' ');
+                $('#product-img-wrapper').removeClass('dis-flex');
+                $('#product-img-wrapper').addClass('dis-none');
                 toastr.success("post made!");
             },
             error: function (data) {
