@@ -12,8 +12,6 @@
                                 <div class="media-body">
                                     <h6 class="media-heading c-brand w-500">
 
-                                        <!-- <a href="{{ route('tradeline', $post->user->id) }}" class="c-brand">{{ $post->user->full_name() }}</a> -->
-
                                         <a href="{{ route('timeline', $post->user->reference) }}" class="c-brand">{{ $post->user->full_name() }}</a>
 
                                         <span class="pull-right" style="color:grey">

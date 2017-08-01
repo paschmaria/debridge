@@ -9,8 +9,7 @@ use App\Models\Notification;
 
 class PromoController extends Controller
 {
-    public function create(Request $request, $reference){
-        $product = Product::where('reference', $reference)->first();
+    public function create(Request $request, Product $product){
         $product->promo_price = $request->promo_price;
         $product->save();
         
@@ -26,7 +25,7 @@ class PromoController extends Controller
         return back()->with('info', 'Promo Sucessfully Added');
     }
 
-    public function destroy($reference){
+    public function destroy(Product $product){
         $product = Product::where('reference', $reference)->first();
         $product->promo_price = null;
         $product->save();

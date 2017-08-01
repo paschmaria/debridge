@@ -14,18 +14,11 @@ class TradeRequestController extends Controller
 
     public function index()
     {
-        // $merchant = User::where('reference', $reference)
-        //                 ->with([
-        //                     'merchant_account',
-        //                     'trade_requests' => function($q){
-        //                         return $q->with(['profile_picture', 'merchant_account']);
-        //                     }])->first();
         return view('bridger.trade_request');
     }
 
-    public function create($reference)
+    public function create(User $user)
     {
-       $user = User::where('reference', $reference)->first();
         auth()->user()->sent_trade_requests()->attach($user);
         // notify $user
         $notification = Notification::create([
@@ -39,9 +32,8 @@ class TradeRequestController extends Controller
         return back()->with('success', 'Request Sent!');
     }
 
-    public function destroy($reference)
+    public function destroy(User $user)
     {
-       $user = User::where('reference', $reference)->first();
         auth()->user()->sent_trade_requests()->detach($user);
         $notification = Notification::create([
             'user_id' => auth()->user()->id,
@@ -55,9 +47,8 @@ class TradeRequestController extends Controller
         return back()->with('info', 'Request Cancelled!');
     }
 
-    public function decline($reference)
+    public function decline(User $user)
     {
-       $user = User::where('reference', $reference)->first();
         auth()->user()->received_trade_requests()->detach($user);
         $notification = Notification::create([
             'user_id' => auth()->user()->id,

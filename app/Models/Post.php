@@ -36,4 +36,8 @@ class Post extends Model
     {
       return $this->belongsTo('App\Models\PhotoAlbum', 'photo_album_id');
     }
+    public function getRouteKeyName()
+    {
+        return 'reference';
+    }
 }

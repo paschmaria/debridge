@@ -23,20 +23,14 @@ class HottestProductController extends Controller
         // $this->middleware('merchant')
     }
 
-    public function index()
-    {
-        //
-    }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     
-    public function create($reference)
+    public function create(Product $product)
     {
-        $product = Product::where('reference', $reference)->first();
         $hot_prod  = HottestProduct::firstOrCreate(['merchant_account_id' => auth()->user()->merchant_account->id]);
         if($hot_prod->interval_time == null){
             $hot_prod->interval_time = Carbon::now()->subWeek(2);
@@ -101,42 +95,19 @@ class HottestProductController extends Controller
         return view('merchant.hottest_products', compact('products', 'user', 'merchant', 'admired'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
+    
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($reference)
+    public function destroy(Product $product)
     {
         $slot =  6 - auth()->user()->merchant_account->hottest_product->slot;
         if(auth()->user()->merchant_account->hottest_product->count() + $slot > 7) {
             return back()->with('info', 'you do not have enough slots to perform this action');
         }
-        $product = Product::where('reference', $reference)->first();
         $hot_prod  = auth()->user()->merchant_account->hottest_product;
         $product->hottest()->dissociate();
         $product->save();

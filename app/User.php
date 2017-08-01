@@ -233,4 +233,9 @@ class User extends Authenticatable
         return $this->merchant_account->inventory->products();
     }
 
+    public function getRouteKeyName()
+    {
+        return 'reference';
+    }
+
 }

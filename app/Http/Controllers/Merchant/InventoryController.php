@@ -20,10 +20,9 @@ class InventoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($reference)
+    public function index(User $user)
     {
          //get or create merchant acount and of the user 
-        $user = User::where('reference', $reference)->first();
         $merchant = MerchantAccount::firstOrCreate(['user_id' => $user->id]);
         $inventory = Inventory::firstOrCreate(['merchant_account_id' => $merchant->id]);
 

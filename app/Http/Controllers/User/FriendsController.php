@@ -5,103 +5,62 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
-use App\Models\SocialNotification;
+use App\Models\Role;
+use App\Models\Notification;
 use App\Models\FriendRequest;
 
 class FriendsController extends Controller
 {
+    protected function isValidPageNumber($page)
+    {
+        return $page >= 2 && filter_var($page, FILTER_VALIDATE_INT) !== false;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
-        $friends = auth()->user()->friends;
-        return view('users.friends', compact('friends'));
+        $users = $user->friends()->with('profile_picture')->orderBy('first_name')->paginate(20);
+        return view('bridger.friends', compact('user', 'users'));
     }
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function findMore(Request $request){
+        $role = Role::where('name', 'User')->get()->pluck('id')->toArray();
+        $users = User::with(['profile_picture'])
+                            ->whereIn('role_id', $role)
+                            ->where('id', '!=', auth()->user()->id)
+                            ->orderBy('first_name')->paginate(20);
+        if ($this->isValidPageNumber($request->page)) {
+                return view('bridger.partials.friends', compact('users'));
+            }
+        return view('bridger.find_friends', compact('users'));
+    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($email)
+    public function create(User $user)
     {
         //accept friend request
-        $auth_user = auth()->user();
-        $user = User::where('email', $email)->first();
-        $auth_user->friends()->attach($user);
-        $user->friends()->attach($auth_user);
-        $fr = FriendRequest::where(['sender_id' => $user->id, 'receiver_id' => $auth_user->id])->first();
-        $fr->delete();
-        // create notification for $user of acceptance
-        SocialNotification::create([
-            'user_id' => $user->id,
-            'foreigner_id' => auth()->user()->id,
-            'message' => auth()->user()->first_name . ' accepted your friendship!',
-            'description_id' => 3 
-            ]);
-        return back()->with('success', $user->first_name . ' is now your friend!');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $email)
-    {
-        $auth_user = auth()->user();
-        $user = User::where('email', $email)->first();
-        $fr = FriendRequest::where(['sender_id' => $user->id, 'receiver_id' => $auth_user->id])->first();
-        $fr->delete();
-        // create notification for $user of rejection
-        SocialNotification::create([
-            'user_id' => $user->id,
-            'foreigner_id' => auth()->user()->id,
-            'message' => auth()->user()->first_name . ' accepted your friendship!',
-            'description_id' => 4 
-            ]);
-
-        return response()->json($email);
+        auth()->user()->friends()->attach($user);
+        $user->friends()->attach(auth()->user());
+        auth()->user()->received_requests()->detach($user);
         
-        // return back()->with('info', 'You declined ' . $user->first_name . ' friendship!');
+        $notification = Notification::create([
+            'user_id' => auth()->user()->id,
+            'message' => auth()->user()->full_name() . ' accepted your friendship!',
+            ]);
+        $notification->users()->attach($user);
+        $notification->save();
+
+        return back()->with('success', $user->full_name() . ' is now your friend!');
     }
 
     /**
@@ -110,17 +69,18 @@ class FriendsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($email)
+    public function destroy(User $user)
     {
-        $auth_user = auth()->user();
-        $user = User::where('email', $email)->first();
-        $auth_user->friends()->detach($user);
-        $user->friends()->detach($auth_user);
+        auth()->user()->friends()->detach($user);
+        $user->friends()->detach(auth()->user());
+
+        $notification = Notification::create([
+            'user_id' => auth()->user()->id,
+            'message' => auth()->user()->full_name() . ' has unfriended you!',
+            ]);
+        $notification->users()->attach($user);
+        $notification->save();
+
         return back()->with('info', 'You unfriended ' . $user->first_name . '!');
     }
-
-    public function user_logout(){
-        \Auth::logout();
-        return redirect('/');
-     }
 }
