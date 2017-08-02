@@ -10,12 +10,7 @@ use App\Models\Notification;
 
 class TradePartnerController extends Controller
 {
-    protected function isValidPageNumber($page)
-    {
-        return $page >= 2 && filter_var($page, FILTER_VALIDATE_INT) !== false;
-    }
-
-    public function show($reference, Request $request)
+   public function show($reference, Request $request)
     {
     	$merchant = User::where('reference', $reference)->with('merchant_account')->first();
         $merchants = $merchant->trade_partners()->with('profile_picture')->orderBy('first_name')->paginate(20);

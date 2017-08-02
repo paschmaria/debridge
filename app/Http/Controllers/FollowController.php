@@ -28,11 +28,6 @@ class FollowController extends Controller
             ])->first();
     }
 
-    protected function isValidPageNumber($page)
-    {
-        return $page >= 2 && filter_var($page, FILTER_VALIDATE_INT) !== false;
-    }
-
     public function following(Request $request, $reference, $filter = null)
     {
         $user = User::where('reference', $reference)->with(['following' => function ($q){

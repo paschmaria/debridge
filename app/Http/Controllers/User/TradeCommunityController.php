@@ -11,11 +11,6 @@ use App\Models\Follower;
 
 class TradeCommunityController extends Controller
 {
-    protected function isValidPageNumber($page)
-    {
-        return $page >= 2 && filter_var($page, FILTER_VALIDATE_INT) !== false;
-    }
-
     public function index(User $user, $filter = null, Request $request)
     {
     	$trade_community = TradeCommunity::where('id', $user->community_id)->first();

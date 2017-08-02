@@ -43,11 +43,6 @@ class UserController extends Controller
         return view('auth.register', compact('roles', 'states', 'trade_communities', 'trade_interests'));
     }
 
-    protected function isValidPageNumber($page)
-    {
-        return $page >= 2 && filter_var($page, FILTER_VALIDATE_INT) !== false;
-    }
-
     public function index($filter = null, Request $request){
         $posts = Post::orderBy('created_at', 'desc')->with([
                 'user' => function($q){
@@ -98,11 +93,7 @@ class UserController extends Controller
             $posts = $posts->paginate(15);
         }
 
-        if($this->isValidPageNumber($request->page) && $timestamp){
-            // return response()->json([
-            //     compact('posts', 'admired', 'hyped', 'timestamp', 'user_pic'), 
-            //     'auth' => auth()->check(),
-            //     ]);  
+        if($this->isValidPageNumber($request->page) && $timestamp){ 
             return view('market.partials.timeline', compact('posts', 'admired', 'hyped', 'timestamp', 'filter')); 
         } else {
             return view('market.index', compact('posts', 'admired', 'hyped', 'timestamp', 'filter', 'products')); 
@@ -126,14 +117,9 @@ class UserController extends Controller
         if (in_array(intval($request->account_type), $merchant_role)){
             $this->validate($request, [ 'trade_interest' => 'required']);
         }
-
         
         $user_token =  str_random(64);
-        // $role = Role::where('name', $request->input('trade_interest'))->first();
-        // $trade_community = TradeCommunity::where('name', $request->input('trade_community'))->first();
-
-        // $state = State::where('name', $request->input('state'))->first();
-        // dd($request->all());
+        
         $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
@@ -148,21 +134,7 @@ class UserController extends Controller
             'trade_interest_id' => $request->trade_interest,
             'community_id' => $request->user_trade_community,
             ]);
-        // dd($user);
-
-        // if($role === Role::where('name', 'Merchant')->first()){
-            
-        //     $user->role()->associate($role);
-        //     $user->save();
-        // }
-        // $user->community()->associate($trade_community);
-        // $user->save();
-        // user follows himself so he can see his won post on his timeline
-        // $user->following()->attach($user);
         
-
-        // \Mail::to($user)->send(new Welcome($user));
-        // \Session::flash('success', 'Welcome to Debridge');
         \Auth::login($user);
         //generate  debride code for user
         $this->bride_code->store();
@@ -219,22 +191,6 @@ class UserController extends Controller
      	Mail::to($user)->send(new Welcome($user));
      	return back();
      }
-
-     public function viewMerchant(Request $request)
-    {
-        dd("dd");
-        // dd(auth()->user()->email);
-        // get the id of the users that the auth user follows
-        $roles = Role::where('name', '!=', 'Admin')->where('name', '!=', 'SuperAdmin')->where('name', '!=', 'User')->get();
-        dd($role);
-        $users = User::where('id','!=', auth()->user()->id)->get();
-        // get the id of the users that the auth user follows
-        $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
-        // get the id of the users that the auth user sent a friend request
-        $sent_request = FriendRequest::where('sender_id', auth()->user()->id)->pluck('receiver_id')->toArray();
-        
-        return view('merchant.all_merchant', compact('users', 'following_ids', 'sent_request'));
-    }
      
     public function viewUsers($filter = null, Request $request)
      {
@@ -270,30 +226,15 @@ class UserController extends Controller
      public function profile_picture(Request $request, $id){
 
         $profile_picture = Image::find($id);
-        // dd($profile_picture);
-
-        // if($request->isMethod('post')){
-            // dd('ji');
             $user_picture = auth()->user();
             $user_picture->image_id = $profile_picture->id;
             $user_picture->save();
             return back()->with('info', 'Profile Picture Updated');
-        // }
      }
 
     public function arahaMarket(){
         return view('araha_market');
     }
-
-    // public function merchantTradeline(User $user){
-    //     $role = Role::where('name', 'Merchant')->first()->name;
-    //     // dd($role);
-    //     if(isset($user->role_id) && $user->role()->first()->name === $role){
-    //         return view('merchant_tradeline');
-    //     }else{
-    //         return redirect()->route('timeline', $user->id) ;
-    //     }
-    // }
 
     public function merchantTimeline(){
         return view('merchant_timeline');

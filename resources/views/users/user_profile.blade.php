@@ -83,9 +83,9 @@
 	                    @else
 	                        @if(!in_array($user->id, auth()->user()->sent_requests->pluck('id')->toArray()))
 	                            <a href="{{ route('send_friend_request', $user->reference) }}">
-	                            <button class="btn btn-sm f-12 waves-light waves-effect btn-outline-brand m-t-40 m-b-50 ">Send Friend Request</button>
+	                            <button class="btn btn-sm waves-light waves-effect btn-outline-brand">Send Friend Request</button>
 	                        @else
-	                            <button class="btn btn-sm f-12 waves-light waves-effect btn-brand m-t-40 m-b-50" data-toggle="modal" data-target="#cancel-request-modal{{ $user->id }}">Cancel Friend Request</button>
+	                            <button class="btn btn-sm waves-light waves-effect btn-brand" data-toggle="modal" data-target="#cancel-request-modal{{ $user->id }}">Cancel Friend Request</button>
 	                        @endif
 	                    
 	                    @endif

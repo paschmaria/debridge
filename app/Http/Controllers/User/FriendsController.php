@@ -11,10 +11,6 @@ use App\Models\FriendRequest;
 
 class FriendsController extends Controller
 {
-    protected function isValidPageNumber($page)
-    {
-        return $page >= 2 && filter_var($page, FILTER_VALIDATE_INT) !== false;
-    }
     /**
      * Display a listing of the resource.
      *
