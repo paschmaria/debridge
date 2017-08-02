@@ -208,6 +208,11 @@
                     @empty
                         {{-- empty expr --}}
                     @endforelse
+
+                    <center>
+                                         <img src="{{asset('img/new_loader.gif')}}" id="post_loader" style="position: absolute; display: none;" alt="loading...">
+                    </center> 
+
 </div>
 
                     <!--modal-->
