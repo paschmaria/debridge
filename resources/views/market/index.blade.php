@@ -268,6 +268,7 @@
         $(document).ready(function () {
             var page = 2;
             $(window).scroll(function(){
+                $("#post_loader").show();
                 var timestamp = $('#timestamp').val();
                 
                 var scroll_height = $(window).scrollTop() + $(window).height();
@@ -280,9 +281,8 @@
                         data:{'page': page, 'timestamp': timestamp},
                         success:function(data){
                             // console.log(data);
-
-
                             $('#timeline').append(data) ;
+                            $("#post_loader").hide();
                         },
                         error: function (data) {
                         }

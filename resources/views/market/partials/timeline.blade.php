@@ -59,7 +59,7 @@
                                         <!--Indicators-->
                                         <ol class="carousel-indicators">
                                             @for ($i = 0; $i < count($post->pictures->images); $i++)
-                                                <li data-target="#myCarousel{{ $post->id }}" data-slide-to="{{ $i }}" @if($i === 0 )class="active"@endif></li>
+                                                <li data-target="#myCarousel{{ $post->id }}" data-slide-to="{{ $i }}" @if($i === 0 ) class="active"@endif></li>
                                             @endfor
                                         </ol>
                                         <!--/.Indicators-->
@@ -206,6 +206,11 @@
                     @empty
                         {{-- empty expr --}}
                     @endforelse
+
+                    <center>
+                                         <img src="{{asset('img/new_loader.gif')}}" id="post_loader" style="position: absolute; display: none;" alt="loading...">
+                    </center> 
+
 </div>
 
                     <!--modal-->
