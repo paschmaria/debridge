@@ -17,21 +17,8 @@ class TradePartnerController extends Controller
 
     public function show($reference, Request $request)
     {
-    	$merchant = User::where('reference', $reference)
-    					->with([
-    						'merchant_account',
-    						'trade_partners' => function($q){
-	    						return $q->with(['profile_picture', 'merchant_account']);
-	    					}])->first();
-        $merchants = $merchant->trade_partners->sortBy('first_name');
-
-        if (!$this->isValidPageNumber($request->page)) {
-            $merchants =  $merchants->splice(0,20);
-        } else {
-            $start =  20 + (((int)$request->page - 2) * 20);
-            $end = $start + 20;
-            $merchants =  $merchants->splice($start, $end);
-        }
+    	$merchant = User::where('reference', $reference)->with('merchant_account')->first();
+        $merchants = $merchant->trade_partners()->with('profile_picture')->orderBy('first_name')->paginate(20);
 
         if ($this->isValidPageNumber($request->page)) {
                 return view('bridger.partials.trade_partners', compact('merchants'));
@@ -41,24 +28,20 @@ class TradePartnerController extends Controller
 
     public function findMore(Request $request){
     	$role = Role::where('name', 'Merchant')->first();
-        // $user_partners = auth()->user()->trade_partners->pluck('id')->toArray();
         $merchants = User::with(['profile_picture'])
                             ->where('role_id', $role->id)
                             ->where('id', '!=', auth()->user()->id)
-                            // ->whereNotIn('id', $user_partners)
-                            ->orderBy('first_name')
-                            ->paginate(30);
-       	// dd(auth()->user()->sent_trade_requests->pluck('id')->toArray());
-        if ($this->isValidPageNumber($request->page)) {
+                            ->orderBy('first_name')->paginate(20);
+       	if ($this->isValidPageNumber($request->page)) {
                 return view('bridger.partials.trade_partners', compact('merchants'));
             }
     	return view('bridger.find_trade_partners', compact('merchants'));
     }
 
-    public function create($reference)
+    public function create(User $user)
     {
-    	$user = User::where('reference', $reference)->first();
-    	auth()->user()->trade_partners()->attach($user);
+        auth()->user()->trade_partners()->attach($user);
+    	$user->trade_partners()->attach(auth()->user());
     	auth()->user()->received_trade_requests()->detach($user);
     	// notify $user
     	$notification = Notification::create([
@@ -71,11 +54,10 @@ class TradePartnerController extends Controller
     	return back()->with('success', $user->full_name() . auth()->user()->getStoreName() . ' is now your trade partner!');
     }
 
-    public function destroy()
+    public function destroy(User $user)
     {
-    	$user = User::where('reference', $reference)->first();
-    	auth()->user()->trade_partners()->detach($user);
-    	// $user->trade_partners()->detach(auth()->user());
+        auth()->user()->trade_partners()->detach($user);
+    	$user->trade_partners()->detach(auth()->user());
     	// notify $user
     	$notification = Notification::create([
             'user_id' => auth()->user()->id,

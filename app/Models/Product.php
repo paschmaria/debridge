@@ -61,4 +61,9 @@ class Product extends Model
     {
         return $this->inventory->merchant->user();
     }
+
+    public function getRouteKeyName()
+    {
+        return 'reference';
+    }
 }

@@ -16,9 +16,8 @@ class TradeCommunityController extends Controller
         return $page >= 2 && filter_var($page, FILTER_VALIDATE_INT) !== false;
     }
 
-    public function index($reference, $filter = null, Request $request)
+    public function index(User $user, $filter = null, Request $request)
     {
-    	$user = User::where('reference', $reference)->first();
     	$trade_community = TradeCommunity::where('id', $user->community_id)->first();
     	if ($trade_community) {
     		$users = User::where('community_id', $trade_community->id);

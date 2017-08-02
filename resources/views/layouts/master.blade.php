@@ -159,7 +159,7 @@
                                                  <div class="notify">
                                                     <ul>
                                                     <img src="{{asset('img/loader.gif')}}" id="bridge_loader" style="display: none;position: absolute;" alt="loading...">
-                                                        @forelse (auth()->user()->notifications as $notification)
+                                                        @forelse (auth()->user()->notifications->sortByDesc('created_at') as $notification)
                                                             <li class="dropdown-item notify_id{{ $notification->id }} waves-effect waves-light p-l-10 border-bottom">
                                                                 <p>
                                                                     <a href="{{ route('view_profile', $notification->user->reference) }}">

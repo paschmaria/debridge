@@ -174,9 +174,8 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($reference)
+    public function destroy(Product $product)
     {
-        $product = Product::where('reference', $reference)->first();
         if(!$product){
              return back()->with('info', 'Product does not exist!');
         }

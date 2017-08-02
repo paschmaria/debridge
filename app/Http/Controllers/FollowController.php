@@ -127,12 +127,11 @@ class FollowController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($reference)
+    public function store(User $user)
     {
         $role_user = Role::where('name', 'User')->get();
         $role_merchant = Role::where('name', 'Merchant')->get();
-        // Find the User. Redirect if the User doesn't exist
-        $user = User::where('reference', $reference)->first();
+        
         auth()->user()->following()->attach($user->id);
         // notify $user the he has been followed by auth user
         $notification = Notification::create([
@@ -198,28 +197,6 @@ class FollowController extends Controller
         ]);
         // return redirect('/');
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request)
-    {
-
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -227,13 +204,11 @@ class FollowController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($reference)
+    public function destroy(User $user)
     {
         $role_user = Role::where('name', 'User')->get();
         $role_merchant = Role::where('name', 'Merchant')->get();
         
-        // Find the User. Redirect if the User doesn't exist
-        $user = User::where('reference', $reference)->first();
         auth()->user()->following()->detach($user->id);
         //notify $user that he has been unfollowed by auth user
         $notification = Notification::create([

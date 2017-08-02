@@ -10,8 +10,7 @@ use App\Models\ProductHype;
 
 class ProductHypeController extends Controller
 {
-    public function create($reference, Request $request){
-       $product = Product::where('reference', $reference)->first();
+    public function create(Product $product){
        $hype = ProductHype::where(['product_id' => $product->id, 'user_id' => auth()->user()->id])->first();
         if ($hype) {
             return back()->with('info', 'Product already hyped by you!');

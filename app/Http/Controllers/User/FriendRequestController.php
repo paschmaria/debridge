@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\FriendRequest;
+use App\Models\Notification;
 
 class FriendRequestController extends Controller
 {
@@ -16,7 +17,7 @@ class FriendRequestController extends Controller
      */
     public function index()
     {
-        return view('users.friend_request');
+        return view('bridger.friend_request');
     }
 
     /**
@@ -24,74 +25,56 @@ class FriendRequestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($email)
+    public function create(User $user)
     {
         // create friend request
-        $user = User::where('email', $email)->first();
         auth()->user()->sent_requests()->attach($user);
-        // \Session::flash('success', 'Request sent!');
-        return response()->json($email);
-        // return back();
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        // 
+        $notification = Notification::create([
+            'user_id' => auth()->user()->id,
+            'message' => auth()->user()->full_name() . ' has sent you a friend request!',
+            ]);
+        $notification->users()->attach($user);
+        $notification->save();
+        // return response()->json($email);
+        return back()->with('success', 'request sent!');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
+    
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($email)
+    public function decline(User $user)
     {
-        $user = User::where('email', $email)->first();
-        $fr = FriendRequest::where(['sender_id' => auth()->user()->id, 'receiver_id' => $user->id]);
-        $fr->delete();
-        return response()->json($email);
+        auth()->user()->received_requests()->detach($user);
 
-        // return back()->with('info', 'Request cancelled');
+        $notification = Notification::create([
+            'user_id' => auth()->user()->id,
+            'message' => auth()->user()->full_name() . ' has decline your frined request!',
+            ]);
+        $notification->users()->attach($user);
+        $notification->save();
+
+        // return response()->json($email);
+
+        return back()->with('info', 'Request cancelled');
+    }
+
+    public function destroy(User $user)
+    {
+        auth()->user()->sent_requests()->detach($user);
+
+        $notification = Notification::create([
+            'user_id' => auth()->user()->id,
+            'message' => auth()->user()->full_name() . ' has withdrawn the frined request!',
+            ]);
+        $notification->users()->attach($user);
+        $notification->save();
+
+        // return response()->json($email);
+
+        return back()->with('info', 'Request cancelled');
     }
 }

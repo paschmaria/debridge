@@ -308,7 +308,7 @@ class UserController extends Controller
     }
 
     public function bridgeShops(){
-        return view('bridgeShops');
+        return view('BridgeShops');
     }
 
     public function exhibition(){

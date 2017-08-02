@@ -9,9 +9,8 @@ use App\Models\Product;
 
 class CartController extends Controller
 {
-    public function addToCart($reference)
+    public function addToCart(Product $product)
     {
-        $product = Product::where('reference', $reference)->first();
         if ($product) {
                 $cart = Cart::where(['product_id' => $product->id, 'user_id' => auth()->user()->id])->first();
                 if ( $cart ){
@@ -24,9 +23,8 @@ class CartController extends Controller
         }
     }
 
-    public function removeItem($reference)
+    public function removeItem(Product $product)
     {
-        $product = Product::where('reference', $reference)->first();
         $cart = Cart::where(['user_id'=> auth()->user()->id, 'product_id' => $product->id])->first();
     	$cart->delete();
     	return back()->with('info', 'Item Removed');

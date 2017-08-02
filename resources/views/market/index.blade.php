@@ -1,37 +1,41 @@
 @extends('layouts.master')
 @section('header')
     <!-- navigations/links right here -->
-            <nav class="navbar navbar-toggleable-sm navbar-light transparent p-t-15 p-b-15 no-shadow border-top border-bottom" role="navigation">
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-            
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div id="navbarNav1" class="collapse navbar-collapse">
-                        <ul class="nav navbar-nav">
-                        @if(auth()->check())
-                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('following', auth()->user()->reference) }}">Following</a></li>
-                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('followers', auth()->user()->reference) }}">Followers</a></li>
-                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('timeline', auth()->user()->reference) }}">Tradeline</a></li>
-                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('community', auth()->user()->reference) }}">Trade Community</a></li>
+        <nav class="navbar navbar-toggleable-sm navbar-light transparent p-t-15 p-b-15 no-shadow border-top border-bottom" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div id="navbarNav1" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                    @if(auth()->check())
+                        @if(auth()->user()->checkRole())
+                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('view_friends', auth()->user()->reference) }}">Friends</a></li>
                         @else
-                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" data-toggle="modal" data-target="#basicExample">Following</a></li>
-                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" data-toggle="modal" data-target="#basicExample">Followers</a></li>
-                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" data-toggle="modal" data-target="#basicExample">Tradeline</a></li>
-                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" data-toggle="modal" data-target="#basicExample">Trade Community</a></li>
+                            <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('view_partners', auth()->user()->reference) }}">Trade Partners</a></li>
                         @endif
-                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Business Invitation</a></li>
-                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Models</a></li>
-                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="#">Market Value</a></li>
-                        <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Black Market</a></li>
-                        <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="#">Exhibition Stand</a></li>
-                    </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div>
-            </nav>
-            <!-- navigations/links ends here -->
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('following', auth()->user()->reference) }}">Following</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('followers', auth()->user()->reference) }}">Followers</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('timeline', auth()->user()->reference) }}">Tradeline</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('community', auth()->user()->reference) }}">Trade Community</a></li>
+                    @else
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" data-toggle="modal" data-target="#basicExample">Following</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" data-toggle="modal" data-target="#basicExample">Followers</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" data-toggle="modal" data-target="#basicExample">Tradeline</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" data-toggle="modal" data-target="#basicExample">Trade Community</a></li>
+                    @endif
+                    <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('bridge_shops') }}">Bridger Shops</a></li>
+                    <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('araha_market') }}">Araha Market</a></li>
+                    <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="{{ route('exhibition') }}">Exhibition Stand</a></li>
+                    <li class="nav-item"><a class="nav-link hover-underline text-uppercase" href="{{ route('hiring') }}">Hiring</a></li>
+                </ul>
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </nav>
+    <!-- navigations/links ends here -->
 @endsection
             
 @section('content')
@@ -43,15 +47,17 @@
                 <div class="hidden-xs-down col-sm-3 col-md-3">
                     <div class="list-group m-b-20">
                         <a href="{{ route('view_users') }}" class="list-group-item list-group-item-action">BRIDGER</a>
-                        @if(auth()->check() && strtolower(auth()->user()->role->name) === 'merchant')
-                            <a href="{{ route('view_trade_request') }}" class="list-group-item list-group-item-action">TRADE REQUEST</a>
-                        @endif
                         @if(auth()->check())
                             <a href="{{ route('community', auth()->user()->reference) }}" class="list-group-item list-group-item-action">TRADE COMMUNITY</a>
+                            @if(!auth()->user()->checkRole())
+                                <a href="{{ route('view_trade_request') }}" class="list-group-item list-group-item-action">TRADE REQUESTS</a>
+                            @else
+                                <a href="{{ route('view_friend_request') }}" class="list-group-item list-group-item-action">FRIEND REQUESTS</a>
+                            @endif
                         @else
                             <a data-toggle="modal" data-target="#basicExample" class="list-group-item list-group-item-action">TRADE COMMUNITY</a>
                         @endif
-                        <a href="#" class="list-group-item list-group-item-action">BRIDGE POINT</a>
+                        {{-- <a href="#" class="list-group-item list-group-item-action">BRIDGE POINT</a> --}}
                         @if(Auth::check() && isset(auth()->user()->bridgeCode))
                             <a href="" class="list-group-item list-group-item-action" disable>
                                 BRIDGE CODE: ({{ auth()->user()->bridgeCode->code }})
