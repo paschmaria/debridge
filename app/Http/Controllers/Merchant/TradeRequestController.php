@@ -17,7 +17,7 @@ class TradeRequestController extends Controller
         return view('bridger.trade_request');
     }
 
-    public function create(User $user)
+    public function create(User $user, Request $request)
     {
         auth()->user()->sent_trade_requests()->attach($user);
         // notify $user
@@ -27,12 +27,15 @@ class TradeRequestController extends Controller
             ]);
         $notification->users()->attach($user);
         $notification->save();
-        // \Session::flash('success', 'Request sent!');
-        // return response()->json($reference);
+
+        if($request->ajax()){
+            return response()->json(['user' => $user->reference]);
+        }
+        
         return back()->with('success', 'Request Sent!');
     }
 
-    public function destroy(User $user)
+    public function destroy(User $user, Request $request)
     {
         auth()->user()->sent_trade_requests()->detach($user);
         $notification = Notification::create([
@@ -41,13 +44,15 @@ class TradeRequestController extends Controller
             ]);
         $notification->users()->attach($user);
         $notification->save();
-        // notify $user
-        // \Session::flash('success', 'Request sent!');
-        // return response()->json($reference);
+
+        if($request->ajax()){
+            return response()->json(['user' => $user->reference]);
+        }
+        
         return back()->with('info', 'Request Cancelled!');
     }
 
-    public function decline(User $user)
+    public function decline(User $user, Request $request)
     {
         auth()->user()->received_trade_requests()->detach($user);
         $notification = Notification::create([
@@ -56,9 +61,11 @@ class TradeRequestController extends Controller
             ]);
         $notification->users()->attach($user);
         $notification->save();
-        // notify $user
-        // \Session::flash('success', 'Request sent!');
-        // return response()->json($reference);
+
+        if($request->ajax()){
+            return response()->json(['user' => $user->reference]);
+        }
+        
         return back()->with('info', 'Request declined!');
     }
 

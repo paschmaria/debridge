@@ -27,17 +27,18 @@ class TradePartnerController extends Controller
                             ->where('role_id', $role->id)
                             ->where('id', '!=', auth()->user()->id)
                             ->orderBy('first_name')->paginate(20);
-       	if ($this->isValidPageNumber($request->page)) {
+       	if ($request->ajax()) {
                 return view('bridger.partials.trade_partners', compact('merchants'));
             }
     	return view('bridger.find_trade_partners', compact('merchants'));
     }
 
-    public function create(User $user)
+    public function create(User $user, Request $request)
     {
         auth()->user()->trade_partners()->attach($user);
     	$user->trade_partners()->attach(auth()->user());
-    	auth()->user()->received_trade_requests()->detach($user);
+        auth()->user()->received_trade_requests()->detach($user);
+    	auth()->user()->sent_trade_requests()->detach($user);
     	// notify $user
     	$notification = Notification::create([
             'user_id' => auth()->user()->id,
@@ -46,10 +47,14 @@ class TradePartnerController extends Controller
         $notification->users()->attach($user);
         $notification->save();
 
+        if($request->ajax()){
+            return response()->json(['user' => $user->reference]);
+        }
+
     	return back()->with('success', $user->full_name() . auth()->user()->getStoreName() . ' is now your trade partner!');
     }
 
-    public function destroy(User $user)
+    public function destroy(User $user, Request $request)
     {
         auth()->user()->trade_partners()->detach($user);
     	$user->trade_partners()->detach(auth()->user());
@@ -60,6 +65,11 @@ class TradePartnerController extends Controller
             ]);
         $notification->users()->attach($user);
         $notification->save();
+
+        if($request->ajax()){
+            return response()->json(['user' => $user->reference]);
+        }
+
     	return back()->with('info', $user->full_name() . auth()->user()->getStoreName() . ' is no longer your trade partner!');
     }
 }

@@ -100,7 +100,7 @@
 						                                </div>
 						                                <!--Footer-->
 						                                <div class="modal-footer bg-brand-lite justify-content-center">
-						                                    <a class="btn btn-md btn-outline-brand" href="{{ route('decline_friend', $user->reference) }}">Yes</a>
+						                                    <a class="btn btn-md btn-outline-brand decline-friend" href="{{ route('decline_friend', $user->reference) }}" data-reference="{{ $user->reference }}">Yes</a>
 						                                    <button type="button" class="btn btn-md btn-outline-brand" data-dismiss="modal">No</button>
 						                                </div>
 						                            </div>

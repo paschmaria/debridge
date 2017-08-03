@@ -61,83 +61,36 @@
 	                @endif
 	                @if(!auth()->user()->checkRole() && !$user->checkRole())
 		                @if(in_array($user->id, auth()->user()->trade_partners->pluck('id')->toArray()))
-		                    <button class="btn btn-sm btn-brand" data-toggle="modal" data-target="#cancel-modal{{ $user->id }}">
+		                    <button class="btn btn-sm btn-brand" data-toggle="modal" data-target="#cancel-modal{{ $user->id }}" id="trade-req{{ $user->reference }}">
 		                    cancel partnership <i class="fa fa-times c-red"></i>
 		                    </button>
 		                @else
 		                    @if(!in_array($user->id, auth()->user()->sent_trade_requests->pluck('id')->toArray()))
 		                        <a href="{{ route('send_trade_request', $user->reference) }}">
-		                        <button class="btn btn-sm btn-brand">Send Trade Request</button></a>
+		                        <button class="btn btn-sm btn-outline-brand send-trade-request no-js" data-reference="{{ $user->reference }}" id="trade-req{{ $user->reference }}">Send Trade Request</button></a>
 
 		                    @else
-		                        <button class="btn btn-sm btn-outline-brand" data-toggle="modal" data-target="#cancel-request-modal{{ $user->id }}">Cancel Trade Request</button>
+		                        <button class="btn btn-sm btn-brand" data-toggle="modal" data-target="#cancel-request-modal{{ $user->id }}" id="trade-req{{ $user->reference }}">Cancel Trade Request</button>
 		                    @endif
 		                @endif
+		                @include('bridger.partials.modals.cancel_trade_modal')
 		            @endif
 
 		            @if(auth()->user()->checkRole() && $user->checkRole())
 	                    @if(in_array($user->id, auth()->user()->friends->pluck('id')->toArray()))
-	                        <button class="btn btn-sm f-12 waves-light waves-effect btn-outline-brand m-t-40 m-b-50" data-toggle="modal" data-target="#cancel-modal{{ $user->id }}">
+	                        <button class="btn btn-sm btn-brand" data-toggle="modal" data-target="#cancel-modal{{ $user->reference }}" id="friend-req{{ $user->reference }}">
 	                        cancel friendship <i class="fa fa-times c-red"></i>
 	                        </button>
 	                    @else
 	                        @if(!in_array($user->id, auth()->user()->sent_requests->pluck('id')->toArray()))
 	                            <a href="{{ route('send_friend_request', $user->reference) }}">
-	                            <button class="btn btn-sm waves-light waves-effect btn-outline-brand">Send Friend Request</button>
+	                            <button class="btn btn-sm btn-outline-brand send-friend-request" data-reference="{{ $user->reference }}" id="friend-req{{ $user->reference }}">Send Friend Request</button>
 	                        @else
-	                            <button class="btn btn-sm waves-light waves-effect btn-brand" data-toggle="modal" data-target="#cancel-request-modal{{ $user->id }}">Cancel Friend Request</button>
+	                            <button class="btn btn-sm btn-brand" data-toggle="modal" data-target="#cancel-request-modal{{ $user->reference }}" id="friend-req{{ $user->reference }}">Cancel Friend Request</button>
 	                        @endif
-	                    
 	                    @endif
+	                    @include('bridger.partials.modals.cancel_friend_modal')
 					@endif
-
-	                <!-- Modal cancel_partnership -->
-	                    <div class="modal fade m-t-180" id="cancel-modal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	                        <div class="modal-dialog" role="document">
-	                            <!--Content-->
-	                            <div class="modal-content">
-	                                <!--Header-->
-	                                <div class="modal-header bg-brand text-right">
-	                                    <button type="button" class="close c-white" data-dismiss="modal">&times;</button>
-	                                </div>
-	                                <!--Body-->
-	                                <div class="modal-body bg-brand-lite c-dark dis-flex">
-	                                    <p class="text-responsive w-700 m-0">Are you sure you want to cancel this partnership?</p>
-	                                </div>
-	                                <!--Footer-->
-	                                <div class="modal-footer bg-brand-lite justify-content-center">
-	                                    <a class="btn btn-md btn-outline-brand" href="{{ route('cancel_patrnership', $user->reference) }}">Yes</a>
-	                                    <button type="button" class="btn btn-md btn-outline-brand" data-dismiss="modal">No</button>
-	                                </div>
-	                            </div>
-	                            <!--/.Content-->
-	                        </div>
-	                    </div>
-	                <!-- Modal -->
-
-	                <!-- Modal cancel_request -->
-	                    <div class="modal fade m-t-180" id="cancel-request-modal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	                        <div class="modal-dialog" role="document">
-	                            <!--Content-->
-	                            <div class="modal-content">
-	                                <!--Header-->
-	                                <div class="modal-header bg-brand text-right">
-	                                    <button type="button" class="close c-white" data-dismiss="modal">&times;</button>
-	                                </div>
-	                                <!--Body-->
-	                                <div class="modal-body bg-brand-lite c-dark dis-flex">
-	                                    <p class="text-responsive w-700 m-0">Are you sure you want to cancel this trade request?</p>
-	                                </div>
-	                                <!--Footer-->
-	                                <div class="modal-footer bg-brand-lite justify-content-center">
-	                                    <a class="btn btn-md btn-outline-brand" href="{{ route('undo_trade_request', $user->reference) }}">Yes</a>
-	                                    <button type="button" class="btn btn-md btn-outline-brand" data-dismiss="modal">No</button>
-	                                </div>
-	                            </div>
-	                            <!--/.Content-->
-	                        </div>
-	                    </div>
-	                <!-- Modal -->
 	            @endif
             </div>
 		<section>

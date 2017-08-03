@@ -59,7 +59,7 @@
                         @endif
                         {{-- <a href="#" class="list-group-item list-group-item-action">BRIDGE POINT</a> --}}
                         @if(Auth::check() && isset(auth()->user()->bridgeCode))
-                            <a href="" class="list-group-item list-group-item-action" disable>
+                            <a class="list-group-item list-group-item-action">
                                 BRIDGE CODE: ({{ auth()->user()->bridgeCode->code }})
                             </a>
                         @endif

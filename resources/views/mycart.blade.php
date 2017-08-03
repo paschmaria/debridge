@@ -70,7 +70,11 @@
                             <div class="col-md-7">
                                 <div class="m-l-78 m-t-10">
                                 <h6>Price</h6>
-                                <h6 class="c-brand">&#8358;{{ $item->price }}</h6>
+                                @if($item->promo_price)
+                                    <h6 class="c-brand">&#8358;{{ $item->promo_price }}</h6>
+                                @else
+                                    <h6 class="c-brand">&#8358;{{ $item->price }}</h6>
+                                @endif
                                 </div>
                             </div>
                         </div>
@@ -94,7 +98,7 @@
                                     <h6 class="pull-right">Total</h6>
                                 </div>
                                 <div class="col-md-3">
-                                    <h6 class=" c-red pull-right m-r-20">&#8358;{{ $items->pluck('price')->sum() }}</h6>
+                                    <h6 class=" c-red pull-right m-r-20">&#8358;{{ $sum }}</h6>
                                 </div>
                             </div>
                         </div>
@@ -133,7 +137,7 @@
                                 </div>
                             </div>
                         @empty
-                        <p>Retry</p>
+                            <h4 class="c-gray h4-resposive"> No suggesttions!</h4>
                         @endforelse
                         @endif
                     </div>
