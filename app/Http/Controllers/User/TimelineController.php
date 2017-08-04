@@ -25,11 +25,6 @@ class TimelineController extends Controller
         // $this->middleware('auth');
     }
 
-    protected function isValidPageNumber($page)
-    {
-        return $page >= 2 && filter_var($page, FILTER_VALIDATE_INT) !== false;
-    }
-
     public function index($reference, $filter = null, Request $request)
     {
         $user = User::with(['profile_picture', 'role', 'community', 'bridgeCode'])->where('reference', $reference)->first();

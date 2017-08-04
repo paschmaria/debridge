@@ -25,7 +25,7 @@ class FriendRequestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(User $user)
+    public function create(User $user, Request $request)
     {
         // create friend request
         auth()->user()->sent_requests()->attach($user);
@@ -37,6 +37,9 @@ class FriendRequestController extends Controller
         $notification->users()->attach($user);
         $notification->save();
         // return response()->json($email);
+        if($request->ajax()){
+            return response()->json(['user' => $user->reference]);
+        }
         return back()->with('success', 'request sent!');
     }
     
@@ -46,7 +49,7 @@ class FriendRequestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function decline(User $user)
+    public function decline(User $user, Request $request)
     {
         auth()->user()->received_requests()->detach($user);
 
@@ -58,11 +61,14 @@ class FriendRequestController extends Controller
         $notification->save();
 
         // return response()->json($email);
+        if($request->ajax()){
+            return response()->json(['user' => $user->reference]);
+        }
 
         return back()->with('info', 'Request cancelled');
     }
 
-    public function destroy(User $user)
+    public function destroy(User $user, Request $request)
     {
         auth()->user()->sent_requests()->detach($user);
 
@@ -72,6 +78,10 @@ class FriendRequestController extends Controller
             ]);
         $notification->users()->attach($user);
         $notification->save();
+
+        if($request->ajax()){
+            return response()->json(['user' => $user->reference]);
+        }
 
         // return response()->json($email);
 

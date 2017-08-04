@@ -21,21 +21,21 @@
 				</div>
 				@if(auth()->user()->id != $user->id  && auth()->user()->checkRole())
                     @if(in_array($user->id, auth()->user()->friends->pluck('id')->toArray()))
-                        <button class="btn btn-sm f-12 waves-light waves-effect btn-outline-brand m-t-40 m-b-50" data-toggle="modal" data-target="#cancel-modal{{ $user->id }}">
+                        <button class="btn btn-sm f-12 waves-light waves-effect btn-brand m-t-40 m-b-50" data-toggle="modal" data-target="#cancel-modal{{ $user->reference }}" id="friend-req{{ $user->reference }}">
                         cancel friendship <i class="fa fa-times c-red"></i>
                         </button>
                     @else
                         @if(!in_array($user->id, auth()->user()->sent_requests->pluck('id')->toArray()))
-                            <a href="{{ route('send_friend_request', $user->reference) }}">
-                            <button class="btn btn-sm f-12 waves-light waves-effect btn-outline-brand m-t-40 m-b-50 ">Send Friend Request</button>
+                            <a href="{{ route('send_friend_request', $user->reference) }}" class="no-js">
+                            <button class="btn btn-sm f-12 waves-light waves-effect btn-outline-brand m-t-40 m-b-50 send-friend-request" data-reference="{{ $user->reference }}" id="friend-req{{ $user->reference }}">Send Friend Request</button>
                         @else
-                            <button class="btn btn-sm f-12 waves-light waves-effect btn-brand m-t-40 m-b-50" data-toggle="modal" data-target="#cancel-request-modal{{ $user->id }}">Cancel Friend Request</button>
+                            <button class="btn btn-sm f-12 waves-light waves-effect btn-brand m-t-40 m-b-50" data-toggle="modal" data-target="#cancel-request-modal{{ $user->reference }}" id="friend-req{{ $user->reference }}">Cancel Friend Request</button>
                         @endif
                     
                     @endif
 				@endif
 				<!-- Modal cancel_partnership -->
-                    <div class="modal fade m-t-180" id="cancel-modal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade m-t-180" id="cancel-modal{{ $user->reference }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <!--Content-->
                             <div class="modal-content">
@@ -49,7 +49,7 @@
                                 </div>
                                 <!--Footer-->
                                 <div class="modal-footer bg-brand-lite justify-content-center">
-                                    <a class="btn btn-md btn-outline-brand" href="{{ route('unfriend', $user->reference) }}">Yes</a>
+                                    <a class="btn btn-md btn-outline-brand cancel-friendship" href="{{ route('unfriend', $user->reference) }}" data-reference="{{ $user->reference }}">Yes</a>
                                     <button type="button" class="btn btn-md btn-outline-brand" data-dismiss="modal">No</button>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
                 <!-- Modal -->
 
                 <!-- Modal cancel_request -->
-                    <div class="modal fade m-t-180" id="cancel-request-modal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade m-t-180" id="cancel-request-modal{{ $user->reference }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <!--Content-->
                             <div class="modal-content">
@@ -73,7 +73,7 @@
                                 </div>
                                 <!--Footer-->
                                 <div class="modal-footer bg-brand-lite justify-content-center">
-                                    <a class="btn btn-md btn-outline-brand" href="{{ route('cancel_friend_request', $user->reference) }}">Yes</a>
+                                    <a class="btn btn-md btn-outline-brand cancel-friend-request" href="{{ route('cancel_friend_request', $user->reference) }}" data-reference="{{ $user->reference }}">Yes</a>
                                     <button type="button" class="btn btn-md btn-outline-brand" data-dismiss="modal">No</button>
                                 </div>
                             </div>

@@ -1,3 +1,156 @@
+$(document).on('click', '.cancel-partnership', function(e){
+            e.preventDefault();
+            var ref = $(this).data("reference");
+
+            $.ajax({
+                url:'/merchant/trade/partner/end/' + ref,
+                type:'GET',
+                data: {reference: ref},
+                success:function(data){
+                    var btn = $('#trade-req' + data.user);
+                    btn.text('send trade request');
+                    btn.removeClass('btn-brand');
+                    btn.addClass('send-trade-request btn-outline-brand');
+                    btn.removeAttr('data-toggle')
+                    btn.removeAttr('data-target')
+                    btn.data('reference', data.user)
+                    $('#cancel-modal' + data.user).modal('toggle');
+                },
+                error: function (data) {
+                    toastr.options.preventDuplicates = true;
+                    toastr.error("An error occured while cancelling partnership!");
+                }
+            });
+    });
+
+$(document).on('click', '.cancel-trade-request', function(e){
+            e.preventDefault();
+            var ref = $(this).data("reference");
+
+            $.ajax({
+                url:'/merchant/trade/request/cancel/' + ref,
+                type:'GET',
+                data: {reference: ref},
+                success:function(data){
+                    var btn = $('#trade-req' + data.user);
+                    btn.text('send trade request');
+                    btn.removeClass('btn-brand');
+                    btn.addClass('send-trade-request btn-outline-brand');
+                    btn.removeAttr('data-toggle')
+                    btn.removeAttr('data-target')
+                    btn.data('reference', data.user)
+                    $('#cancel-request-modal' + data.user).modal('toggle');
+                },
+                error: function (data) {
+                    toastr.options.preventDuplicates = true;
+                    toastr.error("An error occured while cancelling request!");
+                }
+            });
+    });
+
+$(document).on('click', '.send-trade-request', function(e){
+            e.preventDefault();
+            
+            var ref = $(this).data("reference");
+            var obj = $(this);
+            
+            $.ajax({
+                url:'/merchant/trade/request/send/' + ref,
+                type:'GET',
+                data: {reference: ref},
+                success:function(data){
+                    obj.text('cancel trade request');
+                    obj.removeClass('send-trade-request btn-outline-brand');
+                    obj.addClass('btn-brand');
+                    obj.attr('data-toggle', 'modal')
+                    obj.attr('data-target', '#cancel-request-modal' + data.user)
+                },
+                error: function (data) {
+                    toastr.options.preventDuplicates = true;
+                    toastr.error("An error occured while sending request!");
+                }
+            });
+    });
+
+$(document).on('click', '.cancel-friendship', function(e){
+            e.preventDefault();
+            var ref = $(this).data("reference");
+
+            $.ajax({
+                url:'/friends/unfriend/' + ref,
+                type:'GET',
+                data: {reference: ref},
+                success:function(data){
+                    var btn = $('#friend-req' + data.user);
+                    btn.text('send friend request');
+                    btn.removeClass('btn-brand');
+                    btn.addClass('send-friend-request btn-outline-brand');
+                    btn.removeAttr('data-toggle')
+                    btn.removeAttr('data-target')
+                    btn.data('reference', data.user)
+                    $('#cancel-modal' + data.user).modal('toggle');
+                },
+                error: function (data) {
+                    toastr.options.preventDuplicates = true;
+                    toastr.error("An error occured while cancelling request!");
+                }
+            });
+    });
+
+$(document).on('click', '.cancel-friend-request', function(e){
+            e.preventDefault();
+            var ref = $(this).data("reference");
+
+            $.ajax({
+                url:'/friends/request/cancel/' + ref,
+                type:'GET',
+                data: {reference: ref},
+                success:function(data){
+                    var btn = $('#friend-req' + data.user);
+                    btn.text('send friend request');
+                    btn.removeClass('btn-brand');
+                    btn.addClass('send-friend-request btn-outline-brand');
+                    btn.removeAttr('data-toggle')
+                    btn.removeAttr('data-target')
+                    btn.data('reference', data.user)
+                    $('#cancel-request-modal' + data.user).modal('toggle');
+                },
+                error: function (data) {
+                    toastr.options.preventDuplicates = true;
+                    toastr.error("An error occured while cancelling request!");
+                }
+            });
+    });
+
+$(document).on('click', '.send-friend-request', function(e){
+            e.preventDefault();
+            
+            var ref = $(this).data("reference");
+            var obj = $(this);
+            
+            $.ajax({
+                url:'/friends/request/send/' + ref,
+                type:'GET',
+                data: {reference: ref},
+                success:function(data){
+                    obj.text('cancel friend request');
+                    obj.removeClass('send-friend-request btn-outline-brand');
+                    obj.addClass('btn-brand');
+                    obj.attr('data-toggle', 'modal')
+                    obj.attr('data-target', '#cancel-request-modal' + data.user)
+                },
+                error: function (data) {
+                    toastr.options.preventDuplicates = true;
+                    toastr.error("An error occured while sending request!");
+                }
+            });
+    });
+
+$(document).on('click', '.no-js', function(e){
+    e.preventDefault();
+});
+
+
 $(document).ready(function () {
     $('.delete_post').click(function (e) {
         e.preventDefault();

@@ -11,9 +11,6 @@
 | 104.131.168.249
 */
 
-// Route::get('users/follow/new/merchant', 'Auth\UserController@viewMerchant')->middleware('auth');
-
-
 Route::get('/search/user/{search}', 'Search\UserSearchController@search')->name('search_user'); 
 
 Route::get('/', 'Auth\UserController@index')->name('index'); 
@@ -35,7 +32,7 @@ Route::get('/product/admire/{product}', 'User\ProductAdmireController@create')->
 Route::get('/product/unadmire/{product}', 'User\ProductAdmireController@destroy')->name('product_unadmire');
 Route::get('/product/details/{reference}', 'Merchant\ProductController@show')->name('product_details')->middleware('auth');
 
-Route::get('/user/tradeline/{reference}/{filter?}', 'User\TimelineController@index')->name('timeline');
+Route::get('/user/tradeline/{reference}/{filter?}', 'User\TimelineController@index')->name('timeline')->middleware('auth');
 
 Route::get('/users/follow/friends', 'FollowController@getUser')->name('follow_friends');
 Route::get('/users/follow/merchants', 'FollowController@getMerchant')->name('follow_merchants');
@@ -62,9 +59,9 @@ Route::get('/merchant/trade/request/all', 'Merchant\TradeRequestController@index
 Route::get('/merchant/trade/find/partner', 'Merchant\TradePartnerController@findMore')->name('add_more_partners')->middleware('merchant');
 Route::get('/merchant/trade/partner/{reference}', 'Merchant\TradePartnerController@show')->name('view_partners')->middleware('merchant');
 
-Route::post('/follow/{user}', 'FollowController@store')->name('follow')->middleware('auth');
+Route::post('/follow/{user}', 'FollowController@store')->name('follow');
 
-Route::post('/unfollow/{user}', 'FollowController@destroy')->name('unfollow')->middleware('auth');
+Route::post('/unfollow/{user}', 'FollowController@destroy')->name('unfollow');
 
 Route::get('/register', 'Auth\UserController@register')->name('register');
 

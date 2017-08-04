@@ -15,11 +15,6 @@ use Carbon\Carbon;
 
 class StateMarketController extends Controller
 {
-    protected function isValidPageNumber($page)
-    {
-        return $page >= 2 && filter_var($page, FILTER_VALIDATE_INT) !== false;
-    }
-
     public function getProducts($state)
     {
         $products = Product::with(['pictures' => function ($q){

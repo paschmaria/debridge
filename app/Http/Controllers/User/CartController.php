@@ -39,8 +39,16 @@ class CartController extends Controller
 
     public function viewCart()
     {
+        $sum = 0;
     	$items = auth()->user()->cart_products;
+        $items->each(function($item) use (&$sum) {
+            if ($item->promo_price) {
+                return $sum += (int)$item->promo_price;
+            } else {
+                return $sum += (int)$item->price;
+            }
+        });
         $products = Product::inRandomOrder()->limit(10)->get();
-        return view('mycart', compact('items', 'products'));
+        return view('mycart', compact('items', 'products', 'sum'));
     }
 }

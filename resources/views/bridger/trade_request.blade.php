@@ -90,7 +90,7 @@
 			        				</div>
 			        				<div class="col-md-5 col-sm-5 col-xs-5">
 			        				
-			        				<a href="{{ route('accept_partnership', $user->reference) }}"><button class="btn btn-sm waves-light waves-effect c-brand btn-outline-brand m-t-10 m-b-5" data-email="{{$user->reference}}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}" >Accept <i class="fa fa-check"></i></button></a>
+			        				<a href="{{ route('accept_partnership', $user->reference) }}"><button class="btn btn-sm waves-light waves-effect c-brand btn-outline-brand m-t-10 m-b-5 accept-partnership" data-email="{{$user->reference}}" data-reference="{{ $user->reference }}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}" >Accept <i class="fa fa-check"></i></button></a>
 			        					
 			        				<button class="btn btn-sm waves-light waves-effect c-brand btn-outline-brand m-t-5 m-b-5" data-email="{{$user->reference}}" data-id="{{$user->id}}" data-fname="{{$user->full_name()}}" data-toggle="modal" data-target="#cancel-modal{{ $user->id }}">Reject &nbsp<i class="fa fa-times c-red"></i></button>
 
@@ -109,7 +109,7 @@
 					                                </div>
 					                                <!--Footer-->
 					                                <div class="modal-footer bg-brand-lite justify-content-center">
-					                                    <a class="btn btn-md btn-outline-brand" href="{{ route('reject_partnership', $user->reference) }}">Yes</a>
+					                                    <a class="btn btn-md btn-outline-brand reject-partnership" href="{{ route('reject_partnership', $user->reference) }}" data-reference="{{ $user->reference }}">Yes</a>
 					                                    <button type="button" class="btn btn-md btn-outline-brand" data-dismiss="modal">No</button>
 					                                </div>
 					                            </div>
