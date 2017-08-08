@@ -34,6 +34,6 @@ set :deploy_to, "/var/www/html/debridge"
 
 set :format, :pretty
 
-set: pty, true
+set :pty, true
 
 set :use_sudo, false
