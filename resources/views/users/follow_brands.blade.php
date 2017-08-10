@@ -40,18 +40,21 @@
             <div class="container">
                 <div class="overall-card-wrapper m-t-40" style="padding-top:120px; padding-bottom:5px;">
                     <!-- select -->
-                    <div class="row p-b-10">
+                    <div class="row p-b-10 m-t-20  m-b-20">
                         <div class="col-md-4">
-                             <div class="state_wrapper dis-inline" style="width:173px; color:#526173;">
                                 <div class="option_body">
-                                    <select name="state" class="form-control bd-3 h-40 validate input-alternate border-box input-shadow f-14 p-l-10">
-                                        <option selected disabled>Filter by state...</option>
-                                        @foreach($states as $state)
-                                            <option value="{{ $state->id }}">{{ $state->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    {{-- <div class="row"> --}}
+                                        <form method="GET" action="{{ route('follow_merchants') }}">
+                                            <select name="filter" class="bd-3 h-40 validate input-alternate border-box input-shadow p-l-10">
+                                                <option selected disabled>select by trade community...</option>
+                                                @foreach($communities as $community)
+                                                    <option value="{{ $community->id }}">{{ $community->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            <button type="submit" class="btn btn-brand ">select</button>
+                                        </form>
+                                    {{-- </div> --}}
                                 </div>
-                            </div>
                         </div>
                     </div>
                     <!--/ select -->
@@ -65,7 +68,7 @@
                                         <!-- card image -->
                                         <div class="view overlay hm-white-slight">
                                             @if($user->image_id == null)
-                                                <img class="card width-100p h-200" src="{{ asset('img/icons/profiled.png') }}">
+                                                <img class="card width-100p h-200 p-l-20 p-r-20 p-t-5" src="{{ asset('img/icons/profiler.png') }}">
                                             @else
                                                 <img class="card width-100p h-200" src="{{ route('image', [$user->profile_picture->image_reference, '']) }}">
                                             @endif
@@ -97,7 +100,10 @@
                                     </div>
                                     <!-- first card -->
                                 </div>
-                            @endforeach   
+                            @endforeach
+                        </div>
+
+                        <div class="button_wrapper text-center">{{ $users->links() }}</div>   
                         <!--/ second card row -->
                         <div class="button_wrapper width-300 m-auto m-t-40 m-b-40">
                             {{-- @if (count(auth()->user()->following->where('role_id', 2)) >= 5) --}}

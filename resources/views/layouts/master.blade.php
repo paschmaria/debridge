@@ -103,9 +103,9 @@
                                     </li>
                                     <li class="nav-item animated bounceIn list-inline-item dis-block z-1000">
                                         <div class="dropdown">
-                                            <!-- <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{-- <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ auth()->user()->first_name }}
-                                            </a> -->
+                                            </a> --}}
                                             <a class="dropdown-toggle white-text" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ auth()->user()->first_name }}
                                             </a>
