@@ -7,6 +7,7 @@ use App\User;
 use App\Models\Role;
 use App\Models\Follower;
 use App\Models\State;
+use App\Models\TradeCommunity;
 use App\Models\Notification;
 
 class FollowController extends Controller
@@ -39,24 +40,18 @@ class FollowController extends Controller
         $user_role = Role::where('name', 'User')->pluck('id')->toArray();
           
         if (strtolower($filter) == 'merchant') {
-            $following = $user->following->whereNotIn('role_id', $user_role)
-                              ->sortBy('first_name')->sortBy('last_name');
+            $following = $user->following()->whereNotIn('role_id', $user_role)
+                              ->orderBy('first_name')->orderBy('last_name')->paginate(20);
         } elseif (strtolower($filter) == 'user') {
-            $following = $user->following->whereIn('role_id', $user_role)
-                              ->sortBy('first_name')->sortBy('last_name');
+            $following = $user->following()->whereIn('role_id', $user_role)
+                              ->orderBy('first_name')->orderBy('last_name')->paginate(20);
         } else {
-            $following = $user->following->sortBy('first_name')->sortBy('last_name');
+            $following = $user->following()->orderBy('first_name')->orderBy('last_name')->paginate(20);
             $filter = '';
         }
 
         // manual pigination since $following is not a query builder but a colletion
-        if (!$this->isValidPageNumber($request->page)) {
-            $following =  $following->splice(0,20);
-        } else {
-            $start =  20 + (((int)$request->page - 2) * 20);
-            $end = $start + 20;
-            $following =  $following->sortBy('name')->splice($start, $end);
-
+        if ($this->isValidPageNumber($request->page)) {
             return view('users.partials.following_bridger', 
             compact('user', 'following', 'following_ids', 'filter')
             );
@@ -78,23 +73,17 @@ class FollowController extends Controller
         $user_role = Role::where('name', 'User')->pluck('id')->toArray();
           
         if (strtolower($filter) == 'merchant') {
-            $followers = $user->followers->whereNotIn('role_id', $user_role)
-                              ->sortBy('first_name')->sortBy('last_name');
+            $followers = $user->followers()->whereNotIn('role_id', $user_role)
+                              ->orderBy('first_name')->orderBy('last_name')->paginate(20);
         } elseif (strtolower($filter) == 'user') {
-            $followers = $user->followers->whereIn('role_id', $user_role)
-                              ->sortBy('first_name')->sortBy('last_name');
+            $followers = $user->followers()->whereIn('role_id', $user_role)
+                              ->orderBy('first_name')->orderBy('last_name')->paginate(20);
         } else {
-            $followers = $user->followers->sortBy('first_name')->sortBy('last_name');
+            $followers = $user->followers()->orderBy('first_name')->orderBy('last_name')->paginate(20);
             $filter = '';
         }
 
-        if (!$this->isValidPageNumber($request->page)) {
-            $followers = $followers->sortBy('first_name')->splice(0,20);
-        } else {
-            $start =  20 + (((int)$request->page - 2) * 10);
-            $end = $start + 10;
-            $followers =  $followers->sortBy('name')->splice($start, $end);
-
+        if ($this->isValidPageNumber($request->page)) {
             return view('users.partials.followers_bridger', 
             compact('user', 'followers', 'followers_ids', 'filter')
             );
@@ -159,7 +148,7 @@ class FollowController extends Controller
         $num_of_user = $num_of_merchant = 0;
         $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
         $role_id = Role::where('name', 'User')->pluck('id')->toArray();
-        $users = User::with(['profile_picture', 'community' ])->where('id', '!=', auth()->user()->id)->whereIn('role_id', $role_id)->paginate(16);
+        $users = User::with(['profile_picture', 'community' ])->where('id', '!=', auth()->user()->id)->whereIn('role_id', $role_id)->paginate(12);
         return view('users.follow_friends', compact('users', 'following_ids', 'num_of_merchant', 'num_of_user'));
     }
 
@@ -174,11 +163,18 @@ class FollowController extends Controller
     {
         // dd(auth()->user()->email);
         // get the id of the users that the auth user follows
-        $states = State::all();
+        $communities = TradeCommunity::all();
         $following_ids = Follower::where('follower_user_id', auth()->user()->id)->pluck('user_id')->toArray();
         $role_id = Role::where('name', 'Merchant')->pluck('id')->toArray();
-        $users = User::with(['profile_picture', 'community' ])->where('id', '!=', auth()->user()->id)->whereIn('role_id', $role_id)->paginate(8);
-        return view('users.follow_brands', compact('users', 'following_ids', 'states'));
+        $users = User::with(['profile_picture', 'community' ])->where('id', '!=', auth()->user()->id)->whereIn('role_id', $role_id);
+
+        if($request->filter != null && filter_var($request->filter, FILTER_VALIDATE_INT)){
+            $community = TradeCommunity::where('id', $request->filter)->first();
+            $users = $users->where('community_id', $community->id);
+        }
+
+        $users = $users->paginate(12);
+        return view('users.follow_brands', compact('users', 'following_ids', 'communities'));
     }
 
     public function merchantsFollowComplete()

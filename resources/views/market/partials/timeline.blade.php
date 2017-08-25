@@ -4,7 +4,7 @@
                             <div class="media">
                                 <a class="pull-left" href="{{ route('view_profile', $post->user->reference) }}">
                                     @if ($post->user->profile_picture == null)
-                                        <img src="{{ asset('img/icons/profiled.png') }}" class="card media-object img-responsive h-50 width-50 m-r-10" alt="">
+                                        <img src="{{ asset('img/icons/profile.png') }}" class="card media-object img-responsive h-50 width-50 m-r-10 p-5" alt="">
                                     @else
                                         <img src="{{ route('image', [$post->user->profile_picture->image_reference, '']) }}" class="card media-object img-responsive h-50 width-50 m-r-10" alt="">
                                     @endif
@@ -70,7 +70,7 @@
                                                 <div class="carousel-item @if($counter == 0) active @endif">
                                                     <img src="{{ route('image', [$image->image_reference, '']) }}" class="img-fluid width-100p h-350" alt="First slide" {{ $counter++ }}>
                                                 </div>
-                                            @endforeach()
+                                            @endforeach
                                         </div>
                                         <!--/.Slides-->
 
@@ -119,7 +119,7 @@
                                 <div class="media m-b-15">
                                     <a class="pull-left" href="#">
                                         @if (auth()->user()->profile_picture == null)
-                                            <img src="{{ asset('img/icons/profiled.png') }}" class="card media-object img-responsive h-50 width-50 m-r-10" alt="">
+                                            <img src="{{ asset('img/icons/profile.png') }}" class="card media-object img-responsive h-50 width-50 m-r-10 p-5" alt="">
                                         @else
                                             <img src="{{ route('image', [auth()->user()->profile_picture->image_reference, '']) }}" class="card media-object img-responsive h-50 width-50 m-r-10" alt="">
                                         @endif
@@ -153,7 +153,7 @@
                                     <div class="pull-left p-r-10">
                                         <a href="{{ route('view_profile', $comment->user->reference) }}">
                                             @if ($comment->user->image_id == null)
-                                                <img src="{{ asset('img/icons/profile.png') }}" class="card media-object img-responsive h-50 width-50 m-r-10" alt="">
+                                                <img src="{{ asset('img/icons/profile.png') }}" class="card media-object img-responsive h-50 width-50 m-r-10 p-5" alt="">
 
                                             @else
                                                 <img src="{{ route('image', [$comment->user->profile_picture->image_reference, '']) }}" class="card media-object img-responsive h-50 width-50 m-r-10" alt="">
@@ -180,7 +180,7 @@
                                             <div class="media m-t-5">
                                                 <div class="pull-left p-r-10">
                                                     @if (auth()->user()->profile_picture == null)
-                                                        <img src="{{ asset('img/icons/profiled.png') }}" class="media-object p-r-10" alt="">
+                                                        <img src="{{ asset('img/icons/profile.png') }}" class="media-object p-r-10" alt="">
                                                     @else
                                                         <img src="{{ route('image', [auth()->user()->profile_picture->image_reference, '']) }}" class="card media-object img-responsive h-50 width-50 m-r-10" alt="">
                                                     @endif

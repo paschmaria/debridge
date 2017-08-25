@@ -59,7 +59,7 @@
                                             <div class="view overlay hm-white-slight">
                                                 {{-- <img src="{{ asset('img/pphoto-25.jpeg') }}"> --}}
                                                 @if($user->image_id == null)
-                                                    <img class="card width-100p h-200" src="{{ asset('img/icons/profiled.png') }}">
+                                                    <img class="card width-100p h-200  p-l-20 p-r-20 p-t-5" src="{{ asset('img/icons/profiler.png') }}">
                                                 @else
                                                     <img class="card width-100p h-200 " src="{{ route('image', [$user->profile_picture->image_reference, '']) }}">
                                                 @endif
