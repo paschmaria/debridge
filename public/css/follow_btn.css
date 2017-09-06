@@ -1,0 +1,43 @@
+        .follow_div{
+            width:40px;
+            height:40px;
+            background-color:#f0fff0;
+            position: relative;
+            border-radius: 50%;
+            top:-24px;
+            left:5px;
+        } 
+
+        .follow_btn{
+            width:40px;
+            height:40px;
+            background-color:#eeeeee;
+            position: relative;
+            border-radius: 50%;
+            border: 1px solid white;
+            /*top:-24px;
+            left:5px;*/
+        }
+        .unfollow_btn{
+            width:40px;
+            height:40px;
+            background-color:#008751;
+            position: relative;
+            border-radius: 50%;
+            border: 1px solid white;
+        }
+
+        .unfollow_i{
+            color: white;
+        }
+
+        .follow_count_nav {
+          overflow: hidden;
+          /*background-color: whitesmoke;*/
+           /*background: rgba(54, 25, 25, .5);*/
+          position: fixed;
+          top: 0;
+          width: 100%;
+          z-index: 1000;
+          opacity: .9;
+        }
