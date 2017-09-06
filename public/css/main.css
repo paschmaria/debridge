@@ -920,6 +920,10 @@ body {
   width: 110px !important;
 }
 
+.width-120 {
+  width: 120px !important;
+}
+
 .width-125 {
   width: 125px !important;
 }
@@ -930,6 +934,9 @@ body {
 
 .width-150 {
   width: 150px !important;
+}
+.width-151 {
+  width: 151px !important;
 }
 
 .width-185 {
@@ -2320,4 +2327,252 @@ del span {
 .card-group .card:nth-child(2), .card-group .card:nth-child(3) {
   margin-right: 4px;
   margin-left: 4px;
+}
+
+
+
+@media screen and (max-width: 560px){
+
+  .mm-auto {margin:auto !important;}
+
+  .mm-l-0 {margin-left:0px !important;}
+  .mm_5 {margin:-5px !important;}
+  .mm-l-10 {margin-left:10px !important;}
+  .mm-l-13 {margin-left:13px !important;}
+  .mm-l-14 {margin-left:14px !important;}
+  .mm-l-15 {margin-left:15px !important;}
+  .mm-l-16 {margin-left:16px !important;}
+  .mm-l-18 {margin-left:18px !important;}
+  .mm-l-20 {margin-left:20px !important;}
+  .mm-l-30 {margin-left:30px !important;}
+  .mm-l-32 {margin-left:32px !important;}
+  .mm-l-35 {margin-left:35px !important;}
+  .mm-l-50 {margin-left:50px !important;}
+  .mm-l-60 {margin-left:60px !important;}
+  .mm-l-65 {margin-left:65px !important;}
+  .mm-l-80 {margin-left:80px !important;}
+  .mm-l-110 {margin-left:110px !important;}
+  .mm-l-110 {margin-left:110px !important;}
+
+  .mm-t-0{margin-top:0px !important;}
+  .mm-t-5{margin-top:5px !important;}
+  .mm-t-8{margin-top:8px !important;}
+  .mm-t-10{margin-top:10px !important;}
+  .mm-t-20{margin-top:20px !important;}
+  .mm-t-35{margin-top:35px !important;}
+  .mm-t-86{margin-top:86px !important;}
+
+
+  .mf-8{font-size:8px !important;}
+  .mf-10{font-size:10px !important;}
+  .mf-16{font-size:16px !important;}
+  .mf-17{font-size:17px !important;}
+  .mf-20{font-size:20px !important;}
+  .mf-22{font-size:22px !important;}
+  .mf-25{font-size:25px !important;}
+  .mf-40{font-size:40px !important;}
+
+
+
+
+  .mwidth-0 {width:0 !important;}
+  .mwidth-127 {width:127px !important;}
+  .mwidth-140 {width:140px !important;}
+  .mwidth-217 {width:217px !important;}
+  .mwidth-318 {width:318px !important;}
+  .mwidth-355 {width:355px !important;}
+  .mwidth-230 {width:230px !important;}
+  .mwidth-250 {width:250px !important;}
+  .mwidth-50 {width:50% !important;}
+  .mwidth-56 {width:56% !important;}
+  .mwidth-61 {width:61% !important;}
+  .mwidth-78 {width:78% !important;}
+  .mwidth-81 {width:81% !important;}
+  .mwidth-80p {width:80% !important;}
+  .mwidth-82p {width:82% !important;}
+  .mwidth-94 {width:94% !important;}
+  .mwidth-100 {width:100% !important;}
+
+
+  .mm-b-0 {margin-bottom:0px !important;}
+
+  .mp-b-0 {padding-bottom:0px !important;}
+  .mp-b-5 {padding-bottom:5px !important;}
+  .mp-b-10 {padding-bottom:10px !important;}
+
+  .mh-35 { height:35px !important; }
+  .mh-66 { height:66px !important; }
+  .mh-345 { height:345px !important; }
+  .mh-400 { height:400px !important; }
+  .mh-100p { height:100% !important; }
+  .mh-auto { height:auto !important; }
+
+
+
+  .mp-5 {padding:5px !important;}
+
+  .mp-t-0 {padding-top:0 !important;}
+  .mp-t-5 {padding-top:5px !important;}
+  .mp-t-10 {padding-top:10px !important;}
+  .mp-t-20 {padding-top:20px !important;}
+  .mp-t-30 {padding-top:30px !important;}
+  .mp-t-60 {padding-top:60px !important;}
+
+
+  .per_month{
+    position: absolute !important;
+      margin-left: 167px !important;
+      margin-top: -37px !important;
+  }
+
+.mcard{
+  position: absolute !important;
+    margin-left: 73% !important;
+    margin-top: -79% !important;
+}
+
+.mcard1{
+  position: absolute !important;
+    margin-left: 73% !important;
+    margin-top: -72% !important;
+}
+
+.mcard2{
+  position: absolute !important;
+    margin-left: 73% !important;
+    margin-top: -40% !important;
+}
+
+.mcard3{
+  position: absolute !important;
+    margin-left: 73% !important;
+    margin-top: -43% !important;
+}
+
+.mcard4{
+  position: absolute !important;
+    margin-left: 73% !important;
+    margin-top: -69% !important;
+}
+.mcard5{
+  position: absolute !important;
+    margin-left: 73% !important;
+    margin-top: -58% !important;
+}
+
+.mcard6{
+  position: absolute !important;
+    margin-left: 73% !important;
+    margin-top: -64% !important;
+}
+
+
+.mapartments{
+  margin: 0 auto;
+  margin-top: 60%; 
+}
+
+.mapartment{
+  margin: 0 auto;
+  margin-top: 10%; 
+}
+
+.mbd-brandaprtment{ border:none !important;box-shadow:none;}
+
+
+  .ip6{
+  position: absolute;
+    left: 77px;
+    bottom: -9px;
+}
+
+
+
+
+/****  Top  ****/
+.mt-_14 { top:-14px; }
+
+
+  .mp-l-0{padding-left:0px !important;}
+  .mp-l-10{padding-left:10px !important;}
+  .mp-l-15{padding-left:15px !important;}
+  .mp-l-27{padding-left:27px !important;}
+  .mp-l-29{padding-left:29px !important;}
+  .mp-l-30{padding-left:30px !important;}
+  mp-l-33{padding-left:33px !important;}
+  .mp-l-40{padding-left:40px !important;}
+  .mp-l-45{padding-left:45px !important;}
+  .mp-l-50{padding-left:50px !important;}
+  .mp-l-60{padding-left:60px !important;}
+  .mp-l-90{padding-left:90px !important;}
+   .mp-l-95{padding-left:95px !important;}
+  .mp-l-117{padding-left:117px !important;}
+  .mp-l-30p{padding-left:30% !important;}
+  .mp-l-32p{padding-left:32% !important;}
+  .mp-l-34p{padding-left:34% !important;}
+  .mp-l-35p{padding-left:35% !important;}
+  .mp-l-40p{padding-left:40% !important;}
+  .mp-l-80p{padding-left:80% !important;}
+
+  .mm-r-0 {margin-right:0px !important;}
+
+  .mp-r-0{padding-right:0px !important;}
+  .mp-r-15{padding-right:15px !important;}
+
+
+  .mf-11{font-size:11px !important;}
+  .mf-12{font-size:12px !important;}
+  .mf-14{font-size:14px !important;}
+  .mf-18{font-size:18px !important;}
+
+  .mr-_9 {
+    right: -9rem !important;
+  }
+
+  .mb-_18 {
+  bottom: -18px !important;
+  }
+
+  .mp-20 {padding:20px !important;}
+
+  footer.nb-footer{
+    height: 100%;
+  }
+
+  .navbar-nav {
+    /*color: white;*/
+    background: black;
+  }
+
+  
+  a:focus, a:hover {
+      text-decoration:none !important;
+  }
+
+  .showSweetAlert{
+    width: 288px !important;
+    margin-top: -200px !important;
+  }
+
+
+  .mcalendar_list{
+  bottom: 60% !important;
+    right: 5% !important;
+    margin-right: -3px !important;
+    margin-bottom: 8px !important;
+}
+
+
+
+
+
+  .calendar_index{
+    bottom: 51% !important;
+    right: 6% !important;
+    margin-right: -4px;
+    margin-bottom: -15px;
+}
+
+.tc{
+  text-align: center !important;
 }

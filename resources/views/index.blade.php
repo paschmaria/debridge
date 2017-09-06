@@ -4,7 +4,7 @@
             <nav class="navbar navbar-toggleable-sm navbar-light transparent p-t-15 p-b-15 no-shadow border-top border-bottom" role="navigation">
                 <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
-                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler navbar-toggler-right mr-_9 mb-_18" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
             
@@ -181,15 +181,40 @@
                     <!--/.Card-->
                 </div>
                 <div class="col col-sm-6 col-md-6">
-                    <nav class="navbar user-type-navbar no-shadow">
-                        <ul class="nav user-type-nav text-center">
-                            <li class="nav-item"><a class="nav-link hover-underline active" href="#">MANUFACTURERS</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="#">WHOLESALERS</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="#">RETAILERS</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="#">FARMERS</a></li>
-                            <li class="nav-item"><a class="nav-link hover-underline" href="#">PROFESSIONALS</a></li>
-                        </ul>
-                    </nav>
+                    <div class="row">
+                        <div class="col-md-12">
+                        <!-- <nav class="navbar user-type-navbar no-shadow"> -->
+                            <!-- <ul class="nav user-type-nav text-center"> -->
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-4 ">
+                                            <p class="nav-item"><a class="nav-link hover-underline active  mp-l-30p" href="#">MANUFACTURERS</a></p>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 ">
+                                            <p class="nav-item "><a class="nav-link hover-underline mp-l-32p" href="#">WHOLESALERS</a></p>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 ">
+                                            <p class="nav-item"><a class="nav-link hover-underline mp-l-35p" href="#">RETAILERS</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 ">
+                                            <p class="nav-item"><a class="nav-link hover-underline mp-l-35p" href="#">FARMERS</a></p>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 ">
+                                            <p class="nav-item"><a class="nav-link hover-underline mp-l-30p" href="#">PROFESSIONALS</a></p>
+                                        </div>
+                                    </div>
+                                </div>                            
+                            </div>
+                                
+                            <!-- </ul> -->
+                        <!-- </nav> -->
+                        </div>
+                    </div>
                     <div class="card m-t-20 p-18">
                          
                         <div class="card-header m-b-16 bd-dark-light transparent">
@@ -206,31 +231,43 @@
                         <div class="m-t-10 m-b-50">
                         @if(auth()->check())
                             <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10" role="group" aria-label="Ad Action Buttons">
-                                <a href="{{ route('addToCart', $product->id) }}">
-                                <button type="button" class="btn bg-white m-r-3 f-14" data-toggle="modal">
-                                    <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
-                                </button></a>
-                                @if(!in_array($product->id, $products_admire))
-                                <a href="{{ route('product_admire', $product->reference) }}">
-                                <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14" data-toggle="modal">
-                                    <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
-                                </button></a>
-                                @else
-                                <a href="{{ route('product_unadmire', $product->reference) }}">
-                                <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14" data-toggle="modal">
-                                    <span class="f-left">Unadmire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
-                                </button></a>
-                                @endif
-                                <a href="#">
-                                <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 " data-toggle="modal">
-                                    <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-envelope"></i></span>
-                                </button></a>
-                                <a href="">
-                                <form action="{{ route('product_hype', $product->id) }}" method="post">
-                                {{ csrf_field() }}
-                                <button type="submit" class="btn bg-white m-l-3 f-14" data-toggle="modal">
-                                    <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
-                                </button></a>
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-3">
+                                        <a href="{{ route('addToCart', $product->id) }}">
+                                        <button type="button" class="btn bg-white m-r-3 f-14" data-toggle="modal">
+                                            <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
+                                        </button></a>
+                                    </div>
+                                        @if(!in_array($product->id, $products_admire))
+                                    <div class="col-md-3 col-sm-3">
+                                        <a href="{{ route('product_admire', $product->reference) }}">
+                                        <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14" data-toggle="modal">
+                                            <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
+                                        </button></a>
+                                    </div>
+                                        @else
+                                    <div class="col-md-3 col-sm-3">
+                                        <a href="{{ route('product_unadmire', $product->reference) }}">
+                                        <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14" data-toggle="modal">
+                                            <span class="f-left">Unadmire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
+                                        </button></a>
+                                    </div>
+                                        @endif
+                                    <div class="col-md-3 col-sm-3">
+                                        <a href="#">
+                                        <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 " data-toggle="modal">
+                                            <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-envelope"></i></span>
+                                        </button></a>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3">
+                                        <a href="">
+                                        <form action="{{ route('product_hype', $product->id) }}" method="post">
+                                        {{ csrf_field() }}
+                                        <button type="submit" class="btn bg-white m-l-3 f-14" data-toggle="modal">
+                                            <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
+                                        </button></a>
+                                    <div>
+                                <div>
                         @else
                             <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10" role="group" aria-label="Ad Action Buttons">
                                 <button type="button" class="btn bg-white m-r-3 f-14" data-toggle="modal" data-target="#basicExample">
