@@ -444,6 +444,9 @@ body {
 .p-l-10 {
   padding-left: 10px !important;
 }
+.p-l-15 {
+  padding-left: 15px !important;
+}
 
 .p-l-20 {
   padding-left: 20px !important;
@@ -939,6 +942,10 @@ body {
   width: 151px !important;
 }
 
+.width-172 {
+  width: 172px !important;
+}
+
 .width-185 {
   width: 185px !important;
 }
@@ -1214,6 +1221,9 @@ a, a:focus, a:hover, a:active {
   font-size: 24px !important;
 }
 
+.f-30 {
+  font-size: 30px !important;
+}
 .f-32 {
   font-size: 32px !important;
 }
@@ -2383,6 +2393,7 @@ del span {
   .mwidth-355 {width:355px !important;}
   .mwidth-230 {width:230px !important;}
   .mwidth-250 {width:250px !important;}
+  .mwidth-290 {width:290px !important;}
   .mwidth-50 {width:50% !important;}
   .mwidth-56 {width:56% !important;}
   .mwidth-61 {width:61% !important;}
@@ -2499,7 +2510,7 @@ del span {
   .mp-l-27{padding-left:27px !important;}
   .mp-l-29{padding-left:29px !important;}
   .mp-l-30{padding-left:30px !important;}
-  mp-l-33{padding-left:33px !important;}
+  .mp-l-33{padding-left:33px !important;}
   .mp-l-40{padding-left:40px !important;}
   .mp-l-45{padding-left:45px !important;}
   .mp-l-50{padding-left:50px !important;}
@@ -2528,6 +2539,12 @@ del span {
   .mr-_9 {
     right: -9rem !important;
   }
+  .mr-47{right: 47px !important;}
+
+  .mbg-white {
+  background-color: #FFFFFF !important;
+  color: #526173 !important;
+}
 
   .mb-_18 {
   bottom: -18px !important;

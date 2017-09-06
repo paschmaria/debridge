@@ -20,8 +20,8 @@
                                 <img src="{{ asset('img/background/carousels/rectangle-43.png') }}" class="img-fluid" alt="Hiring Ad">
                             </div>
                             <div class="carousel-caption">
-                                <p class="m-b-0">HIRING</p>
-                                <p class="m-l-78">ARENA</p>
+                                <p class="m-b-0 f-32 mf-11">HIRING</p>
+                                <p class="m-l-78 f-32 mf-11">ARENA</p>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -29,8 +29,8 @@
                                 <img src="{{ asset('img/background/carousels/rectangle-43.png') }}" class="img-fluid" alt="Hiring Ad">
                             </div>
                             <div class="carousel-caption">
-                                <p class="m-b-0">HIRING</p>
-                                <p class="m-l-78">ARENA</p>
+                                <p class="m-b-0 f-32 mf-11">HIRING</p>
+                                <p class="m-l-78 f-32 mf-11">ARENA</p>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -38,8 +38,8 @@
                                 <img src="{{ asset('img/background/carousels/rectangle-43.png') }}" class="img-fluid" alt="Hiring Ad">
                             </div>
                             <div class="carousel-caption">
-                                <p class="m-b-0">HIRING</p>
-                                <p class="m-l-78">ARENA</p>
+                                <p class="m-b-0 f-32 mf-11">HIRING</p>
+                                <p class="m-l-78 f-32 mf-11">ARENA</p>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -47,8 +47,8 @@
                                 <img src="{{ asset('img/background/carousels/rectangle-43.png') }}" class="img-fluid" alt="Hiring Ad">
                             </div>
                             <div class="carousel-caption">
-                                <p class="m-b-0">HIRING</p>
-                                <p class="m-l-78">ARENA</p>
+                                <p class="m-b-0 f-32 mf-11">HIRING</p>
+                                <p class="m-l-78 f-32 mf-11">ARENA</p>
                             </div>
                         </div>
                     </div>
@@ -93,12 +93,12 @@
 
                         <div class="tabs-wrapper m-t-40">
                             <div class="card">
-                                 <ul class="nav md-pills pills-default m-auto m-t-20 bd-all" role="tablist">
+                                 <ul class="nav md-pills pills-default m-auto m-t-20 bd-all mwidth-290" role="tablist">
                                     <li class="nav-item bd-all width-300 text-center">
-                                        <a href="#tab1" class="nav-link active f-20 p-t-10 c-gray" data-toggle="tab" role="tab">STORES DISPLAY</a>
+                                        <a href="#tab1" class="nav-link active f-20 p-t-10 c-gray mf-11" data-toggle="tab" role="tab">STORES DISPLAY</a>
                                     </li>
                                     <li class="nav-item bd-all width-300">
-                                        <a href="#tab2" class="nav-link f-20 p-t-10 c-gray" data-toggle="tab" role="tab">
+                                        <a href="#tab2" class="nav-link f-20 p-t-10 c-gray mf-11" data-toggle="tab" role="tab">
                                             INDIVIDUAL DISPLAY</a>
                                     </li>
                                 </ul>
@@ -149,18 +149,28 @@
                                         <!-- first card group end -->
                                         <div class="m-t-10 m-b-50">
                                             <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10 m-l-20" role="group" aria-label="Ad Action Buttons">
-                                                <button type="button" class="btn bg-white m-r-3 f-14">
-                                                    <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
-                                                </button>
-                                                <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
-                                                    <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
-                                                </button>
-                                                <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
-                                                    <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
-                                                </button>
-                                                <button type="button" class="btn bg-white m-l-3 f-14">
-                                                    <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
-                                                </button>
+                                                <div class="row">
+                                                    <div class="col-md-3 col-sm-3">
+                                                        <button type="button" class="btn bg-white m-r-3 f-14 mf-11 width-150 mwidth-100 mm-t-5 p-l-15">
+                                                            <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-3">
+                                                        <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 mf-11 width-150 mwidth-100 mm-t-5 p-l-15">
+                                                            <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-3">
+                                                        <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 mf-11 width-150 mwidth-100 mm-t-5 p-l-15">
+                                                            <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-3">
+                                                        <button type="button" class="btn bg-white m-l-3 f-14 mf-11 width-120 mwidth-100 mm-t-5 p-l-15">
+                                                            <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <!-- second card group starts here -->
@@ -203,18 +213,28 @@
                                         <!-- social buttons -->
                                         <div class="m-t-10 m-b-50">
                                             <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10 m-l-20" role="group" aria-label="Ad Action Buttons">
-                                                <button type="button" class="btn bg-white m-r-3 f-14">
-                                                    <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
-                                                </button>
-                                                <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
-                                                    <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
-                                                </button>
-                                                <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
-                                                    <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
-                                                </button>
-                                                <button type="button" class="btn bg-white m-l-3 f-14">
-                                                    <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
-                                                </button>
+                                                <div class="row">
+                                                    <div class="col-md-3 col-sm-3">
+                                                        <button type="button" class="btn bg-white m-r-3 f-14 mf-11 width-150 mwidth-100 mm-t-5 p-l-15">
+                                                            <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-3">
+                                                        <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 mf-11 width-150 mwidth-100 mm-t-5 p-l-15">
+                                                            <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-3">
+                                                        <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 mf-11 width-150 mwidth-100 mm-t-5 p-l-15">
+                                                            <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-3">
+                                                        <button type="button" class="btn bg-white m-l-3 f-14 mf-11 width-120 mwidth-100 mm-t-5 p-l-15">
+                                                            <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -262,18 +282,28 @@
 
                                         <div class="m-t-10 m-b-50">
                                             <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10 m-l-20" role="group" aria-label="Ad Action Buttons">
-                                                <button type="button" class="btn bg-white m-r-3 f-14">
-                                                    <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
-                                                </button>
-                                                <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
-                                                    <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
-                                                </button>
-                                                <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
-                                                    <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
-                                                </button>
-                                                <button type="button" class="btn bg-white m-l-3 f-14">
-                                                    <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
-                                                </button>
+                                                <div class="row">
+                                                    <div class="col-md-3 col-sm-3">
+                                                        <button type="button" class="btn bg-white m-r-3 f-14 mf-11 width-150 mwidth-100 mm-t-5 p-l-15">
+                                                            <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-3">
+                                                        <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 mf-11 width-150 mwidth-100 mm-t-5 p-l-15">
+                                                            <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-3">
+                                                        <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 mf-11 width-150 mwidth-100 mm-t-5 p-l-15">
+                                                            <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-3">
+                                                        <button type="button" class="btn bg-white m-l-3 f-14 mf-11 width-120 mwidth-100 mm-t-5 p-l-15">
+                                                            <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <!-- / first tab for individual stores-->
@@ -316,18 +346,28 @@
 
                                         <div class="m-t-10 m-b-50">
                                             <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10 m-l-20" role="group" aria-label="Ad Action Buttons">
-                                                <button type="button" class="btn bg-white m-r-3 f-14">
-                                                    <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
-                                                </button>
-                                                <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
-                                                    <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
-                                                </button>
-                                                <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14">
-                                                    <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
-                                                </button>
-                                                <button type="button" class="btn bg-white m-l-3 f-14">
-                                                    <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
-                                                </button>
+                                                <div class="row">
+                                                    <div class="col-md-3 col-sm-3">
+                                                        <button type="button" class="btn bg-white m-r-3 f-14 mf-11 width-150 mwidth-100 mm-t-5 p-l-15">
+                                                            <span class="f-left">Add Item&nbsp;</span><span class="f-right"><i class="fa fa-shopping-cart"></i></span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-3">
+                                                        <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 mf-11 width-150 mwidth-100 mm-t-5 p-l-15">
+                                                            <span class="f-left">Admire&nbsp;</span><span class="f-right"><i class="fa fa-heart"></i></span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-3">
+                                                        <button type="button" class="btn bg-white m-l-3 f-14 m-r-3 f-14 mf-11 width-150 mwidth-100 mm-t-5 p-l-15">
+                                                            <span class="f-left">Comment&nbsp;</span><span class="f-right"><i class="fa fa-comment"></i></span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-3">
+                                                        <button type="button" class="btn bg-white m-l-3 f-14 mf-11 width-120 mwidth-100 mm-t-5 p-l-15">
+                                                            <span class="f-left">Hype&nbsp;</span><span class="f-right"><i class="fa fa-share-alt"></i></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

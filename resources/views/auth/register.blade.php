@@ -75,7 +75,7 @@
         </div>
         <div class="card overbox scale-overbox">
 
-            <div class="material-button alt-2 btn-shadow hoverable waves-effect waves-light" data-toggle="tooltip" title="Register"><span class="fa fa-plus"></span></div>
+            <div class="material-button alt-2 btn-shadow hoverable waves-effect waves-light mr-47" data-toggle="tooltip" title="Register"><span class="fa fa-plus"></span></div>
             <div class="card-block">
 
                <h3 class="title text-center c-white">REGISTER</h3>
