@@ -34,7 +34,7 @@
 
     <body data-page="index">
         <!-- header begins here-->
-        <header>
+        <header class="msticky">
             <div class="container-fluid bg-brand z-2500">
                 <div class="row p-t-35 p-b-10">
                     <div class="col col-sm-3 col-md-3">

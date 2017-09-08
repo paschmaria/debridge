@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('header')
     <!-- navigations/links right here -->
-        <nav class="navbar navbar-toggleable-sm navbar-light transparent p-t-15 p-b-15 mp-t-15 mp-b-10 no-shadow border-top border-bottom mbg-ligter" role="navigation">
+        <nav class="navbar navbar-toggleable-sm navbar-light transparent p-t-15 p-b-15 mp-t-15 mp-b-10 no-shadow border-top border-bottom " role="navigation">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <button class="navbar-toggler navbar-toggler-right mr-_9 mt-_20 mbg-white" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">

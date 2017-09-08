@@ -1526,7 +1526,7 @@ header.sticky {
 .sticky nav {
   padding-top: 5px ;
   padding-bottom: 5px ;
-  background-color: #f0fff0;
+  background-color: #f0fff0 !important;
 }
 
 .sticky ~ .main {
@@ -2400,6 +2400,10 @@ del span {
 
 
   .mwidth-0 {width:0 !important;}
+  .mwidth-67 {width:67px !important;}
+  .mwidth-75 {width:75px !important;}
+  .mwidth-90 {width:90px !important;}
+  .mwidth-99 {width:99px !important;}
   .mwidth-127 {width:127px !important;}
   .mwidth-140 {width:140px !important;}
   .mwidth-150 {width:150px !important;}
@@ -2410,14 +2414,14 @@ del span {
   .mwidth-230 {width:230px !important;}
   .mwidth-250 {width:250px !important;}
   .mwidth-290 {width:290px !important;}
-  .mwidth-50 {width:50% !important;}
-  .mwidth-56 {width:56% !important;}
-  .mwidth-61 {width:61% !important;}
-  .mwidth-78 {width:78% !important;}
-  .mwidth-81 {width:81% !important;}
+  .mwidth-50p {width:50% !important;}
+  .mwidth-56p {width:56% !important;}
+  .mwidth-61p {width:61% !important;}
+  .mwidth-78p {width:78% !important;}
+  .mwidth-81p {width:81% !important;}
   .mwidth-80p {width:80% !important;}
   .mwidth-82p {width:82% !important;}
-  .mwidth-94 {width:94% !important;}
+  .mwidth-94p {width:94% !important;}
   .mwidth-100 {width:100% !important;}
 
 
@@ -2566,6 +2570,9 @@ del span {
   color: #526173 !important;
 }
 .mbg-ligter {
+  background-color: rgba(51,51,51, 0.50) !important;
+}
+.msticky nav {
   background-color: rgba(51,51,51, 0.50) !important;
 }
 .mc-white {
