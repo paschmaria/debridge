@@ -1524,8 +1524,8 @@ header.sticky {
 }
 
 .sticky nav {
-  padding-top: 5px !important;
-  padding-bottom: 5px !important;
+  padding-top: 5px ;
+  padding-bottom: 5px ;
   background-color: #f0fff0 !important;
 }
 
@@ -2345,8 +2345,10 @@ del span {
 
   .mm-auto {margin:auto !important;}
 
-  .mm-l-0 {margin-left:0px !important;}
+  
   .mm_5 {margin:-5px !important;}
+  .mm-l-0 {margin-left:0px !important;}
+  .mm-l-2 {margin-left:2px !important;}
   .mm-l-10 {margin-left:10px !important;}
   .mm-l-13 {margin-left:13px !important;}
   .mm-l-14 {margin-left:14px !important;}
@@ -2374,13 +2376,25 @@ del span {
 
 
   .mf-8{font-size:8px !important;}
+  .mf-9{font-size:9px !important;}
   .mf-10{font-size:10px !important;}
+  .mf-11{font-size:11px !important;}
+  .mf-12{font-size:12px !important;}
+  .mf-14{font-size:14px !important;}
   .mf-16{font-size:16px !important;}
   .mf-17{font-size:17px !important;}
+  .mf-18{font-size:18px !important;}
   .mf-20{font-size:20px !important;}
   .mf-22{font-size:22px !important;}
   .mf-25{font-size:25px !important;}
   .mf-40{font-size:40px !important;}
+  .mf-6rem{font-size:0.6rem !important;}
+  .mf-9rem{font-size:0.9rem !important;}
+  
+  
+  
+  
+
 
 
 
@@ -2388,7 +2402,9 @@ del span {
   .mwidth-0 {width:0 !important;}
   .mwidth-127 {width:127px !important;}
   .mwidth-140 {width:140px !important;}
+  .mwidth-150 {width:150px !important;}
   .mwidth-217 {width:217px !important;}
+  .mwidth-250 {width:250px !important;}
   .mwidth-318 {width:318px !important;}
   .mwidth-355 {width:355px !important;}
   .mwidth-230 {width:230px !important;}
@@ -2425,9 +2441,12 @@ del span {
   .mp-t-0 {padding-top:0 !important;}
   .mp-t-5 {padding-top:5px !important;}
   .mp-t-10 {padding-top:10px !important;}
+  .mp-t-15 {padding-top:15px !important;}
   .mp-t-20 {padding-top:20px !important;}
   .mp-t-30 {padding-top:30px !important;}
   .mp-t-60 {padding-top:60px !important;}
+
+  .mw-s{white-space: nowrap !important;}
 
 
   .per_month{
@@ -2502,9 +2521,12 @@ del span {
 
 /****  Top  ****/
 .mt-_14 { top:-14px; }
+.mt-_20 { top:-20px; }
 
 
   .mp-l-0{padding-left:0px !important;}
+  .mp-l-5{padding-left:5px !important;}
+  .mp-l-9{padding-left:9px !important;}
   .mp-l-10{padding-left:10px !important;}
   .mp-l-15{padding-left:15px !important;}
   .mp-l-27{padding-left:27px !important;}
@@ -2516,7 +2538,7 @@ del span {
   .mp-l-50{padding-left:50px !important;}
   .mp-l-60{padding-left:60px !important;}
   .mp-l-90{padding-left:90px !important;}
-   .mp-l-95{padding-left:95px !important;}
+  .mp-l-95{padding-left:95px !important;}
   .mp-l-117{padding-left:117px !important;}
   .mp-l-30p{padding-left:30% !important;}
   .mp-l-32p{padding-left:32% !important;}
@@ -2528,14 +2550,12 @@ del span {
   .mm-r-0 {margin-right:0px !important;}
 
   .mp-r-0{padding-right:0px !important;}
+  .mp-r-5{padding-right:5px !important;}
+  .mp-r-9{padding-right:9px !important;}
   .mp-r-15{padding-right:15px !important;}
 
 
-  .mf-11{font-size:11px !important;}
-  .mf-12{font-size:12px !important;}
-  .mf-14{font-size:14px !important;}
-  .mf-18{font-size:18px !important;}
-
+  
   .mr-_9 {
     right: -9rem !important;
   }

@@ -135,15 +135,15 @@
                             @else
                                 <div class="m-b-20">
                                     <div class="btn-group bd-dark-light p-5 p-l-10 p-r-10 col-sm-12" role="group" aria-label="Ad Action Buttons">
-                                        <button type="button" class="btn bg-white m-l-5 f-14 m-r-3 f-14 width-200" data-toggle="modal" data-target="#basicExample" >
-                                            <span class="">Admire<small class="c-gray f-10">({{ $post->admires->count() }})</small>&nbsp;</span><span class=""><i class="fa fa-heart-o"></i></span>
+                                        <button type="button" class="btn bg-white m-l-5 f-14 m-r-3 f-14 mf-9 mm-l-2 mm-r-0 mp-l-9 mp-r-9 width-200 mw-s" data-toggle="modal" data-target="#basicExample" >
+                                            <span class="">Admire<small class="c-gray f-10">({{ $post->admires->count() }})</small>&nbsp;</span><span class=""><i class="fa fa-heart-o mf-9rem"></i></span>
                                         </button>
                                         
-                                        <button type="button" class="btn bg-white m-l-10 f-14 m-r-10 f-14 width-200" data-toggle="modal" data-target="#basicExample">
-                                            <span class="">Comments<small class="c-gray f-10">({{ $post->comments->count() }})</small>&nbsp;</span><span class=""><i class="fa fa-comment"></i></span>
+                                        <button type="button" class="btn bg-white m-l-10 f-14 m-r-10 f-14 mf-9 mm-l-2 mm-r-0 mp-l-5 mp-r-5 width-200 mw-s mwidth-250" data-toggle="modal" data-target="#basicExample">
+                                            <span class="">Comments<small class="c-gray f-10">({{ $post->comments->count() }})</small>&nbsp;</span><span class=""><i class="fa fa-comment mf-9rem"></i></span>
                                         </button>
-                                        <button type="button" class="btn bg-white m-l-5 f-14 width-150" data-toggle="modal" data-target="#basicExample">
-                                            <span class="">Hype&nbsp;</span><span class=""><i class="fa fa-share-alt"></i></span>
+                                        <button type="button" class="btn bg-white m-l-5 f-14 mf-9 mm-l-2 mm-r-0 mp-l-9 mp-r-9 width-150 mw-s" data-toggle="modal" data-target="#basicExample">
+                                            <span class="">Hype&nbsp;</span><span class=""><i class="fa fa-share-alt mf-9rem"></i></span>
                                         </button>
                                     </div>
                                 </div>
