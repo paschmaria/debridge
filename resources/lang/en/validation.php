@@ -14,6 +14,7 @@ return [
     */
 
     'accepted'             => 'The :attribute must be accepted.',
+    'alpha_spaces'         => 'The :attribute may only contain letters and spaces.',
     'active_url'           => 'The :attribute is not a valid URL.',
     'after'                => 'The :attribute must be a date after :date.',
     'after_or_equal'       => 'The :attribute must be a date after or equal to :date.',

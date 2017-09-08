@@ -49,7 +49,7 @@ class FollowController extends Controller
             $filter = '';
         }
 
-        // manual pigination since $following is not a query builder but a colletion
+        // manual pigination since $following is not a query builder but a collection
         if (!$this->isValidPageNumber($request->page)) {
             $following =  $following->splice(0,20);
         } else {
