@@ -17,20 +17,26 @@
                         @else
                             <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase" href="{{ route('view_partners', auth()->user()->reference) }}">Trade Partners</a></li>
                         @endif
-                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" href="{{ route('following', auth()->user()->reference) }}">Following</a></li>
-                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" href="{{ route('followers', auth()->user()->reference) }}">Followers</a></li>
+                        <!--<li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" href="{{ route('following', auth()->user()->reference) }}">Following</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" href="{{ route('followers', auth()->user()->reference) }}">Followers</a></li> -->
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" href="{{ route('timeline', auth()->user()->reference) }}">Tradeline</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" href="{{ route('community', auth()->user()->reference) }}">Trade Community</a></li>
                     @else
-                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" data-toggle="modal" data-target="#basicExample">Following</a></li>
-                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" data-toggle="modal" data-target="#basicExample">Followers</a></li>
+                        <!--<li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" href="{{ route('following', auth()->user()->reference) }}">Following</a></li>
+                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" href="{{ route('followers', auth()->user()->reference) }}">Followers</a></li> -->
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" data-toggle="modal" data-target="#basicExample">Tradeline</a></li>
-                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" data-toggle="modal" data-target="#basicExample">Trade Community</a></li>
+                        <!--<li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" data-toggle="modal" data-target="#basicExample">Trade Community</a></li> -->
                     @endif
-                    <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" href="{{ route('bridge_shops') }}">Bridger Shops</a></li>
+                    <!--<li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" href="{{ route('bridge_shops') }}">Bridger Shops</a></li> -->
                     <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" href="{{ route('araha_market') }}">Araha Market</a></li>
                     <li class="nav-item"><a class="nav-link hover-underline text-uppercase mc-white" href="{{ route('exhibition') }}">Exhibition Stand</a></li>
                     <li class="nav-item"><a class="nav-link hover-underline text-uppercase mc-white" href="{{ route('hiring') }}">Hiring</a></li>
+                    <li class="nav-item"><a class="nav-link hover-underline text-uppercase mc-white" href="#{{ route('hiring') }}">Local Farmer</a></li>
+                    <li class="nav-item"><a class="nav-link hover-underline text-uppercase mc-white" href="#{{ route('hiring') }}">Manufacturer</a></li>
+                    
+                    <li class="nav-item"><a class="nav-link hover-underline text-uppercase mc-white" href="#{{ route('hiring') }}">Wholesaler</a></li>
+                    <li class="nav-item"><a class="nav-link hover-underline text-uppercase mc-white" href="#{{ route('hiring') }}">Professionals</a></li>
+                    <li class="nav-item"><a class="nav-link hover-underline text-uppercase mc-white" href="#{{ route('hiring') }}">Retailers</a></li>
                 </ul>
                 </div><!-- /.navbar-collapse -->
             </div>
