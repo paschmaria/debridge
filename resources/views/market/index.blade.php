@@ -24,7 +24,7 @@
                     <!-- Remove @ else here  essentially debugging for the right time.-->
                         <!--<li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" href="{{ route('following', auth()->user()->reference) }}">Following</a></li>
                         <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" href="{{ route('followers', auth()->user()->reference) }}">Followers</a></li> -->
-                        <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" data-toggle="modal" data-target="#basicExample">Tradeline</a></li>
+                       <!-- <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" data-toggle="modal" data-target="#basicExample">Tradeline</a></li> -->
                         <!--<li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" data-toggle="modal" data-target="#basicExample">Trade Community</a></li> -->
                     @endif
                     <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" data-toggle="modal" data-target="#basicExample">Tradeline</a></li>
