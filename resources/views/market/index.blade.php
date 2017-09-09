@@ -31,12 +31,12 @@
                     <li class="nav-item m-r-10"><a class="nav-link hover-underline text-uppercase mc-white" href="{{ route('araha_market') }}">Araha Market</a></li>
                     <li class="nav-item"><a class="nav-link hover-underline text-uppercase mc-white" href="{{ route('exhibition') }}">Exhibition Stand</a></li>
                     <li class="nav-item"><a class="nav-link hover-underline text-uppercase mc-white" href="{{ route('hiring') }}">Hiring</a></li>
-                    <li class="nav-item"><a class="nav-link hover-underline text-uppercase mc-white" href="#{{ route('hiring') }}">Local Farmer</a></li>
-                    <li class="nav-item"><a class="nav-link hover-underline text-uppercase mc-white" href="#{{ route('hiring') }}">Manufacturer</a></li>
+                    <li class="nav-item"><a class="nav-link hover-underline text-uppercase mc-white" href="#">Local Farmer</a></li>
+                    <li class="nav-item"><a class="nav-link hover-underline text-uppercase mc-white" href="#">Manufacturer</a></li>
                     
-                    <li class="nav-item"><a class="nav-link hover-underline text-uppercase mc-white" href="#{{ route('hiring') }}">Wholesaler</a></li>
-                    <li class="nav-item"><a class="nav-link hover-underline text-uppercase mc-white" href="#{{ route('hiring') }}">Professionals</a></li>
-                    <li class="nav-item"><a class="nav-link hover-underline text-uppercase mc-white" href="#{{ route('hiring') }}">Retailers</a></li>
+                    <li class="nav-item"><a class="nav-link hover-underline text-uppercase mc-white" href="#">Wholesaler</a></li>
+                    <li class="nav-item"><a class="nav-link hover-underline text-uppercase mc-white" href="#">Professionals</a></li>
+                    <li class="nav-item"><a class="nav-link hover-underline text-uppercase mc-white" href="#">Retailers</a></li>
                 </ul>
                 </div><!-- /.navbar-collapse -->
             </div>
