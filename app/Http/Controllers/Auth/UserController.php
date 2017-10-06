@@ -96,7 +96,7 @@ class UserController extends Controller
         if($this->isValidPageNumber($request->page) && $timestamp){ 
             return view('market.partials.timeline', compact('posts', 'admired', 'hyped', 'timestamp', 'filter')); 
         } else {
-            return view('market.index', compact('posts', 'admired', 'hyped', 'timestamp', 'filter', 'products')); 
+            return view('market.index3', compact('posts', 'admired', 'hyped', 'timestamp', 'filter', 'products')); 
         }      
     }
     
