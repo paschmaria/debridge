@@ -46,28 +46,15 @@
                                 
                         </div>
                         <div  class="col-xs-10 m-t-10">
-                               <h2> {{ Auth::user()->first_name}} {{ Auth::user()->last_name }} </h2>
+                               <h2> EDEN HAZARD </h2>
                         </div>
                     </div>
-                @endif   
-                @if(auth()->check()) 
-
-                    <div class="row m-t-10">
-                @endif
-                            @if(!auth()->check()) 
-                            <div class="row m-t-50">
-                                <div class="col-xs-3 col-md-2">
-                                    <a href="#">Bridge Code</a>
-                            </div>
-                            <div class="col-xs-5 col-md-2">
-                                    <a href="#">Bridgers</a>                            
-                            </div>
-                            @endif
-                            @if(auth()->check())
+                @endif    
+                    <div class="row">
+                      
                             <div class="col-xs-3 col-md-2">
                                 
                             </div>
-                            @endif
                             <div class="col-xs-3 col-md-2">
                                     <a href="#">Windowshop</a>
                             </div>
@@ -212,7 +199,7 @@
                                 </nav>
             
                                 <input type="hidden" name="timestamp" id="timestamp" value="{{ $timestamp }}">
-                                @include('market.partials.timeline1')          
+                                @include('market.partials.timeline')          
                             </div>
                             </div>
                     </div>

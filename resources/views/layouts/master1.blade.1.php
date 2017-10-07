@@ -45,15 +45,35 @@
                 </div>
                 <div  class="nav navbar-nav p-r-10 navbar-right m-t-10 m-r-5 hidden-xs hidden-sm visible-md visible-lg col-md-1 pull-right">
                         
-                        
+                        <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <a href="{{ url ('/register')}}"><button role="button" value="" name="" style="border-radius: 5px; padding: 5px; font-family: sans-serif; font-weight: bolder;"> Login/Register</button></a>
-                        @else     
-                         {{ Auth::user()->first_name}},
-                         <a href="{{ route('logout') }}">Logout</a>                                           
+                        @else
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{ url('/') }}">Home</a>
+
+                                        <a class="dropdown-item waves-effect waves-light" href="{{ url('friends') }}">My friends</a>
+                                        <a href="{{ url('follow') }}">Followers</a>
+                                        <a href="{{ url('friend_requests') }}">Friend requests</a>
+                                        <a href="{{ url('upload') }}">Albums</a>
+                                        <a href="{{ url('notifications') }}">Notifications</a>
+                                        <a href="{{ url('users') }}">De-bridge users</a>
+                                        <a href="{{ route('logout') }}">
+                                        Logout
+                                        </a>
+
+                                    </li>
+                                </ul>
+                            </li>
                         @endif
-                    
+                    </ul>
                         
                     </div>
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -90,7 +110,7 @@
                             <ul>
                                 <li><a href="">Login/Register</a></li>
                                 <li><a href="" id="nig-anchor" style="padding: 5px 10px 5px 10px; margin-left: -10px; border-radius: 3px solid white; background-color: #28b1a1; border-radius: 3px;}">The Nigerian Market</a></li>
-                                <li class="p-t-5"><a href="">Categories</a></li>
+                                <li><a href="">Categories</a></li>
                                 <li><a href="">Tradline</a></li>
                                 <li><a href="">Bridge Code</a></li>
                                 <li><a href="">Bridgers</a></li>
